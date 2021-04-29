@@ -14,7 +14,8 @@
     "lint:ts": "npm run prettier && eslint --fix 'src/**/*.{ts,tsx}'",
     "lint:scss": "stylelint --fix 'src/**/*.scss'",
     "lint:types": "tsc -p . --noEmit",
-    "create:component": "bit create generators/component"
+    "start:library": "bit start",
+    "create:component": "bit create generators/component -n components"
   },
   "lint-staged": {
     "*.{ts,tsx}": [
@@ -49,6 +50,7 @@
     "node-sass": "^5.0.0",
     "react": "17.0.1",
     "react-dom": "17.0.1",
+    "styled-components": "^5.2.3",
     "svg-sprite-loader": "4.2.1"
   },
   "devDependencies": {
@@ -61,6 +63,7 @@
     "@types/jest": "25.1.4",
     "@types/node": "13.9.5",
     "@types/react": "16.9.27",
+    "@types/styled-components": "^5.1.9",
     "@types/svg-sprite-loader": "3.9.1",
     "@typescript-eslint/eslint-plugin": "4.11.1",
     "@typescript-eslint/parser": "4.11.1",

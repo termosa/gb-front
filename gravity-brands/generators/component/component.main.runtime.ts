@@ -56,16 +56,16 @@ describe('${names.componentName}', () => {
 
 const docsContent = (names: TemplateProps) =>
   `---
-  labels: ['ui', 'react']
-  description: 'Renders given content in a block'
-  ---
-  
-  import { ${names.componentName} } from './${names.fileName}'
-  
-  Basic example:
-  \`\`\`js live
-  <${names.componentName} className="Component-Content">Content</${names.componentName}>
-  \`\`\`
+labels: ['ui', 'react']
+description: 'Renders given content in a block'
+---
+
+import { ${names.componentName} } from './${names.fileName}'
+
+Basic example:
+\`\`\`js live
+<${names.componentName} className="Component-Content">Content</${names.componentName}>
+\`\`\`
 `
 
 export class ComponentMain {
