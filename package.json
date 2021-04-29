@@ -13,7 +13,8 @@
     "prettier": "prettier  --write **/*.{ts,tsx,js}",
     "lint:ts": "npm run prettier && eslint --fix 'src/**/*.{ts,tsx}'",
     "lint:scss": "stylelint --fix 'src/**/*.scss'",
-    "lint:types": "tsc -p . --noEmit"
+    "lint:types": "tsc -p . --noEmit",
+    "create:component": "bit create generators/component"
   },
   "lint-staged": {
     "*.{ts,tsx}": [
@@ -43,6 +44,7 @@
   },
   "license": "ISC",
   "dependencies": {
+    "classnames": "^2.3.1",
     "next": "10.0.3",
     "node-sass": "^5.0.0",
     "react": "17.0.1",
@@ -51,6 +53,9 @@
   },
   "devDependencies": {
     "@babel/core": "7.9.0",
+    "@teambit/cli": "^0.0.352",
+    "@teambit/generator": "^0.0.375",
+    "@teambit/harmony": "^0.2.11",
     "@testing-library/jest-dom": "5.11.8",
     "@testing-library/react": "11.2.2",
     "@types/jest": "25.1.4",
