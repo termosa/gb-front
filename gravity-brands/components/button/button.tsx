@@ -9,6 +9,7 @@ export interface ButtonProps extends Omit<React.HTMLProps<HTMLButtonElement>, 'c
   compact?: boolean
   frontColor?: string
   backColor?: string
+  borderColor?: string
   disabledColor?: string
 }
 
@@ -18,13 +19,14 @@ const SButton = styled.button<{
   inverse?: boolean
   frontColor?: string
   backColor?: string
+  borderColor?: string
   disabledColor?: string
 }>`
   display: inline-block;
   padding: 13px 15px;
   letter-spacing: 1px;
   text-transform: uppercase;
-  border: 0.5px solid ${(props) => props.frontColor || '#000'};
+  border: 0.5px solid ${(props) => props.borderColor || '#000'};
   border-radius: 0;
   font: 500 12px/1 'Montserrat', sans-serif;
   text-decoration: none;

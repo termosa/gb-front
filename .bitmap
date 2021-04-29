@@ -7,6 +7,18 @@
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/button"
     },
+    "components/center-layout": {
+        "scope": "",
+        "version": "",
+        "mainFile": "index.ts",
+        "rootDir": "gravity-brands/components/center-layout"
+    },
+    "components/soaring-modal-layout": {
+        "scope": "",
+        "version": "",
+        "mainFile": "index.ts",
+        "rootDir": "gravity-brands/components/soaring-modal-layout"
+    },
     "generators/component": {
         "scope": "",
         "version": "",
