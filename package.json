@@ -14,7 +14,7 @@
     "lint:ts": "npm run prettier && eslint --fix 'src/**/*.{ts,tsx}'",
     "lint:scss": "stylelint --fix 'src/**/*.scss'",
     "lint:types": "tsc -p . --noEmit",
-    "start:library": "bit start",
+    "start:library": "bit link && bit start",
     "create:component": "bit create generators/component -n components"
   },
   "lint-staged": {
