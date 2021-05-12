@@ -7,6 +7,12 @@
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/button"
     },
+    "components/category-shop-card": {
+        "scope": "",
+        "version": "",
+        "mainFile": "index.ts",
+        "rootDir": "gravity-brands/components/category-shop-card"
+    },
     "components/center-layout": {
         "scope": "fragrantjewels.gravity-brands",
         "version": "0.0.1",
@@ -30,6 +36,12 @@
         "version": "0.0.1",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/soaring-modal-layout"
+    },
+    "components/vertical-product-card": {
+        "scope": "",
+        "version": "",
+        "mainFile": "index.ts",
+        "rootDir": "gravity-brands/components/vertical-product-card"
     },
     "generators/component": {
         "scope": "fragrantjewels.gravity-brands",

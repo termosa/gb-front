@@ -34,13 +34,11 @@ export default class CustomDocument extends Document<CustomDocumentProps> {
           <script
             type="text/javascript"
             src="https://s3.amazonaws.com/pages.fragrantjewels.com/lps/static-assets/js/slick.min.js"
+            async
           />
-          <script type="text/javascript" src="/static/header.js" />
-          <script type="text/javascript" src="/static/home.js" />
-          <script type="text/javascript" src="/static/footer.js" />
-          <link rel="stylesheet" href="/src/common/css/styles.css" />
-          <link rel="stylesheet" href="/src/common/css/normalize.css" />
-          <link rel="stylesheet" href="/src/pages/Home/styles/home.scss" />
+          <script type="text/javascript" async src="/static/header.js" />
+          <script type="text/javascript" async src="/static/home.js" />
+          <script type="text/javascript" async src="/static/footer.js" />
         </Head>
         <body>
           <div dangerouslySetInnerHTML={{ __html: this.props.spriteContent }} />
