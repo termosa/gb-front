@@ -3,27 +3,27 @@
 {
     "components/button": {
         "scope": "",
-        "version": "",
+        "version": "0.0.1",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/button"
     },
     "components/center-layout": {
         "scope": "",
-        "version": "",
+        "version": "0.0.1",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/center-layout"
     },
     "components/soaring-modal-layout": {
         "scope": "",
-        "version": "",
+        "version": "0.0.1",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/soaring-modal-layout"
     },
     "generators/component": {
         "scope": "",
-        "version": "",
+        "version": "0.0.1",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/generators/component"
     },
-    "version": "1.0.67"
+    "version": "1.0.84"
 }

@@ -2,7 +2,7 @@ import React from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
 
-export interface ButtonProps extends Omit<React.HTMLProps<HTMLButtonElement>, 'className' | 'type'> {
+export interface ButtonProps extends Omit<React.HTMLProps<HTMLButtonElement>, 'className' | 'ref' | 'as' | 'type'> {
   className?: ClassName
   type?: 'button' | 'submit' | 'reset' | undefined
   children?: React.ReactNode
@@ -48,10 +48,6 @@ const SButton = styled.button<{
   }
 `
 
-export function Button({ className, children, ...props }: ButtonProps): React.ReactElement | null {
-  return (
-    <SButton className={cn('Button', className)} {...props}>
-      {children}
-    </SButton>
-  )
+export function Button({ className, ...props }: ButtonProps): React.ReactElement {
+  return <SButton className={cn('Button', className)} {...props} />
 }

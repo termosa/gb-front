@@ -35,10 +35,13 @@
     /**
      * choose the package manager for Bit to use. you can choose between 'yarn', 'pnpm'
      */
-    "packageManager": "teambit.dependencies/pnpm",
+    "packageManager": "teambit.dependencies/yarn",
     "policy": {
       "dependencies": {},
-      "peerDependencies": {}
+      "peerDependencies": {
+        "react": "17.0.1",
+        "react-dom": "17.0.1"
+      }
     }
   },
   /**
@@ -57,7 +60,7 @@
       /**
        * uncomment to apply the react environment on all components.
        **/
-      // "teambit.react/react": { }
+      "teambit.react/react": {}
     }
   },
   /**

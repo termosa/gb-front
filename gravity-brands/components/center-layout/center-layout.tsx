@@ -2,7 +2,7 @@ import React from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
 
-export interface CenterLayoutProps extends Omit<React.HTMLProps<HTMLDivElement>, 'className'> {
+export interface CenterLayoutProps extends Omit<React.HTMLProps<HTMLDivElement>, 'className' | 'ref' | 'as'> {
   className?: ClassName
   children?: React.ReactNode
 }
@@ -16,10 +16,6 @@ const SCenterLayout = styled.div`
   overflow: visible;
 `
 
-export function CenterLayout({ className, children, ...props }: CenterLayoutProps): React.ReactElement | null {
-  return (
-    <SCenterLayout className={cn('CenterLayout', className)} {...props}>
-      {children}
-    </SCenterLayout>
-  )
+export function CenterLayout({ className, ...props }: CenterLayoutProps): React.ReactElement {
+  return <SCenterLayout className={cn('CenterLayout', className)} {...props} />
 }

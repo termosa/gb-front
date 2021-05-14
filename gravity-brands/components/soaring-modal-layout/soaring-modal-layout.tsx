@@ -2,7 +2,7 @@ import React from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components';
 
-export interface SoaringModalLayoutProps extends Omit<React.HTMLProps<HTMLDivElement>, 'className'> {
+export interface SoaringModalLayoutProps extends Omit<React.HTMLProps<HTMLDivElement>, 'className' | 'ref' | 'as'> {
   className?: ClassName
   children?: React.ReactNode
 }
@@ -16,14 +16,6 @@ const SSoarModalLayout = styled.div`
   text-align: center;
 `
 
-export function SoaringModalLayout({
-  className,
-  children,
-  ...props
-}: SoaringModalLayoutProps): React.ReactElement | null {
-  return (
-    <SSoarModalLayout className={cn('SoaringModalLayout', className)} {...props}>
-      {children}
-    </SSoarModalLayout>
-  )
+export function SoaringModalLayout({ className, ...props }: SoaringModalLayoutProps): React.ReactElement {
+  return <SSoarModalLayout className={cn('SoaringModalLayout', className)} {...props} />
 }
