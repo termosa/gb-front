@@ -31,6 +31,12 @@
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/links-column-group"
     },
+    "components/information-card": {
+        "scope": "",
+        "version": "",
+        "mainFile": "index.ts",
+        "rootDir": "gravity-brands/components/information-card"
+    },
     "components/soaring-modal-layout": {
         "scope": "fragrantjewels.gravity-brands",
         "version": "0.0.1",
