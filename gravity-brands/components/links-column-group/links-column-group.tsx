@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled, { css } from 'styled-components'
-import { LinkColumnGroupArrow } from './link-column-group-arrow'
+import { LinksColumnGroupArrow } from './links-column-group-arrow'
 
 export type LinkType =
   | { name: string; href: string; onClick?: undefined }
@@ -50,7 +50,7 @@ const Title = styled.div<{ mobile?: boolean }>`
       : null}
 `
 
-const Arrow = styled(LinkColumnGroupArrow)<{ opened?: boolean }>`
+const Arrow = styled(LinksColumnGroupArrow)<{ opened?: boolean }>`
   position: absolute;
   right: 0%;
   top: 50%;

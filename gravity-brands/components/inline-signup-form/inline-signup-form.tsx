@@ -1,13 +1,13 @@
 import React from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
-import Button from '@gravity-brands/components.button'
+import Button from '@fragrantjewels/gravity-brands.components.button'
 
-export type InlineSignUpFormProps = {
+export type InlineSignupFormProps = {
   className?: ClassName
 }
 
-const name = 'InlineSignUpForm'
+const name = 'InlineSignupForm'
 
 const Container = styled.div`
   max-width: 1020px;
@@ -61,7 +61,7 @@ const FormButton = styled(Button)`
   width: 25%;
 `
 
-export function InlineSignUpForm({ className }: InlineSignUpFormProps): React.ReactElement {
+export function InlineSignupForm({ className }: InlineSignupFormProps): React.ReactElement {
   return (
     <Container className={cn(name, className)}>
       <Img src="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/surprise-box.png" alt="" />

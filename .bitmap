@@ -2,28 +2,46 @@
 
 {
     "components/button": {
-        "scope": "",
+        "scope": "fragrantjewels.gravity-brands",
         "version": "0.0.1",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/button"
     },
     "components/center-layout": {
-        "scope": "",
+        "scope": "fragrantjewels.gravity-brands",
         "version": "0.0.1",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/center-layout"
     },
+    "components/inline-signup-form": {
+        "scope": "fragrantjewels.gravity-brands",
+        "version": "0.0.1",
+        "mainFile": "index.ts",
+        "rootDir": "gravity-brands/components/inline-signup-form"
+    },
+    "components/links-column-group": {
+        "scope": "fragrantjewels.gravity-brands",
+        "version": "0.0.3",
+        "mainFile": "index.ts",
+        "rootDir": "gravity-brands/components/links-column-group"
+    },
     "components/soaring-modal-layout": {
-        "scope": "",
+        "scope": "fragrantjewels.gravity-brands",
         "version": "0.0.1",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/soaring-modal-layout"
     },
     "generators/component": {
-        "scope": "",
-        "version": "0.0.1",
+        "scope": "fragrantjewels.gravity-brands",
+        "version": "0.0.2",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/generators/component"
+    },
+    "helpers/presentation-canvas": {
+        "scope": "fragrantjewels.gravity-brands",
+        "version": "0.0.2",
+        "mainFile": "index.ts",
+        "rootDir": "gravity-brands/helpers/presentation-canvas"
     },
     "version": "1.0.84"
 }

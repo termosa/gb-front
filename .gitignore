@@ -6,6 +6,9 @@
 /.project/
 /.vscode/
 /.jest/
+/.yarn/
 /out/
 /public/bit/
+/npm-error.log
+/yarn-error.log
 .DS_Store

@@ -1,6 +1,6 @@
 import React from 'react'
 import cn, { Argument as ClassName } from 'classnames'
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export interface SoaringModalLayoutProps extends Omit<React.HTMLProps<HTMLDivElement>, 'className' | 'ref' | 'as'> {
   className?: ClassName

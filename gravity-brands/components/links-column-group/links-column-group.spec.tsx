@@ -5,7 +5,7 @@ import { LinksColumnGroup } from './links-column-group'
 describe('LinksColumnGroup', () => {
   it('should render with the correct text', () => {
     const { getByText } = render(<LinksColumnGroup title="Customer Support" links={[]} />)
-    const rendered = getByText('LinksColumnGroup content')
+    const rendered = getByText('Customer Support')
     expect(rendered).toBeTruthy()
   })
 })

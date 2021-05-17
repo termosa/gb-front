@@ -27,7 +27,7 @@ export const PresentationCanvasWrapper = styled.div<PresentationCanvasProps>`
       : ''}
 `
 
-export function PresentationCanvas({ children, className, ...props }: PresentationCanvasProps): React.ReactNode {
+export function PresentationCanvas({ children, className, ...props }: PresentationCanvasProps): React.ReactElement {
   return (
     <PresentationCanvasWrapper className={cn(name, className)} {...props}>
       {props.nowrap ? children : <div>{children}</div>}

@@ -1,9 +1,5 @@
 import { MainRuntime } from '@teambit/cli'
-import {
-  GeneratorMain,
-  GeneratorAspect,
-  ComponentContext,
-} from '@teambit/generator'
+import { GeneratorMain, GeneratorAspect, ComponentContext } from '@teambit/generator'
 import { ComponentAspect } from './component.aspect'
 
 interface TemplateProps {

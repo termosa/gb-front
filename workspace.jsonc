@@ -26,7 +26,7 @@
     /**
      * default scope for all components in workspace.
      **/
-    "defaultScope": "gravity-brands"
+    "defaultScope": "fragrantjewels.gravity-brands"
   },
   /**
    * main configuration for component dependency resolution.
@@ -39,10 +39,15 @@
     "policy": {
       "dependencies": {},
       "peerDependencies": {
-        "react": "17.0.1",
-        "react-dom": "17.0.1"
+        "react": "17.0.2",
+        "react-dom": "17.0.2"
       }
-    }
+    },
+    "packageManagerArgs": [],
+    "devFilePatterns": [
+      "**/*.spec.ts"
+    ],
+    "strictPeerDependencies": true
   },
   /**
    * workspace variants allow to set different subsets of configuration for components in your workspace.
