@@ -37,6 +37,12 @@
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/information-card"
     },
+    "components/promise-bar": {
+        "scope": "",
+        "version": "",
+        "mainFile": "index.ts",
+        "rootDir": "gravity-brands/components/promise-bar"
+    },
     "components/soaring-modal-layout": {
         "scope": "fragrantjewels.gravity-brands",
         "version": "0.0.1",
