@@ -1,0 +1,11 @@
+ports:
+  - port: 3000
+    onOpen: notify
+  - port: 3100
+    onOpen: ignore
+  - port: 2000
+    onOpen: ignore
+tasks:
+  - before: ./setup-bit.sh
+    init: yarn
+    command: ~/bin/bit import && ~/bin/bit link && ~/bin/bit start
