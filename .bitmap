@@ -8,8 +8,8 @@
         "rootDir": "gravity-brands/components/button"
     },
     "components/category-shop-card": {
-        "scope": "",
-        "version": "",
+        "scope": "fragrantjewels.gravity-brands",
+        "version": "0.0.1",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/category-shop-card"
     },
@@ -18,6 +18,12 @@
         "version": "0.0.1",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/center-layout"
+    },
+    "components/information-card": {
+        "scope": "fragrantjewels.gravity-brands",
+        "version": "0.0.1",
+        "mainFile": "index.ts",
+        "rootDir": "gravity-brands/components/information-card"
     },
     "components/inline-signup-form": {
         "scope": "fragrantjewels.gravity-brands",
@@ -31,15 +37,9 @@
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/links-column-group"
     },
-    "components/information-card": {
-        "scope": "",
-        "version": "",
-        "mainFile": "index.ts",
-        "rootDir": "gravity-brands/components/information-card"
-    },
     "components/promise-bar": {
-        "scope": "",
-        "version": "",
+        "scope": "fragrantjewels.gravity-brands",
+        "version": "0.0.1",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/promise-bar"
     },
@@ -50,8 +50,8 @@
         "rootDir": "gravity-brands/components/soaring-modal-layout"
     },
     "components/vertical-product-card": {
-        "scope": "",
-        "version": "",
+        "scope": "fragrantjewels.gravity-brands",
+        "version": "0.0.1",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/vertical-product-card"
     },
@@ -67,5 +67,5 @@
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/helpers/presentation-canvas"
     },
-    "version": "1.0.84"
+    "$schema-version": "14.9.0"
 }
