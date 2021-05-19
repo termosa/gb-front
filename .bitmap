@@ -67,5 +67,11 @@
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/helpers/presentation-canvas"
     },
+    "helpers/theme-provider": {
+        "scope": "",
+        "version": "",
+        "mainFile": "index.ts",
+        "rootDir": "gravity-brands/helpers/theme-provider"
+    },
     "$schema-version": "14.9.0"
 }

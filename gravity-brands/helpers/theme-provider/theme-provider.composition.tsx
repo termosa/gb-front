@@ -1,12 +1,8 @@
 import React from 'react'
+import { ThemeProvider } from './theme-provider'
 import styled from 'styled-components'
-import { PresentationCanvas } from './presentation-canvas'
 
-export const BasicPresentationCanvas = (): React.ReactElement => (
-  <PresentationCanvas>PresentationCanvas content</PresentationCanvas>
-)
-
-export const PresentationCanvasWithThemedStyles = (): React.ReactElement => {
+export const BasicThemeProvider = (): React.ReactElement => {
   const Button = styled.button`
     background-color: ${({ theme }) => theme.frontColor};
     color: ${({ theme }) => theme.backColor};
@@ -16,8 +12,8 @@ export const PresentationCanvasWithThemedStyles = (): React.ReactElement => {
   `
 
   return (
-    <PresentationCanvas>
+    <ThemeProvider>
       <Button>Button with themed styles</Button>
-    </PresentationCanvas>
+    </ThemeProvider>
   )
 }
