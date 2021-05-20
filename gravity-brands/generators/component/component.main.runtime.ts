@@ -32,8 +32,13 @@ export function ${names.componentName}({
 const compositionContent = (names: TemplateProps) =>
   `import React from 'react'
 import { ${names.componentName} } from './${names.fileName}'
+import PresentationCanvas from '@fragrantjewels/gravity-brands.helpers.presentation-canvas'
 
-export const Basic${names.componentName} = (): React.ReactElement => <${names.componentName}>${names.componentName} content</${names.componentName}>
+export const Basic${names.componentName} = (): React.ReactElement => (
+  <PresentationCanvas>
+    <${names.componentName}>${names.componentName} content</${names.componentName}>
+  </PresentationCanvas>
+)
 `
 
 const specContent = (names: TemplateProps) =>
@@ -57,10 +62,13 @@ description: 'Renders given content in a block'
 ---
 
 import { ${names.componentName} } from './${names.fileName}'
+import PresentationCanvas from '@fragrantjewels/gravity-brands.helpers.presentation-canvas'
 
 Basic example:
 \`\`\`js live
-<${names.componentName} className="Component-Content">Content</${names.componentName}>
+<PresentationCanvas>
+  <${names.componentName} className="Component-Content">Content</${names.componentName}>
+</PresentationCanvas>
 \`\`\`
 `
 

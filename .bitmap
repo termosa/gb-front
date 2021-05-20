@@ -19,6 +19,12 @@
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/center-layout"
     },
+    "components/hero-gallery": {
+        "scope": "fragrantjewels.gravity-brands",
+        "version": "0.0.2",
+        "mainFile": "index.ts",
+        "rootDir": "gravity-brands/components/hero-gallery"
+    },
     "components/information-card": {
         "scope": "fragrantjewels.gravity-brands",
         "version": "0.0.3",
