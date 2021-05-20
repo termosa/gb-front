@@ -27,7 +27,7 @@ const SContent = styled.div`
   width: 86%;
   position: absolute;
   bottom: 0;
-  margin 7%;
+  margin: 7%;
   left: 0;
   font: 12px/1.3 'Montserrat', sans-serif;
   text-align: center;

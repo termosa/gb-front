@@ -1,7 +1,8 @@
 const theme = {
-  frontColor: '#000',
-  backColor: '#fff',
-  disabledColor: '#e4e4e4',
+  colors: {
+    black: '#0000000',
+    white: '#fffffff',
+  },
 }
 
 export default theme

@@ -4,10 +4,13 @@ description: 'Renders given content in a block'
 ---
 
 import { CenterLayout } from './center-layout'
+import PresentationCanvas from '@fragrantjewels/gravity-brands.helpers.presentation-canvas'
 
 Basic example:
 ```js live
-<CenterLayout style={{ height: '100px' }}>
-  Content
-</CenterLayout>
+<PresentationCanvas>
+  <CenterLayout style={{ height: '100px' }}>
+    Content
+  </CenterLayout>
+</PresentationCanvas>
 ```

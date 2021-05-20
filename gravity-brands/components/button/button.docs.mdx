@@ -4,13 +4,18 @@ description: 'Renders given content in a block'
 ---
 
 import { Button } from './button'
+import PresentationCanvas from '@fragrantjewels/gravity-brands.helpers.presentation-canvas'
 
 Basic example:
 ```js live
-<Button className="Component-Content">Content</Button>
+<PresentationCanvas>
+  <Button className="Component-Content">Content</Button>
+</PresentationCanvas>
 ```
 
 Custom colors:
 ```js live
-<Button className="Component-Content" frontColor="#fff" backColor="#9059c8">Submit</Button>
+<PresentationCanvas>
+  <Button className="Component-Content" frontColor="#fff" backColor="#9059c8">Submit</Button>
+</PresentationCanvas>
 ```
