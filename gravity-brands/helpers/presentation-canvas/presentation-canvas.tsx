@@ -14,8 +14,9 @@ export type PresentationCanvasProps = {
 }
 
 export const PresentationCanvasWrapper = styled.div<PresentationCanvasProps>`
-  background-color: ${(props) => (props.dark ? '#000' : '#fff')};
+  background-color: ${(props) => (props.dark ? props.theme.colors.black : props.theme.colors.white)};
   padding: 10px;
+  box-sizing: border-box;
   min-height: 100px;
   overflow: auto;
   ${(props: PresentationCanvasProps) =>
@@ -30,8 +31,10 @@ export const PresentationCanvasWrapper = styled.div<PresentationCanvasProps>`
 
 export function PresentationCanvas({ children, className, ...props }: PresentationCanvasProps): React.ReactElement {
   return (
-    <PresentationCanvasWrapper className={cn(name, className)} {...props}>
-      <ThemeProvider>{props.nowrap ? children : <div>{children}</div>}</ThemeProvider>
-    </PresentationCanvasWrapper>
+    <ThemeProvider>
+      <PresentationCanvasWrapper className={cn(name, className)} {...props}>
+        {props.nowrap ? children : <div>{children}</div>}
+      </PresentationCanvasWrapper>
+    </ThemeProvider>
   )
 }
