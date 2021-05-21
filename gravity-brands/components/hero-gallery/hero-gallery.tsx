@@ -2,11 +2,123 @@ import React from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import Slider, { Settings } from 'react-slick'
 import styled from 'styled-components'
-import 'slick-carousel/slick/slick.css'
 
 export type HeroGalleryProps = {
   className?: ClassName
 }
+
+const SliderWrapper = styled.div`
+  * {
+    box-sizing: border-box;
+  }
+
+  .slick-slider {
+    position: relative;
+    display: block;
+    box-sizing: border-box;
+
+    -webkit-user-select: none;
+      -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+
+    -webkit-touch-callout: none;
+    -khtml-user-select: none;
+    -ms-touch-action: pan-y;
+        touch-action: pan-y;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .slick-list {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+  }
+
+  .slick-list:focus {
+    outline: none;
+  }
+
+  .slick-list.dragging {
+    cursor: pointer;
+    cursor: hand;
+  }
+
+  .slick-slider .slick-track,
+  .slick-slider .slick-list {
+    -webkit-transform: translate3d(0, 0, 0);
+      -moz-transform: translate3d(0, 0, 0);
+        -ms-transform: translate3d(0, 0, 0);
+        -o-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+  }
+
+  .slick-track {
+    position: relative;
+    top: 0;
+    left: 0;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .slick-track:before,
+  .slick-track:after {
+    display: table;
+    content: '';
+  }
+
+  .slick-track:after {
+    clear: both;
+  }
+
+  .slick-loading .slick-track {
+    visibility: hidden;
+  }
+
+  .slick-slide {
+    display: none;
+    float: left;
+    height: 100%;
+    min-height: 1px;
+  }
+
+  [dir='rtl'] .slick-slide {
+    float: right;
+  }
+
+  .slick-slide img {
+    display: block;
+  }
+
+  .slick-slide.slick-loading img {
+    display: none;
+  }
+
+  .slick-slide.dragging img {
+    pointer-events: none;
+  }
+
+  .slick-initialized .slick-slide {
+    display: block;
+  }
+
+  .slick-loading .slick-slide {
+    visibility: hidden;
+  }
+
+  .slick-vertical .slick-slide {
+    display: block;
+    height: auto;
+    border: 1px solid transparent;
+  }
+
+  .slick-arrow.slick-hidden {
+    display: none;
+  }
+`
 
 const Dots = styled.div`
   position: absolute;
@@ -68,10 +180,6 @@ const Dots = styled.div`
 `
 
 const Slide = styled.div`
-  * {
-    box-sizing: border-box;
-  }
-
   position: relative;
   overflow-y: hidden;
   background: url('https://fragrantjewels.s3.amazonaws.com/app/app-home/img/home-banner-img-1-dt.jpg') no-repeat;
@@ -167,7 +275,7 @@ const SlideLink = styled.div`
   }
 `
 
-export function HeroGallery({ className }: HeroGalleryProps): React.ReactElement | null {
+export const HeroGallery = ({ className }: HeroGalleryProps): React.ReactElement => {
   const settings: Settings = {
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -179,7 +287,7 @@ export function HeroGallery({ className }: HeroGalleryProps): React.ReactElement
   }
 
   return (
-    <div className={cn('HeroGallery', className)}>
+    <SliderWrapper className={cn('HeroGallery', className)}>
       <Slider {...settings}>
         <Slide>
           <SlideContent>
@@ -233,6 +341,6 @@ export function HeroGallery({ className }: HeroGalleryProps): React.ReactElement
           </SlideContent>
         </Slide>
       </Slider>
-    </div>
+    </SliderWrapper>
   )
 }
