@@ -25,7 +25,7 @@ const Group = styled.div<{ mobile?: boolean }>`
     props.mobile
       ? css`
           border-bottom: 1px solid #666;
-          &:first-child {
+          &:first-of-type {
             border-top: 1px solid #666;
           }
         `
@@ -58,7 +58,6 @@ const Arrow = styled(LinksColumnGroupArrow)<{ opened?: boolean }>`
 `
 
 const LinksList = styled.div`
-  padding: 10px 0;
   list-style: none;
 `
 
@@ -66,7 +65,7 @@ const Link = styled.a`
   display: block;
   color: #fff;
   text-decoration: none;
-  padding: 5px 0;
+  padding: 5px 0 13px 0;
 
   &:hover {
     text-shadow: -0.06ex 0 #fff, 0.06ex 0 #fff;
@@ -83,7 +82,7 @@ export function LinksColumnGroup({ className, title, links, mobile }: LinksColum
     <Group className={cn(name, className)} mobile={mobile}>
       <Title className={cn(`${name}-Title`)} mobile={mobile} onClick={toggleMenu}>
         {title}
-        <Arrow opened={opened} />
+        {mobile && <Arrow opened={opened} />}
       </Title>
       {!mobile || opened ? (
         <LinksList className={cn(`${name}-Body`)}>
