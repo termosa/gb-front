@@ -9,6 +9,10 @@ export type PromiseBarProps = {
 const SWrapper = styled.div`
   padding: 30px 0 20px;
   background-color: #fdfbf9;
+
+  @media (min-width: 768px) {
+    padding: 30px 0 25px;
+  }
 `
 
 const SContentWrapper = styled.div`
@@ -16,10 +20,8 @@ const SContentWrapper = styled.div`
   padding: 0 15px;
   margin: 0 auto;
   @media (min-width: 768px) {
-    margin: 0 -1%;
-  }
-  @media (min-width: 992px) {
-    margin: 0 -2%;
+    padding: 0 30px;
+    max-width: 1020px;
   }
 `
 
@@ -33,15 +35,6 @@ const STitle = styled.div`
 `
 
 const SPicsWrapper = styled.div`
-  margin: 0 -2%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   padding-top: 10px;
   max-width: 400px;
   margin: 0 auto;
@@ -50,9 +43,19 @@ const SPicsWrapper = styled.div`
   }
 `
 
+const SRow24 = styled.div`
+  margin: 0 -4%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  @media (min-width: 768px) {
+    margin: 0 -2.5%;
+  }
+`
+
 const SPromiseItem = styled.div`
-  width: 25.33%;
-  margin: 0 4% 25px;
+  margin: 0 4% 15px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -67,12 +70,7 @@ const SPromiseItem = styled.div`
   -ms-flex-align: center;
   align-items: center;
   @media (min-width: 768px) {
-    width: 14.66%;
-    margin: 0 1% 15px;
-  }
-  @media (min-width: 992px) {
-    width: 12.66%;
-    margin: 0 2% 15px;
+    margin: 0 2.5% 10px;
   }
 `
 
@@ -80,21 +78,21 @@ const SPromiseItemImg = styled.img`
   width: 100%;
   height: auto;
   margin: 0 auto 10px;
-  max-width: 94px;
+  max-width: 110px;
+  border-style: none;
 `
 
 const SPromiseItemLabel = styled.span`
-  font-size: 8px;
+  font-size: 12px;
   text-align: center;
+  text-transform: uppercase;
 `
 
 const PROMISE_ITEMS = [
-  { title: '100% vegan', img: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/vegan-icon.png' },
-  { title: 'Cruelty free', img: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/cruelty-free-icon.png' },
-  { title: 'Phthalate free', img: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/phthalate-free-icon.png' },
-  { title: 'Paraben free', img: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/paraben-free-icon.png' },
-  { title: 'Handmade', img: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/hand-crafted-icon.png' },
-  { title: 'Made in LA', img: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/made-in-la-icon.png' },
+  { title: 'Cruelty free', img: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/cruelty-free-icon.svg' },
+  { title: 'Handmade in USA', img: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/made-in-usa-icon.svg' },
+  { title: 'Paraben free', img: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/paraben-free-icon.svg' },
+  { title: 'Phthalate free', img: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/phthalate-free-icon.svg' },
 ]
 
 export function PromiseBar({ className }: PromiseBarProps): React.ReactElement | null {
@@ -103,12 +101,14 @@ export function PromiseBar({ className }: PromiseBarProps): React.ReactElement |
       <SContentWrapper>
         <STitle>Our promise to you</STitle>
         <SPicsWrapper>
-          {PROMISE_ITEMS.map((promise) => (
-            <SPromiseItem>
-              <SPromiseItemImg src={promise.img} />
-              <SPromiseItemLabel>{promise.title}</SPromiseItemLabel>
-            </SPromiseItem>
-          ))}
+          <SRow24>
+            {PROMISE_ITEMS.map((promise) => (
+              <SPromiseItem>
+                <SPromiseItemImg src={promise.img} />
+                <SPromiseItemLabel>{promise.title}</SPromiseItemLabel>
+              </SPromiseItem>
+            ))}
+          </SRow24>
         </SPicsWrapper>
       </SContentWrapper>
     </SWrapper>
