@@ -1,5 +1,5 @@
 npm install -g @teambit/bvm
-bvm install 0.0.394
+bvm install 0.0.405
 
 echo "export PATH=\$HOME/bin:\$PATH" >> ~/.profile
 export PATH=$HOME/bin:$PATH

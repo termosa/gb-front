@@ -252,6 +252,7 @@ $(function() {
         }, 250);
 
         $(window).on("resize", mobileWindowResizeHandler);
+        setInterval(mobileWindowResizeHandler, 1e3);
 
         $menuMobile.on("click", ".app-nav__list__item__has-dropdown .app-nav__link", function(e) {
             e.preventDefault();

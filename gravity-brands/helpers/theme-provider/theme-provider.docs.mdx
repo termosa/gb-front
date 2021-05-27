@@ -4,19 +4,27 @@ labels: ['ui', 'react', 'theme-provider']
 ---
 
 import { ThemeProvider } from './theme-provider';
+import styled from 'styled-components';
 
-## React Component for rendering text
+It requires Cormorant Garamond font to be available:
 
-A basic div that renders some text
-
-### Component usage
-```js
-<ThemeProvider text="hello from ThemeProvider" />
+```
+https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700|Cormorant+Garamond:400,600,700,700i&display=swap
 ```
 
-### Using props to customize the text
+### Component usage
+```jsx live
+(
+  Button = styled.button`
+    background-color: ${({ theme }) => theme.colors.black};
+    color: ${({ theme }) => theme.colors.white};
+    padding: 1em;
+    margin: 1em;
+    border: none;
+  `,
 
-Modify the text to see it change live:
-```js live
-<ThemeProvider text="hello from ThemeProvider" />
+  <ThemeProvider>
+    <Button>Button with themed styles</Button>
+  </ThemeProvider>
+)
 ```

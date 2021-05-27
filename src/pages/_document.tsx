@@ -1,12 +1,6 @@
-import Document, {
-  Html,
-  Head,
-  Main,
-  NextScript,
-  DocumentContext,
-  DocumentInitialProps,
-} from 'next/document'
+import Document, { Html, Head, Main, NextScript, DocumentContext, DocumentInitialProps } from 'next/document'
 import sprite from 'svg-sprite-loader/runtime/sprite.build'
+import { ServerStyleSheet } from 'styled-components'
 import React from 'react'
 
 interface CustomDocumentProps {
@@ -14,15 +8,31 @@ interface CustomDocumentProps {
 }
 
 export default class CustomDocument extends Document<CustomDocumentProps> {
-  public static async getInitialProps(
-    ctx: DocumentContext,
-  ): Promise<CustomDocumentProps & DocumentInitialProps> {
-    const initialProps = await Document.getInitialProps(ctx)
+  public static async getInitialProps( ctx: DocumentContext ): Promise<CustomDocumentProps & DocumentInitialProps> {
     const spriteContent = sprite.stringify()
+    const sheet = new ServerStyleSheet()
+    const originalRenderPage = ctx.renderPage
 
-    return {
-      spriteContent,
-      ...initialProps,
+    try {
+      ctx.renderPage = () =>
+        originalRenderPage({
+          enhanceApp: (App) => (props) =>
+            sheet.collectStyles(<App {...props} />),
+        })
+
+      const initialProps = await Document.getInitialProps(ctx)
+      return {
+        spriteContent,
+        ...initialProps,
+        styles: (
+          <>
+            {initialProps.styles}
+            {sheet.getStyleElement()}
+          </>
+        ),
+      }
+    } finally {
+      sheet.seal()
     }
   }
 
@@ -34,7 +44,6 @@ export default class CustomDocument extends Document<CustomDocumentProps> {
           <script
             type="text/javascript"
             src="https://s3.amazonaws.com/pages.fragrantjewels.com/lps/static-assets/js/slick.min.js"
-            async
           />
           <script type="text/javascript" async src="/static/header.js" />
           <script type="text/javascript" async src="/static/home.js" />

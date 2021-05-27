@@ -13,6 +13,7 @@ export const PresentationCanvasWithThemedStyles = (): React.ReactElement => {
     padding: 10px 15px;
     border: none;
     border-radius: 10px;
+    font-family: 'Cormorant Garamond', sans-serif;
   `
 
   return (

@@ -16,16 +16,8 @@ const SliderWrapper = styled.div`
     position: relative;
     display: block;
     box-sizing: border-box;
-
-    -webkit-user-select: none;
-      -moz-user-select: none;
-        -ms-user-select: none;
-            user-select: none;
-
-    -webkit-touch-callout: none;
-    -khtml-user-select: none;
-    -ms-touch-action: pan-y;
-        touch-action: pan-y;
+    user-select: none;
+    touch-action: pan-y;
     -webkit-tap-highlight-color: transparent;
   }
 
@@ -48,11 +40,7 @@ const SliderWrapper = styled.div`
 
   .slick-slider .slick-track,
   .slick-slider .slick-list {
-    -webkit-transform: translate3d(0, 0, 0);
-      -moz-transform: translate3d(0, 0, 0);
-        -ms-transform: translate3d(0, 0, 0);
-        -o-transform: translate3d(0, 0, 0);
-            transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
   }
 
   .slick-track {
@@ -166,7 +154,6 @@ const Dots = styled.div`
       text-align: center;
       opacity: 0.6;
       background-color: #fff;
-      -webkit-transform: translate(-50%, -50%);
       transform: translate(-50%, -50%);
       width: 8px;
       height: 8px;

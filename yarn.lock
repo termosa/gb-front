@@ -1698,6 +1698,102 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
+"@fragrantjewels/gravity-brands.components.accepted-payments@0.0.1":
+  version "0.0.1"
+  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.components.accepted-payments/-/@fragrantjewels-gravity-brands.components.accepted-payments-0.0.1.tgz#a2fabb2862e1125df4317b44b4eb29d87ec58578"
+  integrity sha1-ovq7KGLhEl30MXtEtOsp2H7FhXg=
+  dependencies:
+    classnames "^2.3.1"
+    core-js "^3.0.0"
+    styled-components "^5.2.3"
+
+"@fragrantjewels/gravity-brands.components.button@0.0.3":
+  version "0.0.3"
+  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.components.button/-/@fragrantjewels-gravity-brands.components.button-0.0.3.tgz#44db51dbd58c51c2c63ce527dba8539ae6a24e97"
+  integrity sha1-RNtR29WMUcLGPOUn26hTmuaiTpc=
+  dependencies:
+    classnames "^2.3.1"
+    core-js "^3.0.0"
+    styled-components "^5.2.3"
+
+"@fragrantjewels/gravity-brands.components.category-shop-card@^0.0.3":
+  version "0.0.3"
+  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.components.category-shop-card/-/@fragrantjewels-gravity-brands.components.category-shop-card-0.0.3.tgz#1fdba0a5a23ad0ce2b15f5cc0add0e3269b54549"
+  integrity sha1-H9ugpaI60M4rFfXMCt0OMmm1RUk=
+  dependencies:
+    "@fragrantjewels/gravity-brands.components.button" "0.0.3"
+    classnames "^2.3.1"
+    core-js "^3.0.0"
+    styled-components "^5.2.3"
+
+"@fragrantjewels/gravity-brands.components.footer@^0.0.1":
+  version "0.0.1"
+  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.components.footer/-/@fragrantjewels-gravity-brands.components.footer-0.0.1.tgz#ca2f124401268618de69f466d976a2bb48ee7cc8"
+  integrity sha1-yi8SRAEmhhjeafRm2Xaiu0jufMg=
+  dependencies:
+    "@fragrantjewels/gravity-brands.components.accepted-payments" "0.0.1"
+    "@fragrantjewels/gravity-brands.components.links-column-group" "0.0.5"
+    "@fragrantjewels/gravity-brands.components.social-links" "0.0.1"
+    classnames "^2.3.1"
+    core-js "^3.0.0"
+    react-media-hook "^0.4.9"
+    styled-components "^5.2.3"
+
+"@fragrantjewels/gravity-brands.components.hero-gallery@^0.0.3":
+  version "0.0.3"
+  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.components.hero-gallery/-/@fragrantjewels-gravity-brands.components.hero-gallery-0.0.3.tgz#220976275aa3032439856ea799c0670c06063b74"
+  integrity sha1-Igl2J1qjAyQ5hW6nmcBnDAYGO3Q=
+  dependencies:
+    classnames "^2.3.1"
+    core-js "^3.0.0"
+    react-slick "^0.28.1"
+    styled-components "^5.2.3"
+
+"@fragrantjewels/gravity-brands.components.inline-signup-form@^0.0.3":
+  version "0.0.3"
+  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.components.inline-signup-form/-/@fragrantjewels-gravity-brands.components.inline-signup-form-0.0.3.tgz#1e6f8e9d5750d99376f93cb36b3967b40781b764"
+  integrity sha1-Hm+OnVdQ2ZN2+TyzazlntAeBt2Q=
+  dependencies:
+    "@fragrantjewels/gravity-brands.components.button" "0.0.3"
+    classnames "^2.3.1"
+    core-js "^3.0.0"
+    styled-components "^5.2.3"
+
+"@fragrantjewels/gravity-brands.components.links-column-group@0.0.5":
+  version "0.0.5"
+  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.components.links-column-group/-/@fragrantjewels-gravity-brands.components.links-column-group-0.0.5.tgz#339a0f47011f159e0f64099a526616a4a912981e"
+  integrity sha1-M5oPRwEfFZ4PZAmaUmYWpKkSmB4=
+  dependencies:
+    classnames "^2.3.1"
+    core-js "^3.0.0"
+    styled-components "^5.2.3"
+
+"@fragrantjewels/gravity-brands.components.promise-bar@^0.0.4":
+  version "0.0.4"
+  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.components.promise-bar/-/@fragrantjewels-gravity-brands.components.promise-bar-0.0.4.tgz#6f8a3c8492eb6dd7ffbd04f01447d01fc131df12"
+  integrity sha1-b4o8hJLrbdf/vQTwFEfQH8Ex3xI=
+  dependencies:
+    classnames "^2.3.1"
+    core-js "^3.0.0"
+    styled-components "^5.2.3"
+
+"@fragrantjewels/gravity-brands.components.social-links@0.0.1":
+  version "0.0.1"
+  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.components.social-links/-/@fragrantjewels-gravity-brands.components.social-links-0.0.1.tgz#34fe89f93de67906b85e757e8b54b682c1600092"
+  integrity sha1-NP6J+T3meQa4XnV+i1S2gsFgAJI=
+  dependencies:
+    classnames "^2.3.1"
+    core-js "^3.0.0"
+    styled-components "^5.2.3"
+
+"@fragrantjewels/gravity-brands.helpers.theme-provider@^0.0.2":
+  version "0.0.2"
+  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.helpers.theme-provider/-/@fragrantjewels-gravity-brands.helpers.theme-provider-0.0.2.tgz#51f0f833a83eaeaf3cd9f4ca4d04152f15fbfcc7"
+  integrity sha1-UfD4M6g+rq882fTKTQQVLxX7/Mc=
+  dependencies:
+    core-js "^3.0.0"
+    styled-components "^5.2.3"
+
 "@graphql-modules/core@0.7.17":
   version "0.7.17"
   resolved "https://registry.yarnpkg.com/@graphql-modules/core/-/core-0.7.17.tgz#ae9bbf44894509664bc0b6fcdd9b6cf3d99bcd00"
