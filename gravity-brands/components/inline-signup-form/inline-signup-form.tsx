@@ -32,9 +32,11 @@ const Text = styled.p`
 const Form = styled.form`
   max-width: 624px;
   margin: 10px auto;
+  display: flex;
 `
 
 const Input = styled.input`
+  width: 75%;
   height: 47px;
   padding: 10px 15px;
   font: 400 12px/1 'Montserrat', sans-serif;
@@ -64,7 +66,7 @@ const FormButton = styled(Button)`
 export function InlineSignupForm({ className }: InlineSignupFormProps): React.ReactElement {
   return (
     <Container className={cn(name, className)}>
-      <Img src="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/surprise-box.png" alt="" />
+      <Img src="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/email-img.svg" alt="" />
       <Title>Thanks for signing up!</Title>
       <Text>Even our emails are fun. Sign up to receive special offers, games, prizes and more.</Text>
       <Form>

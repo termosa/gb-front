@@ -1,6 +1,8 @@
 import { HeroGallery } from '@fragrantjewels/gravity-brands.components.hero-gallery'
 import { CategoryShopCard } from '@fragrantjewels/gravity-brands.components.category-shop-card'
 import { PromiseBar } from '@fragrantjewels/gravity-brands.components.promise-bar'
+import { Footer } from '@fragrantjewels/gravity-brands.components.footer'
+import { InlineSignupForm } from '@fragrantjewels/gravity-brands.components.inline-signup-form'
 import React from 'react'
 import { HeroGallery } from '@fragrantjewels/gravity-brands.components.hero-gallery'
 import { PromiseBar } from '@fragrantjewels/gravity-brands.components.promise-bar'
@@ -1218,21 +1220,7 @@ const HomePage: React.FC = () => {
             <section className="app-h-section app-h-form-section">
               <div>
                 <div className="app-h-container">
-                  <img className="app-h-section__img_email"
-                       src="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/surprise-box.png"
-                       style={{ maxWidth: '88px' }} alt="" />
-                  <h2 className="app-h-section__title app-h-section__title_email">Thanks for signing up!</h2>
-                  <div className="app-h-section__text">
-                    <p>Even our emails are fun. Sign up to receive special offers, games, prizes and more.
-                    </p>
-                  </div>
-                  <div className="app-h-form-wrapper">
-                    <form className="app-h-form">
-                      <input type="email" autoCorrect="off" autoCapitalize="off" placeholder="Enter your email"
-                             required />
-                      <button type="submit">Submit</button>
-                    </form>
-                  </div>
+                  <InlineSignupForm />
                 </div>
                 <div className="app-h-media-imgs">
                   <div>
