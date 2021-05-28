@@ -1,3 +1,8 @@
+@import "normalize";
+@import "header";
+@import "sliders";
+@import "footer";
+@import "slick.min";
 $white: #fff;
 $black: #000;
 $purple: #9059c8;
@@ -1008,7 +1013,7 @@ $lightYellow: rgba(253, 251, 249, 1);
     text-align: center;
     padding: 30px 0 20px;
     @media (min-width: 768px) {
-        padding: 80px 0 40px;
+        padding: 70px 0 40px;
     }
 }
 
