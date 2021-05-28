@@ -1,14 +1,9 @@
-import { HeroGallery } from '@fragrantjewels/gravity-brands.components.hero-gallery'
-import { CategoryShopCard } from '@fragrantjewels/gravity-brands.components.category-shop-card'
-import { PromiseBar } from '@fragrantjewels/gravity-brands.components.promise-bar'
-import { Footer } from '@fragrantjewels/gravity-brands.components.footer'
-import { InlineSignupForm } from '@fragrantjewels/gravity-brands.components.inline-signup-form'
 import React from 'react'
 import { HeroGallery } from '@fragrantjewels/gravity-brands.components.hero-gallery'
+import { CategoryShopCard } from '@fragrantjewels/gravity-brands.components.category-shop-card'
 import { PromiseBar } from '@fragrantjewels/gravity-brands.components.promise-bar'
 import { Footer } from '@fragrantjewels/gravity-brands.components.footer'
 import { InlineSignupForm } from '@fragrantjewels/gravity-brands.components.inline-signup-form'
-import { CategoryShopCard } from '@fragrantjewels/gravity-brands.components.category-shop-card'
 
 const HomePage: React.FC = () => {
   return (
