@@ -1205,18 +1205,6 @@ const HomePage: React.FC = () => {
                     <img src="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/popsugar.png" alt="" />
                   </div>
                 </div>
-              </div>
-            </section>
-            <section className="app-h-section app-h-char-section app-h-char-section_colored">
-              <div className="app-h-container">
-                <PromiseBar />
-              </div>
-            </section>
-            <section className="app-h-section app-h-form-section">
-              <div>
-                <div className="app-h-container">
-                  <InlineSignupForm />
-                </div>
                 <div className="app-h-media-imgs">
                   <div>
                     <img src="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/press-icons-1.png" alt="" />
