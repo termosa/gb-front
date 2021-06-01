@@ -7,7 +7,7 @@ ports:
     onOpen: ignore
 tasks:
   - before: ./setup-bit.sh
-    init: yarn && npx next build
+    init: yarn
     # init: yarn && ~/bin/bit import && ~/bin/bit link
     command: npm run dev
     # command: ~/bin/bit start
