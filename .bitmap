@@ -61,6 +61,12 @@
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/promise-bar"
     },
+    "components/reviews-section": {
+        "scope": "fragrantjewels.gravity-brands",
+        "version": "0.0.3",
+        "mainFile": "index.ts",
+        "rootDir": "gravity-brands/components/reviews-section"
+    },
     "components/shop-by-product-card": {
         "scope": "fragrantjewels.gravity-brands",
         "version": "0.0.4",
