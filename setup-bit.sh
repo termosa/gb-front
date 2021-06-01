@@ -7,3 +7,5 @@ export PATH=$HOME/bin:$PATH
 bit config set analytics_reporting false
 bit config set anonymous_reporting false
 bit config set user.token ${BIT_TOKEN}
+
+yarn config set '@fragrantjewels:registry' https://node.bit.dev
