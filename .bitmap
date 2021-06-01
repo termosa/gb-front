@@ -61,6 +61,18 @@
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/promise-bar"
     },
+    "components/shop-by-product-card": {
+        "scope": "fragrantjewels.gravity-brands",
+        "version": "0.0.4",
+        "mainFile": "index.ts",
+        "rootDir": "gravity-brands/components/shop-by-product-card"
+    },
+    "components/shop-by-products-overview": {
+        "scope": "fragrantjewels.gravity-brands",
+        "version": "0.0.4",
+        "mainFile": "index.ts",
+        "rootDir": "gravity-brands/components/shop-by-products-overview"
+    },
     "components/soaring-modal-layout": {
         "scope": "fragrantjewels.gravity-brands",
         "version": "0.0.5",
