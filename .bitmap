@@ -67,6 +67,12 @@
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/reviews-section"
     },
+    "components/rolling-banner": {
+        "scope": "",
+        "version": "0.0.1",
+        "mainFile": "index.ts",
+        "rootDir": "gravity-brands/components/rolling-banner"
+    },
     "components/shop-by-product-card": {
         "scope": "fragrantjewels.gravity-brands",
         "version": "0.0.4",
