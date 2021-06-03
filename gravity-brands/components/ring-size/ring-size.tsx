@@ -74,7 +74,7 @@ export function RingSize({ className, defaultSize }: RingSizeProps): React.React
   return (
     <SWrapper className={cn('RingSize', className)}>
       {SIZE_OPTIONS.map((value) => (
-        <SButtonWrapper selected={size === value} onClick={() => handleChangeSize(value)}>
+        <SButtonWrapper key={String(value)} selected={size === value} onClick={() => handleChangeSize(value)}>
           <SButton>{value}</SButton>
         </SButtonWrapper>
       ))}

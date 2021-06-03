@@ -49,11 +49,23 @@
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/inline-signup-form"
     },
+    "components/inner-circle-exclusive": {
+        "scope": "fragrantjewels.gravity-brands",
+        "version": "0.0.1",
+        "mainFile": "index.ts",
+        "rootDir": "gravity-brands/components/inner-circle-exclusive"
+    },
     "components/links-column-group": {
         "scope": "fragrantjewels.gravity-brands",
         "version": "0.0.7",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/links-column-group"
+    },
+    "components/points-widget": {
+        "scope": "fragrantjewels.gravity-brands",
+        "version": "0.0.1",
+        "mainFile": "index.ts",
+        "rootDir": "gravity-brands/components/points-widget"
     },
     "components/promise-bar": {
         "scope": "fragrantjewels.gravity-brands",
@@ -66,6 +78,12 @@
         "version": "0.0.3",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/reviews-section"
+    },
+    "components/ring-size": {
+        "scope": "fragrantjewels.gravity-brands",
+        "version": "0.0.1",
+        "mainFile": "index.ts",
+        "rootDir": "gravity-brands/components/ring-size"
     },
     "components/rolling-banner": {
         "scope": "",

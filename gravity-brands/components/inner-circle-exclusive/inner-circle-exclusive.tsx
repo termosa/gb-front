@@ -2,7 +2,7 @@ import React from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
 import Button from '@fragrantjewels/gravity-brands.components.button'
-import RingSize from '@gravity-brands/components.ring-size'
+import RingSize from '@fragrantjewels/gravity-brands.components.ring-size'
 
 export type InnerCircleExclusiveProps = {
   className?: ClassName

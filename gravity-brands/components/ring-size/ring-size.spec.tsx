@@ -5,7 +5,7 @@ import { BasicRingSize } from './ring-size.composition'
 describe('RingSize', () => {
   it('should render with the correct text', () => {
     const { getByText } = render(<BasicRingSize />)
-    const rendered = getByText('RingSize content')
+    const rendered = getByText('5')
     expect(rendered).toBeTruthy()
   })
 })
