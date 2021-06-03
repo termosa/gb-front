@@ -87,7 +87,7 @@
     },
     "components/rolling-banner": {
         "scope": "",
-        "version": "0.0.1",
+        "version": "",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/rolling-banner"
     },
