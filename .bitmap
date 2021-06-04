@@ -86,8 +86,8 @@
         "rootDir": "gravity-brands/components/ring-size"
     },
     "components/rolling-banner": {
-        "scope": "",
-        "version": "0.0.1",
+        "scope": "fragrantjewels.gravity-brands",
+        "version": "0.0.2",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/rolling-banner"
     },
@@ -116,8 +116,8 @@
         "rootDir": "gravity-brands/components/social-links"
     },
     "components/trending-section": {
-        "scope": "",
-        "version": "",
+        "scope": "fragrantjewels.gravity-brands",
+        "version": "0.0.3",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/trending-section"
     },

@@ -11,7 +11,6 @@ export type TrendingSectionProps = {
 
 const Section = styled.section`
   margin: 0 0 20px;
-
   * {
     box-sizing: border-box;
   }
