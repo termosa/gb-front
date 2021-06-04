@@ -1,12 +1,22 @@
 import React, { useState } from 'react'
 import Slider, { Settings } from 'react-slick'
 import styled, { css } from 'styled-components'
-import { VerticalProductCardProps } from '@fragrantjewels/gravity-brands.components.vertical-product-card'
-import { Argument as ClassName } from 'classnames'
+import cn, { Argument as ClassName } from 'classnames'
 
 export type TrendingSectionProps = {
-  className?: ClassName
-  products: Array<VerticalProductCardProps>
+  products: Array<Product>
+  className: ClassName
+}
+
+export type Product = {
+  front_image: {
+    src: string
+    alt: string | null
+  }
+  title: string
+  variants: Array<{
+    actual_price: number
+  }>
 }
 
 const Section = styled.section`
@@ -65,7 +75,6 @@ const ProductCards = styled.div`
   position: relative;
   @media (min-width: 768px) {
     max-width: 100%;
-  }
   }
 
   .slick-slider {
@@ -412,18 +421,18 @@ const ProductCardWrapper = styled.div`
   }
 `
 
-const ProductCard = () => (
+const ProductCard = ({ product }: { product: Product }) => (
   <ProductCardWrapper>
-    <SProductCard newProduct>
+    <SProductCard>
       <div>
         <ProductCardImgWrapper>
           <ProductCardImgWrapperInner>
-            <img src="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/aphrodite_bb_jewelry_comp.png" alt="" />
+            <img src={product.front_image.src} alt={`Product image ${product.front_image.alt}`} />
           </ProductCardImgWrapperInner>
         </ProductCardImgWrapper>
         <ProductCardTag>925 Sterling Silver</ProductCardTag>
         <ProductCardMembers>Members Only</ProductCardMembers>
-        <ProductCardTitle>Aphrodite - Bath Bomb</ProductCardTitle>
+        <ProductCardTitle>{product.title}</ProductCardTitle>
       </div>
       <div>
         <ProductCardStars>
@@ -484,17 +493,14 @@ const ProductCard = () => (
           <ProductCardRatingLink>102</ProductCardRatingLink>
         </ProductCardStars>
         <ProductCardPrices>
-          <ProductCardPrice>
-            <del>$39.95</del>
-          </ProductCardPrice>
-          <ProductCardPrice>$32.95</ProductCardPrice>
+          <ProductCardPrice>${product.variants[0].actual_price}</ProductCardPrice>
         </ProductCardPrices>
       </div>
     </SProductCard>
   </ProductCardWrapper>
 )
 
-export const TrendingSection: React.FC = () => {
+export const TrendingSection: React.FC<TrendingSectionProps> = ({ products, className }) => {
   const [progress, setProgress] = useState(0)
   const settings: Settings = {
     slidesToShow: 3,
@@ -529,7 +535,7 @@ export const TrendingSection: React.FC = () => {
   }
 
   return (
-    <Section>
+    <Section className={cn('TrendingSection', className)}>
       <Container>
         <SectionTitle>What’s trending</SectionTitle>
         <SectionText>
@@ -537,253 +543,9 @@ export const TrendingSection: React.FC = () => {
         </SectionText>
         <ProductCards>
           <StyledSlider {...settings}>
-            <ProductCard />
-            <ProductCardWrapper>
-              <SProductCard>
-                <div>
-                  <ProductCardImgWrapper>
-                    <ProductCardImgWrapperInner>
-                      <img
-                        src="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/moulinrouge_bundle_perfume_comp_large.png"
-                        alt=""
-                      />
-                    </ProductCardImgWrapperInner>
-                  </ProductCardImgWrapper>
-                  <ProductCardTag>925 Sterling Silver</ProductCardTag>
-                  <ProductCardMembers>Members Only</ProductCardMembers>
-                  <ProductCardTitle>Moulin Rouge - Satin Collection - Bath Bomb and Candle Set</ProductCardTitle>
-                </div>
-                <div>
-                  <ProductCardStars>
-                    <ProductCardStar>
-                      <svg width={15} height={13} viewBox="0 0 15 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                          d="M7.02447 0.463524C7.17415 0.00286841 7.82585 0.00286996 7.97553 0.463525L9.18386 4.18237C9.25079 4.38838 9.44277 4.52786 9.65938 4.52786H13.5696C14.054 4.52786 14.2554 5.14767 13.8635 5.43237L10.7001 7.73075C10.5248 7.85807 10.4515 8.08375 10.5184 8.28976L11.7268 12.0086C11.8764 12.4693 11.3492 12.8523 10.9573 12.5676L7.79389 10.2693C7.61865 10.1419 7.38135 10.1419 7.20611 10.2693L4.04267 12.5676C3.65081 12.8523 3.12357 12.4693 3.27325 12.0086L4.48157 8.28976C4.54851 8.08375 4.47518 7.85807 4.29994 7.73075L1.1365 5.43237C0.744639 5.14767 0.946028 4.52786 1.43039 4.52786H5.34062C5.55723 4.52786 5.74921 4.38838 5.81614 4.18237L7.02447 0.463524Z"
-                          fill="#9059C8"
-                        />
-                      </svg>
-                    </ProductCardStar>
-                    <ProductCardStar>
-                      <svg width={15} height={13} viewBox="0 0 15 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                          d="M7.02447 0.463524C7.17415 0.00286841 7.82585 0.00286996 7.97553 0.463525L9.18386 4.18237C9.25079 4.38838 9.44277 4.52786 9.65938 4.52786H13.5696C14.054 4.52786 14.2554 5.14767 13.8635 5.43237L10.7001 7.73075C10.5248 7.85807 10.4515 8.08375 10.5184 8.28976L11.7268 12.0086C11.8764 12.4693 11.3492 12.8523 10.9573 12.5676L7.79389 10.2693C7.61865 10.1419 7.38135 10.1419 7.20611 10.2693L4.04267 12.5676C3.65081 12.8523 3.12357 12.4693 3.27325 12.0086L4.48157 8.28976C4.54851 8.08375 4.47518 7.85807 4.29994 7.73075L1.1365 5.43237C0.744639 5.14767 0.946028 4.52786 1.43039 4.52786H5.34062C5.55723 4.52786 5.74921 4.38838 5.81614 4.18237L7.02447 0.463524Z"
-                          fill="#9059C8"
-                        />
-                      </svg>
-                    </ProductCardStar>
-                    <ProductCardStar>
-                      <svg width={15} height={13} viewBox="0 0 15 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                          d="M7.02447 0.463524C7.17415 0.00286841 7.82585 0.00286996 7.97553 0.463525L9.18386 4.18237C9.25079 4.38838 9.44277 4.52786 9.65938 4.52786H13.5696C14.054 4.52786 14.2554 5.14767 13.8635 5.43237L10.7001 7.73075C10.5248 7.85807 10.4515 8.08375 10.5184 8.28976L11.7268 12.0086C11.8764 12.4693 11.3492 12.8523 10.9573 12.5676L7.79389 10.2693C7.61865 10.1419 7.38135 10.1419 7.20611 10.2693L4.04267 12.5676C3.65081 12.8523 3.12357 12.4693 3.27325 12.0086L4.48157 8.28976C4.54851 8.08375 4.47518 7.85807 4.29994 7.73075L1.1365 5.43237C0.744639 5.14767 0.946028 4.52786 1.43039 4.52786H5.34062C5.55723 4.52786 5.74921 4.38838 5.81614 4.18237L7.02447 0.463524Z"
-                          fill="#9059C8"
-                        />
-                      </svg>
-                    </ProductCardStar>
-                    <ProductCardStar>
-                      <svg width={15} height={13} viewBox="0 0 15 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                          d="M7.02447 0.463524C7.17415 0.00286841 7.82585 0.00286996 7.97553 0.463525L9.18386 4.18237C9.25079 4.38838 9.44277 4.52786 9.65938 4.52786H13.5696C14.054 4.52786 14.2554 5.14767 13.8635 5.43237L10.7001 7.73075C10.5248 7.85807 10.4515 8.08375 10.5184 8.28976L11.7268 12.0086C11.8764 12.4693 11.3492 12.8523 10.9573 12.5676L7.79389 10.2693C7.61865 10.1419 7.38135 10.1419 7.20611 10.2693L4.04267 12.5676C3.65081 12.8523 3.12357 12.4693 3.27325 12.0086L4.48157 8.28976C4.54851 8.08375 4.47518 7.85807 4.29994 7.73075L1.1365 5.43237C0.744639 5.14767 0.946028 4.52786 1.43039 4.52786H5.34062C5.55723 4.52786 5.74921 4.38838 5.81614 4.18237L7.02447 0.463524Z"
-                          fill="#9059C8"
-                        />
-                      </svg>
-                    </ProductCardStar>
-                    <ProductCardStar>
-                      <svg width={15} height={13} viewBox="0 0 15 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                          d="M7.02447 0.463524C7.17415 0.00286841 7.82585 0.00286996 7.97553 0.463525L9.18386 4.18237C9.25079 4.38838 9.44277 4.52786 9.65938 4.52786H13.5696C14.054 4.52786 14.2554 5.14767 13.8635 5.43237L10.7001 7.73075C10.5248 7.85807 10.4515 8.08375 10.5184 8.28976L11.7268 12.0086C11.8764 12.4693 11.3492 12.8523 10.9573 12.5676L7.79389 10.2693C7.61865 10.1419 7.38135 10.1419 7.20611 10.2693L4.04267 12.5676C3.65081 12.8523 3.12357 12.4693 3.27325 12.0086L4.48157 8.28976C4.54851 8.08375 4.47518 7.85807 4.29994 7.73075L1.1365 5.43237C0.744639 5.14767 0.946028 4.52786 1.43039 4.52786H5.34062C5.55723 4.52786 5.74921 4.38838 5.81614 4.18237L7.02447 0.463524Z"
-                          fill="url(#paint0_linear)"
-                        />
-                        <defs>
-                          <linearGradient
-                            id="paint0_linear"
-                            x1="0.388889"
-                            y1="6.11111"
-                            x2="14.6111"
-                            y2="6.11111"
-                            gradientUnits="userSpaceOnUse"
-                          >
-                            <stop offset="0.5" stopColor="#9059C8" />
-                            <stop offset="0.5001" stopColor="#DADADA" />
-                            <stop offset={1} stopColor="#DADADA" />
-                          </linearGradient>
-                        </defs>
-                      </svg>
-                    </ProductCardStar>
-                    <ProductCardRatingLink>102</ProductCardRatingLink>
-                  </ProductCardStars>
-                  <ProductCardPrices>
-                    <ProductCardPrice>
-                      <del>$39.95</del>
-                    </ProductCardPrice>
-                    <ProductCardPrice>$32.95</ProductCardPrice>
-                  </ProductCardPrices>
-                </div>
-              </SProductCard>
-            </ProductCardWrapper>
-            <ProductCardWrapper>
-              <SProductCard newProduct>
-                <div>
-                  <ProductCardImgWrapper>
-                    <ProductCardImgWrapperInner>
-                      <img
-                        src="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/aries_2021_candle_comp_large.jpg"
-                        alt=""
-                      />
-                    </ProductCardImgWrapperInner>
-                  </ProductCardImgWrapper>
-                  <ProductCardTag>925 Sterling Silver</ProductCardTag>
-                  <ProductCardMembers>Members Only</ProductCardMembers>
-                  <ProductCardTitle>Aries, The Ram - Jewel Candle</ProductCardTitle>
-                </div>
-                <div>
-                  <ProductCardStars>
-                    <ProductCardStar>
-                      <svg width={15} height={13} viewBox="0 0 15 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                          d="M7.02447 0.463524C7.17415 0.00286841 7.82585 0.00286996 7.97553 0.463525L9.18386 4.18237C9.25079 4.38838 9.44277 4.52786 9.65938 4.52786H13.5696C14.054 4.52786 14.2554 5.14767 13.8635 5.43237L10.7001 7.73075C10.5248 7.85807 10.4515 8.08375 10.5184 8.28976L11.7268 12.0086C11.8764 12.4693 11.3492 12.8523 10.9573 12.5676L7.79389 10.2693C7.61865 10.1419 7.38135 10.1419 7.20611 10.2693L4.04267 12.5676C3.65081 12.8523 3.12357 12.4693 3.27325 12.0086L4.48157 8.28976C4.54851 8.08375 4.47518 7.85807 4.29994 7.73075L1.1365 5.43237C0.744639 5.14767 0.946028 4.52786 1.43039 4.52786H5.34062C5.55723 4.52786 5.74921 4.38838 5.81614 4.18237L7.02447 0.463524Z"
-                          fill="#9059C8"
-                        />
-                      </svg>
-                    </ProductCardStar>
-                    <ProductCardStar>
-                      <svg width={15} height={13} viewBox="0 0 15 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                          d="M7.02447 0.463524C7.17415 0.00286841 7.82585 0.00286996 7.97553 0.463525L9.18386 4.18237C9.25079 4.38838 9.44277 4.52786 9.65938 4.52786H13.5696C14.054 4.52786 14.2554 5.14767 13.8635 5.43237L10.7001 7.73075C10.5248 7.85807 10.4515 8.08375 10.5184 8.28976L11.7268 12.0086C11.8764 12.4693 11.3492 12.8523 10.9573 12.5676L7.79389 10.2693C7.61865 10.1419 7.38135 10.1419 7.20611 10.2693L4.04267 12.5676C3.65081 12.8523 3.12357 12.4693 3.27325 12.0086L4.48157 8.28976C4.54851 8.08375 4.47518 7.85807 4.29994 7.73075L1.1365 5.43237C0.744639 5.14767 0.946028 4.52786 1.43039 4.52786H5.34062C5.55723 4.52786 5.74921 4.38838 5.81614 4.18237L7.02447 0.463524Z"
-                          fill="#9059C8"
-                        />
-                      </svg>
-                    </ProductCardStar>
-                    <ProductCardStar>
-                      <svg width={15} height={13} viewBox="0 0 15 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                          d="M7.02447 0.463524C7.17415 0.00286841 7.82585 0.00286996 7.97553 0.463525L9.18386 4.18237C9.25079 4.38838 9.44277 4.52786 9.65938 4.52786H13.5696C14.054 4.52786 14.2554 5.14767 13.8635 5.43237L10.7001 7.73075C10.5248 7.85807 10.4515 8.08375 10.5184 8.28976L11.7268 12.0086C11.8764 12.4693 11.3492 12.8523 10.9573 12.5676L7.79389 10.2693C7.61865 10.1419 7.38135 10.1419 7.20611 10.2693L4.04267 12.5676C3.65081 12.8523 3.12357 12.4693 3.27325 12.0086L4.48157 8.28976C4.54851 8.08375 4.47518 7.85807 4.29994 7.73075L1.1365 5.43237C0.744639 5.14767 0.946028 4.52786 1.43039 4.52786H5.34062C5.55723 4.52786 5.74921 4.38838 5.81614 4.18237L7.02447 0.463524Z"
-                          fill="#9059C8"
-                        />
-                      </svg>
-                    </ProductCardStar>
-                    <ProductCardStar>
-                      <svg width={15} height={13} viewBox="0 0 15 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                          d="M7.02447 0.463524C7.17415 0.00286841 7.82585 0.00286996 7.97553 0.463525L9.18386 4.18237C9.25079 4.38838 9.44277 4.52786 9.65938 4.52786H13.5696C14.054 4.52786 14.2554 5.14767 13.8635 5.43237L10.7001 7.73075C10.5248 7.85807 10.4515 8.08375 10.5184 8.28976L11.7268 12.0086C11.8764 12.4693 11.3492 12.8523 10.9573 12.5676L7.79389 10.2693C7.61865 10.1419 7.38135 10.1419 7.20611 10.2693L4.04267 12.5676C3.65081 12.8523 3.12357 12.4693 3.27325 12.0086L4.48157 8.28976C4.54851 8.08375 4.47518 7.85807 4.29994 7.73075L1.1365 5.43237C0.744639 5.14767 0.946028 4.52786 1.43039 4.52786H5.34062C5.55723 4.52786 5.74921 4.38838 5.81614 4.18237L7.02447 0.463524Z"
-                          fill="#9059C8"
-                        />
-                      </svg>
-                    </ProductCardStar>
-                    <ProductCardStar>
-                      <svg width={15} height={13} viewBox="0 0 15 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                          d="M7.02447 0.463524C7.17415 0.00286841 7.82585 0.00286996 7.97553 0.463525L9.18386 4.18237C9.25079 4.38838 9.44277 4.52786 9.65938 4.52786H13.5696C14.054 4.52786 14.2554 5.14767 13.8635 5.43237L10.7001 7.73075C10.5248 7.85807 10.4515 8.08375 10.5184 8.28976L11.7268 12.0086C11.8764 12.4693 11.3492 12.8523 10.9573 12.5676L7.79389 10.2693C7.61865 10.1419 7.38135 10.1419 7.20611 10.2693L4.04267 12.5676C3.65081 12.8523 3.12357 12.4693 3.27325 12.0086L4.48157 8.28976C4.54851 8.08375 4.47518 7.85807 4.29994 7.73075L1.1365 5.43237C0.744639 5.14767 0.946028 4.52786 1.43039 4.52786H5.34062C5.55723 4.52786 5.74921 4.38838 5.81614 4.18237L7.02447 0.463524Z"
-                          fill="url(#paint0_linear)"
-                        />
-                        <defs>
-                          <linearGradient
-                            id="paint0_linear"
-                            x1="0.388889"
-                            y1="6.11111"
-                            x2="14.6111"
-                            y2="6.11111"
-                            gradientUnits="userSpaceOnUse"
-                          >
-                            <stop offset="0.5" stopColor="#9059C8" />
-                            <stop offset="0.5001" stopColor="#DADADA" />
-                            <stop offset={1} stopColor="#DADADA" />
-                          </linearGradient>
-                        </defs>
-                      </svg>
-                    </ProductCardStar>
-                    <ProductCardRatingLink>102</ProductCardRatingLink>
-                  </ProductCardStars>
-                  <ProductCardPrices>
-                    <ProductCardPrice>
-                      <del>$39.95</del>
-                    </ProductCardPrice>
-                    <ProductCardPrice>$32.95</ProductCardPrice>
-                  </ProductCardPrices>
-                </div>
-              </SProductCard>
-            </ProductCardWrapper>
-            <ProductCardWrapper>
-              <SProductCard>
-                <div>
-                  <ProductCardImgWrapper>
-                    <ProductCardImgWrapperInner>
-                      <img
-                        src="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/moulinrouge_bundle_perfume_comp_large.png"
-                        alt=""
-                      />
-                    </ProductCardImgWrapperInner>
-                  </ProductCardImgWrapper>
-                  <ProductCardTag>925 Sterling Silver</ProductCardTag>
-                  <ProductCardMembers>Members Only</ProductCardMembers>
-                  <ProductCardTitle>Moulin Rouge - Satin Collection - Bath Bomb and Candle Set</ProductCardTitle>
-                </div>
-                <div>
-                  <ProductCardStars>
-                    <ProductCardStar>
-                      <svg width={15} height={13} viewBox="0 0 15 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                          d="M7.02447 0.463524C7.17415 0.00286841 7.82585 0.00286996 7.97553 0.463525L9.18386 4.18237C9.25079 4.38838 9.44277 4.52786 9.65938 4.52786H13.5696C14.054 4.52786 14.2554 5.14767 13.8635 5.43237L10.7001 7.73075C10.5248 7.85807 10.4515 8.08375 10.5184 8.28976L11.7268 12.0086C11.8764 12.4693 11.3492 12.8523 10.9573 12.5676L7.79389 10.2693C7.61865 10.1419 7.38135 10.1419 7.20611 10.2693L4.04267 12.5676C3.65081 12.8523 3.12357 12.4693 3.27325 12.0086L4.48157 8.28976C4.54851 8.08375 4.47518 7.85807 4.29994 7.73075L1.1365 5.43237C0.744639 5.14767 0.946028 4.52786 1.43039 4.52786H5.34062C5.55723 4.52786 5.74921 4.38838 5.81614 4.18237L7.02447 0.463524Z"
-                          fill="#9059C8"
-                        />
-                      </svg>
-                    </ProductCardStar>
-                    <ProductCardStar>
-                      <svg width={15} height={13} viewBox="0 0 15 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                          d="M7.02447 0.463524C7.17415 0.00286841 7.82585 0.00286996 7.97553 0.463525L9.18386 4.18237C9.25079 4.38838 9.44277 4.52786 9.65938 4.52786H13.5696C14.054 4.52786 14.2554 5.14767 13.8635 5.43237L10.7001 7.73075C10.5248 7.85807 10.4515 8.08375 10.5184 8.28976L11.7268 12.0086C11.8764 12.4693 11.3492 12.8523 10.9573 12.5676L7.79389 10.2693C7.61865 10.1419 7.38135 10.1419 7.20611 10.2693L4.04267 12.5676C3.65081 12.8523 3.12357 12.4693 3.27325 12.0086L4.48157 8.28976C4.54851 8.08375 4.47518 7.85807 4.29994 7.73075L1.1365 5.43237C0.744639 5.14767 0.946028 4.52786 1.43039 4.52786H5.34062C5.55723 4.52786 5.74921 4.38838 5.81614 4.18237L7.02447 0.463524Z"
-                          fill="#9059C8"
-                        />
-                      </svg>
-                    </ProductCardStar>
-                    <ProductCardStar>
-                      <svg width={15} height={13} viewBox="0 0 15 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                          d="M7.02447 0.463524C7.17415 0.00286841 7.82585 0.00286996 7.97553 0.463525L9.18386 4.18237C9.25079 4.38838 9.44277 4.52786 9.65938 4.52786H13.5696C14.054 4.52786 14.2554 5.14767 13.8635 5.43237L10.7001 7.73075C10.5248 7.85807 10.4515 8.08375 10.5184 8.28976L11.7268 12.0086C11.8764 12.4693 11.3492 12.8523 10.9573 12.5676L7.79389 10.2693C7.61865 10.1419 7.38135 10.1419 7.20611 10.2693L4.04267 12.5676C3.65081 12.8523 3.12357 12.4693 3.27325 12.0086L4.48157 8.28976C4.54851 8.08375 4.47518 7.85807 4.29994 7.73075L1.1365 5.43237C0.744639 5.14767 0.946028 4.52786 1.43039 4.52786H5.34062C5.55723 4.52786 5.74921 4.38838 5.81614 4.18237L7.02447 0.463524Z"
-                          fill="#9059C8"
-                        />
-                      </svg>
-                    </ProductCardStar>
-                    <ProductCardStar>
-                      <svg width={15} height={13} viewBox="0 0 15 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                          d="M7.02447 0.463524C7.17415 0.00286841 7.82585 0.00286996 7.97553 0.463525L9.18386 4.18237C9.25079 4.38838 9.44277 4.52786 9.65938 4.52786H13.5696C14.054 4.52786 14.2554 5.14767 13.8635 5.43237L10.7001 7.73075C10.5248 7.85807 10.4515 8.08375 10.5184 8.28976L11.7268 12.0086C11.8764 12.4693 11.3492 12.8523 10.9573 12.5676L7.79389 10.2693C7.61865 10.1419 7.38135 10.1419 7.20611 10.2693L4.04267 12.5676C3.65081 12.8523 3.12357 12.4693 3.27325 12.0086L4.48157 8.28976C4.54851 8.08375 4.47518 7.85807 4.29994 7.73075L1.1365 5.43237C0.744639 5.14767 0.946028 4.52786 1.43039 4.52786H5.34062C5.55723 4.52786 5.74921 4.38838 5.81614 4.18237L7.02447 0.463524Z"
-                          fill="#9059C8"
-                        />
-                      </svg>
-                    </ProductCardStar>
-                    <ProductCardStar>
-                      <svg width={15} height={13} viewBox="0 0 15 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                          d="M7.02447 0.463524C7.17415 0.00286841 7.82585 0.00286996 7.97553 0.463525L9.18386 4.18237C9.25079 4.38838 9.44277 4.52786 9.65938 4.52786H13.5696C14.054 4.52786 14.2554 5.14767 13.8635 5.43237L10.7001 7.73075C10.5248 7.85807 10.4515 8.08375 10.5184 8.28976L11.7268 12.0086C11.8764 12.4693 11.3492 12.8523 10.9573 12.5676L7.79389 10.2693C7.61865 10.1419 7.38135 10.1419 7.20611 10.2693L4.04267 12.5676C3.65081 12.8523 3.12357 12.4693 3.27325 12.0086L4.48157 8.28976C4.54851 8.08375 4.47518 7.85807 4.29994 7.73075L1.1365 5.43237C0.744639 5.14767 0.946028 4.52786 1.43039 4.52786H5.34062C5.55723 4.52786 5.74921 4.38838 5.81614 4.18237L7.02447 0.463524Z"
-                          fill="url(#paint0_linear)"
-                        />
-                        <defs>
-                          <linearGradient
-                            id="paint0_linear"
-                            x1="0.388889"
-                            y1="6.11111"
-                            x2="14.6111"
-                            y2="6.11111"
-                            gradientUnits="userSpaceOnUse"
-                          >
-                            <stop offset="0.5" stopColor="#9059C8" />
-                            <stop offset="0.5001" stopColor="#DADADA" />
-                            <stop offset={1} stopColor="#DADADA" />
-                          </linearGradient>
-                        </defs>
-                      </svg>
-                    </ProductCardStar>
-                    <ProductCardRatingLink>102</ProductCardRatingLink>
-                  </ProductCardStars>
-                  <ProductCardPrices>
-                    <ProductCardPrice>
-                      <del>$39.95</del>
-                    </ProductCardPrice>
-                    <ProductCardPrice>$32.95</ProductCardPrice>
-                  </ProductCardPrices>
-                </div>
-              </SProductCard>
-            </ProductCardWrapper>
+            {products.map((product) => (
+              <ProductCard key={product.title} product={product} />
+            ))}
           </StyledSlider>
           <ProgressWrapper>
             <Progress progress={progress}>

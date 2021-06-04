@@ -8,7 +8,7 @@ import { ReviewsSection } from '@fragrantjewels/gravity-brands.components.review
 import { ShopByProductsOverview } from '@fragrantjewels/gravity-brands.components.shop-by-products-overview'
 import { RollingBanner } from '@fragrantjewels/gravity-brands.components.rolling-banner'
 
-const HomePage: React.FC = () => {
+const HomePage: React.FC = ({ products }) => {
   return (
     <div className="app-re-wrapper-outer" id="app-wrapper-outer">
       <div className="app-re-wrapper" id="app-wrapper">
@@ -1676,6 +1676,17 @@ const HomePage: React.FC = () => {
       <Footer className="Footer-Colored" />
     </div>
   )
+}
+
+export const getStaticProps = async () => {
+  const res = await fetch(`http://localhost:8000/inventory/collections/174027178074`)
+  const collection = await res.json()
+
+  return {
+    props: {
+      products: collection.products,
+    },
+  }
 }
 
 export default HomePage
