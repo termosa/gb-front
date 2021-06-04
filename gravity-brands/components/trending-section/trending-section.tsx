@@ -5,13 +5,13 @@ import cn, { Argument as ClassName } from 'classnames'
 
 export type TrendingSectionProps = {
   products: Array<Product>
-  className: ClassName
+  className?: ClassName
 }
 
 export type Product = {
   front_image: {
     src: string
-    alt: string | null
+    alt?: string
   }
   title: string
   variants: Array<{
@@ -427,7 +427,7 @@ const ProductCard = ({ product }: { product: Product }) => (
       <div>
         <ProductCardImgWrapper>
           <ProductCardImgWrapperInner>
-            <img src={product.front_image.src} alt={`Product image ${product.front_image.alt}`} />
+            <img src={product.front_image.src} alt={`Product image: ${product.front_image.alt}`} />
           </ProductCardImgWrapperInner>
         </ProductCardImgWrapper>
         <ProductCardTag>925 Sterling Silver</ProductCardTag>
