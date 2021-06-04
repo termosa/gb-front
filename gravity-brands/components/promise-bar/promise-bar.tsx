@@ -103,7 +103,7 @@ export function PromiseBar({ className }: PromiseBarProps): React.ReactElement |
         <SPicsWrapper>
           <SRow24>
             {PROMISE_ITEMS.map((promise) => (
-              <SPromiseItem>
+              <SPromiseItem key={promise.title}>
                 <SPromiseItemImg src={promise.img} />
                 <SPromiseItemLabel>{promise.title}</SPromiseItemLabel>
               </SPromiseItem>

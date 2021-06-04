@@ -6,11 +6,12 @@ import {
 import Slider, { Settings } from 'react-slick'
 import styled from 'styled-components'
 
+export type ProductDetails = ShopByProductCardProps & { product_id: number }
 export type ShopByProductsOverviewProps = {
   /**
    * cards to be rendered inside component
    */
-  products: Array<ShopByProductCardProps>
+  products: Array<ProductDetails>
 }
 
 const SSection = styled.section`
@@ -201,7 +202,7 @@ export function ShopByProductsOverview({ products }: ShopByProductsOverviewProps
         <SliderWrapper>
           <Slider {...settings}>
             {products.map((product) => (
-              <ShopByProductCard image={product.image} className={'slick-slide'} />
+              <ShopByProductCard image={product.image} className={'slick-slide'} key={product.product_id} />
             ))}
           </Slider>
         </SliderWrapper>

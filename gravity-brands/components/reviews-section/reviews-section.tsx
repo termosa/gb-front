@@ -253,8 +253,8 @@ export function ReviewsSection({ images, quote, author, className }: ReviewsSect
         </SQuote>
         <SliderWrapper>
           <Slider {...settings}>
-            {images.map((media) => (
-              <img src={media} alt="company" />
+            {images.map((media, index) => (
+              <img src={media} alt="company" key={`revImage${index}`} />
             ))}
           </Slider>
         </SliderWrapper>
