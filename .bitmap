@@ -87,7 +87,7 @@
     },
     "components/rolling-banner": {
         "scope": "",
-        "version": "",
+        "version": "0.0.1",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/rolling-banner"
     },
@@ -114,6 +114,12 @@
         "version": "0.0.2",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/social-links"
+    },
+    "components/trending-section": {
+        "scope": "",
+        "version": "",
+        "mainFile": "index.ts",
+        "rootDir": "gravity-brands/components/trending-section"
     },
     "components/vertical-product-card": {
         "scope": "fragrantjewels.gravity-brands",
