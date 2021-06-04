@@ -6,31 +6,14 @@ import { Footer } from '@fragrantjewels/gravity-brands.components.footer'
 import { InlineSignupForm } from '@fragrantjewels/gravity-brands.components.inline-signup-form'
 import { ReviewsSection } from '@fragrantjewels/gravity-brands.components.reviews-section'
 import { ShopByProductsOverview } from '@fragrantjewels/gravity-brands.components.shop-by-products-overview'
+import { RollingBanner } from '@fragrantjewels/gravity-brands.components.rolling-banner'
 
 const HomePage: React.FC = () => {
   return (
     <div className="app-re-wrapper-outer" id="app-wrapper-outer">
       <div className="app-re-wrapper" id="app-wrapper">
         <header className="app-re-header" id="app-header">
-          <div className="app-promo-slider">
-            <div className="app-container">
-              <div className="app-promo-slider__inner" id="app-promo-slider">
-                <div>PARABEN FREE&nbsp;&nbsp;|&nbsp;&nbsp;HANDMADE IN USA&nbsp;&nbsp;|&nbsp;&nbsp;100% VEGAN</div>
-                <div>
-                  <span className="app-pink-clr">FREE SHIPPING</span> ON ORDERS $75+
-                </div>
-                <div>
-                  COVID-19 SHIPPING UPDATE{' '}
-                  <a
-                    href="https://helpcenter.fragrantjewels.com/hc/en-us/sections/360008222572-COVID-19-Crisis-FAQ?mobile_site=true"
-                    target="_blank"
-                  >
-                    LEARN MORE
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
+          <RollingBanner />
 
           <div className="app-re-header-inner">
             <div className="app-container">

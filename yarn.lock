@@ -1794,6 +1794,15 @@
     react-slick "^0.28.1"
     styled-components "^5.2.3"
 
+"@fragrantjewels/gravity-brands.components.rolling-banner@^0.0.2":
+  version "0.0.2"
+  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.components.rolling-banner/-/@fragrantjewels-gravity-brands.components.rolling-banner-0.0.2.tgz#96489108c5f75d297da256729e12cb899a8a8619"
+  integrity sha1-lkiRCMX3XSl9olZynhLLiZqKhhk=
+  dependencies:
+    core-js "^3.0.0"
+    react-slick "^0.28.1"
+    styled-components "^5.2.3"
+
 "@fragrantjewels/gravity-brands.components.shop-by-product-card@0.0.4":
   version "0.0.4"
   resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.components.shop-by-product-card/-/@fragrantjewels-gravity-brands.components.shop-by-product-card-0.0.4.tgz#054f02c10d0b66cff6d566421a6df382855c505d"

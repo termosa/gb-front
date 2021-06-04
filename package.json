@@ -51,6 +51,7 @@
     "@fragrantjewels/gravity-brands.components.inline-signup-form": "^0.0.5",
     "@fragrantjewels/gravity-brands.components.promise-bar": "^0.0.4",
     "@fragrantjewels/gravity-brands.components.reviews-section": "^0.0.3",
+    "@fragrantjewels/gravity-brands.components.rolling-banner": "^0.0.2",
     "@fragrantjewels/gravity-brands.components.shop-by-products-overview": "^0.0.4",
     "classnames": "^2.3.1",
     "next": "10.0.3",
