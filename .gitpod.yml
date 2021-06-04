@@ -8,6 +8,4 @@ ports:
 tasks:
   - before: ./setup-bit.sh
     init: yarn
-    # init: yarn && ~/bin/bit import && ~/bin/bit link
     command: npm run dev
-    # command: ~/bin/bit start
