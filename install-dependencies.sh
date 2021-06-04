@@ -5,4 +5,4 @@ echo '//node.bit.dev/:_authToken=${BIT_TOKEN}' >> .npmrc
 yarn
 
 # Remove the line that was added so Git doesn't track that change
-sed -i '' '/BIT_TOKEN/d' .npmrc
+sed -i '/BIT_TOKEN/d' .npmrc
