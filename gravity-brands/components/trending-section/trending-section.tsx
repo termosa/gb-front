@@ -9,6 +9,7 @@ export type TrendingSectionProps = {
 }
 
 export type Product = {
+  product_id: number
   front_image: {
     src: string
     alt?: string
@@ -544,7 +545,7 @@ export const TrendingSection: React.FC<TrendingSectionProps> = ({ products, clas
         <ProductCards>
           <StyledSlider {...settings}>
             {products.map((product) => (
-              <ProductCard key={product.title} product={product} />
+              <ProductCard key={product.product_id} product={product} />
             ))}
           </StyledSlider>
           <ProgressWrapper>
