@@ -1,2 +1,2 @@
-export { HeroGallery } from './hero-gallery'
-export type { HeroGalleryProps } from './hero-gallery'
+export * from './hero-gallery'
+export { HeroGallery as default } from './hero-gallery'

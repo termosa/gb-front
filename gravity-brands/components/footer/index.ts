@@ -1,2 +1,2 @@
-export { Footer } from './footer'
-export type { FooterProps } from './footer'
+export * from './footer'
+export { Footer as default } from './footer'

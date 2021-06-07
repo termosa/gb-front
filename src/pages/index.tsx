@@ -1,13 +1,14 @@
 import React from 'react'
-import { HeroGallery } from '@fragrantjewels/gravity-brands.components.hero-gallery'
-import { CategoryShopCard } from '@fragrantjewels/gravity-brands.components.category-shop-card'
-import { PromiseBar } from '@fragrantjewels/gravity-brands.components.promise-bar'
-import { Footer } from '@fragrantjewels/gravity-brands.components.footer'
-import { InlineSignupForm } from '@fragrantjewels/gravity-brands.components.inline-signup-form'
-import { ReviewsSection } from '@fragrantjewels/gravity-brands.components.reviews-section'
-import { ShopByProductsOverview } from '@fragrantjewels/gravity-brands.components.shop-by-products-overview'
-import { RollingBanner } from '@fragrantjewels/gravity-brands.components.rolling-banner'
-import { TrendingSection, Product as TrendingProduct } from '@fragrantjewels/gravity-brands.components.trending-section'
+import HeroGallery from '@fragrantjewels/gravity-brands.components.hero-gallery'
+import CategoryShopCard from '@fragrantjewels/gravity-brands.components.category-shop-card'
+import PromiseBar from '@fragrantjewels/gravity-brands.components.promise-bar'
+import Footer from '@fragrantjewels/gravity-brands.components.footer'
+import InlineSignupForm from '@fragrantjewels/gravity-brands.components.inline-signup-form'
+import ReviewsSection from '@fragrantjewels/gravity-brands.components.reviews-section'
+import ShopByProductsOverview from '@fragrantjewels/gravity-brands.components.shop-by-products-overview'
+import RollingBanner from '@fragrantjewels/gravity-brands.components.rolling-banner'
+import TrendingSection, { Product as TrendingProduct } from '@fragrantjewels/gravity-brands.components.trending-section'
+import loadCollection from '@fragrantjewels/gravity-brands.modules.load-collection'
 
 type HomePageProps = {
   trendingProducts: Array<TrendingProduct>
@@ -1158,9 +1159,18 @@ const HomePage = ({ trendingProducts }: HomePageProps): React.ReactElement => (
           />
           <ShopByProductsOverview
             products={[
-              { image: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/shop-by-product-img-1.jpg' },
-              { image: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/shop-by-product-img-2.jpg' },
-              { image: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/shop-by-product-img-3.jpg' },
+              {
+                product_id: 1,
+                image: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/shop-by-product-img-1.jpg',
+              },
+              {
+                product_id: 2,
+                image: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/shop-by-product-img-2.jpg',
+              },
+              {
+                product_id: 3,
+                image: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/shop-by-product-img-3.jpg',
+              },
             ]}
           />
           <section className="app-h-section app-h-char-section app-h-char-section_colored">
@@ -1191,7 +1201,7 @@ const HomePage = ({ trendingProducts }: HomePageProps): React.ReactElement => (
 )
 
 export const getServerSideProps = async (): Promise<{ props: HomePageProps }> => {
-  const collection = await fetch(`http://localhost:8000/inventory/collections/174027178074`).then((r) => r.json())
+  const collection = await loadCollection(174027178074)
 
   return {
     props: {

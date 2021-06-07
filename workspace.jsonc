@@ -58,6 +58,9 @@
     "gravity-brands/generators/component": {
       "teambit.harmony/aspect": {}
     },
+    "gravity-brands/modules": {
+      "teambit.harmony/node": {}
+    },
     /**
      * "*" is a special rule which applied on all components in the workspace.
      **/
