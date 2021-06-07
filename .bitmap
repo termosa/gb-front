@@ -61,6 +61,12 @@
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/links-column-group"
     },
+    "components/nav-icons": {
+        "scope": "",
+        "version": "",
+        "mainFile": "index.ts",
+        "rootDir": "gravity-brands/components/nav-icons"
+    },
     "components/points-widget": {
         "scope": "fragrantjewels.gravity-brands",
         "version": "0.0.1",
@@ -91,6 +97,12 @@
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/rolling-banner"
     },
+    "components/search-field": {
+        "scope": "fragrantjewels.gravity-brands",
+        "version": "0.0.1",
+        "mainFile": "index.ts",
+        "rootDir": "gravity-brands/components/search-field"
+    },
     "components/shop-by-product-card": {
         "scope": "fragrantjewels.gravity-brands",
         "version": "0.0.4",
@@ -102,6 +114,12 @@
         "version": "0.0.6",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/shop-by-products-overview"
+    },
+    "components/signin-signup": {
+        "scope": "fragrantjewels.gravity-brands",
+        "version": "0.0.1",
+        "mainFile": "index.ts",
+        "rootDir": "gravity-brands/components/signin-signup"
     },
     "components/soaring-modal-layout": {
         "scope": "fragrantjewels.gravity-brands",
