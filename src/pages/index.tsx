@@ -8,7 +8,7 @@ import ReviewsSection from '@fragrantjewels/gravity-brands.components.reviews-se
 import ShopByProductsOverview from '@fragrantjewels/gravity-brands.components.shop-by-products-overview'
 import RollingBanner from '@fragrantjewels/gravity-brands.components.rolling-banner'
 import TrendingSection, { Product as TrendingProduct } from '@fragrantjewels/gravity-brands.components.trending-section'
-import loadCollection from '@fragrantjewels/gravity-brands.modules.load-collection'
+import homePageProps from './resolvers/homePageProps'
 
 type HomePageProps = {
   trendingProducts: Array<TrendingProduct>
@@ -1200,14 +1200,6 @@ const HomePage = ({ trendingProducts }: HomePageProps): React.ReactElement => (
   </div>
 )
 
-export const getServerSideProps = async (): Promise<{ props: HomePageProps }> => {
-  const collection = await loadCollection(174027178074)
-
-  return {
-    props: {
-      trendingProducts: collection.products,
-    },
-  }
-}
+export const getServerSideProps = homePageProps()
 
 export default HomePage

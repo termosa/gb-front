@@ -175,6 +175,12 @@
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/modules/load-collection"
     },
+    "modules/resolve-page-props": {
+        "scope": "",
+        "version": "0.0.1",
+        "mainFile": "index.ts",
+        "rootDir": "gravity-brands/modules/resolve-page-props"
+    },
     "modules/stringify-query": {
         "scope": "fragrantjewels.gravity-brands",
         "version": "0.0.1",

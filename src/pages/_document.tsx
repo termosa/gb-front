@@ -8,7 +8,7 @@ interface CustomDocumentProps {
 }
 
 export default class CustomDocument extends Document<CustomDocumentProps> {
-  public static async getInitialProps( ctx: DocumentContext ): Promise<CustomDocumentProps & DocumentInitialProps> {
+  public static async getInitialProps(ctx: DocumentContext): Promise<CustomDocumentProps & DocumentInitialProps> {
     const spriteContent = sprite.stringify()
     const sheet = new ServerStyleSheet()
     const originalRenderPage = ctx.renderPage
@@ -16,8 +16,7 @@ export default class CustomDocument extends Document<CustomDocumentProps> {
     try {
       ctx.renderPage = () =>
         originalRenderPage({
-          enhanceApp: (App) => (props) =>
-            sheet.collectStyles(<App {...props} />),
+          enhanceApp: (App) => (props) => sheet.collectStyles(<App {...props} />),
         })
 
       const initialProps = await Document.getInitialProps(ctx)
