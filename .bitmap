@@ -61,6 +61,18 @@
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/links-column-group"
     },
+    "components/nav-icons": {
+        "scope": "fragrantjewels.gravity-brands",
+        "version": "0.0.1",
+        "mainFile": "index.ts",
+        "rootDir": "gravity-brands/components/nav-icons"
+    },
+    "components/nav-tabs": {
+        "scope": "",
+        "version": "0.0.1",
+        "mainFile": "index.ts",
+        "rootDir": "gravity-brands/components/nav-tabs"
+    },
     "components/points-widget": {
         "scope": "fragrantjewels.gravity-brands",
         "version": "0.0.1",
