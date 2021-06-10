@@ -1,6 +1,5 @@
 import http, { Query, Method } from '@fragrantjewels/gravity-brands.modules.http'
-
-const { BASE_API_URL } = process.env
+import baseApiUrl from '@fragrantjewels/gravity-brands.modules.base-api-url'
 
 const defaultParseResponse = <APIResponse>(response: Response): Promise<APIResponse> =>
   response
@@ -17,7 +16,7 @@ const defaultParseResponse = <APIResponse>(response: Response): Promise<APIRespo
 export const api = <Response = Record<string, unknown>, Body = Record<string, unknown>>({
   method,
   path,
-  base = BASE_API_URL,
+  base = baseApiUrl(),
   query,
   body,
   headers,
