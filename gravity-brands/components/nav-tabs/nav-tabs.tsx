@@ -2,7 +2,7 @@ import React from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
 
-export type SearchFieldProps = {
+export type NavTabsProps = {
   className?: ClassName
 }
 
@@ -180,7 +180,7 @@ const TABS_LIST = [
   },
 ]
 
-export function NavTabs({ className }: SearchFieldProps): React.ReactElement | null {
+export function NavTabs({ className }: NavTabsProps): React.ReactElement | null {
   return (
     <SWrapper className={cn('NavTabs', className)}>
       <SDesktopNav>

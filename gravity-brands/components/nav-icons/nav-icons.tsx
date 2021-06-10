@@ -3,7 +3,7 @@ import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
 import { SigninSignup } from '@fragrantjewels/gravity-brands.components.signin-signup'
 
-export type SearchFieldProps = {
+export type NavIconsProps = {
   className?: ClassName
 }
 
@@ -184,7 +184,7 @@ const LINKS_LIST = [
   },
 ]
 
-export function NavIcons({ className }: SearchFieldProps): React.ReactElement | null {
+export function NavIcons({ className }: NavIconsProps): React.ReactElement | null {
   const profileLinkRef = useRef<HTMLAnchorElement | null>(null)
   const dropDownRef = useRef<HTMLDivElement | null>(null)
 
