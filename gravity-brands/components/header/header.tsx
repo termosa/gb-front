@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
 import { RollingBanner } from '@fragrantjewels/gravity-brands.components.rolling-banner'
@@ -98,6 +98,12 @@ const SSearchContent = styled.div`
   }
 `
 
+const SSearchDropdown = styled.div`
+  height: 0;
+  background: red;
+  transition: all 0.5s ease-in-out;
+`
+
 const SLogoWrapper = styled.div`
   display: -webkit-box;
   display: -ms-flexbox;
@@ -114,6 +120,35 @@ const SLogo = styled.a`
 
   @media (min-width: 1200px) {
     width: 7.5em;
+  }
+`
+
+const SHamburgerMenu = styled.span`
+  cursor: pointer;
+  position: relative;
+  display: block;
+  width: 28px;
+  height: 22px;
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
+  margin-right: 12px;
+  @media (min-width: 375px) {
+    width: 32px;
+    height: 25px;
+  }
+  @media (min-width: 1200px) {
+    display: none;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px solid #000;
+    margin-top: -0.5px;
   }
 `
 
@@ -169,6 +204,23 @@ const SPointsWidget = styled.div`
 `
 
 export function Header({ className, onSearch }: HeaderProps): React.ReactElement | null {
+  const [searchDropdownVisible, setSearchDropdownVisible] = useState<boolean>(false)
+  const searchDropdownRef = useRef<HTMLDivElement | null>(null)
+
+  useEffect(() => {
+    if (searchDropdownRef.current) {
+      if (searchDropdownVisible) {
+        searchDropdownRef.current.style.height = 'fit-content'
+      } else {
+        searchDropdownRef.current.style.height = '0'
+      }
+    }
+  }, [searchDropdownVisible])
+
+  const handleToggleSearch = useCallback(() => {
+    setSearchDropdownVisible((prev) => !prev)
+  }, [setSearchDropdownVisible])
+
   return (
     <SWrapper className={cn('Header', className)}>
       <RollingBanner />
@@ -177,6 +229,7 @@ export function Header({ className, onSearch }: HeaderProps): React.ReactElement
           <SSearchWrapper>
             <SSearchContent>
               <SLogoWrapper>
+                <SHamburgerMenu />
                 <SLogo>
                   <svg width="100%" height="100%" viewBox="0 0 117 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -220,9 +273,12 @@ export function Header({ className, onSearch }: HeaderProps): React.ReactElement
                 <SPointsWidget>
                   <PointsWidget points={100} />
                 </SPointsWidget>
-                <NavIcons />
+                <NavIcons onSearchClick={handleToggleSearch} />
               </SIconsWrapper>
             </SSearchContent>
+            <SSearchDropdown ref={searchDropdownRef}>
+              <h1>lol olodsaldlas</h1>
+            </SSearchDropdown>
           </SSearchWrapper>
           <NavTabs />
         </SContentWrapper>

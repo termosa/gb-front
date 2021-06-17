@@ -5,6 +5,7 @@ import { SigninSignup } from '@fragrantjewels/gravity-brands.components.signin-s
 
 export type NavIconsProps = {
   className?: ClassName
+  onSearchClick: () => void
 }
 
 const SWrapper = styled.div`
@@ -184,7 +185,7 @@ const LINKS_LIST = [
   },
 ]
 
-export function NavIcons({ className }: NavIconsProps): React.ReactElement | null {
+export function NavIcons({ className, onSearchClick }: NavIconsProps): React.ReactElement | null {
   const profileLinkRef = useRef<HTMLAnchorElement | null>(null)
   const dropDownRef = useRef<HTMLDivElement | null>(null)
 
@@ -207,7 +208,7 @@ export function NavIcons({ className }: NavIconsProps): React.ReactElement | nul
 
   return (
     <SWrapper className={cn('NavIcons', className)}>
-      <SSearchButton>
+      <SSearchButton onClick={onSearchClick}>
         <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
             d="M23 23L16.26 15.55M18.58 9.79C18.58 14.6446 14.6446 18.58 9.79001 18.58C4.93543 18.58 1 14.6446 1 9.79C1 4.93542 4.93543 1 9.79001 1C14.6446 1 18.58 4.93542 18.58 9.79Z"

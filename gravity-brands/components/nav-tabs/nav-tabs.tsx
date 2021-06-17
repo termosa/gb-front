@@ -38,9 +38,9 @@ const SDesktopNav = styled.ul`
   margin: 0 -10px;
   @media (max-width: 1199px) {
     font-size: 0.74em;
-    overflow-x: auto;
     padding: 0 15px important;
     max-width: 990px;
+    min-width: 600px;
     & > li:last-child {
       padding-right: 30px;
     }
