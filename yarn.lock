@@ -16928,6 +16928,12 @@ __metadata:
   languageName: node
   linkType: hard
 
+"format-price-2b65c5@workspace:gravity-brands/modules/format-price":
+  version: 0.0.0-use.local
+  resolution: "format-price-2b65c5@workspace:gravity-brands/modules/format-price"
+  languageName: unknown
+  linkType: soft
+
 "format@npm:^0.2.0":
   version: 0.2.2
   resolution: "format@npm:0.2.2"
@@ -21133,6 +21139,12 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
+"load-product-370392@workspace:gravity-brands/modules/load-product":
+  version: 0.0.0-use.local
+  resolution: "load-product-370392@workspace:gravity-brands/modules/load-product"
+  languageName: unknown
+  linkType: soft
+
 "loader-runner@npm:^2.4.0":
   version: 2.4.0
   resolution: "loader-runner@npm:2.4.0"
@@ -22278,6 +22290,12 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
+"move-point-30f7de@workspace:gravity-brands/modules/move-point":
+  version: 0.0.0-use.local
+  resolution: "move-point-30f7de@workspace:gravity-brands/modules/move-point"
+  languageName: unknown
+  linkType: soft
+
 "ms@npm:2.0.0":
   version: 2.0.0
   resolution: "ms@npm:2.0.0"
@@ -22545,19 +22563,14 @@ fsevents@~2.1.2:
   dependencies:
     "@babel/core": 7.9.0
     "@babel/runtime": 7.12.18
-    "@fragrantjewels/gravity-brands.components.accepted-payments": 0.0.5
-    "@fragrantjewels/gravity-brands.components.button": 0.0.7
     "@fragrantjewels/gravity-brands.components.category-shop-card": ^0.0.7
     "@fragrantjewels/gravity-brands.components.footer": ^0.0.6
     "@fragrantjewels/gravity-brands.components.hero-gallery": ^0.0.8
     "@fragrantjewels/gravity-brands.components.inline-signup-form": ^0.0.8
-    "@fragrantjewels/gravity-brands.components.links-column-group": 0.0.9
     "@fragrantjewels/gravity-brands.components.promise-bar": ^0.0.9
     "@fragrantjewels/gravity-brands.components.reviews-section": ^0.0.7
     "@fragrantjewels/gravity-brands.components.rolling-banner": ^0.0.6
-    "@fragrantjewels/gravity-brands.components.shop-by-product-card": 0.0.7
     "@fragrantjewels/gravity-brands.components.shop-by-products-overview": ^0.0.9
-    "@fragrantjewels/gravity-brands.components.social-links": 0.0.5
     "@fragrantjewels/gravity-brands.components.trending-section": ^0.0.8
     "@fragrantjewels/gravity-brands.modules.load-collection": ^0.0.2
     "@fragrantjewels/gravity-brands.modules.resolve-page-props": ^0.0.1
@@ -26747,6 +26760,12 @@ resolve@1.1.7:
   checksum: 62d1eda5a8f5f732eb372aaa209b02f20002eab0fce246654b41de6c9821d4987d620816181b94ebb8fdb29a7aef419c104ab497de05df0dcde4e4b8f6182187
   languageName: node
   linkType: hard
+
+"round-price-12cb5c@workspace:gravity-brands/modules/round-price":
+  version: 0.0.0-use.local
+  resolution: "round-price-12cb5c@workspace:gravity-brands/modules/round-price"
+  languageName: unknown
+  linkType: soft
 
 "rsvp@npm:^4.8.4":
   version: 4.8.5

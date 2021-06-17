@@ -7,15 +7,17 @@ import InlineSignupForm from '../../gravity-brands/components/inline-signup-form
 import ReviewsSection from '@fragrantjewels/gravity-brands.components.reviews-section'
 import ShopByProductsOverview from '@fragrantjewels/gravity-brands.components.shop-by-products-overview'
 import RollingBanner from '@fragrantjewels/gravity-brands.components.rolling-banner'
+import InnerCircleExclusive, { Product } from '@fragrantjewels/gravity-brands.components.inner-circle-exclusive'
 import TrendingSection, { Product as TrendingProduct } from '@fragrantjewels/gravity-brands.components.trending-section'
 import homePageProps from './resolvers/homePageProps'
 import signup from '@fragrantjewels/gravity-brands.modules.signup'
 
 type HomePageProps = {
-  trendingProducts: Array<TrendingProduct>
+  trendingProducts: Array<TrendingProduct> | null
+  innerCircleProduct: Product | null
 }
 
-const HomePage = ({ trendingProducts }: HomePageProps): React.ReactElement => (
+const HomePage = ({ trendingProducts, innerCircleProduct }: HomePageProps): React.ReactElement => (
   <div className="app-re-wrapper-outer" id="app-wrapper-outer">
     <div className="app-re-wrapper" id="app-wrapper">
       <header className="app-re-header" id="app-header">
@@ -954,116 +956,11 @@ const HomePage = ({ trendingProducts }: HomePageProps): React.ReactElement => (
           <div className="HeroGallery-Container">
             <HeroGallery />
           </div>
-          <TrendingSection products={trendingProducts} />
-          <section className="app-h-section">
-            <div className="app-h-container">
-              <h2 className="app-h-section__title app-h-section__title_mb">
-                <span>
-                  <span className="app-h-section__title_part">Get addicted</span>
-                </span>{' '}
-                to me-time
-              </h2>
-              <div className="app-h-section__text app-h-section__text_narrow">
-                <p>Join the Inner Circle for exciting new collections every month, available exclusively to members.</p>
-              </div>
-              <div className="app-h-text-center">
-                <a className="app-h-link" href="#">
-                  Get Started
-                </a>
-              </div>
-            </div>
-            <div className="app-h-ic app-h-ic_colored">
-              <div className="app-h-container">
-                <div className="app-h-row-s-1-2">
-                  <div className="app-h-col app-h-col_wider">
-                    <div className="app-h-ic__left">
-                      <div className="app-h-ic__slider app-h-ic-slider">
-                        <div className="app-h-ic-slider__slides">
-                          <div className="app-h-ic-slider__slide">
-                            <img
-                              src="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/ic-img-jewelry.jpg"
-                              alt=""
-                            />
-                          </div>
-                        </div>
-                        <button className="app-h-ic-slider__btn app-h-ic-slider__btn_prev app-h-ic-slider__btn_disable">
-                          <span>Prev</span>
-                        </button>
-                        <button className="app-h-ic-slider__btn app-h-ic-slider__btn_next">
-                          <span>Next</span>
-                        </button>
-                      </div>
-                      <div className="app-h-ic__img-wrapper">
-                        <img src="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/ic-img.jpg" alt="" />
-                      </div>
-                    </div>
-                  </div>
-                  <div className="app-h-col">
-                    <div className="app-h-ic__part">
-                      <strong className="app-h-ic__pre-title">INNER CIRCLE EXCLUSIVE</strong>
-                      <h3 className="app-h-ic__title">Moon Magic</h3>
-
-                      <div className="app-h-ic__prices">
-                        <span className="app-h-ic__price app-h-ic__price_compare">
-                          <del>$39.95</del>
-                        </span>
-                        <span className="app-h-ic__price">$32.95 + Free Shipping</span>
-                      </div>
-
-                      <div className="app-h-ic__selector-wrapper">
-                        <strong className="app-h-ic__selector-wrapper__message">
-                          Select a ring size to reserve this box:
-                        </strong>
-                        <div className="app-h-selector">
-                          <div className="app-h-selector__btn-holder">
-                            <button className="app-h-selector__btn" type="button" defaultValue="5">
-                              5
-                            </button>
-                          </div>
-                          <div className="app-h-selector__btn-holder">
-                            <button className="app-h-selector__btn" type="button" defaultValue="6">
-                              6
-                            </button>
-                          </div>
-                          <div className="app-h-selector__btn-holder">
-                            <button className="app-h-selector__btn" type="button" defaultValue="7">
-                              7
-                            </button>
-                          </div>
-                          <div className="app-h-selector__btn-holder">
-                            <button className="app-h-selector__btn" type="button" defaultValue="8">
-                              8
-                            </button>
-                          </div>
-                          <div className="app-h-selector__btn-holder">
-                            <button className="app-h-selector__btn" type="button" defaultValue="9">
-                              9
-                            </button>
-                          </div>
-                          <div className="app-h-selector__btn-holder">
-                            <button
-                              className="app-h-selector__btn app-h-selector__btn_disable"
-                              type="button"
-                              defaultValue="10"
-                            >
-                              10
-                            </button>
-                          </div>
-                        </div>
-                        <button className="app-h-link app-h-ic-btn" type="button">
-                          Reserve now
-                        </button>
-                        <div className="app-h-ic__selector-wrapper__text">
-                          <sup>*</sup>Monthly membership price does not include tax.
-                          <br /> Shipping is always free. Cancel anytime.
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
+          {trendingProducts?.length && <TrendingSection products={trendingProducts} />}
+          {innerCircleProduct && <InnerCircleExclusive
+            product={innerCircleProduct}
+            onReserve={variant => alert(`We will ship you the product with size ${variant.title}`)}
+          />}
           <section className="app-h-section app-h-section_colored app-h-section_mf">
             <div className="app-h-container">
               <h2 className="app-h-section__title">
@@ -1201,6 +1098,6 @@ const HomePage = ({ trendingProducts }: HomePageProps): React.ReactElement => (
   </div>
 )
 
-export const getServerSideProps = homePageProps()
+export const getServerSideProps = homePageProps<HomePageProps>()
 
 export default HomePage

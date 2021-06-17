@@ -33,7 +33,7 @@
     },
     "components/header": {
         "scope": "fragrantjewels.gravity-brands",
-        "version": "0.0.10",
+        "version": "0.0.11",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/header"
     },
@@ -57,7 +57,7 @@
     },
     "components/inner-circle-exclusive": {
         "scope": "fragrantjewels.gravity-brands",
-        "version": "0.0.6",
+        "version": "0.0.8",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/inner-circle-exclusive"
     },
@@ -69,13 +69,13 @@
     },
     "components/nav-icons": {
         "scope": "fragrantjewels.gravity-brands",
-        "version": "0.0.5",
+        "version": "0.0.6",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/nav-icons"
     },
     "components/nav-tabs": {
         "scope": "fragrantjewels.gravity-brands",
-        "version": "0.0.4",
+        "version": "0.0.5",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/nav-tabs"
     },
@@ -99,7 +99,7 @@
     },
     "components/ring-size": {
         "scope": "fragrantjewels.gravity-brands",
-        "version": "0.0.4",
+        "version": "0.0.5",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/ring-size"
     },
@@ -187,6 +187,12 @@
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/modules/base-api-url"
     },
+    "modules/format-price": {
+        "scope": "fragrantjewels.gravity-brands",
+        "version": "0.0.1",
+        "mainFile": "index.ts",
+        "rootDir": "gravity-brands/modules/format-price"
+    },
     "modules/http": {
         "scope": "fragrantjewels.gravity-brands",
         "version": "0.0.1",
@@ -199,14 +205,32 @@
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/modules/load-collection"
     },
+    "modules/load-product": {
+        "scope": "fragrantjewels.gravity-brands",
+        "version": "0.0.1",
+        "mainFile": "index.ts",
+        "rootDir": "gravity-brands/modules/load-product"
+    },
+    "modules/move-point": {
+        "scope": "fragrantjewels.gravity-brands",
+        "version": "0.0.1",
+        "mainFile": "index.ts",
+        "rootDir": "gravity-brands/modules/move-point"
+    },
     "modules/resolve-page-props": {
         "scope": "fragrantjewels.gravity-brands",
         "version": "0.0.1",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/modules/resolve-page-props"
     },
+    "modules/round-price": {
+        "scope": "fragrantjewels.gravity-brands",
+        "version": "0.0.1",
+        "mainFile": "index.ts",
+        "rootDir": "gravity-brands/modules/round-price"
+    },
     "modules/signup": {
-        "scope": "",
+        "scope": "fragrantjewels.gravity-brands",
         "version": "0.0.4",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/modules/signup"

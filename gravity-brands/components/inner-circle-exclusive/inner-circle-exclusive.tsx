@@ -1,14 +1,37 @@
-import React from 'react'
+import React, { useState } from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
 import Button from '@fragrantjewels/gravity-brands.components.button'
 import RingSize from '@fragrantjewels/gravity-brands.components.ring-size'
+import formatPrice from '@fragrantjewels/gravity-brands.modules.format-price'
+
+export type Variant = {
+  title: string
+  variant_id: number
+  position: number
+  actual_price: number
+  compare_at_price: number
+  inventory_quantity: number
+}
+
+export type Product = {
+  title: string
+  front_image: {
+    src: string
+  }
+  side_images: [
+    {
+      id: number
+      src: string
+    }
+  ],
+  variants: Array<Variant>,
+}
 
 export type InnerCircleExclusiveProps = {
   className?: ClassName
-  productTitle: string
-  price: string
-  discountPrice?: string
+  product: Product
+  onReserve: (variant: Variant) => void
 }
 
 const SWrapper = styled.div``
@@ -315,10 +338,14 @@ const STaxInfo = styled.div`
 
 export function InnerCircleExclusive({
   className,
-  price,
-  productTitle,
-  discountPrice,
+  product,
+  onReserve,
 }: InnerCircleExclusiveProps): React.ReactElement | null {
+  const [selectedVariant, setVariant] = useState<Variant | undefined>();
+
+  const actualPrice = (selectedVariant || product.variants[0]).actual_price
+  const comparePrice = (selectedVariant || product.variants[0]).compare_at_price
+
   return (
     <SWrapper className={cn('InnerCircleExclusive', className)}>
       <STitleWrapper>
@@ -342,42 +369,51 @@ export function InnerCircleExclusive({
               <SImagesContainer>
                 <SLeftSliderPart>
                   <SLeftImageContainer>
-                    <img src="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/ic-img-jewelry.jpg" alt="" />
+                    <img src={product.side_images[0].src} alt={product.title} />
                   </SLeftImageContainer>
-                  <SPrevButton>
-                    <span>Prev</span>
-                  </SPrevButton>
-                  <SNextButton>
-                    <span>Next</span>
-                  </SNextButton>
+                  {product.side_images.length > 1
+                    ? <React.Fragment>
+                      <SPrevButton>
+                        <span>Prev</span>
+                      </SPrevButton>
+                      <SNextButton>
+                        <span>Next</span>
+                      </SNextButton>
+                    </React.Fragment>
+                    : null
+                  }
                 </SLeftSliderPart>
                 <SRightSliderPart>
-                  <img src="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/ic-img.jpg" alt="" />
+                  <img src={product.front_image.src} alt={product.title} />
                 </SRightSliderPart>
               </SImagesContainer>
             </SImagesWrapper>
             <SDetailsWrapper>
               <SDetailsContainer>
                 <SInnerCircleLabel>INNER CIRCLE EXCLUSIVE</SInnerCircleLabel>
-                <SProductTitle>{productTitle}</SProductTitle>
+                <SProductTitle>{product.title}</SProductTitle>
                 <SPricesContainer>
-                  {discountPrice ? (
+                  {comparePrice ? (
                     <>
-                      <SDiscountPriceLabel>{price}</SDiscountPriceLabel>
-                      <SPriceLabel> {`${discountPrice} + FREE SHIPPING`}</SPriceLabel>
+                      <SDiscountPriceLabel>{formatPrice(actualPrice)}</SDiscountPriceLabel>
+                      {' '}
+                      <SPriceLabel>{formatPrice(comparePrice)}</SPriceLabel>
                     </>
                   ) : (
-                    <SPriceLabel>{price}</SPriceLabel>
+                    <SPriceLabel>{formatPrice(actualPrice)}</SPriceLabel>
                   )}
+                  {' '}+ FREE SHIPPING
                   <SSelectRingLabel>Select a ring size to reserve this box:я</SSelectRingLabel>
                   <SRingSizeWrapper>
-                    <RingSize />
+                    <RingSize variants={product.variants} onChange={setVariant} />
                   </SRingSizeWrapper>
                   <Button
                     compact={false}
                     frontColor={'#fff'}
                     backColor={'#000'}
                     style={{ width: '100%', marginBottom: 18 }}
+                    disabled={!selectedVariant}
+                    onClick={() => selectedVariant && onReserve(selectedVariant)}
                   >
                     RESERVE NOW
                   </Button>
