@@ -3,12 +3,13 @@ import HeroGallery from '@fragrantjewels/gravity-brands.components.hero-gallery'
 import CategoryShopCard from '@fragrantjewels/gravity-brands.components.category-shop-card'
 import PromiseBar from '@fragrantjewels/gravity-brands.components.promise-bar'
 import Footer from '@fragrantjewels/gravity-brands.components.footer'
-import InlineSignupForm from '@fragrantjewels/gravity-brands.components.inline-signup-form'
+import InlineSignupForm from '../../gravity-brands/components/inline-signup-form'
 import ReviewsSection from '@fragrantjewels/gravity-brands.components.reviews-section'
 import ShopByProductsOverview from '@fragrantjewels/gravity-brands.components.shop-by-products-overview'
 import RollingBanner from '@fragrantjewels/gravity-brands.components.rolling-banner'
 import TrendingSection, { Product as TrendingProduct } from '@fragrantjewels/gravity-brands.components.trending-section'
 import homePageProps from './resolvers/homePageProps'
+import signup from '@fragrantjewels/gravity-brands.modules.signup'
 
 type HomePageProps = {
   trendingProducts: Array<TrendingProduct>
@@ -1180,7 +1181,7 @@ const HomePage = ({ trendingProducts }: HomePageProps): React.ReactElement => (
           </section>
           <section className="app-h-section app-h-form-section">
             <div className="app-h-container">
-              <InlineSignupForm />
+              <InlineSignupForm onSignup={signup} />
             </div>
           </section>
           <section className="app-h-section app-h-follow-section">

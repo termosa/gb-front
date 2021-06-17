@@ -9,6 +9,19 @@ import PresentationCanvas from '@fragrantjewels/gravity-brands.helpers.presentat
 Basic example:
 ```js live
 <PresentationCanvas>
-  <InlineSignupForm />
+  <InlineSignupForm
+    onSignup={
+      email => email.length < 10
+        ? Promise.reject('Email is too short')
+        : Promise.resolve()
+    }
+  />
 </PresentationCanvas>
+
+
+
+
+
+
+
 ```

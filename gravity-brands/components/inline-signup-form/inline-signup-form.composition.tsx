@@ -4,6 +4,12 @@ import PresentationCanvas from '@fragrantjewels/gravity-brands.helpers.presentat
 
 export const BasicInlineSignupForm = (): React.ReactElement => (
   <PresentationCanvas>
-    <InlineSignupForm />
+    <InlineSignupForm onSignup={() => Promise.resolve()} />
+  </PresentationCanvas>
+)
+
+export const FailingInlineSignupForm = (): React.ReactElement => (
+  <PresentationCanvas>
+    <InlineSignupForm onSignup={() => Promise.reject()} />
   </PresentationCanvas>
 )

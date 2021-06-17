@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
 import Button from '@fragrantjewels/gravity-brands.components.button'
+import useDefer, { Status } from 'use-defer'
 
 export type InlineSignupFormProps = {
   className?: ClassName
+  onSignup: (email: string) => Promise<unknown>
 }
 
 const name = 'InlineSignupForm'
@@ -63,16 +65,57 @@ const FormButton = styled(Button)`
   width: 25%;
 `
 
-export function InlineSignupForm({ className }: InlineSignupFormProps): React.ReactElement {
+const SuccessMessage = styled.div`
+  display: flex;
+  justify-content: center;
+  color: #4ca832;
+  padding: 18px 0;
+  font-size: 20px;
+`
+
+const ErrorMessage = styled.div`
+  display: flex;
+  justify-content: center;
+  padding: 6px 0;
+  font-size: 14px;
+  color: #a83232;
+`
+
+export function InlineSignupForm({ className, onSignup }: InlineSignupFormProps): React.ReactElement {
+  const [email, setEmail] = useState('')
+  const signupRequest = useDefer<unknown, string>(onSignup, [onSignup])
+  const handleSubmit = (event: React.FormEvent) => {
+    event.preventDefault()
+    signupRequest.execute(email)
+  }
+
   return (
     <Container className={cn(name, className)}>
       <Img src="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/email-img.svg" alt="" />
-      <Title>Thanks for signing up!</Title>
-      <Text>Even our emails are fun. Sign up to receive special offers, games, prizes and more.</Text>
-      <Form>
-        <Input type="email" placeholder="Enter your email" autoCorrect="off" autoCapitalize="off" />
-        <FormButton>Submit</FormButton>
-      </Form>
+      {signupRequest.status === Status.SUCCESS ? (
+        <SuccessMessage>Congratulations! You have successfully signed up!</SuccessMessage>
+      ) : (
+        <>
+          <Title>Thanks for signing up!</Title>
+          <Text>Even our emails are fun. Sign up to receive special offers, games, prizes and more.</Text>
+          <Form onSubmit={handleSubmit}>
+            <Input
+              type="email"
+              required
+              placeholder="Enter your email"
+              autoCorrect="off"
+              disabled={signupRequest.status === Status.PENDING}
+              autoCapitalize="off"
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
+            />
+            <FormButton disabled={signupRequest.status === Status.PENDING} type="submit">
+              Submit
+            </FormButton>
+          </Form>
+          {signupRequest.status === Status.ERROR && <ErrorMessage>{signupRequest.error}</ErrorMessage>}
+        </>
+      )}
     </Container>
   )
 }

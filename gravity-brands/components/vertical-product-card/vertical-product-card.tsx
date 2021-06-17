@@ -138,7 +138,7 @@ const SRatingStarWrapper = styled.span`
   }
 `
 
-const FilledRatingStar = (
+const FilledRatingStar = () => (
   <SRatingStarWrapper>
     <svg width="15" height="13" viewBox="0 0 15 13" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path
@@ -149,7 +149,7 @@ const FilledRatingStar = (
   </SRatingStarWrapper>
 )
 
-const HalfFilledRatingStar = (
+const HalfFilledRatingStar = () => (
   <SRatingStarWrapper>
     <svg width="15" height="13" viewBox="0 0 15 13" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path
@@ -174,7 +174,7 @@ const HalfFilledRatingStar = (
   </SRatingStarWrapper>
 )
 
-const EmptyRatingStar = (
+const EmptyRatingStar = () => (
   <SRatingStarWrapper>
     <svg width="15" height="13" viewBox="0 0 15 13" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path
@@ -197,9 +197,15 @@ export function VerticalProductCard({ className, ...props }: VerticalProductCard
   const stars = useMemo(
     () => (
       <>
-        {Array.from({ length: Math.floor(props.productAverageScore) }, () => FilledRatingStar)}
-        {props.productAverageScore % 1 && HalfFilledRatingStar}
-        {Array.from({ length: Math.floor(5 - props.productAverageScore) }, () => EmptyRatingStar)}
+        {Array.from(
+          { length: Math.floor(props.productAverageScore) },
+          (index: number) => <FilledRatingStar key={index} />,
+        )}
+        {props.productAverageScore % 1 && <HalfFilledRatingStar />}
+        {Array.from(
+          { length: Math.floor(5 - props.productAverageScore) },
+          (index: number) => <EmptyRatingStar key={index} />,
+        )}
       </>
     ),
     [props.productAverageScore]
