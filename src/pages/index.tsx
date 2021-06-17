@@ -15,6 +15,7 @@ import signup from '@fragrantjewels/gravity-brands.modules.signup'
 type HomePageProps = {
   trendingProducts: Array<TrendingProduct> | null
   innerCircleProduct: Product | null
+  context: unknown
 }
 
 const HomePage = ({ trendingProducts, innerCircleProduct }: HomePageProps): React.ReactElement => (

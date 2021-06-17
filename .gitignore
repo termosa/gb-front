@@ -12,3 +12,4 @@
 /npm-error.log
 /yarn-error.log
 .DS_Store
+.vercel

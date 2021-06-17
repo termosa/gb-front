@@ -201,13 +201,13 @@
     },
     "modules/load-collection": {
         "scope": "fragrantjewels.gravity-brands",
-        "version": "0.0.2",
+        "version": "0.0.3",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/modules/load-collection"
     },
     "modules/load-product": {
         "scope": "fragrantjewels.gravity-brands",
-        "version": "0.0.1",
+        "version": "0.0.2",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/modules/load-product"
     },
@@ -219,7 +219,7 @@
     },
     "modules/resolve-page-props": {
         "scope": "fragrantjewels.gravity-brands",
-        "version": "0.0.1",
+        "version": "0.0.2",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/modules/resolve-page-props"
     },
