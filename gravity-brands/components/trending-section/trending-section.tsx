@@ -6,6 +6,7 @@ import cn, { Argument as ClassName } from 'classnames'
 export type TrendingSectionProps = {
   products: Array<Product>
   className?: ClassName
+  onSelectProduct: (productId: number) => void
 }
 
 export type Product = {
@@ -417,14 +418,15 @@ const NextArrow = styled.button`
 
 const ProductCardWrapper = styled.div`
   padding: 5px;
+  cursor: pointer;
   @media (min-width: 500px) {
     padding: 5px 8px;
   }
 `
 
-const ProductCard = ({ product }: { product: Product }) =>
+const ProductCard = ({ product, onClick }: { product: Product; onClick: () => void }) =>
   product.front_image ? (
-    <ProductCardWrapper>
+    <ProductCardWrapper onClick={onClick}>
       <SProductCard>
         <div>
           <ProductCardImgWrapper>
@@ -502,7 +504,7 @@ const ProductCard = ({ product }: { product: Product }) =>
     </ProductCardWrapper>
   ) : null
 
-export const TrendingSection: React.FC<TrendingSectionProps> = ({ products, className }) => {
+export const TrendingSection: React.FC<TrendingSectionProps> = ({ products, className, onSelectProduct }) => {
   const [progress, setProgress] = useState(0)
   const settings: Settings = {
     slidesToShow: 3,
@@ -546,7 +548,11 @@ export const TrendingSection: React.FC<TrendingSectionProps> = ({ products, clas
         <ProductCards>
           <StyledSlider {...settings}>
             {products.map((product) => (
-              <ProductCard key={product.product_id} product={product} />
+              <ProductCard
+                key={product.product_id}
+                product={product}
+                onClick={() => onSelectProduct(product.product_id)}
+              />
             ))}
           </StyledSlider>
           <ProgressWrapper>

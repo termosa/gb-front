@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
-import { Product as TrendingProduct } from '@fragrantjewels/gravity-brands.components.trending-section'
+import { Product as ProductType } from '@fragrantjewels/gravity-brands.components.trending-section'
 import productPageProps from '../resolvers/productPageProps'
+import RollingBanner from '@fragrantjewels/gravity-brands.components.rolling-banner'
 
 type ProductPageProps = {
-  product: TrendingProduct
+  product: ProductType
 }
 
 const Product = ({ product }: ProductPageProps): React.ReactElement => {
@@ -13,25 +14,7 @@ const Product = ({ product }: ProductPageProps): React.ReactElement => {
     <div className="app-re-wrapper-outer" id="app-wrapper-outer" style={{ paddingBottom: '55px' }}>
       <div className="app-re-wrapper" id="app-wrapper">
         <header className="app-re-header" id="app-header">
-          <div className="app-promo-slider">
-            <div className="app-container">
-              <div className="app-promo-slider__inner" id="app-promo-slider">
-                <div>PARABEN FREE&nbsp;&nbsp;|&nbsp;&nbsp;HANDMADE IN USA&nbsp;&nbsp;|&nbsp;&nbsp;100% VEGAN</div>
-                <div>
-                  <span className="app-pink-clr">FREE SHIPPING</span> ON ORDERS $75+
-                </div>
-                <div>
-                  COVID-19 SHIPPING UPDATE{' '}
-                  <a
-                    href="https://helpcenter.fragrantjewels.com/hc/en-us/sections/360008222572-COVID-19-Crisis-FAQ?mobile_site=true"
-                    target="_blank"
-                  >
-                    LEARN MORE&gt;
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
+          <RollingBanner />
           <div className="app-re-header-inner">
             <div className="app-container">
               <div className="app-re-header__top">
@@ -110,7 +93,8 @@ const Product = ({ product }: ProductPageProps): React.ReactElement => {
                             placeholder="Search..."
                             type="text"
                             name="q"
-                            autoComplete="false"
+                            defaultValue=""
+                            autoComplete="off"
                           />
                           <input type="hidden" name="type" defaultValue="product" autoComplete="off" />
                           <button className="app-search-btn app-search-btn__state-1" type="button">
@@ -125,16 +109,17 @@ const Product = ({ product }: ProductPageProps): React.ReactElement => {
                                 d="M23 23L16.26 15.55M18.58 9.79C18.58 14.6446 14.6446 18.58 9.79001 18.58C4.93543 18.58 1 14.6446 1 9.79C1 4.93542 4.93543 1 9.79001 1C14.6446 1 18.58 4.93542 18.58 9.79Z"
                                 stroke="black"
                                 strokeWidth="0.5"
-                                strokeMiterlimit={10}
+                                strokeMiterlimit="10"
                                 strokeLinecap="round"
                                 strokeLinejoin="round"
-                              />
+                              ></path>
                             </svg>
                           </button>
+
                           <button className="app-search-btn app-search-btn__state-2" type="button">
                             <svg
-                              width={24}
-                              height={24}
+                              width="24"
+                              height="24"
                               viewBox="0 0 24 24"
                               fill="none"
                               xmlns="http://www.w3.org/2000/svg"
@@ -145,14 +130,15 @@ const Product = ({ product }: ProductPageProps): React.ReactElement => {
                                 strokeWidth="0.5"
                                 strokeLinecap="round"
                                 strokeLinejoin="round"
-                              />
+                              ></path>
                             </svg>
                           </button>
+
                           <button type="submit" style={{ display: 'none' }}>
                             Submit
                           </button>
                         </div>
-                        <ul className="app-autocomplete__list" />
+                        <ul className="app-autocomplete__list"></ul>
                       </form>
                     </div>
                   </div>
@@ -173,8 +159,8 @@ const Product = ({ product }: ProductPageProps): React.ReactElement => {
                         <div className="app-points-wrapper-des" id="app-points-wrapper-des">
                           <a href="/pages/rewards-boutique" className="app-points">
                             <svg
-                              width={127}
-                              height={40}
+                              width="127"
+                              height="40"
                               viewBox="0 0 127 40"
                               fill="none"
                               xmlns="http://www.w3.org/2000/svg"
@@ -183,66 +169,81 @@ const Product = ({ product }: ProductPageProps): React.ReactElement => {
                                 d="M38.5 1H119.205C122.815 1 125.767 3.95133 125.767 7.56133V32.4387C125.767 36.0487 122.815 39 119.205 39H24.5"
                                 stroke="black"
                                 strokeWidth="0.5"
-                                strokeMiterlimit={10}
+                                strokeMiterlimit="10"
                                 strokeLinecap="round"
                                 strokeLinejoin="round"
-                              />
+                              ></path>
                               <path
                                 d="M24.2053 39L47.892 11.4247L38.6073 1H24.3827H24.522H10.2847L1 11.4247L24.6993 39"
                                 fill="url(#app-points-gold-des)"
-                              />
+                              ></path>
                               <path
                                 d="M24.4719 39L47.9305 11.4247L38.6332 1H24.4085H24.5479H10.3105L1.02588 11.4247L24.4719 39Z"
                                 stroke="black"
                                 strokeWidth="0.5"
-                                strokeMiterlimit={10}
+                                strokeMiterlimit="10"
                                 strokeLinecap="round"
                                 strokeLinejoin="round"
-                              />
+                              ></path>
                               <path
                                 d="M1.02539 11.4247H47.8667"
                                 stroke="black"
                                 strokeWidth="0.5"
-                                strokeMiterlimit={10}
+                                strokeMiterlimit="10"
                                 strokeLinecap="round"
                                 strokeLinejoin="round"
-                              />
+                              ></path>
                               <path
                                 d="M10.3101 1L24.5 39L38.6327 1"
                                 stroke="black"
                                 strokeWidth="0.5"
-                                strokeMiterlimit={10}
+                                strokeMiterlimit="10"
                                 strokeLinecap="round"
                                 strokeLinejoin="round"
-                              />
+                              ></path>
                               <path
                                 d="M14.4395 11.5513L24.5475 1.41797L34.7821 11.222"
                                 stroke="black"
                                 strokeWidth="0.5"
-                                strokeMiterlimit={10}
+                                strokeMiterlimit="10"
                                 strokeLinecap="round"
                                 strokeLinejoin="round"
-                              />
+                              ></path>
                               <defs>
                                 <linearGradient
                                   id="app-points-gold-des"
-                                  x1={5}
+                                  x1="5"
                                   y1="5.5"
-                                  x2={48}
-                                  y2={28}
+                                  x2="48"
+                                  y2="28"
                                   gradientUnits="userSpaceOnUse"
                                 >
-                                  <animate attributeName="x1" values="5;4;5" dur="7s" repeatCount="indefinite" />
-                                  <animate attributeName="y1" values="5.5;4.5;5.5" dur="7s" repeatCount="indefinite" />
-                                  <animate attributeName="x2" values="48;108.5;48" dur="7s" repeatCount="indefinite" />
-                                  <stop stopColor="#D08E17" />
+                                  <animate
+                                    attributeName="x1"
+                                    values="5;4;5"
+                                    dur="7s"
+                                    repeatCount="indefinite"
+                                  ></animate>
+                                  <animate
+                                    attributeName="y1"
+                                    values="5.5;4.5;5.5"
+                                    dur="7s"
+                                    repeatCount="indefinite"
+                                  ></animate>
+                                  <animate
+                                    attributeName="x2"
+                                    values="48;108.5;48"
+                                    dur="7s"
+                                    repeatCount="indefinite"
+                                  ></animate>
+                                  <stop stopColor="#D08E17"></stop>
                                   <stop offset="0.0199" stopColor="#D89C29">
                                     <animate
                                       attributeName="offset"
                                       values="0.0199;0.0309454;0.0199"
                                       dur="7s"
                                       repeatCount="indefinite"
-                                    />
+                                    ></animate>
                                   </stop>
                                   <stop offset="0.0597" stopColor="#E6B248">
                                     <animate
@@ -250,7 +251,7 @@ const Product = ({ product }: ProductPageProps): React.ReactElement => {
                                       values="0.0597;0.0697112;0.0597"
                                       dur="7s"
                                       repeatCount="indefinite"
-                                    />
+                                    ></animate>
                                   </stop>
                                   <stop offset="0.1014" stopColor="#F1C460">
                                     <animate
@@ -258,7 +259,7 @@ const Product = ({ product }: ProductPageProps): React.ReactElement => {
                                       values="0.1014;0.120298;0.1014"
                                       dur="7s"
                                       repeatCount="indefinite"
-                                    />
+                                    ></animate>
                                   </stop>
                                   <stop offset="0.1453" stopColor="#F9D072">
                                     <animate
@@ -266,7 +267,7 @@ const Product = ({ product }: ProductPageProps): React.ReactElement => {
                                       values="0.1453;0.183327;0.1453"
                                       dur="7s"
                                       repeatCount="indefinite"
-                                    />
+                                    ></animate>
                                   </stop>
                                   <stop offset="0.1929" stopColor="#FED87C">
                                     <animate
@@ -274,7 +275,7 @@ const Product = ({ product }: ProductPageProps): React.ReactElement => {
                                       values="0.1929;0.239427;0.1929"
                                       dur="7s"
                                       repeatCount="indefinite"
-                                    />
+                                    ></animate>
                                   </stop>
                                   <stop offset="0.251" stopColor="#FFDA7F">
                                     <animate
@@ -282,7 +283,7 @@ const Product = ({ product }: ProductPageProps): React.ReactElement => {
                                       values="0.251;0.33628;0.251"
                                       dur="7s"
                                       repeatCount="indefinite"
-                                    />
+                                    ></animate>
                                   </stop>
                                   <stop offset="0.3617" stopColor="#F9D072">
                                     <animate
@@ -290,17 +291,18 @@ const Product = ({ product }: ProductPageProps): React.ReactElement => {
                                       values="0.3617;0.451013;0.3617"
                                       dur="7s"
                                       repeatCount="indefinite"
-                                    />
+                                    ></animate>
                                   </stop>
-                                  <stop offset="0.540309" stopColor="#E9B64E" />
-                                  <stop offset="0.743575" stopColor="#D08E17" />
-                                  <stop offset="0.808329" stopColor="#B88313" />
-                                  <stop offset="0.898368" stopColor="#99740F" />
+                                  <stop offset="0.540309" stopColor="#E9B64E"></stop>
+                                  <stop offset="0.743575" stopColor="#D08E17"></stop>
+                                  <stop offset="0.808329" stopColor="#B88313"></stop>
+                                  <stop offset="0.898368" stopColor="#99740F"></stop>
                                 </linearGradient>
                               </defs>
                             </svg>
                             <div className="app-points__box__value">
-                              <div className="app-points__value">17</div>Points
+                              <div className="app-points__value">17</div>
+                              Points
                             </div>
                           </a>
                         </div>
@@ -322,10 +324,10 @@ const Product = ({ product }: ProductPageProps): React.ReactElement => {
                               d="M23 23L16.26 15.55M18.58 9.79C18.58 14.6446 14.6446 18.58 9.79001 18.58C4.93543 18.58 1 14.6446 1 9.79C1 4.93542 4.93543 1 9.79001 1C14.6446 1 18.58 4.93542 18.58 9.79Z"
                               stroke="black"
                               strokeWidth="0.5"
-                              strokeMiterlimit={10}
+                              strokeMiterlimit="10"
                               strokeLinecap="round"
                               strokeLinejoin="round"
-                            />
+                            ></path>
                           </svg>
                         </button>
                         <a
@@ -344,20 +346,21 @@ const Product = ({ product }: ProductPageProps): React.ReactElement => {
                               d="M11.8833 10.78C14.8988 10.78 17.3433 8.47874 17.3433 5.64C17.3433 2.80126 14.8988 0.5 11.8833 0.5C8.86781 0.5 6.42328 2.80126 6.42328 5.64C6.42328 8.47874 8.86781 10.78 11.8833 10.78Z"
                               stroke="black"
                               strokeWidth="0.5"
-                              strokeMiterlimit={10}
+                              strokeMiterlimit="10"
                               strokeLinecap="round"
                               strokeLinejoin="round"
-                            />
+                            ></path>
                             <path
                               d="M9.19328 14.9H14.5733C19.0333 14.9 22.6533 18.3 22.6533 22.5H1.11328C1.11328 18.3 4.73328 14.9 9.19328 14.9Z"
                               stroke="black"
                               strokeWidth="0.5"
-                              strokeMiterlimit={10}
+                              strokeMiterlimit="10"
                               strokeLinecap="round"
                               strokeLinejoin="round"
-                            />
+                            ></path>
                           </svg>
                         </a>
+
                         <div className="app-user__dropdown__wrapper" id="app-user__dropdown__wrapper">
                           <div className="app-user__dropdown">
                             <div className="app-container">
@@ -369,8 +372,8 @@ const Product = ({ product }: ProductPageProps): React.ReactElement => {
                                 </h3>
                                 <button type="button" id="app-user__close-btn" className="app-user__close-btn">
                                   <svg
-                                    width={22}
-                                    height={22}
+                                    width="22"
+                                    height="22"
                                     viewBox="0 0 22 22"
                                     fill="none"
                                     xmlns="http://www.w3.org/2000/svg"
@@ -381,7 +384,7 @@ const Product = ({ product }: ProductPageProps): React.ReactElement => {
                                       strokeWidth="0.5"
                                       strokeLinecap="round"
                                       strokeLinejoin="round"
-                                    />
+                                    ></path>
                                   </svg>
                                 </button>
                                 <ul className="app-user__list">
@@ -400,6 +403,7 @@ const Product = ({ product }: ProductPageProps): React.ReactElement => {
                                   <li>
                                     <a href="/account/login">My Birthday Gift</a>
                                   </li>
+
                                   <li className="app-gray-clr">
                                     <a className="app-auth-link" href="/account/login">
                                       Log In
@@ -414,6 +418,7 @@ const Product = ({ product }: ProductPageProps): React.ReactElement => {
                             </div>
                           </div>
                         </div>
+
                         <a href="/cart" className="app-re-header__icon-nav__cart">
                           <svg
                             width="100%"
@@ -426,10 +431,10 @@ const Product = ({ product }: ProductPageProps): React.ReactElement => {
                               d="M4.78156 8.03V5.17C4.78156 2.85 6.66154 0.970001 8.98154 0.970001C11.3015 0.970001 13.1815 2.85 13.1815 5.17V8.03M14.8615 22.97H3.51154C1.80154 22.97 0.48154 21.49 0.67154 19.79L2.18155 6.16H16.1916L17.7015 19.79C17.8915 21.49 16.5615 22.97 14.8615 22.97Z"
                               stroke="black"
                               strokeWidth="0.5"
-                              strokeMiterlimit={10}
+                              strokeMiterlimit="10"
                               strokeLinecap="round"
                               strokeLinejoin="round"
-                            />
+                            ></path>
                           </svg>
                           <span className="app-re-header__icon-nav__cart__count">
                             <span id="app-cart-count">1</span>
@@ -448,21 +453,25 @@ const Product = ({ product }: ProductPageProps): React.ReactElement => {
                         Subscribe
                       </a>
                     </li>
+
                     <li className="app-nav__list__item">
                       <a href="/collections/spring" className="app-nav__link ">
                         Spring
                       </a>
                     </li>
+
                     <li className="app-nav__list__item">
                       <a href="/collections/bath-bombs" className="app-nav__link ">
                         Bath Bombs
                       </a>
                     </li>
+
                     <li className="app-nav__list__item">
                       <a href="https://www.fragrantjewels.com/collections/jewel-candles" className="app-nav__link ">
                         Candles
                       </a>
                     </li>
+
                     <li className="app-nav__list__item app-nav__list__item__has-dropdown">
                       <a href="/collections/all-products" className="app-nav__link ">
                         All
@@ -481,15 +490,19 @@ const Product = ({ product }: ProductPageProps): React.ReactElement => {
                                       <li>
                                         <a href="/collections/bath-bombs">Bath Bombs</a>
                                       </li>
+
                                       <li>
                                         <a href="https://www.fragrantjewels.com/collections/jewel-candles">Candles</a>
                                       </li>
+
                                       <li>
                                         <a href="/collections/the-jewelry-store">Jewelry</a>
                                       </li>
+
                                       <li>
                                         <a href="https://www.fragrantjewels.com/collections/gift-sets">Gift Sets</a>
                                       </li>
+
                                       <li>
                                         <a className="app-animated-link" href="/collections/all-products">
                                           <span>Shop all</span>
@@ -567,7 +580,6 @@ const Product = ({ product }: ProductPageProps): React.ReactElement => {
                                       </li>
                                     </ul>
                                   </div>
-                                  {/*                                 <div class="app-spacer-10"></div> */}
                                   <div className="app-nav__accordion__item">
                                     <strong className="app-nav__d__list-title">Shop by Metal Color</strong>
                                     <ul className="app-nav__d__list" id="app-list__color">
@@ -592,12 +604,6 @@ const Product = ({ product }: ProductPageProps): React.ReactElement => {
                                 </div>
                               </div>
                             </div>
-                            {/*                           <a href="/collections/fantasy" class="app-col app-add-product-col app-mobile-none">
-                              <img src="https://fragrantjewels.s3.amazonaws.com/app/app-nav/nav-all-img-5-des.jpg" alt="">
-                              <div class="text-center">
-                                <strong class="app-add-product-col__link-text app-animated-link"><span>FANTASY FAVORITES</span></strong>
-                              </div>
-                            </a> */}
                             <a
                               href="/products/piece-by-piece-bath-bomb"
                               className="app-col app-add-product-col app-mobile-none"
@@ -608,7 +614,7 @@ const Product = ({ product }: ProductPageProps): React.ReactElement => {
                               />
                               <div className="text-center">
                                 <strong className="app-add-product-col__link-text app-animated-link">
-                                  <span>Celebrate Autism Acceptance</span>
+                                  <span>Celebr/ate Autism Acceptance</span>
                                 </strong>
                               </div>
                             </a>
@@ -616,10 +622,12 @@ const Product = ({ product }: ProductPageProps): React.ReactElement => {
                         </div>
                       </div>
                     </li>
+
                     <li className="app-nav__list__item app-nav__list__item__has-dropdown">
                       <a href="/pages/inner-circle" className="app-nav__link ">
                         Subscription
                       </a>
+
                       <div className="app-nav__dr">
                         <div className="app-container">
                           <div className="app-row-d-2a-1">
@@ -673,17 +681,21 @@ const Product = ({ product }: ProductPageProps): React.ReactElement => {
                                     How it Works
                                   </a>
                                 </li>
+
                                 <li>
                                   <a href="https://www.fragrantjewels.com/pages/inner-circle#join-now">Join Now</a>
                                 </li>
+
                                 <li>
                                   <a href="https://www.fragrantjewels.com/pages/inner-circle#current-box">
                                     Current Box
                                   </a>
                                 </li>
+
                                 <li>
                                   <a href="/collections/esic">Members Only Store</a>
                                 </li>
+
                                 <li>
                                   <a href="/pages/rare-ic-page">Rare Collections</a>
                                 </li>
@@ -693,10 +705,12 @@ const Product = ({ product }: ProductPageProps): React.ReactElement => {
                         </div>
                       </div>
                     </li>
+
                     <li className="app-nav__list__item app-nav__list__item__has-dropdown">
                       <a href="/pages/rewards-boutique" className="app-nav__link ">
                         Rewards
                       </a>
+
                       <div className="app-nav__dr">
                         <div className="app-container">
                           <div className="app-row-d-2a-1">
@@ -726,7 +740,7 @@ const Product = ({ product }: ProductPageProps): React.ReactElement => {
                                   <strong className="app-nav__d__list-title">EARN PLATINUM REWARDS STATUS</strong>
                                   <p>
                                     Get exclusive access to VIP offers, 3x points and more when you earn Platinum
-                                    status!{' '}
+                                    status!
                                   </p>
                                   <div>
                                     <strong className="app-add-product-col__link-text app-animated-link">
@@ -742,6 +756,7 @@ const Product = ({ product }: ProductPageProps): React.ReactElement => {
                                 <li>
                                   <a href="/pages/rewards-boutique">Rewards Boutique</a>
                                 </li>
+
                                 <li>
                                   <a href="/pages/rewards-explainer">How it Works</a>
                                 </li>
@@ -751,6 +766,7 @@ const Product = ({ product }: ProductPageProps): React.ReactElement => {
                         </div>
                       </div>
                     </li>
+
                     <li className="app-nav__list__item">
                       <a href="/pages/vault-appraise" className="app-nav__link ">
                         Vault
@@ -762,10 +778,11 @@ const Product = ({ product }: ProductPageProps): React.ReactElement => {
                       <img src="https://fragrantjewels.s3.amazonaws.com/app/app-nav/nav-all-img-6-mb.jpg" alt="" />
                       <div>
                         <span className="app-animated-link app-nav__mobile-content__link">
-                          <span>Celebrate Autism Acceptance</span>
+                          <span>Celebr/ate Autism Acceptance</span>
                         </span>
                       </div>
                     </a>
+
                     <a href="/collections/fantasy" className="app-col app-add-product-col">
                       <img src="https://fragrantjewels.s3.amazonaws.com/app/app-nav/nav-all-img-5-mob.jpg" alt="" />
                       <div>
@@ -774,6 +791,7 @@ const Product = ({ product }: ProductPageProps): React.ReactElement => {
                         </span>
                       </div>
                     </a>
+
                     <a href="/collections/spring" className="app-col app-add-product-col">
                       <img src="https://fragrantjewels.s3.amazonaws.com/app/app-nav/nav-all-img-4.jpg" alt="" />
                       <div>
@@ -811,9 +829,11 @@ const Product = ({ product }: ProductPageProps): React.ReactElement => {
               </nav>
             </div>
           </div>
-          <div className="app-nav__dr-wrapper" id="app-nav-secondary-desktop" />
+
+          <div className="app-nav__dr-wrapper" id="app-nav-secondary-desktop"></div>
+
           <div className="app-nav__mobile" id="app-nav-secondary-mobile">
-            <div className="app-nav__mobile__overlay" />
+            <div className="app-nav__mobile__overlay"></div>
             <div className="app-nav__mobile__inner">
               <div id="app-nav__mobile__top" className="app-nav__mobile__top">
                 <div className="app-nav__mobile__top__inner">
@@ -821,8 +841,8 @@ const Product = ({ product }: ProductPageProps): React.ReactElement => {
                     <div className="app-points-wrapper-mob" id="app-points-wrapper-mob">
                       <a href="/pages/rewards-boutique" className="app-points">
                         <svg
-                          width={127}
-                          height={40}
+                          width="127"
+                          height="40"
                           viewBox="0 0 127 40"
                           fill="none"
                           xmlns="http://www.w3.org/2000/svg"
@@ -831,64 +851,69 @@ const Product = ({ product }: ProductPageProps): React.ReactElement => {
                             d="M38.5 1H119.205C122.815 1 125.767 3.95133 125.767 7.56133V32.4387C125.767 36.0487 122.815 39 119.205 39H24.5"
                             stroke="black"
                             strokeWidth="0.5"
-                            strokeMiterlimit={10}
+                            strokeMiterlimit="10"
                             strokeLinecap="round"
                             strokeLinejoin="round"
-                          />
+                          ></path>
                           <path
                             d="M24.2053 39L47.892 11.4247L38.6073 1H24.3827H24.522H10.2847L1 11.4247L24.6993 39"
                             fill="url(#app-points-empty-mob)"
-                          />
+                          ></path>
                           <path
                             d="M24.4719 39L47.9305 11.4247L38.6332 1H24.4085H24.5479H10.3105L1.02588 11.4247L24.4719 39Z"
                             stroke="black"
                             strokeWidth="0.5"
-                            strokeMiterlimit={10}
+                            strokeMiterlimit="10"
                             strokeLinecap="round"
                             strokeLinejoin="round"
-                          />
+                          ></path>
                           <path
                             d="M1.02539 11.4247H47.8667"
                             stroke="black"
                             strokeWidth="0.5"
-                            strokeMiterlimit={10}
+                            strokeMiterlimit="10"
                             strokeLinecap="round"
                             strokeLinejoin="round"
-                          />
+                          ></path>
                           <path
                             d="M10.3101 1L24.5 39L38.6327 1"
                             stroke="black"
                             strokeWidth="0.5"
-                            strokeMiterlimit={10}
+                            strokeMiterlimit="10"
                             strokeLinecap="round"
                             strokeLinejoin="round"
-                          />
+                          ></path>
                           <path
                             d="M14.4395 11.5513L24.5475 1.41797L34.7821 11.222"
                             stroke="black"
                             strokeWidth="0.5"
-                            strokeMiterlimit={10}
+                            strokeMiterlimit="10"
                             strokeLinecap="round"
                             strokeLinejoin="round"
-                          />
+                          ></path>
                           <defs>
                             <linearGradient
                               id="app-points-empty-mob"
-                              x1={5}
+                              x1="5"
                               y1="5.5"
-                              x2={48}
-                              y2={28}
+                              x2="48"
+                              y2="28"
                               gradientUnits="userSpaceOnUse"
                             >
-                              <animate attributeName="x2" values="48;83.5;48" dur="7s" repeatCount="indefinite" />
-                              <animate attributeName="y2" values="28;49;28" dur="7s" repeatCount="indefinite" />
+                              <animate
+                                attributeName="x2"
+                                values="48;83.5;48"
+                                dur="7s"
+                                repeatCount="indefinite"
+                              ></animate>
+                              <animate attributeName="y2" values="28;49;28" dur="7s" repeatCount="indefinite"></animate>
                               <stop stopColor="#FFF7E2">
                                 <animate
                                   attributeName="stopColor"
                                   values="#FFF7E2; #FFF9EC"
                                   dur="7s"
                                   repeatCount="indefinite"
-                                />
+                                ></animate>
                               </stop>
                               <stop offset="0.0262039" stopColor="#FFF9EC">
                                 <animate
@@ -896,13 +921,13 @@ const Product = ({ product }: ProductPageProps): React.ReactElement => {
                                   values="#FFF9EC; #FFF7E2;"
                                   dur="7s"
                                   repeatCount="indefinite"
-                                />
+                                ></animate>
                                 <animate
                                   attributeName="offset"
                                   values="0.0262039;0.209294;0.0262039"
                                   dur="7s"
                                   repeatCount="indefinite"
-                                />
+                                ></animate>
                               </stop>
                               <stop offset="0.3617" stopColor="white">
                                 <animate
@@ -910,7 +935,7 @@ const Product = ({ product }: ProductPageProps): React.ReactElement => {
                                   values="0.3617;0.353026;0.3617"
                                   dur="7s"
                                   repeatCount="indefinite"
-                                />
+                                ></animate>
                               </stop>
                               <stop offset="0.612777" stopColor="#FEFDFA">
                                 <animate
@@ -918,14 +943,15 @@ const Product = ({ product }: ProductPageProps): React.ReactElement => {
                                   values="0.612777;0.540309;0.612777"
                                   dur="7s"
                                   repeatCount="indefinite"
-                                />
+                                ></animate>
                               </stop>
-                              <stop offset="0.743575" stopColor="#FFF6E7" />
+                              <stop offset="0.743575" stopColor="#FFF6E7"></stop>
                             </linearGradient>
                           </defs>
                         </svg>
                         <div className="app-points__box__value">
-                          <div className="app-points__value">0</div>Points
+                          <div className="app-points__value">0</div>
+                          Points
                         </div>
                       </a>
                     </div>
@@ -957,7 +983,7 @@ const Product = ({ product }: ProductPageProps): React.ReactElement => {
                                 <img src={product.front_image?.src} alt={product.front_image?.alt} />
                               </li>
                               {product.side_images.map((image) => (
-                                <li className="pdp-carousel-item_active">
+                                <li key={image?.src}>
                                   <img src={image?.src} alt={image?.alt} />
                                 </li>
                               ))}
@@ -969,7 +995,7 @@ const Product = ({ product }: ProductPageProps): React.ReactElement => {
                                 <img src={product.front_image?.src} alt={product.front_image?.alt} />
                               </div>
                               {product.side_images.map((image) => (
-                                <div className="pdp-carousel__item">
+                                <div className="pdp-carousel__item" key={image?.src}>
                                   <img src={image?.src} alt={image?.alt} />
                                 </div>
                               ))}
@@ -3036,8 +3062,8 @@ const Product = ({ product }: ProductPageProps): React.ReactElement => {
                         <div className="app-pdp-f-pr__item__col app-pdp-f-pr__image-wrapper">
                           <img
                             className="app-pdp-f-pr-item__img"
-                            src="https://cdn.shopify.com/s/files/1/0548/5721/products/Lemon-Drop-Comp_enlarged_d5367cd5-1ae1-4220-a59c-ae5b49c30bbd_grande.jpg?v=1623176693"
-                            alt=""
+                            src={product.front_image?.src}
+                            alt={product.front_image?.alt}
                           />
                           <svg
                             className="app-pdp-f-pr-item__icon_mobile"

@@ -8,7 +8,7 @@ import ReviewsSection from '@fragrantjewels/gravity-brands.components.reviews-se
 import ShopByProductsOverview from '@fragrantjewels/gravity-brands.components.shop-by-products-overview'
 import RollingBanner from '@fragrantjewels/gravity-brands.components.rolling-banner'
 import InnerCircleExclusive, { Product } from '@fragrantjewels/gravity-brands.components.inner-circle-exclusive'
-import TrendingSection, { Product as TrendingProduct } from '@fragrantjewels/gravity-brands.components.trending-section'
+import TrendingSection, { Product as TrendingProduct } from '../../gravity-brands/components/trending-section'
 import homePageProps from './resolvers/homePageProps'
 import signup from '@fragrantjewels/gravity-brands.modules.signup'
 
@@ -957,11 +957,18 @@ const HomePage = ({ trendingProducts, innerCircleProduct }: HomePageProps): Reac
           <div className="HeroGallery-Container">
             <HeroGallery />
           </div>
-          {trendingProducts?.length && <TrendingSection products={trendingProducts} />}
-          {innerCircleProduct && <InnerCircleExclusive
-            product={innerCircleProduct}
-            onReserve={variant => alert(`We will ship you the product with size ${variant.title}`)}
-          />}
+          {trendingProducts?.length && (
+            <TrendingSection
+              products={trendingProducts}
+              onSelectProduct={(productId: string) => (location.href = `/product/${productId}`)}
+            />
+          )}
+          {innerCircleProduct && (
+            <InnerCircleExclusive
+              product={innerCircleProduct}
+              onReserve={(variant) => alert(`We will ship you the product with size ${variant.title}`)}
+            />
+          )}
           <section className="app-h-section app-h-section_colored app-h-section_mf">
             <div className="app-h-container">
               <h2 className="app-h-section__title">
