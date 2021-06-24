@@ -1,6 +1,12 @@
 import React, { useState } from 'react'
+import { Product as TrendingProduct } from '@fragrantjewels/gravity-brands.components.trending-section'
+import productPageProps from '../resolvers/productPageProps'
 
-const Product = (): React.ReactElement => {
+type ProductPageProps = {
+  product: TrendingProduct
+}
+
+const Product = ({ product }: ProductPageProps): React.ReactElement => {
   const [isDropdownOpened, setIsDropdownOpened] = useState(false)
 
   return (
@@ -934,7 +940,7 @@ const Product = (): React.ReactElement => {
             {/* Content */}
             <div className="app-h-container">
               <div className="app-h-breadcrumbs">
-                Home / All / Bundles / <span>Moon Magic</span>
+                Home / All / Bundles / <span>{product.title}</span>
               </div>
             </div>
             <div className="app-h-container">
@@ -948,57 +954,25 @@ const Product = (): React.ReactElement => {
                           <div className="pdp-s-col pdp-s-col-sm pdp-carousel-items">
                             <ul className="pdp-carousel-items__list" id="pdp-carousel-items__list">
                               <li className="pdp-carousel-item_active">
-                                <img
-                                  src="https://cdn.shopify.com/s/files/1/0548/5721/products/Lemon-Drop-Comp_enlarged_d5367cd5-1ae1-4220-a59c-ae5b49c30bbd_grande.jpg?v=1623176693"
-                                  alt="Lemon Drop - Jewel Candle"
-                                />
+                                <img src={product.front_image?.src} alt={product.front_image?.alt} />
                               </li>
-                              <li>
-                                <img
-                                  src="https://cdn.shopify.com/s/files/1/0548/5721/products/7-253103_grande_a4a5c59c-3316-49f7-8ee0-e668928652b3_grande.jpg?v=1623176693"
-                                  alt="Lemon Drop - Jewel Candle"
-                                />
-                              </li>
-                              <li>
-                                <img
-                                  src="https://cdn.shopify.com/s/files/1/0548/5721/products/Lemon-Drop-Comp_enlarged_d5367cd5-1ae1-4220-a59c-ae5b49c30bbd_grande.jpg?v=1623176693"
-                                  alt="Lemon Drop - Jewel Candle"
-                                />
-                              </li>
-                              <li>
-                                <img
-                                  src="https://cdn.shopify.com/s/files/1/0548/5721/products/7-253103_grande_a4a5c59c-3316-49f7-8ee0-e668928652b3_grande.jpg?v=1623176693"
-                                  alt="Lemon Drop - Jewel Candle"
-                                />
-                              </li>
+                              {product.side_images.map((image) => (
+                                <li className="pdp-carousel-item_active">
+                                  <img src={image?.src} alt={image?.alt} />
+                                </li>
+                              ))}
                             </ul>
                           </div>
                           <div className="pdp-s-col pdp-s-col-lg">
                             <div className="pdp-carousel" id="pdp-carousel">
                               <div className="pdp-carousel__item">
-                                <img
-                                  src="https://cdn.shopify.com/s/files/1/0548/5721/products/Lemon-Drop-Comp_enlarged_d5367cd5-1ae1-4220-a59c-ae5b49c30bbd_grande.jpg?v=1623176693"
-                                  alt="Lemon Drop - Jewel Candle"
-                                />
+                                <img src={product.front_image?.src} alt={product.front_image?.alt} />
                               </div>
-                              <div className="pdp-carousel__item">
-                                <img
-                                  src="https://cdn.shopify.com/s/files/1/0548/5721/products/7-253103_grande_a4a5c59c-3316-49f7-8ee0-e668928652b3_grande.jpg?v=1623176693"
-                                  alt="Lemon Drop - Jewel Candle"
-                                />
-                              </div>
-                              <div className="pdp-carousel__item">
-                                <img
-                                  src="https://cdn.shopify.com/s/files/1/0548/5721/products/Lemon-Drop-Comp_enlarged_d5367cd5-1ae1-4220-a59c-ae5b49c30bbd_grande.jpg?v=1623176693"
-                                  alt="Lemon Drop - Jewel Candle"
-                                />
-                              </div>
-                              <div className="pdp-carousel__item">
-                                <img
-                                  src="https://cdn.shopify.com/s/files/1/0548/5721/products/7-253103_grande_a4a5c59c-3316-49f7-8ee0-e668928652b3_grande.jpg?v=1623176693"
-                                  alt="Lemon Drop - Jewel Candle"
-                                />
-                              </div>
+                              {product.side_images.map((image) => (
+                                <div className="pdp-carousel__item">
+                                  <img src={image?.src} alt={image?.alt} />
+                                </div>
+                              ))}
                             </div>
                           </div>
                         </div>
@@ -1009,7 +983,7 @@ const Product = (): React.ReactElement => {
                   <div className="pdp-col pdp-col-35">
                     <div className="pdp-product-info">
                       <h3 className="pdp-product-info__ic-title">INNER CIRCLE EXCLUSIVE</h3>
-                      <h2 className="pdp-product-info__title">Moon Magic</h2>
+                      <h2 className="pdp-product-info__title">{product.title}</h2>
                       <div className="pdp-pi-rating">
                         <div className="pdp-pi-rating__stars">
                           <svg
@@ -1119,44 +1093,17 @@ const Product = (): React.ReactElement => {
                       <div className="pdp-pi-selector-wrapper">
                         <div className="pdp-pi-rs-text">Select a ring size to reserve this box:</div>
                         <div id="pdp-pi-selector" className="pdp-pi-selector">
-                          <div className="pdp-pi-selector__btn-holder">
-                            <button
-                              className="pdp-pi-selector__btn pdp-pi-selector__btn_active"
-                              type="button"
-                              value={5}
-                            >
-                              5
-                            </button>
-                          </div>
-                          <div className="pdp-pi-selector__btn-holder">
-                            <button
-                              className="pdp-pi-selector__btn pdp-pi-selector__btn_disabled"
-                              type="button"
-                              value={6}
-                            >
-                              6
-                            </button>
-                          </div>
-                          <div className="pdp-pi-selector__btn-holder">
-                            <button className="pdp-pi-selector__btn" type="button" value={7}>
-                              7
-                            </button>
-                          </div>
-                          <div className="pdp-pi-selector__btn-holder">
-                            <button className="pdp-pi-selector__btn" type="button" value={8}>
-                              8
-                            </button>
-                          </div>
-                          <div className="pdp-pi-selector__btn-holder">
-                            <button className="pdp-pi-selector__btn" type="button" value={9}>
-                              9
-                            </button>
-                          </div>
-                          <div className="pdp-pi-selector__btn-holder">
-                            <button className="pdp-pi-selector__btn" type="button" value={10}>
-                              10
-                            </button>
-                          </div>
+                          {product.variants.map((variant, index) => (
+                            <div className="pdp-pi-selector__btn-holder" key={variant.title}>
+                              <button
+                                className={`pdp-pi-selector__btn ${index === 1 && 'pdp-pi-selector__btn_active'}`}
+                                type="button"
+                                value={Number(variant.title)}
+                              >
+                                {variant.title}
+                              </button>
+                            </div>
+                          ))}
                         </div>
                       </div>
                       <div className="pdp__chooser-container" id="pdp-ic-chooser-container">
@@ -4053,5 +4000,7 @@ const Product = (): React.ReactElement => {
     </div>
   )
 }
+
+export const getServerSideProps = productPageProps()
 
 export default Product
