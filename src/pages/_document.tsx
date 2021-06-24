@@ -48,6 +48,7 @@ export default class CustomDocument extends Document<CustomDocumentProps> {
           <script type="text/javascript" async src="/static/header.js" />
           <script type="text/javascript" async src="/static/home.js" />
           <script type="text/javascript" async src="/static/footer.js" />
+          <script type="text/javascript" async src="/static/product.js" />
         </body>
       </Html>
     )
