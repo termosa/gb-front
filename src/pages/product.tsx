@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Product as ProductType } from '@fragrantjewels/gravity-brands.components.trending-section'
-import productPageProps from '../resolvers/productPageProps'
+import productPageProps from './resolvers/productPageProps'
 import RollingBanner from '@fragrantjewels/gravity-brands.components.rolling-banner'
 
 type ProductPageProps = {

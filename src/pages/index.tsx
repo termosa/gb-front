@@ -960,7 +960,7 @@ const HomePage = ({ trendingProducts, innerCircleProduct }: HomePageProps): Reac
           {trendingProducts?.length && (
             <TrendingSection
               products={trendingProducts}
-              onSelectProduct={(productId: string) => (location.href = `/product/${productId}`)}
+              onSelectProduct={productId => (location.href = `/product?id=${productId}&${location.search.slice(1)}`)}
             />
           )}
           {innerCircleProduct && (
