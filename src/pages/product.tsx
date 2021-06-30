@@ -7,9 +7,10 @@ import Header from './header'
 type ProductPageProps = {
   product: ProductType
   recommendedProducts: Array<ProductType> | null
+  potentialProducts: Array<ProductType> | null
 }
 
-const Product = ({ product, recommendedProducts }: ProductPageProps): React.ReactElement => {
+const Product = ({ product, recommendedProducts, potentialProducts }: ProductPageProps): React.ReactElement => {
   const [isDropdownOpened, setIsDropdownOpened] = useState(false)
   const [currentVariant, setCurrentVariant] = useState(product.variants[0].variant_id)
   const [currentPrice, setCurrentPrice] = useState(product.variants[0].actual_price)
@@ -245,7 +246,9 @@ const Product = ({ product, recommendedProducts }: ProductPageProps): React.Reac
                                     />
                                   </button>
                                 </div>
-                                <span className="pdp__chooser__item-price">${currentPrice - currentPrice * 0.2}</span>
+                                <span className="pdp__chooser__item-price">
+                                  ${(currentPrice - currentPrice * 0.2).toFixed(2)}
+                                </span>
                               </div>
                             </div>
                             <div className="pdp__chooser__item__part pdp__chooser__item__part-bottom">
@@ -1149,18 +1152,22 @@ const Product = ({ product, recommendedProducts }: ProductPageProps): React.Reac
                   title="Recommended for you"
                   products={recommendedProducts}
                   onSelectProduct={(productId) =>
-                    (location.href = `/product?id=${productId}&${location.search.slice(1)}`)
+                    (location.href = `/product?id=${productId}&${
+                      location.search.match(/(?:\?|&)(base_url=[^&]+)(?:&|$)/)?.[1] || ''
+                    }`)
                   }
                 />
               )}
             </section>
             <section className="app-h-section app-h-products-section">
-              {recommendedProducts?.length && (
+              {potentialProducts?.length && (
                 <ProductsCarousel
                   title="More you might like"
-                  products={recommendedProducts}
+                  products={potentialProducts}
                   onSelectProduct={(productId) =>
-                    (location.href = `/product?id=${productId}&${location.search.slice(1)}`)
+                    (location.href = `/product?id=${productId}&${
+                      location.search.match(/(?:\?|&)(base_url=[^&]+)(?:&|$)/)?.[1] || ''
+                    }`)
                   }
                 />
               )}

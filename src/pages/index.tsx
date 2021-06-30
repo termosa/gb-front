@@ -32,7 +32,11 @@ const HomePage = ({ trendingProducts, innerCircleProduct }: HomePageProps): Reac
               title="What’s trending"
               subTitle="Shop our newest and best selling collections."
               products={trendingProducts}
-              onSelectProduct={(productId) => (location.href = `/product?id=${productId}&${location.search.slice(1)}`)}
+              onSelectProduct={(productId) =>
+                (location.href = `/product?id=${productId}&${
+                  location.search.match(/(?:\?|&)(base_url=[^&]+)(?:&|$)/)?.[1] || ''
+                }`)
+              }
             />
           )}
           {innerCircleProduct && (
