@@ -1,18 +1,27 @@
 import React from 'react'
 import Footer from '@fragrantjewels/gravity-brands.components.footer'
 import RollingBanner from '@fragrantjewels/gravity-brands.components.rolling-banner'
-import './styles/styles.scss'
+import styled from 'styled-components'
 
 export type MainPageLayoutProps = {
   children: React.ReactNode
 }
 
+const MainPageLayoutWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow: hidden;
+  -ms-transition: opacity linear 0.5s;
+  -webkit-transition: opacity linear 0.5s;
+  transition: opacity linear 0.5s;
+`
+
 export const MainPageLayout = ({ children }: MainPageLayoutProps): React.ReactElement => (
-  <div className="app-re-wrapper-outer" id="app-wrapper-outer">
+  <MainPageLayoutWrapper>
     <div className="app-re-wrapper" id="app-wrapper">
       <header className="app-re-header" id="app-header">
         <RollingBanner />
-
         <div className="app-re-header-inner">
           <div className="app-container">
             <div className="app-re-header__top">
@@ -941,8 +950,8 @@ export const MainPageLayout = ({ children }: MainPageLayoutProps): React.ReactEl
           </div>
         </div>
       </header>
+      {children}
     </div>
-    {children}
     <Footer className="Footer-Colored" />
-  </div>
+  </MainPageLayoutWrapper>
 )
