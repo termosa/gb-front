@@ -17,9 +17,15 @@ export type Product = {
     src: string
     alt?: string
   }
+  side_images?: Array<{
+    src: string
+    alt: string
+  }>
   title: string
   variants: Array<{
     actual_price: number
+    variant_id: number
+    title: string
   }>
 }
 

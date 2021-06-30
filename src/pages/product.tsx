@@ -11,6 +11,8 @@ type ProductPageProps = {
 
 const Product = ({ product, recommendedProducts }: ProductPageProps): React.ReactElement => {
   const [isDropdownOpened, setIsDropdownOpened] = useState(false)
+  const [currentVariant, setCurrentVariant] = useState(product.variants[0].variant_id)
+  const [currentPrice, setCurrentPrice] = useState(product.variants[0].actual_price)
 
   return (
     <MainPageLayout>
@@ -37,9 +39,9 @@ const Product = ({ product, recommendedProducts }: ProductPageProps): React.Reac
                               <li className="pdp-carousel-item_active">
                                 <img src={product.front_image?.src} alt={product.front_image?.alt} />
                               </li>
-                              {product.side_images.map((image) => (
-                                <li key={image?.src}>
-                                  <img src={image?.src} alt={image?.alt} />
+                              {product.side_images?.map((image) => (
+                                <li key={image.src}>
+                                  <img src={image.src} alt={image.alt} />
                                 </li>
                               ))}
                             </ul>
@@ -49,7 +51,7 @@ const Product = ({ product, recommendedProducts }: ProductPageProps): React.Reac
                               <div className="pdp-carousel__item">
                                 <img src={product.front_image?.src} alt={product.front_image?.alt} />
                               </div>
-                              {product.side_images.map((image) => (
+                              {product.side_images?.map((image) => (
                                 <div className="pdp-carousel__item" key={image?.src}>
                                   <img src={image?.src} alt={image?.alt} />
                                 </div>
@@ -174,12 +176,18 @@ const Product = ({ product, recommendedProducts }: ProductPageProps): React.Reac
                       <div className="pdp-pi-selector-wrapper">
                         <div className="pdp-pi-rs-text">Select a ring size to reserve this box:</div>
                         <div id="pdp-pi-selector" className="pdp-pi-selector">
-                          {product.variants.map((variant, index) => (
+                          {product.variants.map((variant) => (
                             <div className="pdp-pi-selector__btn-holder" key={variant.title}>
                               <button
-                                className={`pdp-pi-selector__btn ${index === 1 && 'pdp-pi-selector__btn_active'}`}
+                                className={`pdp-pi-selector__btn ${
+                                  variant.variant_id === currentVariant && 'pdp-pi-selector__btn_active'
+                                }`}
                                 type="button"
                                 value={Number(variant.title)}
+                                onClick={() => {
+                                  setCurrentVariant(variant.variant_id)
+                                  setCurrentPrice(variant.actual_price)
+                                }}
                               >
                                 {variant.title}
                               </button>
@@ -203,7 +211,7 @@ const Product = ({ product, recommendedProducts }: ProductPageProps): React.Reac
                               </div>
                               <div className="pdp__chooser__item__part pdp__chooser__item__part-top__content">
                                 <div className="pdp__chooser__item-content-text">Regular Price</div>
-                                <span className="pdp__chooser__item-price">$26.95</span>
+                                <span className="pdp__chooser__item-price">${currentPrice}</span>
                               </div>
                             </div>
                           </label>
@@ -237,7 +245,7 @@ const Product = ({ product, recommendedProducts }: ProductPageProps): React.Reac
                                     />
                                   </button>
                                 </div>
-                                <span className="pdp__chooser__item-price">$21.56</span>
+                                <span className="pdp__chooser__item-price">${currentPrice - currentPrice * 0.2}</span>
                               </div>
                             </div>
                             <div className="pdp__chooser__item__part pdp__chooser__item__part-bottom">
