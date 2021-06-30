@@ -5,7 +5,7 @@ import loadProduct from '@fragrantjewels/gravity-brands.modules.load-product'
 
 const TRENDING_PRODUCTS_COLLECTION_ID = 174027178074
 
-const loadTrendingProducts = (baseApiUrl?: string) =>
+export const loadTrendingProducts = (baseApiUrl?: string) =>
   loadCollection(TRENDING_PRODUCTS_COLLECTION_ID, baseApiUrl).then(
     (collection) => collection.products,
     () => null

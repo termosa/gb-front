@@ -6,7 +6,7 @@ import InlineSignupForm from '../../gravity-brands/components/inline-signup-form
 import ReviewsSection from '@fragrantjewels/gravity-brands.components.reviews-section'
 import ShopByProductsOverview from '@fragrantjewels/gravity-brands.components.shop-by-products-overview'
 import InnerCircleExclusive, { Product } from '@fragrantjewels/gravity-brands.components.inner-circle-exclusive'
-import TrendingSection, { Product as TrendingProduct } from '../../gravity-brands/components/trending-section'
+import ProductsCarousel, { Product as TrendingProduct } from '../../gravity-brands/components/products-carousel'
 import homePageProps from './resolvers/homePageProps'
 import signup from '@fragrantjewels/gravity-brands.modules.signup'
 import MainPageLayout from 'gravity-brands/components/main-page-layout'
@@ -25,7 +25,9 @@ const HomePage = ({ trendingProducts, innerCircleProduct }: HomePageProps): Reac
           <HeroGallery />
         </div>
         {trendingProducts?.length && (
-          <TrendingSection
+          <ProductsCarousel
+            title="What’s trending"
+            subTitle="Shop our newest and best selling collections."
             products={trendingProducts}
             onSelectProduct={(productId) => (location.href = `/product?id=${productId}&${location.search.slice(1)}`)}
           />

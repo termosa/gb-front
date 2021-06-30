@@ -54,7 +54,6 @@
     "@fragrantjewels/gravity-brands.components.reviews-section": "^0.0.7",
     "@fragrantjewels/gravity-brands.components.rolling-banner": "^0.0.6",
     "@fragrantjewels/gravity-brands.components.shop-by-products-overview": "^0.0.9",
-    "@fragrantjewels/gravity-brands.components.trending-section": "^0.0.8",
     "@fragrantjewels/gravity-brands.modules.load-collection": "^0.0.3",
     "@fragrantjewels/gravity-brands.modules.load-product": "^0.0.2",
     "@fragrantjewels/gravity-brands.modules.resolve-page-props": "^0.0.2",

@@ -3,10 +3,12 @@ import Slider, { Settings } from 'react-slick'
 import styled, { css } from 'styled-components'
 import cn, { Argument as ClassName } from 'classnames'
 
-export type TrendingSectionProps = {
+export type ProductsCarouselProps = {
   products: Array<Product>
   className?: ClassName
   onSelectProduct: (productId: number) => void
+  title: string
+  subTitle?: string
 }
 
 export type Product = {
@@ -504,7 +506,13 @@ const ProductCard = ({ product, onClick }: { product: Product; onClick: () => vo
     </ProductCardWrapper>
   ) : null
 
-export const TrendingSection: React.FC<TrendingSectionProps> = ({ products, className, onSelectProduct }) => {
+export const ProductsCarousel: React.FC<ProductsCarouselProps> = ({
+  products,
+  className,
+  onSelectProduct,
+  title,
+  subTitle,
+}) => {
   const [progress, setProgress] = useState(0)
   const settings: Settings = {
     slidesToShow: 3,
@@ -539,11 +547,11 @@ export const TrendingSection: React.FC<TrendingSectionProps> = ({ products, clas
   }
 
   return (
-    <Section className={cn('TrendingSection', className)}>
+    <Section className={cn('ProductsCarousel', className)}>
       <Container>
-        <SectionTitle>What’s trending</SectionTitle>
+        <SectionTitle>{title}</SectionTitle>
         <SectionText>
-          <p>Shop our newest and best selling collections.</p>
+          <p>{subTitle}</p>
         </SectionText>
         <ProductCards>
           <StyledSlider {...settings}>
