@@ -10,6 +10,7 @@ import ProductsCarousel, { Product as TrendingProduct } from '../../gravity-bran
 import homePageProps from './resolvers/homePageProps'
 import signup from '@fragrantjewels/gravity-brands.modules.signup'
 import MainPageLayout from 'gravity-brands/components/main-page-layout'
+import Header from './header'
 
 type HomePageProps = {
   trendingProducts: Array<TrendingProduct> | null
@@ -19,156 +20,159 @@ type HomePageProps = {
 
 const HomePage = ({ trendingProducts, innerCircleProduct }: HomePageProps): React.ReactElement => (
   <MainPageLayout>
-    <div className="app-re-content" id="app-content">
-      <main className="app-h-main">
-        <div className="HeroGallery-Container">
-          <HeroGallery />
-        </div>
-        {trendingProducts?.length && (
-          <ProductsCarousel
-            title="What’s trending"
-            subTitle="Shop our newest and best selling collections."
-            products={trendingProducts}
-            onSelectProduct={(productId) => (location.href = `/product?id=${productId}&${location.search.slice(1)}`)}
-          />
-        )}
-        {innerCircleProduct && (
-          <InnerCircleExclusive
-            product={innerCircleProduct}
-            onReserve={(variant) => alert(`We will ship you the product with size ${variant.title}`)}
-          />
-        )}
-        <section className="app-h-section app-h-section_colored app-h-section_mf">
-          <div className="app-h-container">
-            <h2 className="app-h-section__title">
-              The{' '}
-              <span>
-                <span className="app-h-section__title_part">most fun</span>
-              </span>{' '}
-              you’ve <br />
-              ever had relaxing
-            </h2>
-            <div className="app-h-mf-slider-wrapper">
-              <div className="app-h-mf-slider" id="app-h-mf-slider">
-                <div className="app-h-mf-slider_slide app-h-mf-card">
-                  <img
-                    className="app-h-mf-card__img"
-                    src="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/most-fun-img-1.jpg"
-                    alt=""
-                  />
-                  <h4 className="app-h-mf-card__title">Guilt Free Ingredients</h4>
-                  <div className="app-h-mf-card__text">
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. At eget iaculis eget eget neque, posuere
-                      quis placerat arcu. Ipsum est felis varius faucibus praesent convallis.
-                    </p>
+    <div className="app-re-wrapper" id="app-wrapper">
+      <Header />
+      <div className="app-re-content" id="app-content">
+        <main className="app-h-main">
+          <div className="HeroGallery-Container">
+            <HeroGallery />
+          </div>
+          {trendingProducts?.length && (
+            <ProductsCarousel
+              title="What’s trending"
+              subTitle="Shop our newest and best selling collections."
+              products={trendingProducts}
+              onSelectProduct={(productId) => (location.href = `/product?id=${productId}&${location.search.slice(1)}`)}
+            />
+          )}
+          {innerCircleProduct && (
+            <InnerCircleExclusive
+              product={innerCircleProduct}
+              onReserve={(variant) => alert(`We will ship you the product with size ${variant.title}`)}
+            />
+          )}
+          <section className="app-h-section app-h-section_colored app-h-section_mf">
+            <div className="app-h-container">
+              <h2 className="app-h-section__title">
+                The{' '}
+                <span>
+                  <span className="app-h-section__title_part">most fun</span>
+                </span>{' '}
+                you’ve <br />
+                ever had relaxing
+              </h2>
+              <div className="app-h-mf-slider-wrapper">
+                <div className="app-h-mf-slider" id="app-h-mf-slider">
+                  <div className="app-h-mf-slider_slide app-h-mf-card">
+                    <img
+                      className="app-h-mf-card__img"
+                      src="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/most-fun-img-1.jpg"
+                      alt=""
+                    />
+                    <h4 className="app-h-mf-card__title">Guilt Free Ingredients</h4>
+                    <div className="app-h-mf-card__text">
+                      <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. At eget iaculis eget eget neque,
+                        posuere quis placerat arcu. Ipsum est felis varius faucibus praesent convallis.
+                      </p>
+                    </div>
                   </div>
-                </div>
 
-                <div className="app-h-mf-slider_slide app-h-mf-card">
-                  <img
-                    className="app-h-mf-card__img"
-                    src="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/most-fun-img-2.jpg"
-                    alt=""
-                  />
-                  <h4 className="app-h-mf-card__title">Win $10,000 Ring</h4>
-                  <div className="app-h-mf-card__text">
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. At eget iaculis eget eget neque, posuere
-                      quis placerat arcu. Ipsum est felis varius faucibus praesent convallis.
-                    </p>
+                  <div className="app-h-mf-slider_slide app-h-mf-card">
+                    <img
+                      className="app-h-mf-card__img"
+                      src="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/most-fun-img-2.jpg"
+                      alt=""
+                    />
+                    <h4 className="app-h-mf-card__title">Win $10,000 Ring</h4>
+                    <div className="app-h-mf-card__text">
+                      <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. At eget iaculis eget eget neque,
+                        posuere quis placerat arcu. Ipsum est felis varius faucibus praesent convallis.
+                      </p>
+                    </div>
                   </div>
-                </div>
 
-                <div className="app-h-mf-slider_slide app-h-mf-card">
-                  <img
-                    className="app-h-mf-card__img"
-                    src="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/most-fun-img-3.jpg"
-                    alt=""
-                  />
-                  <h4 className="app-h-mf-card__title">Collectible Jewelry</h4>
-                  <div className="app-h-mf-card__text">
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. At eget iaculis eget eget neque, posuere
-                      quis placerat arcu. Ipsum est felis varius faucibus praesent convallis.
-                    </p>
+                  <div className="app-h-mf-slider_slide app-h-mf-card">
+                    <img
+                      className="app-h-mf-card__img"
+                      src="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/most-fun-img-3.jpg"
+                      alt=""
+                    />
+                    <h4 className="app-h-mf-card__title">Collectible Jewelry</h4>
+                    <div className="app-h-mf-card__text">
+                      <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. At eget iaculis eget eget neque,
+                        posuere quis placerat arcu. Ipsum est felis varius faucibus praesent convallis.
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
 
-        <div className="app-h-section app-h-collections-section">
-          <div className="app-h-container">
-            <div className="app-h-row-1-2">
-              <div className="app-h-col">
-                <CategoryShopCard
-                  image="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/collection-img-1.jpg"
-                  title="Valentine’s Shop"
-                  subTitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-                />
-              </div>
-              <div className="app-h-col">
-                <CategoryShopCard
-                  image="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/collection-img-2.jpg"
-                  title="Mythical Shop"
-                  subTitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-                />
+          <div className="app-h-section app-h-collections-section">
+            <div className="app-h-container">
+              <div className="app-h-row-1-2">
+                <div className="app-h-col">
+                  <CategoryShopCard
+                    image="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/collection-img-1.jpg"
+                    title="Valentine’s Shop"
+                    subTitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+                  />
+                </div>
+                <div className="app-h-col">
+                  <CategoryShopCard
+                    image="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/collection-img-2.jpg"
+                    title="Mythical Shop"
+                    subTitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+                  />
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <ReviewsSection
-          images={[
-            'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/buzzfeed.png',
-            'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/cosmopolitan.png',
-            'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/refinery29.png',
-            'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/allure.png',
-            'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/beauty-insider.png',
-            'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/popsugar.png',
-          ]}
-          quote="Lorem ipsum dolor sit amet, consectetur adipiscing elit. At eget iaculis eget eget neque, posuere quis placerat arcu. Ipsum est felis varius faucibus praesent.Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-          author="Samanta H."
-        />
-        <ShopByProductsOverview
-          products={[
-            {
-              product_id: 1,
-              image: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/shop-by-product-img-1.jpg',
-            },
-            {
-              product_id: 2,
-              image: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/shop-by-product-img-2.jpg',
-            },
-            {
-              product_id: 3,
-              image: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/shop-by-product-img-3.jpg',
-            },
-          ]}
-        />
-        <section className="app-h-section app-h-char-section app-h-char-section_colored">
-          <div className="app-h-container">
-            <PromiseBar />
-          </div>
-        </section>
-        <section className="app-h-section app-h-form-section">
-          <div className="app-h-container">
-            <InlineSignupForm onSignup={signup} />
-          </div>
-        </section>
-        <section className="app-h-section app-h-follow-section">
-          <div className="app-h-container">
-            <strong className="app-h-section__pre-title">Follow us</strong>
-            <h2 className="app-h-section__title">
-              <span>
-                <span className="app-h-section__title_part">@Fragrant_Jewels</span>
-              </span>
-            </h2>
-          </div>
-        </section>
-      </main>
+          <ReviewsSection
+            images={[
+              'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/buzzfeed.png',
+              'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/cosmopolitan.png',
+              'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/refinery29.png',
+              'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/allure.png',
+              'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/beauty-insider.png',
+              'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/popsugar.png',
+            ]}
+            quote="Lorem ipsum dolor sit amet, consectetur adipiscing elit. At eget iaculis eget eget neque, posuere quis placerat arcu. Ipsum est felis varius faucibus praesent.Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+            author="Samanta H."
+          />
+          <ShopByProductsOverview
+            products={[
+              {
+                product_id: 1,
+                image: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/shop-by-product-img-1.jpg',
+              },
+              {
+                product_id: 2,
+                image: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/shop-by-product-img-2.jpg',
+              },
+              {
+                product_id: 3,
+                image: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/shop-by-product-img-3.jpg',
+              },
+            ]}
+          />
+          <section className="app-h-section app-h-char-section app-h-char-section_colored">
+            <div className="app-h-container">
+              <PromiseBar />
+            </div>
+          </section>
+          <section className="app-h-section app-h-form-section">
+            <div className="app-h-container">
+              <InlineSignupForm onSignup={signup} />
+            </div>
+          </section>
+          <section className="app-h-section app-h-follow-section">
+            <div className="app-h-container">
+              <strong className="app-h-section__pre-title">Follow us</strong>
+              <h2 className="app-h-section__title">
+                <span>
+                  <span className="app-h-section__title_part">@Fragrant_Jewels</span>
+                </span>
+              </h2>
+            </div>
+          </section>
+        </main>
+      </div>
     </div>
   </MainPageLayout>
 )
