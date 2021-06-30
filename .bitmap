@@ -67,6 +67,12 @@
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/links-column-group"
     },
+    "components/main-page-layout": {
+        "scope": "",
+        "version": "",
+        "mainFile": "index.ts",
+        "rootDir": "gravity-brands/components/main-page-layout"
+    },
     "components/nav-icons": {
         "scope": "fragrantjewels.gravity-brands",
         "version": "0.0.6",
