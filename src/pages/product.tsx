@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import ProductsCarousel, { Product as ProductType } from '../../gravity-brands/components/products-carousel'
 import productPageProps from './resolvers/productPageProps'
 import MainPageLayout from 'gravity-brands/components/main-page-layout'
-import Header from './header'
 
 type ProductPageProps = {
   product: ProductType
@@ -18,7 +17,6 @@ const Product = ({ product, recommendedProducts, potentialProducts }: ProductPag
   return (
     <MainPageLayout>
       <div className="app-re-wrapper" id="app-wrapper">
-        <Header />
         <div className="app-re-content" id="app-content">
           <main className="app-h-main">
             {/* Content */}

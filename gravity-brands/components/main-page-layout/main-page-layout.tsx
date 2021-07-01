@@ -1,6 +1,7 @@
 import React from 'react'
 import Footer from '@fragrantjewels/gravity-brands.components.footer'
 import styled from 'styled-components'
+import Header from '@fragrantjewels/gravity-brands.components.header'
 
 export type MainPageLayoutProps = {
   children: React.ReactNode
@@ -14,10 +15,16 @@ const MainPageLayoutWrapper = styled.div`
   -ms-transition: opacity linear 0.5s;
   -webkit-transition: opacity linear 0.5s;
   transition: opacity linear 0.5s;
+  padding-top: 159px;
+
+  @media (max-width: 1200px) {
+    padding-top: 139px;
+  }
 `
 
 export const MainPageLayout = ({ children }: MainPageLayoutProps): React.ReactElement => (
   <MainPageLayoutWrapper>
+    <Header onSearch={(value) => console.log(value)} />
     {children}
     <Footer className="Footer-Colored" />
   </MainPageLayoutWrapper>

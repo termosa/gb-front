@@ -10,7 +10,6 @@ import ProductsCarousel, { Product as TrendingProduct } from '../../gravity-bran
 import homePageProps from './resolvers/homePageProps'
 import signup from '@fragrantjewels/gravity-brands.modules.signup'
 import MainPageLayout from 'gravity-brands/components/main-page-layout'
-import Header from './header'
 
 type HomePageProps = {
   trendingProducts: Array<TrendingProduct> | null
@@ -21,7 +20,6 @@ type HomePageProps = {
 const HomePage = ({ trendingProducts, innerCircleProduct }: HomePageProps): React.ReactElement => (
   <MainPageLayout>
     <div className="app-re-wrapper" id="app-wrapper">
-      <Header />
       <div className="app-re-content" id="app-content">
         <main className="app-h-main">
           <div className="HeroGallery-Container">
