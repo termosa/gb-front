@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import ProductsCarousel, { Product as ProductType } from '../../gravity-brands/components/products-carousel'
+import ProductsCarousel, { Product as ProductType } from '@fragrantjewels/gravity-brands.components.products-carousel'
 import productPageProps from './resolvers/productPageProps'
 import MainPageLayout from 'gravity-brands/components/main-page-layout'
 

@@ -1733,7 +1733,7 @@
     core-js "^3.0.0"
     styled-components "^5.2.3"
 
-"@fragrantjewels/gravity-brands.components.footer@^0.0.6":
+"@fragrantjewels/gravity-brands.components.footer@0.0.6", "@fragrantjewels/gravity-brands.components.footer@^0.0.6":
   version "0.0.6"
   resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.components.footer/-/@fragrantjewels-gravity-brands.components.footer-0.0.6.tgz#848a3b55aa517ac742d60fbaf7f5f50b47f12be1"
   integrity sha1-hIo7VapResdC1g+69/X1C0fxK+E=
@@ -1746,6 +1746,21 @@
     react-media-hook "^0.4.9"
     styled-components "^5.2.3"
 
+"@fragrantjewels/gravity-brands.components.header@0.0.12":
+  version "0.0.12"
+  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.components.header/-/@fragrantjewels-gravity-brands.components.header-0.0.12.tgz#ce81dff8c192db80adb620a506df5cb88871a8e8"
+  integrity sha1-zoHf+MGS24CttiClBt9cuIhxqOg=
+  dependencies:
+    "@fragrantjewels/gravity-brands.components.nav-icons" "0.0.6"
+    "@fragrantjewels/gravity-brands.components.nav-tabs" "0.0.6"
+    "@fragrantjewels/gravity-brands.components.points-widget" "0.0.4"
+    "@fragrantjewels/gravity-brands.components.rolling-banner" "0.0.6"
+    "@fragrantjewels/gravity-brands.components.search-field" "0.0.4"
+    "@fragrantjewels/gravity-brands.components.signin-signup" "0.0.4"
+    classnames "^2.3.1"
+    core-js "^3.0.0"
+    styled-components "^5.2.3"
+
 "@fragrantjewels/gravity-brands.components.hero-gallery@^0.0.8":
   version "0.0.8"
   resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.components.hero-gallery/-/@fragrantjewels-gravity-brands.components.hero-gallery-0.0.8.tgz#f680370ea4643ee2d6fe87a73e13675e0e08cf12"
@@ -1756,15 +1771,16 @@
     react-slick "^0.28.1"
     styled-components "^5.2.3"
 
-"@fragrantjewels/gravity-brands.components.inline-signup-form@^0.0.8":
-  version "0.0.8"
-  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.components.inline-signup-form/-/@fragrantjewels-gravity-brands.components.inline-signup-form-0.0.8.tgz#c11157655aa3422f835aa7e21b05f763346e2ed4"
-  integrity sha1-wRFXZVqjQi+DWqfiGwX3YzRuLtQ=
+"@fragrantjewels/gravity-brands.components.inline-signup-form@^0.0.11":
+  version "0.0.11"
+  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.components.inline-signup-form/-/@fragrantjewels-gravity-brands.components.inline-signup-form-0.0.11.tgz#8916ec09e782eba5179b7f91ed4106e521991923"
+  integrity sha1-iRbsCeeC66UXm3+R7UEG5SGZGSM=
   dependencies:
-    "@fragrantjewels/gravity-brands.components.button" "0.0.7"
+    "@fragrantjewels/gravity-brands.components.button" "0.0.8"
     classnames "^2.3.1"
     core-js "^3.0.0"
     styled-components "^5.2.3"
+    use-defer "^2.1.0"
 
 "@fragrantjewels/gravity-brands.components.inner-circle-exclusive@^0.0.8":
   version "0.0.8"
@@ -1785,6 +1801,54 @@
   dependencies:
     classnames "^2.3.1"
     core-js "^3.0.0"
+    styled-components "^5.2.3"
+
+"@fragrantjewels/gravity-brands.components.main-page-layout@^0.0.1":
+  version "0.0.1"
+  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.components.main-page-layout/-/@fragrantjewels-gravity-brands.components.main-page-layout-0.0.1.tgz#68c97878a8fc522f288bc56d9423036afeffbaa9"
+  integrity sha1-aMl4eKj8Ui8oi8VtlCMDav7/uqk=
+  dependencies:
+    "@fragrantjewels/gravity-brands.components.footer" "0.0.6"
+    "@fragrantjewels/gravity-brands.components.header" "0.0.12"
+    core-js "^3.0.0"
+    styled-components "^5.2.3"
+
+"@fragrantjewels/gravity-brands.components.nav-icons@0.0.6":
+  version "0.0.6"
+  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.components.nav-icons/-/@fragrantjewels-gravity-brands.components.nav-icons-0.0.6.tgz#dd7235c10f6d2563482b91b894f55bec88567a84"
+  integrity sha1-3XI1wQ9tJWNIK5G4lPVb7IhWeoQ=
+  dependencies:
+    "@fragrantjewels/gravity-brands.components.signin-signup" "0.0.4"
+    classnames "^2.3.1"
+    core-js "^3.0.0"
+    styled-components "^5.2.3"
+
+"@fragrantjewels/gravity-brands.components.nav-tabs@0.0.6":
+  version "0.0.6"
+  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.components.nav-tabs/-/@fragrantjewels-gravity-brands.components.nav-tabs-0.0.6.tgz#4e30e69999365cc35e08341392f93520966e0852"
+  integrity sha1-TjDmmZk2XMNeCDQTkvk1IJZuCFI=
+  dependencies:
+    "@fragrantjewels/gravity-brands.components.header" "0.0.12"
+    classnames "^2.3.1"
+    core-js "^3.0.0"
+    styled-components "^5.2.3"
+
+"@fragrantjewels/gravity-brands.components.points-widget@0.0.4":
+  version "0.0.4"
+  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.components.points-widget/-/@fragrantjewels-gravity-brands.components.points-widget-0.0.4.tgz#d28c6c22e9e730c854bdeec51deaa51d67d15b89"
+  integrity sha1-0oxsIunnMMhUve7FHeqlHWfRW4k=
+  dependencies:
+    core-js "^3.0.0"
+    styled-components "^5.2.3"
+
+"@fragrantjewels/gravity-brands.components.products-carousel@^0.0.1":
+  version "0.0.1"
+  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.components.products-carousel/-/@fragrantjewels-gravity-brands.components.products-carousel-0.0.1.tgz#747649f354beeddb5cd53d236b15039f557607e4"
+  integrity sha1-dHZJ81S+7dtc1T0jaxUDn1V2B+Q=
+  dependencies:
+    classnames "^2.3.1"
+    core-js "^3.0.0"
+    react-slick "^0.28.1"
     styled-components "^5.2.3"
 
 "@fragrantjewels/gravity-brands.components.promise-bar@^0.0.9":
@@ -1815,13 +1879,22 @@
     core-js "^3.0.0"
     styled-components "^5.2.3"
 
-"@fragrantjewels/gravity-brands.components.rolling-banner@^0.0.6":
+"@fragrantjewels/gravity-brands.components.rolling-banner@0.0.6", "@fragrantjewels/gravity-brands.components.rolling-banner@^0.0.6":
   version "0.0.6"
   resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.components.rolling-banner/-/@fragrantjewels-gravity-brands.components.rolling-banner-0.0.6.tgz#b52ab68c75dbf4011367229276b9dfdeb359adbd"
   integrity sha1-tSq2jHXb9AETZyKSdrnf3rNZrb0=
   dependencies:
     core-js "^3.0.0"
     react-slick "^0.28.1"
+    styled-components "^5.2.3"
+
+"@fragrantjewels/gravity-brands.components.search-field@0.0.4":
+  version "0.0.4"
+  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.components.search-field/-/@fragrantjewels-gravity-brands.components.search-field-0.0.4.tgz#a19df68915d3df64ee0f1af19c26a15a6b2b430b"
+  integrity sha1-oZ32iRXT32TuDxrxnCahWmsrQws=
+  dependencies:
+    classnames "^2.3.1"
+    core-js "^3.0.0"
     styled-components "^5.2.3"
 
 "@fragrantjewels/gravity-brands.components.shop-by-product-card@0.0.7":
@@ -1844,6 +1917,15 @@
     react-slick "^0.28.1"
     styled-components "^5.2.3"
 
+"@fragrantjewels/gravity-brands.components.signin-signup@0.0.4":
+  version "0.0.4"
+  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.components.signin-signup/-/@fragrantjewels-gravity-brands.components.signin-signup-0.0.4.tgz#a499be67be40a07052c5143191ae0ff4ae66497b"
+  integrity sha1-pJm+Z75AoHBSxRQxka4P9K5mSXs=
+  dependencies:
+    classnames "^2.3.1"
+    core-js "^3.0.0"
+    styled-components "^5.2.3"
+
 "@fragrantjewels/gravity-brands.components.social-links@0.0.5":
   version "0.0.5"
   resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.components.social-links/-/@fragrantjewels-gravity-brands.components.social-links-0.0.5.tgz#e8e83a763fdfa840cac9087f917c539be2d060ff"
@@ -1851,16 +1933,6 @@
   dependencies:
     classnames "^2.3.1"
     core-js "^3.0.0"
-    styled-components "^5.2.3"
-
-"@fragrantjewels/gravity-brands.components.trending-section@^0.0.8":
-  version "0.0.8"
-  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.components.trending-section/-/@fragrantjewels-gravity-brands.components.trending-section-0.0.8.tgz#6d3b39a91b0af494fab5f300defca0b7b479ad11"
-  integrity sha1-bTs5qRsK9JT6tfMA3vygt7R5rRE=
-  dependencies:
-    classnames "^2.3.1"
-    core-js "^3.0.0"
-    react-slick "^0.28.1"
     styled-components "^5.2.3"
 
 "@fragrantjewels/gravity-brands.modules.api@0.0.3":

@@ -2,14 +2,14 @@ import React from 'react'
 import HeroGallery from '@fragrantjewels/gravity-brands.components.hero-gallery'
 import CategoryShopCard from '@fragrantjewels/gravity-brands.components.category-shop-card'
 import PromiseBar from '@fragrantjewels/gravity-brands.components.promise-bar'
-import InlineSignupForm from '../../gravity-brands/components/inline-signup-form'
+import InlineSignupForm from '@fragrantjewels/gravity-brands.components.inline-signup-form'
 import ReviewsSection from '@fragrantjewels/gravity-brands.components.reviews-section'
 import ShopByProductsOverview from '@fragrantjewels/gravity-brands.components.shop-by-products-overview'
 import InnerCircleExclusive, { Product } from '@fragrantjewels/gravity-brands.components.inner-circle-exclusive'
-import ProductsCarousel, { Product as TrendingProduct } from '../../gravity-brands/components/products-carousel'
+import ProductsCarousel, { Product as TrendingProduct } from '@fragrantjewels/gravity-brands.components.products-carousel'
 import homePageProps from './resolvers/homePageProps'
 import signup from '@fragrantjewels/gravity-brands.modules.signup'
-import MainPageLayout from 'gravity-brands/components/main-page-layout'
+import MainPageLayout from '@fragrantjewels/gravity-brands.components.main-page-layout'
 
 type HomePageProps = {
   trendingProducts: Array<TrendingProduct> | null
