@@ -1,12 +1,16 @@
-import React from 'react'
+import React, { Dispatch, SetStateAction } from 'react'
 import cn, { Argument as ClassName } from 'classnames'
+import { ExtendableBlockContentType } from '@fragrantjewels/gravity-brands.components.header'
 import styled from 'styled-components'
 
 export type NavTabsProps = {
   className?: ClassName
+  setExtendableBlockContent: Dispatch<SetStateAction<ExtendableBlockContentType>>
 }
 
 const SWrapper = styled.div`
+  padding-bottom: 11px;
+
   @media (max-width: 1199px) {
     padding: 0;
     margin: 0 -7.5px;
@@ -22,7 +26,6 @@ const SDesktopNav = styled.ul`
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  padding: 0;
   margin: 0;
   list-style: none;
   font-size: 1em;
@@ -34,11 +37,11 @@ const SDesktopNav = styled.ul`
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  padding: 10px 0;
+  padding: 0 15px;
   margin: 0 -10px;
   @media (max-width: 1199px) {
+    padding: 10px 0;
     font-size: 0.74em;
-    padding: 0 15px important;
     max-width: 990px;
     min-width: 600px;
     & > li:last-child {
@@ -56,7 +59,7 @@ const SNavItem = styled.li`
   }
 
   @media (min-width: 1200px) {
-    font-size: 0.85em;
+    font-size: 0.74em;
     margin: 0;
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
@@ -77,14 +80,19 @@ const SNavItem = styled.li`
 `
 
 const SNavItemExtendable = styled(SNavItem)`
+  position: relative;
+  padding-right: 13px;
+
   & > a {
     display: flex;
     align-items: center;
   }
   & > a:after {
-    margin-left: 5px;
     content: '';
-    font-size: 12px;
+    position: absolute;
+    right: 0;
+    top: 1px;
+    font-size: 11px;
     display: none;
     -webkit-transition: all ease-out 0.15s;
     transition: all ease-out 0.15s;
@@ -133,8 +141,8 @@ const SSubscribeButton = styled.li`
     color: #fff;
     border-radius: 2em;
     border: 1px solid #ee67a0;
-    padding: 0.5em 1.3em;
-    font-size: 1em;
+    padding: 0.7em 1.6em;
+    font-size: 11px;
     letter-spacing: 0.1em;
     -webkit-transition: all linear 0.2s;
     transition: all linear 0.2s;
@@ -149,55 +157,34 @@ const SSubscribeButton = styled.li`
   }
 `
 
-const TABS_LIST = [
-  {
-    title: 'Spring',
-    extendable: false,
-  },
-  {
-    title: 'Bath Bombs',
-    extendable: false,
-  },
-  {
-    title: 'Candles',
-    extendable: false,
-  },
-  {
-    title: 'All',
-    extendable: true,
-  },
-  {
-    title: 'Subscription',
-    extendable: true,
-  },
-  {
-    title: 'Rewards',
-    extendable: true,
-  },
-  {
-    title: 'Vault',
-    extendable: false,
-  },
-]
-
-export function NavTabs({ className }: NavTabsProps): React.ReactElement | null {
+export function NavTabs({ className, setExtendableBlockContent }: NavTabsProps): React.ReactElement | null {
   return (
     <SWrapper className={cn('NavTabs', className)}>
       <SDesktopNav>
         <SSubscribeButton style={{ display: 'list-item' }}>
           <a href="">Subscribe</a>
         </SSubscribeButton>
-        {TABS_LIST.map((item) =>
-          item.extendable ? (
-            <SNavItemExtendable>
-              <a href="">{item.title}</a>
-            </SNavItemExtendable>
-          ) : (
-            <SNavItem>
-              <a href="">{item.title}</a>
-            </SNavItem>
-          )
-        )}
+        <SNavItem>
+          <a href="">Spring</a>
+        </SNavItem>
+        <SNavItem>
+          <a href="">Bath bombs</a>
+        </SNavItem>
+        <SNavItem>
+          <a href="">Candles</a>
+        </SNavItem>
+        <SNavItemExtendable onMouseEnter={() => setExtendableBlockContent('All')}>
+          <a href="">All</a>
+        </SNavItemExtendable>
+        <SNavItemExtendable onMouseEnter={() => setExtendableBlockContent('Subscription')}>
+          <a href="">Subscription</a>
+        </SNavItemExtendable>
+        <SNavItemExtendable onMouseEnter={() => setExtendableBlockContent('Rewards')}>
+          <a href="">Rewards</a>
+        </SNavItemExtendable>
+        <SNavItem>
+          <a href="">Vault</a>
+        </SNavItem>
       </SDesktopNav>
     </SWrapper>
   )

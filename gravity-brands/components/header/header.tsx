@@ -48,7 +48,7 @@ const SWrapper = styled.div`
 
 const SInnerWrapper = styled.div`
   box-sizing: border-box;
-  padding: 11px 0;
+  padding-top: 11px;
   -webkit-box-shadow: 0px 4px 9px rgba(0, 0, 0, 0.1);
   box-shadow: 0px 4px 9px rgba(0, 0, 0, 0.1);
   position: relative;
@@ -221,11 +221,336 @@ const SPointsWidget = styled.div`
   }
 `
 
+const ExtendableBlock = styled.div`
+  background: #fff;
+  font-size: 1em;
+  white-space: normal;
+
+  * > img {
+    margin-bottom: 15px;
+  }
+
+  @media (min-width: 1200px) {
+    padding: 2em 0 0;
+    font-size: 0.75em;
+    box-shadow: 0px 4px 9px rgba(0, 0, 0, 0.1);
+  }
+`
+
+const ExtendableBlockWrapper = styled.div<{ opened: string }>`
+  position: absolute;
+  width: 100%;
+  top: 100%;
+  left: 0;
+  right: 0;
+  display: block;
+  transition: all ease-out 0.25s;
+  z-index: 0;
+  transform: ${({ opened }) => (opened ? 'translateY(0)' : 'translateY(-150%)')};
+
+  @media (max-width: 1199px) {
+    & {
+      display: none !important;
+    }
+  }
+`
+
+const ExtendableBlockContainer = styled.div`
+  margin: 0 auto;
+  width: 990px;
+  display: flex;
+  justify-content: space-between;
+`
+
+const ExtendableBlockListTitle = styled.strong`
+  display: block;
+  font-weight: 600;
+  margin: 0 0 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-align: start;
+
+  @media (min-width: 1200px) {
+    margin: 0 0 0.9em;
+  }
+`
+
+const ExtendableBlockList = styled.ul`
+  & {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 15px;
+    text-transform: none;
+  }
+  @media (min-width: 1200px) {
+    & {
+      margin: 0 0 25px;
+    }
+  }
+`
+
+const ExtendableBlockListItem = styled.li`
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid #ccc;
+  @media (min-width: 1200px) {
+    margin: 0 0 0.45em;
+    border: 0;
+    text-align: start;
+  }
+
+  & > a {
+    display: block;
+    padding: 15px 0 15px;
+    letter-spacing: 0.05em;
+    -webkit-transition: color linear 0.2s;
+    transition: color linear 0.2s;
+    color: #000;
+    text-decoration: none;
+  }
+
+  @media (min-width: 1200px) {
+    & > a {
+      display: inline-block;
+      padding: 6px 0 6px 0;
+    }
+    & > a:hover {
+      font-weight: 600;
+    }
+  }
+`
+
+const AnimatedLink = styled.a`
+  display: inline-block;
+  padding-bottom: 5px;
+  border-bottom: 1px solid black;
+  text-transform: uppercase;
+  font-weight: bold;
+  cursor: pointer;
+  color: black;
+  text-decoration: none;
+`
+
+const ExtendableBlockItem = styled.div`
+  & > * {
+    text-decoration: none;
+    color: black;
+    display: inline-block;
+  }
+
+  margin: 0 1.5em 25px 1.5em;
+  width: 80%;
+  text-align: start;
+`
+
+const AllContent = () => (
+  <ExtendableBlock>
+    <ExtendableBlockContainer>
+      <ExtendableBlockItem>
+        <ExtendableBlockListTitle>Shop by product</ExtendableBlockListTitle>
+        <ExtendableBlockList>
+          <ExtendableBlockListItem>
+            <a href="/collections/bath-bombs">Bath Bombs</a>
+          </ExtendableBlockListItem>
+          <ExtendableBlockListItem>
+            <a href="https://www.fragrantjewels.com/collections/jewel-candles">Candles</a>
+          </ExtendableBlockListItem>
+          <ExtendableBlockListItem>
+            <a href="/collections/the-jewelry-store">Jewelry</a>
+          </ExtendableBlockListItem>
+          <ExtendableBlockListItem>
+            <a href="https://www.fragrantjewels.com/collections/gift-sets">Gift Sets</a>
+          </ExtendableBlockListItem>
+          <ExtendableBlockListItem>
+            <AnimatedLink>
+              <span>Shop all</span>
+            </AnimatedLink>
+          </ExtendableBlockListItem>
+        </ExtendableBlockList>
+      </ExtendableBlockItem>
+      <ExtendableBlockItem>
+        <ExtendableBlockListTitle>Shop by Fragrance</ExtendableBlockListTitle>
+        <ExtendableBlockList>
+          <ExtendableBlockListItem>
+            <a href="/collections/all-products#fragrance=Fragrance:%20Aquatic">Aquatic</a>
+          </ExtendableBlockListItem>
+          <ExtendableBlockListItem>
+            <a href="/collections/all-products#fragrance=Fragrance:%20Citrus">Citrus</a>
+          </ExtendableBlockListItem>
+          <ExtendableBlockListItem>
+            <a href="/collections/all-products#fragrance=Fragrance:%20Floral">Floral</a>
+          </ExtendableBlockListItem>
+          <ExtendableBlockListItem>
+            <a href="/collections/all-products#fragrance=Fragrance:%20Floral%20Woods">Floral Woods</a>
+          </ExtendableBlockListItem>
+          <ExtendableBlockListItem>
+            <a href="/collections/all-products#fragrance=Fragrance:%20Fresh">Fresh</a>
+          </ExtendableBlockListItem>
+          <ExtendableBlockListItem>
+            <a href="/collections/all-products#fragrance=Fragrance:%20Fruity">Fruity</a>
+          </ExtendableBlockListItem>
+          <ExtendableBlockListItem>
+            <a href="/collections/all-products#fragrance=Fragrance:%20Green">Green</a>
+          </ExtendableBlockListItem>
+          <ExtendableBlockListItem>
+            <a href="/collections/all-products#fragrance=Fragrance:%20Spicy/%20Smoky">Spicy/ Smoky</a>
+          </ExtendableBlockListItem>
+          <ExtendableBlockListItem>
+            <a href="/collections/all-products#fragrance=Fragrance:%20Woodsy">Woodsy</a>
+          </ExtendableBlockListItem>
+          <ExtendableBlockListItem>
+            <AnimatedLink>Shop all</AnimatedLink>
+          </ExtendableBlockListItem>
+        </ExtendableBlockList>
+      </ExtendableBlockItem>
+      <ExtendableBlockItem>
+        <div>
+          <ExtendableBlockListTitle>Shop by Material</ExtendableBlockListTitle>
+          <ExtendableBlockList>
+            <ExtendableBlockListItem>
+              <a href="/collections/all-products#material=Material:%2018K%20Gold%20Plated">18K Gold Plated</a>
+            </ExtendableBlockListItem>
+            <ExtendableBlockListItem>
+              <a href="/collections/all-products#material=Material:%20925%20Sterling%20Silver">925 Sterling Silver</a>
+            </ExtendableBlockListItem>
+            <ExtendableBlockListItem>
+              <a href="/collections/all-products#material=Material:%20Rhodium%20plated">Rhodium plated</a>
+            </ExtendableBlockListItem>
+            <ExtendableBlockListItem>
+              <AnimatedLink>
+                <span>Shop all</span>
+              </AnimatedLink>
+            </ExtendableBlockListItem>
+          </ExtendableBlockList>
+        </div>
+        <div>
+          <ExtendableBlockListTitle>Shop by Metal Color</ExtendableBlockListTitle>
+          <ExtendableBlockList>
+            <ExtendableBlockListItem>
+              <a href="/collections/all-products#color=Metal%20Color:%20Gold">Gold</a>
+            </ExtendableBlockListItem>
+            <ExtendableBlockListItem>
+              <a href="/collections/all-products#color=Metal%20Color:%20Rose%20Gold">Rose Gold</a>
+            </ExtendableBlockListItem>
+            <ExtendableBlockListItem>
+              <a href="/collections/all-products#color=Metal%20Color:%20Silver">Silver</a>
+            </ExtendableBlockListItem>
+            <ExtendableBlockListItem>
+              <AnimatedLink>
+                <span>Shop all</span>
+              </AnimatedLink>
+            </ExtendableBlockListItem>
+          </ExtendableBlockList>
+        </div>
+      </ExtendableBlockItem>
+      <ExtendableBlockItem>
+        <a href="/products/piece-by-piece-bath-bomb">
+          <img src="https://fragrantjewels.s3.amazonaws.com/app/app-nav/nav-all-img-6-dt.jpg" />
+          <AnimatedLink>Celebrate Autism Acceptance</AnimatedLink>
+        </a>
+      </ExtendableBlockItem>
+    </ExtendableBlockContainer>
+  </ExtendableBlock>
+)
+
+const SubscriptionContent = () => (
+  <ExtendableBlock>
+    <ExtendableBlockContainer>
+      <ExtendableBlockItem>
+        <a href="/products/piece-by-piece-bath-bomb">
+          <img src="https://fragrantjewels-assets.s3.amazonaws.com/images/under-the-sea/uts-nav-subscription.jpg" />
+          <ExtendableBlockListTitle>New Inner Circle Exclusive Collections Every Month</ExtendableBlockListTitle>
+          <p>This month discover the beauty that lies beneath with the new Under the Sea collection.</p>
+          <AnimatedLink>Learn more</AnimatedLink>
+        </a>
+      </ExtendableBlockItem>
+      <ExtendableBlockItem>
+        <a href="/products/piece-by-piece-bath-bomb">
+          <img src="https://fragrantjewels.s3.amazonaws.com/app/app-nav/nav-subscription-img-rare.jpg" />
+          <ExtendableBlockListTitle>Everything There Is To Know About Rare Collections</ExtendableBlockListTitle>
+          <p>Start collecting unique limited edition sets not available for sale! Find out how you can qualify.</p>
+          <AnimatedLink>Learn more</AnimatedLink>
+        </a>
+      </ExtendableBlockItem>
+      <ExtendableBlockItem>
+        <ExtendableBlockListTitle>Subscription</ExtendableBlockListTitle>
+        <ExtendableBlockList>
+          <ExtendableBlockListItem>
+            <a href="/collections/all-products#fragrance=Fragrance:%20Aquatic">How it works</a>
+          </ExtendableBlockListItem>
+          <ExtendableBlockListItem>
+            <a href="/collections/all-products#fragrance=Fragrance:%20Citrus">Join now</a>
+          </ExtendableBlockListItem>
+          <ExtendableBlockListItem>
+            <a href="/collections/all-products#fragrance=Fragrance:%20Floral">Current box</a>
+          </ExtendableBlockListItem>
+          <ExtendableBlockListItem>
+            <a href="/collections/all-products#fragrance=Fragrance:%20Floral%20Woods">Members Only Store</a>
+          </ExtendableBlockListItem>
+          <ExtendableBlockListItem>
+            <a href="/collections/all-products#fragrance=Fragrance:%20Fresh">Rare Collections</a>
+          </ExtendableBlockListItem>
+        </ExtendableBlockList>
+      </ExtendableBlockItem>
+    </ExtendableBlockContainer>
+  </ExtendableBlock>
+)
+
+const RewardsContent = () => (
+  <ExtendableBlock>
+    <ExtendableBlockContainer>
+      <ExtendableBlockItem>
+        <a href="/products/piece-by-piece-bath-bomb">
+          <img src="https://fragrantjewels.s3.amazonaws.com/app/app-nav/nav-rewards-img-1.jpg" />
+          <ExtendableBlockListTitle>New Rewards Every Week</ExtendableBlockListTitle>
+          <p>Every dollar you spend earns you reward points you can use to redeem free jewelry, products and more!</p>
+          <AnimatedLink>Learn more</AnimatedLink>
+        </a>
+      </ExtendableBlockItem>
+      <ExtendableBlockItem>
+        <a href="/products/piece-by-piece-bath-bomb">
+          <img src="https://fragrantjewels.s3.amazonaws.com/app/app-nav/nav-rewards-img-2.jpg" />
+          <ExtendableBlockListTitle>Earn Platinum Reward Status</ExtendableBlockListTitle>
+          <p>Get exclusive access to VIP offers, 3x points and more when you earn Platinum status!</p>
+          <AnimatedLink>Learn more</AnimatedLink>
+        </a>
+      </ExtendableBlockItem>
+      <ExtendableBlockItem>
+        <ExtendableBlockListTitle>Rewards</ExtendableBlockListTitle>
+        <ExtendableBlockList>
+          <ExtendableBlockListItem>
+            <a href="/collections/all-products#fragrance=Fragrance:%20Aquatic">Rewards Boutique</a>
+          </ExtendableBlockListItem>
+          <ExtendableBlockListItem>
+            <a href="/collections/all-products#fragrance=Fragrance:%20Citrus">How it Works</a>
+          </ExtendableBlockListItem>
+        </ExtendableBlockList>
+      </ExtendableBlockItem>
+    </ExtendableBlockContainer>
+  </ExtendableBlock>
+)
+
+export type ExtendableBlockContentType = 'All' | 'Rewards' | 'Subscription' | ''
+
+const ExtendableBlockContent = ({ name }: { name: ExtendableBlockContentType }) => {
+  switch (name) {
+    case 'All':
+      return <AllContent />
+    case 'Subscription':
+      return <SubscriptionContent />
+    case 'Rewards':
+      return <RewardsContent />
+    default:
+      return null
+  }
+}
+
 export function Header({ className, onSearch }: HeaderProps): React.ReactElement | null {
   const [searchDropdownVisible, setSearchDropdownVisible] = useState(false)
+  const [extendableBlockContent, setExtendableBlockContent] = useState<ExtendableBlockContentType>('')
 
   return (
-    <SWrapper className={cn('Header', className)}>
+    <SWrapper className={cn('Header', className)} onMouseLeave={() => setExtendableBlockContent('')}>
       <RollingBanner />
       <SInnerWrapper>
         <SContentWrapper>
@@ -263,8 +588,18 @@ export function Header({ className, onSearch }: HeaderProps): React.ReactElement
                       d="M76.8452 29.9864H76.6273V27.2356H76.8452C77.1176 28.7608 77.921 29.5234 79.2283 29.5234C79.6913 29.5234 80.059 29.4008 80.3722 29.1557C80.6718 28.9106 80.8352 28.5974 80.8352 28.2025C80.8352 27.7667 80.6173 27.3854 80.1679 27.0449C79.1194 26.4321 78.2479 25.901 77.567 25.4517C76.8861 25.0023 76.5592 24.4167 76.5592 23.695C76.5592 23.0958 76.7771 22.5919 77.2401 22.1834C77.6895 21.7749 78.2478 21.5706 78.9151 21.5706C79.3509 21.5706 79.8003 21.6795 80.2769 21.8838C80.4948 21.9791 80.6582 22.0336 80.7399 22.0336C80.9442 22.0336 81.0803 21.8838 81.1484 21.5706H81.3663V24.3486H81.1484C81.0259 23.5315 80.7671 22.946 80.345 22.5783C79.9228 22.2242 79.4462 22.0472 78.9287 22.0472C78.5338 22.0472 78.207 22.1698 77.921 22.4013C77.6487 22.6328 77.4989 22.9324 77.4989 23.2728C77.4989 23.4907 77.5942 23.7358 77.7848 23.9809C77.9755 24.2261 78.5474 24.621 79.5007 25.1248C80.0863 25.438 80.5356 25.6968 80.8352 25.901C81.1348 26.1053 81.3799 26.364 81.5842 26.6909C81.7885 27.0177 81.8838 27.3581 81.8838 27.7394C81.8838 28.3795 81.6387 28.9106 81.1484 29.3327C80.6582 29.7549 80.059 29.9728 79.3509 29.9728C78.9696 29.9728 78.493 29.8774 77.921 29.6868C77.567 29.5642 77.3355 29.5098 77.1993 29.5098C77.0086 29.537 76.8861 29.6868 76.8452 29.9864Z"
                       fill="#221F1F"
                     ></path>
-                    <path fillRule="evenodd" clipRule="evenodd" d="M83.9946 27.1403L99.6005 27.8756H83.9946V27.1403Z" fill="#221F1F"></path>
-                    <path fillRule="evenodd" clipRule="evenodd" d="M32.4784 27.1403V27.8756H16.8861L32.4784 27.1403Z" fill="#221F1F"></path>
+                    <path
+                      fillRule="evenodd"
+                      clipRule="evenodd"
+                      d="M83.9946 27.1403L99.6005 27.8756H83.9946V27.1403Z"
+                      fill="#221F1F"
+                    ></path>
+                    <path
+                      fillRule="evenodd"
+                      clipRule="evenodd"
+                      d="M32.4784 27.1403V27.8756H16.8861L32.4784 27.1403Z"
+                      fill="#221F1F"
+                    ></path>
                   </svg>
                 </SLogo>
               </SLogoWrapper>
@@ -297,9 +632,12 @@ export function Header({ className, onSearch }: HeaderProps): React.ReactElement
               </SMobileSearchDropdown>
             )}
           </SSearchWrapper>
-          <NavTabs />
+          <NavTabs setExtendableBlockContent={setExtendableBlockContent} />
         </SContentWrapper>
       </SInnerWrapper>
+      <ExtendableBlockWrapper opened={extendableBlockContent}>
+        <ExtendableBlockContent name={extendableBlockContent} />
+      </ExtendableBlockWrapper>
     </SWrapper>
   )
 }

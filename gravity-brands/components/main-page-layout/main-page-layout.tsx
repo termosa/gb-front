@@ -15,10 +15,10 @@ const MainPageLayoutWrapper = styled.div`
   -ms-transition: opacity linear 0.5s;
   -webkit-transition: opacity linear 0.5s;
   transition: opacity linear 0.5s;
-  padding-top: 159px;
+  padding-top: 138px;
 
   @media (max-width: 1200px) {
-    padding-top: 139px;
+    padding-top: 146px;
   }
 `
 
