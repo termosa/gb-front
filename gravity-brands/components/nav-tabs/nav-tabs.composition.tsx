@@ -4,7 +4,7 @@ import { NavTabs } from './nav-tabs'
 export const BasicRingSize = (): React.ReactElement => (
   <div>
     <div style={{ width: 990, margin: '0 auto' }}>
-      <NavTabs />
+      <NavTabs setExtendableBlockContent={console.log} />
     </div>
   </div>
 )
