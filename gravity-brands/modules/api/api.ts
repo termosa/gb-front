@@ -1,6 +1,6 @@
 import http, { Query, Method } from '@fragrantjewels/gravity-brands.modules.http'
 
-const baseApiUrl = process.env.BASE_API_URL
+const baseApiUrl = () => process.env.BASE_API_URL
 
 const defaultParseResponse = <APIResponse>(response: Response): Promise<APIResponse> =>
   response
