@@ -18,7 +18,7 @@ const loadInnerCircleProduct = (id: string, baseApiUrl?: string) =>
 
 export default function homePageProps<PropsType>(): (context: GetServerSidePropsContext) => Promise<{ props: PropsType }> {
   return resolvePageProps(context => ({
-    trendingProducts: loadTrendingProducts(context.query.base_url?.toString()),
-    innerCircleProduct: loadInnerCircleProduct(context?.query?.id?.toString(), context.query.base_url?.toString()),
+    trendingProducts: loadTrendingProducts(context.query.base_url?.toString() || process.env.BASE_API_URL),
+    innerCircleProduct: loadInnerCircleProduct(context?.query?.id?.toString(), context.query.base_url?.toString() || process.env.BASE_API_URL),
   }))
 }

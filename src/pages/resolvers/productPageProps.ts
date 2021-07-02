@@ -6,8 +6,8 @@ import { loadCollection as loadCollectionRequest } from '@fragrantjewels/gravity
 const RECOMMENDED_PRODUCTS_COLLECTION_ID = 173959905370
 const POTENTIAL_PRODUCTS_COLLECTION_ID = 174027145306
 
-const loadCollection = (collectionId: number) =>
-  loadCollectionRequest(collectionId).then(
+const loadCollection = (collectionId: number, baseApiUrl?: string) =>
+  loadCollectionRequest(collectionId, baseApiUrl).then(
     (collection) => collection.products,
     () => null
   )
@@ -15,8 +15,8 @@ const loadCollection = (collectionId: number) =>
 function productPageProps<PropsType>(): (context: GetServerSidePropsContext) => Promise<{ props: PropsType }> {
   return resolvePageProps((context) => ({
     product: loadProduct(Number(context.query.id), context.query.base_url?.toString()).catch(() => null),
-    recommendedProducts: loadCollection(RECOMMENDED_PRODUCTS_COLLECTION_ID),
-    potentialProducts: loadCollection(POTENTIAL_PRODUCTS_COLLECTION_ID),
+    recommendedProducts: loadCollection(RECOMMENDED_PRODUCTS_COLLECTION_ID, context.query.base_url?.toString() || process.env.BASE_API_URL),
+    potentialProducts: loadCollection(POTENTIAL_PRODUCTS_COLLECTION_ID, context.query.base_url?.toString() || process.env.BASE_API_URL),
   }))
 }
 
