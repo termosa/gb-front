@@ -4,7 +4,17 @@ const patchURLWithQuery = (path: string, query?: Query) =>
   query ? `${path}${path.includes('?') ? '&' : '?'}${stringifyQuery(query)}` : path
 
 export const http = ({ method = 'GET', url, query, body, headers, mode }: Props): Promise<Response> => {
-  return fetch(patchURLWithQuery(url, query), { method, headers, body, mode })
+  console.log(`Request ${method} ${url}`)
+  return fetch(patchURLWithQuery(url, query), { method, headers, body, mode }).then(
+    (response) => {
+      console.log(`Success ${response.status} ${method} ${url}`)
+      return response
+    },
+    (error) => {
+      console.log(`Failed ${method} ${url}:\n\t${error}`)
+      return Promise.reject(error)
+    }
+  )
 }
 
 export type Method = 'GET' | 'POST' | 'PUT' | 'DELETE'
