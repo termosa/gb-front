@@ -33,7 +33,7 @@
     },
     "components/header": {
         "scope": "fragrantjewels.gravity-brands",
-        "version": "0.0.12",
+        "version": "0.0.14",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/header"
     },
@@ -69,19 +69,19 @@
     },
     "components/main-page-layout": {
         "scope": "fragrantjewels.gravity-brands",
-        "version": "0.0.1",
+        "version": "0.0.3",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/main-page-layout"
     },
     "components/nav-icons": {
         "scope": "fragrantjewels.gravity-brands",
-        "version": "0.0.6",
+        "version": "0.0.7",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/nav-icons"
     },
     "components/nav-tabs": {
         "scope": "fragrantjewels.gravity-brands",
-        "version": "0.0.6",
+        "version": "0.0.8",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/nav-tabs"
     },
@@ -169,6 +169,12 @@
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/generators/component"
     },
+    "generators/module": {
+        "scope": "fragrantjewels.gravity-brands",
+        "version": "0.0.1",
+        "mainFile": "index.ts",
+        "rootDir": "gravity-brands/generators/module"
+    },
     "helpers/presentation-canvas": {
         "scope": "fragrantjewels.gravity-brands",
         "version": "0.0.9",
@@ -183,13 +189,13 @@
     },
     "modules/api": {
         "scope": "fragrantjewels.gravity-brands",
-        "version": "0.0.4",
+        "version": "0.0.8",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/modules/api"
     },
     "modules/base-api-url": {
         "scope": "fragrantjewels.gravity-brands",
-        "version": "0.0.1",
+        "version": "0.0.3",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/modules/base-api-url"
     },
@@ -207,13 +213,13 @@
     },
     "modules/load-collection": {
         "scope": "fragrantjewels.gravity-brands",
-        "version": "0.0.4",
+        "version": "0.0.8",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/modules/load-collection"
     },
     "modules/load-product": {
         "scope": "fragrantjewels.gravity-brands",
-        "version": "0.0.3",
+        "version": "0.0.7",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/modules/load-product"
     },
@@ -237,7 +243,7 @@
     },
     "modules/signup": {
         "scope": "fragrantjewels.gravity-brands",
-        "version": "0.0.5",
+        "version": "0.0.9",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/modules/signup"
     },

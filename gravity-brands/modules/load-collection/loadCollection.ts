@@ -26,5 +26,5 @@ export type Collection = {
   products: Array<Product>
 }
 
-export const loadCollection = (collectionId: number, base?: string): Promise<Collection> =>
-  api<Collection>({ path: `/inventory/collections/${collectionId}`, ...base && { base } })
+export const loadCollection = (collectionId: number): Promise<Collection> =>
+  api<Collection>({ path: `/inventory/collections/${collectionId}` })

@@ -1,22 +1,22 @@
 import { GetServerSidePropsContext } from 'next'
 import resolvePageProps from '@fragrantjewels/gravity-brands.modules.resolve-page-props'
 import loadProduct from '@fragrantjewels/gravity-brands.modules.load-product'
-import { loadCollection as loadCollectionRequest } from '@fragrantjewels/gravity-brands.modules.load-collection'
+import loadCollection, { Product } from '@fragrantjewels/gravity-brands.modules.load-collection'
 
 const RECOMMENDED_PRODUCTS_COLLECTION_ID = 173959905370
 const POTENTIAL_PRODUCTS_COLLECTION_ID = 174027145306
 
-const loadCollection = (collectionId: number, baseApiUrl?: string) =>
-  loadCollectionRequest(collectionId, baseApiUrl).then(
+const loadCollectionProducts = (collectionId: number): Promise<Product[] | null> =>
+  loadCollection(collectionId).then(
     (collection) => collection.products,
     () => null
   )
 
 function productPageProps<PropsType>(): (context: GetServerSidePropsContext) => Promise<{ props: PropsType }> {
   return resolvePageProps((context) => ({
-    product: loadProduct(Number(context.query.id), context.query.base_url?.toString()).catch(() => null),
-    recommendedProducts: loadCollection(RECOMMENDED_PRODUCTS_COLLECTION_ID, context.query.base_url?.toString() || process.env.BASE_API_URL),
-    potentialProducts: loadCollection(POTENTIAL_PRODUCTS_COLLECTION_ID, context.query.base_url?.toString() || process.env.BASE_API_URL),
+    product: loadProduct(Number(context.query.id)).catch(() => null),
+    recommendedProducts: loadCollectionProducts(RECOMMENDED_PRODUCTS_COLLECTION_ID),
+    potentialProducts: loadCollectionProducts(POTENTIAL_PRODUCTS_COLLECTION_ID),
   }))
 }
 
