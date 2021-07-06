@@ -6,7 +6,7 @@ export const BasicCategoryShopCard = (): React.ReactElement => (
   <PresentationCanvas>
     <CategoryShopCard
       title="Shop card title"
-      subTitle="Shop card subtitle"
+      subTitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
       image="https://i.ibb.co/QFSL0Xd/Background.jpg"
     />
   </PresentationCanvas>

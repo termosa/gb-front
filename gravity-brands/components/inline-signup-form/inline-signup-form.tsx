@@ -22,13 +22,14 @@ const Img = styled.img`
 `
 
 const Title = styled.h2`
-  font: 700 32px/1 'Cormorant Garamond', serif;
+  font: 700 40px/1 'Cormorant Garamond', serif;
   margin: 0 auto 15px;
 `
 
 const Text = styled.p`
-  font: 12px/1.3 'Montserrat', sans-serif;
+  font: 16px/1.3 'Montserrat', sans-serif;
   margin-bottom: 15px;
+  white-space: break-spaces;
 `
 
 const Form = styled.form`
@@ -39,9 +40,9 @@ const Form = styled.form`
 
 const Input = styled.input`
   width: 75%;
-  height: 47px;
+  height: 55px;
   padding: 10px 15px;
-  font: 400 12px/1 'Montserrat', sans-serif;
+  font: 400 16px/1.3 'Montserrat', sans-serif;
   border: 0.5px solid #9059c8;
   border-right: 0;
   background: #fff;
@@ -55,8 +56,8 @@ const FormButton = styled(Button)`
   border: 0.5px solid #9059c8;
   padding: 0;
   cursor: pointer;
-  height: 47px;
-  font: 700 12px/1 'Montserrat', sans-serif;
+  height: 55px;
+  font: 700 20px/1 'Montserrat', sans-serif;
   color: #fff;
   text-transform: uppercase;
   background: #9059c8;

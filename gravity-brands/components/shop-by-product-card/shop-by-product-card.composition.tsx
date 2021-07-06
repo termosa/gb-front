@@ -4,6 +4,9 @@ import PresentationCanvas from '@fragrantjewels/gravity-brands.helpers.presentat
 
 export const BasicShopByProductCard = (): React.ReactElement => (
   <PresentationCanvas>
-    <ShopByProductCard image="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/shop-by-product-img-1.jpg" />
+    <ShopByProductCard
+      image="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/shop-by-product-img-1.jpg"
+      title={'SHOP NOW'}
+    />
   </PresentationCanvas>
 )
