@@ -6,10 +6,13 @@ import InlineSignupForm from '@fragrantjewels/gravity-brands.components.inline-s
 import ReviewsSection from '@fragrantjewels/gravity-brands.components.reviews-section'
 import ShopByProductsOverview from '@fragrantjewels/gravity-brands.components.shop-by-products-overview'
 import InnerCircleExclusive, { Product } from '@fragrantjewels/gravity-brands.components.inner-circle-exclusive'
-import ProductsCarousel, { Product as TrendingProduct } from '@fragrantjewels/gravity-brands.components.products-carousel'
+import ProductsCarousel, {
+  Product as TrendingProduct,
+} from '@fragrantjewels/gravity-brands.components.products-carousel'
 import homePageProps from './resolvers/homePageProps'
 import signup from '@fragrantjewels/gravity-brands.modules.signup'
 import MainPageLayout from '@fragrantjewels/gravity-brands.components.main-page-layout'
+import FollowUs from '@fragrantjewels/gravity-brands.components.follow-us'
 
 type HomePageProps = {
   trendingProducts: Array<TrendingProduct> | null
@@ -61,7 +64,7 @@ const HomePage = ({ trendingProducts, innerCircleProduct }: HomePageProps): Reac
                       src="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/most-fun-img-1.jpg"
                       alt=""
                     />
-                    <h4 className="app-h-mf-card__title">Guilt Free Ingredients</h4>
+                    <h4 className="app-h-mf-card__title"> Ingredients</h4>
                     <div className="app-h-mf-card__text">
                       <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. At eget iaculis eget eget neque,
@@ -107,20 +110,16 @@ const HomePage = ({ trendingProducts, innerCircleProduct }: HomePageProps): Reac
           <div className="app-h-section app-h-collections-section">
             <div className="app-h-container">
               <div className="app-h-row-1-2">
-                <div className="app-h-col">
-                  <CategoryShopCard
-                    image="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/collection-img-1.jpg"
-                    title="Valentine’s Shop"
-                    subTitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-                  />
-                </div>
-                <div className="app-h-col">
-                  <CategoryShopCard
-                    image="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/collection-img-2.jpg"
-                    title="Mythical Shop"
-                    subTitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-                  />
-                </div>
+                <CategoryShopCard
+                  image="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/collection-img-1.jpg"
+                  title="Valentine’s Shop"
+                  subTitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+                />
+                <CategoryShopCard
+                  image="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/collection-img-2.jpg"
+                  title="Mythical Shop"
+                  subTitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+                />
               </div>
             </div>
           </div>
@@ -142,22 +141,21 @@ const HomePage = ({ trendingProducts, innerCircleProduct }: HomePageProps): Reac
               {
                 product_id: 1,
                 image: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/shop-by-product-img-1.jpg',
+                title: 'CANDLES',
               },
               {
                 product_id: 2,
                 image: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/shop-by-product-img-2.jpg',
+                title: 'BODY SCRUBS',
               },
               {
                 product_id: 3,
                 image: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/shop-by-product-img-3.jpg',
+                title: 'BUNDLES',
               },
             ]}
           />
-          <section className="app-h-section app-h-char-section app-h-char-section_colored">
-            <div className="app-h-container">
-              <PromiseBar />
-            </div>
-          </section>
+          <PromiseBar />
           <section className="app-h-section app-h-form-section">
             <div className="app-h-container">
               <InlineSignupForm onSignup={signup} />
@@ -165,12 +163,7 @@ const HomePage = ({ trendingProducts, innerCircleProduct }: HomePageProps): Reac
           </section>
           <section className="app-h-section app-h-follow-section">
             <div className="app-h-container">
-              <strong className="app-h-section__pre-title">Follow us</strong>
-              <h2 className="app-h-section__title">
-                <span>
-                  <span className="app-h-section__title_part">@Fragrant_Jewels</span>
-                </span>
-              </h2>
+              <FollowUs />
             </div>
           </section>
         </main>

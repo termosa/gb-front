@@ -3,12 +3,24 @@ import { ShopByProductsOverview, ProductDetails } from './shop-by-products-overv
 import PresentationCanvas from '@fragrantjewels/gravity-brands.helpers.presentation-canvas'
 
 const mockProducts: Array<ProductDetails> = [
-  { image: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/shop-by-product-img-1.jpg', product_id: 1 },
-  { image: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/shop-by-product-img-2.jpg', product_id: 2 },
-  { image: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/shop-by-product-img-3.jpg', product_id: 3 },
+  {
+    image: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/shop-by-product-img-1.jpg',
+    product_id: 1,
+    title: 'CANDLES',
+  },
+  {
+    image: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/shop-by-product-img-2.jpg',
+    product_id: 2,
+    title: 'BODY SCRUBS',
+  },
+  {
+    image: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/shop-by-product-img-3.jpg',
+    product_id: 3,
+    title: 'BUNDLES',
+  },
 ]
 
-export const BasicShopByProductsOverview = () => (
+export const BasicShopByProductsOverview = (): React.ReactElement => (
   <PresentationCanvas>
     <ShopByProductsOverview products={mockProducts} />
   </PresentationCanvas>

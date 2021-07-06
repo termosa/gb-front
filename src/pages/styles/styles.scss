@@ -2,12 +2,14 @@
 @import "header";
 @import "sliders";
 @import "slick.min";
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,700;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
 $white: #fff;
 $black: #000;
 $purple: #9059c8;
 $lightYellow: rgba(253, 251, 249, 1);
 .Footer-Colored {
-  background-color: #000;
+  background-color: $black;
 }
 
 .HeroGallery-Container {
@@ -18,7 +20,7 @@ $lightYellow: rgba(253, 251, 249, 1);
 }
 
 .Footer-Colored {
-  background-color: #000;
+  background-color: $black;
 }
 
 .app-h-main {
@@ -114,7 +116,7 @@ $lightYellow: rgba(253, 251, 249, 1);
     text-transform: uppercase;
     border: 0.5px solid $black;
     border-radius: 0;
-    font: 500 12px/1 "Montserrat", sans-serif;
+    font: 500 14px/1 "Montserrat", sans-serif;
     text-decoration: none;
     transition: all linear 0.2s;
     background-color: $white;
@@ -604,7 +606,7 @@ $lightYellow: rgba(253, 251, 249, 1);
 .app-h-collections-section {
     margin: 0 0 20px;
     @media (min-width: 768px) {
-        margin: 0 0 34px;
+        margin: 0 0 40px;
     }
 }
 

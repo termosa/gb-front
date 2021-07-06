@@ -25,10 +25,9 @@ const SCardImage = styled.img`
 const SCardTitle = styled.div`
   margin: 0 0 15px;
   padding: 0 0 12px;
-  font-size: 25px;
   text-align: center;
   position: relative;
-  font: 700 27px/1.3 'Cormorant Garamond', serif;
+  font: 700 32px/1.3 'Cormorant Garamond', serif;
   white-space: nowrap;
   font-variant-numeric: lining-nums;
   &:after {
@@ -46,7 +45,7 @@ const SCardTitle = styled.div`
 
 const SCardDescription = styled.div`
   font-family: 'Montserrat', sans-serif;
-  font-size: 12px;
+  font-size: 16px;
   line-height: 1.5;
   margin: 0 0 10px;
   word-wrap: break-word;

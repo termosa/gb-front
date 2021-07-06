@@ -12,11 +12,11 @@ export interface ReviewsSectionProps extends Omit<React.HTMLProps<HTMLDivElement
 
 const SReviewSection = styled.section`
   background-color: #fdfbf9;
-  font: 12px/1.3 'Montserrat', sans-serif;
-  padding: 30px 0;
+  font: 16px/1.3 'Montserrat', sans-serif;
+  padding: 52px 0 56px;
   text-align: center;
   @media (min-width: 768px) {
-    padding: 40px 0;
+    padding: 44px 0;
   }
 `
 
@@ -34,10 +34,7 @@ const SStars = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0 0 7px;
-  @media (min-width: 768px) {
-    margin: 0 0 15px;
-  }
+  margin: 0 0 12px;
 `
 
 const SStar = styled.span`
@@ -54,12 +51,12 @@ const SStarIcon = (
   </svg>
 )
 
-const SPretitle = styled.strong`
+const SReviewAmount = styled.strong`
   text-transform: uppercase;
   display: block;
-  font: 600 10px/1.3 'Montserrat', sans-serif;
+  font: 600 16px/1.25 'Montserrat', sans-serif;
   letter-spacing: 0.12em;
-  margin: 0 0 17px;
+  margin: 0 0 32px;
   @media (min-width: 768px) {
     margin: 0 0 25px;
   }
@@ -67,26 +64,25 @@ const SPretitle = styled.strong`
 
 const STitle = styled.h3`
   text-align: center;
-  font: 700 25px/1.3 'Cormorant Garamond', serif;
-  margin: 0 0 15px;
-  @media (min-width: 768px) {
-    font-size: 26px;
-  }
+  font: 700 40px/1 'Cormorant Garamond', serif;
+  letter-spacing: -0.02em;
+  margin: 0 0 32px;
 `
 
 const SQuote = styled.figure`
-  margin: 0 auto 25px;
+  margin: 0 auto 32px;
   max-width: 900px;
 `
 
 const SBlockQuote = styled.blockquote`
+  font: 500 20px/1.4 'Cormorant Garamond', serif;
+  white-space: break-spaces;
   padding: 0;
-  margin: 0 0 23px;
-  font: 500 15px/1.5 'Cormorant Garamond', serif;
+  margin: 0 0 32px;
 `
 
 const SFigcaption = styled.figcaption`
-  font: 600 10px/1.3 'Montserrat', sans-serif;
+  font: 600 16px/1.25 'Montserrat', sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.12em;
 `
@@ -243,7 +239,7 @@ export function ReviewsSection({ images, quote, author, className }: ReviewsSect
           <SStar>{SStarIcon}</SStar>
           <SStar>{SStarIcon}</SStar>
         </SStars>
-        <SPretitle>100,600+ 5 STAR REVIEWS</SPretitle>
+        <SReviewAmount>100,600+ 5 STAR REVIEWS</SReviewAmount>
         <STitle>You didn’t hear it from us...</STitle>
         <SQuote>
           <SBlockQuote>

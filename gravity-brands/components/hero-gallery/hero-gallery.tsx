@@ -2,6 +2,7 @@ import React from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import Slider, { Settings } from 'react-slick'
 import styled from 'styled-components'
+import Button from '@fragrantjewels/gravity-brands.components.button'
 
 export type HeroGalleryProps = {
   className?: ClassName
@@ -210,16 +211,19 @@ const SlideContent = styled.div`
 `
 
 const SlidePreTitle = styled.div`
-  font-weight: 600;
+  font: 600 14px/17px 'Montserrat', sans-serif;
   text-transform: uppercase;
   display: block;
-  letter-spacing: 2px;
-  margin: 0px 0 10px;
+  letter-spacing: 0.16em;
+  margin: 0 0 8px;
 `
 
 const SlideTitle = styled.div`
-  font: 700 32px/1 'Cormorant Garamond', serif;
-  margin: 0 0 15px;
+  font: 700 48px/1 'Cormorant Garamond', serif;
+  letter-spacing: -0.02em;
+  font-style: normal;
+  font-weight: bold;
+  margin: 0 0 12px;
 
   & > span {
     font-style: italic;
@@ -231,34 +235,9 @@ const SlideTitle = styled.div`
 `
 
 const SlideText = styled.div`
-  padding: 0 0 6px;
-
   p {
-    margin: 0 0 10px;
-  }
-`
-
-const SlideLink = styled.div`
-  display: inline-block;
-  padding: 13px 15px;
-  min-width: 142px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  border: 0.5px solid black;
-  border-radius: 0;
-  font: 500 12px/1 'Montserrat', sans-serif;
-  text-decoration: none;
-  transition: all linear 0.2s;
-  cursor: pointer;
-  background-color: black;
-  color: white;
-  min-width: 128px;
-
-  &:hover {
-    @media (min-width: 1200px) {
-      background-color: white;
-      color: black;
-    }
+    font: 400 16px/1.5 'Montserrat', serif;
+    margin: 0 0 20px;
   }
 `
 
@@ -274,7 +253,7 @@ export const HeroGallery = ({ className }: HeroGalleryProps): React.ReactElement
   }
 
   return (
-    <SliderWrapper className={cn('HeroGallery', className)}>
+    <SliderWrapper className={cn('HeroGallery', className, 'temp-font')}>
       <Slider {...settings}>
         <Slide>
           <SlideContent>
@@ -283,14 +262,15 @@ export const HeroGallery = ({ className }: HeroGalleryProps): React.ReactElement
               SAVOR{' '}
               <span>
                 the <br />
-                quiet
               </span>{' '}
               MOMENTS
             </SlideTitle>
             <SlideText>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. At eget iaculis eget eget neque.</p>
             </SlideText>
-            <SlideLink>Shop Now</SlideLink>
+            <Button backColor={'#000'} frontColor={'#fff'} width={'155px'}>
+              SHOP NOW
+            </Button>
           </SlideContent>
         </Slide>
         <Slide>
@@ -300,14 +280,15 @@ export const HeroGallery = ({ className }: HeroGalleryProps): React.ReactElement
               SAVOR{' '}
               <span>
                 the <br />
-                quiet
               </span>{' '}
               MOMENTS
             </SlideTitle>
             <SlideText>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. At eget iaculis eget eget neque.</p>
             </SlideText>
-            <SlideLink>Shop Now</SlideLink>
+            <Button backColor={'#000'} frontColor={'#fff'} width={'155px'}>
+              SHOP NOW
+            </Button>
           </SlideContent>
         </Slide>
         <Slide>
@@ -317,14 +298,15 @@ export const HeroGallery = ({ className }: HeroGalleryProps): React.ReactElement
               SAVOR{' '}
               <span>
                 the <br />
-                quiet
               </span>{' '}
               MOMENTS
             </SlideTitle>
             <SlideText>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. At eget iaculis eget eget neque.</p>
             </SlideText>
-            <SlideLink>Shop Now</SlideLink>
+            <Button backColor={'#000'} frontColor={'#fff'} width={'155px'}>
+              SHOP NOW
+            </Button>
           </SlideContent>
         </Slide>
       </Slider>
