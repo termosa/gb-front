@@ -24,8 +24,8 @@ export type Product = {
       id: number
       src: string
     }
-  ],
-  variants: Array<Variant>,
+  ]
+  variants: Array<Variant>
 }
 
 export type InnerCircleExclusiveProps = {
@@ -48,13 +48,9 @@ const STitleWrapper = styled.div`
 `
 
 const STitle = styled.h2`
-  font: 700 30px/1 'Cormorant Garamond', serif;
+  font: 700 40px/1 'Cormorant Garamond', serif;
   text-align: center;
-  margin: 0 auto 10px;
-
-  @media (min-width: 375px) {
-    font-size: 32px;
-  }
+  margin: 0 auto 16px;
 `
 
 const STitleUnderline = styled.span`
@@ -73,7 +69,9 @@ const STitleUnderline = styled.span`
 const SSubTitle = styled.div`
   box-sizing: border-box;
   text-align: center;
-  padding-bottom: 5px;
+  font: 16px/1.5 'Montserrat', sans-serif;
+  white-space: break-spaces;
+  padding-bottom: 22px;
   max-width: 400px;
   margin: 0 auto;
 `
@@ -85,7 +83,7 @@ const SButtonWrapper = styled.div`
 
 const SContentWrapper = styled.div`
   margin: 0 0 10px 0;
-  padding: 24px 0 25px;
+  padding: 29px 0 25px;
   box-sizing: border-box;
   font: 12px/ 1.3 'Montserrat', sans-serif;
   background-color: #fdfbf9;
@@ -101,7 +99,7 @@ const SContentWrapper = styled.div`
   background: linear-gradient(0deg, #fdfbf9 0%, #fdfbf9 83%, white 83%, white 100%);
 
   @media (min-width: 992px) {
-    padding: 24px 0 45px;
+    padding: 29px 0 45px;
     margin: 0 0 32px 0;
     background: -webkit-gradient(
       linear,
@@ -295,7 +293,7 @@ const SDetailsContainer = styled.div`
 `
 
 const SInnerCircleLabel = styled.strong`
-  font-size: 12px;
+  font-size: 16px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: #9059c8;
@@ -311,7 +309,7 @@ const SProductTitle = styled.h3`
 `
 
 const SPricesContainer = styled.div`
-  margin: 0 0 17px;
+  font: 16px/ 1.3 'Montserrat', sans-serif;
 `
 
 const SPriceLabel = styled.span`
@@ -325,14 +323,15 @@ const SDiscountPriceLabel = styled(SPriceLabel)`
 
 const SSelectRingLabel = styled.strong`
   font-weight: 400;
-  margin: 0 0 18px;
+  margin: 18px 0 16px;
   display: block;
 `
 
 const SRingSizeWrapper = styled.div``
 
 const STaxInfo = styled.div`
-  font-size: 10px;
+  font-size: 12px;
+  text-align: center;
   color: #878787;
 `
 
@@ -341,7 +340,7 @@ export function InnerCircleExclusive({
   product,
   onReserve,
 }: InnerCircleExclusiveProps): React.ReactElement | null {
-  const [selectedVariant, setVariant] = useState<Variant | undefined>();
+  const [selectedVariant, setVariant] = useState<Variant | undefined>()
 
   const actualPrice = (selectedVariant || product.variants[0]).actual_price
   const comparePrice = (selectedVariant || product.variants[0]).compare_at_price
@@ -371,8 +370,8 @@ export function InnerCircleExclusive({
                   <SLeftImageContainer>
                     <img src={product.side_images[0].src} alt={product.title} />
                   </SLeftImageContainer>
-                  {product.side_images.length > 1
-                    ? <React.Fragment>
+                  {product.side_images.length > 1 ? (
+                    <React.Fragment>
                       <SPrevButton>
                         <span>Prev</span>
                       </SPrevButton>
@@ -380,8 +379,7 @@ export function InnerCircleExclusive({
                         <span>Next</span>
                       </SNextButton>
                     </React.Fragment>
-                    : null
-                  }
+                  ) : null}
                 </SLeftSliderPart>
                 <SRightSliderPart>
                   <img src={product.front_image.src} alt={product.title} />
@@ -395,15 +393,14 @@ export function InnerCircleExclusive({
                 <SPricesContainer>
                   {comparePrice ? (
                     <>
-                      <SDiscountPriceLabel>{formatPrice(actualPrice)}</SDiscountPriceLabel>
-                      {' '}
+                      <SDiscountPriceLabel>{formatPrice(actualPrice)}</SDiscountPriceLabel>{' '}
                       <SPriceLabel>{formatPrice(comparePrice)}</SPriceLabel>
                     </>
                   ) : (
                     <SPriceLabel>{formatPrice(actualPrice)}</SPriceLabel>
-                  )}
-                  {' '}+ FREE SHIPPING
-                  <SSelectRingLabel>Select a ring size to reserve this box:я</SSelectRingLabel>
+                  )}{' '}
+                  + FREE SHIPPING
+                  <SSelectRingLabel>Select a ring size to reserve this box:</SSelectRingLabel>
                   <SRingSizeWrapper>
                     <RingSize variants={product.variants} onChange={setVariant} />
                   </SRingSizeWrapper>

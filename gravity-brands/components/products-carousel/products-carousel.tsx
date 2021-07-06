@@ -47,12 +47,9 @@ const Container = styled.div`
 `
 
 const SectionTitle = styled.div`
-  font: 700 30px/1 'Cormorant Garamond', serif;
+  font: 700 40px/1 'Cormorant Garamond', serif;
   text-align: center;
-  margin: 0 auto 10px;
-  @media (min-width: 375px) {
-    font-size: 32px;
-  }
+  margin: 0 auto 12px;
   & > span {
     position: relative;
     &:after {
@@ -68,10 +65,10 @@ const SectionTitle = styled.div`
 `
 
 const SectionText = styled.div`
+  font: 400 16px/1.5 'Montserrat', sans-serif;
   text-align: center;
-  padding-bottom: 5px;
   p {
-    margin: 0 0 10px;
+    margin: 0 0 28px;
   }
   &_narrow {
     max-width: 400px;
@@ -108,7 +105,6 @@ const ProductCards = styled.div`
   }
 
   .slick-list.dragging {
-    cursor: pointer;
     cursor: hand;
   }
 
@@ -206,7 +202,7 @@ const StyledSlider = styled(Slider)`
 `
 
 const SProductCard = styled.div`
-  box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.1);
   background: white;
   padding: 13px 10px;
   text-align: center;
@@ -219,7 +215,7 @@ const SProductCard = styled.div`
   width: 100%;
   /* margin: 5px; */
   @media (min-width: 768px) {
-    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.25);
     padding: 12px 10px 24px;
   }
   ${(props: { newProduct?: boolean }) =>
@@ -309,7 +305,6 @@ const ProductCardTitle = styled.h4`
   margin: 0 0 10px;
   padding: 0 5px;
   height: 45px;
-  text-overflow: scroll;
   @media (min-width: 768px) {
     height: 30px;
     margin: 0 0 18px;

@@ -32,14 +32,11 @@ const SContainer = styled.div`
   }
 `
 
-const STitle = styled.h2`
-  font: 700 30px/1 'Cormorant Garamond', serif;
+const SCardsBlockTitle = styled.h2`
+  font: 700 40px/1 'Cormorant Garamond', serif;
+  letter-spacing: -0.02em;
   text-align: center;
-  margin: 0 auto 10px;
-
-  @media (min-width: 375px) {
-    font-size: 32px;
-  }
+  margin: 0 auto 20px;
 `
 
 const PrevArrow = styled.button`
@@ -101,7 +98,7 @@ const SliderWrapper = styled.div`
 
     @media (min-width: 768px) {
       max-width: 100%;
-      padding: 10px 0;
+      padding: 8px 0;
     }
   }
 
@@ -118,7 +115,7 @@ const SliderWrapper = styled.div`
   }
 
   .slick-slider .slick-track {
-    padding: 5px 0 20px;
+    padding: 0 0 30px;
   }
 
   .slick-track {
@@ -198,11 +195,16 @@ export function ShopByProductsOverview({ products }: ShopByProductsOverviewProps
   return (
     <SSection>
       <SContainer>
-        <STitle>Shop by Product</STitle>
+        <SCardsBlockTitle>Shop by Product</SCardsBlockTitle>
         <SliderWrapper>
           <Slider {...settings}>
             {products.map((product) => (
-              <ShopByProductCard image={product.image} className={'slick-slide'} key={product.product_id} />
+              <ShopByProductCard
+                image={product.image}
+                className={'slick-slide'}
+                key={product.product_id}
+                title={product.title}
+              />
             ))}
           </Slider>
         </SliderWrapper>
