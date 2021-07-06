@@ -25,6 +25,12 @@
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/center-layout"
     },
+    "components/follow-us": {
+        "scope": "fragrantjewels.gravity-brands",
+        "version": "0.0.1",
+        "mainFile": "index.ts",
+        "rootDir": "gravity-brands/components/follow-us"
+    },
     "components/footer": {
         "scope": "fragrantjewels.gravity-brands",
         "version": "0.0.7",
@@ -93,7 +99,7 @@
     },
     "components/products-carousel": {
         "scope": "fragrantjewels.gravity-brands",
-        "version": "0.0.1",
+        "version": "0.0.2",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/products-carousel"
     },
