@@ -6,8 +6,7 @@ ENV PATH /app/node_modules/.bin:$PATH
 
 RUN apk update && apk add yarn python3 g++ make
 
-ARG BIT_TOKEN=00000000-0000-0000-0000-000000000000
-ARG BASE_API_URL=http://localhost:8000
+ARG BIT_TOKEN
 
 COPY /package.json /yarn.lock /.npmrc ./
 
