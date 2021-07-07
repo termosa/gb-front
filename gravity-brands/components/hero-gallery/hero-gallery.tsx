@@ -107,6 +107,10 @@ const SliderWrapper = styled.div`
   .slick-arrow.slick-hidden {
     display: none;
   }
+  margin-bottom: 48px;
+  @media (min-width: 768px) {
+    margin-bottom: 76px;
+  }
 `
 
 const Dots = styled.div`
