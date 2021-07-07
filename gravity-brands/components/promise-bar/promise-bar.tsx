@@ -98,7 +98,8 @@ const SPromiseItemImg = styled.img`
 `
 
 const SPromiseItemLabel = styled.span`
-  font-size: 16px;
+  font: 400 16px/1.25 'Montserrat', sans-serif;
+  letter-spacing: 0.05em;
   text-align: center;
   text-transform: uppercase;
 `

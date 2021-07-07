@@ -25,9 +25,7 @@ const HomePage = ({ trendingProducts, innerCircleProduct }: HomePageProps): Reac
     <div className="app-re-wrapper" id="app-wrapper">
       <div className="app-re-content" id="app-content">
         <main className="app-h-main">
-          <div className="HeroGallery-Container">
-            <HeroGallery />
-          </div>
+          <HeroGallery />
           {trendingProducts?.length && (
             <ProductsCarousel
               title="What’s trending"

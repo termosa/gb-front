@@ -293,23 +293,23 @@ const SDetailsContainer = styled.div`
 `
 
 const SInnerCircleLabel = styled.strong`
-  font-size: 16px;
-  letter-spacing: 0.16em;
+  font: 600 16px/1.25 'Montserrat', sans-serif;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: #9059c8;
-  font-weight: 600;
   margin: 0 0 3px;
   display: block;
 `
 
 const SProductTitle = styled.h3`
-  font-size: 32px;
+  font: 600 32px/1 'Cormorant Garamond', serif;
+  letter-spacing: -0.02em;
   margin: 0 0 12px;
-  font-family: 'Cormorant Garamond', serif;
 `
 
-const SPricesContainer = styled.div`
-  font: 16px/ 1.3 'Montserrat', sans-serif;
+const SPriceShippingInfo = styled.div`
+  font: 400 16px/1.25 'Montserrat', sans-serif;
+  letter-spacing: 0.05em;
 `
 
 const SPriceLabel = styled.span`
@@ -322,7 +322,7 @@ const SDiscountPriceLabel = styled(SPriceLabel)`
 `
 
 const SSelectRingLabel = styled.strong`
-  font-weight: 400;
+  font: 400 16px/1.3 'Montserrat', sans-serif;
   margin: 18px 0 16px;
   display: block;
 `
@@ -330,7 +330,7 @@ const SSelectRingLabel = styled.strong`
 const SRingSizeWrapper = styled.div``
 
 const STaxInfo = styled.div`
-  font-size: 12px;
+  font: 400 12px/1.25 'Montserrat', sans-serif;
   text-align: center;
   color: #878787;
 `
@@ -390,16 +390,18 @@ export function InnerCircleExclusive({
               <SDetailsContainer>
                 <SInnerCircleLabel>INNER CIRCLE EXCLUSIVE</SInnerCircleLabel>
                 <SProductTitle>{product.title}</SProductTitle>
-                <SPricesContainer>
-                  {comparePrice ? (
-                    <>
-                      <SDiscountPriceLabel>{formatPrice(actualPrice)}</SDiscountPriceLabel>{' '}
-                      <SPriceLabel>{formatPrice(comparePrice)}</SPriceLabel>
-                    </>
-                  ) : (
-                    <SPriceLabel>{formatPrice(actualPrice)}</SPriceLabel>
-                  )}{' '}
-                  + FREE SHIPPING
+                <div>
+                  <SPriceShippingInfo>
+                    {comparePrice ? (
+                      <>
+                        <SDiscountPriceLabel>{formatPrice(actualPrice)}</SDiscountPriceLabel>{' '}
+                        <SPriceLabel>{formatPrice(comparePrice)}</SPriceLabel>
+                      </>
+                    ) : (
+                      <SPriceLabel>{formatPrice(actualPrice)}</SPriceLabel>
+                    )}{' '}
+                    + FREE SHIPPING
+                  </SPriceShippingInfo>
                   <SSelectRingLabel>Select a ring size to reserve this box:</SSelectRingLabel>
                   <SRingSizeWrapper>
                     <RingSize variants={product.variants} onChange={setVariant} />
@@ -414,7 +416,7 @@ export function InnerCircleExclusive({
                   >
                     RESERVE NOW
                   </Button>
-                </SPricesContainer>
+                </div>
                 <STaxInfo>
                   *Monthly membership price does not include tax.
                   <br />
