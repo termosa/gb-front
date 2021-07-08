@@ -12,7 +12,7 @@ export type InformationCardProps = {
 const SCardWrapper = styled.div`
   max-width: 300px;
   text-align: center;
-  margin: 0 auto 40px;
+  margin: 0 16px 40px;
 `
 
 const SCardImage = styled.img`

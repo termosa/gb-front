@@ -62,7 +62,7 @@ const HomePage = ({ trendingProducts, innerCircleProduct }: HomePageProps): Reac
                       src="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/most-fun-img-1.jpg"
                       alt=""
                     />
-                    <h4 className="app-h-mf-card__title"> Ingredients</h4>
+                    <h4 className="app-h-mf-card__title">Guilt Free Ingredients</h4>
                     <div className="app-h-mf-card__text">
                       <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. At eget iaculis eget eget neque,
