@@ -8,6 +8,7 @@ export interface CategoryShopCardProps extends Omit<React.HTMLProps<HTMLDivEleme
   image: string
   title: string
   subTitle: string
+  link: string
 }
 
 const SCol = styled.div`
@@ -64,11 +65,17 @@ const SButtonWrapper = styled.div`
   transform: translate(-50%, 50%);
 `
 
+const SLink = styled.a`
+  text-decoration: none;
+  color: white;
+`
+
 export function CategoryShopCard({
   className,
   image,
   title,
   subTitle,
+  link,
 }: CategoryShopCardProps): React.ReactElement | null {
   return (
     <SCol>
@@ -78,8 +85,8 @@ export function CategoryShopCard({
           <STitle>{title}</STitle>
           <SSubTitle>{subTitle}</SSubTitle>
           <SButtonWrapper>
-            <Button backColor={'#000'} frontColor={'#fff'} width={'171px'}>
-              SHOP NOW
+            <Button backColor={'#000'} frontColor={'#fff'}>
+              <SLink href={link}>SHOP NOW</SLink>
             </Button>
           </SButtonWrapper>
         </SContent>

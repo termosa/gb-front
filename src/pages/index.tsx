@@ -25,7 +25,19 @@ const HomePage = ({ trendingProducts, innerCircleProduct }: HomePageProps): Reac
     <div className="app-re-wrapper" id="app-wrapper">
       <div className="app-re-content" id="app-content">
         <main className="app-h-main">
-          <HeroGallery />
+          <HeroGallery
+            slides={[
+              {
+                topText: 'MINISUBLINER',
+                centerFirstText: 'SAVOR the',
+                centerSecondText: 'quiet MOMENTS',
+                bottomText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. At eget iaculis eget eget neque.',
+                buttonText: 'SHOP NOW',
+                buttonLink: 'https://www.fragrantjewels.com/pages/inner-circle#how-it-works',
+                backgroundImg: '',
+              },
+            ]}
+          />
           {trendingProducts?.length && (
             <ProductsCarousel
               title="What’s trending"
@@ -112,11 +124,15 @@ const HomePage = ({ trendingProducts, innerCircleProduct }: HomePageProps): Reac
                   image="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/collection-img-1.jpg"
                   title="Valentine’s Shop"
                   subTitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+                  link="'https://www.fragrantjewels.com/pages/inner-circle#how-it-works'"
                 />
+              </div>
+              <div className="app-h-col">
                 <CategoryShopCard
                   image="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/collection-img-2.jpg"
                   title="Mythical Shop"
                   subTitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+                  link="'https://www.fragrantjewels.com/pages/inner-circle#how-it-works'"
                 />
               </div>
             </div>
@@ -137,18 +153,18 @@ const HomePage = ({ trendingProducts, innerCircleProduct }: HomePageProps): Reac
           <ShopByProductsOverview
             products={[
               {
-                product_id: 1,
                 image: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/shop-by-product-img-1.jpg',
+                buttonLink: 'https://www.fragrantjewels.com/pages/inner-circle#how-it-works',
                 title: 'CANDLES',
               },
               {
-                product_id: 2,
                 image: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/shop-by-product-img-2.jpg',
+                buttonLink: 'https://www.fragrantjewels.com/pages/inner-circle#how-it-works',
                 title: 'BODY SCRUBS',
               },
               {
-                product_id: 3,
                 image: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/shop-by-product-img-3.jpg',
+                buttonLink: 'https://www.fragrantjewels.com/pages/inner-circle#how-it-works',
                 title: 'BUNDLES',
               },
             ]}

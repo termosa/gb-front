@@ -4,8 +4,19 @@ import Slider, { Settings } from 'react-slick'
 import styled from 'styled-components'
 import Button from '@fragrantjewels/gravity-brands.components.button'
 
+type GalleryItem = {
+  topText: string
+  centerFirstText: string
+  centerSecondText: string
+  bottomText: string
+  buttonText: string
+  buttonLink: string
+  backgroundImg: string
+}
+
 export type HeroGalleryProps = {
   className?: ClassName
+  slides: GalleryItem[]
 }
 
 const SliderWrapper = styled.div`
@@ -171,10 +182,10 @@ const Dots = styled.div`
   }
 `
 
-const Slide = styled.div`
+const Slide = styled.div<{ backgroundImg: string }>`
   position: relative;
   overflow-y: hidden;
-  background: url('https://fragrantjewels.s3.amazonaws.com/app/app-home/img/home-banner-img-1-dt.jpg') no-repeat;
+  background: ${(props) => `url(${props.backgroundImg}) no-repeat`};
   background-position: center center;
   background-size: cover;
   font: 12px/1.3 'Montserrat', sans-serif;
@@ -182,7 +193,7 @@ const Slide = styled.div`
 
   @media (min-width: 768px) {
     height: 380px;
-    background-image: url('https://fragrantjewels.s3.amazonaws.com/app/app-home/img/home-banner-img-1-dt.jpg');
+    background-image: ${(props) => `url(${props.backgroundImg}) no-repeat`};
   }
 
   @media (min-width: 1600px) {
@@ -245,7 +256,12 @@ const SlideText = styled.div`
   }
 `
 
-export const HeroGallery = ({ className }: HeroGalleryProps): React.ReactElement => {
+const SlideLinkInner = styled.a`
+  text-decoration: none;
+  color: white;
+`
+
+export const HeroGallery = ({ className, slides }: HeroGalleryProps): React.ReactElement => {
   const settings: Settings = {
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -259,7 +275,29 @@ export const HeroGallery = ({ className }: HeroGalleryProps): React.ReactElement
   return (
     <SliderWrapper className={cn('HeroGallery', className, 'temp-font')}>
       <Slider {...settings}>
-        <Slide>
+        {slides.map((slide: GalleryItem) => (
+          <Slide
+            backgroundImg={
+              slide.backgroundImg || 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/home-banner-img-1-dt.jpg'
+            }
+          >
+            <SlideContent>
+              <SlidePreTitle>{slide.topText}</SlidePreTitle>
+              <SlideTitle>
+                {slide.centerFirstText}
+                <br />
+                {slide.centerSecondText}
+              </SlideTitle>
+              <SlideText>
+                <p>{slide.bottomText}</p>
+              </SlideText>
+              <Button>
+                <SlideLinkInner href={slide.buttonLink}>{slide.buttonText}</SlideLinkInner>
+              </Button>
+            </SlideContent>
+          </Slide>
+        ))}
+        <Slide backgroundImg={'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/home-banner-img-1-dt.jpg'}>
           <SlideContent>
             <SlidePreTitle>MINISUBLINER</SlidePreTitle>
             <SlideTitle>
@@ -272,44 +310,8 @@ export const HeroGallery = ({ className }: HeroGalleryProps): React.ReactElement
             <SlideText>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. At eget iaculis eget eget neque.</p>
             </SlideText>
-            <Button backColor={'#000'} frontColor={'#fff'} width={'155px'}>
-              SHOP NOW
-            </Button>
-          </SlideContent>
-        </Slide>
-        <Slide>
-          <SlideContent>
-            <SlidePreTitle>MINISUBLINER</SlidePreTitle>
-            <SlideTitle>
-              SAVOR{' '}
-              <span>
-                the <br />
-              </span>{' '}
-              MOMENTS
-            </SlideTitle>
-            <SlideText>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. At eget iaculis eget eget neque.</p>
-            </SlideText>
-            <Button backColor={'#000'} frontColor={'#fff'} width={'155px'}>
-              SHOP NOW
-            </Button>
-          </SlideContent>
-        </Slide>
-        <Slide>
-          <SlideContent>
-            <SlidePreTitle>MINISUBLINER</SlidePreTitle>
-            <SlideTitle>
-              SAVOR{' '}
-              <span>
-                the <br />
-              </span>{' '}
-              MOMENTS
-            </SlideTitle>
-            <SlideText>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. At eget iaculis eget eget neque.</p>
-            </SlideText>
-            <Button backColor={'#000'} frontColor={'#fff'} width={'155px'}>
-              SHOP NOW
+            <Button>
+              <SlideLinkInner>Shop Now</SlideLinkInner>
             </Button>
           </SlideContent>
         </Slide>

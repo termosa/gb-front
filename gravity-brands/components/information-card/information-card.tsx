@@ -4,6 +4,10 @@ import styled from 'styled-components'
 
 export type InformationCardProps = {
   className?: ClassName
+  card: InformationCard
+}
+
+export type InformationCard = {
   title: string
   description: string
   image: string
@@ -51,17 +55,12 @@ const SCardDescription = styled.div`
   word-wrap: break-word;
 `
 
-export function InformationCard({
-  className,
-  description,
-  image,
-  title,
-}: InformationCardProps): React.ReactElement | null {
+export function InformationCard({ className, card }: InformationCardProps): React.ReactElement | null {
   return (
     <SCardWrapper className={cn('InformationCard', className)}>
-      <SCardImage src={image} />
-      <SCardTitle>{title}</SCardTitle>
-      <SCardDescription>{description}</SCardDescription>
+      <SCardImage src={card.image} />
+      <SCardTitle>{card.title}</SCardTitle>
+      <SCardDescription>{card.description}</SCardDescription>
     </SCardWrapper>
   )
 }
