@@ -37,6 +37,12 @@
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/footer"
     },
+    "components/full-width-banner": {
+        "scope": "",
+        "version": "",
+        "mainFile": "index.ts",
+        "rootDir": "gravity-brands/components/full-width-banner"
+    },
     "components/header": {
         "scope": "fragrantjewels.gravity-brands",
         "version": "0.0.14",
