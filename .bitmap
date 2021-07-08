@@ -38,8 +38,8 @@
         "rootDir": "gravity-brands/components/footer"
     },
     "components/full-width-banner": {
-        "scope": "",
-        "version": "",
+        "scope": "fragrantjewels.gravity-brands",
+        "version": "0.0.1",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/full-width-banner"
     },
@@ -158,8 +158,8 @@
         "rootDir": "gravity-brands/components/signin-signup"
     },
     "components/site-section": {
-        "scope": "",
-        "version": "",
+        "scope": "fragrantjewels.gravity-brands",
+        "version": "0.0.1",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/site-section"
     },
