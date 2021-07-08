@@ -157,6 +157,12 @@
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/signin-signup"
     },
+    "components/site-section": {
+        "scope": "",
+        "version": "",
+        "mainFile": "index.ts",
+        "rootDir": "gravity-brands/components/site-section"
+    },
     "components/soaring-modal-layout": {
         "scope": "fragrantjewels.gravity-brands",
         "version": "0.0.9",

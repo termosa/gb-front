@@ -1,50 +1,41 @@
 import React from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
+import { useMediaPredicate } from 'react-media-hook'
+import SiteSection from '@fragrantjewels/gravity-brands.components.site-section'
 
 export type FullWidthBannerProps = {
   className?: ClassName
   title: string
   text: string
-  background: string
-  position?: 'left' | 'right'
-  textColor?: 'dark' | 'light'
+  imageUrl: string
+  position?: string
+  textColor?: string
 }
 
-const FullWidthBannerWrapper = styled.div<{ background: string }>`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: ${({ theme }) => theme.fonts.familyMain};
-  background-image: url(${({ background }) => background});
-  background-size: 100%;
-  height: 315px;
-
-  @media (max-width: 900px) {
-    background-image: none;
-    height: 157px;
-  }
-`
-
-const FullWidthBannerContainer = styled.div<{ position: 'left' | 'right' }>`
-  padding: 0 25px;
-  width: 100%;
-  max-width: ${({ theme }) => theme.layout.maxContentWidth};
-  display: flex;
-  justify-content: space-between;
-  flex-direction: ${({ position }) => (position === 'left' ? 'row' : 'row-reverse')};
-  text-align: ${({ position }) => position};
-
-  @media (max-width: 900px) {
-    justify-content: center;
-    text-align: center;
-  }
-`
-
-const FullWidthBannerInfo = styled.div<{ textColor: 'dark' | 'light' }>`
+const FullWidthBannerInfo = styled.div<{ textColor: string; position: string }>`
+  padding: 48px 25px;
   width: 340px;
-  color: ${({ textColor }) => (textColor === 'dark' ? '#000' : '#fff')};
+  color: ${({ textColor }) => textColor};
+  text-align: ${({ position }) => position};
+  margin: ${({ position }) => {
+    switch (position) {
+      case 'left':
+        return ''
+      case 'right':
+        return '0 0 0 auto'
+      case 'center':
+        return '0 auto'
+      default:
+        return ''
+    }
+  }};
+  font-family: ${({ theme }) => theme.fonts.familyMain};
+
+  @media (max-width: 900px) {
+    text-align: center;
+    margin: 0 auto;
+  }
 `
 
 const FullWidthBannerTitle = styled.span`
@@ -63,16 +54,23 @@ export const FullWidthBanner = ({
   className,
   text,
   title,
-  background,
-  textColor = 'dark',
+  imageUrl,
+  textColor = '#000',
   position = 'left',
-}: FullWidthBannerProps): React.ReactElement => (
-  <FullWidthBannerWrapper className={cn(name, className)} background={background}>
-    <FullWidthBannerContainer position={position}>
-      <FullWidthBannerInfo textColor={textColor}>
+}: FullWidthBannerProps): React.ReactElement => {
+  const isMobileScreen = useMediaPredicate('(max-width: 900px)')
+
+  return (
+    <SiteSection
+      style={{
+        backgroundImage: isMobileScreen ? 'none' : `url(${imageUrl})`,
+        backgroundSize: '100%',
+      }}
+    >
+      <FullWidthBannerInfo textColor={textColor} position={position} className={cn(name, className)}>
         <FullWidthBannerTitle>{title}</FullWidthBannerTitle>
         <FullWidthBannerText>{text}</FullWidthBannerText>
       </FullWidthBannerInfo>
-    </FullWidthBannerContainer>
-  </FullWidthBannerWrapper>
-)
+    </SiteSection>
+  )
+}
