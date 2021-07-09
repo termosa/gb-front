@@ -12,11 +12,12 @@ export type PresentationCanvasProps = {
   centered?: boolean
   dark?: boolean
   nowrap?: boolean
+  withoutPaddings?: boolean
 }
 
 export const PresentationCanvasWrapper = styled.div<PresentationCanvasProps>`
   background-color: ${(props) => (props.dark ? props.theme.colors.black : props.theme.colors.white)};
-  padding: 10px;
+  padding: ${({ withoutPaddings }) => (withoutPaddings ? '0' : '10px')};
   box-sizing: border-box;
   min-height: 100px;
   overflow: auto;

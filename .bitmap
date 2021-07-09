@@ -25,6 +25,12 @@
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/center-layout"
     },
+    "components/collection-filters": {
+        "scope": "",
+        "version": "",
+        "mainFile": "index.ts",
+        "rootDir": "gravity-brands/components/collection-filters"
+    },
     "components/follow-us": {
         "scope": "fragrantjewels.gravity-brands",
         "version": "0.0.1",
@@ -222,6 +228,12 @@
         "version": "0.0.7",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/helpers/theme-provider"
+    },
+    "hooks/use-popper": {
+        "scope": "",
+        "version": "",
+        "mainFile": "index.ts",
+        "rootDir": "gravity-brands/hooks/use-popper"
     },
     "modules/api": {
         "scope": "fragrantjewels.gravity-brands",
