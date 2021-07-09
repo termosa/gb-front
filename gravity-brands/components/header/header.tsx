@@ -24,15 +24,6 @@ const SWrapper = styled.div`
   top: 0;
   right: 0;
   left: 0;
-  @media (min-width: 375px) {
-    font-size: 14px;
-  }
-  @media (min-width: 1200px) {
-    font-size: 13px;
-  }
-  @media (min-width: 1200px) {
-    font-size: 16px;
-  }
 
   & > svg {
     width: 100%;
@@ -263,8 +254,8 @@ const ExtendableBlockContainer = styled.div`
 `
 
 const ExtendableBlockListTitle = styled.strong`
+  font: 600 14px/1.5 'Montserrat', sans-serif;
   display: block;
-  font-weight: 600;
   margin: 0 0 8px;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -273,6 +264,11 @@ const ExtendableBlockListTitle = styled.strong`
   @media (min-width: 1200px) {
     margin: 0 0 0.9em;
   }
+`
+
+const ExtendableBlockListText = styled.p`
+  font: 400 14px/1.5 'Montserrat', sans-serif;
+  letter-spacing: 0.05em;
 `
 
 const ExtendableBlockList = styled.ul`
@@ -302,6 +298,7 @@ const ExtendableBlockListItem = styled.li`
   & > a {
     display: block;
     padding: 15px 0 15px;
+    font: 400 14px/1.5 'Montserrat', sans-serif;
     letter-spacing: 0.05em;
     -webkit-transition: color linear 0.2s;
     transition: color linear 0.2s;
@@ -321,6 +318,7 @@ const ExtendableBlockListItem = styled.li`
 `
 
 const AnimatedLink = styled.a`
+  font: 600 14px/1.5 'Montserrat', sans-serif;
   display: inline-block;
   padding-bottom: 5px;
   border-bottom: 1px solid black;
@@ -460,7 +458,7 @@ const SubscriptionContent = () => (
         <a href="/products/piece-by-piece-bath-bomb">
           <img src="https://fragrantjewels-assets.s3.amazonaws.com/images/under-the-sea/uts-nav-subscription.jpg" />
           <ExtendableBlockListTitle>New Inner Circle Exclusive Collections Every Month</ExtendableBlockListTitle>
-          <p>This month discover the beauty that lies beneath with the new Under the Sea collection.</p>
+          <ExtendableBlockListText>This month discover the beauty that lies beneath with the new Under the Sea collection.</ExtendableBlockListText>
           <AnimatedLink>Learn more</AnimatedLink>
         </a>
       </ExtendableBlockItem>
@@ -468,7 +466,7 @@ const SubscriptionContent = () => (
         <a href="/products/piece-by-piece-bath-bomb">
           <img src="https://fragrantjewels.s3.amazonaws.com/app/app-nav/nav-subscription-img-rare.jpg" />
           <ExtendableBlockListTitle>Everything There Is To Know About Rare Collections</ExtendableBlockListTitle>
-          <p>Start collecting unique limited edition sets not available for sale! Find out how you can qualify.</p>
+          <ExtendableBlockListText>Start collecting unique limited edition sets not available for sale! Find out how you can qualify.</ExtendableBlockListText>
           <AnimatedLink>Learn more</AnimatedLink>
         </a>
       </ExtendableBlockItem>
@@ -503,7 +501,7 @@ const RewardsContent = () => (
         <a href="/products/piece-by-piece-bath-bomb">
           <img src="https://fragrantjewels.s3.amazonaws.com/app/app-nav/nav-rewards-img-1.jpg" />
           <ExtendableBlockListTitle>New Rewards Every Week</ExtendableBlockListTitle>
-          <p>Every dollar you spend earns you reward points you can use to redeem free jewelry, products and more!</p>
+          <ExtendableBlockListText>Every dollar you spend earns you reward points you can use to redeem free jewelry, products and more!</ExtendableBlockListText>
           <AnimatedLink>Learn more</AnimatedLink>
         </a>
       </ExtendableBlockItem>
@@ -511,7 +509,7 @@ const RewardsContent = () => (
         <a href="/products/piece-by-piece-bath-bomb">
           <img src="https://fragrantjewels.s3.amazonaws.com/app/app-nav/nav-rewards-img-2.jpg" />
           <ExtendableBlockListTitle>Earn Platinum Reward Status</ExtendableBlockListTitle>
-          <p>Get exclusive access to VIP offers, 3x points and more when you earn Platinum status!</p>
+          <ExtendableBlockListText>Get exclusive access to VIP offers, 3x points and more when you earn Platinum status!</ExtendableBlockListText>
           <AnimatedLink>Learn more</AnimatedLink>
         </a>
       </ExtendableBlockItem>

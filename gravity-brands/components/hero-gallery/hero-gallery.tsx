@@ -243,10 +243,6 @@ const SlideTitle = styled.div`
   & > span {
     font-style: italic;
   }
-
-  @media (min-width: 768px) {
-    font-size: 40px;
-  }
 `
 
 const SlideText = styled.div`
@@ -297,24 +293,28 @@ export const HeroGallery = ({ className, slides }: HeroGalleryProps): React.Reac
             </SlideContent>
           </Slide>
         ))}
-        <Slide backgroundImg={'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/home-banner-img-1-dt.jpg'}>
-          <SlideContent>
-            <SlidePreTitle>MINISUBLINER</SlidePreTitle>
-            <SlideTitle>
-              SAVOR{' '}
-              <span>
-                the <br />
-              </span>{' '}
-              MOMENTS
-            </SlideTitle>
-            <SlideText>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. At eget iaculis eget eget neque.</p>
-            </SlideText>
-            <Button backColor={'#000'} frontColor={'#fff'}>
-              <SlideLinkInner>Shop Now</SlideLinkInner>
-            </Button>
-          </SlideContent>
-        </Slide>
+        {slides.map((slide: GalleryItem) => (
+          <Slide
+            backgroundImg={
+              slide.backgroundImg || 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/home-banner-img-1-dt.jpg'
+            }
+          >
+            <SlideContent>
+              <SlidePreTitle>{slide.topText}</SlidePreTitle>
+              <SlideTitle>
+                {slide.centerFirstText}
+                <br />
+                {slide.centerSecondText}
+              </SlideTitle>
+              <SlideText>
+                <p>{slide.bottomText}</p>
+              </SlideText>
+              <Button backColor={'#000'} frontColor={'#fff'}>
+                <SlideLinkInner href={slide.buttonLink}>{slide.buttonText}</SlideLinkInner>
+              </Button>
+            </SlideContent>
+          </Slide>
+        ))}
       </Slider>
     </SliderWrapper>
   )

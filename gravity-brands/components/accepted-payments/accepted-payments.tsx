@@ -17,7 +17,8 @@ const AcceptedPaymentsContainer = styled.div`
 `
 
 const Title = styled.div`
-  font-size: 12px;
+  font: 600 14px/1.5 'Montserrat', sans-serif;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   padding: 16px 0;
   position: relative;

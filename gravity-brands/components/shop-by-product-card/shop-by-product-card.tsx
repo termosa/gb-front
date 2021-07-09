@@ -46,7 +46,7 @@ export function ShopByProductCard({ className, image, buttonLink, title }: ShopB
     <SLayout className={cn('ShopByProductCard', className)}>
       <SLayoutImage src={image} />
       <SButtonWrapper>
-        <Button frontColor="#fff" backColor="#000">
+        <Button backColor={'#000'} frontColor={'#fff'}>
           <SButtonLink href={buttonLink}>{title}</SButtonLink>
         </Button>
       </SButtonWrapper>
