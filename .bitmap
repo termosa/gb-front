@@ -3,7 +3,7 @@
 {
     "components/accepted-payments": {
         "scope": "fragrantjewels.gravity-brands",
-        "version": "0.0.6",
+        "version": "0.0.7",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/accepted-payments"
     },
@@ -15,7 +15,7 @@
     },
     "components/category-shop-card": {
         "scope": "fragrantjewels.gravity-brands",
-        "version": "0.0.16",
+        "version": "0.0.17",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/category-shop-card"
     },
@@ -33,7 +33,7 @@
     },
     "components/footer": {
         "scope": "fragrantjewels.gravity-brands",
-        "version": "0.0.7",
+        "version": "0.0.8",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/footer"
     },
@@ -45,13 +45,13 @@
     },
     "components/header": {
         "scope": "fragrantjewels.gravity-brands",
-        "version": "0.0.14",
+        "version": "0.0.17",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/header"
     },
     "components/hero-gallery": {
         "scope": "fragrantjewels.gravity-brands",
-        "version": "0.0.15",
+        "version": "0.0.16",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/hero-gallery"
     },
@@ -81,25 +81,25 @@
     },
     "components/links-column-group": {
         "scope": "fragrantjewels.gravity-brands",
-        "version": "0.0.10",
+        "version": "0.0.11",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/links-column-group"
     },
     "components/main-page-layout": {
         "scope": "fragrantjewels.gravity-brands",
-        "version": "0.0.3",
+        "version": "0.0.6",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/main-page-layout"
     },
     "components/nav-icons": {
         "scope": "fragrantjewels.gravity-brands",
-        "version": "0.0.7",
+        "version": "0.0.8",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/nav-icons"
     },
     "components/nav-tabs": {
         "scope": "fragrantjewels.gravity-brands",
-        "version": "0.0.8",
+        "version": "0.0.11",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/nav-tabs"
     },
@@ -159,19 +159,19 @@
     },
     "components/shop-by-product-card": {
         "scope": "fragrantjewels.gravity-brands",
-        "version": "0.0.15",
+        "version": "0.0.16",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/shop-by-product-card"
     },
     "components/shop-by-products-overview": {
         "scope": "fragrantjewels.gravity-brands",
-        "version": "0.0.18",
+        "version": "0.0.19",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/shop-by-products-overview"
     },
     "components/signin-signup": {
         "scope": "fragrantjewels.gravity-brands",
-        "version": "0.0.4",
+        "version": "0.0.5",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/signin-signup"
     },
@@ -189,7 +189,7 @@
     },
     "components/social-links": {
         "scope": "fragrantjewels.gravity-brands",
-        "version": "0.0.6",
+        "version": "0.0.7",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/social-links"
     },

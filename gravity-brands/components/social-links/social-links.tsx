@@ -17,8 +17,9 @@ const SocialLinksContainer = styled.main`
 `
 
 const Title = styled.div`
+  font: 600 14px/1.5 'Montserrat', sans-serif;
+  letter-spacing: 0.05em;
   display: none;
-  font-size: 12px;
   text-transform: uppercase;
   padding: 16px 0;
   position: relative;
