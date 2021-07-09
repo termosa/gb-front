@@ -76,7 +76,7 @@ const SButtonWrapper = styled.div`
 
 const SLink = styled.a`
   text-decoration: none;
-  color: white;
+  color: inherit;
 `
 
 export function CategoryShopCard({
@@ -94,7 +94,7 @@ export function CategoryShopCard({
           <STitle>{title}</STitle>
           <SSubTitle>{subTitle}</SSubTitle>
           <SButtonWrapper>
-            <Button width={'171px'}>
+            <Button backColor={'#000'} frontColor={'#fff'} width={'171px'}>
               <SLink href={link}>SHOP NOW</SLink>
             </Button>
           </SButtonWrapper>
