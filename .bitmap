@@ -103,11 +103,23 @@
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/points-widget"
     },
+    "components/product-card": {
+        "scope": "",
+        "version": "",
+        "mainFile": "index.ts",
+        "rootDir": "gravity-brands/components/product-card"
+    },
     "components/products-carousel": {
         "scope": "fragrantjewels.gravity-brands",
         "version": "0.0.4",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/products-carousel"
+    },
+    "components/products-list": {
+        "scope": "",
+        "version": "",
+        "mainFile": "index.ts",
+        "rootDir": "gravity-brands/components/products-list"
     },
     "components/promise-bar": {
         "scope": "fragrantjewels.gravity-brands",

@@ -1,0 +1,42 @@
+---
+labels: ['ui', 'react']
+description: 'Renders small block with product information'
+---
+
+import { ProductCard } from './product-card'
+import PresentationCanvas from '@fragrantjewels/gravity-brands.helpers.presentation-canvas'
+
+Basic example:
+```js live
+<PresentationCanvas centered>
+  <ProductCard
+    style={{ width: 300 }}
+    product={{
+      title: 'Monsoon candle',
+      product_type: 'Candles',
+      front_image: {
+        src: 'https://cdn.shopify.com/s/files/1/1356/7945/products/destress_productshot_bundle_3_grande_0000_Relax.png?v=1492822138',
+      },
+      variants: [{
+        actual_price: 12.95
+      }]
+    }}
+  />
+</PresentationCanvas>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```

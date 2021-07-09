@@ -1,5 +1,5 @@
 {
-  "name": "nextjs-boilerplate",
+  "name": "fragrantjewels-front",
   "version": "1.0.0",
   "description": "NextJS boilerplate with TypeScript and Redux",
   "main": "index.js",
@@ -14,7 +14,8 @@
     "lint:ts": "npm run prettier && eslint --fix 'src/**/*.{ts,tsx}'",
     "lint:scss": "stylelint --fix 'src/**/*.scss'",
     "lint:types": "tsc -p . --noEmit",
-    "start:library": "bit link && bit start",
+    "bit": "bit link && bit start",
+    "start:library": "npm run bit",
     "create:component": "bit create generators/component -n components",
     "create:module": "bit create generators/module -n modules",
     "upgrade:bit": "yarn upgrade --scope @fragrantjewels"
@@ -104,23 +105,10 @@
       "stylelint --fix"
     ]
   },
-  "keywords": [
-    "nextjs",
-    "boilerplate",
-    "typeccript",
-    "react",
-    "prettier",
-    "stylelint",
-    "jest",
-    "enzyme",
-    "svg sprite",
-    "husky",
-    "lint staged"
-  ],
-  "author": "Sanjay Twisk",
+  "author": "Gravity Brands",
   "repository": {
     "type": "git",
-    "url": "git@github.com:sanjaytwisk/nextjs-ts.git"
+    "url": "git@github.com:gravitybrandsorg/website-3.0-front.git"
   },
   "license": "ISC"
 }

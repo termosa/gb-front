@@ -9,7 +9,6 @@ function addAccordionEvents($elem) {
   }
 
   $elem.on('click', '.pdp-a-item__title', function () {
-    console.log(333)
     $(this).closest('.pdp-accordion').find('.pdp-a-item__title').removeClass('pdp-a-item__title_active')
 
     $(this)
@@ -82,7 +81,6 @@ function initProductCarousel($elem) {
         isBlockedList = true
         $itemsList.find('li').removeClass('pdp-carousel-item_active')
         $(this).addClass('pdp-carousel-item_active')
-        console.log()
         $elem.slick('slickGoTo', $(this).index())
       }
     })

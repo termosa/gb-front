@@ -16,25 +16,23 @@ export type FullWidthBannerProps = {
 const FullWidthBannerInfo = styled.div<{ textColor: string; position: string }>`
   padding: 48px 25px;
   width: 340px;
-  color: ${({ textColor }) => textColor};
-  text-align: ${({ position }) => position};
-  margin: ${({ position }) => {
-    switch (position) {
-      case 'left':
-        return ''
-      case 'right':
-        return '0 0 0 auto'
-      case 'center':
-        return '0 auto'
-      default:
-        return ''
-    }
-  }};
+  text-align: center;
+  margin: 0 auto;
   font-family: ${({ theme }) => theme.fonts.familyMain};
 
-  @media (max-width: 900px) {
-    text-align: center;
-    margin: 0 auto;
+  @media (min-width: 901px) {
+    color: ${({ textColor }) => textColor};
+    text-align: ${({ position }) => position};
+    margin: ${({ position }) => {
+      switch (position) {
+        case 'right':
+          return '0 0 0 auto'
+        case 'center':
+          return '0 auto'
+        default:
+          return '0'
+      }
+    }};
   }
 `
 
