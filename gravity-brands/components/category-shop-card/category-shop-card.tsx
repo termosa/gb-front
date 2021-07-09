@@ -94,7 +94,7 @@ export function CategoryShopCard({
           <STitle>{title}</STitle>
           <SSubTitle>{subTitle}</SSubTitle>
           <SButtonWrapper>
-            <Button backColor={'#000'} frontColor={'#fff'}>
+            <Button width={'171px'}>
               <SLink href={link}>SHOP NOW</SLink>
             </Button>
           </SButtonWrapper>

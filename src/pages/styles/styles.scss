@@ -41,6 +41,9 @@ $lightYellow: rgba(253, 251, 249, 1);
         padding: 0 30px;
         max-width: 1020px;
     }
+    &__content {
+      display: flex;
+    }
 }
 
 .app-h-slide {
