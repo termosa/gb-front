@@ -3,8 +3,28 @@ import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
 import usePopper from '@fragrantjewels/gravity-brands.hooks.use-popper'
 
+export interface Filter {
+  name: string
+  amount: number
+}
+
+export interface ColorFilter extends Filter {
+  gradient: Array<{
+    offset?: number
+    stopColor: string
+  }>
+}
+
+export interface Filters {
+  fragrances: Array<Filter>
+  materials: Array<Filter>
+  sizes: Array<Filter>
+  colors: Array<ColorFilter>
+}
+
 export type CollectionFiltersProps = {
   className?: ClassName
+  filters: Filters
 }
 
 const SCollectionFiltersContainer = styled.div`
@@ -190,7 +210,7 @@ const SFilterControlButtonsGroup = styled(SFilterGroup)`
   }
 `
 
-const SCloseButton = styled.svg`
+const SCloseIcon = styled.svg`
   cursor: pointer;
 `
 
@@ -214,9 +234,22 @@ const SClearFiltersButton = styled.span`
   }
 `
 
+const CloseButton = ({ onClick }: { onClick: () => void }) => (
+  <SCloseIcon
+    xmlns="http://www.w3.org/2000/svg"
+    width={22}
+    height={22}
+    viewBox="0 0 22 22"
+    fill="none"
+    onClick={onClick}
+  >
+    <path d="M21 1L1 21M1 1l20 20" stroke="#000" strokeWidth={0.5} strokeLinecap="round" strokeLinejoin="round" />
+  </SCloseIcon>
+)
+
 const name = 'CollectionFilters'
 
-export const CollectionFilters = ({ className }: CollectionFiltersProps): React.ReactElement => {
+export const CollectionFilters = ({ className, filters }: CollectionFiltersProps): React.ReactElement => {
   const [referenceElement, setReferenceElement] = useState<HTMLButtonElement | null>(null)
   const [popperElement, setPopperElement] = useState<HTMLDivElement | null>(null)
 
@@ -277,237 +310,79 @@ export const CollectionFilters = ({ className }: CollectionFiltersProps): React.
         <SFilters>
           <SFilterGroup>
             <SFilterGroupName>Fragrance</SFilterGroupName>
-            <SFilter>
-              Aquatic<SProductsQuantity> (12)</SProductsQuantity>
-              <SCheckbox />
-            </SFilter>
-            <SFilter>
-              Citrus<SProductsQuantity> (12)</SProductsQuantity>
-              <SCheckbox />
-            </SFilter>
-            <SFilter>
-              Floral<SProductsQuantity> (12)</SProductsQuantity>
-              <SCheckbox />
-            </SFilter>
-            <SFilter>
-              Floral Woods<SProductsQuantity> (12)</SProductsQuantity>
-              <SCheckbox />
-            </SFilter>
-            <SFilter>
-              Fresh<SProductsQuantity> (12)</SProductsQuantity>
-              <SCheckbox />
-            </SFilter>
-            <SFilter>
-              Fruity<SProductsQuantity> (12)</SProductsQuantity>
-              <SCheckbox />
-            </SFilter>
-            <SFilter>
-              Gourmand<SProductsQuantity> (12)</SProductsQuantity>
-              <SCheckbox />
-            </SFilter>
-            <SFilter>
-              Green<SProductsQuantity> (12)</SProductsQuantity>
-              <SCheckbox />
-            </SFilter>
-            <SFilter>
-              Musky<SProductsQuantity> (12)</SProductsQuantity>
-              <SCheckbox />
-            </SFilter>
-            <SFilter>
-              Spicy / Smoky<SProductsQuantity> (12)</SProductsQuantity>
-              <SCheckbox />
-            </SFilter>
+            {filters.fragrances.map(({ name, amount }) => (
+              <SFilter key={name}>
+                {name}
+                <SProductsQuantity> ({amount})</SProductsQuantity>
+                <SCheckbox />
+              </SFilter>
+            ))}
           </SFilterGroup>
           <SFilterGroup>
             <SFilterGroupName>Size</SFilterGroupName>
-            <SFilter>
-              Size 5<SProductsQuantity> (12)</SProductsQuantity>
-              <SCheckbox />
-            </SFilter>
-            <SFilter>
-              Size 6<SProductsQuantity> (12)</SProductsQuantity>
-              <SCheckbox />
-            </SFilter>
-            <SFilter>
-              Size 7<SProductsQuantity> (12)</SProductsQuantity>
-              <SCheckbox />
-            </SFilter>
-            <SFilter>
-              Size 8<SProductsQuantity> (12)</SProductsQuantity>
-              <SCheckbox />
-            </SFilter>
-            <SFilter>
-              Size 9<SProductsQuantity> (12)</SProductsQuantity>
-              <SCheckbox />
-            </SFilter>
-            <SFilter>
-              Size 10<SProductsQuantity> (12)</SProductsQuantity>
-              <SCheckbox />
-            </SFilter>
+            {filters.sizes.map(({ name, amount }) => (
+              <SFilter key={name}>
+                {name}
+                <SProductsQuantity> ({amount})</SProductsQuantity>
+                <SCheckbox />
+              </SFilter>
+            ))}
           </SFilterGroup>
           <SFilterGroup>
             <SFilterGroupName>Material</SFilterGroupName>
-            <SFilter noProduct>
-              18K Gold Plated<SProductsQuantity></SProductsQuantity>
-              <SCheckbox disabled />
-            </SFilter>
-            <SFilter>
-              925 Sterling Silver<SProductsQuantity> (12)</SProductsQuantity>
-              <SCheckbox />
-            </SFilter>
-            <SFilter>
-              Rhodium Plated<SProductsQuantity> (12)</SProductsQuantity>
-              <SCheckbox />
-            </SFilter>
+            {filters.materials.map(({ name, amount }) => (
+              <SFilter key={name}>
+                {name}
+                <SProductsQuantity> ({amount})</SProductsQuantity>
+                <SCheckbox />
+              </SFilter>
+            ))}
           </SFilterGroup>
           <SFilterGroup>
             <SFilterGroupName>Metal color</SFilterGroupName>
-            <SFilter>
-              <SMetalColorIcon
-                width={20}
-                height={20}
-                viewBox="0 0 20 20"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <rect
-                  x={0.25}
-                  y={0.25}
-                  width={19.5}
-                  height={19.5}
-                  rx={9.75}
-                  fill="url(#prefix__paint0_linear)"
-                  stroke="#000"
-                  strokeWidth={0.5}
-                />
-                <defs>
-                  <linearGradient
-                    id="prefix__paint0_linear"
-                    x1={1.706}
-                    y1={2.368}
-                    x2={21.507}
-                    y2={10.765}
-                    gradientUnits="userSpaceOnUse"
-                  >
-                    <stop stopColor="#D08E17" />
-                    <stop offset={0.02} stopColor="#D89C29" />
-                    <stop offset={0.06} stopColor="#E6B248" />
-                    <stop offset={0.101} stopColor="#F1C460" />
-                    <stop offset={0.145} stopColor="#F9D072" />
-                    <stop offset={0.193} stopColor="#FED87C" />
-                    <stop offset={0.251} stopColor="#FFDE8D" />
-                    <stop offset={0.362} stopColor="#FFDE93" />
-                    <stop offset={0.54} stopColor="#F1C875" />
-                    <stop offset={0.744} stopColor="#D8A549" />
-                    <stop offset={0.808} stopColor="#BE9030" />
-                    <stop offset={0.898} stopColor="#99740F" />
-                  </linearGradient>
-                </defs>
-              </SMetalColorIcon>
-              Gold<SProductsQuantity> (12)</SProductsQuantity>
-            </SFilter>
-            <SFilter>
-              <SMetalColorIcon
-                width={20}
-                height={20}
-                viewBox="0 0 20 20"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <rect
-                  x={0.25}
-                  y={0.25}
-                  width={19.5}
-                  height={19.5}
-                  rx={9.75}
-                  fill="url(#prefix__paint1_linear)"
-                  stroke="#000"
-                  strokeWidth={0.5}
-                />
-                <defs>
-                  <linearGradient
-                    id="prefix__paint1_linear"
-                    x1={1.706}
-                    y1={2.368}
-                    x2={21.507}
-                    y2={10.765}
-                    gradientUnits="userSpaceOnUse"
-                  >
-                    <stop offset={0.02} stopColor="#D3A29D" />
-                    <stop offset={0.276} stopColor="#E1B5AC" />
-                    <stop offset={0.448} stopColor="#EAC2B8" />
-                    <stop offset={0.661} stopColor="#BF8A7F" />
-                    <stop offset={0.729} stopColor="#D7A8A0" />
-                    <stop offset={0.898} stopColor="#BF9388" />
-                  </linearGradient>
-                </defs>
-              </SMetalColorIcon>
-              Rose Gold<SProductsQuantity> (12)</SProductsQuantity>
-            </SFilter>
-            <SFilter>
-              <SMetalColorIcon
-                xmlns="http://www.w3.org/2000/svg"
-                width={20}
-                height={20}
-                viewBox="0 0 20 20"
-                fill="none"
-              >
-                <rect
-                  x={0.25}
-                  y={0.25}
-                  width={19.5}
-                  height={19.5}
-                  rx={9.75}
-                  fill="url(#prefix__paint2_linear)"
-                  stroke="#000"
-                  strokeWidth={0.5}
-                />
-                <defs>
-                  <linearGradient
-                    id="prefix__paint2_linear"
-                    x1={1.706}
-                    y1={2.368}
-                    x2={21.507}
-                    y2={10.765}
-                    gradientUnits="userSpaceOnUse"
-                  >
-                    <stop stopColor="#A8AEB6" />
-                    <stop offset={0.02} stopColor="#BCC1C7" />
-                    <stop offset={0.06} stopColor="#C3C7CC" />
-                    <stop offset={0.101} stopColor="#D3D6DA" />
-                    <stop offset={0.145} stopColor="#EEEFF0" />
-                    <stop offset={0.193} stopColor="#F8F8F9" />
-                    <stop offset={0.251} stopColor="#F8F8F9" />
-                    <stop offset={0.362} stopColor="#F8F8F8" />
-                    <stop offset={0.54} stopColor="#E4E5E8" />
-                    <stop offset={0.744} stopColor="#D3D6DA" />
-                    <stop offset={0.808} stopColor="#C3C7CC" />
-                    <stop offset={0.898} stopColor="#A8AEB6" />
-                  </linearGradient>
-                </defs>
-              </SMetalColorIcon>
-              Silver<SProductsQuantity> (12)</SProductsQuantity>
-            </SFilter>
+            {filters.colors.map(({ name, amount, gradient }, index) => (
+              <SFilter key={name}>
+                <SMetalColorIcon
+                  width={20}
+                  height={20}
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    x={0.25}
+                    y={0.25}
+                    width={19.5}
+                    height={19.5}
+                    rx={9.75}
+                    fill={`url(#${index}-color)`}
+                    stroke="#000"
+                    strokeWidth={0.5}
+                  />
+                  <defs>
+                    <linearGradient
+                      id={`${index}-color`}
+                      x1={1.706}
+                      y1={2.368}
+                      x2={21.507}
+                      y2={10.765}
+                      gradientUnits="userSpaceOnUse"
+                    >
+                      {gradient.map(({ stopColor, offset }) => (
+                        <stop stopColor={stopColor} offset={offset} key={stopColor + Math.random()} />
+                      ))}
+                    </linearGradient>
+                  </defs>
+                </SMetalColorIcon>
+                {name}
+                <SProductsQuantity> ({amount})</SProductsQuantity>
+              </SFilter>
+            ))}
           </SFilterGroup>
           <SFilterControlButtonsGroup>
             <SClearFiltersButton>Clear All</SClearFiltersButton>
             <SFilterControlButtonsGroupLabel>Refine</SFilterControlButtonsGroupLabel>
-            <SCloseButton
-              xmlns="http://www.w3.org/2000/svg"
-              width={22}
-              height={22}
-              viewBox="0 0 22 22"
-              fill="none"
-              onClick={() => setIsFiltersDropdownOpened(false)}
-            >
-              <path
-                d="M21 1L1 21M1 1l20 20"
-                stroke="#000"
-                strokeWidth={0.5}
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </SCloseButton>
+            <CloseButton onClick={() => setIsFiltersDropdownOpened(false)} />
           </SFilterControlButtonsGroup>
           <SShowResultsButton>Show Results</SShowResultsButton>
         </SFilters>
