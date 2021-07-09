@@ -3,7 +3,7 @@ import { InnerCircleExclusive } from './inner-circle-exclusive'
 
 export const BasicInnerCircleExclusive = (): React.ReactElement => (
   <InnerCircleExclusive
-    onReserve={variant => alert(`We will ship you the product with size ${variant.title}`)}
+    onReserve={(variant) => alert(`We will ship you the product with size ${variant.title}`)}
     product={{
       title: 'Winter - Wax Tarts',
       front_image: { src: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/ic-img.jpg' },

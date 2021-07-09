@@ -57,7 +57,7 @@ const FormButton = styled(Button)`
   padding: 0;
   cursor: pointer;
   height: 55px;
-  font: 700 20px/1 'Montserrat', sans-serif;
+  font: 700 16px/1 'Montserrat', sans-serif;
   color: #fff;
   text-transform: uppercase;
   background: #9059c8;
