@@ -98,9 +98,8 @@ const SFigcaption = styled.figcaption`
 
 const SliderWrapper = styled.div`
   position: relative;
-  max-width: 416px;
   margin: 0 auto;
-  padding: 0 10px;
+  padding: 0 16px;
 
   @media (min-width: 768px) {
     max-width: 100%;
@@ -147,7 +146,7 @@ const SliderWrapper = styled.div`
   }
 
   .slick-slider .slick-slide {
-    margin: 0 10px;
+    margin: 0 1%;
   }
 
   .slick-slide {

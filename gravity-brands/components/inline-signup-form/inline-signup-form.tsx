@@ -18,7 +18,7 @@ const Container = styled.div`
 `
 
 const Img = styled.img`
-  max-width: 88px;
+  max-width: 110px;
 `
 
 const Title = styled.h2`
@@ -34,7 +34,7 @@ const Text = styled.p`
 
 const Form = styled.form`
   max-width: 624px;
-  margin: 10px auto;
+  margin: 10px auto 0;
   display: flex;
 `
 

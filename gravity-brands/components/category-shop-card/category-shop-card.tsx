@@ -14,14 +14,18 @@ export interface CategoryShopCardProps extends Omit<React.HTMLProps<HTMLDivEleme
 const SCol = styled.div`
   @media (min-width: 768px) {
     width: 46%;
-    margin: 0 2% 20px;
+    margin: 0 2%;
   }
 `
 
 const SLayout = styled.div`
   position: relative;
   max-width: 450px;
-  margin: 0 auto 40px;
+  margin: 0 auto;
+  padding: 16px 0;
+  @media (min-width: 768px) {
+    padding: 0;
+  }
 `
 
 const SLayoutImage = styled.img`
@@ -47,13 +51,18 @@ const STitle = styled.span`
   display: block;
   margin: 0 0 15px;
   position: relative;
-  font: 700 32px/1 'Cormorant Garamond', serif;
+  font: 700 32px/32px 'Cormorant Garamond', serif;
   letter-spacing: -0.02em;
   text-align: center;
+  @media (min-width: 768px) {
+    font-size: 24px;
+  }
+  @media (min-width: 992px) {
+    font-size: 28px;
+  }
 `
 
 const SSubTitle = styled.div`
-  font: 400 16px/1.5 'Montserrat', sans-serif;
   margin: 0 0 15px;
 `
 

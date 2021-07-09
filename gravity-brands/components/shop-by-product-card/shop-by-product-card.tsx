@@ -5,6 +5,7 @@ import styled from 'styled-components'
 
 export interface ShopByProductCardProps extends Omit<React.HTMLProps<HTMLDivElement>, 'className'> {
   className?: ClassName
+  buttonLink?: string
   image: string
   buttonLink: string
   title: string
@@ -30,7 +31,10 @@ const SButtonWrapper = styled.div`
   min-width: 128px;
   bottom: 0;
   left: 50%;
-  transform: translate(-50%, 50%);
+  transform: translate(-50%, 29%);
+  @media (min-width: 768px) {
+    transform: translate(-50%, 50%);
+  }
 `
 
 const SButtonLink = styled.a`
