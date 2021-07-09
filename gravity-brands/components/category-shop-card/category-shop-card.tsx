@@ -13,14 +13,18 @@ export interface CategoryShopCardProps extends Omit<React.HTMLProps<HTMLDivEleme
 const SCol = styled.div`
   @media (min-width: 768px) {
     width: 46%;
-    margin: 0 2% 20px;
+    margin: 0 2%;
   }
 `
 
 const SLayout = styled.div`
   position: relative;
   max-width: 450px;
-  margin: 0 auto 40px;
+  margin: 0 auto;
+  padding: 16px 0;
+  @media (min-width: 768px) {
+    padding: 0;
+  }
 `
 
 const SLayoutImage = styled.img`

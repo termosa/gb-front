@@ -111,7 +111,7 @@
     .slick-next {
         border-bottom: 1px solid;
         border-left: 1px solid;
-        transform: rotate(-135deg);
+        transform: translateY(-50%) rotate(-135deg);
         right: -12px;
         @media (min-width: 768px) {
             right: -15px;
@@ -120,7 +120,7 @@
     .slick-prev {
         border-bottom: 1px solid;
         border-left: 1px solid;
-        transform: rotate(45deg);
+        transform: translateY(-50%) rotate(45deg);
         left: -12px;
         @media (min-width: 768px) {
             left: -15px;
@@ -179,7 +179,7 @@
         opacity: 0.6;
     }
     .slick-dots {
-        bottom: 24px;
+        bottom: 52px;
     }
 }
 

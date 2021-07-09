@@ -70,7 +70,8 @@ const SRow24 = styled.div`
 `
 
 const SPromiseItem = styled.div`
-  margin: 0 4% 15px;
+  margin: 0 4% 16px;
+  min-width: 131px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -98,10 +99,13 @@ const SPromiseItemImg = styled.img`
 `
 
 const SPromiseItemLabel = styled.span`
-  font: 400 16px/1.25 'Montserrat', sans-serif;
+  font: 400 12px/1.25 'Montserrat', sans-serif;
   letter-spacing: 0.05em;
   text-align: center;
   text-transform: uppercase;
+  @media (min-width: 768px) {
+    font: 400 16px/1.25 'Montserrat', sans-serif;
+  }
 `
 
 const PROMISE_ITEMS = [

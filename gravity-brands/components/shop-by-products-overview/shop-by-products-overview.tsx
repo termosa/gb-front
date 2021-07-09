@@ -16,9 +16,9 @@ export type ShopByProductsOverviewProps = {
 
 const SSection = styled.section`
   font: 12px/1.3 'Montserrat', sans-serif;
-  padding: 40px 0 30px;
+  padding: 52px 0 70px;
   @media (min-width: 768px) {
-    padding: 72px 0 90px;
+    padding: 82px 0 97px;
   }
 `
 
@@ -87,7 +87,7 @@ const SliderWrapper = styled.div`
 
   .slick-slider {
     opacity: 1;
-    padding: 10px 0;
+    padding: 10px 0 0;
     margin: 0 auto;
     max-width: 414px;
     position: relative;
@@ -98,7 +98,7 @@ const SliderWrapper = styled.div`
 
     @media (min-width: 768px) {
       max-width: 100%;
-      padding: 8px 0;
+      padding: 8px 0 0;
     }
   }
 
@@ -115,7 +115,10 @@ const SliderWrapper = styled.div`
   }
 
   .slick-slider .slick-track {
-    padding: 0 0 30px;
+    padding: 0 0 16px;
+    @media (min-width: 768px) {
+      padding: 0 0 28px;
+    }
   }
 
   .slick-track {

@@ -29,7 +29,10 @@ const SButtonWrapper = styled.div`
   min-width: 128px;
   bottom: 0;
   left: 50%;
-  transform: translate(-50%, 50%);
+  transform: translate(-50%, 29%);
+  @media (min-width: 768px) {
+    transform: translate(-50%, 50%);
+  }
 `
 
 export function ShopByProductCard({ className, image, title }: ShopByProductCardProps): React.ReactElement {

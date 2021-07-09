@@ -152,11 +152,11 @@ $lightYellow: rgba(253, 251, 249, 1);
         background: $lightYellow
     }
     &_mf {
-        padding-top: 50px;
-        margin-bottom: 40px;
+        padding-top: 34px;
+        margin-bottom: 33px;
         @media (min-width: 768px) {
             padding-top: 76px;
-            margin-bottom: 73px;
+            margin-bottom: 92px;
         }
     }
     &__img_email {
@@ -601,9 +601,9 @@ $lightYellow: rgba(253, 251, 249, 1);
 }
 
 .app-h-collections-section {
-    margin: 0 0 20px;
+    margin: 0 0 52px;
     @media (min-width: 768px) {
-        margin: 0 0 40px;
+        margin: 0 0 100px;
     }
 }
 
@@ -724,13 +724,13 @@ $lightYellow: rgba(253, 251, 249, 1);
 .app-h-mf-slider {
     display: flex;
     justify-content: space-between;
-    padding: 10px 0 52px;
+    padding: 10px 0 86px;
     max-width: 414px;
     margin: 0 auto;
     position: relative;
     @media (min-width: 768px) {
         max-width: 100%;
-        padding: 10px 0 38px;
+        padding: 10px 0 48px;
     }
     &__control-btn {
         cursor: pointer;
@@ -1005,9 +1005,9 @@ $lightYellow: rgba(253, 251, 249, 1);
 
 .app-h-form-section {
     text-align: center;
-    padding: 30px 0 20px;
+    padding: 52px 0 56px;
     @media (min-width: 768px) {
-        padding: 70px 0 40px;
+        padding: 88px 0 58px;
     }
 }
 
