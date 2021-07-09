@@ -22,7 +22,7 @@ export const CompactButton = (): React.ReactElement => (
 
 export const BlackButton = (): React.ReactElement => (
   <PresentationCanvas>
-    <Button>
+    <Button frontColor="#fff" backColor="#000">
       Black Button
     </Button>
   </PresentationCanvas>

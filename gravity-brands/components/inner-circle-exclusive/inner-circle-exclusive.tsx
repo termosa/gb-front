@@ -390,6 +390,8 @@ export function InnerCircleExclusive({
                   </SRingSizeWrapper>
                   <Button
                     compact={false}
+                    frontColor={'#fff'}
+                    backColor={'#000'}
                     style={{ width: '100%', marginBottom: 18 }}
                     disabled={!selectedVariant}
                     onClick={() => selectedVariant && onReserve(selectedVariant)}

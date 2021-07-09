@@ -38,7 +38,7 @@ const SButtonWrapper = styled.div`
 
 const SButtonLink = styled.a`
   text-decoration: none;
-  color: white;
+  color: inherit;
 `
 
 export function ShopByProductCard({ className, image, buttonLink, title }: ShopByProductCardProps): React.ReactElement {
@@ -46,7 +46,7 @@ export function ShopByProductCard({ className, image, buttonLink, title }: ShopB
     <SLayout className={cn('ShopByProductCard', className)}>
       <SLayoutImage src={image} />
       <SButtonWrapper>
-        <Button>
+        <Button frontColor="#fff" backColor="#000">
           <SButtonLink href={buttonLink}>{title}</SButtonLink>
         </Button>
       </SButtonWrapper>

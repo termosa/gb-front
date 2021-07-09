@@ -258,7 +258,7 @@ const SlideText = styled.div`
 
 const SlideLinkInner = styled.a`
   text-decoration: none;
-  color: white;
+  color: inherit;
 `
 
 export const HeroGallery = ({ className, slides }: HeroGalleryProps): React.ReactElement => {
@@ -291,7 +291,7 @@ export const HeroGallery = ({ className, slides }: HeroGalleryProps): React.Reac
               <SlideText>
                 <p>{slide.bottomText}</p>
               </SlideText>
-              <Button>
+              <Button backColor={'#000'} frontColor={'#fff'}>
                 <SlideLinkInner href={slide.buttonLink}>{slide.buttonText}</SlideLinkInner>
               </Button>
             </SlideContent>
@@ -310,7 +310,7 @@ export const HeroGallery = ({ className, slides }: HeroGalleryProps): React.Reac
             <SlideText>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. At eget iaculis eget eget neque.</p>
             </SlideText>
-            <Button>
+            <Button backColor={'#000'} frontColor={'#fff'}>
               <SlideLinkInner>Shop Now</SlideLinkInner>
             </Button>
           </SlideContent>
