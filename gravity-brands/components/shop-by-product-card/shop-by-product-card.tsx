@@ -5,6 +5,7 @@ import styled from 'styled-components'
 
 export interface ShopByProductCardProps extends Omit<React.HTMLProps<HTMLDivElement>, 'className'> {
   className?: ClassName
+  buttonLink?: string
   image: string
   title: string
 }

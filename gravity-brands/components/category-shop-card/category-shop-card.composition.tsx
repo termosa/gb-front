@@ -8,6 +8,7 @@ export const BasicCategoryShopCard = (): React.ReactElement => (
       title="Shop card title"
       subTitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
       image="https://i.ibb.co/QFSL0Xd/Background.jpg"
+      link="'https://www.fragrantjewels.com/pages/inner-circle#how-it-works'"
     />
   </PresentationCanvas>
 )
