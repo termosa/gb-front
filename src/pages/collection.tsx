@@ -1,11 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import collectionPageProps from './resolvers/collectionPageProps'
 import MainPageLayout from '@fragrantjewels/gravity-brands.components.main-page-layout'
 import FullWidthBanner from '@fragrantjewels/gravity-brands.components.full-width-banner'
-import CollectionFilters from '@fragrantjewels/gravity-brands.components.collection-filters'
+import CollectionFilters, { Filter } from '../../gravity-brands/components/collection-filters'
 import ProductsList, { Product as ProductType } from '@fragrantjewels/gravity-brands.components.products-list'
 import SiteSection from '@fragrantjewels/gravity-brands.components.site-section'
-import collectionFilters from 'src/settings/collectionFilters'
 import styled from 'styled-components'
 
 type ProductPageProps = {
@@ -17,6 +16,40 @@ const SFiltersSection = styled(SiteSection)`
 `
 
 export default function Collection({ collectionProducts }: ProductPageProps): React.ReactElement {
+  const getSizeFilters = (collectionProducts: Array<ProductType> | null) => {
+    const sizeFilters: Array<Filter> = []
+
+    collectionProducts &&
+      collectionProducts.map((product) =>
+        product.variants.map((variant) => {
+          if (!variant.available) return
+
+          const existingSize = sizeFilters.find((size) => size.name === variant.title)
+          if (existingSize) {
+            const existingSizeObject = sizeFilters[sizeFilters.indexOf(existingSize)]
+            existingSizeObject.amount = ++existingSizeObject.amount
+            return
+          }
+
+          sizeFilters.push({
+            name: variant.title,
+            amount: 1,
+          })
+        })
+      )
+
+    return sizeFilters
+  }
+
+  const parseFilterValues = (collectionProducts: Array<ProductType> | null) => ({
+    fragrances: [],
+    materials: [],
+    sizes: getSizeFilters(collectionProducts),
+    colors: [],
+  })
+
+  const [filteredProducts, setFilteredProducts] = useState<Array<ProductType> | null>([])
+
   return (
     <MainPageLayout>
       <div className="app-re-wrapper" id="app-wrapper">
@@ -29,12 +62,22 @@ export default function Collection({ collectionProducts }: ProductPageProps): Re
               textColor="#fff"
               position="left"
             />
-            {collectionProducts && (
+            {filteredProducts && (
               <div style={{ margin: '5em 0' }}>
                 <SFiltersSection>
-                  <CollectionFilters filters={collectionFilters} />
+                  <CollectionFilters
+                    onChange={(selectedFilters) => {
+                      setFilteredProducts(
+                        collectionProducts?.filter(
+                          (product) =>
+                            product.variants.find((variant) => selectedFilters.sizes.includes(variant.title))?.available
+                        ) || null
+                      )
+                    }}
+                    filters={parseFilterValues(collectionProducts)}
+                  />
                 </SFiltersSection>
-                <ProductsList products={collectionProducts} />
+                <ProductsList products={filteredProducts.length ? filteredProducts : collectionProducts} />
               </div>
             )}
           </main>

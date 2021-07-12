@@ -34,7 +34,7 @@
     "@fragrantjewels/gravity-brands.components.rolling-banner": "^0.0.7",
     "@fragrantjewels/gravity-brands.components.shop-by-products-overview": "^0.0.10",
     "@fragrantjewels/gravity-brands.components.site-section": "^0.0.3",
-    "@fragrantjewels/gravity-brands.helpers.theme-provider": "^0.0.7",
+    "@fragrantjewels/gravity-brands.helpers.theme-provider": "^0.0.8",
     "@fragrantjewels/gravity-brands.modules.base-api-url": "^0.0.3",
     "@fragrantjewels/gravity-brands.modules.load-collection": "^0.0.8",
     "@fragrantjewels/gravity-brands.modules.load-product": "^0.0.7",

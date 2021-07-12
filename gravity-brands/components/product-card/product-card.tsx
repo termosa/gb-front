@@ -18,6 +18,7 @@ export type Product = {
     actual_price: number
     variant_id: number
     title: string
+    available: boolean
   }>
 }
 
@@ -39,6 +40,7 @@ const ProductCardWrapper = styled.div`
 `
 
 const SProductCard = styled.div`
+  height: 100%;
   box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.1);
   background: white;
   padding: 13px 10px;
