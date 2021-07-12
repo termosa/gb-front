@@ -2347,6 +2347,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@fragrantjewels/gravity-brands.components.collection-filters@npm:^0.0.1":
+  version: 0.0.1
+  resolution: "@fragrantjewels/gravity-brands.components.collection-filters@npm:0.0.1::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.components.collection-filters%2F-%2F%40fragrantjewels-gravity-brands.components.collection-filters-0.0.1.tgz"
+  dependencies:
+    "@fragrantjewels/gravity-brands.hooks.use-popper": 0.0.1
+    classnames: ^2.3.1
+    core-js: ^3.0.0
+    styled-components: ^5.2.3
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0
+    react-dom: ^16.8.0 || ^17.0.0
+  checksum: ab8e4d852e0264640b93a945dff280e7040f5ded403e62de83f0ee50dad88c5a21db047dd135d78b07cf68213f5100736da40a000c6f888ac9c3aa83014440ef
+  languageName: node
+  linkType: hard
+
 "@fragrantjewels/gravity-brands.components.footer@npm:0.0.7, @fragrantjewels/gravity-brands.components.footer@npm:^0.0.7":
   version: 0.0.7
   resolution: "@fragrantjewels/gravity-brands.components.footer@npm:0.0.7::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.components.footer%2F-%2F%40fragrantjewels-gravity-brands.components.footer-0.0.7.tgz"
@@ -2635,6 +2650,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@fragrantjewels/gravity-brands.components.site-section@npm:^0.0.3":
+  version: 0.0.3
+  resolution: "@fragrantjewels/gravity-brands.components.site-section@npm:0.0.3::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.components.site-section%2F-%2F%40fragrantjewels-gravity-brands.components.site-section-0.0.3.tgz"
+  dependencies:
+    core-js: ^3.0.0
+    styled-components: ^5.2.3
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0
+    react-dom: ^16.8.0 || ^17.0.0
+  checksum: faef740acbcde18ed5eb8f4efa7968df8d4bff9febe31729b6ffdf2b948f4c44e24b5d7ab1295f3184e75c6221d31d6c10c6e7f414cc365f8d91ab8e8f7636df
+  languageName: node
+  linkType: hard
+
 "@fragrantjewels/gravity-brands.components.social-links@npm:0.0.6":
   version: 0.0.6
   resolution: "@fragrantjewels/gravity-brands.components.social-links@npm:0.0.6::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.components.social-links%2F-%2F%40fragrantjewels-gravity-brands.components.social-links-0.0.6.tgz"
@@ -2659,6 +2687,20 @@ __metadata:
     react: ^16.8.0 || ^17.0.0
     react-dom: ^16.8.0 || ^17.0.0
   checksum: 3634f5ffd57d34af6cd0a61659579d2378f058916aa76fb0ebe22cbde3a02cab1055c975818ad3973333ea12e8554066a8f7164a252ccac443d3b1b08e1484c7
+  languageName: node
+  linkType: hard
+
+"@fragrantjewels/gravity-brands.hooks.use-popper@npm:0.0.1":
+  version: 0.0.1
+  resolution: "@fragrantjewels/gravity-brands.hooks.use-popper@npm:0.0.1::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.hooks.use-popper%2F-%2F%40fragrantjewels-gravity-brands.hooks.use-popper-0.0.1.tgz"
+  dependencies:
+    "@popperjs/core": ^2.9.2
+    core-js: ^3.0.0
+    react-popper: ^2.2.5
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0
+    react-dom: ^16.8.0 || ^17.0.0
+  checksum: e8a5658aa89ed56ef0f0ebc92de03721aa39a6eb3bdec3847887c68a5776050370fa093f94896ccf528d7014113ed78d3bcb006302ee8590fd40d33a7b935429
   languageName: node
   linkType: hard
 
@@ -3836,12 +3878,12 @@ __metadata:
   linkType: hard
 
 "@nodelib/fs.walk@npm:^1.2.3":
-  version: 1.2.7
-  resolution: "@nodelib/fs.walk@npm:1.2.7"
+  version: 1.2.8
+  resolution: "@nodelib/fs.walk@npm:1.2.8"
   dependencies:
     "@nodelib/fs.scandir": 2.1.5
     fastq: ^1.6.0
-  checksum: f5286c39c2f9cc0e89b2cbee6b735c5cf572c37f9c0a47a16ce3c1d9ba5d488f3153976ceb1b984ad09dbd8d1de620fab3e7b0ef2b64a006267d0895a16ce95c
+  checksum: 190c643f156d8f8f277bf2a6078af1ffde1fd43f498f187c2db24d35b4b4b5785c02c7dc52e356497b9a1b65b13edc996de08de0b961c32844364da02986dc53
   languageName: node
   linkType: hard
 
@@ -3898,16 +3940,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@popperjs/core@npm:^2.4.4, @popperjs/core@npm:^2.8.3":
+"@popperjs/core@npm:^2.4.4, @popperjs/core@npm:^2.8.3, @popperjs/core@npm:^2.9.2":
   version: 2.9.2
   resolution: "@popperjs/core@npm:2.9.2"
-  checksum: a5916302e706b7dfbbbcd8728bafc1682b450d5ec70dd10da84a07c89a419fa72f83cbf990798589e6e69e1b520d6768176ea4bd360d7450d08a2fbc25a14e1c
-  languageName: node
-  linkType: hard
-
-"@popperjs/core@npm:^2.9.2":
-  version: 2.9.2
-  resolution: "@popperjs/core@npm:2.9.2::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2F%40popperjs%2Fcore%2F-%2Fcore-2.9.2.tgz"
   checksum: a5916302e706b7dfbbbcd8728bafc1682b450d5ec70dd10da84a07c89a419fa72f83cbf990798589e6e69e1b520d6768176ea4bd360d7450d08a2fbc25a14e1c
   languageName: node
   linkType: hard
@@ -9083,7 +9118,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/estree@npm:*":
+"@types/estree@npm:*, @types/estree@npm:^0.0.50":
   version: 0.0.50
   resolution: "@types/estree@npm:0.0.50"
   checksum: 9a2b6a4a8c117f34d08fbda5e8f69b1dfb109f7d149b60b00fd7a9fb6ac545c078bc590aa4ec2f0a256d680cf72c88b3b28b60c326ee38a7bc8ee1ee95624922
@@ -9101,13 +9136,6 @@ __metadata:
   version: 0.0.47
   resolution: "@types/estree@npm:0.0.47"
   checksum: aed5c940436250c25c5e140aa19e7199ba3452e72e1aecc515621507df9e5ed5076ddba84a1684c36d62be841ff3e2bafce8793f16fe6f69d10884449d4461e7
-  languageName: node
-  linkType: hard
-
-"@types/estree@npm:^0.0.49":
-  version: 0.0.49
-  resolution: "@types/estree@npm:0.0.49"
-  checksum: a01577ca7bdb30a668ac92d07122afcca8b1eb44d95ae1efe6dfefbc0b54953a137d7c2ebcab034568f1c04f2a42e85bf6bb97af47cdfaf9d5f01e58ac27ecf5
   languageName: node
   linkType: hard
 
@@ -9342,9 +9370,9 @@ __metadata:
   linkType: hard
 
 "@types/node@npm:*":
-  version: 16.0.1
-  resolution: "@types/node@npm:16.0.1"
-  checksum: f25d861d1bc36cbcce34516f800472d3e7b5980ce4d72399b094bd5cd3636e20cd8e143f5b4615c9385c04ef5ddbf61a181612ab658ef95a6f641dbce911bf92
+  version: 16.3.1
+  resolution: "@types/node@npm:16.3.1"
+  checksum: 2a9d69db32540157827a06893a80dcbc9c86a6287dace38e1ff27490f34ec4b4164426165f2c4146c412eca451bf1b782be17d5ce57a935b1fd1e7c5fae89f43
   languageName: node
   linkType: hard
 
@@ -10689,11 +10717,11 @@ __metadata:
   linkType: hard
 
 "acorn-jsx@npm:^5.3.1":
-  version: 5.3.1
-  resolution: "acorn-jsx@npm:5.3.1"
+  version: 5.3.2
+  resolution: "acorn-jsx@npm:5.3.2"
   peerDependencies:
     acorn: ^6.0.0 || ^7.0.0 || ^8.0.0
-  checksum: daf441a9d7b59c0ea1f7fe2934c48aca604a007455129ce35fa62ec3d4c8363e2efc2d4da636d18ce0049979260ba07d8b42bc002ae95182916d2c90901529c2
+  checksum: c3d3b2a89c9a056b205b69530a37b972b404ee46ec8e5b341666f9513d3163e2a4f214a71f4dfc7370f5a9c07472d2fd1c11c91c3f03d093e37637d95da98950
   languageName: node
   linkType: hard
 
@@ -15578,9 +15606,9 @@ __metadata:
   linkType: hard
 
 "electron-to-chromium@npm:^1.3.378, electron-to-chromium@npm:^1.3.585, electron-to-chromium@npm:^1.3.723":
-  version: 1.3.770
-  resolution: "electron-to-chromium@npm:1.3.770"
-  checksum: 648cdfe98b864990d98241a7f3ab066768fc70c06ab73c1025938cc86f9f878b2547115dc1d8985d3951c0fe7d5b78d0469e3f24880a9f7193cbf169bc6c9b78
+  version: 1.3.772
+  resolution: "electron-to-chromium@npm:1.3.772"
+  checksum: e22fa5e27bb766646ec7f41152fba633d0789f854d4d25aa6193750ded60d3a86274d72a532699e315a01fa11187a661bdd2b4070c3065747230f53d6ff7e55a
   languageName: node
   linkType: hard
 
@@ -16781,15 +16809,15 @@ __metadata:
   linkType: hard
 
 "fast-glob@npm:^3.1.1":
-  version: 3.2.6
-  resolution: "fast-glob@npm:3.2.6"
+  version: 3.2.7
+  resolution: "fast-glob@npm:3.2.7"
   dependencies:
     "@nodelib/fs.stat": ^2.0.2
     "@nodelib/fs.walk": ^1.2.3
     glob-parent: ^5.1.2
     merge2: ^1.3.0
     micromatch: ^4.0.4
-  checksum: 5cd4fb7b3d8c176cf11bca068f88a45b4e231c6f508e43cc9ad69c5551558420ee90df1a1b6c5a9e047b4ee8fa5f5ac7f7aaf27b7a54d8597971d4705e4390a2
+  checksum: 2f4708ff112d2b451888129fdd9a0938db88b105b0ddfd043c064e3c4d3e20eed8d7c7615f7565fee660db34ddcf08a2db1bf0ab3c00b87608e4719694642d78
   languageName: node
   linkType: hard
 
@@ -17316,17 +17344,31 @@ __metadata:
   dependencies:
     "@babel/core": 7.9.0
     "@babel/runtime": 7.12.18
+    "@fragrantjewels/gravity-brands.components.accepted-payments": 0.0.6
+    "@fragrantjewels/gravity-brands.components.button": 0.0.8
     "@fragrantjewels/gravity-brands.components.category-shop-card": ^0.0.8
+    "@fragrantjewels/gravity-brands.components.collection-filters": ^0.0.1
     "@fragrantjewels/gravity-brands.components.footer": ^0.0.7
+    "@fragrantjewels/gravity-brands.components.header": 0.0.14
     "@fragrantjewels/gravity-brands.components.hero-gallery": ^0.0.9
     "@fragrantjewels/gravity-brands.components.inline-signup-form": ^0.0.11
     "@fragrantjewels/gravity-brands.components.inner-circle-exclusive": ^0.0.8
+    "@fragrantjewels/gravity-brands.components.links-column-group": 0.0.10
     "@fragrantjewels/gravity-brands.components.main-page-layout": ^0.0.3
+    "@fragrantjewels/gravity-brands.components.nav-icons": 0.0.7
+    "@fragrantjewels/gravity-brands.components.nav-tabs": 0.0.8
+    "@fragrantjewels/gravity-brands.components.points-widget": 0.0.4
     "@fragrantjewels/gravity-brands.components.products-carousel": ^0.0.1
     "@fragrantjewels/gravity-brands.components.promise-bar": ^0.0.10
     "@fragrantjewels/gravity-brands.components.reviews-section": ^0.0.8
+    "@fragrantjewels/gravity-brands.components.ring-size": 0.0.5
     "@fragrantjewels/gravity-brands.components.rolling-banner": ^0.0.7
+    "@fragrantjewels/gravity-brands.components.search-field": 0.0.4
+    "@fragrantjewels/gravity-brands.components.shop-by-product-card": 0.0.8
     "@fragrantjewels/gravity-brands.components.shop-by-products-overview": ^0.0.10
+    "@fragrantjewels/gravity-brands.components.signin-signup": 0.0.4
+    "@fragrantjewels/gravity-brands.components.site-section": ^0.0.3
+    "@fragrantjewels/gravity-brands.components.social-links": 0.0.6
     "@fragrantjewels/gravity-brands.helpers.theme-provider": ^0.0.7
     "@fragrantjewels/gravity-brands.modules.base-api-url": ^0.0.3
     "@fragrantjewels/gravity-brands.modules.load-collection": ^0.0.8
@@ -18967,9 +19009,9 @@ fsevents@~2.1.2:
   linkType: hard
 
 "immutable@npm:^4.0.0-rc.9":
-  version: 4.0.0-rc.12
-  resolution: "immutable@npm:4.0.0-rc.12"
-  checksum: 69f5292e5683738e3f674ea5be1d0b4ffd3ef6215757c81009295f092966f546380a41c0df1203753cfd11f2389fefc16ba5935e5828d42948c6504001482328
+  version: 4.0.0-rc.14
+  resolution: "immutable@npm:4.0.0-rc.14"
+  checksum: 40941a80dd957361471697388019ae09be28d046a2c79d88dc81b215e6f2ed68a8c7356b9d99bb814a2d978c60d0bdf78997f65403f87adca60d7e11993e8c91
   languageName: node
   linkType: hard
 
@@ -26100,7 +26142,7 @@ fsevents@~2.1.2:
 
 "react-popper@npm:^2.2.5":
   version: 2.2.5
-  resolution: "react-popper@npm:2.2.5::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2Freact-popper%2F-%2Freact-popper-2.2.5.tgz"
+  resolution: "react-popper@npm:2.2.5"
   dependencies:
     react-fast-compare: ^3.0.1
     warning: ^4.0.2
@@ -27185,8 +27227,8 @@ resolve@1.1.7:
   linkType: hard
 
 "rollup@npm:^2.43.1":
-  version: 2.52.8
-  resolution: "rollup@npm:2.52.8"
+  version: 2.53.1
+  resolution: "rollup@npm:2.53.1"
   dependencies:
     fsevents: ~2.3.2
   dependenciesMeta:
@@ -27194,7 +27236,7 @@ resolve@1.1.7:
       optional: true
   bin:
     rollup: dist/bin/rollup
-  checksum: 871c54fe0f36e80d93ba5162d8d8c4d0285b0f061e5cc46b164b45f1525251132419ca9014019153feb38a1e7e9faf75af0c468e3b43216802389ccc231da763
+  checksum: 302ba5bff440b0747ba2bdbe4096cfbda9604d0f7cd85112cf447d48a1709ab53f87a52a96da4d64c0da318c431a2fb0d18fccbaf3781c47cfcc55f675fc82a7
   languageName: node
   linkType: hard
 
@@ -31314,11 +31356,11 @@ typescript@4.1.5:
   linkType: hard
 
 "webpack@npm:^5":
-  version: 5.43.0
-  resolution: "webpack@npm:5.43.0"
+  version: 5.44.0
+  resolution: "webpack@npm:5.44.0"
   dependencies:
     "@types/eslint-scope": ^3.7.0
-    "@types/estree": ^0.0.49
+    "@types/estree": ^0.0.50
     "@webassemblyjs/ast": 1.11.1
     "@webassemblyjs/wasm-edit": 1.11.1
     "@webassemblyjs/wasm-parser": 1.11.1
@@ -31345,7 +31387,7 @@ typescript@4.1.5:
       optional: true
   bin:
     webpack: bin/webpack.js
-  checksum: 24f3a34758c8836db22d8f107a11ca63ad76a23c6a60759ee27386e77df5674ba71f15af9dc5077e2d049c4e6cf278f9e047725ad65ffbe6cb1f797aa51ebcca
+  checksum: a173d875045267b5cb8ead959c1b47dc06ca191ee7cdbf6a094d5947261f1e4e167addc20eb65945078500247b74497e65270f4dbca1bcaf17327b462800c0ef
   languageName: node
   linkType: hard
 
@@ -31843,8 +31885,8 @@ typescript@4.1.5:
   linkType: hard
 
 "ws@npm:^5.2.0 || ^6.0.0 || ^7.0.0, ws@npm:^7, ws@npm:^7.0.0, ws@npm:^7.2.5, ws@npm:^7.4.4, ws@npm:^7.4.5":
-  version: 7.5.2
-  resolution: "ws@npm:7.5.2"
+  version: 7.5.3
+  resolution: "ws@npm:7.5.3"
   peerDependencies:
     bufferutil: ^4.0.1
     utf-8-validate: ^5.0.2
@@ -31853,7 +31895,7 @@ typescript@4.1.5:
       optional: true
     utf-8-validate:
       optional: true
-  checksum: 23aef9248676d1f2695b85ed52de2b8babc7989f126e4ee60ef4ceaa3dcdf5cb7447822f0341d9ab2907ccad2a232247f59220f2292a30269adc7d0a30bf0e34
+  checksum: 423dc0d859fa74020f5555140905b862470a60ea1567bb9ad55a087263d7718b9c94f69678be1cee9868925c570f1e6fc79d09f90c39057bc63fa2edbb2c547b
   languageName: node
   linkType: hard
 
