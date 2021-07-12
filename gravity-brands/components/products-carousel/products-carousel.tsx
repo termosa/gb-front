@@ -15,10 +15,10 @@ export type ProductsCarouselProps = {
 }
 
 const Section = styled.section`
-  margin: 0 0 16px;
+  margin: 0 0 48px;
 
   @media (min-width: 768px) {
-    margin: 0 0 52px;
+    margin: 0 0 92px;
   }
 
   * {
@@ -62,7 +62,10 @@ const SectionText = styled.div`
   text-align: center;
 
   p {
-    margin: 0 0 28px;
+    margin: 0 0 24px;
+    @media (min-width: 768px) {
+      margin: 0 0 28px;
+    }
   }
 
   &_narrow {
@@ -72,13 +75,9 @@ const SectionText = styled.div`
 `
 
 const ProductCards = styled.div`
-  max-width: 450px;
-  margin: 10px auto 15px;
+  max-width: 100%;
+  margin: 10px auto 0;
   position: relative;
-
-  @media (min-width: 768px) {
-    max-width: 100%;
-  }
 
   .slick-slider {
     position: relative;
@@ -202,10 +201,10 @@ const StyledSlider = styled(Slider)`
 `
 
 const ProgressWrapper = styled.div`
-  padding: 32px 0;
+  padding: 32px 0 0;
 
   @media (min-width: 500px) {
-    padding: 40px 8px;
+    padding: 40px 8px 0;
   }
 `
 
@@ -291,15 +290,7 @@ export const ProductsCarousel = ({
     nextArrow: <NextArrow />,
     responsive: [
       {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-          arrows: true,
-        },
-      },
-      {
-        breakpoint: 500,
+        breakpoint: 832,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,
@@ -333,13 +324,13 @@ export const ProductsCarousel = ({
                 />
               ))}
           </StyledSlider>
-          <ProgressWrapper>
-            <Progress progress={progress}>
-              <ProgressLabel>{`${progress}% completed`}</ProgressLabel>
-            </Progress>
-          </ProgressWrapper>
         </ProductCards>
       </Container>
+      <ProgressWrapper>
+        <Progress progress={progress}>
+          <ProgressLabel>{`${progress}% completed`}</ProgressLabel>
+        </Progress>
+      </ProgressWrapper>
     </Section>
   )
 }

@@ -39,15 +39,15 @@ const SWrapper = styled.div`
 
 const SInnerWrapper = styled.div`
   box-sizing: border-box;
-  padding-top: 11px;
-  -webkit-box-shadow: 0px 4px 9px rgba(0, 0, 0, 0.1);
-  box-shadow: 0px 4px 9px rgba(0, 0, 0, 0.1);
+  padding: 0;
+  -webkit-box-shadow: 0 4px 9px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 9px rgba(0, 0, 0, 0.1);
   position: relative;
   z-index: 10;
   background: #fff;
 
-  @media (max-width: 1200px) {
-    padding: 0;
+  @media (min-width: 1200px) {
+    padding-top: 11px;
   }
 `
 
@@ -197,17 +197,18 @@ const SIconsWrapper = styled.div`
     -ms-flex-wrap: nowrap;
     flex-wrap: nowrap;
     min-width: 405px;
+    min-height: 43px;
   }
 `
 
 const SSignSignup = styled(SigninSignup)`
-  @media (max-width: 1200px) {
+  @media (max-width: 1199px) {
     display: none;
   }
 `
 
 const SPointsWidget = styled.div`
-  @media (max-width: 1200px) {
+  @media (max-width: 1199px) {
     display: none !important;
   }
 `

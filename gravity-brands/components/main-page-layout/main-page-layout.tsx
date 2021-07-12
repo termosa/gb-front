@@ -17,7 +17,7 @@ const MainPageLayoutWrapper = styled.div`
   transition: opacity linear 0.5s;
   padding-top: 138px;
 
-  @media (max-width: 1200px) {
+  @media (max-width: 1199px) {
     padding-top: 146px;
   }
 `

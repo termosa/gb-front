@@ -32,15 +32,17 @@
 .app-h-main {
     .slick-dots {
         position: absolute;
-        bottom: 10px;
-        display: block;
+        display: flex;
+        justify-content: center;
+        height: 10px;
+        bottom: 22px;
         width: 100%;
         padding: 0;
         margin: 0;
         list-style: none;
         text-align: center;
         @media (min-width: 768px) {
-            bottom: 17px;
+            bottom: 18px;
         }
     }
     .slick-dots>li {
