@@ -612,23 +612,9 @@ export function Header({ className, onSearch }: HeaderProps): React.ReactElement
                 <NavIcons onSearchClick={() => setSearchDropdownVisible(!searchDropdownVisible)} />
               </SIconsWrapper>
             </SSearchContent>
-            {searchDropdownVisible && (
-              <SMobileSearchDropdown>
-                <SMobileSearchInput type="text" />
-                <SMobileSearchButton>
-                  <svg width="1.65em" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                      d="M23 23L16.26 15.55M18.58 9.79C18.58 14.6446 14.6446 18.58 9.79001 18.58C4.93543 18.58 1 14.6446 1 9.79C1 4.93542 4.93543 1 9.79001 1C14.6446 1 18.58 4.93542 18.58 9.79Z"
-                      stroke="black"
-                      stroke-width="0.5"
-                      stroke-miterlimit="10"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    ></path>
-                  </svg>
-                </SMobileSearchButton>
-              </SMobileSearchDropdown>
-            )}
+            <SSearchDropdown ref={searchDropdownRef}>
+              <h1>lol olodsaldlas</h1>
+            </SSearchDropdown>
           </SSearchWrapper>
           <NavTabs setExtendableBlockContent={setExtendableBlockContent} />
         </SContentWrapper>
