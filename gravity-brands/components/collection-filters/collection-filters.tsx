@@ -251,7 +251,7 @@ const SClearFiltersButton = styled.span`
   }
 `
 
-const sorts: Array<{ label: string, code: SelectedSorting }> = [
+const sorts: Array<{ label: string; code: SelectedSorting }> = [
   { label: 'New Arrivals', code: SelectedSorting.NEW },
   { label: 'Price: Low to High', code: SelectedSorting.LOW_TO_HIGH },
   { label: 'Price: High to Low', code: SelectedSorting.HIGH_TO_LOW },
@@ -313,7 +313,7 @@ export const CollectionFilters = ({
     const updatedFilters = {
       ...selectedFilters,
       [filterGroup]: enabled
-        ? selectedFilters[filterGroup].concat(selectedFilter)
+        ? selectedFilters[filterGroup].concat(selectedFilter as ColorFilter)
         : selectedFilters[filterGroup].filter((filter) => filter.name !== filterName),
     }
 

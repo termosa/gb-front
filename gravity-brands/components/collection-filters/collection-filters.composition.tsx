@@ -5,7 +5,8 @@ import PresentationCanvas from '@fragrantjewels/gravity-brands.helpers.presentat
 export const BasicCollectionFilters = (): React.ReactElement => (
   <PresentationCanvas withoutPaddings>
     <CollectionFilters
-      onChange={(selectedFilters) => console.log(selectedFilters)}
+      onChangeFilter={console.log}
+      onChangeSorting={console.log}
       filters={{
         fragrances: [
           {

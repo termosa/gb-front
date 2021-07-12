@@ -7,7 +7,7 @@ export const useOnClickOutside = (ref: Ref, handler: (ev: Event) => any) => {
     () => {
       const listener: EventListener = (event: Event) => {
         const elements = (ref.current && (ref.current instanceof Array ? ref.current : [ref.current])) || []
-        const clickedOnRef = elements.filter(Boolean).some((element) => element.contains(event.target))
+        const clickedOnRef = elements.filter(Boolean).some((element) => element.contains(event.target as Node))
 
         // Do nothing if clicking ref's element or descendent elements
         if (clickedOnRef) return

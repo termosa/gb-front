@@ -613,9 +613,9 @@ export function Header({ className, onSearch }: HeaderProps): React.ReactElement
                 <NavIcons onSearchClick={() => setSearchDropdownVisible(!searchDropdownVisible)} />
               </SIconsWrapper>
             </SSearchContent>
-            <SSearchDropdown ref={searchDropdownRef}>
+            {/* <SSearchDropdown ref={searchDropdownRef}>
               <h1>lol olodsaldlas</h1>
-            </SSearchDropdown>
+            </SSearchDropdown> */}
           </SSearchWrapper>
           <NavTabs setExtendableBlockContent={setExtendableBlockContent} />
         </SContentWrapper>
