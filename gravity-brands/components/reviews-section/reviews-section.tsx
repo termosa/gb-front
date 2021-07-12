@@ -213,6 +213,15 @@ const NextArrow = styled.button`
   margin: 0;
 `
 
+const TEST_IMAGES = [
+  'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/buzzfeed.png',
+  'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/cosmopolitan.png',
+  'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/refinery29.png',
+  'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/allure.png',
+  'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/beauty-insider.png',
+  'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/popsugar.png',
+]
+
 export function ReviewsSection({ images, quote, author, className }: ReviewsSectionProps): React.ReactElement {
   const settings: Settings = {
     slidesToShow: 6,
@@ -257,7 +266,10 @@ export function ReviewsSection({ images, quote, author, className }: ReviewsSect
         </SQuote>
         <SliderWrapper>
           <Slider {...settings}>
-            {images.map((media, index) => (
+            {/*{images*/}
+            {/*  ? images.map((media, index) => <img src={media} alt="company" key={`revImage${index}`} />)*/}
+            {/*  : TEST_IMAGES.map((media, index) => <img src={media} alt="company" key={`revImage${index}`} />)}*/}
+            {TEST_IMAGES.map((media, index) => (
               <img src={media} alt="company" key={`revImage${index}`} />
             ))}
           </Slider>

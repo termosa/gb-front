@@ -2,13 +2,21 @@ import React from 'react'
 import collectionPageProps from './resolvers/collectionPageProps'
 import MainPageLayout from '@fragrantjewels/gravity-brands.components.main-page-layout'
 import FullWidthBanner from '@fragrantjewels/gravity-brands.components.full-width-banner'
+import CollectionFilters from '@fragrantjewels/gravity-brands.components.collection-filters'
 import ProductsList, { Product as ProductType } from '@fragrantjewels/gravity-brands.components.products-list'
+import SiteSection from '@fragrantjewels/gravity-brands.components.site-section'
+import collectionFilters from 'src/settings/collectionFilters'
+import styled from 'styled-components'
 
 type ProductPageProps = {
   collectionProducts: Array<ProductType> | null
 }
 
-const Product = ({ collectionProducts }: ProductPageProps): React.ReactElement => {
+const SFiltersSection = styled(SiteSection)`
+  margin-bottom: 2em;
+`
+
+export default function Collection({ collectionProducts }: ProductPageProps): React.ReactElement {
   return (
     <MainPageLayout>
       <div className="app-re-wrapper" id="app-wrapper">
@@ -23,6 +31,9 @@ const Product = ({ collectionProducts }: ProductPageProps): React.ReactElement =
             />
             {collectionProducts && (
               <div style={{ margin: '5em 0' }}>
+                <SFiltersSection>
+                  <CollectionFilters filters={collectionFilters} />
+                </SFiltersSection>
                 <ProductsList products={collectionProducts} />
               </div>
             )}
@@ -34,5 +45,3 @@ const Product = ({ collectionProducts }: ProductPageProps): React.ReactElement =
 }
 
 export const getServerSideProps = collectionPageProps()
-
-export default Product
