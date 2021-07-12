@@ -22,9 +22,17 @@ export interface Filters {
   colors: Array<ColorFilter>
 }
 
+export interface SelectedFilters {
+  fragrances: Array<string>
+  materials: Array<string>
+  sizes: Array<string>
+  colors: Array<string>
+}
+
 export type CollectionFiltersProps = {
   className?: ClassName
   filters: Filters
+  onChange: (selectedFilters: SelectedFilters) => void
 }
 
 const SCollectionFiltersContainer = styled.div`
@@ -249,7 +257,7 @@ const CloseButton = ({ onClick }: { onClick: () => void }) => (
 
 const name = 'CollectionFilters'
 
-export const CollectionFilters = ({ className, filters }: CollectionFiltersProps): React.ReactElement => {
+export const CollectionFilters = ({ className, filters, onChange }: CollectionFiltersProps): React.ReactElement => {
   const [referenceElement, setReferenceElement] = useState<HTMLButtonElement | null>(null)
   const [popperElement, setPopperElement] = useState<HTMLDivElement | null>(null)
 
@@ -265,6 +273,37 @@ export const CollectionFilters = ({ className, filters }: CollectionFiltersProps
 
   const [isSortDropdownOpened, setIsSortDropdownOpened] = useState(false)
   const [isFiltersDropdownOpened, setIsFiltersDropdownOpened] = useState(false)
+
+  const [selectedFilters, setSelectedFilters] = useState<Filters>({
+    fragrances: [],
+    materials: [],
+    sizes: [],
+    colors: [],
+  })
+
+  const handleFilterChange = (
+    filterGroup: 'fragrances' | 'materials' | 'sizes' | 'colors',
+    filterName: string,
+    enabled: boolean
+  ) => {
+    const selectedFilter = filters[filterGroup].find((filter) => filter.name === filterName)
+
+    const updatedFilters = {
+      ...selectedFilters,
+      [filterGroup]: enabled
+        ? selectedFilters[filterGroup].concat(selectedFilter)
+        : selectedFilters[filterGroup].filter((filter) => filter.name !== filterName),
+    }
+
+    onChange({
+      fragrances: updatedFilters.fragrances.map((fragrance) => fragrance.name),
+      colors: updatedFilters.colors.map((color) => color.name),
+      sizes: updatedFilters.sizes.map((size) => size.name),
+      materials: updatedFilters.materials.map((material) => material.name),
+    })
+
+    setSelectedFilters(updatedFilters)
+  }
 
   return (
     <SCollectionFiltersContainer className={cn(name, className)}>
@@ -314,7 +353,7 @@ export const CollectionFilters = ({ className, filters }: CollectionFiltersProps
               <SFilter key={name}>
                 {name}
                 <SProductsQuantity> ({amount})</SProductsQuantity>
-                <SCheckbox />
+                <SCheckbox onChange={(event) => handleFilterChange('fragrances', name, event.target.checked)} />
               </SFilter>
             ))}
           </SFilterGroup>
@@ -324,7 +363,7 @@ export const CollectionFilters = ({ className, filters }: CollectionFiltersProps
               <SFilter key={name}>
                 {name}
                 <SProductsQuantity> ({amount})</SProductsQuantity>
-                <SCheckbox />
+                <SCheckbox onChange={(event) => handleFilterChange('sizes', name, event.target.checked)} />
               </SFilter>
             ))}
           </SFilterGroup>
@@ -334,7 +373,7 @@ export const CollectionFilters = ({ className, filters }: CollectionFiltersProps
               <SFilter key={name}>
                 {name}
                 <SProductsQuantity> ({amount})</SProductsQuantity>
-                <SCheckbox />
+                <SCheckbox onChange={(event) => handleFilterChange('materials', name, event.target.checked)} />
               </SFilter>
             ))}
           </SFilterGroup>
@@ -376,6 +415,11 @@ export const CollectionFilters = ({ className, filters }: CollectionFiltersProps
                 </SMetalColorIcon>
                 {name}
                 <SProductsQuantity> ({amount})</SProductsQuantity>
+                <input
+                  type="checkbox"
+                  hidden
+                  onChange={(event) => handleFilterChange('colors', name, event.target.checked)}
+                />
               </SFilter>
             ))}
           </SFilterGroup>
