@@ -1,54 +1,79 @@
-import React, { useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import collectionPageProps from './resolvers/collectionPageProps'
 import MainPageLayout from '@fragrantjewels/gravity-brands.components.main-page-layout'
 import FullWidthBanner from '@fragrantjewels/gravity-brands.components.full-width-banner'
-import CollectionFilters, { Filter } from '../../gravity-brands/components/collection-filters'
-import ProductsList, { Product as ProductType } from '@fragrantjewels/gravity-brands.components.products-list'
+import CollectionFilters, {
+  Filter,
+  SelectedFilters,
+  SelectedSorting,
+} from '@fragrantjewels/gravity-brands.components.collection-filters'
+import ProductsList, { Product } from '@fragrantjewels/gravity-brands.components.products-list'
 import SiteSection from '@fragrantjewels/gravity-brands.components.site-section'
 import styled from 'styled-components'
 
 type ProductPageProps = {
-  collectionProducts: Array<ProductType> | null
+  collectionProducts: Array<Product> | null
 }
 
 const SFiltersSection = styled(SiteSection)`
   margin-bottom: 2em;
 `
+const getSizeFilters = (collectionProducts: Array<Product> | null) => {
+  const sizeFilters: Array<Filter> = []
+
+  collectionProducts &&
+    collectionProducts.map((product) =>
+      product.variants.map((variant) => {
+        if (!variant.available) return
+
+        const existingSize = sizeFilters.find((size) => size.name === variant.title)
+        if (existingSize) {
+          const existingSizeObject = sizeFilters[sizeFilters.indexOf(existingSize)]
+          existingSizeObject.amount = ++existingSizeObject.amount
+          return
+        }
+
+        sizeFilters.push({
+          name: variant.title,
+          amount: 1,
+        })
+      })
+    )
+
+  return sizeFilters
+}
+
+const parseFilterValues = (collectionProducts: Array<Product> | null) => ({
+  fragrances: [],
+  materials: [],
+  sizes: getSizeFilters(collectionProducts),
+  colors: [],
+})
 
 export default function Collection({ collectionProducts }: ProductPageProps): React.ReactElement {
-  const getSizeFilters = (collectionProducts: Array<ProductType> | null) => {
-    const sizeFilters: Array<Filter> = []
+  const [filter, setFilter] = useState<SelectedFilters | null>(null)
+  const [sorting, setSorting] = useState<SelectedSorting | null>(null)
 
-    collectionProducts &&
-      collectionProducts.map((product) =>
-        product.variants.map((variant) => {
-          if (!variant.available) return
+  const filteredProducts = useMemo(() => {
+    if (!collectionProducts) return []
 
-          const existingSize = sizeFilters.find((size) => size.name === variant.title)
-          if (existingSize) {
-            const existingSizeObject = sizeFilters[sizeFilters.indexOf(existingSize)]
-            existingSizeObject.amount = ++existingSizeObject.amount
-            return
-          }
+    const sortedProducts = collectionProducts.sort((a, b) => {
+      if (sorting === SelectedSorting.LOW_TO_HIGH) return a.variants[0].actual_price - b.variants[0].actual_price
+      if (sorting === SelectedSorting.HIGH_TO_LOW) return b.variants[0].actual_price - a.variants[0].actual_price
+      if (sorting === SelectedSorting.NEW)
+        return (
+          Date.parse(b.published_at_shop || b.created_at_shop) - Date.parse(a.published_at_shop || a.created_at_shop)
+        )
 
-          sizeFilters.push({
-            name: variant.title,
-            amount: 1,
-          })
-        })
-      )
+      return 0
+    })
 
-    return sizeFilters
-  }
+    if (!filter || !filter.sizes.length) return sortedProducts
 
-  const parseFilterValues = (collectionProducts: Array<ProductType> | null) => ({
-    fragrances: [],
-    materials: [],
-    sizes: getSizeFilters(collectionProducts),
-    colors: [],
-  })
-
-  const [filteredProducts, setFilteredProducts] = useState<Array<ProductType> | null>([])
+    return sortedProducts.filter((product) =>
+      product.variants.some((variant) => variant.available && filter.sizes.includes(variant.title))
+    )
+  }, [collectionProducts, filter, sorting])
 
   return (
     <MainPageLayout>
@@ -62,24 +87,16 @@ export default function Collection({ collectionProducts }: ProductPageProps): Re
               textColor="#fff"
               position="left"
             />
-            {filteredProducts && (
-              <div style={{ margin: '5em 0' }}>
-                <SFiltersSection>
-                  <CollectionFilters
-                    onChange={(selectedFilters) => {
-                      setFilteredProducts(
-                        collectionProducts?.filter(
-                          (product) =>
-                            product.variants.find((variant) => selectedFilters.sizes.includes(variant.title))?.available
-                        ) || null
-                      )
-                    }}
-                    filters={parseFilterValues(collectionProducts)}
-                  />
-                </SFiltersSection>
-                <ProductsList products={filteredProducts.length ? filteredProducts : collectionProducts} />
-              </div>
-            )}
+            <div style={{ margin: '5em 0' }}>
+              <SFiltersSection>
+                <CollectionFilters
+                  onChangeFilter={setFilter}
+                  onChangeSorting={setSorting}
+                  filters={parseFilterValues(collectionProducts)}
+                />
+              </SFiltersSection>
+              <ProductsList products={filteredProducts} />
+            </div>
           </main>
         </div>
       </div>

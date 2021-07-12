@@ -13,7 +13,7 @@ export type ProductsListProps = {
 const ProductsListContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-between;
 `
 
 const SProductCard = styled(ProductCard)`

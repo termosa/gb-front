@@ -20,6 +20,8 @@ export type Product = {
     title: string
     available: boolean
   }>
+  created_at_shop: string
+  published_at_shop: string | null
 }
 
 export type ProductCardProps = {

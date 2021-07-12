@@ -30,10 +30,17 @@ export interface SelectedFilters {
   colors: Array<string>
 }
 
+export enum SelectedSorting {
+  NEW = 'new',
+  LOW_TO_HIGH = 'low-to-high',
+  HIGH_TO_LOW = 'high-to-low',
+}
+
 export type CollectionFiltersProps = {
   className?: ClassName
   filters: Filters
-  onChange: (selectedFilters: SelectedFilters) => void
+  onChangeFilter: (selectedFilters: SelectedFilters) => void
+  onChangeSorting: (sorting: SelectedSorting) => void
 }
 
 const SCollectionFiltersContainer = styled.div`
@@ -97,10 +104,11 @@ const SSortDropdown = styled.div`
   }
 `
 
-const SSortDropdownFilters = styled.p`
+const SSortDropdownFilters = styled.p<{ selected?: boolean }>`
   cursor: pointer;
   text-align: center;
   margin: 0;
+  font-weight: ${(p) => (p.selected ? 600 : 400)};
 
   &:not(:last-of-type) {
     padding-bottom: 16px;
@@ -243,6 +251,12 @@ const SClearFiltersButton = styled.span`
   }
 `
 
+const sorts: Array<{ label: string, code: SelectedSorting }> = [
+  { label: 'New Arrivals', code: SelectedSorting.NEW },
+  { label: 'Price: Low to High', code: SelectedSorting.LOW_TO_HIGH },
+  { label: 'Price: High to Low', code: SelectedSorting.HIGH_TO_LOW },
+]
+
 const CloseButton = ({ onClick }: { onClick: () => void }) => (
   <SCloseIcon
     xmlns="http://www.w3.org/2000/svg"
@@ -258,7 +272,14 @@ const CloseButton = ({ onClick }: { onClick: () => void }) => (
 
 const name = 'CollectionFilters'
 
-export const CollectionFilters = ({ className, filters, onChange }: CollectionFiltersProps): React.ReactElement => {
+export const CollectionFilters = ({
+  className,
+  filters,
+  onChangeFilter,
+  onChangeSorting,
+}: CollectionFiltersProps): React.ReactElement => {
+  const [selectedSorting, setSelectedSorting] = useState<SelectedSorting>(SelectedSorting.NEW)
+
   const [referenceElement, setReferenceElement] = useState<HTMLButtonElement | null>(null)
   const [popperElement, setPopperElement] = useState<HTMLDivElement | null>(null)
 
@@ -296,7 +317,7 @@ export const CollectionFilters = ({ className, filters, onChange }: CollectionFi
         : selectedFilters[filterGroup].filter((filter) => filter.name !== filterName),
     }
 
-    onChange({
+    onChangeFilter({
       fragrances: updatedFilters.fragrances.map((fragrance) => fragrance.name),
       colors: updatedFilters.colors.map((color) => color.name),
       sizes: updatedFilters.sizes.map((size) => size.name),
@@ -306,10 +327,13 @@ export const CollectionFilters = ({ className, filters, onChange }: CollectionFi
     setSelectedFilters(updatedFilters)
   }
 
-  useOnClickOutside(
-    setPopperElement,
-    (event) => event.target?.textContent !== 'Sort by' && setIsSortDropdownOpened(false)
-  )
+  useOnClickOutside({ current: popperElement }, () => setIsSortDropdownOpened(false))
+
+  const changeSorting = (sorting: SelectedSorting) => {
+    setSelectedSorting(sorting)
+    onChangeSorting(sorting)
+    setIsSortDropdownOpened(false)
+  }
 
   return (
     <SCollectionFiltersContainer className={cn(name, className)}>
@@ -345,90 +369,104 @@ export const CollectionFilters = ({ className, filters, onChange }: CollectionFi
         </SButton>
         {isSortDropdownOpened && (
           <SSortDropdown ref={setPopperElement} style={styles.popper} {...attributes.popper}>
-            <SSortDropdownFilters>New Arrivals</SSortDropdownFilters>
-            <SSortDropdownFilters>Price: Low to High</SSortDropdownFilters>
-            <SSortDropdownFilters>Price: High to Low</SSortDropdownFilters>
+            {sorts.map((sorting) => (
+              <SSortDropdownFilters
+                key={sorting.code}
+                onClick={() => changeSorting(sorting.code)}
+                selected={sorting.code === selectedSorting}
+              >
+                {sorting.label}
+              </SSortDropdownFilters>
+            ))}
           </SSortDropdown>
         )}
       </SButtons>
       {isFiltersDropdownOpened && (
         <SFilters>
-          <SFilterGroup>
-            <SFilterGroupName>Fragrance</SFilterGroupName>
-            {filters.fragrances.map(({ name, amount }) => (
-              <SFilter key={name}>
-                {name}
-                <SProductsQuantity> ({amount})</SProductsQuantity>
-                <SCheckbox onChange={(event) => handleFilterChange('fragrances', name, event.target.checked)} />
-              </SFilter>
-            ))}
-          </SFilterGroup>
-          <SFilterGroup>
-            <SFilterGroupName>Size</SFilterGroupName>
-            {filters.sizes.map(({ name, amount }) => (
-              <SFilter key={name}>
-                {name}
-                <SProductsQuantity> ({amount})</SProductsQuantity>
-                <SCheckbox onChange={(event) => handleFilterChange('sizes', name, event.target.checked)} />
-              </SFilter>
-            ))}
-          </SFilterGroup>
-          <SFilterGroup>
-            <SFilterGroupName>Material</SFilterGroupName>
-            {filters.materials.map(({ name, amount }) => (
-              <SFilter key={name}>
-                {name}
-                <SProductsQuantity> ({amount})</SProductsQuantity>
-                <SCheckbox onChange={(event) => handleFilterChange('materials', name, event.target.checked)} />
-              </SFilter>
-            ))}
-          </SFilterGroup>
-          <SFilterGroup>
-            <SFilterGroupName>Metal color</SFilterGroupName>
-            {filters.colors.map(({ name, amount, gradient }, index) => (
-              <SFilter key={name}>
-                <SMetalColorIcon
-                  width={20}
-                  height={20}
-                  viewBox="0 0 20 20"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <rect
-                    x={0.25}
-                    y={0.25}
-                    width={19.5}
-                    height={19.5}
-                    rx={9.75}
-                    fill={`url(#${index}-color)`}
-                    stroke="#000"
-                    strokeWidth={0.5}
+          {!!filters.fragrances.length && (
+            <SFilterGroup>
+              <SFilterGroupName>Fragrance</SFilterGroupName>
+              {filters.fragrances.map(({ name, amount }) => (
+                <SFilter key={name}>
+                  {name}
+                  <SProductsQuantity> ({amount})</SProductsQuantity>
+                  <SCheckbox onChange={(event) => handleFilterChange('fragrances', name, event.target.checked)} />
+                </SFilter>
+              ))}
+            </SFilterGroup>
+          )}
+          {!!filters.sizes.length && (
+            <SFilterGroup>
+              <SFilterGroupName>Size</SFilterGroupName>
+              {filters.sizes.map(({ name, amount }) => (
+                <SFilter key={name}>
+                  {name}
+                  <SProductsQuantity> ({amount})</SProductsQuantity>
+                  <SCheckbox onChange={(event) => handleFilterChange('sizes', name, event.target.checked)} />
+                </SFilter>
+              ))}
+            </SFilterGroup>
+          )}
+          {!!filters.materials.length && (
+            <SFilterGroup>
+              <SFilterGroupName>Material</SFilterGroupName>
+              {filters.materials.map(({ name, amount }) => (
+                <SFilter key={name}>
+                  {name}
+                  <SProductsQuantity> ({amount})</SProductsQuantity>
+                  <SCheckbox onChange={(event) => handleFilterChange('materials', name, event.target.checked)} />
+                </SFilter>
+              ))}
+            </SFilterGroup>
+          )}
+          {!!filters.colors.length && (
+            <SFilterGroup>
+              <SFilterGroupName>Metal color</SFilterGroupName>
+              {filters.colors.map(({ name, amount, gradient }, index) => (
+                <SFilter key={name}>
+                  <SMetalColorIcon
+                    width={20}
+                    height={20}
+                    viewBox="0 0 20 20"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <rect
+                      x={0.25}
+                      y={0.25}
+                      width={19.5}
+                      height={19.5}
+                      rx={9.75}
+                      fill={`url(#${index}-color)`}
+                      stroke="#000"
+                      strokeWidth={0.5}
+                    />
+                    <defs>
+                      <linearGradient
+                        id={`${index}-color`}
+                        x1={1.706}
+                        y1={2.368}
+                        x2={21.507}
+                        y2={10.765}
+                        gradientUnits="userSpaceOnUse"
+                      >
+                        {gradient.map(({ stopColor, offset }) => (
+                          <stop stopColor={stopColor} offset={offset} key={stopColor + Math.random()} />
+                        ))}
+                      </linearGradient>
+                    </defs>
+                  </SMetalColorIcon>
+                  {name}
+                  <SProductsQuantity> ({amount})</SProductsQuantity>
+                  <input
+                    type="checkbox"
+                    hidden
+                    onChange={(event) => handleFilterChange('colors', name, event.target.checked)}
                   />
-                  <defs>
-                    <linearGradient
-                      id={`${index}-color`}
-                      x1={1.706}
-                      y1={2.368}
-                      x2={21.507}
-                      y2={10.765}
-                      gradientUnits="userSpaceOnUse"
-                    >
-                      {gradient.map(({ stopColor, offset }) => (
-                        <stop stopColor={stopColor} offset={offset} key={stopColor + Math.random()} />
-                      ))}
-                    </linearGradient>
-                  </defs>
-                </SMetalColorIcon>
-                {name}
-                <SProductsQuantity> ({amount})</SProductsQuantity>
-                <input
-                  type="checkbox"
-                  hidden
-                  onChange={(event) => handleFilterChange('colors', name, event.target.checked)}
-                />
-              </SFilter>
-            ))}
-          </SFilterGroup>
+                </SFilter>
+              ))}
+            </SFilterGroup>
+          )}
           <SFilterControlButtonsGroup>
             <SClearFiltersButton>Clear All</SClearFiltersButton>
             <SFilterControlButtonsGroupLabel>Refine</SFilterControlButtonsGroupLabel>
