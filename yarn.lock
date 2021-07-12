@@ -3905,6 +3905,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@popperjs/core@npm:^2.9.2":
+  version: 2.9.2
+  resolution: "@popperjs/core@npm:2.9.2::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2F%40popperjs%2Fcore%2F-%2Fcore-2.9.2.tgz"
+  checksum: a5916302e706b7dfbbbcd8728bafc1682b450d5ec70dd10da84a07c89a419fa72f83cbf990798589e6e69e1b520d6768176ea4bd360d7450d08a2fbc25a14e1c
+  languageName: node
+  linkType: hard
+
 "@protobufjs/aspromise@npm:^1.1.1, @protobufjs/aspromise@npm:^1.1.2":
   version: 1.1.2
   resolution: "@protobufjs/aspromise@npm:1.1.2"
@@ -13572,6 +13579,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"collection-filters-cd10fa@workspace:gravity-brands/components/collection-filters":
+  version: 0.0.0-use.local
+  resolution: "collection-filters-cd10fa@workspace:gravity-brands/components/collection-filters"
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0
+    react-dom: ^16.8.0 || ^17.0.0
+  languageName: unknown
+  linkType: soft
+
 "collection-visit@npm:^1.0.0":
   version: 1.0.0
   resolution: "collection-visit@npm:1.0.0"
@@ -17294,6 +17310,87 @@ __metadata:
   languageName: node
   linkType: hard
 
+"fragrantjewels-front@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "fragrantjewels-front@workspace:."
+  dependencies:
+    "@babel/core": 7.9.0
+    "@babel/runtime": 7.12.18
+    "@fragrantjewels/gravity-brands.components.category-shop-card": ^0.0.8
+    "@fragrantjewels/gravity-brands.components.footer": ^0.0.7
+    "@fragrantjewels/gravity-brands.components.hero-gallery": ^0.0.9
+    "@fragrantjewels/gravity-brands.components.inline-signup-form": ^0.0.11
+    "@fragrantjewels/gravity-brands.components.inner-circle-exclusive": ^0.0.8
+    "@fragrantjewels/gravity-brands.components.main-page-layout": ^0.0.3
+    "@fragrantjewels/gravity-brands.components.products-carousel": ^0.0.1
+    "@fragrantjewels/gravity-brands.components.promise-bar": ^0.0.10
+    "@fragrantjewels/gravity-brands.components.reviews-section": ^0.0.8
+    "@fragrantjewels/gravity-brands.components.rolling-banner": ^0.0.7
+    "@fragrantjewels/gravity-brands.components.shop-by-products-overview": ^0.0.10
+    "@fragrantjewels/gravity-brands.helpers.theme-provider": ^0.0.7
+    "@fragrantjewels/gravity-brands.modules.base-api-url": ^0.0.3
+    "@fragrantjewels/gravity-brands.modules.load-collection": ^0.0.8
+    "@fragrantjewels/gravity-brands.modules.load-product": ^0.0.7
+    "@fragrantjewels/gravity-brands.modules.resolve-page-props": ^0.0.2
+    "@fragrantjewels/gravity-brands.modules.signup": ^0.0.9
+    "@popperjs/core": ^2.9.2
+    "@teambit/cli": ^0.0.352
+    "@teambit/generator": ^0.0.375
+    "@teambit/harmony": ^0.2.11
+    "@testing-library/jest-dom": 5.11.8
+    "@testing-library/react": 11.2.2
+    "@types/fs-extra": ^9.0.11
+    "@types/jest": 26.0.20
+    "@types/lodash": ^4.14.169
+    "@types/node": 12.20.4
+    "@types/react": ^17.0.8
+    "@types/react-dom": ^17.0.5
+    "@types/react-slick": ^0.23.4
+    "@types/styled-components": ^5.1.9
+    "@types/svg-sprite-loader": 3.9.1
+    "@types/testing-library__jest-dom": 5.9.5
+    "@typescript-eslint/eslint-plugin": 4.11.1
+    "@typescript-eslint/parser": 4.11.1
+    acorn: 7.1.1
+    babel-core: 6.26.3
+    babel-jest: 25.2.4
+    babel-loader: 8.1.0
+    babel-plugin-module-resolver: 4.0.0
+    classnames: ^2.3.1
+    core-js: ^3.0.0
+    eslint: 7.17.0
+    eslint-config-prettier: 7.1.0
+    eslint-plugin-jsx-a11y: 6.4.1
+    eslint-plugin-prettier: 3.3.0
+    eslint-plugin-react: 7.22.0
+    eslint-plugin-react-hooks: 4.2.0
+    husky: 4.2.3
+    identity-obj-proxy: 3.0.0
+    jest: 25.2.4
+    jest-svg-transformer: 1.0.0
+    lint-staged: 10.1.0
+    next: 10.0.3
+    node-sass: ^5.0.0
+    postcss-preset-env: 6.7.0
+    prettier: 2.0.2
+    react: 17.0.1
+    react-dom: 17.0.1
+    react-media-hook: ^0.4.9
+    react-popper: ^2.2.5
+    react-slick: ^0.28.1
+    styled-components: ^5.2.3
+    stylelint: 13.2.1
+    stylelint-config-prettier: 8.0.1
+    stylelint-config-recommended: 3.0.0
+    stylelint-scss: 3.16.0
+    svg-sprite-loader: 4.2.1
+    svgo: 1.3.2
+    svgo-loader: 2.2.1
+    typescript: 3.8.3
+    use-defer: ^2.1.0
+  languageName: unknown
+  linkType: soft
+
 "fresh@npm:0.5.2":
   version: 0.5.2
   resolution: "fresh@npm:0.5.2"
@@ -18988,6 +19085,15 @@ fsevents@~2.1.2:
 "information-card-50e5b7@workspace:gravity-brands/components/information-card":
   version: 0.0.0-use.local
   resolution: "information-card-50e5b7@workspace:gravity-brands/components/information-card"
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0
+    react-dom: ^16.8.0 || ^17.0.0
+  languageName: unknown
+  linkType: soft
+
+"information-overview-e67ca9@workspace:gravity-brands/components/information-overview":
+  version: 0.0.0-use.local
+  resolution: "information-overview-e67ca9@workspace:gravity-brands/components/information-overview"
   peerDependencies:
     react: ^16.8.0 || ^17.0.0
     react-dom: ^16.8.0 || ^17.0.0
@@ -22912,87 +23018,6 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"nextjs-boilerplate@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "nextjs-boilerplate@workspace:."
-  dependencies:
-    "@babel/core": 7.9.0
-    "@babel/runtime": 7.12.18
-    "@fragrantjewels/gravity-brands.components.button": 0.0.8
-    "@fragrantjewels/gravity-brands.components.category-shop-card": ^0.0.8
-    "@fragrantjewels/gravity-brands.components.footer": ^0.0.7
-    "@fragrantjewels/gravity-brands.components.hero-gallery": ^0.0.9
-    "@fragrantjewels/gravity-brands.components.inline-signup-form": ^0.0.11
-    "@fragrantjewels/gravity-brands.components.inner-circle-exclusive": ^0.0.8
-    "@fragrantjewels/gravity-brands.components.main-page-layout": ^0.0.3
-    "@fragrantjewels/gravity-brands.components.products-carousel": ^0.0.1
-    "@fragrantjewels/gravity-brands.components.promise-bar": ^0.0.10
-    "@fragrantjewels/gravity-brands.components.reviews-section": ^0.0.8
-    "@fragrantjewels/gravity-brands.components.rolling-banner": ^0.0.7
-    "@fragrantjewels/gravity-brands.components.shop-by-product-card": 0.0.8
-    "@fragrantjewels/gravity-brands.components.shop-by-products-overview": ^0.0.10
-    "@fragrantjewels/gravity-brands.helpers.theme-provider": ^0.0.7
-    "@fragrantjewels/gravity-brands.modules.base-api-url": ^0.0.3
-    "@fragrantjewels/gravity-brands.modules.load-collection": ^0.0.8
-    "@fragrantjewels/gravity-brands.modules.load-product": ^0.0.7
-    "@fragrantjewels/gravity-brands.modules.resolve-page-props": ^0.0.2
-    "@fragrantjewels/gravity-brands.modules.signup": ^0.0.9
-    "@teambit/cli": ^0.0.352
-    "@teambit/generator": ^0.0.375
-    "@teambit/harmony": ^0.2.11
-    "@testing-library/jest-dom": 5.11.8
-    "@testing-library/react": 11.2.2
-    "@types/fs-extra": ^9.0.11
-    "@types/jest": 26.0.20
-    "@types/lodash": ^4.14.169
-    "@types/node": 12.20.4
-    "@types/react": ^17.0.8
-    "@types/react-dom": ^17.0.5
-    "@types/react-slick": ^0.23.4
-    "@types/styled-components": ^5.1.9
-    "@types/svg-sprite-loader": 3.9.1
-    "@types/testing-library__jest-dom": 5.9.5
-    "@typescript-eslint/eslint-plugin": 4.11.1
-    "@typescript-eslint/parser": 4.11.1
-    acorn: 7.1.1
-    babel-core: 6.26.3
-    babel-jest: 25.2.4
-    babel-loader: 8.1.0
-    babel-plugin-module-resolver: 4.0.0
-    classnames: ^2.3.1
-    core-js: ^3.0.0
-    eslint: 7.17.0
-    eslint-config-prettier: 7.1.0
-    eslint-plugin-jsx-a11y: 6.4.1
-    eslint-plugin-prettier: 3.3.0
-    eslint-plugin-react: 7.22.0
-    eslint-plugin-react-hooks: 4.2.0
-    husky: 4.2.3
-    identity-obj-proxy: 3.0.0
-    jest: 25.2.4
-    jest-svg-transformer: 1.0.0
-    lint-staged: 10.1.0
-    next: 10.0.3
-    node-sass: ^5.0.0
-    postcss-preset-env: 6.7.0
-    prettier: 2.0.2
-    react: 17.0.1
-    react-dom: 17.0.1
-    react-media-hook: ^0.4.9
-    react-slick: ^0.28.1
-    styled-components: ^5.2.3
-    stylelint: 13.2.1
-    stylelint-config-prettier: 8.0.1
-    stylelint-config-recommended: 3.0.0
-    stylelint-scss: 3.16.0
-    svg-sprite-loader: 4.2.1
-    svgo: 1.3.2
-    svgo-loader: 2.2.1
-    typescript: 3.8.3
-    use-defer: ^2.1.0
-  languageName: unknown
-  linkType: soft
-
 "nice-try@npm:^1.0.4":
   version: 1.0.5
   resolution: "nice-try@npm:1.0.5"
@@ -25518,6 +25543,15 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
+"product-card-bc86f7@workspace:gravity-brands/components/product-card":
+  version: 0.0.0-use.local
+  resolution: "product-card-bc86f7@workspace:gravity-brands/components/product-card"
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0
+    react-dom: ^16.8.0 || ^17.0.0
+  languageName: unknown
+  linkType: soft
+
 "products-carousel-a677a6@workspace:gravity-brands/components/products-carousel":
   version: 0.0.0-use.local
   resolution: "products-carousel-a677a6@workspace:gravity-brands/components/products-carousel"
@@ -26061,6 +26095,19 @@ fsevents@~2.1.2:
     "@popperjs/core": ^2.0.0
     react: ^16.8.0 || ^17
   checksum: 02cdce8d815ab005905562ff4705bbc84a3e4bf7558d026051f8d459f30dc1506efeafec83ebd3e52a623e9da1f6b946270d2854774f66bbe0037a2507f02972
+  languageName: node
+  linkType: hard
+
+"react-popper@npm:^2.2.5":
+  version: 2.2.5
+  resolution: "react-popper@npm:2.2.5::__archiveUrl=https%3A%2F%2Fregistry.npmjs.org%2Freact-popper%2F-%2Freact-popper-2.2.5.tgz"
+  dependencies:
+    react-fast-compare: ^3.0.1
+    warning: ^4.0.2
+  peerDependencies:
+    "@popperjs/core": ^2.0.0
+    react: ^16.8.0 || ^17
+  checksum: 915fcf08e1da4fd48a200074fcdd936f601ee2173f1e730cfed8a54fd47716aa8bf9cce2392463e3bcbe64a096d0baf463809ed2874b94d3a9d430ae6d817b5d
   languageName: node
   linkType: hard
 
@@ -30585,6 +30632,15 @@ typescript@4.1.5:
   checksum: 71f4598ce422b64a971dc93f45dc245158977f8882f56be82d4629c21577c22244959ac3aa99bd9559d64007b632d58aa43b256981afe56603c77ce3fdee165f
   languageName: node
   linkType: hard
+
+"use-popper-50e9d5@workspace:gravity-brands/hooks/use-popper":
+  version: 0.0.0-use.local
+  resolution: "use-popper-50e9d5@workspace:gravity-brands/hooks/use-popper"
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0
+    react-dom: ^16.8.0 || ^17.0.0
+  languageName: unknown
+  linkType: soft
 
 "use-subscription@npm:1.5.1":
   version: 1.5.1
