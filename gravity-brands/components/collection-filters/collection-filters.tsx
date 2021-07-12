@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
 import usePopper from '@fragrantjewels/gravity-brands.hooks.use-popper'
+import useOnClickOutside from '@fragrantjewels/gravity-brands.hooks.use-on-click-outside'
 
 export interface Filter {
   name: string
@@ -304,6 +305,11 @@ export const CollectionFilters = ({ className, filters, onChange }: CollectionFi
 
     setSelectedFilters(updatedFilters)
   }
+
+  useOnClickOutside(
+    setPopperElement,
+    (event) => event.target?.textContent !== 'Sort by' && setIsSortDropdownOpened(false)
+  )
 
   return (
     <SCollectionFiltersContainer className={cn(name, className)}>

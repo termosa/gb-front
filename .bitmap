@@ -229,6 +229,12 @@
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/helpers/theme-provider"
     },
+    "hooks/use-on-click-outside": {
+        "scope": "",
+        "version": "",
+        "mainFile": "index.ts",
+        "rootDir": "gravity-brands/hooks/use-on-click-outside"
+    },
     "hooks/use-popper": {
         "scope": "fragrantjewels.gravity-brands",
         "version": "0.0.1",
