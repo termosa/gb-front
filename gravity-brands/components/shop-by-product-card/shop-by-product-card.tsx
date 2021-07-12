@@ -5,7 +5,6 @@ import styled from 'styled-components'
 
 export interface ShopByProductCardProps extends Omit<React.HTMLProps<HTMLDivElement>, 'className'> {
   className?: ClassName
-  buttonLink?: string
   image: string
   buttonLink: string
   title: string
@@ -39,7 +38,7 @@ const SButtonWrapper = styled.div`
 
 const SButtonLink = styled.a`
   text-decoration: none;
-  color: white;
+  color: inherit;
 `
 
 export function ShopByProductCard({ className, image, buttonLink, title }: ShopByProductCardProps): React.ReactElement {
@@ -47,7 +46,7 @@ export function ShopByProductCard({ className, image, buttonLink, title }: ShopB
     <SLayout className={cn('ShopByProductCard', className)}>
       <SLayoutImage src={image} />
       <SButtonWrapper>
-        <Button backColor="#000" frontColor="#fff">
+        <Button backColor={'#000'} frontColor={'#fff'}>
           <SButtonLink href={buttonLink}>{title}</SButtonLink>
         </Button>
       </SButtonWrapper>

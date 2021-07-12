@@ -31,7 +31,7 @@ export type ProductCardProps = {
 const ProductCardWrapper = styled.div`
   padding: 5px;
   cursor: pointer;
-  min-width: 250px;
+  // min-width: 250px;
 
   @media (min-width: 500px) {
     padding: 5px 8px;

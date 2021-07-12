@@ -119,15 +119,13 @@ const HomePage = ({ trendingProducts, innerCircleProduct }: HomePageProps): Reac
 
           <div className="app-h-section app-h-collections-section">
             <div className="app-h-container">
-              <div className="app-h-row-1-2">
+              <div className="app-h-container__content">
                 <CategoryShopCard
                   image="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/collection-img-1.jpg"
                   title="Valentine’s Shop"
                   subTitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
                   link="'https://www.fragrantjewels.com/pages/inner-circle#how-it-works'"
                 />
-              </div>
-              <div className="app-h-col">
                 <CategoryShopCard
                   image="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/collection-img-2.jpg"
                   title="Mythical Shop"

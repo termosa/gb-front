@@ -19,7 +19,8 @@ const name = 'LinksColumnGroup'
 const Group = styled.div<{ mobile?: boolean }>`
   padding: 0 10px;
   color: #fff;
-  font: 12px/1.3 'Montserrat', sans-serif;
+  font: 400 14px/1.5 'Montserrat', sans-serif;
+  letter-spacing: 0.05em;
 
   ${(props) =>
     props.mobile
@@ -33,6 +34,8 @@ const Group = styled.div<{ mobile?: boolean }>`
 `
 
 const Title = styled.div<{ mobile?: boolean }>`
+  font: 600 14px/1.5 'Montserrat', sans-serif;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   padding: 0 0 17px;
   margin: 0 0 13px;
@@ -52,7 +55,7 @@ const Title = styled.div<{ mobile?: boolean }>`
 
 const Arrow = styled(LinksColumnGroupArrow)<{ opened?: boolean }>`
   position: absolute;
-  right: 0%;
+  right: 0;
   top: 50%;
   transform: translateY(-50%) ${(props) => (props.opened ? 'rotate(180deg)' : '')};
 `

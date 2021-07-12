@@ -49,17 +49,14 @@ const SContent = styled.div`
 
 const STitle = styled.span`
   display: block;
-  margin: 0 0 15px;
+  margin: 0 0 12px;
+  @media (min-width: 768px) {
+    margin: 0 0 15px;
+  }
   position: relative;
-  font: 700 32px/32px 'Cormorant Garamond', serif;
+  font: 700 32px/1 'Cormorant Garamond', serif;
   letter-spacing: -0.02em;
   text-align: center;
-  @media (min-width: 768px) {
-    font-size: 24px;
-  }
-  @media (min-width: 992px) {
-    font-size: 28px;
-  }
 `
 
 const SSubTitle = styled.div`
@@ -76,7 +73,7 @@ const SButtonWrapper = styled.div`
 
 const SLink = styled.a`
   text-decoration: none;
-  color: white;
+  color: inherit;
 `
 
 export function CategoryShopCard({
@@ -94,7 +91,7 @@ export function CategoryShopCard({
           <STitle>{title}</STitle>
           <SSubTitle>{subTitle}</SSubTitle>
           <SButtonWrapper>
-            <Button backColor={'#000'} frontColor={'#fff'}>
+            <Button backColor={'#000'} frontColor={'#fff'} width={'171px'}>
               <SLink href={link}>SHOP NOW</SLink>
             </Button>
           </SButtonWrapper>

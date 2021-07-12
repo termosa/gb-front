@@ -7,11 +7,11 @@ export type SearchFieldProps = {
 }
 
 const SWrapper = styled.div`
-  font-size: 0.9em;
+  font: 400 14px/17px 'Montserrat', sans-serif;
+  letter-spacing: 0.05em;
   text-align: left;
 
   @media (min-width: 1200px) {
-    font-size: 0.9em;
     text-align: right;
   }
 `

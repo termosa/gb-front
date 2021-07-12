@@ -183,21 +183,17 @@ const Dots = styled.div`
 `
 
 const Slide = styled.div<{ backgroundImg: string }>`
+  display: block !important;
   position: relative;
   overflow-y: hidden;
   background: ${(props) => `url(${props.backgroundImg}) no-repeat`};
   background-position: center center;
   background-size: cover;
   font: 12px/1.3 'Montserrat', sans-serif;
-  height: 320px;
 
   @media (min-width: 768px) {
-    height: 380px;
-    background-image: ${(props) => `url(${props.backgroundImg}) no-repeat`};
-  }
-
-  @media (min-width: 1600px) {
     height: 450px;
+    background-image: ${(props) => `url(${props.backgroundImg}) no-repeat`};
   }
 
   @media (max-aspect-ratio: 4/3) and (max-width: 767px) {
@@ -210,7 +206,7 @@ const SlideContent = styled.div`
   max-width: 480px;
   width: 90%;
   position: absolute;
-  bottom: 38px;
+  bottom: 54px;
   left: 50%;
   transform: translateX(-50%);
   margin: 0;
@@ -218,8 +214,7 @@ const SlideContent = styled.div`
   text-align: center;
 
   @media (min-width: 768px) {
-    top: 50%;
-    bottom: auto;
+    bottom: -114px;
     padding: 32px;
     transform: translate(-50%, -50%);
   }
@@ -243,10 +238,6 @@ const SlideTitle = styled.div`
   & > span {
     font-style: italic;
   }
-
-  @media (min-width: 768px) {
-    font-size: 40px;
-  }
 `
 
 const SlideText = styled.div`
@@ -258,7 +249,7 @@ const SlideText = styled.div`
 
 const SlideLinkInner = styled.a`
   text-decoration: none;
-  color: white;
+  color: inherit;
 `
 
 export const HeroGallery = ({ className, slides }: HeroGalleryProps): React.ReactElement => {
@@ -291,30 +282,34 @@ export const HeroGallery = ({ className, slides }: HeroGalleryProps): React.Reac
               <SlideText>
                 <p>{slide.bottomText}</p>
               </SlideText>
-              <Button>
+              <Button backColor={'#000'} frontColor={'#fff'}>
                 <SlideLinkInner href={slide.buttonLink}>{slide.buttonText}</SlideLinkInner>
               </Button>
             </SlideContent>
           </Slide>
         ))}
-        <Slide backgroundImg={'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/home-banner-img-1-dt.jpg'}>
-          <SlideContent>
-            <SlidePreTitle>MINISUBLINER</SlidePreTitle>
-            <SlideTitle>
-              SAVOR{' '}
-              <span>
-                the <br />
-              </span>{' '}
-              MOMENTS
-            </SlideTitle>
-            <SlideText>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. At eget iaculis eget eget neque.</p>
-            </SlideText>
-            <Button>
-              <SlideLinkInner>Shop Now</SlideLinkInner>
-            </Button>
-          </SlideContent>
-        </Slide>
+        {slides.map((slide: GalleryItem) => (
+          <Slide
+            backgroundImg={
+              slide.backgroundImg || 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/home-banner-img-1-dt.jpg'
+            }
+          >
+            <SlideContent>
+              <SlidePreTitle>{slide.topText}</SlidePreTitle>
+              <SlideTitle>
+                {slide.centerFirstText}
+                <br />
+                {slide.centerSecondText}
+              </SlideTitle>
+              <SlideText>
+                <p>{slide.bottomText}</p>
+              </SlideText>
+              <Button backColor={'#000'} frontColor={'#fff'}>
+                <SlideLinkInner href={slide.buttonLink}>{slide.buttonText}</SlideLinkInner>
+              </Button>
+            </SlideContent>
+          </Slide>
+        ))}
       </Slider>
     </SliderWrapper>
   )
