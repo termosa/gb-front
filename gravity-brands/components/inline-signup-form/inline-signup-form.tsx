@@ -15,6 +15,7 @@ const Container = styled.div`
   max-width: 1020px;
   padding: 0 30px;
   text-align: center;
+  margin: 0 auto;
 `
 
 const Img = styled.img`

@@ -290,8 +290,8 @@
         "rootDir": "gravity-brands/modules/round-price"
     },
     "modules/signup": {
-        "scope": "fragrantjewels.gravity-brands",
-        "version": "0.0.9",
+        "scope": "",
+        "version": "0.0.4",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/modules/signup"
     },
