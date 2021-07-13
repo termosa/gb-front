@@ -12,7 +12,7 @@ import { ReviewsSection } from '@fragrantjewels/gravity-brands.components.review
 import { ShopByProductsOverview } from '@fragrantjewels/gravity-brands.components.shop-by-products-overview'
 import { PromiseBar } from '@fragrantjewels/gravity-brands.components.promise-bar'
 import { InlineSignupForm } from '@fragrantjewels/gravity-brands.components.inline-signup-form'
-import { FollowUs } from '../../gravity-brands/components/follow-us'
+import { FollowUs } from '@fragrantjewels/gravity-brands.components.follow-us'
 import { Footer } from '@fragrantjewels/gravity-brands.components.footer'
 
 builder.init(config.apiKey)
