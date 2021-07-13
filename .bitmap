@@ -289,6 +289,12 @@
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/modules/move-point"
     },
+    "modules/parse-filters-from-products": {
+        "scope": "",
+        "version": "",
+        "mainFile": "index.ts",
+        "rootDir": "gravity-brands/modules/parse-filters-from-products"
+    },
     "modules/resolve-page-props": {
         "scope": "fragrantjewels.gravity-brands",
         "version": "0.0.2",

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
 import usePopper from '@fragrantjewels/gravity-brands.hooks.use-popper'
@@ -9,21 +9,14 @@ export interface Filter {
   amount: number
 }
 
-export interface ColorFilter extends Filter {
-  gradient: Array<{
-    offset?: number
-    stopColor: string
-  }>
-}
-
 export interface Filters {
   fragrances: Array<Filter>
   materials: Array<Filter>
   sizes: Array<Filter>
-  colors: Array<ColorFilter>
+  colors: Array<Filter>
 }
 
-export interface SelectedFilters {
+export type SelectedFilters = {
   fragrances: Array<string>
   materials: Array<string>
   sizes: Array<string>
@@ -38,6 +31,7 @@ export enum SelectedSorting {
 
 export type CollectionFiltersProps = {
   className?: ClassName
+  children?: React.ReactNode
   filters: Filters
   onChangeFilter: (selectedFilters: SelectedFilters) => void
   onChangeSorting: (sorting: SelectedSorting) => void
@@ -45,6 +39,9 @@ export type CollectionFiltersProps = {
 
 const SCollectionFiltersContainer = styled.div`
   font-family: ${({ theme }) => theme.fonts.familyMain};
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 `
 
 const SButtons = styled.div`
@@ -53,6 +50,7 @@ const SButtons = styled.div`
   width: 100%;
   max-width: 284px;
   padding-bottom: 16px;
+  margin-left: auto;
 
   @media (max-width: 768px) {
     max-width: 100%;
@@ -215,7 +213,7 @@ const SShowResultsButton = styled.button`
   }
 `
 
-const SFilterControlButtonsGroup = styled(SFilterGroup)`
+const SFilterMobileControlButtonsGroup = styled(SFilterGroup)`
   @media (max-width: 768px) {
     flex-direction: row;
     justify-content: space-between;
@@ -241,14 +239,46 @@ const SFilterControlButtonsGroupLabel = styled.div`
   }
 `
 
-const SClearFiltersButton = styled.span`
+const SClearFiltersButton = styled.span<{ mobile?: boolean }>`
+  cursor: pointer;
   text-decoration: underline;
+  font-size: 16px;
   font-weight: 400;
-  display: none;
+  display: ${({ mobile }) => (mobile ? 'none' : 'block')};
+  white-space: nowrap;
 
   @media (max-width: 768px) {
-    display: block;
+    display: ${({ mobile }) => (mobile ? 'block' : 'none')};
   }
+`
+
+const SFilterDesktopControlButtonsGroup = styled.div`
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 0.5px solid #000;
+  padding: 16px 0;
+  width: 100%;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+`
+
+const SSelectedFilters = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+`
+
+const SSelectedFilter = styled.div`
+  display: flex;
+  align-items: center;
+  padding-right: 20px;
+  padding-bottom: 4px;
+`
+
+const SSelectedFilterInfo = styled.div`
+  font-size: 14px;
+  padding-right: 4px;
 `
 
 const sorts: Array<{ label: string; code: SelectedSorting }> = [
@@ -257,11 +287,11 @@ const sorts: Array<{ label: string; code: SelectedSorting }> = [
   { label: 'Price: High to Low', code: SelectedSorting.HIGH_TO_LOW },
 ]
 
-const CloseButton = ({ onClick }: { onClick: () => void }) => (
+const CloseButton = ({ onClick, small }: { onClick: () => void; small?: boolean }) => (
   <SCloseIcon
     xmlns="http://www.w3.org/2000/svg"
-    width={22}
-    height={22}
+    width={small ? 10 : 22}
+    height={small ? 10 : 22}
     viewBox="0 0 22 22"
     fill="none"
     onClick={onClick}
@@ -270,10 +300,62 @@ const CloseButton = ({ onClick }: { onClick: () => void }) => (
   </SCloseIcon>
 )
 
+export type FilterGroup = 'fragrances' | 'materials' | 'sizes' | 'colors'
+
+const isEmptyFilter = (filters: SelectedFilters) => Object.values(filters).every((values) => !values.length)
+
+const gradients = {
+  Black: [],
+  Gold: [
+    { stopColor: '#D08E17' },
+    { offset: 0.02, stopColor: '#D89C29' },
+    { offset: 0.06, stopColor: '#E6B248' },
+    { offset: 0.101, stopColor: '#F1C460' },
+    { offset: 0.145, stopColor: '#F9D072' },
+    { offset: 0.193, stopColor: '#FED87C' },
+    { offset: 0.251, stopColor: '#FFDE8D' },
+    { offset: 0.362, stopColor: '#FFDE93' },
+    { offset: 0.54, stopColor: '#F1C875' },
+    { offset: 0.744, stopColor: '#D8A549' },
+    { offset: 0.808, stopColor: '#BE9030' },
+    { offset: 0.898, stopColor: '#99740F' },
+  ],
+  'Rose Gold': [
+    { offset: 0.02, stopColor: '#D3A29D' },
+    { offset: 0.276, stopColor: '#E1B5AC' },
+    { offset: 0.448, stopColor: '#EAC2B8' },
+    { offset: 0.661, stopColor: '#BF8A7F' },
+    { offset: 0.729, stopColor: '#D7A8A0' },
+    { offset: 0.898, stopColor: '#BF9388' },
+  ],
+  Silver: [
+    { stopColor: '#A8AEB6' },
+    { offset: 0.02, stopColor: '#BCC1C7' },
+    { offset: 0.06, stopColor: '#C3C7CC' },
+    { offset: 0.101, stopColor: '#D3D6DA' },
+    { offset: 0.145, stopColor: '#EEEFF0' },
+    { offset: 0.193, stopColor: '#F8F8F9' },
+    { offset: 0.251, stopColor: '#F8F8F9' },
+    { offset: 0.362, stopColor: '#F8F8F8' },
+    { offset: 0.54, stopColor: '#E4E5E8' },
+    { offset: 0.744, stopColor: '#D3D6DA' },
+    { offset: 0.808, stopColor: '#C3C7CC' },
+    { offset: 0.898, stopColor: '#A8AEB6' },
+  ],
+}
+
+const createEmptyFilter = () => ({
+  fragrances: [],
+  materials: [],
+  sizes: [],
+  colors: [],
+})
+
 const name = 'CollectionFilters'
 
 export const CollectionFilters = ({
   className,
+  children,
   filters,
   onChangeFilter,
   onChangeSorting,
@@ -296,36 +378,28 @@ export const CollectionFilters = ({
   const [isSortDropdownOpened, setIsSortDropdownOpened] = useState(false)
   const [isFiltersDropdownOpened, setIsFiltersDropdownOpened] = useState(false)
 
-  const [selectedFilters, setSelectedFilters] = useState<Filters>({
-    fragrances: [],
-    materials: [],
-    sizes: [],
-    colors: [],
-  })
+  const [selectedFilters, setSelectedFilters] = useState<SelectedFilters>(createEmptyFilter)
 
-  const handleFilterChange = (
-    filterGroup: 'fragrances' | 'materials' | 'sizes' | 'colors',
-    filterName: string,
-    enabled: boolean
-  ) => {
-    const selectedFilter = filters[filterGroup].find((filter) => filter.name === filterName)
+  const handleFilterChange = (filterGroup: FilterGroup, filterName: string, enabled: boolean) => {
+    const selectedFilterName = filters[filterGroup].find((filter) => filter.name === filterName)?.name
+    if (!selectedFilterName) return
 
-    const updatedFilters = {
+    setSelectedFilters({
       ...selectedFilters,
       [filterGroup]: enabled
-        ? selectedFilters[filterGroup].concat(selectedFilter as ColorFilter)
-        : selectedFilters[filterGroup].filter((filter) => filter.name !== filterName),
-    }
-
-    onChangeFilter({
-      fragrances: updatedFilters.fragrances.map((fragrance) => fragrance.name),
-      colors: updatedFilters.colors.map((color) => color.name),
-      sizes: updatedFilters.sizes.map((size) => size.name),
-      materials: updatedFilters.materials.map((material) => material.name),
+        ? selectedFilters[filterGroup].concat(selectedFilterName)
+        : selectedFilters[filterGroup].filter((name) => name !== filterName),
     })
-
-    setSelectedFilters(updatedFilters)
   }
+
+  useEffect(() => onChangeFilter(selectedFilters), [selectedFilters])
+
+  const getListOfSelectedFilters = (selectedFilters: SelectedFilters) => [
+    ...selectedFilters.fragrances.map((filter) => ({ name: filter, filterGroup: 'fragrances' })),
+    ...selectedFilters.sizes.map((filter) => ({ name: filter, filterGroup: 'sizes' })),
+    ...selectedFilters.colors.map((filter) => ({ name: filter, filterGroup: 'colors' })),
+    ...selectedFilters.materials.map((filter) => ({ name: filter, filterGroup: 'materials' })),
+  ]
 
   useOnClickOutside({ current: popperElement }, () => setIsSortDropdownOpened(false))
 
@@ -337,6 +411,7 @@ export const CollectionFilters = ({
 
   return (
     <SCollectionFiltersContainer className={cn(name, className)}>
+      {children}
       <SButtons>
         <SButton onClick={() => setIsFiltersDropdownOpened(!isFiltersDropdownOpened)}>
           <SButtonLabel>
@@ -390,7 +465,10 @@ export const CollectionFilters = ({
                 <SFilter key={name}>
                   {name}
                   <SProductsQuantity> ({amount})</SProductsQuantity>
-                  <SCheckbox onChange={(event) => handleFilterChange('fragrances', name, event.target.checked)} />
+                  <SCheckbox
+                    onChange={(event) => handleFilterChange('fragrances', name, event.target.checked)}
+                    checked={!!selectedFilters.fragrances.includes(name)}
+                  />
                 </SFilter>
               ))}
             </SFilterGroup>
@@ -402,7 +480,10 @@ export const CollectionFilters = ({
                 <SFilter key={name}>
                   {name}
                   <SProductsQuantity> ({amount})</SProductsQuantity>
-                  <SCheckbox onChange={(event) => handleFilterChange('sizes', name, event.target.checked)} />
+                  <SCheckbox
+                    onChange={(event) => handleFilterChange('sizes', name, event.target.checked)}
+                    checked={!!selectedFilters.sizes.includes(name)}
+                  />
                 </SFilter>
               ))}
             </SFilterGroup>
@@ -414,7 +495,10 @@ export const CollectionFilters = ({
                 <SFilter key={name}>
                   {name}
                   <SProductsQuantity> ({amount})</SProductsQuantity>
-                  <SCheckbox onChange={(event) => handleFilterChange('materials', name, event.target.checked)} />
+                  <SCheckbox
+                    onChange={(event) => handleFilterChange('materials', name, event.target.checked)}
+                    checked={!!selectedFilters.materials.includes(name)}
+                  />
                 </SFilter>
               ))}
             </SFilterGroup>
@@ -422,7 +506,7 @@ export const CollectionFilters = ({
           {!!filters.colors.length && (
             <SFilterGroup>
               <SFilterGroupName>Metal color</SFilterGroupName>
-              {filters.colors.map(({ name, amount, gradient }, index) => (
+              {filters.colors.map(({ name, amount }, index) => (
                 <SFilter key={name}>
                   <SMetalColorIcon
                     width={20}
@@ -450,7 +534,7 @@ export const CollectionFilters = ({
                         y2={10.765}
                         gradientUnits="userSpaceOnUse"
                       >
-                        {gradient.map(({ stopColor, offset }) => (
+                        {gradients[name] && gradients[name].map(({ stopColor, offset }) => (
                           <stop stopColor={stopColor} offset={offset} key={stopColor + Math.random()} />
                         ))}
                       </linearGradient>
@@ -462,18 +546,34 @@ export const CollectionFilters = ({
                     type="checkbox"
                     hidden
                     onChange={(event) => handleFilterChange('colors', name, event.target.checked)}
+                    checked={!!selectedFilters.colors.includes(name)}
                   />
                 </SFilter>
               ))}
             </SFilterGroup>
           )}
-          <SFilterControlButtonsGroup>
-            <SClearFiltersButton>Clear All</SClearFiltersButton>
+          <SFilterMobileControlButtonsGroup>
+            <SClearFiltersButton mobile onClick={() => setSelectedFilters(createEmptyFilter())}>
+              Clear All
+            </SClearFiltersButton>
             <SFilterControlButtonsGroupLabel>Refine</SFilterControlButtonsGroupLabel>
             <CloseButton onClick={() => setIsFiltersDropdownOpened(false)} />
-          </SFilterControlButtonsGroup>
-          <SShowResultsButton>Show Results</SShowResultsButton>
+          </SFilterMobileControlButtonsGroup>
+          <SShowResultsButton onClick={() => setIsFiltersDropdownOpened(false)}>Show Results</SShowResultsButton>
         </SFilters>
+      )}
+      {!isEmptyFilter(selectedFilters) && !isFiltersDropdownOpened && (
+        <SFilterDesktopControlButtonsGroup>
+          <SSelectedFilters>
+            {getListOfSelectedFilters(selectedFilters).map(({ name, filterGroup }) => (
+              <SSelectedFilter>
+                <SSelectedFilterInfo>{name}</SSelectedFilterInfo>
+                <CloseButton onClick={() => handleFilterChange(filterGroup as FilterGroup, name, false)} small />
+              </SSelectedFilter>
+            ))}
+          </SSelectedFilters>
+          <SClearFiltersButton onClick={() => setSelectedFilters(createEmptyFilter())}>Clear All</SClearFiltersButton>
+        </SFilterDesktopControlButtonsGroup>
       )}
     </SCollectionFiltersContainer>
   )

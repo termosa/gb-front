@@ -3,13 +3,13 @@ import collectionPageProps from './resolvers/collectionPageProps'
 import MainPageLayout from '@fragrantjewels/gravity-brands.components.main-page-layout'
 import FullWidthBanner from '@fragrantjewels/gravity-brands.components.full-width-banner'
 import CollectionFilters, {
-  Filter,
   SelectedFilters,
   SelectedSorting,
 } from '@fragrantjewels/gravity-brands.components.collection-filters'
 import ProductsList, { Product } from '@fragrantjewels/gravity-brands.components.products-list'
 import SiteSection from '@fragrantjewels/gravity-brands.components.site-section'
 import styled from 'styled-components'
+import parseFiltersFromProducts from '@fragrantjewels/gravity-brands.modules.parse-filters-from-products'
 
 type ProductPageProps = {
   collectionProducts: Array<Product> | null
@@ -18,37 +18,6 @@ type ProductPageProps = {
 const SFiltersSection = styled(SiteSection)`
   margin-bottom: 2em;
 `
-const getSizeFilters = (collectionProducts: Array<Product> | null) => {
-  const sizeFilters: Array<Filter> = []
-
-  collectionProducts &&
-    collectionProducts.map((product) =>
-      product.variants.map((variant) => {
-        if (!variant.available) return
-
-        const existingSize = sizeFilters.find((size) => size.name === variant.title)
-        if (existingSize) {
-          const existingSizeObject = sizeFilters[sizeFilters.indexOf(existingSize)]
-          existingSizeObject.amount = ++existingSizeObject.amount
-          return
-        }
-
-        sizeFilters.push({
-          name: variant.title,
-          amount: 1,
-        })
-      })
-    )
-
-  return sizeFilters
-}
-
-const parseFilterValues = (collectionProducts: Array<Product> | null) => ({
-  fragrances: [],
-  materials: [],
-  sizes: getSizeFilters(collectionProducts),
-  colors: [],
-})
 
 export default function Collection({ collectionProducts }: ProductPageProps): React.ReactElement {
   const [filter, setFilter] = useState<SelectedFilters | null>(null)
@@ -92,7 +61,7 @@ export default function Collection({ collectionProducts }: ProductPageProps): Re
                 <CollectionFilters
                   onChangeFilter={setFilter}
                   onChangeSorting={setSorting}
-                  filters={parseFilterValues(collectionProducts)}
+                  filters={parseFiltersFromProducts(collectionProducts)}
                 />
               </SFiltersSection>
               <ProductsList products={filteredProducts} />
