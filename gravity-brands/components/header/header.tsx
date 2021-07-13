@@ -548,6 +548,7 @@ const ExtendableBlockContent = ({ name }: { name: ExtendableBlockContentType }) 
 export function Header({ className, onSearch }: HeaderProps): React.ReactElement | null {
   const [searchDropdownVisible, setSearchDropdownVisible] = useState(false)
   const [extendableBlockContent, setExtendableBlockContent] = useState<ExtendableBlockContentType>('')
+  const [isBurgerMenuOpen, setBurgerMenuOpen] = useState(false)
 
   return (
     <SWrapper className={cn('Header', className)} onMouseLeave={() => setExtendableBlockContent('')}>
@@ -557,7 +558,7 @@ export function Header({ className, onSearch }: HeaderProps): React.ReactElement
           <SSearchWrapper>
             <SSearchContent>
               <SLogoWrapper>
-                <NavMobile />
+                <SHamburgerMenu onClick={() => setBurgerMenuOpen(!isBurgerMenuOpen)} />
                 <SLogo href="/">
                   <svg width="100%" height="100%" viewBox="0 0 117 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -611,6 +612,7 @@ export function Header({ className, onSearch }: HeaderProps): React.ReactElement
                 <SPointsWidget>
                   <PointsWidget points={100} />
                 </SPointsWidget>
+                <NavMobile isBurgerMenuOpen={isBurgerMenuOpen} setBurgerMenuOpen={setBurgerMenuOpen} />
                 <NavIcons onSearchClick={() => setSearchDropdownVisible(!searchDropdownVisible)} />
               </SIconsWrapper>
             </SSearchContent>

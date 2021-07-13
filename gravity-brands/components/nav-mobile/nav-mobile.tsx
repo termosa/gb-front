@@ -194,6 +194,7 @@ const SNavLink = styled.a`
   cursor: pointer;
   color: #000;
   text-decoration: none;
+  text-align: start;
   -webkit-transition: color linear 0.2s;
   transition: color linear 0.2s;
   padding: 15px 5px;
