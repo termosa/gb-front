@@ -154,8 +154,11 @@ const ProductCards = styled.div`
   }
 
   .slick-initialized .slick-slide {
-    display: flex;
+    display: block;
     height: auto;
+    & > div {
+      height: 100%;
+    }
   }
 
   .slick-loading .slick-slide {
