@@ -24,8 +24,8 @@ export type Product = {
       id: number
       src: string
     }
-  ],
-  variants: Array<Variant>,
+  ]
+  variants: Array<Variant>
 }
 
 export type InnerCircleExclusiveProps = {
@@ -48,17 +48,14 @@ const STitleWrapper = styled.div`
 `
 
 const STitle = styled.h2`
-  font: 700 30px/1 'Cormorant Garamond', serif;
+  font: 700 40px/1 'Cormorant Garamond', serif;
   text-align: center;
-  margin: 0 auto 10px;
-
-  @media (min-width: 375px) {
-    font-size: 32px;
-  }
+  margin: 0 auto 16px;
 `
 
 const STitleUnderline = styled.span`
   position: relative;
+
   &:after {
     content: '';
     width: 100%;
@@ -73,7 +70,9 @@ const STitleUnderline = styled.span`
 const SSubTitle = styled.div`
   box-sizing: border-box;
   text-align: center;
-  padding-bottom: 5px;
+  font: 16px/1.5 'Montserrat', sans-serif;
+  white-space: break-spaces;
+  padding-bottom: 22px;
   max-width: 400px;
   margin: 0 auto;
 `
@@ -84,8 +83,7 @@ const SButtonWrapper = styled.div`
 `
 
 const SContentWrapper = styled.div`
-  margin: 0 0 10px 0;
-  padding: 24px 0 25px;
+  padding: 28px 0 32px;
   box-sizing: border-box;
   font: 12px/ 1.3 'Montserrat', sans-serif;
   background-color: #fdfbf9;
@@ -101,8 +99,6 @@ const SContentWrapper = styled.div`
   background: linear-gradient(0deg, #fdfbf9 0%, #fdfbf9 83%, white 83%, white 100%);
 
   @media (min-width: 992px) {
-    padding: 24px 0 45px;
-    margin: 0 0 32px 0;
     background: -webkit-gradient(
       linear,
       left bottom,
@@ -194,66 +190,35 @@ const SLeftImageContainer = styled.div`
   }
 `
 
-const SSliderButton = styled.button`
+const SSliderButton = styled.button<{
+  transform?: string
+}>`
   opacity: 0.8;
   border: 0.5px solid #9059c8;
   border-radius: 50%;
-  width: 37px;
-  height: 37px;
+  width: 42px;
+  height: 42px;
+  transform: ${(props) => props.transform || 'none'};
   background: transparent;
   font-size: 0;
   line-height: 1;
-  margin: 0 5px;
+  margin: 0 4px;
   padding: 0;
   box-sizing: border-box;
   position: relative;
   cursor: pointer;
 
-  @media (min-width: 992px) {
-    width: 46px;
-    height: 46px;
+  @media (min-width: 768px) {
+    width: 55px;
+    height: 55px;
   }
-  & > span {
-    position: absolute;
-    left: 50%;
-    top: 31%;
-    display: block;
-    width: 13px;
-    height: 13px;
-    border-top: 1px solid #9059c8;
-    border-left: 1px solid #9059c8;
-  }
-  @media (min-width: 992px) {
-    & > span {
-      top: 30%;
-      width: 17px;
-      height: 17px;
-    }
-  }
-`
 
-const SPrevButton = styled(SSliderButton)`
-  & > span {
-    left: 41%;
-    -webkit-transform: rotate(-45deg);
-    transform: rotate(-45deg);
-  }
-  @media (min-width: 992px) {
-    & > span {
-      left: 42%;
-    }
-  }
-`
-
-const SNextButton = styled(SSliderButton)`
-  & > span {
-    left: 23%;
-    -webkit-transform: rotate(135deg);
-    transform: rotate(135deg);
-  }
-  @media (min-width: 992px) {
-    & > span {
-      left: 24%;
+  & > svg {
+    width: 10px;
+    height: 20px;
+    @media (min-width: 768px) {
+      width: 12px;
+      height: 25px;
     }
   }
 `
@@ -290,28 +255,28 @@ const SDetailsContainer = styled.div`
 
   @media (min-width: 992px) {
     text-align: left;
-    width: 300px;
+    width: 340px;
   }
 `
 
 const SInnerCircleLabel = styled.strong`
-  font-size: 12px;
-  letter-spacing: 0.16em;
+  font: 600 16px/1.25 'Montserrat', sans-serif;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: #9059c8;
-  font-weight: 600;
-  margin: 0 0 3px;
+  margin: 0 0 8px;
   display: block;
 `
 
 const SProductTitle = styled.h3`
-  font-size: 32px;
-  margin: 0 0 12px;
-  font-family: 'Cormorant Garamond', serif;
+  font: 600 32px/1 'Cormorant Garamond', serif;
+  letter-spacing: -0.02em;
+  margin: 0 0 16px;
 `
 
-const SPricesContainer = styled.div`
-  margin: 0 0 17px;
+const SPriceShippingInfo = styled.div`
+  font: 400 16px/1.25 'Montserrat', sans-serif;
+  letter-spacing: 0.05em;
 `
 
 const SPriceLabel = styled.span`
@@ -324,15 +289,17 @@ const SDiscountPriceLabel = styled(SPriceLabel)`
 `
 
 const SSelectRingLabel = styled.strong`
-  font-weight: 400;
-  margin: 0 0 18px;
+  font: 400 16px/1.3 'Montserrat', sans-serif;
+  margin: 18px 0 16px;
   display: block;
 `
 
 const SRingSizeWrapper = styled.div``
 
 const STaxInfo = styled.div`
-  font-size: 10px;
+  font: 400 12px/1.25 'Montserrat', sans-serif;
+  letter-spacing: 0.05em;
+  text-align: center;
   color: #878787;
 `
 
@@ -341,7 +308,7 @@ export function InnerCircleExclusive({
   product,
   onReserve,
 }: InnerCircleExclusiveProps): React.ReactElement | null {
-  const [selectedVariant, setVariant] = useState<Variant | undefined>();
+  const [selectedVariant, setVariant] = useState<Variant | undefined>()
 
   const actualPrice = (selectedVariant || product.variants[0]).actual_price
   const comparePrice = (selectedVariant || product.variants[0]).compare_at_price
@@ -371,17 +338,30 @@ export function InnerCircleExclusive({
                   <SLeftImageContainer>
                     <img src={product.side_images[0].src} alt={product.title} />
                   </SLeftImageContainer>
-                  {product.side_images.length > 1
-                    ? <React.Fragment>
-                      <SPrevButton>
-                        <span>Prev</span>
-                      </SPrevButton>
-                      <SNextButton>
-                        <span>Next</span>
-                      </SNextButton>
-                    </React.Fragment>
-                    : null
-                  }
+                  <SSliderButton transform={'rotate(180deg)'}>
+                    <svg viewBox="0 0 15 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M1.1499 0.799805L13.8501 13.5L1.1499 26.2002"
+                        stroke="#9059C8"
+                        strokeWidth="0.577281"
+                        strokeMiterlimit="10"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </SSliderButton>
+                  <SSliderButton>
+                    <svg viewBox="0 0 15 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M1.1499 0.799805L13.8501 13.5L1.1499 26.2002"
+                        stroke="#9059C8"
+                        strokeWidth="0.577281"
+                        strokeMiterlimit="10"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </SSliderButton>
                 </SLeftSliderPart>
                 <SRightSliderPart>
                   <img src={product.front_image.src} alt={product.title} />
@@ -392,18 +372,19 @@ export function InnerCircleExclusive({
               <SDetailsContainer>
                 <SInnerCircleLabel>INNER CIRCLE EXCLUSIVE</SInnerCircleLabel>
                 <SProductTitle>{product.title}</SProductTitle>
-                <SPricesContainer>
-                  {comparePrice ? (
-                    <>
-                      <SDiscountPriceLabel>{formatPrice(actualPrice)}</SDiscountPriceLabel>
-                      {' '}
-                      <SPriceLabel>{formatPrice(comparePrice)}</SPriceLabel>
-                    </>
-                  ) : (
-                    <SPriceLabel>{formatPrice(actualPrice)}</SPriceLabel>
-                  )}
-                  {' '}+ FREE SHIPPING
-                  <SSelectRingLabel>Select a ring size to reserve this box:я</SSelectRingLabel>
+                <div>
+                  <SPriceShippingInfo>
+                    {comparePrice ? (
+                      <>
+                        <SDiscountPriceLabel>{formatPrice(actualPrice)}</SDiscountPriceLabel>{' '}
+                        <SPriceLabel>{formatPrice(comparePrice)}</SPriceLabel>
+                      </>
+                    ) : (
+                      <SPriceLabel>{formatPrice(actualPrice)}</SPriceLabel>
+                    )}{' '}
+                    + FREE SHIPPING
+                  </SPriceShippingInfo>
+                  <SSelectRingLabel>Select a ring size to reserve this box:</SSelectRingLabel>
                   <SRingSizeWrapper>
                     <RingSize variants={product.variants} onChange={setVariant} />
                   </SRingSizeWrapper>
@@ -417,7 +398,7 @@ export function InnerCircleExclusive({
                   >
                     RESERVE NOW
                   </Button>
-                </SPricesContainer>
+                </div>
                 <STaxInfo>
                   *Monthly membership price does not include tax.
                   <br />

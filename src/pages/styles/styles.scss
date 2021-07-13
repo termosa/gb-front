@@ -2,12 +2,14 @@
 @import "header";
 @import "sliders";
 @import "slick.min";
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,700;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
 $white: #fff;
 $black: #000;
 $purple: #9059c8;
 $lightYellow: rgba(253, 251, 249, 1);
 .Footer-Colored {
-  background-color: #000;
+  background-color: $black;
 }
 
 .HeroGallery-Container {
@@ -18,7 +20,7 @@ $lightYellow: rgba(253, 251, 249, 1);
 }
 
 .Footer-Colored {
-  background-color: #000;
+  background-color: $black;
 }
 
 .app-h-main {
@@ -38,6 +40,11 @@ $lightYellow: rgba(253, 251, 249, 1);
     @media (min-width: 768px) {
         padding: 0 30px;
         max-width: 1020px;
+    }
+    &__content {
+      @media (min-width: 768px) {
+        display: flex;
+      }
     }
 }
 
@@ -114,7 +121,7 @@ $lightYellow: rgba(253, 251, 249, 1);
     text-transform: uppercase;
     border: 0.5px solid $black;
     border-radius: 0;
-    font: 500 12px/1 "Montserrat", sans-serif;
+    font: 500 14px/1 "Montserrat", sans-serif;
     text-decoration: none;
     transition: all linear 0.2s;
     background-color: $white;
@@ -150,11 +157,11 @@ $lightYellow: rgba(253, 251, 249, 1);
         background: $lightYellow
     }
     &_mf {
-        padding-top: 20px;
-        margin-bottom: 40px;
+        padding-top: 34px;
+        margin-bottom: 33px;
         @media (min-width: 768px) {
-            padding-top: 36px;
-            margin-bottom: 73px;
+            padding-top: 76px;
+            margin-bottom: 100px;
         }
     }
     &__img_email {
@@ -182,12 +189,10 @@ $lightYellow: rgba(253, 251, 249, 1);
         margin: 0 0 12px;
     }
     &__title {
-        font: 700 30px/1 "Cormorant Garamond", serif;
+        font: 700 40px/1 "Cormorant Garamond", serif;
+        letter-spacing: -0.02em;
         text-align: center;
-        margin: 0 auto 10px;
-        @media (min-width: 375px) {
-            font-size: 32px;
-        }
+        margin: 0 auto 14px;
         &_mb {
             max-width: 180px;
             @media (min-width: 768px) {
@@ -602,9 +607,9 @@ $lightYellow: rgba(253, 251, 249, 1);
 }
 
 .app-h-collections-section {
-    margin: 0 0 20px;
+    margin: 0 0 52px;
     @media (min-width: 768px) {
-        margin: 0 0 34px;
+        margin: 0 0 100px;
     }
 }
 
@@ -685,9 +690,6 @@ $lightYellow: rgba(253, 251, 249, 1);
             justify-content: center;
             font-family: "Montserrat", sans-serif;
             cursor: pointer;
-            @media (min-width: 768px) {
-                font-size: 16px;
-            }
             &:hover {
                 @media (min-width: 1200px) {
                     background: $black;
@@ -723,13 +725,15 @@ $lightYellow: rgba(253, 251, 249, 1);
 }
 
 .app-h-mf-slider {
-    padding: 10px 0 52px;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0 86px;
     max-width: 414px;
     margin: 0 auto;
     position: relative;
     @media (min-width: 768px) {
         max-width: 100%;
-        padding: 10px 0 38px;
+        padding: 10px 0 48px;
     }
     &__control-btn {
         cursor: pointer;
@@ -780,10 +784,10 @@ $lightYellow: rgba(253, 251, 249, 1);
     &__title {
         margin: 0 0 15px;
         padding: 0 0 12px;
-        font-size: 25px;
         text-align: center;
         position: relative;
-        font: 700 27px/1.3 "Cormorant Garamond", serif;
+        font: 700 32px/1 "Cormorant Garamond", serif;
+        letter-spacing: -0.02em;
         white-space: nowrap;
         font-variant-numeric: lining-nums;
         &:after {
@@ -796,22 +800,12 @@ $lightYellow: rgba(253, 251, 249, 1);
             transform: translateX(-50%);
             position: absolute;
         }
-        @media (min-width: 375px) {
-            font-size: 28px;
-        }
-        @media (min-width: 768px) {
-            font-size: 24px;
-        }
-        @media (min-width: 992px) {
-            font-size: 28px;
-        }
     }
     &__text {
-        font-family: "Montserrat", sans-serif;
-        font-size: 12px;
+        font: 400 16px/1.5 "Montserrat", serif;
         line-height: 1.5;
         p {
-            margin: 0 0 10px;
+            margin: 0;
         }
     }
 }
@@ -1014,16 +1008,16 @@ $lightYellow: rgba(253, 251, 249, 1);
 
 .app-h-form-section {
     text-align: center;
-    padding: 30px 0 20px;
+    padding: 52px 0 56px;
     @media (min-width: 768px) {
-        padding: 70px 0 40px;
+        padding: 88px 0 58px;
     }
 }
 
 .app-h-follow-section {
-    padding: 20px 0;
+    padding: 20px 0 26px;
     @media (min-width: 768px) {
-        padding: 30px 0 30px;
+        padding: 30px 0 32px;
     }
 }
 

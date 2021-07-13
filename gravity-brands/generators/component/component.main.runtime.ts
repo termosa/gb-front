@@ -24,7 +24,7 @@ export type ${names.componentName}Props = {
 export function ${names.componentName}({
   className,
   children,
-}: ${names.componentName}Props): React.ReactElement | null {
+}: ${names.componentName}Props): React.ReactElement {
   return <div className={cn('${names.componentName}', className)}>{children}</div>
 }
 `

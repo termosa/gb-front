@@ -6,6 +6,8 @@ import styled from 'styled-components'
 export interface ShopByProductCardProps extends Omit<React.HTMLProps<HTMLDivElement>, 'className'> {
   className?: ClassName
   image: string
+  buttonLink: string
+  title: string
 }
 
 const SLayout = styled.div`
@@ -28,16 +30,24 @@ const SButtonWrapper = styled.div`
   min-width: 128px;
   bottom: 0;
   left: 50%;
-  transform: translate(-50%, 50%);
+  transform: translate(-50%, 29%);
+  @media (min-width: 768px) {
+    transform: translate(-50%, 50%);
+  }
 `
 
-export function ShopByProductCard({ className, image }: ShopByProductCardProps): React.ReactElement {
+const SButtonLink = styled.a`
+  text-decoration: none;
+  color: inherit;
+`
+
+export function ShopByProductCard({ className, image, buttonLink, title }: ShopByProductCardProps): React.ReactElement {
   return (
     <SLayout className={cn('ShopByProductCard', className)}>
       <SLayoutImage src={image} />
       <SButtonWrapper>
-        <Button backColor="#000" frontColor="#fff">
-          SHOP NOW
+        <Button backColor={'#000'} frontColor={'#fff'}>
+          <SButtonLink href={buttonLink}>{title}</SButtonLink>
         </Button>
       </SButtonWrapper>
     </SLayout>

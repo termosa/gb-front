@@ -19,9 +19,9 @@ export type Product = {
       id: number
       src: string
     }
-  ],
-  variants: Array<Variant>,
+  ]
+  variants: Array<Variant>
 }
 
-export const loadProduct = (productId: number, base?: string): Promise<Product> =>
-  api<Product>({ path: `/inventory/products/${productId}`, ...base && { base } })
+export const loadProduct = (productId: number): Promise<Product> =>
+  api<Product>({ path: `/inventory/products/${productId}` })

@@ -24,15 +24,6 @@ const SWrapper = styled.div`
   top: 0;
   right: 0;
   left: 0;
-  @media (min-width: 375px) {
-    font-size: 14px;
-  }
-  @media (min-width: 1200px) {
-    font-size: 13px;
-  }
-  @media (min-width: 1200px) {
-    font-size: 16px;
-  }
 
   & > svg {
     width: 100%;
@@ -48,15 +39,15 @@ const SWrapper = styled.div`
 
 const SInnerWrapper = styled.div`
   box-sizing: border-box;
-  padding-top: 11px;
-  -webkit-box-shadow: 0px 4px 9px rgba(0, 0, 0, 0.1);
-  box-shadow: 0px 4px 9px rgba(0, 0, 0, 0.1);
+  padding: 0;
+  -webkit-box-shadow: 0 4px 9px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 9px rgba(0, 0, 0, 0.1);
   position: relative;
   z-index: 10;
   background: #fff;
 
-  @media (max-width: 1200px) {
-    padding: 0;
+  @media (min-width: 1200px) {
+    padding-top: 11px;
   }
 `
 
@@ -206,17 +197,18 @@ const SIconsWrapper = styled.div`
     -ms-flex-wrap: nowrap;
     flex-wrap: nowrap;
     min-width: 405px;
+    min-height: 43px;
   }
 `
 
 const SSignSignup = styled(SigninSignup)`
-  @media (max-width: 1200px) {
+  @media (max-width: 1199px) {
     display: none;
   }
 `
 
 const SPointsWidget = styled.div`
-  @media (max-width: 1200px) {
+  @media (max-width: 1199px) {
     display: none !important;
   }
 `
@@ -263,8 +255,8 @@ const ExtendableBlockContainer = styled.div`
 `
 
 const ExtendableBlockListTitle = styled.strong`
+  font: 600 14px/1.5 'Montserrat', sans-serif;
   display: block;
-  font-weight: 600;
   margin: 0 0 8px;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -273,6 +265,11 @@ const ExtendableBlockListTitle = styled.strong`
   @media (min-width: 1200px) {
     margin: 0 0 0.9em;
   }
+`
+
+const ExtendableBlockListText = styled.p`
+  font: 400 14px/1.5 'Montserrat', sans-serif;
+  letter-spacing: 0.05em;
 `
 
 const ExtendableBlockList = styled.ul`
@@ -302,6 +299,7 @@ const ExtendableBlockListItem = styled.li`
   & > a {
     display: block;
     padding: 15px 0 15px;
+    font: 400 14px/1.5 'Montserrat', sans-serif;
     letter-spacing: 0.05em;
     -webkit-transition: color linear 0.2s;
     transition: color linear 0.2s;
@@ -321,6 +319,7 @@ const ExtendableBlockListItem = styled.li`
 `
 
 const AnimatedLink = styled.a`
+  font: 600 14px/1.5 'Montserrat', sans-serif;
   display: inline-block;
   padding-bottom: 5px;
   border-bottom: 1px solid black;
@@ -460,7 +459,7 @@ const SubscriptionContent = () => (
         <a href="/products/piece-by-piece-bath-bomb">
           <img src="https://fragrantjewels-assets.s3.amazonaws.com/images/under-the-sea/uts-nav-subscription.jpg" />
           <ExtendableBlockListTitle>New Inner Circle Exclusive Collections Every Month</ExtendableBlockListTitle>
-          <p>This month discover the beauty that lies beneath with the new Under the Sea collection.</p>
+          <ExtendableBlockListText>This month discover the beauty that lies beneath with the new Under the Sea collection.</ExtendableBlockListText>
           <AnimatedLink>Learn more</AnimatedLink>
         </a>
       </ExtendableBlockItem>
@@ -468,7 +467,7 @@ const SubscriptionContent = () => (
         <a href="/products/piece-by-piece-bath-bomb">
           <img src="https://fragrantjewels.s3.amazonaws.com/app/app-nav/nav-subscription-img-rare.jpg" />
           <ExtendableBlockListTitle>Everything There Is To Know About Rare Collections</ExtendableBlockListTitle>
-          <p>Start collecting unique limited edition sets not available for sale! Find out how you can qualify.</p>
+          <ExtendableBlockListText>Start collecting unique limited edition sets not available for sale! Find out how you can qualify.</ExtendableBlockListText>
           <AnimatedLink>Learn more</AnimatedLink>
         </a>
       </ExtendableBlockItem>
@@ -503,7 +502,7 @@ const RewardsContent = () => (
         <a href="/products/piece-by-piece-bath-bomb">
           <img src="https://fragrantjewels.s3.amazonaws.com/app/app-nav/nav-rewards-img-1.jpg" />
           <ExtendableBlockListTitle>New Rewards Every Week</ExtendableBlockListTitle>
-          <p>Every dollar you spend earns you reward points you can use to redeem free jewelry, products and more!</p>
+          <ExtendableBlockListText>Every dollar you spend earns you reward points you can use to redeem free jewelry, products and more!</ExtendableBlockListText>
           <AnimatedLink>Learn more</AnimatedLink>
         </a>
       </ExtendableBlockItem>
@@ -511,7 +510,7 @@ const RewardsContent = () => (
         <a href="/products/piece-by-piece-bath-bomb">
           <img src="https://fragrantjewels.s3.amazonaws.com/app/app-nav/nav-rewards-img-2.jpg" />
           <ExtendableBlockListTitle>Earn Platinum Reward Status</ExtendableBlockListTitle>
-          <p>Get exclusive access to VIP offers, 3x points and more when you earn Platinum status!</p>
+          <ExtendableBlockListText>Get exclusive access to VIP offers, 3x points and more when you earn Platinum status!</ExtendableBlockListText>
           <AnimatedLink>Learn more</AnimatedLink>
         </a>
       </ExtendableBlockItem>
@@ -614,23 +613,9 @@ export function Header({ className, onSearch }: HeaderProps): React.ReactElement
                 <NavIcons onSearchClick={() => setSearchDropdownVisible(!searchDropdownVisible)} />
               </SIconsWrapper>
             </SSearchContent>
-            {searchDropdownVisible && (
-              <SMobileSearchDropdown>
-                <SMobileSearchInput type="text" />
-                <SMobileSearchButton>
-                  <svg width="1.65em" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                      d="M23 23L16.26 15.55M18.58 9.79C18.58 14.6446 14.6446 18.58 9.79001 18.58C4.93543 18.58 1 14.6446 1 9.79C1 4.93542 4.93543 1 9.79001 1C14.6446 1 18.58 4.93542 18.58 9.79Z"
-                      stroke="black"
-                      stroke-width="0.5"
-                      stroke-miterlimit="10"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    ></path>
-                  </svg>
-                </SMobileSearchButton>
-              </SMobileSearchDropdown>
-            )}
+            {/* <SSearchDropdown ref={searchDropdownRef}>
+              <h1>lol olodsaldlas</h1>
+            </SSearchDropdown> */}
           </SSearchWrapper>
           <NavTabs setExtendableBlockContent={setExtendableBlockContent} />
         </SContentWrapper>

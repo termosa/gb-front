@@ -32,23 +32,25 @@
 .app-h-main {
     .slick-dots {
         position: absolute;
-        bottom: 10px;
-        display: block;
+        display: flex;
+        justify-content: center;
+        height: 10px;
+        bottom: 22px;
         width: 100%;
         padding: 0;
         margin: 0;
         list-style: none;
         text-align: center;
         @media (min-width: 768px) {
-            bottom: 17px;
+            bottom: 18px;
         }
     }
     .slick-dots>li {
         position: relative;
         display: inline-block;
-        width: 20px;
-        height: 20px;
-        margin: 0;
+        width: 10px;
+        height: 10px;
+        margin: 0 7px;
         padding: 0;
         cursor: pointer;
     }
@@ -56,8 +58,8 @@
         font-size: 0;
         line-height: 0;
         display: block;
-        width: 20px;
-        height: 20px;
+        width: 10px;
+        height: 10px;
         padding: 5px;
         cursor: pointer;
         color: transparent;
@@ -111,7 +113,7 @@
     .slick-next {
         border-bottom: 1px solid;
         border-left: 1px solid;
-        transform: rotate(-135deg);
+        transform: translateY(-50%) rotate(-135deg);
         right: -12px;
         @media (min-width: 768px) {
             right: -15px;
@@ -120,7 +122,7 @@
     .slick-prev {
         border-bottom: 1px solid;
         border-left: 1px solid;
-        transform: rotate(45deg);
+        transform: translateY(-50%) rotate(45deg);
         left: -12px;
         @media (min-width: 768px) {
             left: -15px;
@@ -179,7 +181,7 @@
         opacity: 0.6;
     }
     .slick-dots {
-        bottom: 24px;
+        bottom: 52px;
     }
 }
 

@@ -11,10 +11,7 @@ export type NavIconsProps = {
 const SWrapper = styled.div`
   height: 32px;
   max-width: 113px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: end;
   align-items: stretch;
   box-sizing: border-box;
 
@@ -247,12 +244,18 @@ export function NavIcons({ className, onSearchClick }: NavIconsProps): React.Rea
           </SDropDownTitle>
           <SDropDownCloseBtn>
             <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M21 1L1 21M1 1L21 21" stroke="black" strokeWidth="0.5" strokeLinecap="round" strokeLinejoin="round"></path>
+              <path
+                d="M21 1L1 21M1 1L21 21"
+                stroke="black"
+                strokeWidth="0.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
             </svg>
           </SDropDownCloseBtn>
           <SLinkWrapper>
             {LINKS_LIST.map((item) => (
-              <li>
+              <li key={item.path + item.title}>
                 <a href={item.path}>{item.title}</a>
               </li>
             ))}

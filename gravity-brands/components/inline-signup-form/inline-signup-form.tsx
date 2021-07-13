@@ -13,56 +13,74 @@ const name = 'InlineSignupForm'
 
 const Container = styled.div`
   max-width: 1020px;
-  padding: 0 30px;
   text-align: center;
+  margin: 0 auto;
 `
 
 const Img = styled.img`
-  max-width: 88px;
+  max-width: 110px;
 `
 
 const Title = styled.h2`
-  font: 700 32px/1 'Cormorant Garamond', serif;
-  margin: 0 auto 15px;
+  font: 700 40px/1 'Cormorant Garamond', serif;
+  margin: 0 auto 18px;
+  @media (min-width: 768px) {
+    margin: 0 auto 22px;
+  }
 `
 
 const Text = styled.p`
-  font: 12px/1.3 'Montserrat', sans-serif;
-  margin-bottom: 15px;
+  font: 16px/1.3 'Montserrat', sans-serif;
+  margin: 0 0 24px;
+  @media (min-width: 768px) {
+    margin: 0 0 28px;
+  }
+  white-space: break-spaces;
 `
 
 const Form = styled.form`
   max-width: 624px;
-  margin: 10px auto;
+  margin: 0 auto;
   display: flex;
+  flex-direction: column;
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
 `
 
 const Input = styled.input`
-  width: 75%;
-  height: 47px;
+  height: 55px;
   padding: 10px 15px;
-  font: 400 12px/1 'Montserrat', sans-serif;
-  border: 0.5px solid #9059c8;
-  border-right: 0;
+  font: 400 16px/1.3 'Montserrat', sans-serif;
+  border: 0.5px solid #000000;
   background: #fff;
   border-radius: 0;
   box-sizing: border-box;
+  text-align: center;
+  @media (min-width: 768px) {
+    width: 75%;
+    border-right: 0;
+    text-align: left;
+  }
 `
 
 const FormButton = styled(Button)`
   overflow: visible;
   position: relative;
-  border: 0.5px solid #9059c8;
+  border: 0.5px solid #000000;
   padding: 0;
   cursor: pointer;
-  height: 47px;
-  font: 700 12px/1 'Montserrat', sans-serif;
+  height: 55px;
+  font: 700 16px/1 'Montserrat', sans-serif;
   color: #fff;
   text-transform: uppercase;
-  background: #9059c8;
+  background: #000000;
   border-radius: 0;
   letter-spacing: 0.08em;
-  width: 25%;
+  width: 100%;
+  @media (min-width: 768px) {
+    width: 25%;
+  }
 `
 
 const SuccessMessage = styled.div`
@@ -102,7 +120,7 @@ export function InlineSignupForm({ className, onSignup }: InlineSignupFormProps)
             <Input
               type="email"
               required
-              placeholder="Enter your email"
+              placeholder="Enter your email..."
               autoCorrect="off"
               disabled={signupRequest.status === Status.PENDING}
               autoCapitalize="off"

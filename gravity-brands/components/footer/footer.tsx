@@ -14,16 +14,16 @@ const FooterContainer = styled.div`
   font: 12px/1.3 'Montserrat', sans-serif;
   color: #fff;
   padding: 28px 0;
+  background: black;
 `
 
 const FooterOuter = styled.div`
   max-width: 990px;
-  padding: 0 15px;
+  padding: 0 16px;
   margin: 0 auto;
 `
 
 const FooterInner = styled.div`
-  max-width: 500px;
   margin: 0 auto;
 
   @media (min-width: 992px) {
@@ -48,8 +48,9 @@ const FooterAccordion = styled.div`
 `
 
 const FooterCopyright = styled.div`
+  font: 400 12px/1.25 'Montserrat', sans-serif;
+  letter-spacing: 0.05em;
   color: white;
-  font-size: 10px;
   text-align: center;
 
   @media (min-width: 992px) {

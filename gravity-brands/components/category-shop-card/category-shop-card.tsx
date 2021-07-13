@@ -8,12 +8,24 @@ export interface CategoryShopCardProps extends Omit<React.HTMLProps<HTMLDivEleme
   image: string
   title: string
   subTitle: string
+  link: string
 }
+
+const SCol = styled.div`
+  @media (min-width: 768px) {
+    width: 46%;
+    margin: 0 2%;
+  }
+`
 
 const SLayout = styled.div`
   position: relative;
   max-width: 450px;
-  margin: 0 auto 40px;
+  margin: 0 auto;
+  padding: 16px 0;
+  @media (min-width: 768px) {
+    padding: 0;
+  }
 `
 
 const SLayoutImage = styled.img`
@@ -26,40 +38,42 @@ const SContent = styled.div`
   box-sizing: border-box;
   width: 86%;
   position: absolute;
-  bottom: 0;
+  bottom: 24px;
   margin: 7%;
   left: 0;
-  font: 12px/1.3 'Montserrat', sans-serif;
+  font: 16px/24px 'Montserrat', sans-serif;
   text-align: center;
   background: rgba(255, 255, 255, 0.75);
-  padding: 15px 15px 35px;
+  padding: 15px 15px 30px;
 `
 
 const STitle = styled.span`
-  font-size: 25px;
-  text-align: center;
-  position: relative;
-  font: 700 28px/1.3 'Cormorant Garamond', serif;
-  margin: 0 0 15px;
-  text-align: center;
+  display: block;
+  margin: 0 0 12px;
   @media (min-width: 768px) {
-    font-size: 24px;
+    margin: 0 0 15px;
   }
-  @media (min-width: 992px) {
-    font-size: 28px;
-  }
+  position: relative;
+  font: 700 32px/1 'Cormorant Garamond', serif;
+  letter-spacing: -0.02em;
+  text-align: center;
 `
 
 const SSubTitle = styled.div`
-  margin: 0 0 10px;
+  margin: 0 0 15px;
 `
 
 const SButtonWrapper = styled.div`
   position: absolute;
   bottom: 0;
   left: 50%;
-  -webkit-transform: translate(-50%, 33%);
-  transform: translate(-50%, 33%);
+  -webkit-transform: translate(-50%, 50%);
+  transform: translate(-50%, 50%);
+`
+
+const SLink = styled.a`
+  text-decoration: none;
+  color: inherit;
 `
 
 export function CategoryShopCard({
@@ -67,19 +81,22 @@ export function CategoryShopCard({
   image,
   title,
   subTitle,
+  link,
 }: CategoryShopCardProps): React.ReactElement | null {
   return (
-    <SLayout className={cn('CategoryShopCard', className)}>
-      <SLayoutImage src={image} />
-      <SContent>
-        <STitle>{title}</STitle>
-        <SSubTitle>{subTitle}</SSubTitle>
-        <SButtonWrapper>
-          <Button backColor={'#000'} frontColor={'#fff'}>
-            SHOP NOW
-          </Button>
-        </SButtonWrapper>
-      </SContent>
-    </SLayout>
+    <SCol>
+      <SLayout className={cn('CategoryShopCard', className)}>
+        <SLayoutImage src={image} />
+        <SContent>
+          <STitle>{title}</STitle>
+          <SSubTitle>{subTitle}</SSubTitle>
+          <SButtonWrapper>
+            <Button backColor={'#000'} frontColor={'#fff'} width={'171px'}>
+              <SLink href={link}>SHOP NOW</SLink>
+            </Button>
+          </SButtonWrapper>
+        </SContent>
+      </SLayout>
+    </SCol>
   )
 }

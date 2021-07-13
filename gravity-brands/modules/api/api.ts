@@ -16,7 +16,7 @@ const defaultParseResponse = <APIResponse>(response: Response): Promise<APIRespo
 export const api = <Response = Record<string, unknown>, Body = Record<string, unknown>>({
   method,
   path,
-  base = baseApiUrl(),
+  base = baseApiUrl() || '',
   query,
   body,
   headers,

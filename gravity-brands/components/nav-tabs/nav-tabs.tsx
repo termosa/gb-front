@@ -41,7 +41,6 @@ const SDesktopNav = styled.ul`
   margin: 0 -10px;
   @media (max-width: 1199px) {
     padding: 10px 0;
-    font-size: 0.74em;
     max-width: 990px;
     min-width: 600px;
     & > li:last-child {
@@ -59,7 +58,6 @@ const SNavItem = styled.li`
   }
 
   @media (min-width: 1200px) {
-    font-size: 0.74em;
     margin: 0;
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
@@ -92,7 +90,8 @@ const SNavItemExtendable = styled(SNavItem)`
     position: absolute;
     right: 0;
     top: 1px;
-    font-size: 11px;
+    font: 400 14px/1.5 'Montserrat', sans-serif;
+    letter-spacing: 0.05em;
     display: none;
     -webkit-transition: all ease-out 0.15s;
     transition: all ease-out 0.15s;
@@ -128,6 +127,8 @@ const SSubscribeButton = styled.li`
     order: 2;
   }
   & > a {
+    font: 400 14px/1.5 'Montserrat', sans-serif;
+    letter-spacing: 0.05em;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -142,8 +143,6 @@ const SSubscribeButton = styled.li`
     border-radius: 2em;
     border: 1px solid #ee67a0;
     padding: 0.7em 1.6em;
-    font-size: 11px;
-    letter-spacing: 0.1em;
     -webkit-transition: all linear 0.2s;
     transition: all linear 0.2s;
 

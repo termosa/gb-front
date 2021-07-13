@@ -4,6 +4,10 @@ import styled from 'styled-components'
 
 export type InformationCardProps = {
   className?: ClassName
+  card: InformationCard
+}
+
+export type InformationCard = {
   title: string
   description: string
   image: string
@@ -12,7 +16,7 @@ export type InformationCardProps = {
 const SCardWrapper = styled.div`
   max-width: 300px;
   text-align: center;
-  margin: 0 auto 40px;
+  margin: 0 16px 40px;
 `
 
 const SCardImage = styled.img`
@@ -25,10 +29,9 @@ const SCardImage = styled.img`
 const SCardTitle = styled.div`
   margin: 0 0 15px;
   padding: 0 0 12px;
-  font-size: 25px;
   text-align: center;
   position: relative;
-  font: 700 27px/1.3 'Cormorant Garamond', serif;
+  font: 700 32px/1.3 'Cormorant Garamond', serif;
   white-space: nowrap;
   font-variant-numeric: lining-nums;
   &:after {
@@ -46,23 +49,18 @@ const SCardTitle = styled.div`
 
 const SCardDescription = styled.div`
   font-family: 'Montserrat', sans-serif;
-  font-size: 12px;
+  font-size: 16px;
   line-height: 1.5;
   margin: 0 0 10px;
   word-wrap: break-word;
 `
 
-export function InformationCard({
-  className,
-  description,
-  image,
-  title,
-}: InformationCardProps): React.ReactElement | null {
+export function InformationCard({ className, card }: InformationCardProps): React.ReactElement | null {
   return (
     <SCardWrapper className={cn('InformationCard', className)}>
-      <SCardImage src={image} />
-      <SCardTitle>{title}</SCardTitle>
-      <SCardDescription>{description}</SCardDescription>
+      <SCardImage src={card.image} />
+      <SCardTitle>{card.title}</SCardTitle>
+      <SCardDescription>{card.description}</SCardDescription>
     </SCardWrapper>
   )
 }

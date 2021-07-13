@@ -6,12 +6,29 @@ export type PromiseBarProps = {
   className?: ClassName
 }
 
+const SPromiseSection = styled.section`
+  background-color: #fdfbf9;
+  padding: 22px 0;
+`
+
+const SPromiseContainer = styled.div`
+  max-width: 990px;
+  padding: 0 15px;
+  box-sizing: border-box;
+  margin: 0 auto;
+
+  @media (min-width: 768px) {
+    padding: 0 30px;
+    max-width: 1020px;
+  }
+`
+
 const SWrapper = styled.div`
-  padding: 30px 0 20px;
+  padding: 22px 0 24px;
   background-color: #fdfbf9;
 
   @media (min-width: 768px) {
-    padding: 30px 0 25px;
+    padding: 22px 0;
   }
 `
 
@@ -26,20 +43,18 @@ const SContentWrapper = styled.div`
 `
 
 const STitle = styled.div`
-  font: 700 30px/1 'Cormorant Garamond', serif;
+  font: 700 40px/1 'Cormorant Garamond', serif;
   text-align: center;
   margin: 0 auto 10px;
-  @media (min-width: 375px) {
-    font-size: 32px;
-  }
 `
 
 const SPicsWrapper = styled.div`
-  padding-top: 10px;
+  padding-top: 14px;
   max-width: 400px;
   margin: 0 auto;
   @media (min-width: 768px) {
     max-width: 100%;
+    padding-top: 16px;
   }
 `
 
@@ -55,7 +70,8 @@ const SRow24 = styled.div`
 `
 
 const SPromiseItem = styled.div`
-  margin: 0 4% 15px;
+  margin: 0 4% 16px;
+  min-width: 131px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -83,9 +99,13 @@ const SPromiseItemImg = styled.img`
 `
 
 const SPromiseItemLabel = styled.span`
-  font-size: 12px;
+  font: 400 12px/1.25 'Montserrat', sans-serif;
+  letter-spacing: 0.05em;
   text-align: center;
   text-transform: uppercase;
+  @media (min-width: 768px) {
+    font: 400 16px/1.25 'Montserrat', sans-serif;
+  }
 `
 
 const PROMISE_ITEMS = [
@@ -97,20 +117,24 @@ const PROMISE_ITEMS = [
 
 export function PromiseBar({ className }: PromiseBarProps): React.ReactElement | null {
   return (
-    <SWrapper className={cn('PromiseBar', className)}>
-      <SContentWrapper>
-        <STitle>Our promise to you</STitle>
-        <SPicsWrapper>
-          <SRow24>
-            {PROMISE_ITEMS.map((promise) => (
-              <SPromiseItem key={promise.title}>
-                <SPromiseItemImg src={promise.img} />
-                <SPromiseItemLabel>{promise.title}</SPromiseItemLabel>
-              </SPromiseItem>
-            ))}
-          </SRow24>
-        </SPicsWrapper>
-      </SContentWrapper>
-    </SWrapper>
+    <SPromiseSection className="app-h-section app-h-char-section app-h-char-section_colored">
+      <SPromiseContainer>
+        <SWrapper className={cn('PromiseBar', className)}>
+          <SContentWrapper>
+            <STitle>Our promise to you</STitle>
+            <SPicsWrapper>
+              <SRow24>
+                {PROMISE_ITEMS.map((promise) => (
+                  <SPromiseItem key={promise.title}>
+                    <SPromiseItemImg src={promise.img} />
+                    <SPromiseItemLabel>{promise.title}</SPromiseItemLabel>
+                  </SPromiseItem>
+                ))}
+              </SRow24>
+            </SPicsWrapper>
+          </SContentWrapper>
+        </SWrapper>
+      </SPromiseContainer>
+    </SPromiseSection>
   )
 }

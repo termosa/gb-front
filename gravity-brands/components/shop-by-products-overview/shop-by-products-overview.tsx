@@ -6,19 +6,19 @@ import {
 import Slider, { Settings } from 'react-slick'
 import styled from 'styled-components'
 
-export type ProductDetails = ShopByProductCardProps & { product_id: number }
+export type ProductDetails = ShopByProductCardProps
 export type ShopByProductsOverviewProps = {
   /**
    * cards to be rendered inside component
    */
-  products: Array<ProductDetails>
+  products: ProductDetails[]
 }
 
 const SSection = styled.section`
   font: 12px/1.3 'Montserrat', sans-serif;
-  padding: 40px 0 30px;
+  padding: 52px 0 70px;
   @media (min-width: 768px) {
-    padding: 72px 0 90px;
+    padding: 82px 0 97px;
   }
 `
 
@@ -32,14 +32,11 @@ const SContainer = styled.div`
   }
 `
 
-const STitle = styled.h2`
-  font: 700 30px/1 'Cormorant Garamond', serif;
+const SCardsBlockTitle = styled.h2`
+  font: 700 40px/1 'Cormorant Garamond', serif;
+  letter-spacing: -0.02em;
   text-align: center;
-  margin: 0 auto 10px;
-
-  @media (min-width: 375px) {
-    font-size: 32px;
-  }
+  margin: 0 auto 20px;
 `
 
 const PrevArrow = styled.button`
@@ -90,7 +87,7 @@ const SliderWrapper = styled.div`
 
   .slick-slider {
     opacity: 1;
-    padding: 10px 0;
+    padding: 10px 0 0;
     margin: 0 auto;
     max-width: 414px;
     position: relative;
@@ -101,7 +98,7 @@ const SliderWrapper = styled.div`
 
     @media (min-width: 768px) {
       max-width: 100%;
-      padding: 10px 0;
+      padding: 8px 0 0;
     }
   }
 
@@ -118,7 +115,10 @@ const SliderWrapper = styled.div`
   }
 
   .slick-slider .slick-track {
-    padding: 5px 0 20px;
+    padding: 0 0 16px;
+    @media (min-width: 768px) {
+      padding: 0 0 28px;
+    }
   }
 
   .slick-track {
@@ -198,11 +198,16 @@ export function ShopByProductsOverview({ products }: ShopByProductsOverviewProps
   return (
     <SSection>
       <SContainer>
-        <STitle>Shop by Product</STitle>
+        <SCardsBlockTitle>Shop by Product</SCardsBlockTitle>
         <SliderWrapper>
           <Slider {...settings}>
             {products.map((product) => (
-              <ShopByProductCard image={product.image} className={'slick-slide'} key={product.product_id} />
+              <ShopByProductCard
+                image={product.image}
+                buttonLink={product.buttonLink}
+                className={'slick-slide'}
+                title={product.title}
+              />
             ))}
           </Slider>
         </SliderWrapper>

@@ -17,12 +17,12 @@ export interface VerticalProductCardProps extends Omit<React.HTMLProps<HTMLDivEl
 
 const SCardWrapper = styled.div`
   max-width: 305px;
-  -webkit-box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.1);
-  box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.1);
   background: #fff;
   padding: 12px 10px 24px;
   text-align: center;
-  font: 400 12px/1.3 'Montserrat', sans-serif;
+  font: 400 16px/1.3 'Montserrat', sans-serif;
   letter-spacing: 0.08em;
   position: relative;
   display: -webkit-box;
@@ -94,7 +94,7 @@ const SProductMaterialType = styled.div`
   text-transform: uppercase;
   padding: 6px 0;
   color: #878787;
-  font-size: 8px;
+  font-size: 10px;
   font-weight: 500;
   margin: 0 0 10px;
   background: linear-gradient(269.97deg, #fff 0.02%, #efefef 13.98%, #efefef 45.51%, #efefef 76.52%, #fff 99.26%);
