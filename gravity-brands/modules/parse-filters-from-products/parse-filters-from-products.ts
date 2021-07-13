@@ -1,5 +1,5 @@
 export type Product = {
-  tags: Array<string>
+  tags: string
   variants: Array<{
     available: boolean
     title: string
@@ -43,7 +43,7 @@ const collectSizes = (products: Array<Product>) => {
   return sizeFilters
 }
 
-export default function parseFiltersFromProducts(products: Array<Product> | null): CollectedFilters {
+export const parseFiltersFromProducts = (products: Array<Product> | null): CollectedFilters => {
   const filters: CollectedFilters = {
     sizes: products ? collectSizes(products) : [],
     fragrances: [],
@@ -52,7 +52,7 @@ export default function parseFiltersFromProducts(products: Array<Product> | null
   }
 
   products?.forEach((product) => {
-    product.tags.forEach((tag) => {
+    product.tags.split(',').forEach((tag) => {
       const [prefix, value] = tag.split(':').map((value) => value.trim())
 
       if (prefix === FilterPrefix.FRAGRANCE) {
@@ -80,6 +80,5 @@ export default function parseFiltersFromProducts(products: Array<Product> | null
     })
   })
 
-  console.log({ filters })
   return filters
 }

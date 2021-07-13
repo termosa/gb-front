@@ -22,7 +22,7 @@ export type Product = {
   }>
   created_at_shop: string
   published_at_shop: string | null
-  tags: Array<string>
+  tags: string
 }
 
 export type ProductCardProps = {
