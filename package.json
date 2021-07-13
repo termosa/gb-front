@@ -21,6 +21,7 @@
     "upgrade:bit": "yarn upgrade --scope @fragrantjewels"
   },
   "dependencies": {
+    "@builder.io/react": "^1.1.46",
     "@fragrantjewels/gravity-brands.components.category-shop-card": "^0.0.19",
     "@fragrantjewels/gravity-brands.components.collection-filters": "^0.0.2",
     "@fragrantjewels/gravity-brands.components.follow-us": "^0.0.3",
