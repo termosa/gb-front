@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import { PointsWidget } from '@fragrantjewels/gravity-brands.components.points-widget'
-import { getTabsList } from '@fragrantjewels/gravity-brands.get-tabs-list'
 import { SigninSignup } from '@fragrantjewels/gravity-brands.components.signin-signup'
 
 export type SearchFieldProps = {
@@ -301,7 +300,36 @@ const SAccountListSubscription = styled.li`
   display: none;
 `
 
-const TABS_LIST = getTabsList()
+const TABS_LIST = [
+  {
+    title: 'Spring',
+    extendable: false,
+  },
+  {
+    title: 'Bath Bombs',
+    extendable: false,
+  },
+  {
+    title: 'Candles',
+    extendable: false,
+  },
+  {
+    title: 'All',
+    extendable: true,
+  },
+  {
+    title: 'Subscription',
+    extendable: true,
+  },
+  {
+    title: 'Rewards',
+    extendable: true,
+  },
+  {
+    title: 'Vault',
+    extendable: false,
+  },
+]
 const CARDS_LIST = [
   {
     href: '/products/piece-by-piece-bath-bomb',

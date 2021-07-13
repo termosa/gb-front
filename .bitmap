@@ -103,6 +103,12 @@
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/nav-icons"
     },
+    "components/nav-mobile": {
+        "scope": "",
+        "version": "",
+        "mainFile": "index.ts",
+        "rootDir": "gravity-brands/components/nav-mobile"
+    },
     "components/nav-tabs": {
         "scope": "fragrantjewels.gravity-brands",
         "version": "0.0.14",

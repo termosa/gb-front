@@ -7,6 +7,7 @@ import { SearchField } from '@fragrantjewels/gravity-brands.components.search-fi
 import { SigninSignup } from '@fragrantjewels/gravity-brands.components.signin-signup'
 import { PointsWidget } from '@fragrantjewels/gravity-brands.components.points-widget'
 import { NavIcons } from '@fragrantjewels/gravity-brands.components.nav-icons'
+import { NavMobile } from '@fragrantjewels/gravity-brands.components.nav-mobile'
 
 export type HeaderProps = {
   className?: ClassName
@@ -556,7 +557,7 @@ export function Header({ className, onSearch }: HeaderProps): React.ReactElement
           <SSearchWrapper>
             <SSearchContent>
               <SLogoWrapper>
-                <SHamburgerMenu />
+                <NavMobile />
                 <SLogo href="/">
                   <svg width="100%" height="100%" viewBox="0 0 117 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
