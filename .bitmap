@@ -57,7 +57,7 @@
     },
     "components/hero-gallery": {
         "scope": "fragrantjewels.gravity-brands",
-        "version": "0.0.19",
+        "version": "0.0.20",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/hero-gallery"
     },
@@ -123,19 +123,19 @@
     },
     "components/product-card": {
         "scope": "fragrantjewels.gravity-brands",
-        "version": "0.0.4",
+        "version": "0.0.5",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/product-card"
     },
     "components/products-carousel": {
         "scope": "fragrantjewels.gravity-brands",
-        "version": "0.0.9",
+        "version": "0.0.10",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/products-carousel"
     },
     "components/products-list": {
         "scope": "fragrantjewels.gravity-brands",
-        "version": "0.0.6",
+        "version": "0.0.7",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/products-list"
     },

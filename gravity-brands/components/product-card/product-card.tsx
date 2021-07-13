@@ -34,7 +34,8 @@ export type ProductCardProps = {
 const ProductCardWrapper = styled.div`
   padding: 5px;
   cursor: pointer;
-  // min-width: 250px;
+  flex-flow: column;
+  height: 100%;
 
   @media (min-width: 500px) {
     padding: 5px 8px;
@@ -52,7 +53,6 @@ const SProductCard = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   width: 100%;
 
   @media (min-width: 768px) {
@@ -164,10 +164,10 @@ const ProductCardType = styled.div`
   text-transform: uppercase;
   letter-spacing: 0.02em;
   color: #878787;
-  margin: 0 0 14px;
+  margin: auto 0 14px;
 
   @media (min-width: 768px) {
-    margin: 0 0 11px;
+    margin: auto 0 11px;
   }
 `
 
@@ -293,7 +293,7 @@ export function ProductCard({ className, style, product, onClick }: ProductCardP
           <ProductCardRatingLink>102</ProductCardRatingLink>
         </ProductCardStars>
         <ProductCardTitle title={product.title}>{product.title}</ProductCardTitle>
-        <ProductCardType>{product?.product_type}</ProductCardType>
+        <ProductCardType>{product?.product_type ? product?.product_type : 'No data'}</ProductCardType>
         <ProductCardPrices>
           <ProductCardPrice>${product.variants[0].actual_price}</ProductCardPrice>
         </ProductCardPrices>

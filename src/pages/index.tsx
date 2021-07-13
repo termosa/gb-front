@@ -30,7 +30,7 @@ const HomePage = ({ trendingProducts, innerCircleProduct }: HomePageProps): Reac
               {
                 topText: 'MINISUBLINER',
                 centerFirstText: 'SAVOR the',
-                centerSecondText: 'quiet MOMENTS',
+                centerSecondText: 'MOMENTS',
                 bottomText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. At eget iaculis eget eget neque.',
                 buttonText: 'SHOP NOW',
                 buttonLink: 'https://www.fragrantjewels.com/pages/inner-circle#how-it-works',
