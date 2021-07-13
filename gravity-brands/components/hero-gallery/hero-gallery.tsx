@@ -20,12 +20,6 @@ export type HeroGalleryProps = {
 }
 
 const SliderWrapper = styled.div`
-  margin-top: 137px;
-
-  @media (max-width: 1199px) {
-    margin-top: 120px;
-  }
-
   * {
     box-sizing: border-box;
   }
@@ -52,7 +46,6 @@ const SliderWrapper = styled.div`
   }
 
   .slick-list.dragging {
-    cursor: pointer;
     cursor: hand;
   }
 
@@ -177,8 +170,8 @@ const Dots = styled.div`
       opacity: 0.6;
       background-color: #fff;
       transform: translate(-50%, -50%);
-      width: 8px;
-      height: 8px;
+      width: 10px;
+      height: 10px;
     }
   }
 

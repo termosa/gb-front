@@ -134,7 +134,6 @@ const ProductCards = styled.div`
   .slick-slide {
     display: none;
     float: left;
-    height: 100%;
     min-height: 1px;
   }
 
@@ -155,7 +154,8 @@ const ProductCards = styled.div`
   }
 
   .slick-initialized .slick-slide {
-    display: block;
+    display: flex;
+    height: auto;
   }
 
   .slick-loading .slick-slide {
