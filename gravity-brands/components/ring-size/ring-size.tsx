@@ -19,26 +19,24 @@ export type RingSizeProps = {
 
 const SWrapper = styled.div`
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   flex-wrap: nowrap;
   margin: 0 -4px 10px;
 `
 
 const SButton = styled.button<{ selected?: boolean }>`
   box-sizing: border-box;
-  max-width: 43px;
-  max-height: 43px;
+  width: 43px;
+  height: 43px;
   position: relative;
-  width: 100%;
   padding: 10px 5px;
   border: 0.5px solid #000;
   background: ${(props) => (props.selected ? `#000` : '#fff')};
   font-size: 15px;
-  margin: 0 4px 6px;
+  margin: 0 6px 6px 0;
   color: ${(props) => (props.selected ? `#fff` : '#000')};
   transition: all linear 0.3s;
   outline: 0;
-  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -49,8 +47,14 @@ const SButton = styled.button<{ selected?: boolean }>`
     font-size: 16px;
   }
 
+  :last-child {
+    margin: 0 0 6px;
+  }
+
   :disabled {
-    background-color: #e4e4e4;
+    background-color: #bdbdbd;
+    color: #ffffff;
+    border: 0;
     cursor: default;
   }
 
