@@ -67,7 +67,7 @@ Builder.registerComponent(HeroGallery, {
         },
         {
           name: 'backgroundImg',
-          type: 'string',
+          type: 'file',
           defaultValue: '',
         },
       ],
@@ -91,7 +91,7 @@ Builder.registerComponent(CategoryShopCard, {
   inputs: [
     {
       name: 'image',
-      type: 'string',
+      type: 'file',
       defaultValue: 'https://i.ibb.co/QFSL0Xd/Background.jpg',
     },
     {
@@ -121,7 +121,7 @@ Builder.registerComponent(InformationOverview, {
       subFields: [
         {
           name: 'image',
-          type: 'string',
+          type: 'file',
           defaultValue: '',
         },
         {
@@ -193,7 +193,7 @@ Builder.registerComponent(ShopByProductsOverview, {
   inputs: [
     {
       name: 'image',
-      type: 'string',
+      type: 'file',
       defaultValue: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/shop-by-product-img-1.jpg',
     },
     {
