@@ -119,7 +119,7 @@ const SliderWrapper = styled.div`
   }
   margin-bottom: 48px;
   @media (min-width: 768px) {
-    margin-bottom: 76px;
+    margin-bottom: 72px;
   }
 `
 
@@ -231,7 +231,6 @@ const SlideTitle = styled.div`
   font: 700 48px/1 'Cormorant Garamond', serif;
   letter-spacing: -0.02em;
   font-style: normal;
-  font-weight: bold;
   margin: 0 0 12px;
 
   & > span {

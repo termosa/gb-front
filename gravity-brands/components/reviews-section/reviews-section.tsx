@@ -35,30 +35,18 @@ const SStars = styled.div`
   justify-content: center;
   align-items: center;
   margin: 0 0 12px;
+  height: 14px;
 `
 
 const SStar = styled.span`
-  margin: 0 1px;
-  svg {
-    width: 14px;
-    height: 14px;
-  }
+  margin: 0 2px;
+  width: 14px;
+  height: 14px;
   @media (min-width: 767px) {
-    svg {
-      width: 18px;
-      height: 18px;
-    }
+    width: 18px;
+    height: 18px;
   }
 `
-
-const SStarIcon = (
-  <svg viewBox="0 0 15 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path
-      d="M7.02447 0.463524C7.17415 0.00286841 7.82585 0.00286996 7.97553 0.463525L9.18386 4.18237C9.25079 4.38838 9.44277 4.52786 9.65938 4.52786H13.5696C14.054 4.52786 14.2554 5.14767 13.8635 5.43237L10.7001 7.73075C10.5248 7.85807 10.4515 8.08375 10.5184 8.28976L11.7268 12.0086C11.8764 12.4693 11.3492 12.8523 10.9573 12.5676L7.79389 10.2693C7.61865 10.1419 7.38135 10.1419 7.20611 10.2693L4.04267 12.5676C3.65081 12.8523 3.12357 12.4693 3.27325 12.0086L4.48157 8.28976C4.54851 8.08375 4.47518 7.85807 4.29994 7.73075L1.1365 5.43237C0.744639 5.14767 0.946028 4.52786 1.43039 4.52786H5.34062C5.55723 4.52786 5.74921 4.38838 5.81614 4.18237L7.02447 0.463524Z"
-      fill="#9059C8"
-    ></path>
-  </svg>
-)
 
 const SReviewAmount = styled.strong`
   text-transform: uppercase;
@@ -250,11 +238,16 @@ export function ReviewsSection({ images, quote, author, className }: ReviewsSect
     <SReviewSection className={cn('ReviewsSection', className)}>
       <SContainer>
         <SStars>
-          <SStar>{SStarIcon}</SStar>
-          <SStar>{SStarIcon}</SStar>
-          <SStar>{SStarIcon}</SStar>
-          <SStar>{SStarIcon}</SStar>
-          <SStar>{SStarIcon}</SStar>
+          {[...Array(5)].map((_, i) => (
+            <SStar>
+              <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M8.44175 0.813919C8.62107 0.262019 9.40186 0.262019 9.58119 0.813918L11.2978 6.09722C11.378 6.34404 11.608 6.51115 11.8676 6.51115H17.4228C18.0031 6.51115 18.2443 7.25373 17.7749 7.59482L13.2806 10.8601C13.0707 11.0126 12.9828 11.283 13.063 11.5298L14.7796 16.8131C14.959 17.365 14.3273 17.824 13.8578 17.4829L9.36357 14.2176C9.15362 14.0651 8.86932 14.0651 8.65936 14.2176L4.16512 17.4829C3.69564 17.824 3.06397 17.365 3.24329 16.8131L4.95994 11.5298C5.04014 11.283 4.95228 11.0126 4.74233 10.8601L0.24808 7.59482C-0.221393 7.25372 0.0198838 6.51115 0.600185 6.51115H6.15538C6.4149 6.51115 6.6449 6.34404 6.7251 6.09722L8.44175 0.813919Z"
+                  fill={'#9059C8'}
+                />
+              </svg>
+            </SStar>
+          ))}
         </SStars>
         <SReviewAmount>100,600+ 5 STAR REVIEWS</SReviewAmount>
         <STitle>You didn’t hear it from us...</STitle>

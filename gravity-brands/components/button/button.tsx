@@ -7,6 +7,7 @@ export interface ButtonProps extends Omit<React.HTMLProps<HTMLButtonElement>, 'c
   type?: 'button' | 'submit' | 'reset' | undefined
   children?: React.ReactNode
   compact?: boolean
+  font?: string
   width?: string
   frontColor?: string
   backColor?: string
@@ -18,20 +19,23 @@ const SButton = styled.button<{
   disabled?: boolean
   compact?: boolean
   inverse?: boolean
+  font?: string
   width?: string
   frontColor?: string
   backColor?: string
   borderColor?: string
   disabledColor?: string
 }>`
-  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: ${(props) => props.width || '155px'};
   height: 55px;
+  margin: 0 auto;
   text-transform: uppercase;
   border: 0.5px solid ${(props) => props.borderColor || '#000'};
   border-radius: 0;
-  font: 700 16px/20px 'Montserrat', sans-serif;
-  font-weight: bold;
+  font: ${(props) => props.font || `700 16px/1.25 'Montserrat', sans-serif`};
   letter-spacing: 0.08em;
   text-decoration: none;
   transition: all linear 0.2s;
@@ -41,6 +45,7 @@ const SButton = styled.button<{
   min-width: ${(props) => (props.compact ? '35px' : '142px')};
 
   &:hover {
+    font-weight: 700;
     background-color: ${(props) => props.frontColor || '#000'};
     color: ${(props) => props.backColor || '#fff'};
   }

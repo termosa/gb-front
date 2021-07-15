@@ -286,7 +286,7 @@ const ProductCardTag = styled.div`
 `
 
 const ProductCardMembers = styled.div`
-  color: purple;
+  color: #9059c8;
   text-transform: uppercase;
   font-size: 10px;
   font-weight: 700;

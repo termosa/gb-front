@@ -51,6 +51,11 @@ const STitle = styled.h2`
   font: 700 40px/1 'Cormorant Garamond', serif;
   text-align: center;
   margin: 0 auto 16px;
+
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+  }
 `
 
 const STitleUnderline = styled.span`
@@ -83,7 +88,7 @@ const SButtonWrapper = styled.div`
 `
 
 const SContentWrapper = styled.div`
-  padding: 28px 0 32px;
+  padding: 106px 0 32px;
   box-sizing: border-box;
   font: 12px/ 1.3 'Montserrat', sans-serif;
   background-color: #fdfbf9;
@@ -150,7 +155,7 @@ const SImagesWrapper = styled.div`
 
 const SImagesContainer = styled.div`
   position: relative;
-  max-width: 500px;
+  max-width: 370px;
   margin: 0 auto 25px;
   width: 100%;
   display: -webkit-box;
@@ -163,6 +168,10 @@ const SImagesContainer = styled.div`
   @media (min-width: 992px) {
     max-width: 100%;
     margin: 0;
+  }
+
+  @media (min-width: 768px) {
+    max-width: 580px;
   }
 `
 
@@ -179,9 +188,24 @@ const SLeftSliderPart = styled.div`
 
 const SLeftImageContainer = styled.div`
   margin: 0 0 10px;
-  padding: 5px;
   box-sizing: border-box;
   background: #fff;
+  border: 6px solid #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 123px;
+  height: 123px;
+
+  @media (min-width: 420px) {
+    width: 154px;
+    height: 154px;
+  }
+
+  @media (min-width: 768px) {
+    width: 248px;
+    height: 248px;
+  }
 
   & > img {
     width: 100%;
@@ -224,21 +248,29 @@ const SSliderButton = styled.button<{
 `
 
 const SRightSliderPart = styled.div`
-  max-width: 62%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  width: 189px;
+  height: 189px;
 
-  & > img {
-    margin-right: 0;
-    width: 100%;
-    height: auto;
-    display: block;
+  @media (min-width: 420px) {
+    width: 235px;
+    height: 235px;
   }
 
   @media (min-width: 768px) {
-    max-width: 310px;
+    width: 400px;
+    height: 400px;
   }
 
-  @media (min-width: 992px) {
-    max-width: 400px;
+  & > img {
+    margin-right: 0;
+    height: 100%;
+    overflow: hidden;
+    display: block;
+    object-fit: cover;
   }
 `
 
@@ -264,7 +296,7 @@ const SInnerCircleLabel = styled.strong`
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: #9059c8;
-  margin: 0 0 8px;
+  margin: 0 0 10px;
   display: block;
 `
 
@@ -326,7 +358,9 @@ export function InnerCircleExclusive({
           Join the Inner Circle for exciting new collections every month, available exclusively to members
         </SSubTitle>
         <SButtonWrapper>
-          <Button>GET STARTED</Button>
+          <Button font={"500 16px/19px 'Montserrat', sans-serif"} width={'189px'}>
+            GET STARTED
+          </Button>
         </SButtonWrapper>
       </STitleWrapper>
       <SContentWrapper>
@@ -393,16 +427,13 @@ export function InnerCircleExclusive({
                     frontColor={'#fff'}
                     backColor={'#000'}
                     style={{ width: '100%', marginBottom: 18 }}
-                    disabled={!selectedVariant}
                     onClick={() => selectedVariant && onReserve(selectedVariant)}
                   >
                     RESERVE NOW
                   </Button>
                 </div>
                 <STaxInfo>
-                  *Monthly membership price does not include tax.
-                  <br />
-                  Shipping is always free. Cancel anytime.
+                  *Monthly membership price does not include tax. Shipping is always free. Cancel anytime.
                 </STaxInfo>
               </SDetailsContainer>
             </SDetailsWrapper>
