@@ -61,37 +61,6 @@ const SProductCard = styled.div`
     padding: 12px 10px 0;
   }
 
-  ${(props: { newProduct?: boolean }) =>
-    props.newProduct &&
-    css`
-      &:before {
-        content: 'New';
-        width: 40px;
-        height: 40px;
-        font-size: 10px;
-        position: absolute;
-        top: 8px;
-        left: 8px;
-        background-color: purple;
-        border-radius: 50%;
-        color: white;
-        font-weight: 700;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-transform: uppercase;
-        z-index: 2;
-
-        @media (min-width: 768px) {
-          width: 50px;
-          height: 50px;
-          top: 12px;
-          left: 12px;
-          font-size: 12px;
-        }
-      }
-    `}
-
   img {
     width: 100%;
     height: auto;
@@ -166,7 +135,7 @@ const ProductCardTag = styled.div`
 `
 
 const ProductCardMembers = styled.div`
-  color: purple;
+  color: #9059c8;
   padding: 6px 0;
   text-transform: uppercase;
   font: 600 10px/1.2 'Montserrat', sans-serif;
