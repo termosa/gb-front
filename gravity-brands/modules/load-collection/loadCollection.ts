@@ -12,12 +12,25 @@ export type Variant = {
 
 export type Product = {
   product_id: number
-  title: string
+  product_type: string
   front_image?: {
     src: string
     alt?: string
   }
-  variants: Array<Variant>
+  side_images?: Array<{
+    src: string
+    alt: string
+  }>
+  title: string
+  variants: Array<{
+    actual_price: number
+    variant_id: number
+    title: string
+    available: boolean
+  }>
+  created_at_shop: string
+  published_at_shop: string | null
+  tags: string
 }
 
 export type Collection = {

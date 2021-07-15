@@ -1,0 +1,28 @@
+import React, { useEffect, useState } from 'react'
+import { loadProduct, Product } from '../../gravity-brands/modules/load-product'
+import { InnerCircleExclusive } from '@fragrantjewels/gravity-brands.components.inner-circle-exclusive'
+
+type InnerCircleExclusiveProps = {
+  productId: number
+}
+
+const InnerCircleExclusiveContainer: React.FC<InnerCircleExclusiveProps> = ({ productId }) => {
+  const [product, setProduct] = useState<Product>()
+
+  useEffect(() => {
+    loadProduct(productId)
+      .then((res) => setProduct(res))
+      .catch((e) => console.log(e))
+  }, [])
+
+  return product ? (
+    <InnerCircleExclusive
+      product={product}
+      onReserve={(variant) => {
+        console.log(variant)
+      }}
+    />
+  ) : null
+}
+
+export default InnerCircleExclusiveContainer

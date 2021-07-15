@@ -14,6 +14,8 @@ import { PromiseBar } from '@fragrantjewels/gravity-brands.components.promise-ba
 import { InlineSignupForm } from '@fragrantjewels/gravity-brands.components.inline-signup-form'
 import { FollowUs } from '@fragrantjewels/gravity-brands.components.follow-us'
 import { Footer } from '@fragrantjewels/gravity-brands.components.footer'
+import InnerCircleExclusiveContainer from '@containers/InnerCircleExclusive'
+import ProductCarouselContainer from '@containers/ProductCarousel'
 
 builder.init(config.apiKey)
 
@@ -230,6 +232,40 @@ Builder.registerComponent(FollowUs, {
 
 Builder.registerComponent(Footer, {
   name: 'Footer',
+})
+
+Builder.registerComponent(InnerCircleExclusiveContainer, {
+  name: 'Inner Circle Exclusive',
+  inputs: [
+    {
+      name: 'productId',
+      type: 'number',
+      defaultValue: 10419937998,
+    },
+  ],
+})
+
+Builder.registerComponent(ProductCarouselContainer, {
+  name: 'Product Carousel',
+  inputs: [
+    {
+      name: 'collectionId',
+      type: 'number',
+      defaultValue: '174027178074',
+      required: true,
+    },
+    {
+      name: 'title',
+      type: 'string',
+      defaultValue: 'Collection Title',
+      required: true,
+    },
+    {
+      name: 'subTitle',
+      type: 'string',
+      required: false,
+    },
+  ],
 })
 
 export const getStaticProps: GetStaticProps = builderIoProps('home', 5)

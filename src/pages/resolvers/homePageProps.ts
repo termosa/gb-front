@@ -11,7 +11,7 @@ export const loadTrendingProducts = (): Promise<Product[] | null> =>
     () => null
   )
 
-const INNER_CIRCLE_PRODUCT_ID = 10419937998 // 10419930702
+const INNER_CIRCLE_PRODUCT_ID = 6549708636250 // 10419930702
 
 const loadInnerCircleProduct = (id: string) => loadProduct(id ? Number(id) : INNER_CIRCLE_PRODUCT_ID).catch(() => null)
 
