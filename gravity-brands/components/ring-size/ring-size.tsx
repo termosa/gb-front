@@ -21,7 +21,7 @@ const SWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   flex-wrap: nowrap;
-  margin: 0 -4px 10px;
+  margin: 0 0 10px;
 `
 
 const SButton = styled.button<{ selected?: boolean }>`
