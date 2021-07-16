@@ -33,7 +33,7 @@ const SButton = styled.button<{ selected?: boolean }>`
   border: 0.5px solid #000;
   background: ${(props) => (props.selected ? `#000` : '#fff')};
   font-size: 15px;
-  margin: 0 6px 6px 0;
+  margin: 0 3px 6px 0;
   color: ${(props) => (props.selected ? `#fff` : '#000')};
   transition: all linear 0.3s;
   outline: 0;

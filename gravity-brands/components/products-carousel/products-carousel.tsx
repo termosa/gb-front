@@ -28,7 +28,7 @@ const Section = styled.section`
 
 const Container = styled.div`
   max-width: 990px;
-  padding: 0 15px;
+  padding: 0 0 0 15px;
   margin: 0 auto;
 
   @media (min-width: 768px) {
@@ -186,7 +186,7 @@ const StyledSlider = styled(Slider)`
   }
 
   .slick-list {
-    padding: 0 7% 0 0;
+    padding: 0 20% 0 0 !important;
     @media (min-width: 500px) {
       padding: 0;
     }
@@ -204,10 +204,13 @@ const StyledSlider = styled(Slider)`
 `
 
 const ProgressWrapper = styled.div`
-  padding: 32px 0 0;
+  max-width: 990px;
+  margin: 0 auto;
+  padding: 36px 23px 0;
 
-  @media (min-width: 500px) {
-    padding: 40px 8px 0;
+  @media (min-width: 768px) {
+    max-width: 1020px;
+    padding: 40px 38px 0;
   }
 `
 
@@ -298,6 +301,7 @@ export const ProductsCarousel = ({
           slidesToShow: 2,
           slidesToScroll: 1,
           arrows: false,
+          centerMode: true,
         },
       },
     ],

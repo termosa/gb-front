@@ -192,7 +192,7 @@ $lightYellow: rgba(253, 251, 249, 1);
         font: 700 40px/1 "Cormorant Garamond", serif;
         letter-spacing: -0.02em;
         text-align: center;
-        margin: 0 auto 14px;
+        margin: 0 auto 24px;
         &_mb {
             max-width: 180px;
             @media (min-width: 768px) {
@@ -218,6 +218,10 @@ $lightYellow: rgba(253, 251, 249, 1);
                 left: 0;
             }
         }
+    }
+
+    .slick-arrow {
+      top: 25vw !important;
     }
 }
 
@@ -727,8 +731,8 @@ $lightYellow: rgba(253, 251, 249, 1);
 .app-h-mf-slider {
     display: flex;
     justify-content: space-between;
-    padding: 10px 0 86px;
-    max-width: 414px;
+    padding: 0 0 86px;
+    max-width: 423px;
     margin: 0 auto;
     position: relative;
     @media (min-width: 768px) {
@@ -773,11 +777,12 @@ $lightYellow: rgba(253, 251, 249, 1);
         max-width: 100%;
     }
     &__img {
-        width: 100%;
-        height: auto;
         display: block;
-        margin-bottom: 17px;
+        margin: 0 auto 17px;
+        height: 50vw;
         @media (min-width: 768px) {
+            width: 100%;
+            height: auto;
             margin-bottom: 20px;
         }
     }

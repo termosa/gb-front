@@ -88,7 +88,7 @@ const SButtonWrapper = styled.div`
 `
 
 const SContentWrapper = styled.div`
-  padding: 106px 0 32px;
+  padding: 29px 0 32px;
   box-sizing: border-box;
   font: 12px/ 1.3 'Montserrat', sans-serif;
   background-color: #fdfbf9;
@@ -102,6 +102,10 @@ const SContentWrapper = styled.div`
     to(white)
   );
   background: linear-gradient(0deg, #fdfbf9 0%, #fdfbf9 83%, white 83%, white 100%);
+
+  @media (min-width: 768px) {
+    padding: 27px 0 32px;
+  }
 
   @media (min-width: 992px) {
     background: -webkit-gradient(
@@ -155,7 +159,7 @@ const SImagesWrapper = styled.div`
 
 const SImagesContainer = styled.div`
   position: relative;
-  max-width: 370px;
+  max-width: 295px;
   margin: 0 auto 25px;
   width: 100%;
   display: -webkit-box;
@@ -165,13 +169,17 @@ const SImagesContainer = styled.div`
   -ms-flex-pack: end;
   justify-content: flex-end;
 
-  @media (min-width: 992px) {
-    max-width: 100%;
-    margin: 0;
+  @media (min-width: 420px) {
+    max-width: 370px;
   }
 
   @media (min-width: 768px) {
-    max-width: 580px;
+    max-width: 612px;
+  }
+
+  @media (min-width: 992px) {
+    max-width: 100%;
+    margin: 0;
   }
 `
 
@@ -301,7 +309,7 @@ const SInnerCircleLabel = styled.strong`
 `
 
 const SProductTitle = styled.h3`
-  font: 600 32px/1 'Cormorant Garamond', serif;
+  font: 600 32px/1.25 'Cormorant Garamond', serif;
   letter-spacing: -0.02em;
   margin: 0 0 16px;
 `
