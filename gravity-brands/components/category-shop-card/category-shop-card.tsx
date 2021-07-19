@@ -14,7 +14,7 @@ export interface CategoryShopCardProps extends Omit<React.HTMLProps<HTMLDivEleme
 const SCol = styled.div`
   @media (min-width: 768px) {
     width: 46%;
-    margin: 0 2%;
+    margin: 0 16px;
   }
 `
 
@@ -49,9 +49,9 @@ const SContent = styled.div`
 
 const STitle = styled.span`
   display: block;
-  margin: 0 0 12px;
+  margin: 0 0 10px;
   @media (min-width: 768px) {
-    margin: 0 0 15px;
+    margin: 0 0 13px;
   }
   position: relative;
   font: 700 32px/1 'Cormorant Garamond', serif;

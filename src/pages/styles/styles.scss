@@ -44,6 +44,7 @@ $lightYellow: rgba(253, 251, 249, 1);
     &__content {
       @media (min-width: 768px) {
         display: flex;
+        justify-content: space-between;
       }
     }
 }
@@ -787,13 +788,12 @@ $lightYellow: rgba(253, 251, 249, 1);
         }
     }
     &__title {
-        margin: 0 0 15px;
+        margin: 0 auto 15px;
         padding: 0 0 12px;
         text-align: center;
         position: relative;
-        font: 700 32px/1 "Cormorant Garamond", serif;
+        font: 700 28px/1 "Cormorant Garamond", serif;
         letter-spacing: -0.02em;
-        white-space: nowrap;
         font-variant-numeric: lining-nums;
         &:after {
             content: "";
@@ -804,6 +804,14 @@ $lightYellow: rgba(253, 251, 249, 1);
             left: 50%;
             transform: translateX(-50%);
             position: absolute;
+        }
+
+        @media (min-width: 768px) {
+          width: 70%;
+        }
+
+        @media (min-width: 823px) {
+          width: 100%;
         }
     }
     &__text {

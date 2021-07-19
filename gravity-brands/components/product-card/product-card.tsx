@@ -274,7 +274,14 @@ export function ProductCard({ className, style, product, onClick }: ProductCardP
             </svg>
           </ProductCardStar>
           <ProductCardStar>
-            <svg height="14px" width="14px" version="1.1" viewBox="0 0 15 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg
+              height="14px"
+              width="14px"
+              version="1.1"
+              viewBox="0 0 15 13"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
               <defs>
                 <linearGradient id="grad1">
                   <stop offset="0%" stopColor="#9059C8" />

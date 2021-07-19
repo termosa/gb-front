@@ -13,6 +13,7 @@ import homePageProps from './resolvers/homePageProps'
 import signup from '@fragrantjewels/gravity-brands.modules.signup'
 import MainPageLayout from '@fragrantjewels/gravity-brands.components.main-page-layout'
 import FollowUs from '@fragrantjewels/gravity-brands.components.follow-us'
+import { MostFunOverview } from '../../gravity-brands/components/most-fun-overview'
 
 type HomePageProps = {
   trendingProducts: Array<TrendingProduct> | null
@@ -56,66 +57,7 @@ const HomePage = ({ trendingProducts, innerCircleProduct }: HomePageProps): Reac
               onReserve={(variant) => alert(`We will ship you the product with size ${variant.title}`)}
             />
           )}
-          <section className="app-h-section app-h-section_colored app-h-section_mf">
-            <div className="app-h-container">
-              <h2 className="app-h-section__title">
-                The{' '}
-                <span>
-                  <span className="app-h-section__title_part">most fun</span>
-                </span>{' '}
-                you’ve <br />
-                ever had relaxing
-              </h2>
-              <div className="app-h-mf-slider-wrapper">
-                <div className="app-h-mf-slider" id="app-h-mf-slider">
-                  <div className="app-h-mf-slider_slide app-h-mf-card">
-                    <img
-                      className="app-h-mf-card__img"
-                      src="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/most-fun-img-1.jpg"
-                      alt=""
-                    />
-                    <h4 className="app-h-mf-card__title">Guilt Free Ingredients</h4>
-                    <div className="app-h-mf-card__text">
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. At eget iaculis eget eget neque,
-                        posuere quis placerat arcu. Ipsum est felis varius faucibus praesent convallis.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="app-h-mf-slider_slide app-h-mf-card">
-                    <img
-                      className="app-h-mf-card__img"
-                      src="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/most-fun-img-2.jpg"
-                      alt=""
-                    />
-                    <h4 className="app-h-mf-card__title">Win $10,000 Ring</h4>
-                    <div className="app-h-mf-card__text">
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. At eget iaculis eget eget neque,
-                        posuere quis placerat arcu. Ipsum est felis varius faucibus praesent convallis.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="app-h-mf-slider_slide app-h-mf-card">
-                    <img
-                      className="app-h-mf-card__img"
-                      src="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/most-fun-img-3.jpg"
-                      alt=""
-                    />
-                    <h4 className="app-h-mf-card__title">Collectible Jewelry</h4>
-                    <div className="app-h-mf-card__text">
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. At eget iaculis eget eget neque,
-                        posuere quis placerat arcu. Ipsum est felis varius faucibus praesent convallis.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
+          <MostFunOverview />
 
           <div className="app-h-section app-h-collections-section">
             <div className="app-h-container">

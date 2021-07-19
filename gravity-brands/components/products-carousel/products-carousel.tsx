@@ -305,7 +305,7 @@ export const ProductsCarousel = ({
         },
       },
     ],
-    beforeChange(currentSlide: number, nextSlide: number) {
+    beforeChange(_: number, nextSlide: number) {
       const mockedProductLengthValue = 4
       const progressCalc = (nextSlide / (mockedProductLengthValue - 1)) * 100
       setProgress(progressCalc)

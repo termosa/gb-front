@@ -150,8 +150,8 @@ const SliderWrapper = styled.div`
   }
 
   .slick-slider .slick-slide img {
-    width: 100%;
-    height: auto;
+    width: fit-content !important;
+    max-height: 33px;
     margin: 0 auto;
     display: block;
   }
