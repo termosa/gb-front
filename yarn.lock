@@ -17898,25 +17898,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-fsevents@^1.2.7:
-  version: 1.2.13
-  resolution: "fsevents@npm:1.2.13"
-  dependencies:
-    bindings: ^1.5.0
-    nan: ^2.12.1
-  checksum: ae855aa737aaa2f9167e9f70417cf6e45a5cd11918e1fee9923709a0149be52416d765433b4aeff56c789b1152e718cd1b13ddec6043b78cdda68260d86383c1
-  languageName: node
-  linkType: hard
-
-"fsevents@^2.1.2, fsevents@~2.3.1, fsevents@~2.3.2":
-  version: 2.3.2
-  resolution: "fsevents@npm:2.3.2"
-  dependencies:
-    node-gyp: latest
-  checksum: 97ade64e75091afee5265e6956cb72ba34db7819b4c3e94c431d4be2b19b8bb7a2d4116da417950c3425f17c8fe693d25e20212cac583ac1521ad066b77ae31f
-  languageName: node
-  linkType: hard
-
 "fsevents@patch:fsevents@^1.2.7#~builtin<compat/fsevents>":
   version: 1.2.13
   resolution: "fsevents@patch:fsevents@npm%3A1.2.13#~builtin<compat/fsevents>::version=1.2.13&hash=1cc4b2"
@@ -17942,15 +17923,6 @@ fsevents@^1.2.7:
   dependencies:
     node-gyp: latest
   checksum: 37502954e1b2cf7d1f555561e45956521afa12e12cbfe05445ffa1f2852a3d8932980cacb808d504b1def84b12b3b7b41c26673180691295001fa7740cc63fba
-  languageName: node
-  linkType: hard
-
-fsevents@~2.1.2:
-  version: 2.1.3
-  resolution: "fsevents@npm:2.1.3"
-  dependencies:
-    node-gyp: latest
-  checksum: b5ec0516b44d75b60af5c01ff80a80cd995d175e4640d2a92fbabd02991dd664d76b241b65feef0775c23d531c3c74742c0fbacd6205af812a9c3cef59f04292
   languageName: node
   linkType: hard
 
@@ -23165,6 +23137,15 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
+"most-fun-overview-f2b87c@workspace:gravity-brands/components/most-fun-overview":
+  version: 0.0.0-use.local
+  resolution: "most-fun-overview-f2b87c@workspace:gravity-brands/components/most-fun-overview"
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0
+    react-dom: ^16.8.0 || ^17.0.0
+  languageName: unknown
+  linkType: soft
+
 "mousetrap@npm:1.6.5":
   version: 1.6.5
   resolution: "mousetrap@npm:1.6.5"
@@ -27463,23 +27444,6 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-resolve@1.1.7:
-  version: 1.1.7
-  resolution: "resolve@npm:1.1.7"
-  checksum: afd20873fbde7641c9125efe3f940c2a99f6b1f90f1b7b743e744bdaac1cb105b2e4e0317bcc052ed7e31d57afa86b394a4dc9a1b33a297977be134fdf0250ab
-  languageName: node
-  linkType: hard
-
-"resolve@^1.1.6, resolve@^1.10.0, resolve@^1.12.0, resolve@^1.13.1, resolve@^1.14.2, resolve@^1.17.0, resolve@^1.18.1, resolve@^1.19.0, resolve@^1.3.2, resolve@^1.8.1":
-  version: 1.20.0
-  resolution: "resolve@npm:1.20.0"
-  dependencies:
-    is-core-module: ^2.2.0
-    path-parse: ^1.0.6
-  checksum: 40cf70b2cde00ef57f99daf2dc63c6a56d6c14a1b7fc51735d06a6f0a3b97cb67b4fb7ef6c747b4e13a7baba83b0ef625d7c4ce92a483cd5af923c3b65fd16fe
-  languageName: node
-  linkType: hard
-
 "resolve@patch:resolve@1.1.7#~builtin<compat/resolve>":
   version: 1.1.7
   resolution: "resolve@patch:resolve@npm%3A1.1.7#~builtin<compat/resolve>::version=1.1.7&hash=00b1ff"
@@ -30582,26 +30546,6 @@ resolve@1.1.7:
   bin:
     typedoc: bin/typedoc
   checksum: 071c3c9d7a073378eeff6a3033c1db4ef2f1591b8560dc4b04fc82f5f78b8ffafd89dc675dff7609e60850c10f5ab6f82c0e7e0345af7da9ecfc725c910a6e4f
-  languageName: node
-  linkType: hard
-
-typescript@3.8.3:
-  version: 3.8.3
-  resolution: "typescript@npm:3.8.3"
-  bin:
-    tsc: bin/tsc
-    tsserver: bin/tsserver
-  checksum: 3ef07f997a9a3af80d663cc611be984d3e22df3dc2b5ecfa6cbe7dbd54f1984fa1c679ba67e6a9d36d73ffdbbab88a0fbb58eb30ffc4f748f3a3c28d562b546a
-  languageName: node
-  linkType: hard
-
-typescript@4.1.5:
-  version: 4.1.5
-  resolution: "typescript@npm:4.1.5"
-  bin:
-    tsc: bin/tsc
-    tsserver: bin/tsserver
-  checksum: af660e69aa5184520dfa57362dcf7fd1b26d08b869d76b3bd58dcc04058a757983f470cd61ded824ab01fa08a81d58c7f607d8e360f4e550664b9439d04f8e41
   languageName: node
   linkType: hard
 

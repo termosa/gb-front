@@ -33,7 +33,7 @@
     },
     "components/follow-us": {
         "scope": "fragrantjewels.gravity-brands",
-        "version": "0.0.4",
+        "version": "0.0.5",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/follow-us"
     },
@@ -81,7 +81,7 @@
     },
     "components/inner-circle-exclusive": {
         "scope": "fragrantjewels.gravity-brands",
-        "version": "0.0.20",
+        "version": "0.0.21",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/inner-circle-exclusive"
     },
@@ -99,7 +99,7 @@
     },
     "components/most-fun-overview": {
         "scope": "fragrantjewels.gravity-brands",
-        "version": "0.0.2",
+        "version": "0.0.3",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/most-fun-overview"
     },
