@@ -258,6 +258,16 @@ Builder.registerComponent(InnerCircleExclusiveContainer, {
       type: 'number',
       defaultValue: 10419937998,
     },
+    {
+      name: 'frontImage',
+      type: 'string',
+      defaultValue: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/ic-img.jpg',
+    },
+    {
+      name: 'sideImage',
+      type: 'string',
+      defaultValue: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/ic-img-jewelry.jpg',
+    },
   ],
 })
 
