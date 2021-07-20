@@ -118,6 +118,16 @@ Builder.registerComponent(InformationOverview, {
   name: 'Information Overview',
   inputs: [
     {
+      name: 'titleFirst',
+      type: 'string',
+      defaultValue: '',
+    },
+    {
+      name: 'titleSecond',
+      type: 'string',
+      defaultValue: '',
+    },
+    {
       name: 'cards',
       type: 'list',
       subFields: [
@@ -194,19 +204,25 @@ Builder.registerComponent(ShopByProductsOverview, {
   name: 'Shop By Product Overview',
   inputs: [
     {
-      name: 'image',
-      type: 'file',
-      defaultValue: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/shop-by-product-img-1.jpg',
-    },
-    {
-      name: 'buttonLink',
-      type: 'string',
-      defaultValue: 'https://www.fragrantjewels.com/pages/inner-circle#how-it-works',
-    },
-    {
-      name: 'title',
-      type: 'string',
-      defaultValue: 'Title',
+      name: 'products',
+      type: 'list',
+      subFields: [
+        {
+          name: 'image',
+          type: 'file',
+          defaultValue: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/shop-by-product-img-1.jpg',
+        },
+        {
+          name: 'buttonLink',
+          type: 'string',
+          defaultValue: 'https://www.fragrantjewels.com/pages/inner-circle#how-it-works',
+        },
+        {
+          name: 'title',
+          type: 'string',
+          defaultValue: 'Title',
+        },
+      ],
     },
   ],
 })

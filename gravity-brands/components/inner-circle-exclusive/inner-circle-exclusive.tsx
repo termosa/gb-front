@@ -31,6 +31,8 @@ export type Product = {
 export type InnerCircleExclusiveProps = {
   className?: ClassName
   product: Product
+  frontImage: string
+  sideImage: string
   onReserve: (variant: Variant) => void
 }
 
@@ -346,6 +348,8 @@ const STaxInfo = styled.div`
 export function InnerCircleExclusive({
   className,
   product,
+  frontImage,
+  sideImage,
   onReserve,
 }: InnerCircleExclusiveProps): React.ReactElement | null {
   const [selectedVariant, setVariant] = useState<Variant | undefined>()
@@ -366,7 +370,7 @@ export function InnerCircleExclusive({
           Join the Inner Circle for exciting new collections every month, available exclusively to members
         </SSubTitle>
         <SButtonWrapper>
-          <Button font={"500 16px/19px 'Montserrat', sans-serif"} width={'189px'}>
+          <Button style={{ fontStyle: "500 16px/19px 'Montserrat', sans-serif" }} width={'189px'}>
             GET STARTED
           </Button>
         </SButtonWrapper>
@@ -378,7 +382,7 @@ export function InnerCircleExclusive({
               <SImagesContainer>
                 <SLeftSliderPart>
                   <SLeftImageContainer>
-                    <img src={product.side_images[0].src} alt={product.title} />
+                    <img src={sideImage} alt={product.title} />
                   </SLeftImageContainer>
                   <SSliderButton transform={'rotate(180deg)'}>
                     <svg viewBox="0 0 15 27" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -406,7 +410,7 @@ export function InnerCircleExclusive({
                   </SSliderButton>
                 </SLeftSliderPart>
                 <SRightSliderPart>
-                  <img src={product.front_image.src} alt={product.title} />
+                  <img src={frontImage} alt={product.title} />
                 </SRightSliderPart>
               </SImagesContainer>
             </SImagesWrapper>
