@@ -5,7 +5,7 @@ import PromiseBar from '@fragrantjewels/gravity-brands.components.promise-bar'
 import InlineSignupForm from '@fragrantjewels/gravity-brands.components.inline-signup-form'
 import ReviewsSection from '@fragrantjewels/gravity-brands.components.reviews-section'
 import ShopByProductsOverview from '@fragrantjewels/gravity-brands.components.shop-by-products-overview'
-import InnerCircleExclusive, { Product } from '../../gravity-brands/components/inner-circle-exclusive'
+import InnerCircleExclusive, { Product } from '@fragrantjewels/gravity-brands.components.inner-circle-exclusive'
 import ProductsCarousel, {
   Product as TrendingProduct,
 } from '@fragrantjewels/gravity-brands.components.products-carousel'

@@ -3,6 +3,10 @@ import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
 import usePopper from '@fragrantjewels/gravity-brands.hooks.use-popper'
 import useOnClickOutside from '@fragrantjewels/gravity-brands.hooks.use-on-click-outside'
+import { CollectionProductsFilter } from '@fragrantjewels/gravity-brands.modules.filter-collection-products'
+
+export { filterCollectionProducts } from '@fragrantjewels/gravity-brands.modules.filter-collection-products'
+export type { CollectionProductsFilter } from '@fragrantjewels/gravity-brands.modules.filter-collection-products'
 
 export interface Filter {
   name: string
@@ -16,13 +20,6 @@ export interface Filters {
   colors: Array<Filter>
 }
 
-export type SelectedFilters = {
-  fragrances: Array<string>
-  materials: Array<string>
-  sizes: Array<string>
-  colors: Array<string>
-}
-
 export enum SelectedSorting {
   NEW = 'new',
   LOW_TO_HIGH = 'low-to-high',
@@ -33,9 +30,11 @@ export type CollectionFiltersProps = {
   className?: ClassName
   children?: React.ReactNode
   filters: Filters
-  onChangeFilter: (selectedFilters: SelectedFilters) => void
+  onChangeFilter: (selectedFilters: CollectionProductsFilter) => void
   onChangeSorting: (sorting: SelectedSorting) => void
 }
+
+export type ColorGradient = Array<{ offset?: number; stopColor: string }>
 
 const SCollectionFiltersContainer = styled.div`
   font-family: ${({ theme }) => theme.fonts.familyMain};
@@ -302,9 +301,9 @@ const CloseButton = ({ onClick, small }: { onClick: () => void; small?: boolean 
 
 export type FilterGroup = 'fragrances' | 'materials' | 'sizes' | 'colors'
 
-const isEmptyFilter = (filters: SelectedFilters) => Object.values(filters).every((values) => !values.length)
+const isEmptyFilter = (filters: CollectionProductsFilter) => Object.values(filters).every((values) => !values.length)
 
-const gradients = {
+const gradients: Record<string, ColorGradient> = {
   Black: [],
   Gold: [
     { stopColor: '#D08E17' },
@@ -378,7 +377,7 @@ export const CollectionFilters = ({
   const [isSortDropdownOpened, setIsSortDropdownOpened] = useState(false)
   const [isFiltersDropdownOpened, setIsFiltersDropdownOpened] = useState(false)
 
-  const [selectedFilters, setSelectedFilters] = useState<SelectedFilters>(createEmptyFilter)
+  const [selectedFilters, setSelectedFilters] = useState<CollectionProductsFilter>(createEmptyFilter)
 
   const handleFilterChange = (filterGroup: FilterGroup, filterName: string, enabled: boolean) => {
     const selectedFilterName = filters[filterGroup].find((filter) => filter.name === filterName)?.name
@@ -387,18 +386,18 @@ export const CollectionFilters = ({
     setSelectedFilters({
       ...selectedFilters,
       [filterGroup]: enabled
-        ? selectedFilters[filterGroup].concat(selectedFilterName)
-        : selectedFilters[filterGroup].filter((name) => name !== filterName),
+        ? (selectedFilters[filterGroup] || []).concat(selectedFilterName)
+        : selectedFilters[filterGroup]?.filter((name) => name !== filterName) || [],
     })
   }
 
   useEffect(() => onChangeFilter(selectedFilters), [selectedFilters])
 
-  const getListOfSelectedFilters = (selectedFilters: SelectedFilters) => [
-    ...selectedFilters.fragrances.map((filter) => ({ name: filter, filterGroup: 'fragrances' })),
-    ...selectedFilters.sizes.map((filter) => ({ name: filter, filterGroup: 'sizes' })),
-    ...selectedFilters.colors.map((filter) => ({ name: filter, filterGroup: 'colors' })),
-    ...selectedFilters.materials.map((filter) => ({ name: filter, filterGroup: 'materials' })),
+  const getListOfSelectedFilters = (selectedFilters: CollectionProductsFilter) => [
+    ...(selectedFilters.sizes?.map((filter) => ({ name: filter, filterGroup: 'sizes' })) || []),
+    ...(selectedFilters.fragrances?.map((filter) => ({ name: filter, filterGroup: 'fragrances' })) || []),
+    ...(selectedFilters.colors?.map((filter) => ({ name: filter, filterGroup: 'colors' })) || []),
+    ...(selectedFilters.materials?.map((filter) => ({ name: filter, filterGroup: 'materials' })) || []),
   ]
 
   useOnClickOutside({ current: popperElement }, () => setIsSortDropdownOpened(false))
@@ -467,7 +466,7 @@ export const CollectionFilters = ({
                   <SProductsQuantity> ({amount})</SProductsQuantity>
                   <SCheckbox
                     onChange={(event) => handleFilterChange('fragrances', name, event.target.checked)}
-                    checked={!!selectedFilters.fragrances.includes(name)}
+                    checked={!!selectedFilters.fragrances?.includes(name)}
                   />
                 </SFilter>
               ))}
@@ -482,7 +481,7 @@ export const CollectionFilters = ({
                   <SProductsQuantity> ({amount})</SProductsQuantity>
                   <SCheckbox
                     onChange={(event) => handleFilterChange('sizes', name, event.target.checked)}
-                    checked={!!selectedFilters.sizes.includes(name)}
+                    checked={!!selectedFilters.sizes?.includes(name)}
                   />
                 </SFilter>
               ))}
@@ -497,7 +496,7 @@ export const CollectionFilters = ({
                   <SProductsQuantity> ({amount})</SProductsQuantity>
                   <SCheckbox
                     onChange={(event) => handleFilterChange('materials', name, event.target.checked)}
-                    checked={!!selectedFilters.materials.includes(name)}
+                    checked={!!selectedFilters.materials?.includes(name)}
                   />
                 </SFilter>
               ))}
@@ -534,7 +533,7 @@ export const CollectionFilters = ({
                         y2={10.765}
                         gradientUnits="userSpaceOnUse"
                       >
-                        {gradients[name] && gradients[name].map(({ stopColor, offset }) => (
+                        {gradients[name]?.map(({ stopColor, offset }) => (
                           <stop stopColor={stopColor} offset={offset} key={stopColor + Math.random()} />
                         ))}
                       </linearGradient>
@@ -546,7 +545,7 @@ export const CollectionFilters = ({
                     type="checkbox"
                     hidden
                     onChange={(event) => handleFilterChange('colors', name, event.target.checked)}
-                    checked={!!selectedFilters.colors.includes(name)}
+                    checked={!!selectedFilters.colors?.includes(name)}
                   />
                 </SFilter>
               ))}

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { Collection, loadCollection } from '../../gravity-brands/modules/load-collection'
-import { ProductsCarousel } from '../../gravity-brands/components/products-carousel'
+import { Collection, loadCollection } from '@fragrantjewels/gravity-brands.modules.load-collection'
+import { ProductsCarousel } from '@fragrantjewels/gravity-brands.components.products-carousel'
 
 type ProductCarouselProps = {
   collectionId: number
@@ -8,7 +8,11 @@ type ProductCarouselProps = {
   subTitle?: string
 }
 
-const ProductCarouselContainer: React.FC<ProductCarouselProps> = ({ collectionId, title, subTitle }) => {
+const ProductCarouselContainer = ({
+  collectionId,
+  title,
+  subTitle,
+}: ProductCarouselProps): React.ReactElement | null => {
   const [collection, setCollection] = useState<Collection>()
 
   useEffect(() => {

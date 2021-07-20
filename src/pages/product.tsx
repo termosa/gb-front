@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import ProductsCarousel, { Product as ProductType } from '@fragrantjewels/gravity-brands.components.products-carousel'
+import MainPageLayout from '@fragrantjewels/gravity-brands.components.main-page-layout'
 import productPageProps from './resolvers/productPageProps'
-import MainPageLayout from 'gravity-brands/components/main-page-layout'
 
 type ProductPageProps = {
   product: ProductType
@@ -36,9 +36,9 @@ const Product = ({ product, recommendedProducts, potentialProducts }: ProductPag
                           <div className="pdp-s-col pdp-s-col-sm pdp-carousel-items">
                             <ul className="pdp-carousel-items__list" id="pdp-carousel-items__list">
                               <li className="pdp-carousel-item_active">
-                                <img src={product.front_image?.src} alt={product.front_image?.alt} />
+                                <img src={product.image?.src} alt={product.image?.alt} />
                               </li>
-                              {product.side_images?.map((image) => (
+                              {product.images?.map((image) => (
                                 <li key={image.src}>
                                   <img src={image.src} alt={image.alt} />
                                 </li>
@@ -48,9 +48,9 @@ const Product = ({ product, recommendedProducts, potentialProducts }: ProductPag
                           <div className="pdp-s-col pdp-s-col-lg">
                             <div className="pdp-carousel" id="pdp-carousel">
                               <div className="pdp-carousel__item">
-                                <img src={product.front_image?.src} alt={product.front_image?.alt} />
+                                <img src={product.image?.src} alt={product.image?.alt} />
                               </div>
-                              {product.side_images?.map((image) => (
+                              {product.images?.map((image) => (
                                 <div className="pdp-carousel__item" key={image?.src}>
                                   <img src={image?.src} alt={image?.alt} />
                                 </div>
@@ -1181,11 +1181,7 @@ const Product = ({ product, recommendedProducts, potentialProducts }: ProductPag
                     <div className="app-pdp-f-pr__item">
                       <div className="app-pdp-f-pr__item__row">
                         <div className="app-pdp-f-pr__item__col app-pdp-f-pr__image-wrapper">
-                          <img
-                            className="app-pdp-f-pr-item__img"
-                            src={product.front_image?.src}
-                            alt={product.front_image?.alt}
-                          />
+                          <img className="app-pdp-f-pr-item__img" src={product.image?.src} alt={product.image?.alt} />
                           <svg
                             className="app-pdp-f-pr-item__icon_mobile"
                             width={18}

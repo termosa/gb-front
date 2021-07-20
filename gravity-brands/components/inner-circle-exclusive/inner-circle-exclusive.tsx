@@ -4,36 +4,16 @@ import styled from 'styled-components'
 import Button from '@fragrantjewels/gravity-brands.components.button'
 import RingSize from '@fragrantjewels/gravity-brands.components.ring-size'
 import formatPrice from '@fragrantjewels/gravity-brands.modules.format-price'
+import { Product, ProductVariant } from '@fragrantjewels/gravity-brands.modules.normalize-product'
 
-export type Variant = {
-  title: string
-  variant_id: number
-  position: number
-  actual_price: number
-  compare_at_price: number
-  inventory_quantity: number
-}
-
-export type Product = {
-  title: string
-  front_image: {
-    src: string
-  }
-  side_images: [
-    {
-      id: number
-      src: string
-    }
-  ]
-  variants: Array<Variant>
-}
+export type { Product, ProductVariant, ProductImage } from '@fragrantjewels/gravity-brands.modules.normalize-product'
 
 export type InnerCircleExclusiveProps = {
   className?: ClassName
   product: Product
   frontImage: string
   sideImage: string
-  onReserve: (variant: Variant) => void
+  onReserve: (variant: ProductVariant) => void
 }
 
 const SWrapper = styled.div``
@@ -162,13 +142,9 @@ const SImagesWrapper = styled.div`
 const SImagesContainer = styled.div`
   position: relative;
   max-width: 295px;
-  margin: 0 auto 25px;
   width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
+  margin: 0 auto 25px;
   display: flex;
-  -webkit-box-pack: end;
-  -ms-flex-pack: end;
   justify-content: flex-end;
 
   @media (min-width: 420px) {
@@ -352,7 +328,7 @@ export function InnerCircleExclusive({
   sideImage,
   onReserve,
 }: InnerCircleExclusiveProps): React.ReactElement | null {
-  const [selectedVariant, setVariant] = useState<Variant | undefined>()
+  const [selectedVariant, setVariant] = useState<ProductVariant | undefined>()
 
   const actualPrice = (selectedVariant || product.variants[0]).actual_price
   const comparePrice = (selectedVariant || product.variants[0]).compare_at_price

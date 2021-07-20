@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { loadProduct, Product } from '../../gravity-brands/modules/load-product'
+import loadProduct, { Product } from '@fragrantjewels/gravity-brands.modules.load-product'
 import { InnerCircleExclusive } from '@fragrantjewels/gravity-brands.components.inner-circle-exclusive'
 
 type InnerCircleExclusiveProps = {
@@ -8,7 +8,11 @@ type InnerCircleExclusiveProps = {
   sideImage: string
 }
 
-const InnerCircleExclusiveContainer: React.FC<InnerCircleExclusiveProps> = ({ productId, frontImage, sideImage }) => {
+const InnerCircleExclusiveContainer = ({
+  productId,
+  frontImage,
+  sideImage,
+}: InnerCircleExclusiveProps): React.ReactElement | null => {
   const [product, setProduct] = useState<Product>()
 
   useEffect(() => {

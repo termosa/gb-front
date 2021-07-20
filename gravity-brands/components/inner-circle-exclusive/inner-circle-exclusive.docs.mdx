@@ -7,64 +7,79 @@ import { InnerCircleExclusive } from './inner-circle-exclusive'
 
 Basic example:
 ```js live
-  <InnerCircleExclusive
-    onReserve={variant => alert(`We will ship you the product with size ${variant.title}`)}
-    frontImage={'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/ic-img.jpg'}
-    sideImage={'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/ic-img-jewelry.jpg'}
-    product={{
-      title: 'Winter - Wax Tarts',
-      front_image: { src: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/ic-img.jpg' },
-      side_images: [{ id: 1, src: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/ic-img-jewelry.jpg' }],
-      variants: [
-        {
-          title: '6',
-          variant_id: 1,
-          position: 2,
-          actual_price: 12.50,
-          compare_at_price: 10.50,
-          inventory_quantity: 67,
-        },
-        {
-          title: '5',
-          variant_id: 2,
-          position: 1,
-          actual_price: 12.50,
-          compare_at_price: 10.50,
-          inventory_quantity: 0,
-        },
-        {
-          title: '7',
-          variant_id: 3,
-          position: 3,
-          actual_price: 12.50,
-          compare_at_price: 10.50,
-          inventory_quantity: 99,
-        },
-        {
-          title: '8',
-          variant_id: 4,
-          position: 4,
-          actual_price: 12.50,
-          compare_at_price: 10.50,
-          inventory_quantity: 3,
-        },
-        {
-          title: '9',
-          variant_id: 5,
-          position: 5,
-          actual_price: 12.50,
-          compare_at_price: 10.50,
-          inventory_quantity: 36,
-        },
-        {
-          title: '10',
-          variant_id: 6,
-          position: 6,
-          actual_price: 12.50,
-          compare_at_price: 10.50,
-          inventory_quantity: 0,
-        },
-      ],
-    }}
-  />
+<InnerCircleExclusive
+  onReserve={(variant) => alert(`We will ship you the product with size ${variant.title}`)}
+  frontImage={'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/ic-img.jpg'}
+  sideImage={'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/ic-img-jewelry.jpg'}
+  product={{
+    product_id: 1,
+    title: 'Winter - Wax Tarts',
+    product_type: 'Jewel Candle',
+    published_at_shop: '',
+    image: {
+      id: 1,
+      src: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/ic-img.jpg',
+      width: 400,
+      height: 400,
+    },
+    images: [
+      {
+        id: 2,
+        src: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/ic-img-jewelry.jpg',
+        width: 400,
+        height: 400,
+      }
+    ],
+    variants: [
+      {
+        title: '5',
+        variant_id: 1,
+        actual_price: 12.5,
+        compare_at_price: 10.5,
+        available: false,
+        product_id: 1,
+      },
+      {
+        title: '6',
+        variant_id: 2,
+        actual_price: 12.5,
+        compare_at_price: 10.5,
+        available: true,
+        product_id: 1,
+      },
+      {
+        title: '7',
+        variant_id: 3,
+        actual_price: 12.5,
+        compare_at_price: 10.5,
+        available: true,
+        product_id: 1,
+      },
+      {
+        title: '8',
+        variant_id: 4,
+        actual_price: 12.5,
+        compare_at_price: 10.5,
+        available: true,
+        product_id: 1,
+      },
+      {
+        title: '9',
+        variant_id: 5,
+        actual_price: 12.5,
+        compare_at_price: 10.5,
+        available: true,
+        product_id: 1,
+      },
+      {
+        title: '10',
+        variant_id: 6,
+        actual_price: 12.5,
+        compare_at_price: 10.5,
+        available: false,
+        product_id: 1,
+      },
+    ],
+  }}
+/>
 ```
