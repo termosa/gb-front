@@ -17,10 +17,18 @@ const SMostFunSection = styled.section`
     rgba(255, 255, 255, 1) 100%
   );
   padding-top: 34px;
-  margin-bottom: 33px;
   @media (min-width: 768px) {
     padding: 76px 0 48px;
-    margin-bottom: 100px;
+  }
+`
+
+const SMostFunContainer = styled.div`
+  max-width: 990px;
+  padding: 0 10px;
+  margin: 0 auto;
+  @media (min-width: 768px) {
+    padding: 0 30px;
+    max-width: 1020px;
   }
 `
 
@@ -68,7 +76,11 @@ const StyledSlider = styled(Slider)`
   margin: 0 auto;
 
   @media (min-width: 420px) {
-    max-width: 55vw;
+    max-width: 75vw;
+  }
+
+  @media (min-width: 768px) {
+    max-width: 60vw;
   }
 
   @media (min-width: 991px) {
@@ -98,6 +110,10 @@ const StyledSlider = styled(Slider)`
       height: 80vw;
 
       @media (min-width: 420px) {
+        height: 60vw;
+      }
+
+      @media (min-width: 768px) {
         height: 50vw;
       }
 
@@ -112,6 +128,10 @@ const StyledSlider = styled(Slider)`
     top: 40vw !important;
 
     @media (min-width: 420px) {
+      top: 30vw !important;
+    }
+
+    @media (min-width: 768px) {
       top: 25vw !important;
     }
   }
@@ -130,6 +150,60 @@ const StyledSlider = styled(Slider)`
       background-color: #4dbeba;
       opacity: 0.6;
     }
+  }
+
+  .slick-prev {
+    left: 2px;
+    @media (min-width: 420px) {
+      left: -12px;
+    }
+  }
+
+  .slick-next {
+    right: 2px;
+    @media (min-width: 420px) {
+      right: -12px;
+    }
+  }
+`
+
+const SSectionTitle = styled.h2`
+  font: 700 40px/1 'Cormorant Garamond', serif;
+  letter-spacing: -0.02em;
+  text-align: center;
+  margin: 0 auto 24px;
+`
+
+const SSectionTitlePart = styled.span`
+  position: relative;
+  z-index: 1;
+`
+
+const SSlideTitle = styled.h4`
+  margin: 0 auto 15px;
+  padding: 0 0 12px;
+  text-align: center;
+  position: relative;
+  font: 700 28px/1 'Cormorant Garamond', serif;
+  letter-spacing: -0.02em;
+  font-variant-numeric: lining-nums;
+  &:after {
+    content: '';
+    background-color: #9059c8;
+    height: 1px;
+    width: 52px;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+  }
+
+  @media (min-width: 768px) {
+    width: 70%;
+  }
+
+  @media (min-width: 823px) {
+    width: 100%;
   }
 `
 
@@ -165,19 +239,19 @@ export function MostFunOverview({ className }: MostFunOverviewProps): React.Reac
 
   return (
     <SMostFunSection className={cn('MostFunOverview', className)}>
-      <div className="app-h-container">
-        <h2 className="app-h-section__title">
+      <SMostFunContainer>
+        <SSectionTitle>
           The{' '}
           <span>
-            <span className="app-h-section__title_part">most fun</span>
+            <SSectionTitlePart>most fun</SSectionTitlePart>
           </span>{' '}
           you’ve <br />
           ever had relaxing
-        </h2>
+        </SSectionTitle>
         <StyledSlider {...settings}>
-          <div className="app-h-mf-slider_slide">
+          <div>
             <img src="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/most-fun-img-1.jpg" alt="" />
-            <h4 className="app-h-mf-card__title">Guilt Free Ingredients</h4>
+            <SSlideTitle>Guilt Free Ingredients</SSlideTitle>
             <SSlideText>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. At eget iaculis eget eget neque, posuere quis
@@ -186,9 +260,9 @@ export function MostFunOverview({ className }: MostFunOverviewProps): React.Reac
             </SSlideText>
           </div>
 
-          <div className="app-h-mf-slider_slide">
+          <div>
             <img src="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/most-fun-img-2.jpg" alt="" />
-            <h4 className="app-h-mf-card__title">Win $10,000 Ring</h4>
+            <SSlideTitle>Win $10,000 Ring</SSlideTitle>
             <SSlideText>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. At eget iaculis eget eget neque, posuere quis
@@ -197,9 +271,9 @@ export function MostFunOverview({ className }: MostFunOverviewProps): React.Reac
             </SSlideText>
           </div>
 
-          <div className="app-h-mf-slider_slide">
+          <div>
             <img src="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/most-fun-img-3.jpg" alt="" />
-            <h4 className="app-h-mf-card__title">Collectible Jewelry</h4>
+            <SSlideTitle>Collectible Jewelry</SSlideTitle>
             <SSlideText>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. At eget iaculis eget eget neque, posuere quis
@@ -208,7 +282,7 @@ export function MostFunOverview({ className }: MostFunOverviewProps): React.Reac
             </SSlideText>
           </div>
         </StyledSlider>
-      </div>
+      </SMostFunContainer>
     </SMostFunSection>
   )
 }

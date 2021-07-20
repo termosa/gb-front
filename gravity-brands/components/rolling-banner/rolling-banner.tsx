@@ -66,7 +66,6 @@ const PromoSlider = styled(Slider)`
   }
   .slick-slide {
     float: left;
-
     height: 100%;
     min-height: 1px;
   }

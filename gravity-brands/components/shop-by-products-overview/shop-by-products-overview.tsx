@@ -161,7 +161,8 @@ const SliderWrapper = styled.div`
   }
 
   .slick-initialized .slick-slide {
-    display: block;
+    display: flex;
+    justify-content: center;
   }
 
   .slick-slide img {

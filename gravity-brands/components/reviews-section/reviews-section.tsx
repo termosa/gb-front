@@ -64,6 +64,12 @@ const STitle = styled.h3`
   font: 700 40px/1 'Cormorant Garamond', serif;
   letter-spacing: -0.02em;
   margin: 0 0 32px;
+  display: flex;
+  flex-direction: column;
+
+  @media (min-width: 768px) {
+    display: inline-block;
+  }
 `
 
 const SQuote = styled.figure`
@@ -135,14 +141,19 @@ const SliderWrapper = styled.div`
 
   .slick-slider .slick-slide {
     margin: 0 1%;
+    @media (min-width: 991px) {
+      margin: 0 1.2vw;
+    }
   }
 
   .slick-slide {
     outline: none;
     display: none;
     float: left;
-    width: initial;
     min-height: 1px;
+    @media (min-width: 991px) {
+      width: initial !important;
+    }
   }
 
   .slick-initialized .slick-slide {
@@ -150,7 +161,9 @@ const SliderWrapper = styled.div`
   }
 
   .slick-slider .slick-slide img {
+    height: auto;
     width: auto !important;
+    max-width: 100%;
     max-height: 33px;
     margin: 0 auto;
     display: block;
@@ -159,15 +172,6 @@ const SliderWrapper = styled.div`
   img {
     border-style: none;
     margin: 0 5px 10px;
-    padding: 5px 0;
-  }
-
-  .app-h-main .slick-prev {
-    left: -5px;
-  }
-
-  .app-h-main .slick-next {
-    right: -5px;
   }
 `
 
@@ -230,7 +234,7 @@ export function ReviewsSection({ images, quote, author, className }: ReviewsSect
     speed: 800,
     responsive: [
       {
-        breakpoint: 768,
+        breakpoint: 991,
         settings: {
           slidesToShow: 3,
           slidesToScroll: 1,
@@ -246,7 +250,7 @@ export function ReviewsSection({ images, quote, author, className }: ReviewsSect
     <SReviewSection className={cn('ReviewsSection', className)}>
       <SContainer>
         <SStars>
-          {[...Array(5)].map((_, i) => (
+          {[...Array(5)].map((_) => (
             <SStar>
               <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -258,7 +262,10 @@ export function ReviewsSection({ images, quote, author, className }: ReviewsSect
           ))}
         </SStars>
         <SReviewAmount>100,600+ 5 STAR REVIEWS</SReviewAmount>
-        <STitle>You didn’t hear it from us...</STitle>
+        <STitle>
+          <span>You didn’t hear it </span>
+          <span>from us...</span>
+        </STitle>
         <SQuote>
           <SBlockQuote>
             <q>{quote}</q>
