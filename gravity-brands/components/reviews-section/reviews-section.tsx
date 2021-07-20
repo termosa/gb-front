@@ -141,7 +141,7 @@ const SliderWrapper = styled.div`
     outline: none;
     display: none;
     float: left;
-    //height: 100%;
+    width: initial;
     min-height: 1px;
   }
 
@@ -150,7 +150,7 @@ const SliderWrapper = styled.div`
   }
 
   .slick-slider .slick-slide img {
-    width: fit-content !important;
+    width: auto !important;
     max-height: 33px;
     margin: 0 auto;
     display: block;
@@ -160,6 +160,14 @@ const SliderWrapper = styled.div`
     border-style: none;
     margin: 0 5px 10px;
     padding: 5px 0;
+  }
+
+  .app-h-main .slick-prev {
+    left: -5px;
+  }
+
+  .app-h-main .slick-next {
+    right: -5px;
   }
 `
 

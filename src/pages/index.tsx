@@ -13,7 +13,7 @@ import homePageProps from './resolvers/homePageProps'
 import signup from '@fragrantjewels/gravity-brands.modules.signup'
 import MainPageLayout from '@fragrantjewels/gravity-brands.components.main-page-layout'
 import FollowUs from '@fragrantjewels/gravity-brands.components.follow-us'
-import { MostFunOverview } from '../../gravity-brands/components/most-fun-overview'
+import MostFunOverview from '@fragrantjewels/gravity-brands.components.most-fun-overview'
 
 type HomePageProps = {
   trendingProducts: Array<TrendingProduct> | null

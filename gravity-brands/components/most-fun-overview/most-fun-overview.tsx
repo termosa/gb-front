@@ -19,7 +19,7 @@ const SMostFunSection = styled.section`
   padding-top: 34px;
   margin-bottom: 33px;
   @media (min-width: 768px) {
-    padding-top: 76px;
+    padding: 76px 0 48px;
     margin-bottom: 100px;
   }
 `
