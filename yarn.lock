@@ -1946,6 +1946,16 @@
     core-js "^3.0.0"
     styled-components "^5.2.3"
 
+"@fragrantjewels/gravity-brands.components.most-fun-overview@^0.0.4":
+  version "0.0.4"
+  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.components.most-fun-overview/-/@fragrantjewels-gravity-brands.components.most-fun-overview-0.0.4.tgz#17240bd5d23622b51a1b150a79396803d78966c8"
+  integrity sha1-FyQL1dI2IrUaGxUKeTloA9eJZsg=
+  dependencies:
+    classnames "^2.3.1"
+    core-js "^3.0.0"
+    react-slick "^0.28.1"
+    styled-components "^5.2.3"
+
 "@fragrantjewels/gravity-brands.components.nav-icons@0.0.10":
   version "0.0.10"
   resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.components.nav-icons/-/@fragrantjewels-gravity-brands.components.nav-icons-0.0.10.tgz#eb263d09cb12ece3d01f40a9d6385ce54e1e399b"
