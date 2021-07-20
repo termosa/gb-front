@@ -4,9 +4,11 @@ import { InnerCircleExclusive } from '@fragrantjewels/gravity-brands.components.
 
 type InnerCircleExclusiveProps = {
   productId: number
+  frontImage: string
+  sideImage: string
 }
 
-const InnerCircleExclusiveContainer: React.FC<InnerCircleExclusiveProps> = ({ productId }) => {
+const InnerCircleExclusiveContainer: React.FC<InnerCircleExclusiveProps> = ({ productId, frontImage, sideImage }) => {
   const [product, setProduct] = useState<Product>()
 
   useEffect(() => {
@@ -18,6 +20,8 @@ const InnerCircleExclusiveContainer: React.FC<InnerCircleExclusiveProps> = ({ pr
   return product ? (
     <InnerCircleExclusive
       product={product}
+      frontImage={frontImage}
+      sideImage={sideImage}
       onReserve={(variant) => {
         console.log(variant)
       }}
