@@ -54,8 +54,15 @@ const HomePage = ({ trendingProducts, innerCircleProduct }: HomePageProps): Reac
           {innerCircleProduct && (
             <InnerCircleExclusive
               product={innerCircleProduct}
-              frontImage={'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/ic-img.jpg'}
-              sideImage={'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/ic-img-jewelry.jpg'}
+              slideImages={[
+                'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/ic-img-jewelry.jpg',
+                'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/ic-img.jpg',
+              ]}
+              title={'Get addicted to me-time'}
+              subTitle={
+                'Join the Inner Circle for exciting new collections every month, available exclusively to members'
+              }
+              topButtonText={'GET STARTED'}
               onReserve={(variant) => alert(`We will ship you the product with size ${variant.title}`)}
             />
           )}

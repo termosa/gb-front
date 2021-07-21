@@ -269,6 +269,21 @@ Builder.registerComponent(InnerCircleExclusiveContainer, {
       type: 'string',
       defaultValue: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/ic-img-jewelry.jpg',
     },
+    {
+      name: 'title',
+      type: 'string',
+      defaultValue: 'Get addicted to me-time',
+    },
+    {
+      name: 'subTitle',
+      type: 'string',
+      defaultValue: 'Join the Inner Circle for exciting new collections every month, available exclusively to members',
+    },
+    {
+      name: 'topButtonText',
+      type: 'string',
+      defaultValue: 'GET STARTED',
+    },
   ],
 })
 

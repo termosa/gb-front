@@ -10,9 +10,11 @@ export type { Product, ProductVariant, ProductImage } from '@fragrantjewels/grav
 
 export type InnerCircleExclusiveProps = {
   className?: ClassName
+  title: string
+  subTitle: string
+  topButtonText: string
   product: Product
-  frontImage: string
-  sideImage: string
+  slideImages: string[]
   onReserve: (variant: ProductVariant) => void
 }
 
@@ -324,30 +326,31 @@ const STaxInfo = styled.div`
 export function InnerCircleExclusive({
   className,
   product,
-  frontImage,
-  sideImage,
+  title,
+  subTitle,
+  topButtonText,
+  slideImages,
   onReserve,
 }: InnerCircleExclusiveProps): React.ReactElement | null {
   const [selectedVariant, setVariant] = useState<ProductVariant | undefined>()
 
   const actualPrice = (selectedVariant || product.variants[0]).actual_price
   const comparePrice = (selectedVariant || product.variants[0]).compare_at_price
+  const splitedTitle = title.split(' ')
 
   return (
     <SWrapper className={cn('InnerCircleExclusive', className)}>
       <STitleWrapper>
         <STitle>
           <span>
-            <STitleUnderline>Get addicted</STitleUnderline>
+            <STitleUnderline>{splitedTitle.slice(0, 2).join(' ')}</STitleUnderline>
           </span>
-          <span> to me-time</span>
+          <span>{` ${splitedTitle.slice(2).join(' ')}`}</span>
         </STitle>
-        <SSubTitle>
-          Join the Inner Circle for exciting new collections every month, available exclusively to members
-        </SSubTitle>
+        <SSubTitle>{subTitle}</SSubTitle>
         <SButtonWrapper>
           <Button style={{ fontStyle: "500 16px/19px 'Montserrat', sans-serif" }} width={'189px'}>
-            GET STARTED
+            {topButtonText}
           </Button>
         </SButtonWrapper>
       </STitleWrapper>
@@ -358,35 +361,39 @@ export function InnerCircleExclusive({
               <SImagesContainer>
                 <SLeftSliderPart>
                   <SLeftImageContainer>
-                    <img src={sideImage} alt={product.title} />
+                    <img src={slideImages[0]} alt={product.title} />
                   </SLeftImageContainer>
-                  <SSliderButton transform={'rotate(180deg)'}>
-                    <svg viewBox="0 0 15 27" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M1.1499 0.799805L13.8501 13.5L1.1499 26.2002"
-                        stroke="#9059C8"
-                        strokeWidth="0.577281"
-                        strokeMiterlimit="10"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </SSliderButton>
-                  <SSliderButton>
-                    <svg viewBox="0 0 15 27" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M1.1499 0.799805L13.8501 13.5L1.1499 26.2002"
-                        stroke="#9059C8"
-                        strokeWidth="0.577281"
-                        strokeMiterlimit="10"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </SSliderButton>
+                  {slideImages.length > 2 && (
+                    <>
+                      <SSliderButton transform={'rotate(180deg)'}>
+                        <svg viewBox="0 0 15 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path
+                            d="M1.1499 0.799805L13.8501 13.5L1.1499 26.2002"
+                            stroke="#9059C8"
+                            strokeWidth="0.577281"
+                            strokeMiterlimit="10"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      </SSliderButton>
+                      <SSliderButton>
+                        <svg viewBox="0 0 15 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path
+                            d="M1.1499 0.799805L13.8501 13.5L1.1499 26.2002"
+                            stroke="#9059C8"
+                            strokeWidth="0.577281"
+                            strokeMiterlimit="10"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      </SSliderButton>
+                    </>
+                  )}
                 </SLeftSliderPart>
                 <SRightSliderPart>
-                  <img src={frontImage} alt={product.title} />
+                  <img src={slideImages[1]} alt={product.title} />
                 </SRightSliderPart>
               </SImagesContainer>
             </SImagesWrapper>
