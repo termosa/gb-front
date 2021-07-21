@@ -1,19 +1,20 @@
-import { builder, Builder } from '@builder.io/react'
+import { builder, Builder, withChildren } from '@builder.io/react'
 import { GetStaticPaths, GetStaticProps } from 'next'
-import { Header } from '@fragrantjewels/gravity-brands.components.header'
 import builderIoProps from './resolvers/builderIoProps'
 import builderIoPaths from './resolvers/builderIoPaths'
 import BuilderIoPage from './BuilderIoPage'
 import config from 'config/builder'
-import { HeroGallery } from '@fragrantjewels/gravity-brands.components.hero-gallery'
-import { InformationOverview } from '@fragrantjewels/gravity-brands.components.information-overview'
-import { CategoryShopCard } from '@fragrantjewels/gravity-brands.components.category-shop-card'
-import { ReviewsSection } from '@fragrantjewels/gravity-brands.components.reviews-section'
-import { ShopByProductsOverview } from '@fragrantjewels/gravity-brands.components.shop-by-products-overview'
-import { PromiseBar } from '@fragrantjewels/gravity-brands.components.promise-bar'
-import { InlineSignupForm } from '@fragrantjewels/gravity-brands.components.inline-signup-form'
-import { FollowUs } from '@fragrantjewels/gravity-brands.components.follow-us'
-import { Footer } from '@fragrantjewels/gravity-brands.components.footer'
+import Header from '@fragrantjewels/gravity-brands.components.header'
+import HeroGallery from '@fragrantjewels/gravity-brands.components.hero-gallery'
+import InformationOverview from '@fragrantjewels/gravity-brands.components.information-overview'
+import CategoryShopCard from '@fragrantjewels/gravity-brands.components.category-shop-card'
+import ReviewsSection from '@fragrantjewels/gravity-brands.components.reviews-section'
+import ShopByProductsOverview from '@fragrantjewels/gravity-brands.components.shop-by-products-overview'
+import PromiseBar from '@fragrantjewels/gravity-brands.components.promise-bar'
+import InlineSignupForm from '@fragrantjewels/gravity-brands.components.inline-signup-form'
+import FollowUs from '@fragrantjewels/gravity-brands.components.follow-us'
+import Footer from '@fragrantjewels/gravity-brands.components.footer'
+import SiteSection from '@fragrantjewels/gravity-brands.components.site-section'
 import InnerCircleExclusiveContainer from '@containers/InnerCircleExclusive'
 import ProductCarouselContainer from '@containers/ProductCarousel'
 
@@ -268,6 +269,21 @@ Builder.registerComponent(InnerCircleExclusiveContainer, {
       type: 'string',
       defaultValue: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/ic-img-jewelry.jpg',
     },
+    {
+      name: 'title',
+      type: 'string',
+      defaultValue: 'Get addicted to me-time',
+    },
+    {
+      name: 'subTitle',
+      type: 'string',
+      defaultValue: 'Join the Inner Circle for exciting new collections every month, available exclusively to members',
+    },
+    {
+      name: 'topButtonText',
+      type: 'string',
+      defaultValue: 'GET STARTED',
+    },
   ],
 })
 
@@ -290,6 +306,19 @@ Builder.registerComponent(ProductCarouselContainer, {
       name: 'subTitle',
       type: 'string',
       required: false,
+    },
+  ],
+})
+
+Builder.registerComponent(withChildren(SiteSection), {
+  name: 'SiteSection',
+  defaultChildren: [
+    {
+      '@type': '@builder.io/sdk:Element',
+      component: {
+        name: 'Text',
+        options: { text: 'I am child text block!' },
+      },
     },
   ],
 })

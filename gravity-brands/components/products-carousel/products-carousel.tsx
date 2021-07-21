@@ -9,7 +9,7 @@ export type { Product } from '@fragrantjewels/gravity-brands.components.product-
 export type ProductsCarouselProps = {
   products: Array<Product>
   className?: ClassName
-  title: string
+  title?: string
   subTitle?: string
   onSelectProduct: (productId: number) => void
 }
@@ -322,7 +322,7 @@ export const ProductsCarousel = ({
         <ProductCards>
           <StyledSlider {...settings}>
             {products
-              .filter((product) => product.front_image)
+              .filter((product) => product.image)
               .map((product) => (
                 <ProductCard
                   key={product.product_id}

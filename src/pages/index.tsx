@@ -5,7 +5,7 @@ import PromiseBar from '@fragrantjewels/gravity-brands.components.promise-bar'
 import InlineSignupForm from '@fragrantjewels/gravity-brands.components.inline-signup-form'
 import ReviewsSection from '@fragrantjewels/gravity-brands.components.reviews-section'
 import ShopByProductsOverview from '@fragrantjewels/gravity-brands.components.shop-by-products-overview'
-import InnerCircleExclusive, { Product } from '../../gravity-brands/components/inner-circle-exclusive'
+import InnerCircleExclusive, { Product } from '@fragrantjewels/gravity-brands.components.inner-circle-exclusive'
 import ProductsCarousel, {
   Product as TrendingProduct,
 } from '@fragrantjewels/gravity-brands.components.products-carousel'
@@ -54,8 +54,15 @@ const HomePage = ({ trendingProducts, innerCircleProduct }: HomePageProps): Reac
           {innerCircleProduct && (
             <InnerCircleExclusive
               product={innerCircleProduct}
-              frontImage={'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/ic-img.jpg'}
-              sideImage={'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/ic-img-jewelry.jpg'}
+              slideImages={[
+                'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/ic-img-jewelry.jpg',
+                'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/ic-img.jpg',
+              ]}
+              title={'Get addicted to me-time'}
+              subTitle={
+                'Join the Inner Circle for exciting new collections every month, available exclusively to members'
+              }
+              topButtonText={'GET STARTED'}
               onReserve={(variant) => alert(`We will ship you the product with size ${variant.title}`)}
             />
           )}

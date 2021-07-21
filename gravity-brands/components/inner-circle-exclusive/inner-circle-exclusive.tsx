@@ -4,36 +4,18 @@ import styled from 'styled-components'
 import Button from '@fragrantjewels/gravity-brands.components.button'
 import RingSize from '@fragrantjewels/gravity-brands.components.ring-size'
 import formatPrice from '@fragrantjewels/gravity-brands.modules.format-price'
+import { Product, ProductVariant } from '@fragrantjewels/gravity-brands.modules.normalize-product'
 
-export type Variant = {
-  title: string
-  variant_id: number
-  position: number
-  actual_price: number
-  compare_at_price: number
-  inventory_quantity: number
-}
-
-export type Product = {
-  title: string
-  front_image: {
-    src: string
-  }
-  side_images: [
-    {
-      id: number
-      src: string
-    }
-  ]
-  variants: Array<Variant>
-}
+export type { Product, ProductVariant, ProductImage } from '@fragrantjewels/gravity-brands.modules.normalize-product'
 
 export type InnerCircleExclusiveProps = {
   className?: ClassName
+  title: string
+  subTitle: string
+  topButtonText: string
   product: Product
-  frontImage: string
-  sideImage: string
-  onReserve: (variant: Variant) => void
+  slideImages: string[]
+  onReserve: (variant: ProductVariant) => void
 }
 
 const SWrapper = styled.div``
@@ -162,13 +144,9 @@ const SImagesWrapper = styled.div`
 const SImagesContainer = styled.div`
   position: relative;
   max-width: 295px;
-  margin: 0 auto 25px;
   width: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
+  margin: 0 auto 25px;
   display: flex;
-  -webkit-box-pack: end;
-  -ms-flex-pack: end;
   justify-content: flex-end;
 
   @media (min-width: 420px) {
@@ -348,30 +326,31 @@ const STaxInfo = styled.div`
 export function InnerCircleExclusive({
   className,
   product,
-  frontImage,
-  sideImage,
+  title,
+  subTitle,
+  topButtonText,
+  slideImages,
   onReserve,
 }: InnerCircleExclusiveProps): React.ReactElement | null {
-  const [selectedVariant, setVariant] = useState<Variant | undefined>()
+  const [selectedVariant, setVariant] = useState<ProductVariant | undefined>()
 
   const actualPrice = (selectedVariant || product.variants[0]).actual_price
   const comparePrice = (selectedVariant || product.variants[0]).compare_at_price
+  const splitedTitle = title.split(' ')
 
   return (
     <SWrapper className={cn('InnerCircleExclusive', className)}>
       <STitleWrapper>
         <STitle>
           <span>
-            <STitleUnderline>Get addicted</STitleUnderline>
+            <STitleUnderline>{splitedTitle.slice(0, 2).join(' ')}</STitleUnderline>
           </span>
-          <span> to me-time</span>
+          <span>{` ${splitedTitle.slice(2).join(' ')}`}</span>
         </STitle>
-        <SSubTitle>
-          Join the Inner Circle for exciting new collections every month, available exclusively to members
-        </SSubTitle>
+        <SSubTitle>{subTitle}</SSubTitle>
         <SButtonWrapper>
           <Button style={{ fontStyle: "500 16px/19px 'Montserrat', sans-serif" }} width={'189px'}>
-            GET STARTED
+            {topButtonText}
           </Button>
         </SButtonWrapper>
       </STitleWrapper>
@@ -382,35 +361,39 @@ export function InnerCircleExclusive({
               <SImagesContainer>
                 <SLeftSliderPart>
                   <SLeftImageContainer>
-                    <img src={sideImage} alt={product.title} />
+                    <img src={slideImages[0]} alt={product.title} />
                   </SLeftImageContainer>
-                  <SSliderButton transform={'rotate(180deg)'}>
-                    <svg viewBox="0 0 15 27" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M1.1499 0.799805L13.8501 13.5L1.1499 26.2002"
-                        stroke="#9059C8"
-                        strokeWidth="0.577281"
-                        strokeMiterlimit="10"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </SSliderButton>
-                  <SSliderButton>
-                    <svg viewBox="0 0 15 27" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M1.1499 0.799805L13.8501 13.5L1.1499 26.2002"
-                        stroke="#9059C8"
-                        strokeWidth="0.577281"
-                        strokeMiterlimit="10"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </SSliderButton>
+                  {slideImages.length > 2 && (
+                    <>
+                      <SSliderButton transform={'rotate(180deg)'}>
+                        <svg viewBox="0 0 15 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path
+                            d="M1.1499 0.799805L13.8501 13.5L1.1499 26.2002"
+                            stroke="#9059C8"
+                            strokeWidth="0.577281"
+                            strokeMiterlimit="10"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      </SSliderButton>
+                      <SSliderButton>
+                        <svg viewBox="0 0 15 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path
+                            d="M1.1499 0.799805L13.8501 13.5L1.1499 26.2002"
+                            stroke="#9059C8"
+                            strokeWidth="0.577281"
+                            strokeMiterlimit="10"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      </SSliderButton>
+                    </>
+                  )}
                 </SLeftSliderPart>
                 <SRightSliderPart>
-                  <img src={frontImage} alt={product.title} />
+                  <img src={slideImages[1]} alt={product.title} />
                 </SRightSliderPart>
               </SImagesContainer>
             </SImagesWrapper>

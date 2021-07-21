@@ -4,60 +4,80 @@ import { InnerCircleExclusive } from './inner-circle-exclusive'
 export const BasicInnerCircleExclusive = (): React.ReactElement => (
   <InnerCircleExclusive
     onReserve={(variant) => alert(`We will ship you the product with size ${variant.title}`)}
-    frontImage={'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/ic-img.jpg'}
-    sideImage={'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/ic-img-jewelry.jpg'}
+    slideImages={[
+      'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/ic-img-jewelry.jpg',
+      'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/ic-img.jpg',
+    ]}
+    title={'Get addicted to me-time'}
+    subTitle={'Join the Inner Circle for exciting new collections every month, available exclusively to members'}
+    topButtonText={'GET STARTED'}
     product={{
+      product_id: 1,
       title: 'Winter - Wax Tarts',
-      front_image: { src: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/ic-img.jpg' },
-      side_images: [{ id: 1, src: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/ic-img-jewelry.jpg' }],
+      product_type: 'Jewel Candle',
+      published_at_shop: '',
+      image: {
+        id: 1,
+        src: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/ic-img.jpg',
+        width: 400,
+        height: 400,
+      },
+      images: [
+        {
+          id: 2,
+          src: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/ic-img-jewelry.jpg',
+          width: 400,
+          height: 400,
+        },
+      ],
       variants: [
         {
-          title: '6',
+          title: '5',
           variant_id: 1,
-          position: 2,
           actual_price: 12.5,
           compare_at_price: 10.5,
-          inventory_quantity: 67,
+          available: false,
+          product_id: 1,
         },
         {
-          title: '5',
+          title: '6',
           variant_id: 2,
-          position: 1,
           actual_price: 12.5,
           compare_at_price: 10.5,
-          inventory_quantity: 0,
+          available: true,
+          product_id: 1,
         },
         {
           title: '7',
           variant_id: 3,
-          position: 3,
           actual_price: 12.5,
           compare_at_price: 10.5,
-          inventory_quantity: 99,
+          available: true,
+          product_id: 1,
         },
         {
           title: '8',
           variant_id: 4,
-          position: 4,
           actual_price: 12.5,
           compare_at_price: 10.5,
-          inventory_quantity: 3,
+          available: true,
+          product_id: 1,
         },
         {
           title: '9',
           variant_id: 5,
-          position: 5,
           actual_price: 12.5,
           compare_at_price: 10.5,
-          inventory_quantity: 36,
+          available: true,
+          product_id: 1,
         },
         {
           title: '10',
           variant_id: 6,
-          position: 6,
           actual_price: 12.5,
           compare_at_price: 10.5,
-          inventory_quantity: 0,
+          available: false,
+          product_id: 1,
         },
       ],
     }}

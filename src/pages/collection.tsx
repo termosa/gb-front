@@ -3,13 +3,15 @@ import collectionPageProps from './resolvers/collectionPageProps'
 import MainPageLayout from '@fragrantjewels/gravity-brands.components.main-page-layout'
 import FullWidthBanner from '@fragrantjewels/gravity-brands.components.full-width-banner'
 import CollectionFilters, {
-  SelectedFilters,
+  CollectionProductsFilter,
   SelectedSorting,
 } from '@fragrantjewels/gravity-brands.components.collection-filters'
-import ProductsList, { Product } from '@fragrantjewels/gravity-brands.components.products-list'
+import ProductsList from '@fragrantjewels/gravity-brands.components.products-list'
 import SiteSection from '@fragrantjewels/gravity-brands.components.site-section'
 import styled from 'styled-components'
 import parseFiltersFromProducts from '@fragrantjewels/gravity-brands.modules.parse-filters-from-products'
+import { Product } from '@fragrantjewels/gravity-brands.modules.load-collection'
+import filterCollectionProducts from '@fragrantjewels/gravity-brands.modules.filter-collection-products'
 
 type ProductPageProps = {
   collectionProducts: Array<Product> | null
@@ -20,8 +22,10 @@ const SFiltersSection = styled(SiteSection)`
 `
 
 export default function Collection({ collectionProducts }: ProductPageProps): React.ReactElement {
-  const [filter, setFilter] = useState<SelectedFilters | null>(null)
+  const [filter, setFilter] = useState<CollectionProductsFilter | null>(null)
   const [sorting, setSorting] = useState<SelectedSorting | null>(null)
+
+  const availableFilters = useMemo(() => parseFiltersFromProducts(collectionProducts), [collectionProducts])
 
   const filteredProducts = useMemo(() => {
     if (!collectionProducts) return []
@@ -29,19 +33,13 @@ export default function Collection({ collectionProducts }: ProductPageProps): Re
     const sortedProducts = collectionProducts.sort((a, b) => {
       if (sorting === SelectedSorting.LOW_TO_HIGH) return a.variants[0].actual_price - b.variants[0].actual_price
       if (sorting === SelectedSorting.HIGH_TO_LOW) return b.variants[0].actual_price - a.variants[0].actual_price
-      if (sorting === SelectedSorting.NEW)
-        return (
-          Date.parse(b.published_at_shop || b.created_at_shop) - Date.parse(a.published_at_shop || a.created_at_shop)
-        )
-
+      if (sorting === SelectedSorting.NEW) return Date.parse(b.published_at_shop) - Date.parse(a.published_at_shop)
       return 0
     })
 
-    if (!filter || !filter.sizes.length) return sortedProducts
+    if (!filter) return sortedProducts
 
-    return sortedProducts.filter((product) =>
-      product.variants.some((variant) => variant.available && filter.sizes.includes(variant.title))
-    )
+    return filterCollectionProducts(sortedProducts, filter)
   }, [collectionProducts, filter, sorting])
 
   return (
@@ -58,11 +56,7 @@ export default function Collection({ collectionProducts }: ProductPageProps): Re
             />
             <div style={{ margin: '5em 0' }}>
               <SFiltersSection>
-                <CollectionFilters
-                  onChangeFilter={setFilter}
-                  onChangeSorting={setSorting}
-                  filters={parseFiltersFromProducts(collectionProducts)}
-                />
+                <CollectionFilters onChangeFilter={setFilter} onChangeSorting={setSorting} filters={availableFilters} />
               </SFiltersSection>
               <ProductsList products={filteredProducts} />
             </div>

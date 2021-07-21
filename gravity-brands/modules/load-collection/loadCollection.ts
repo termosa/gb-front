@@ -1,43 +1,10 @@
 import api from '@fragrantjewels/gravity-brands.modules.api'
+import normalizeCollection, {
+  ServerCollection,
+  Collection,
+} from '@fragrantjewels/gravity-brands.modules.normalize-collection'
 
-export type Variant = {
-  variant_id: number
-  title: string
-  actual_price: number
-  compare_at_price: number
-  available: boolean
-  sku?: string
-  product: number
-}
-
-export type Product = {
-  product_id: number
-  product_type: string
-  front_image?: {
-    src: string
-    alt?: string
-  }
-  side_images?: Array<{
-    src: string
-    alt: string
-  }>
-  title: string
-  variants: Array<{
-    actual_price: number
-    variant_id: number
-    title: string
-    available: boolean
-  }>
-  created_at_shop: string
-  published_at_shop: string | null
-  tags: string
-}
-
-export type Collection = {
-  collection_id: number
-  title: string
-  products: Array<Product>
-}
+export type { Collection, Product } from '@fragrantjewels/gravity-brands.modules.normalize-collection'
 
 export const loadCollection = (collectionId: number): Promise<Collection> =>
-  api<Collection>({ path: `/inventory/collections/${collectionId}` })
+  api<ServerCollection>({ path: `/inventory/collections/${collectionId}` }).then(normalizeCollection)

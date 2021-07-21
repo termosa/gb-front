@@ -2,23 +2,14 @@ import React, { useState } from 'react'
 import Slider, { Settings } from 'react-slick'
 import styled, { css } from 'styled-components'
 import cn, { Argument as ClassName } from 'classnames'
+import { Product } from '@fragrantjewels/gravity-brands.modules.normalize-product'
+
+export type { Product } from '@fragrantjewels/gravity-brands.modules.normalize-product'
 
 export type TrendingSectionProps = {
   products: Array<Product>
   className?: ClassName
   onSelectProduct: (productId: number) => void
-}
-
-export type Product = {
-  product_id: number
-  front_image?: {
-    src: string
-    alt?: string
-  }
-  title: string
-  variants: Array<{
-    actual_price: number
-  }>
 }
 
 const Section = styled.section`
@@ -425,13 +416,13 @@ const ProductCardWrapper = styled.div`
 `
 
 const ProductCard = ({ product, onClick }: { product: Product; onClick: () => void }) =>
-  product.front_image ? (
+  product.image ? (
     <ProductCardWrapper onClick={onClick}>
       <SProductCard>
         <div>
           <ProductCardImgWrapper>
             <ProductCardImgWrapperInner>
-              <img src={product.front_image.src} alt={`Product image: ${product.front_image.alt}`} />
+              <img src={product.image.src} alt={product.image?.alt} />
             </ProductCardImgWrapperInner>
           </ProductCardImgWrapper>
           <ProductCardTag>925 Sterling Silver</ProductCardTag>
@@ -504,7 +495,7 @@ const ProductCard = ({ product, onClick }: { product: Product; onClick: () => vo
     </ProductCardWrapper>
   ) : null
 
-export const TrendingSection: React.FC<TrendingSectionProps> = ({ products, className, onSelectProduct }) => {
+export const TrendingSection = ({ products, className, onSelectProduct }: TrendingSectionProps): React.ReactElement => {
   const [progress, setProgress] = useState(0)
   const settings: Settings = {
     slidesToShow: 3,

@@ -1,10 +1,4 @@
-export type Product = {
-  tags: string
-  variants: Array<{
-    available: boolean
-    title: string
-  }>
-}
+import { Product } from '@fragrantjewels/gravity-brands.modules.normalize-product'
 
 export type Filter = {
   name: string
@@ -16,12 +10,6 @@ export type CollectedFilters = {
   colors: Array<Filter>
   materials: Array<Filter>
   sizes: Array<Filter>
-}
-
-export enum FilterPrefix {
-  FRAGRANCE = 'Fragrance',
-  MATERIAL = 'Material',
-  COLOR = 'Metal Color',
 }
 
 const collectSizes = (products: Array<Product>) => {
@@ -52,32 +40,32 @@ export const parseFiltersFromProducts = (products: Array<Product> | null): Colle
   }
 
   products?.forEach((product) => {
-    product.tags.split(',').forEach((tag) => {
-      const [prefix, value] = tag.split(':').map((value) => value.trim())
-
-      if (prefix === FilterPrefix.FRAGRANCE) {
-        const index = filters.fragrances.findIndex((fragrance) => fragrance.name === value)
-        if (index === -1) {
-          filters.fragrances.push({ name: value, amount: 1 })
-        } else {
-          filters.fragrances[index].amount += 1
-        }
-      } else if (prefix === FilterPrefix.MATERIAL) {
-        const index = filters.materials.findIndex((material) => material.name === value)
-        if (index === -1) {
-          filters.materials.push({ name: value, amount: 1 })
-        } else {
-          filters.materials[index].amount += 1
-        }
-      } else if (prefix === FilterPrefix.COLOR) {
-        const index = filters.colors.findIndex((color) => color.name === value)
-        if (index === -1) {
-          filters.colors.push({ name: value, amount: 1 })
-        } else {
-          filters.colors[index].amount += 1
-        }
+    if (product.fragrance) {
+      const index = filters.fragrances.findIndex((fragranceFilter) => fragranceFilter.name === product.fragrance)
+      if (index === -1) {
+        filters.fragrances.push({ name: product.fragrance, amount: 1 })
+      } else {
+        filters.fragrances[index].amount += 1
       }
-    })
+    }
+
+    if (product.material) {
+      const index = filters.materials.findIndex((materialFilter) => materialFilter.name === product.material)
+      if (index === -1) {
+        filters.materials.push({ name: product.material, amount: 1 })
+      } else {
+        filters.materials[index].amount += 1
+      }
+    }
+
+    if (product.color) {
+      const index = filters.colors.findIndex((colorFilter) => colorFilter.name === product.color)
+      if (index === -1) {
+        filters.colors.push({ name: product.color, amount: 1 })
+      } else {
+        filters.colors[index].amount += 1
+      }
+    }
   })
 
   return filters

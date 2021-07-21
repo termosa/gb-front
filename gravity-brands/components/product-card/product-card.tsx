@@ -2,6 +2,7 @@ import React from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
 import { Product } from '@fragrantjewels/gravity-brands.modules.normalize-product'
+import formatPrice from '@fragrantjewels/gravity-brands.modules.format-price'
 
 export type { Product } from '@fragrantjewels/gravity-brands.modules.normalize-product'
 
@@ -178,6 +179,15 @@ const ProductCardStar = styled.div`
   }
 `
 
+const SPriceLabel = styled.span`
+  text-transform: uppercase;
+  margin: 0 0 18px;
+`
+
+const SDiscountPriceLabel = styled(SPriceLabel)`
+  text-decoration: line-through;
+`
+
 const ProductCardRatingLink = styled.div`
   font: 500 11px/13px 'Montserrat', sans-serif;
   margin: 0 0 1px 4px;
@@ -205,6 +215,14 @@ export function ProductCard({ className, style, product, onClick }: ProductCardP
   const productTitle = product.title.split('-')[0].split(':')[0]
   const productType = product.product_type.split('(')[0]
 
+  const label = {
+    members: product.tags && product.tags.includes('Member Only'),
+    silver: product.tags && product.tags.includes('925 Silver Sterling'),
+  }
+
+  const actualPrice = product.variants[0].actual_price
+  const comparePrice = product.variants[0].compare_at_price
+
   return (
     <ProductCardWrapper className={cn('ProductCard', className)} style={style} onClick={onClick}>
       <SProductCard>
@@ -216,10 +234,10 @@ export function ProductCard({ className, style, product, onClick }: ProductCardP
             <img src={product.image?.src} alt={product.image?.alt} />
           </ProductCardImgWrapperInner>
         </ProductCardImgWrapper>
-        {product.product_id === 4708473077850 ? (
-          <ProductCardMembers>Members Only</ProductCardMembers>
-        ) : (
+        {label.silver ? (
           <ProductCardTag>925 Sterling Silver</ProductCardTag>
+        ) : (
+          label.members && <ProductCardMembers>Members Only</ProductCardMembers>
         )}
         <ProductCardStars>
           <ProductCardStar>
@@ -282,7 +300,16 @@ export function ProductCard({ className, style, product, onClick }: ProductCardP
         <ProductCardTitle title={productTitle}>{productTitle}</ProductCardTitle>
         <ProductCardType>{productType}</ProductCardType>
         <ProductCardPrices>
-          <ProductCardPrice>${product.variants[0].actual_price}</ProductCardPrice>
+          <ProductCardPrice>
+            {comparePrice ? (
+              <>
+                <SDiscountPriceLabel>{formatPrice(actualPrice)}</SDiscountPriceLabel>{' '}
+                <SPriceLabel>{formatPrice(comparePrice)}</SPriceLabel>
+              </>
+            ) : (
+              <SPriceLabel>{formatPrice(actualPrice)}</SPriceLabel>
+            )}
+          </ProductCardPrice>
         </ProductCardPrices>
       </SProductCard>
     </ProductCardWrapper>
