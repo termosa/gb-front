@@ -205,6 +205,11 @@ export function ProductCard({ className, style, product, onClick }: ProductCardP
   const productTitle = product.title.split('-')[0].split(':')[0]
   const productType = product.product_type.split('(')[0]
 
+  const label = {
+    members: product.tags && product.tags.includes('Member Only'),
+    silver: product.tags && product.tags.includes('925 Silver Sterling'),
+  }
+
   return (
     <ProductCardWrapper className={cn('ProductCard', className)} style={style} onClick={onClick}>
       <SProductCard>
@@ -216,10 +221,10 @@ export function ProductCard({ className, style, product, onClick }: ProductCardP
             <img src={product.image?.src} alt={product.image?.alt} />
           </ProductCardImgWrapperInner>
         </ProductCardImgWrapper>
-        {product.product_id === 4708473077850 ? (
-          <ProductCardMembers>Members Only</ProductCardMembers>
-        ) : (
+        {label.silver ? (
           <ProductCardTag>925 Sterling Silver</ProductCardTag>
+        ) : (
+          label.members && <ProductCardMembers>Members Only</ProductCardMembers>
         )}
         <ProductCardStars>
           <ProductCardStar>
@@ -282,7 +287,9 @@ export function ProductCard({ className, style, product, onClick }: ProductCardP
         <ProductCardTitle title={productTitle}>{productTitle}</ProductCardTitle>
         <ProductCardType>{productType}</ProductCardType>
         <ProductCardPrices>
-          <ProductCardPrice>${product.variants[0].actual_price}</ProductCardPrice>
+          <ProductCardPrice>
+            ${product.variants[0].compare_at_price || product.variants[0].actual_price}
+          </ProductCardPrice>
         </ProductCardPrices>
       </SProductCard>
     </ProductCardWrapper>
