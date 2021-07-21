@@ -213,7 +213,7 @@ export function ProductCard({ className, style, product, onClick }: ProductCardP
         </SCircle>
         <ProductCardImgWrapper>
           <ProductCardImgWrapperInner>
-            <img src={product.image?.src} alt={product.image?.alt || undefined} />
+            <img src={product.image?.src} alt={product.image?.alt} />
           </ProductCardImgWrapperInner>
         </ProductCardImgWrapper>
         {product.product_id === 4708473077850 ? (

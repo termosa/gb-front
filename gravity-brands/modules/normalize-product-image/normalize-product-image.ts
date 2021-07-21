@@ -22,7 +22,7 @@ export type ProductImage = {
 export const normalizeProductImage = (image: ServerProductImage): ProductImage => ({
   id: image.id,
   src: image.src,
-  alt: image.alt || undefined,
   width: image.width,
   height: image.height,
+  ...(image.alt && { alt: image.alt }),
 })

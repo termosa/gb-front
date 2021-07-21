@@ -36,6 +36,6 @@ export const normalizeProductVariant = (variant: ServerProductVariant): ProductV
   product_id: variant.product,
   title: variant.title,
   actual_price: variant.actual_price,
-  compare_at_price: variant.compare_at_price !== null ? variant.compare_at_price : undefined,
+  ...(variant.compare_at_price !== null && { compare_at_price: variant.compare_at_price }),
   available: variant.available,
 })

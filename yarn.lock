@@ -1813,14 +1813,14 @@
     core-js "^3.0.0"
     styled-components "^5.2.3"
 
-"@fragrantjewels/gravity-brands.components.collection-filters@^0.0.4":
-  version "0.0.4"
-  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.components.collection-filters/-/@fragrantjewels-gravity-brands.components.collection-filters-0.0.4.tgz#4523ffd575c0b701e7d832e2d761e5f8114fea9a"
-  integrity sha1-RSP/1XXAtwHn2DLi12Hl+BFP6po=
+"@fragrantjewels/gravity-brands.components.collection-filters@^0.0.7":
+  version "0.0.7"
+  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.components.collection-filters/-/@fragrantjewels-gravity-brands.components.collection-filters-0.0.7.tgz#c7f2705619b0452806d478399a4b2888c9a5d3fe"
+  integrity sha1-x/JwVhmwRSgG1Hg5mksoiMml0/4=
   dependencies:
     "@fragrantjewels/gravity-brands.hooks.use-on-click-outside" "0.0.1"
     "@fragrantjewels/gravity-brands.hooks.use-popper" "0.0.1"
-    "@fragrantjewels/gravity-brands.modules.filter-collection-products" "0.0.1"
+    "@fragrantjewels/gravity-brands.modules.filter-collection-products" "0.0.4"
     classnames "^2.3.1"
     core-js "^3.0.0"
     styled-components "^5.2.3"
@@ -1857,16 +1857,16 @@
     react-media-hook "^0.4.9"
     styled-components "^5.2.3"
 
-"@fragrantjewels/gravity-brands.components.header@0.0.24":
-  version "0.0.24"
-  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.components.header/-/@fragrantjewels-gravity-brands.components.header-0.0.24.tgz#974fd6749d60155f3388466e96a01312543b5082"
-  integrity sha1-l0/WdJ1gFV8ziEZulqATElQ7UII=
+"@fragrantjewels/gravity-brands.components.header@0.0.25":
+  version "0.0.25"
+  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.components.header/-/@fragrantjewels-gravity-brands.components.header-0.0.25.tgz#be24e304d62ef4ce6a2fde7da440c968acf810db"
+  integrity sha1-viTjBNYu9M5qL959pEDJaKz4ENs=
   dependencies:
     "@fragrantjewels/gravity-brands.components.nav-icons" "0.0.10"
     "@fragrantjewels/gravity-brands.components.nav-mobile" "0.0.1"
-    "@fragrantjewels/gravity-brands.components.nav-tabs" "0.0.18"
+    "@fragrantjewels/gravity-brands.components.nav-tabs" "0.0.19"
     "@fragrantjewels/gravity-brands.components.points-widget" "0.0.6"
-    "@fragrantjewels/gravity-brands.components.rolling-banner" "0.0.9"
+    "@fragrantjewels/gravity-brands.components.rolling-banner" "0.0.10"
     "@fragrantjewels/gravity-brands.components.search-field" "0.0.6"
     "@fragrantjewels/gravity-brands.components.signin-signup" "0.0.7"
     classnames "^2.3.1"
@@ -1914,15 +1914,15 @@
     styled-components "^5.2.3"
     use-defer "^2.1.0"
 
-"@fragrantjewels/gravity-brands.components.inner-circle-exclusive@^0.0.22":
-  version "0.0.22"
-  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.components.inner-circle-exclusive/-/@fragrantjewels-gravity-brands.components.inner-circle-exclusive-0.0.22.tgz#d07ccef1272fdaa5bbcd464cfee92013c9f04e9b"
-  integrity sha1-0HzO8Scv2qW7zUZM/ukgE8nwTps=
+"@fragrantjewels/gravity-brands.components.inner-circle-exclusive@^0.0.25":
+  version "0.0.25"
+  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.components.inner-circle-exclusive/-/@fragrantjewels-gravity-brands.components.inner-circle-exclusive-0.0.25.tgz#84be70f6522ade1e4a661e755872c861e9724a94"
+  integrity sha1-hL5w9lIq3h5KZh51WHLIYelySpQ=
   dependencies:
     "@fragrantjewels/gravity-brands.components.button" "0.0.15"
-    "@fragrantjewels/gravity-brands.components.ring-size" "0.0.12"
+    "@fragrantjewels/gravity-brands.components.ring-size" "0.0.15"
     "@fragrantjewels/gravity-brands.modules.format-price" "0.0.2"
-    "@fragrantjewels/gravity-brands.modules.normalize-product" "0.0.1"
+    "@fragrantjewels/gravity-brands.modules.normalize-product" "0.0.4"
     classnames "^2.3.1"
     core-js "^3.0.0"
     styled-components "^5.2.3"
@@ -1936,13 +1936,13 @@
     core-js "^3.0.0"
     styled-components "^5.2.3"
 
-"@fragrantjewels/gravity-brands.components.main-page-layout@^0.0.13":
-  version "0.0.13"
-  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.components.main-page-layout/-/@fragrantjewels-gravity-brands.components.main-page-layout-0.0.13.tgz#33bafaca53c3b6f708cd81e9a6324725f3aa6f3c"
-  integrity sha1-M7r6ylPDtvcIzYHppjJHJfOqbzw=
+"@fragrantjewels/gravity-brands.components.main-page-layout@^0.0.14":
+  version "0.0.14"
+  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.components.main-page-layout/-/@fragrantjewels-gravity-brands.components.main-page-layout-0.0.14.tgz#0f785391f66c8b2038c9ea7209d803b0c1d3b83a"
+  integrity sha1-D3hTkfZsiyA4yepyCdgDsMHTuDo=
   dependencies:
     "@fragrantjewels/gravity-brands.components.footer" "0.0.10"
-    "@fragrantjewels/gravity-brands.components.header" "0.0.24"
+    "@fragrantjewels/gravity-brands.components.header" "0.0.25"
     core-js "^3.0.0"
     styled-components "^5.2.3"
 
@@ -1976,12 +1976,12 @@
     core-js "^3.0.0"
     styled-components "^5.2.3"
 
-"@fragrantjewels/gravity-brands.components.nav-tabs@0.0.18":
-  version "0.0.18"
-  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.components.nav-tabs/-/@fragrantjewels-gravity-brands.components.nav-tabs-0.0.18.tgz#5601a09e65692f28b5d4ff8fd95878c560960dbe"
-  integrity sha1-VgGgnmVpLyi11P+P2Vh4xWCWDb4=
+"@fragrantjewels/gravity-brands.components.nav-tabs@0.0.19":
+  version "0.0.19"
+  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.components.nav-tabs/-/@fragrantjewels-gravity-brands.components.nav-tabs-0.0.19.tgz#181bffec4ece9bf0544a52bc89ec972c8167d776"
+  integrity sha1-GBv/7E7Om/BUSlK8ieyXLIFn13Y=
   dependencies:
-    "@fragrantjewels/gravity-brands.components.header" "0.0.24"
+    "@fragrantjewels/gravity-brands.components.header" "0.0.25"
     classnames "^2.3.1"
     core-js "^3.0.0"
     styled-components "^5.2.3"
@@ -1994,33 +1994,33 @@
     core-js "^3.0.0"
     styled-components "^5.2.3"
 
-"@fragrantjewels/gravity-brands.components.product-card@0.0.14":
-  version "0.0.14"
-  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.components.product-card/-/@fragrantjewels-gravity-brands.components.product-card-0.0.14.tgz#0e3e8656d4cd2473d7a57a5d6ba547939a85c70a"
-  integrity sha1-Dj6GVtTNJHPXpXpda6VHk5qFxwo=
+"@fragrantjewels/gravity-brands.components.product-card@0.0.17":
+  version "0.0.17"
+  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.components.product-card/-/@fragrantjewels-gravity-brands.components.product-card-0.0.17.tgz#0547045f68cc5c2651332b564794e8c8e4960f54"
+  integrity sha1-BUcEX2jMXCZRMytWR5ToyOSWD1Q=
   dependencies:
-    "@fragrantjewels/gravity-brands.modules.normalize-product" "0.0.1"
+    "@fragrantjewels/gravity-brands.modules.normalize-product" "0.0.4"
     classnames "^2.3.1"
     core-js "^3.0.0"
     styled-components "^5.2.3"
 
-"@fragrantjewels/gravity-brands.components.products-carousel@^0.0.19":
-  version "0.0.19"
-  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.components.products-carousel/-/@fragrantjewels-gravity-brands.components.products-carousel-0.0.19.tgz#da68be3185e054f9498107deff1f2ec310e3ac85"
-  integrity sha1-2mi+MYXgVPlJgQfe/x8uwxDjrIU=
+"@fragrantjewels/gravity-brands.components.products-carousel@^0.0.22":
+  version "0.0.22"
+  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.components.products-carousel/-/@fragrantjewels-gravity-brands.components.products-carousel-0.0.22.tgz#1daef875d9431ca204c9202c4b0d70a15baeba40"
+  integrity sha1-Ha74ddlDHKIEySAsSw1woVuuukA=
   dependencies:
-    "@fragrantjewels/gravity-brands.components.product-card" "0.0.14"
+    "@fragrantjewels/gravity-brands.components.product-card" "0.0.17"
     classnames "^2.3.1"
     core-js "^3.0.0"
     react-slick "^0.28.1"
     styled-components "^5.2.3"
 
-"@fragrantjewels/gravity-brands.components.products-list@^0.0.16":
-  version "0.0.16"
-  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.components.products-list/-/@fragrantjewels-gravity-brands.components.products-list-0.0.16.tgz#f2d31af89c564e69a14676de3e78fcec0738de3b"
-  integrity sha1-8tMa+JxWTmmhRnbePnj87Ac43js=
+"@fragrantjewels/gravity-brands.components.products-list@^0.0.19":
+  version "0.0.19"
+  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.components.products-list/-/@fragrantjewels-gravity-brands.components.products-list-0.0.19.tgz#df1b6aa0bb9c8b821649b1f47c1db1710cfcb2e4"
+  integrity sha1-3xtqoLuci4IWSbH0fB2xcQz8suQ=
   dependencies:
-    "@fragrantjewels/gravity-brands.components.product-card" "0.0.14"
+    "@fragrantjewels/gravity-brands.components.product-card" "0.0.17"
     "@fragrantjewels/gravity-brands.components.site-section" "0.0.4"
     core-js "^3.0.0"
     styled-components "^5.2.3"
@@ -2044,26 +2044,17 @@
     react-slick "^0.28.1"
     styled-components "^5.2.3"
 
-"@fragrantjewels/gravity-brands.components.ring-size@0.0.12":
-  version "0.0.12"
-  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.components.ring-size/-/@fragrantjewels-gravity-brands.components.ring-size-0.0.12.tgz#5ca75f734af44a4ab0d9909dd2a49850c10ac124"
-  integrity sha1-XKdfc0r0Skqw2ZCd0qSYUMEKwSQ=
+"@fragrantjewels/gravity-brands.components.ring-size@0.0.15":
+  version "0.0.15"
+  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.components.ring-size/-/@fragrantjewels-gravity-brands.components.ring-size-0.0.15.tgz#235637907171c7328102e5676f8fd590ac5255f8"
+  integrity sha1-I1Y3kHFxxzKBAuVnb4/VkKxSVfg=
   dependencies:
-    "@fragrantjewels/gravity-brands.modules.normalize-product" "0.0.1"
+    "@fragrantjewels/gravity-brands.modules.normalize-product" "0.0.4"
     classnames "^2.3.1"
     core-js "^3.0.0"
     styled-components "^5.2.3"
 
-"@fragrantjewels/gravity-brands.components.rolling-banner@0.0.9":
-  version "0.0.9"
-  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.components.rolling-banner/-/@fragrantjewels-gravity-brands.components.rolling-banner-0.0.9.tgz#6f846b04a28aafbe46e1c1f5a9cba416d71a0a06"
-  integrity sha1-b4RrBKKKr75G4cH1qcukFtcaCgY=
-  dependencies:
-    core-js "^3.0.0"
-    react-slick "^0.28.1"
-    styled-components "^5.2.3"
-
-"@fragrantjewels/gravity-brands.components.rolling-banner@^0.0.10":
+"@fragrantjewels/gravity-brands.components.rolling-banner@0.0.10", "@fragrantjewels/gravity-brands.components.rolling-banner@^0.0.10":
   version "0.0.10"
   resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.components.rolling-banner/-/@fragrantjewels-gravity-brands.components.rolling-banner-0.0.10.tgz#d3b9ac43ad5b91ad4f91a9bd4bab2f03f785762c"
   integrity sha1-07msQ61bka1Pkam9S6svA/eFdiw=
@@ -2164,12 +2155,12 @@
   resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.modules.base-api-url/-/@fragrantjewels-gravity-brands.modules.base-api-url-0.0.4.tgz#62113252d216319f5af6ba163fd6c44bd65b0c0a"
   integrity sha1-YhEyUtIWMZ9a9roWP9bES9ZbDAo=
 
-"@fragrantjewels/gravity-brands.modules.filter-collection-products@0.0.1":
-  version "0.0.1"
-  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.modules.filter-collection-products/-/@fragrantjewels-gravity-brands.modules.filter-collection-products-0.0.1.tgz#2e179c577198f022ef1bfa9d4f0af20414d059f7"
-  integrity sha1-LhecV3GY8CLvG/qdTwryBBTQWfc=
+"@fragrantjewels/gravity-brands.modules.filter-collection-products@0.0.4":
+  version "0.0.4"
+  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.modules.filter-collection-products/-/@fragrantjewels-gravity-brands.modules.filter-collection-products-0.0.4.tgz#2561e81b29dcdbf5f9ae0292c6004e16f62d0ffd"
+  integrity sha1-JWHoGync2/X5rgKSxgBOFvYtD/0=
   dependencies:
-    "@fragrantjewels/gravity-brands.modules.normalize-collection" "0.0.1"
+    "@fragrantjewels/gravity-brands.modules.normalize-collection" "0.0.4"
 
 "@fragrantjewels/gravity-brands.modules.format-price@0.0.2":
   version "0.0.2"
@@ -2185,58 +2176,58 @@
   dependencies:
     "@fragrantjewels/gravity-brands.modules.stringify-query" "0.0.2"
 
-"@fragrantjewels/gravity-brands.modules.load-collection@^0.0.9":
-  version "0.0.9"
-  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.modules.load-collection/-/@fragrantjewels-gravity-brands.modules.load-collection-0.0.9.tgz#999bc39aee48f6f0fcb9193f4be73abbd3b2cf65"
-  integrity sha1-mZvDmu5I9vD8uRk/S+c6u9Oyz2U=
+"@fragrantjewels/gravity-brands.modules.load-collection@^0.0.12":
+  version "0.0.12"
+  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.modules.load-collection/-/@fragrantjewels-gravity-brands.modules.load-collection-0.0.12.tgz#2aeb2cd47a30213b9ab97602ec773c89e3d39fc2"
+  integrity sha1-Kuss1HowITuauXYC7Hc8iePTn8I=
   dependencies:
     "@fragrantjewels/gravity-brands.modules.api" "0.0.9"
-    "@fragrantjewels/gravity-brands.modules.normalize-collection" "0.0.1"
+    "@fragrantjewels/gravity-brands.modules.normalize-collection" "0.0.4"
 
-"@fragrantjewels/gravity-brands.modules.load-product@^0.0.8":
-  version "0.0.8"
-  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.modules.load-product/-/@fragrantjewels-gravity-brands.modules.load-product-0.0.8.tgz#a55a8c561d48de7cadb42aa95a4578e51b337832"
-  integrity sha1-pVqMVh1I3nyttCqpWkV45RszeDI=
+"@fragrantjewels/gravity-brands.modules.load-product@^0.0.11":
+  version "0.0.11"
+  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.modules.load-product/-/@fragrantjewels-gravity-brands.modules.load-product-0.0.11.tgz#636345e012936f10ee8d0039008f282760826d84"
+  integrity sha1-Y2NF4BKTbxDujQA5AI8oJ2CCbYQ=
   dependencies:
     "@fragrantjewels/gravity-brands.modules.api" "0.0.9"
-    "@fragrantjewels/gravity-brands.modules.normalize-product" "0.0.1"
+    "@fragrantjewels/gravity-brands.modules.normalize-product" "0.0.4"
 
 "@fragrantjewels/gravity-brands.modules.move-point@0.0.2":
   version "0.0.2"
   resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.modules.move-point/-/@fragrantjewels-gravity-brands.modules.move-point-0.0.2.tgz#8d6dc94cbc2716f10d6b4371bd66c6c2129f41e6"
   integrity sha1-jW3JTLwnFvENa0NxvWbGwhKfQeY=
 
-"@fragrantjewels/gravity-brands.modules.normalize-collection@0.0.1":
-  version "0.0.1"
-  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.modules.normalize-collection/-/@fragrantjewels-gravity-brands.modules.normalize-collection-0.0.1.tgz#d2051835fe9dc7a2eff73972bfd0db3a723609f6"
-  integrity sha1-0gUYNf6dx6Lv9zlyv9DbOnI2CfY=
+"@fragrantjewels/gravity-brands.modules.normalize-collection@0.0.4":
+  version "0.0.4"
+  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.modules.normalize-collection/-/@fragrantjewels-gravity-brands.modules.normalize-collection-0.0.4.tgz#a64cf69daf4b973ddaa42ba98c3e431548a2ce06"
+  integrity sha1-pkz2na9Llz3apCupjD5DFUiizgY=
   dependencies:
-    "@fragrantjewels/gravity-brands.modules.normalize-product" "0.0.1"
+    "@fragrantjewels/gravity-brands.modules.normalize-product" "0.0.4"
 
-"@fragrantjewels/gravity-brands.modules.normalize-product-image@0.0.1":
-  version "0.0.1"
-  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.modules.normalize-product-image/-/@fragrantjewels-gravity-brands.modules.normalize-product-image-0.0.1.tgz#8cf8808bbc48982b68532c672e4b29b04b3b43aa"
-  integrity sha1-jPiAi7xImCtoUyxnLkspsEs7Q6o=
+"@fragrantjewels/gravity-brands.modules.normalize-product-image@0.0.2":
+  version "0.0.2"
+  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.modules.normalize-product-image/-/@fragrantjewels-gravity-brands.modules.normalize-product-image-0.0.2.tgz#2caeb63f961c050998a4bf19105c217706310ce1"
+  integrity sha1-LK62P5YcBQmYpL8ZEFwhdwYxDOE=
 
-"@fragrantjewels/gravity-brands.modules.normalize-product-variant@0.0.1":
-  version "0.0.1"
-  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.modules.normalize-product-variant/-/@fragrantjewels-gravity-brands.modules.normalize-product-variant-0.0.1.tgz#04a1e85ad0ac7b3f82df8458f2d41e7f8a9ebafd"
-  integrity sha1-BKHoWtCsez+C34RY8tQef4qeuv0=
+"@fragrantjewels/gravity-brands.modules.normalize-product-variant@0.0.2":
+  version "0.0.2"
+  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.modules.normalize-product-variant/-/@fragrantjewels-gravity-brands.modules.normalize-product-variant-0.0.2.tgz#0928067640af826a8582a8e1bce3ed463df77666"
+  integrity sha1-CSgGdkCvgmqFgqjhvOPtRj33dmY=
 
-"@fragrantjewels/gravity-brands.modules.normalize-product@0.0.1":
-  version "0.0.1"
-  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.modules.normalize-product/-/@fragrantjewels-gravity-brands.modules.normalize-product-0.0.1.tgz#b0ed78edd36d9817efac4f2ad6ec179e2e82250d"
-  integrity sha1-sO147dNtmBfvrE8q1uwXni6CJQ0=
+"@fragrantjewels/gravity-brands.modules.normalize-product@0.0.4":
+  version "0.0.4"
+  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.modules.normalize-product/-/@fragrantjewels-gravity-brands.modules.normalize-product-0.0.4.tgz#ecb3d955ef44a7d2dbbbec0ecd355c28d3736301"
+  integrity sha1-7LPZVe9Ep9Lbu+wOzTVcKNNzYwE=
   dependencies:
-    "@fragrantjewels/gravity-brands.modules.normalize-product-image" "0.0.1"
-    "@fragrantjewels/gravity-brands.modules.normalize-product-variant" "0.0.1"
+    "@fragrantjewels/gravity-brands.modules.normalize-product-image" "0.0.2"
+    "@fragrantjewels/gravity-brands.modules.normalize-product-variant" "0.0.2"
 
-"@fragrantjewels/gravity-brands.modules.parse-filters-from-products@^0.0.3":
-  version "0.0.3"
-  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.modules.parse-filters-from-products/-/@fragrantjewels-gravity-brands.modules.parse-filters-from-products-0.0.3.tgz#76b4c04f9e78f7279deee7008c8925b7da0540fa"
-  integrity sha1-drTAT5549yed7ucAjIklt9oFQPo=
+"@fragrantjewels/gravity-brands.modules.parse-filters-from-products@^0.0.6":
+  version "0.0.6"
+  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.modules.parse-filters-from-products/-/@fragrantjewels-gravity-brands.modules.parse-filters-from-products-0.0.6.tgz#63ad3ad8e8623793799eaf69d2e9961a9afbceb2"
+  integrity sha1-Y6062OhiN5N5nq9p0umWGpr7zrI=
   dependencies:
-    "@fragrantjewels/gravity-brands.modules.normalize-product" "0.0.1"
+    "@fragrantjewels/gravity-brands.modules.normalize-product" "0.0.4"
 
 "@fragrantjewels/gravity-brands.modules.resolve-page-props@^0.0.3":
   version "0.0.3"
@@ -6828,9 +6819,9 @@
   integrity sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==
 
 "@types/node@*":
-  version "16.3.3"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.3.3.tgz#0c30adff37bbbc7a50eb9b58fae2a504d0d88038"
-  integrity sha512-8h7k1YgQKxKXWckzFCMfsIwn0Y61UK6tlD6y2lOb3hTOIMlK3t9/QwHOhc81TwU+RMf0As5fj7NPjroERCnejQ==
+  version "16.4.0"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.4.0.tgz#2c219eaa3b8d1e4d04f4dd6e40bc68c7467d5272"
+  integrity sha512-HrJuE7Mlqcjj+00JqMWpZ3tY8w7EUd+S0U3L1+PQSWiXZbOgyQDvi+ogoUxaHApPJq5diKxYBQwA3iIlNcPqOg==
 
 "@types/node@13.9.5":
   version "13.9.5"
@@ -9588,9 +9579,9 @@ caniuse-api@^3.0.0:
     lodash.uniq "^4.5.0"
 
 caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000981, caniuse-lite@^1.0.30001035, caniuse-lite@^1.0.30001093, caniuse-lite@^1.0.30001109, caniuse-lite@^1.0.30001113, caniuse-lite@^1.0.30001154, caniuse-lite@^1.0.30001219:
-  version "1.0.30001245"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001245.tgz#45b941bbd833cb0fa53861ff2bae746b3c6ca5d4"
-  integrity sha512-768fM9j1PKXpOCKws6eTo3RHmvTUsG9UrpT4WoREFeZgJBTi4/X9g565azS/rVUGtqb8nt7FjLeF5u4kukERnA==
+  version "1.0.30001246"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001246.tgz#fe17d9919f87124d6bb416ef7b325356d69dc76c"
+  integrity sha512-Tc+ff0Co/nFNbLOrziBXmMVtpt9S2c2Y+Z9Nk9Khj09J+0zR9ejvIW5qkZAErCbOrVODCx/MN+GpB5FNBs5GFA==
 
 capture-exit@^2.0.0:
   version "2.0.0"
@@ -11541,9 +11532,9 @@ ejs@^2.6.1:
   integrity sha512-7vmuyh5+kuUyJKePhQfRQBhXV5Ce+RnaeeQArKu1EAMpL3WbgMt5WG6uQZpEVvYSSsxMXRKOewtDk9RaTKXRlA==
 
 electron-to-chromium@^1.3.378, electron-to-chromium@^1.3.585, electron-to-chromium@^1.3.723:
-  version "1.3.780"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.780.tgz#f946e10dc0005a3b59b9afa2d2c92f5c421f7fc5"
-  integrity sha512-2KQ9OYm9WMUNpAPA/4aerURl3hwRc9tNlpsiEj3Y8Gf7LVf26NzyLIX2v0hSagQwrS9+cWab+28A2GPKDoVNRA==
+  version "1.3.782"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.782.tgz#522740fe6b4b5255ca754c68d9c406a17b0998e2"
+  integrity sha512-6AI2se1NqWA1SBf/tlD6tQD/6ZOt+yAhqmrTlh4XZw4/g0Mt3p6JhTQPZxRPxPZiOg0o7ss1EBP/CpYejfnoIA==
 
 elegant-spinner@^1.0.1:
   version "1.0.1"
@@ -20119,9 +20110,9 @@ rollup-plugin-terser@^7.0.0:
     terser "^5.0.0"
 
 rollup@^2.43.1:
-  version "2.53.2"
-  resolved "https://registry.yarnpkg.com/rollup/-/rollup-2.53.2.tgz#3279f9bfba1fe446585560802e418c5fbcaefa51"
-  integrity sha512-1CtEYuS5CRCzFZ7SNW5528SlDlk4VDXIRGwbm/2POQxA/G4+7/crIqJwkmnj8Q/74hGx4oVlNvh4E1CJQ5hZ6w==
+  version "2.53.3"
+  resolved "https://registry.yarnpkg.com/rollup/-/rollup-2.53.3.tgz#14b0e57f0874d4ad23bdbb13050cf70bcd1eabf7"
+  integrity sha512-79QIGP5DXz5ZHYnCPi3tLz+elOQi6gudp9YINdaJdjG0Yddubo6JRFUM//qCZ0Bap/GJrsUoEBVdSOc4AkMlRA==
   optionalDependencies:
     fsevents "~2.3.2"
 

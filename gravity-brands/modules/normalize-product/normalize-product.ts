@@ -62,23 +62,29 @@ const selectValueFromTags = (tags: Array<string>, prefix: string) =>
 export const normalizeProduct = (product: ServerProduct): Product => {
   const allTags = product.tags.length ? product.tags.split(',').map((tag) => tag.trim()) : []
   const tags = allTags.filter((tag) => !~tag.indexOf(':'))
+  const tagsProperties = {
+    fragrance: selectValueFromTags(allTags, 'fragrance:'),
+    material: selectValueFromTags(allTags, 'material:'),
+    color: selectValueFromTags(allTags, 'metal color:'),
+  }
 
   return {
     product_id: product.product_id,
     title: product.title,
-    image: (product.front_image && normalizeProductImage(product.front_image)) || undefined,
-    images:
-      (product.side_images?.length &&
-        product.side_images.sort((imageA, imageB) => imageA.position - imageB.position).map(normalizeProductImage)) ||
-      undefined,
+    ...(product.front_image && { image: normalizeProductImage(product.front_image) }),
+    ...(product.side_images?.length && {
+      images: product.side_images
+        .sort((imageA, imageB) => imageA.position - imageB.position)
+        .map(normalizeProductImage),
+    }),
     variants: product.variants
       .sort((variantA, variantB) => variantA.position - variantB.position)
       .map(normalizeProductVariant),
     product_type: product.product_type,
     published_at_shop: product.published_at_shop,
-    tags: tags.length ? tags : undefined,
-    fragrance: selectValueFromTags(allTags, 'fragrance:'),
-    material: selectValueFromTags(allTags, 'material:'),
-    color: selectValueFromTags(allTags, 'metal color:'),
+    ...(tags.length && { tags }),
+    ...(tagsProperties.fragrance && { fragrance: selectValueFromTags(allTags, 'fragrance:') }),
+    ...(tagsProperties.material && { material: selectValueFromTags(allTags, 'material:') }),
+    ...(tagsProperties.color && { color: selectValueFromTags(allTags, 'metal color:') }),
   }
 }
