@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import ProductsCarousel, { Product as ProductType } from '@fragrantjewels/gravity-brands.components.products-carousel'
 import productPageProps from './resolvers/productPageProps'
 import MainPageLayout from 'gravity-brands/components/main-page-layout'
+import formatPrice from '@fragrantjewels/gravity-brands.modules.format-price'
 
 type ProductPageProps = {
   product: ProductType
@@ -11,8 +12,10 @@ type ProductPageProps = {
 
 const Product = ({ product, recommendedProducts, potentialProducts }: ProductPageProps): React.ReactElement => {
   const [isDropdownOpened, setIsDropdownOpened] = useState(false)
+  const [isDiscountApplied, setDiscountApplied] = useState(true)
   const [currentVariant, setCurrentVariant] = useState(product.variants[0].variant_id)
-  const [currentPrice, setCurrentPrice] = useState(product.variants[0].actual_price)
+  const [actualPrice, setActualPrice] = useState(product.variants[0].actual_price)
+  const comparePrice = product.variants[0].compare_at_price
 
   return (
     <MainPageLayout>
@@ -172,26 +175,40 @@ const Product = ({ product, recommendedProducts, potentialProducts }: ProductPag
                           <span>54 sold in the last hour</span>
                         </div>
                       </div>
+                      <div className="pdp-product-details">
+                        {isDiscountApplied ? (
+                          <>
+                            <span className="pdp-product-details__discount-price">{formatPrice(actualPrice)}</span>
+                            <span className="pdp-product-details__price"> {formatPrice(comparePrice)}</span>
+                          </>
+                        ) : (
+                          <span>{formatPrice(actualPrice)}</span>
+                        )}
+                        <span className="pdp-product-details__tag"> | Sterling silver</span>
+                      </div>
                       <div className="pdp-pi-selector-wrapper">
                         <div className="pdp-pi-rs-text">Select a ring size to reserve this box:</div>
                         <div id="pdp-pi-selector" className="pdp-pi-selector">
-                          {product.variants.map((variant) => (
-                            <div className="pdp-pi-selector__btn-holder" key={variant.title}>
-                              <button
-                                className={`pdp-pi-selector__btn ${
-                                  variant.variant_id === currentVariant && 'pdp-pi-selector__btn_active'
-                                }`}
-                                type="button"
-                                value={Number(variant.title)}
-                                onClick={() => {
-                                  setCurrentVariant(variant.variant_id)
-                                  setCurrentPrice(variant.actual_price)
-                                }}
-                              >
-                                {variant.title}
-                              </button>
-                            </div>
-                          ))}
+                          {product.variants
+                            .slice(0)
+                            .reverse()
+                            .map((variant) => (
+                              <div className="pdp-pi-selector__btn-holder" key={variant.title}>
+                                <button
+                                  className={`pdp-pi-selector__btn ${
+                                    variant.variant_id === currentVariant && 'pdp-pi-selector__btn_active'
+                                  }`}
+                                  type="button"
+                                  value={Number(variant.title)}
+                                  onClick={() => {
+                                    setCurrentVariant(variant.variant_id)
+                                    setActualPrice(variant.actual_price)
+                                  }}
+                                >
+                                  {variant.title}
+                                </button>
+                              </div>
+                            ))}
                         </div>
                       </div>
                       <div className="pdp__chooser-container" id="pdp-ic-chooser-container">
@@ -205,12 +222,13 @@ const Product = ({ product, recommendedProducts, potentialProducts }: ProductPag
                                   className="pdp-radio-group"
                                   name="pdp-radio-group"
                                   defaultChecked
+                                  onClick={() => setDiscountApplied(false)}
                                 />
                                 <span />
                               </div>
                               <div className="pdp__chooser__item__part pdp__chooser__item__part-top__content">
                                 <div className="pdp__chooser__item-content-text">Regular Price</div>
-                                <span className="pdp__chooser__item-price">${currentPrice}</span>
+                                <span className="pdp__chooser__item-price">${actualPrice}</span>
                               </div>
                             </div>
                           </label>
@@ -227,6 +245,7 @@ const Product = ({ product, recommendedProducts, potentialProducts }: ProductPag
                                   name="pdp-radio-group"
                                   defaultValue="discount"
                                   defaultChecked
+                                  onClick={() => setDiscountApplied(true)}
                                 />
                                 <span />
                               </div>
@@ -245,7 +264,7 @@ const Product = ({ product, recommendedProducts, potentialProducts }: ProductPag
                                   </button>
                                 </div>
                                 <span className="pdp__chooser__item-price">
-                                  ${(currentPrice - currentPrice * 0.2).toFixed(2)}
+                                  ${(actualPrice - actualPrice * 0.2).toFixed(2)}
                                 </span>
                               </div>
                             </div>

@@ -1,29 +1,9 @@
 import React from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
+import { Product } from '@fragrantjewels/gravity-brands.modules.normalize-product'
 
-export type Product = {
-  product_id: number
-  product_type: string
-  front_image?: {
-    src: string
-    alt?: string
-  }
-  side_images?: Array<{
-    src: string
-    alt: string
-  }>
-  title: string
-  variants: Array<{
-    actual_price: number
-    variant_id: number
-    title: string
-    available: boolean
-  }>
-  created_at_shop: string
-  published_at_shop: string | null
-  tags: string
-}
+export type { Product } from '@fragrantjewels/gravity-brands.modules.normalize-product'
 
 export type ProductCardProps = {
   className?: ClassName
@@ -223,7 +203,8 @@ const ProductCardPrice = styled.div`
 
 export function ProductCard({ className, style, product, onClick }: ProductCardProps): React.ReactElement {
   const productTitle = product.title.split('-')[0].split(':')[0]
-  const productType = product?.product_type ? product?.product_type.split('(')[0] : 'No data'
+  const productType = product.product_type.split('(')[0]
+
   return (
     <ProductCardWrapper className={cn('ProductCard', className)} style={style} onClick={onClick}>
       <SProductCard>
@@ -232,7 +213,7 @@ export function ProductCard({ className, style, product, onClick }: ProductCardP
         </SCircle>
         <ProductCardImgWrapper>
           <ProductCardImgWrapperInner>
-            <img src={product.front_image?.src} alt={`Product image: ${product.front_image?.alt}`} />
+            <img src={product.image?.src} alt={product.image?.alt} />
           </ProductCardImgWrapperInner>
         </ProductCardImgWrapper>
         {product.product_id === 4708473077850 ? (

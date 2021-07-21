@@ -301,7 +301,7 @@ export const ProductsCarousel = ({
           slidesToShow: 2,
           slidesToScroll: 1,
           arrows: false,
-          centerMode: true,
+          /*centerMode: true,*/
         },
       },
     ],

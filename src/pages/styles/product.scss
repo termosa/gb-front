@@ -47,12 +47,12 @@ $whiteClr: #fff;
         color: $mainClr;
         text-transform: uppercase;
         letter-spacing: 0.08em;
-        margin: 0 0 2px;
+        margin: 0 0 6px;
     }
     &__title {
-        font: 700 32px/1.2 "Cormorant Garamond", serif;
+        font: 700 32px/1 "Cormorant Garamond", serif;
         letter-spacing: -0.02em;
-        margin: 0 0 7px;
+        margin: 0 0 8px;
     }
 }
 
@@ -60,7 +60,7 @@ $whiteClr: #fff;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0 0 21px;
+    margin: 0 0 16px;
     &__stars {
         display: flex;
         align-items: center;
@@ -77,16 +77,33 @@ $whiteClr: #fff;
     }
     &__link {
         color: $blackClr;
+        margin-left: 2px;
         &:hover {
             text-decoration: none;
         }
     }
 }
 
+.pdp-product-details {
+  font: 400 16px/1.25 "Montserrat", sans-serif;
+  letter-spacing: 0.05em;
+  margin: 0 0 16px;
+
+  &__discount-price {
+    text-decoration: line-through;
+  }
+
+  &__tag {
+    background: linear-gradient(45deg, #9F9F9F, #555555);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
 .pdp-pi-selector-wrapper {
     .pdp-pi-rs-text {
-        font-size: 16px;
-        margin: 0 0 13px;
+        font: 400 16px/1.5 "Montserrat", sans-serif;
+        margin: 0 0 12px;
     }
 }
 
@@ -94,10 +111,10 @@ $whiteClr: #fff;
     display: flex;
     justify-content: flex-start;
     flex-wrap: nowrap;
-    margin: 0 -4px 6px;
+    margin: 0 -4px 12px;
     // max-width: 408px;
     &__btn-holder {
-        margin: 0 4px 6px;
+        margin: 0 4px;
         position: relative;
         width: 100%;
         &:after {
@@ -476,14 +493,7 @@ $whiteClr: #fff;
 /* PDP Accordion */
 
 .pdp-accordion {
-    margin-bottom: 15px;
     // padding: 5px 0;
-}
-
-.pdp-accordion .pdp-a-item__description {
-    display: none;
-    // padding: 15px 0;
-    padding: 0 0 15px 0;
 }
 
 .pdp-accordion .pdp-a-item__title {
@@ -507,20 +517,20 @@ $whiteClr: #fff;
 
 .pdp-accordion .pdp-a-item__title p {
     margin: 0;
-    font-size: 16px;
+    font: 500 16px/1.25 "Montserrat", sans-serif;
+    letter-spacing: 0.08em;
 }
 
 .pdp-accordion .pdp-a-item__description span,
 .pdp-accordion .pdp-a-item__description strong,
 .pdp-accordion .pdp-a-item__description p {
-    font-size: 16px;
-    line-height: 1.5;
     margin: 0 0 10px;
 }
 
 .pdp-accordion .pdp-a-item__description {
-    font-size: 16px;
-    line-height: 1.5;
+    font: 400 16px/1.5 "Montserrat", sans-serif;
+    display: none;
+    padding: 0 0 15px 0;
 }
 
 .pdp-accordion .acc__icon-wrapper {
@@ -760,7 +770,7 @@ $whiteClr: #fff;
         max-width: 450px;
         margin: 0 auto;
     }
-    @media(min-width: 768px) {
+    @media (min-width: 768px) {
         .collection-carousel {
             margin-bottom: 50px;
         }
@@ -770,7 +780,7 @@ $whiteClr: #fff;
             padding-right: 35px
         }
     }
-    @media(max-width:768px) {
+    @media (max-width: 768px) {
         .slick-prev,
         .slick-next {
             display: none !important;
@@ -818,17 +828,17 @@ $whiteClr: #fff;
     svg {
         position: relative;
     }
-    @media(min-width: 768px) {
+    @media (min-width: 768px) {
         font-size: 14px;
     }
-    @media(min-width: 992px) {
+    @media (min-width: 992px) {
         font-size: 16px;
     }
     &__inner {
         max-width: 1020px;
         margin: 0 auto;
         position: relative;
-        @media(min-width: 768px) {
+        @media (min-width: 768px) {
             max-width: 960px;
         }
     }
@@ -841,13 +851,13 @@ $whiteClr: #fff;
         width: 50%;
         &.app-pdp-footer__col-1 {
             cursor: pointer;
-            @media(min-width: 768px) {
+            @media (min-width: 768px) {
                 width: 52%;
                 position: relative;
             }
         }
         &.app-pdp-footer__col-2 {
-            @media(min-width: 768px) {
+            @media (min-width: 768px) {
                 width: 48%;
             }
         }
@@ -885,7 +895,7 @@ $whiteClr: #fff;
             display: flex;
             justify-content: space-between;
             padding: 0 12px;
-            @media(min-width: 768px) {
+            @media (min-width: 768px) {
                 padding: 0 15px;
             }
         }
@@ -893,13 +903,13 @@ $whiteClr: #fff;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            @media(max-width: 767px) {
+            @media (max-width: 767px) {
                 width: 100%;
             }
         }
         &__size {
             margin-left: 0;
-            @media(min-width: 768px) {
+            @media (min-width: 768px) {
                 margin-left: 13px;
             }
         }
@@ -918,7 +928,7 @@ $whiteClr: #fff;
                     padding: 10px 0;
                     color: $blackClr;
                     text-align: center;
-                    @media(min-width: 768px) {
+                    @media (min-width: 768px) {
                         padding: 10px 13px;
                         text-align: left;
                     }
@@ -927,7 +937,7 @@ $whiteClr: #fff;
         }
         &__price {
             margin-right: 0;
-            @media(min-width: 768px) {
+            @media (min-width: 768px) {
                 margin-right: 13px;
             }
         }
@@ -946,7 +956,7 @@ $whiteClr: #fff;
             &.app-pdp-f-pr__col-1 {
                 position: relative;
                 // padding: 0 6%;
-                @media(min-width: 768px) {
+                @media (min-width: 768px) {
                     // padding: 0 15px;
                     width: 66%;
                 }
@@ -956,7 +966,7 @@ $whiteClr: #fff;
                     padding-bottom: 15px;
                     padding-top: 15px;
                     width: 100%;
-                    @media(min-width: 768px) {
+                    @media (min-width: 768px) {
                         width: 66%;
                     }
                     .app-pdp-f-pr__item {
@@ -973,7 +983,7 @@ $whiteClr: #fff;
             }
             &.app-pdp-f-pr__col-2 {
                 // padding: 0 6%;
-                @media(min-width: 768px) {
+                @media (min-width: 768px) {
                     width: 34%;
                     // padding: 0 15px;
                 }
@@ -986,7 +996,7 @@ $whiteClr: #fff;
                 position: relative;
                 min-height: 38px;
                 cursor: pointer;
-                @media(min-width: 768px) {
+                @media (min-width: 768px) {
                     padding: 0 15px;
                 }
                 &:after {
@@ -1026,16 +1036,16 @@ $whiteClr: #fff;
                     height: auto;
                     max-height: 40px;
                     object-fit: contain;
-                    @media(min-width: 375px) {
+                    @media (min-width: 375px) {
                         width: 52px;
                     }
-                    @media(min-width: 768px) {
+                    @media (min-width: 768px) {
                         width: 60px;
                     }
                 }
                 &__icon {
                     &_mobile {
-                        @media(min-width: 768px) {
+                        @media (min-width: 768px) {
                             display: none;
                         }
                     }
@@ -1052,12 +1062,12 @@ $whiteClr: #fff;
         background: $whiteClr;
         box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.08);
         .app-pdp-f-pr__item__col-2 {
-            @media(max-width: 767px) {
+            @media (max-width: 767px) {
                 display: block;
             }
         }
         .app-pdp-f-pr__item:after {
-            @media(max-width: 767px) {
+            @media (max-width: 767px) {
                 display: none;
             }
         }
@@ -1073,7 +1083,7 @@ $whiteClr: #fff;
         &.app-pdp-f-dropdown_size-active {
             .app-pdp-f-pr__size-wrapper {
                 display: flex;
-                @media(max-width: 767px) {
+                @media (max-width: 767px) {
                     width: 100%;
                 }
             }

@@ -24,7 +24,6 @@ const SMostFunSection = styled.section`
 
 const SMostFunContainer = styled.div`
   max-width: 990px;
-  padding: 0 10px;
   margin: 0 auto;
   @media (min-width: 768px) {
     padding: 0 30px;
@@ -93,6 +92,10 @@ const StyledSlider = styled(Slider)`
     }
   }
 
+  .slick-slider {
+    padding: 0 10px;
+  }
+
   .slick-track {
     display: flex;
   }
@@ -153,14 +156,14 @@ const StyledSlider = styled(Slider)`
   }
 
   .slick-prev {
-    left: 2px;
+    left: 9px;
     @media (min-width: 420px) {
       left: -12px;
     }
   }
 
   .slick-next {
-    right: 2px;
+    right: 9px;
     @media (min-width: 420px) {
       right: -12px;
     }
@@ -177,6 +180,16 @@ const SSectionTitle = styled.h2`
 const SSectionTitlePart = styled.span`
   position: relative;
   z-index: 1;
+
+  &:after {
+    content: '';
+    width: 100%;
+    height: 10px;
+    background: rgba(77, 190, 186, 0.3);
+    position: absolute;
+    bottom: 6px;
+    left: 0;
+  }
 `
 
 const SSlideTitle = styled.h4`

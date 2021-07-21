@@ -129,7 +129,7 @@
     },
     "components/product-card": {
         "scope": "fragrantjewels.gravity-brands",
-        "version": "0.0.13",
+        "version": "0.0.17",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/product-card"
     },
