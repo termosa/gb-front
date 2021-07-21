@@ -56,7 +56,7 @@ export type Product = {
 const selectValueFromTags = (tags: Array<string>, prefix: string) =>
   tags
     .find((tag) => tag.toLowerCase().startsWith(prefix.toLowerCase()))
-    ?.slice(0, prefix.length)
+    ?.slice(prefix.length)
     .trim()
 
 export const normalizeProduct = (product: ServerProduct): Product => {
