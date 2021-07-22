@@ -177,7 +177,7 @@ const SliderWrapper = styled.div`
   }
 `
 
-export function ShopByProductsOverview({ products }: ShopByProductsOverviewProps) {
+export function ShopByProductsOverview({ products }: ShopByProductsOverviewProps): React.ReactElement {
   const settings: Settings = {
     slidesToShow: 3,
     slidesToScroll: 1,
@@ -196,6 +196,7 @@ export function ShopByProductsOverview({ products }: ShopByProductsOverviewProps
       },
     ],
   }
+
   return (
     <SSection>
       <SContainer>

@@ -266,6 +266,7 @@ export const HeroGallery = ({ className, slides }: HeroGalleryProps): React.Reac
       <Slider {...settings}>
         {slides.map((slide: GalleryItem) => (
           <Slide
+            key={`${slide.buttonLink}${slide.backgroundImg}${slide.buttonText}`}
             backgroundImg={
               slide.backgroundImg || 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/home-banner-img-1-dt.jpg'
             }
@@ -288,6 +289,7 @@ export const HeroGallery = ({ className, slides }: HeroGalleryProps): React.Reac
         ))}
         {slides.map((slide: GalleryItem) => (
           <Slide
+            key={`${slide.buttonLink}${slide.backgroundImg}${slide.buttonText}`}
             backgroundImg={
               slide.backgroundImg || 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/home-banner-img-1-dt.jpg'
             }

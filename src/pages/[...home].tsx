@@ -17,6 +17,7 @@ import Footer from '@fragrantjewels/gravity-brands.components.footer'
 import SiteSection from '@fragrantjewels/gravity-brands.components.site-section'
 import InnerCircleExclusiveContainer from '@containers/InnerCircleExclusive'
 import ProductCarouselContainer from '@containers/ProductCarousel'
+import MainPageLayout from '@fragrantjewels/gravity-brands.components.main-page-layout'
 
 builder.init(config.apiKey)
 
@@ -318,6 +319,19 @@ Builder.registerComponent(withChildren(SiteSection), {
       component: {
         name: 'Text',
         options: { text: 'I am child text block!' },
+      },
+    },
+  ],
+})
+
+Builder.registerComponent(withChildren(MainPageLayout), {
+  name: 'MainPageLayout',
+  defaultChildren: [
+    {
+      '@type': '@builder.io/sdk:Element',
+      component: {
+        name: 'Text',
+        options: { text: 'Put page content here' },
       },
     },
   ],
