@@ -21,6 +21,8 @@ const Product = ({ product, recommendedProducts, potentialProducts }: ProductPag
     silver: product.tags && product.tags.includes('925 Silver Sterling'),
   }
 
+  console.log(product)
+
   return (
     <MainPageLayout>
       <div className="app-re-wrapper" id="app-wrapper">
@@ -184,7 +186,7 @@ const Product = ({ product, recommendedProducts, potentialProducts }: ProductPag
                           <>
                             <span className="pdp-product-details__discount-price">{formatPrice(actualPrice)}</span>
                             <span className="pdp-product-details__price">
-                              &nbsp;{(actualPrice - actualPrice * 0.2).toFixed(2)}
+                              &nbsp;${(actualPrice - actualPrice * 0.2).toFixed(2)}
                             </span>
                           </>
                         ) : (
@@ -1173,7 +1175,7 @@ const Product = ({ product, recommendedProducts, potentialProducts }: ProductPag
                 </div>
               </div>
             </section>
-            <section className="app-h-section app-h-products-section">
+            <section className="app-h-products-section">
               {recommendedProducts?.length && (
                 <ProductsCarousel
                   title="Recommended for you"

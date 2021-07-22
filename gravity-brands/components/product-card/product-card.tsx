@@ -50,7 +50,7 @@ const SProductCard = styled.div`
   }
 `
 
-const SCircle = styled.div<{
+/*const SCircle = styled.div<{
   backgroundColor?: string
 }>`
   font: 600 12px/1.25 'Montserrat', sans-serif;
@@ -78,7 +78,7 @@ const SCircle = styled.div<{
     color: #ffffff;
     text-transform: uppercase;
   }
-`
+`*/
 
 const ProductCardImgWrapper = styled.div`
   position: relative;
@@ -226,9 +226,9 @@ export function ProductCard({ className, style, product, onClick }: ProductCardP
   return (
     <ProductCardWrapper className={cn('ProductCard', className)} style={style} onClick={onClick}>
       <SProductCard>
-        <SCircle backgroundColor={'#9059c8'}>
+        {/*<SCircle backgroundColor={'#9059c8'}>
           <span>New</span>
-        </SCircle>
+        </SCircle>*/}
         <ProductCardImgWrapper>
           <ProductCardImgWrapperInner>
             <img src={product.image?.src} alt={product.image?.alt} />

@@ -202,14 +202,15 @@ export function ShopByProductsOverview({ products }: ShopByProductsOverviewProps
         <SCardsBlockTitle>Shop by Product</SCardsBlockTitle>
         <SliderWrapper>
           <Slider {...settings}>
-            {products.map((product) => (
-              <ShopByProductCard
-                image={product.image}
-                buttonLink={product.buttonLink}
-                className={'slick-slide'}
-                title={product.title}
-              />
-            ))}
+            {products &&
+              products.map((product) => (
+                <ShopByProductCard
+                  image={product.image}
+                  buttonLink={product.buttonLink}
+                  className={'slick-slide'}
+                  title={product.title}
+                />
+              ))}
           </Slider>
         </SliderWrapper>
       </SContainer>
