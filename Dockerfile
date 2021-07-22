@@ -7,6 +7,7 @@ ENV PATH /app/node_modules/.bin:$PATH
 RUN apk update && apk add yarn python3 g++ make
 
 ARG BASE_API_URL
+ARG CLIENT_API_URL
 ARG NEXT_PUBLIC_BUILDER_PUBLIC_KEY
 ARG BIT_TOKEN
 
