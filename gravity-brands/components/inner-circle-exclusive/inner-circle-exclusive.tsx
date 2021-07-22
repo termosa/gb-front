@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
 import Button from '@fragrantjewels/gravity-brands.components.button'
@@ -13,6 +13,7 @@ export type InnerCircleExclusiveProps = {
   title: string
   subTitle: string
   topButtonText: string
+  buttonLink: string
   product: Product
   slideImages: string[]
   onReserve: (variant: ProductVariant) => void
@@ -329,11 +330,22 @@ export function InnerCircleExclusive({
   title,
   subTitle,
   topButtonText,
+  buttonLink,
   slideImages,
   onReserve,
 }: InnerCircleExclusiveProps): React.ReactElement | null {
   const [selectedVariant, setVariant] = useState<ProductVariant | undefined>()
+  const [reserveAbility, setReserveAbility] = useState<boolean>(false)
 
+  useEffect(() => {
+    if (selectedVariant) {
+      setReserveAbility(true)
+    } else {
+      setReserveAbility(false)
+    }
+  }, [selectedVariant])
+
+  const productTitle = product.title.split('-')[0].split(':')[0]
   const actualPrice = (selectedVariant || product.variants[0]).actual_price
   const comparePrice = (selectedVariant || product.variants[0]).compare_at_price
   const splitedTitle = title.split(' ')
@@ -349,9 +361,11 @@ export function InnerCircleExclusive({
         </STitle>
         <SSubTitle>{subTitle}</SSubTitle>
         <SButtonWrapper>
-          <Button style={{ fontStyle: "500 16px/19px 'Montserrat', sans-serif" }} width={'189px'}>
-            {topButtonText}
-          </Button>
+          <a href={buttonLink} style={{ textDecoration: 'none' }}>
+            <Button style={{ fontStyle: "500 16px/19px 'Montserrat', sans-serif" }} width={'189px'}>
+              {topButtonText}
+            </Button>
+          </a>
         </SButtonWrapper>
       </STitleWrapper>
       <SContentWrapper>
@@ -361,7 +375,7 @@ export function InnerCircleExclusive({
               <SImagesContainer>
                 <SLeftSliderPart>
                   <SLeftImageContainer>
-                    <img src={slideImages[0]} alt={product.title} />
+                    <img src={slideImages[0]} alt={productTitle} />
                   </SLeftImageContainer>
                   {slideImages.length > 2 && (
                     <>
@@ -393,14 +407,14 @@ export function InnerCircleExclusive({
                   )}
                 </SLeftSliderPart>
                 <SRightSliderPart>
-                  <img src={slideImages[1]} alt={product.title} />
+                  <img src={slideImages[1]} alt={productTitle} />
                 </SRightSliderPart>
               </SImagesContainer>
             </SImagesWrapper>
             <SDetailsWrapper>
               <SDetailsContainer>
                 <SInnerCircleLabel>INNER CIRCLE EXCLUSIVE</SInnerCircleLabel>
-                <SProductTitle>{product.title}</SProductTitle>
+                <SProductTitle>{productTitle}</SProductTitle>
                 <div>
                   <SPriceShippingInfo>
                     {comparePrice ? (
@@ -423,6 +437,7 @@ export function InnerCircleExclusive({
                     backColor={'#000'}
                     style={{ width: '100%', marginBottom: 18 }}
                     onClick={() => selectedVariant && onReserve(selectedVariant)}
+                    disabled={!reserveAbility}
                   >
                     RESERVE NOW
                   </Button>
