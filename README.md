@@ -4,7 +4,7 @@
 
 ```sh
 # BIT_TOKEN should be replaced with the real one
-$ docker build --build-arg BIT_TOKEN=00000000-0000-0000-0000-000000000000 --build-arg BASE_API_URL=http://a191a92cff09f4d91ab9b37bb04bbaee-245806513.us-west-1.elb.amazonaws.com . -t fj-front
+$ docker build --build-arg BIT_TOKEN=00000000-0000-0000-0000-000000000000 --build-arg BASE_API_URL=http://endpoint-for-nextjs.com --build-arg CLIENT_API_URL=http://endpoint-for-browser.com . -t fj-front
 
 $ docker run -it --rm -p 3000:3000 fj-front
 ```
