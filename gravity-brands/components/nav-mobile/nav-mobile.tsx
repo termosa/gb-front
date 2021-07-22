@@ -1,12 +1,11 @@
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import { PointsWidget } from '@fragrantjewels/gravity-brands.components.points-widget'
-import { LOGIN_LINK, SigninSignup } from '@fragrantjewels/gravity-brands.components.signin-signup'
+import { SigninSignup } from '@fragrantjewels/gravity-brands.components.signin-signup'
 
 export type SearchFieldProps = {
   isBurgerMenuOpen: boolean
   setBurgerMenuOpen: (isBurgerMenuOpen: boolean) => void
-  isUserLoggedIn: boolean
 }
 
 const SWrapper = styled.div`
@@ -331,11 +330,7 @@ const CARDS_LIST = [
   },
 ]
 
-export function NavMobile({
-  isBurgerMenuOpen,
-  setBurgerMenuOpen,
-  isUserLoggedIn,
-}: SearchFieldProps): React.ReactElement | null {
+export function NavMobile({ isBurgerMenuOpen, setBurgerMenuOpen }: SearchFieldProps): React.ReactElement | null {
   useEffect(() => {
     document.body.style.overflow = isBurgerMenuOpen ? 'hidden' : 'auto'
   }, [isBurgerMenuOpen])
@@ -397,23 +392,23 @@ export function NavMobile({
           </div>
           <SAccountWrapper>
             <SAccountTitle>
-              <a href={isUserLoggedIn ? '/account' : LOGIN_LINK}>Account</a>
+              <a href="/account">Account</a>
             </SAccountTitle>
             <SAccountList>
               <li>
                 <a href="/pages/order-status-check">Order Status</a>
               </li>
               <SAccountListSubscription>
-                <a href={isUserLoggedIn ? '/account#/subscription' : LOGIN_LINK}>My Subscription</a>
+                <a href="/account#/subscription">My Subscription</a>
               </SAccountListSubscription>
               <li>
-                <a href={isUserLoggedIn ? '/account#/orders' : LOGIN_LINK}>My Orders</a>
+                <a href="/account#/orders">My Orders</a>
               </li>
               <li>
-                <a href={isUserLoggedIn ? '/account#/rewards' : LOGIN_LINK}>My FJ Rewards</a>
+                <a href="/account#/rewards">My FJ Rewards</a>
               </li>
               <li>
-                <a href={isUserLoggedIn ? '/account#/birthday' : LOGIN_LINK}>My Birthday Gift</a>
+                <a href="/account#/birthday">My Birthday Gift</a>
               </li>
             </SAccountList>
           </SAccountWrapper>

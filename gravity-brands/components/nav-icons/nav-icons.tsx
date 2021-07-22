@@ -1,12 +1,11 @@
 import React, { useEffect, useRef } from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
-import { LOGIN_LINK, SigninSignup } from '@fragrantjewels/gravity-brands.components.signin-signup'
+import { SigninSignup } from '@fragrantjewels/gravity-brands.components.signin-signup'
 
 export type NavIconsProps = {
   className?: ClassName
   onSearchClick: () => void
-  isUserLoggedIn: boolean
 }
 
 const SWrapper = styled.div`
@@ -186,7 +185,7 @@ const LINKS_LIST = [
   },
 ]
 
-export function NavIcons({ className, onSearchClick, isUserLoggedIn }: NavIconsProps): React.ReactElement | null {
+export function NavIcons({ className, onSearchClick }: NavIconsProps): React.ReactElement | null {
   const profileLinkRef = useRef<HTMLAnchorElement | null>(null)
   const dropDownRef = useRef<HTMLDivElement | null>(null)
 
@@ -221,7 +220,7 @@ export function NavIcons({ className, onSearchClick, isUserLoggedIn }: NavIconsP
           ></path>
         </svg>
       </SSearchButton>
-      <SProfileButton ref={profileLinkRef} href={isUserLoggedIn ? '/account' : LOGIN_LINK}>
+      <SProfileButton ref={profileLinkRef} href="/account">
         <svg width="100%" height="100%" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
             d="M11.8833 10.78C14.8988 10.78 17.3433 8.47874 17.3433 5.64C17.3433 2.80126 14.8988 0.5 11.8833 0.5C8.86781 0.5 6.42328 2.80126 6.42328 5.64C6.42328 8.47874 8.86781 10.78 11.8833 10.78Z"
@@ -244,7 +243,7 @@ export function NavIcons({ className, onSearchClick, isUserLoggedIn }: NavIconsP
       <SDropDownWrapper>
         <SDropDown ref={dropDownRef}>
           <SDropDownTitle>
-            <SDropDownTitleLink href={isUserLoggedIn ? '/account/' : LOGIN_LINK}>My Account</SDropDownTitleLink>
+            <SDropDownTitleLink href="/account">My Account</SDropDownTitleLink>
           </SDropDownTitle>
           <SDropDownCloseBtn>
             <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -260,7 +259,7 @@ export function NavIcons({ className, onSearchClick, isUserLoggedIn }: NavIconsP
           <SLinkWrapper>
             {LINKS_LIST.map((item) => (
               <li key={item.path + item.title}>
-                <a href={item.title === 'Order Status' || isUserLoggedIn ? item.path : LOGIN_LINK}>{item.title}</a>
+                <a href={item.path}>{item.title}</a>
               </li>
             ))}
             <li>

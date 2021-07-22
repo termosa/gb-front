@@ -530,7 +530,7 @@ const ExtendableBlockContent = ({ name }: { name: ExtendableBlockContentType }) 
   }
 }
 
-export function Header({ className, onSearch, user }: HeaderProps): React.ReactElement | null {
+export function Header({ className, onSearch }: HeaderProps): React.ReactElement | null {
   const [searchDropdownVisible, setSearchDropdownVisible] = useState(false)
   const [extendableBlockContent, setExtendableBlockContent] = useState<ExtendableBlockContentType>('')
   const [isBurgerMenuOpen, setBurgerMenuOpen] = useState(false)
@@ -597,15 +597,8 @@ export function Header({ className, onSearch, user }: HeaderProps): React.ReactE
                 <SPointsWidget>
                   <PointsWidget points={100} />
                 </SPointsWidget>
-                <NavMobile
-                  isBurgerMenuOpen={isBurgerMenuOpen}
-                  setBurgerMenuOpen={setBurgerMenuOpen}
-                  isUserLoggedIn={!!user}
-                />
-                <NavIcons
-                  onSearchClick={() => setSearchDropdownVisible(!searchDropdownVisible)}
-                  isUserLoggedIn={!!user}
-                />
+                <NavMobile isBurgerMenuOpen={isBurgerMenuOpen} setBurgerMenuOpen={setBurgerMenuOpen} />
+                <NavIcons onSearchClick={() => setSearchDropdownVisible(!searchDropdownVisible)} />
               </SIconsWrapper>
             </SSearchContent>
             {/* <SSearchDropdown ref={searchDropdownRef}>
