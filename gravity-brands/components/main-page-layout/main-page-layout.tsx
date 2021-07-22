@@ -12,8 +12,6 @@ const MainPageLayoutWrapper = styled.div`
   flex-direction: column;
   min-height: 100vh;
   overflow: hidden;
-  -ms-transition: opacity linear 0.5s;
-  -webkit-transition: opacity linear 0.5s;
   transition: opacity linear 0.5s;
   padding-top: 138px;
 
@@ -25,7 +23,11 @@ const MainPageLayoutWrapper = styled.div`
 export const MainPageLayout = ({ children }: MainPageLayoutProps): React.ReactElement => (
   <MainPageLayoutWrapper>
     <Header onSearch={(value) => console.log(value)} />
-    {children}
+    <div className="app-re-wrapper" id="app-wrapper">
+      <div className="app-re-content" id="app-content">
+        <main className="app-h-main">{children}</main>
+      </div>
+    </div>
     <Footer className="Footer-Colored" />
   </MainPageLayoutWrapper>
 )
