@@ -27,6 +27,7 @@ const getBuildConfig = () => {
     typescript: { ignoreBuildErrors: true },
     env: {
       BASE_API_URL: process.env.BASE_API_URL,
+      CLIENT_API_URL: process.env.CLIENT_API_URL,
     },
     webpack(config) {
       config.module.rules.push({
