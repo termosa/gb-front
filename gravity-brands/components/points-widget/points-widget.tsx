@@ -20,7 +20,6 @@ const SValueWrapper = styled.div`
   position: absolute;
   top: 48%;
   left: calc(50% + 19px);
-  -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   text-align: center;
   font-size: 8px;
@@ -44,7 +43,7 @@ const SValue = styled.div`
 export function PointsWidget({ points }: PointsWidgetProps) {
   return (
     <SWrapper>
-      <SLinkWrapper>
+      <SLinkWrapper href="/pages/rewards-boutique">
         <svg width="127" height="40" viewBox="0 0 127 40" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
             d="M38.5 1H119.205C122.815 1 125.767 3.95133 125.767 7.56133V32.4387C125.767 36.0487 122.815 39 119.205 39H24.5"
@@ -54,7 +53,10 @@ export function PointsWidget({ points }: PointsWidgetProps) {
             strokeLinecap="round"
             strokeLinejoin="round"
           ></path>
-          <path d="M24.2053 39L47.892 11.4247L38.6073 1H24.3827H24.522H10.2847L1 11.4247L24.6993 39" fill="url(#app-points-gold-des)"></path>
+          <path
+            d="M24.2053 39L47.892 11.4247L38.6073 1H24.3827H24.522H10.2847L1 11.4247L24.6993 39"
+            fill="url(#app-points-gold-des)"
+          ></path>
           <path
             d="M24.4719 39L47.9305 11.4247L38.6332 1H24.4085H24.5479H10.3105L1.02588 11.4247L24.4719 39Z"
             stroke="black"
@@ -94,25 +96,60 @@ export function PointsWidget({ points }: PointsWidgetProps) {
               <animate attributeName="x2" values="48;108.5;48" dur="7s" repeatCount="indefinite"></animate>
               <stop stopColor="#D08E17"></stop>
               <stop offset="0.0199" stopColor="#D89C29">
-                <animate attributeName="offset" values="0.0199;0.0309454;0.0199" dur="7s" repeatCount="indefinite"></animate>
+                <animate
+                  attributeName="offset"
+                  values="0.0199;0.0309454;0.0199"
+                  dur="7s"
+                  repeatCount="indefinite"
+                ></animate>
               </stop>
               <stop offset="0.0597" stopColor="#E6B248">
-                <animate attributeName="offset" values="0.0597;0.0697112;0.0597" dur="7s" repeatCount="indefinite"></animate>
+                <animate
+                  attributeName="offset"
+                  values="0.0597;0.0697112;0.0597"
+                  dur="7s"
+                  repeatCount="indefinite"
+                ></animate>
               </stop>
               <stop offset="0.1014" stopColor="#F1C460">
-                <animate attributeName="offset" values="0.1014;0.120298;0.1014" dur="7s" repeatCount="indefinite"></animate>
+                <animate
+                  attributeName="offset"
+                  values="0.1014;0.120298;0.1014"
+                  dur="7s"
+                  repeatCount="indefinite"
+                ></animate>
               </stop>
               <stop offset="0.1453" stopColor="#F9D072">
-                <animate attributeName="offset" values="0.1453;0.183327;0.1453" dur="7s" repeatCount="indefinite"></animate>
+                <animate
+                  attributeName="offset"
+                  values="0.1453;0.183327;0.1453"
+                  dur="7s"
+                  repeatCount="indefinite"
+                ></animate>
               </stop>
               <stop offset="0.1929" stopColor="#FED87C">
-                <animate attributeName="offset" values="0.1929;0.239427;0.1929" dur="7s" repeatCount="indefinite"></animate>
+                <animate
+                  attributeName="offset"
+                  values="0.1929;0.239427;0.1929"
+                  dur="7s"
+                  repeatCount="indefinite"
+                ></animate>
               </stop>
               <stop offset="0.251" stopColor="#FFDA7F">
-                <animate attributeName="offset" values="0.251;0.33628;0.251" dur="7s" repeatCount="indefinite"></animate>
+                <animate
+                  attributeName="offset"
+                  values="0.251;0.33628;0.251"
+                  dur="7s"
+                  repeatCount="indefinite"
+                ></animate>
               </stop>
               <stop offset="0.3617" stopColor="#F9D072">
-                <animate attributeName="offset" values="0.3617;0.451013;0.3617" dur="7s" repeatCount="indefinite"></animate>
+                <animate
+                  attributeName="offset"
+                  values="0.3617;0.451013;0.3617"
+                  dur="7s"
+                  repeatCount="indefinite"
+                ></animate>
               </stop>
               <stop offset="0.540309" stopColor="#E9B64E"></stop>
               <stop offset="0.743575" stopColor="#D08E17"></stop>

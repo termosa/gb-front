@@ -1,11 +1,12 @@
 import React, { useEffect, useRef } from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
-import { SigninSignup } from '@fragrantjewels/gravity-brands.components.signin-signup'
+import { LOGIN_LINK, SigninSignup } from '@fragrantjewels/gravity-brands.components.signin-signup'
 
 export type NavIconsProps = {
   className?: ClassName
   onSearchClick: () => void
+  isUserLoggedIn: boolean
 }
 
 const SWrapper = styled.div`
@@ -118,6 +119,9 @@ const SDropDownTitle = styled.h3`
 const SDropDownTitleLink = styled.a`
   text-decoration: none;
   font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  color: #000;
+  font-size: 14px;
 `
 
 const SDropDownCloseBtn = styled.button`
@@ -166,23 +170,23 @@ const SLinkWrapper = styled.ul`
 const LINKS_LIST = [
   {
     title: 'Order Status',
-    path: '',
+    path: '/pages/order-status-check',
   },
   {
     title: 'My Orders',
-    path: '',
+    path: '/account#/orders',
   },
   {
     title: 'My FJ Rewards',
-    path: '',
+    path: '/account#/rewards',
   },
   {
     title: 'My Birthday Gift',
-    path: '',
+    path: '/account#/birthday',
   },
 ]
 
-export function NavIcons({ className, onSearchClick }: NavIconsProps): React.ReactElement | null {
+export function NavIcons({ className, onSearchClick, isUserLoggedIn }: NavIconsProps): React.ReactElement | null {
   const profileLinkRef = useRef<HTMLAnchorElement | null>(null)
   const dropDownRef = useRef<HTMLDivElement | null>(null)
 
@@ -217,7 +221,7 @@ export function NavIcons({ className, onSearchClick }: NavIconsProps): React.Rea
           ></path>
         </svg>
       </SSearchButton>
-      <SProfileButton ref={profileLinkRef}>
+      <SProfileButton ref={profileLinkRef} href={isUserLoggedIn ? '/account' : LOGIN_LINK}>
         <svg width="100%" height="100%" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
             d="M11.8833 10.78C14.8988 10.78 17.3433 8.47874 17.3433 5.64C17.3433 2.80126 14.8988 0.5 11.8833 0.5C8.86781 0.5 6.42328 2.80126 6.42328 5.64C6.42328 8.47874 8.86781 10.78 11.8833 10.78Z"
@@ -240,7 +244,7 @@ export function NavIcons({ className, onSearchClick }: NavIconsProps): React.Rea
       <SDropDownWrapper>
         <SDropDown ref={dropDownRef}>
           <SDropDownTitle>
-            <SDropDownTitleLink>My Account</SDropDownTitleLink>
+            <SDropDownTitleLink href={isUserLoggedIn ? '/account/' : LOGIN_LINK}>My Account</SDropDownTitleLink>
           </SDropDownTitle>
           <SDropDownCloseBtn>
             <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -256,7 +260,7 @@ export function NavIcons({ className, onSearchClick }: NavIconsProps): React.Rea
           <SLinkWrapper>
             {LINKS_LIST.map((item) => (
               <li key={item.path + item.title}>
-                <a href={item.path}>{item.title}</a>
+                <a href={item.title === 'Order Status' || isUserLoggedIn ? item.path : LOGIN_LINK}>{item.title}</a>
               </li>
             ))}
             <li>
@@ -267,7 +271,7 @@ export function NavIcons({ className, onSearchClick }: NavIconsProps): React.Rea
           </SLinkWrapper>
         </SDropDown>
       </SDropDownWrapper>
-      <SCartButton>
+      <SCartButton href="/cart">
         <svg width="100%" height="100%" viewBox="0 0 18 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
             d="M4.78156 8.03V5.17C4.78156 2.85 6.66154 0.970001 8.98154 0.970001C11.3015 0.970001 13.1815 2.85 13.1815 5.17V8.03M14.8615 22.97H3.51154C1.80154 22.97 0.48154 21.49 0.67154 19.79L2.18155 6.16H16.1916L17.7015 19.79C17.8915 21.49 16.5615 22.97 14.8615 22.97Z"

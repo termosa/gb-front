@@ -25,12 +25,14 @@ const SLabel = styled.a`
   }
 `
 
+export const LOGIN_LINK = '/account/login?return_url=/'
+
 export function SigninSignup({ className }: SearchFieldProps): React.ReactElement | null {
   return (
     <SWrapper className={cn('SigninSignup', className)}>
-      <SLabel>Sign in</SLabel>
+      <SLabel href={LOGIN_LINK}>Sign in</SLabel>
       &nbsp;/&nbsp;
-      <SLabel>Sign up</SLabel>
+      <SLabel href="/account/register">Sign up</SLabel>
     </SWrapper>
   )
 }

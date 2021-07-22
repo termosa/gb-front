@@ -12,6 +12,7 @@ import { NavMobile } from '@fragrantjewels/gravity-brands.components.nav-mobile'
 export type HeaderProps = {
   className?: ClassName
   onSearch: (value: string) => void
+  user?: { name: string }
 }
 
 const SWrapper = styled.div`
@@ -88,30 +89,6 @@ const SSearchContent = styled.div`
     -ms-flex-wrap: nowrap;
     flex-wrap: nowrap;
   }
-`
-
-const SMobileSearchDropdown = styled.div`
-  padding-top: 15px;
-  display: flex;
-  transition: all 0.5s ease-in-out;
-
-  @media (min-width: 1200px) {
-    display: none;
-  }
-`
-const SMobileSearchInput = styled.input`
-  flex-grow: 1;
-  border: 1px solid #797979;
-  border-right: none;
-  padding: 0 0.9em;
-  height: 38px;
-`
-
-const SMobileSearchButton = styled.button`
-  border: 1px solid #797979;
-  border-left: none;
-  padding: 0 5px;
-  background: none;
 `
 
 const SLogoWrapper = styled.div`
@@ -353,16 +330,16 @@ const AllContent = () => (
             <a href="/collections/bath-bombs">Bath Bombs</a>
           </ExtendableBlockListItem>
           <ExtendableBlockListItem>
-            <a href="https://www.fragrantjewels.com/collections/jewel-candles">Candles</a>
+            <a href="/collections/jewel-candles">Candles</a>
           </ExtendableBlockListItem>
           <ExtendableBlockListItem>
             <a href="/collections/the-jewelry-store">Jewelry</a>
           </ExtendableBlockListItem>
           <ExtendableBlockListItem>
-            <a href="https://www.fragrantjewels.com/collections/gift-sets">Gift Sets</a>
+            <a href="/collections/gift-sets">Gift Sets</a>
           </ExtendableBlockListItem>
           <ExtendableBlockListItem>
-            <AnimatedLink>
+            <AnimatedLink href="/collections/all-products">
               <span>Shop all</span>
             </AnimatedLink>
           </ExtendableBlockListItem>
@@ -399,7 +376,7 @@ const AllContent = () => (
             <a href="/collections/all-products#fragrance=Fragrance:%20Woodsy">Woodsy</a>
           </ExtendableBlockListItem>
           <ExtendableBlockListItem>
-            <AnimatedLink>Shop all</AnimatedLink>
+            <AnimatedLink href="/collections/all-products">Shop all</AnimatedLink>
           </ExtendableBlockListItem>
         </ExtendableBlockList>
       </ExtendableBlockItem>
@@ -417,7 +394,7 @@ const AllContent = () => (
               <a href="/collections/all-products#material=Material:%20Rhodium%20plated">Rhodium plated</a>
             </ExtendableBlockListItem>
             <ExtendableBlockListItem>
-              <AnimatedLink>
+              <AnimatedLink href="/collections/all-products">
                 <span>Shop all</span>
               </AnimatedLink>
             </ExtendableBlockListItem>
@@ -436,7 +413,7 @@ const AllContent = () => (
               <a href="/collections/all-products#color=Metal%20Color:%20Silver">Silver</a>
             </ExtendableBlockListItem>
             <ExtendableBlockListItem>
-              <AnimatedLink>
+              <AnimatedLink href="/collections/all-products">
                 <span>Shop all</span>
               </AnimatedLink>
             </ExtendableBlockListItem>
@@ -446,7 +423,7 @@ const AllContent = () => (
       <ExtendableBlockItem>
         <a href="/products/piece-by-piece-bath-bomb">
           <img src="https://fragrantjewels.s3.amazonaws.com/app/app-nav/nav-all-img-6-dt.jpg" />
-          <AnimatedLink>Celebrate Autism Acceptance</AnimatedLink>
+          <AnimatedLink as="span">Celebrate Autism Acceptance</AnimatedLink>
         </a>
       </ExtendableBlockItem>
     </ExtendableBlockContainer>
@@ -457,38 +434,42 @@ const SubscriptionContent = () => (
   <ExtendableBlock>
     <ExtendableBlockContainer>
       <ExtendableBlockItem>
-        <a href="/products/piece-by-piece-bath-bomb">
+        <a href="/pages/inner-circle">
           <img src="https://fragrantjewels-assets.s3.amazonaws.com/images/under-the-sea/uts-nav-subscription.jpg" />
           <ExtendableBlockListTitle>New Inner Circle Exclusive Collections Every Month</ExtendableBlockListTitle>
-          <ExtendableBlockListText>This month discover the beauty that lies beneath with the new Under the Sea collection.</ExtendableBlockListText>
-          <AnimatedLink>Learn more</AnimatedLink>
+          <ExtendableBlockListText>
+            This month discover the beauty that lies beneath with the new Under the Sea collection.
+          </ExtendableBlockListText>
+          <AnimatedLink as="span">Learn more</AnimatedLink>
         </a>
       </ExtendableBlockItem>
       <ExtendableBlockItem>
-        <a href="/products/piece-by-piece-bath-bomb">
+        <a href="/pages/rare-ic-page">
           <img src="https://fragrantjewels.s3.amazonaws.com/app/app-nav/nav-subscription-img-rare.jpg" />
           <ExtendableBlockListTitle>Everything There Is To Know About Rare Collections</ExtendableBlockListTitle>
-          <ExtendableBlockListText>Start collecting unique limited edition sets not available for sale! Find out how you can qualify.</ExtendableBlockListText>
-          <AnimatedLink>Learn more</AnimatedLink>
+          <ExtendableBlockListText>
+            Start collecting unique limited edition sets not available for sale! Find out how you can qualify.
+          </ExtendableBlockListText>
+          <AnimatedLink as="span">Learn more</AnimatedLink>
         </a>
       </ExtendableBlockItem>
       <ExtendableBlockItem>
         <ExtendableBlockListTitle>Subscription</ExtendableBlockListTitle>
         <ExtendableBlockList>
           <ExtendableBlockListItem>
-            <a href="/collections/all-products#fragrance=Fragrance:%20Aquatic">How it works</a>
+            <a href="/pages/inner-circle#how-it-works">How it works</a>
           </ExtendableBlockListItem>
           <ExtendableBlockListItem>
-            <a href="/collections/all-products#fragrance=Fragrance:%20Citrus">Join now</a>
+            <a href="/pages/inner-circle#join-now">Join now</a>
           </ExtendableBlockListItem>
           <ExtendableBlockListItem>
-            <a href="/collections/all-products#fragrance=Fragrance:%20Floral">Current box</a>
+            <a href="/pages/inner-circle#current-box">Current box</a>
           </ExtendableBlockListItem>
           <ExtendableBlockListItem>
-            <a href="/collections/all-products#fragrance=Fragrance:%20Floral%20Woods">Members Only Store</a>
+            <a href="/collections/esic">Members Only Store</a>
           </ExtendableBlockListItem>
           <ExtendableBlockListItem>
-            <a href="/collections/all-products#fragrance=Fragrance:%20Fresh">Rare Collections</a>
+            <a href="/pages/rare-ic-page">Rare Collections</a>
           </ExtendableBlockListItem>
         </ExtendableBlockList>
       </ExtendableBlockItem>
@@ -500,29 +481,33 @@ const RewardsContent = () => (
   <ExtendableBlock>
     <ExtendableBlockContainer>
       <ExtendableBlockItem>
-        <a href="/products/piece-by-piece-bath-bomb">
+        <a href="/pages/rewards-boutique">
           <img src="https://fragrantjewels.s3.amazonaws.com/app/app-nav/nav-rewards-img-1.jpg" />
           <ExtendableBlockListTitle>New Rewards Every Week</ExtendableBlockListTitle>
-          <ExtendableBlockListText>Every dollar you spend earns you reward points you can use to redeem free jewelry, products and more!</ExtendableBlockListText>
-          <AnimatedLink>Learn more</AnimatedLink>
+          <ExtendableBlockListText>
+            Every dollar you spend earns you reward points you can use to redeem free jewelry, products and more!
+          </ExtendableBlockListText>
+          <AnimatedLink as="span">Learn more</AnimatedLink>
         </a>
       </ExtendableBlockItem>
       <ExtendableBlockItem>
-        <a href="/products/piece-by-piece-bath-bomb">
+        <a href="/pages/rewards-explainer">
           <img src="https://fragrantjewels.s3.amazonaws.com/app/app-nav/nav-rewards-img-2.jpg" />
           <ExtendableBlockListTitle>Earn Platinum Reward Status</ExtendableBlockListTitle>
-          <ExtendableBlockListText>Get exclusive access to VIP offers, 3x points and more when you earn Platinum status!</ExtendableBlockListText>
-          <AnimatedLink>Learn more</AnimatedLink>
+          <ExtendableBlockListText>
+            Get exclusive access to VIP offers, 3x points and more when you earn Platinum status!
+          </ExtendableBlockListText>
+          <AnimatedLink as="span">Learn more</AnimatedLink>
         </a>
       </ExtendableBlockItem>
       <ExtendableBlockItem>
         <ExtendableBlockListTitle>Rewards</ExtendableBlockListTitle>
         <ExtendableBlockList>
           <ExtendableBlockListItem>
-            <a href="/collections/all-products#fragrance=Fragrance:%20Aquatic">Rewards Boutique</a>
+            <a href="/pages/rewards-boutique">Rewards Boutique</a>
           </ExtendableBlockListItem>
           <ExtendableBlockListItem>
-            <a href="/collections/all-products#fragrance=Fragrance:%20Citrus">How it Works</a>
+            <a href="/pages/rewards-explainer">How it Works</a>
           </ExtendableBlockListItem>
         </ExtendableBlockList>
       </ExtendableBlockItem>
@@ -545,7 +530,7 @@ const ExtendableBlockContent = ({ name }: { name: ExtendableBlockContentType }) 
   }
 }
 
-export function Header({ className, onSearch }: HeaderProps): React.ReactElement | null {
+export function Header({ className, onSearch, user }: HeaderProps): React.ReactElement | null {
   const [searchDropdownVisible, setSearchDropdownVisible] = useState(false)
   const [extendableBlockContent, setExtendableBlockContent] = useState<ExtendableBlockContentType>('')
   const [isBurgerMenuOpen, setBurgerMenuOpen] = useState(false)
@@ -612,8 +597,15 @@ export function Header({ className, onSearch }: HeaderProps): React.ReactElement
                 <SPointsWidget>
                   <PointsWidget points={100} />
                 </SPointsWidget>
-                <NavMobile isBurgerMenuOpen={isBurgerMenuOpen} setBurgerMenuOpen={setBurgerMenuOpen} />
-                <NavIcons onSearchClick={() => setSearchDropdownVisible(!searchDropdownVisible)} />
+                <NavMobile
+                  isBurgerMenuOpen={isBurgerMenuOpen}
+                  setBurgerMenuOpen={setBurgerMenuOpen}
+                  isUserLoggedIn={!!user}
+                />
+                <NavIcons
+                  onSearchClick={() => setSearchDropdownVisible(!searchDropdownVisible)}
+                  isUserLoggedIn={!!user}
+                />
               </SIconsWrapper>
             </SSearchContent>
             {/* <SSearchDropdown ref={searchDropdownRef}>
