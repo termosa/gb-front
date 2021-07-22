@@ -11,6 +11,7 @@ export const BasicInnerCircleExclusive = (): React.ReactElement => (
     title={'Get addicted to me-time'}
     subTitle={'Join the Inner Circle for exciting new collections every month, available exclusively to members'}
     topButtonText={'GET STARTED'}
+    buttonLink={''}
     product={{
       product_id: 1,
       title: 'Winter - Wax Tarts',

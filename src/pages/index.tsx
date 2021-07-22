@@ -58,6 +58,7 @@ const HomePage = ({ trendingProducts, innerCircleProduct }: HomePageProps): Reac
                 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/ic-img-jewelry.jpg',
                 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/ic-img.jpg',
               ]}
+              buttonLink={''}
               title={'Get addicted to me-time'}
               subTitle={
                 'Join the Inner Circle for exciting new collections every month, available exclusively to members'
