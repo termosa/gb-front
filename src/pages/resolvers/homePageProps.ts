@@ -3,7 +3,7 @@ import resolvePageProps from '@fragrantjewels/gravity-brands.modules.resolve-pag
 import loadCollection, { Product } from '@fragrantjewels/gravity-brands.modules.load-collection'
 import loadProduct from '@fragrantjewels/gravity-brands.modules.load-product'
 
-const TRENDING_PRODUCTS_COLLECTION_ID = 174027178074
+const TRENDING_PRODUCTS_COLLECTION_ID = 160593838170
 
 export const loadTrendingProducts = (): Promise<Product[] | null> =>
   loadCollection(TRENDING_PRODUCTS_COLLECTION_ID).then(
