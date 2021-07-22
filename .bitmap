@@ -93,7 +93,7 @@
     },
     "components/main-page-layout": {
         "scope": "fragrantjewels.gravity-brands",
-        "version": "0.0.21",
+        "version": "0.0.22",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/main-page-layout"
     },
