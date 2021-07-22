@@ -175,6 +175,20 @@ const SliderWrapper = styled.div`
       margin-bottom: 0;
     }
   }
+
+  .slick-prev {
+    left: 9px;
+    @media (min-width: 500px) {
+      left: -12px;
+    }
+  }
+
+  .slick-next {
+    right: 9px;
+    @media (min-width: 500px) {
+      right: -12px;
+    }
+  }
 `
 
 export function ShopByProductsOverview({ products }: ShopByProductsOverviewProps): React.ReactElement {

@@ -21,8 +21,6 @@ const Product = ({ product, recommendedProducts, potentialProducts }: ProductPag
     silver: product.tags && product.tags.includes('925 Silver Sterling'),
   }
 
-  console.log(product)
-
   return (
     <MainPageLayout>
       <div className="app-re-wrapper" id="app-wrapper">

@@ -183,7 +183,7 @@
     },
     "components/shop-by-products-overview": {
         "scope": "fragrantjewels.gravity-brands",
-        "version": "0.0.30",
+        "version": "0.0.31",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/shop-by-products-overview"
     },
