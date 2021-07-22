@@ -18,6 +18,7 @@ import SiteSection from '@fragrantjewels/gravity-brands.components.site-section'
 import InnerCircleExclusiveContainer from '@containers/InnerCircleExclusive'
 import ProductCarouselContainer from '@containers/ProductCarousel'
 import MainPageLayout from '@fragrantjewels/gravity-brands.components.main-page-layout'
+import YotpoComments from '@fragrantjewels/gravity-brands.components.yotpo-comments'
 
 builder.init(config.apiKey)
 
@@ -333,6 +334,42 @@ Builder.registerComponent(withChildren(MainPageLayout), {
         name: 'Text',
         options: { text: 'Put page content here' },
       },
+    },
+  ],
+})
+
+Builder.registerComponent(YotpoComments, {
+  name: 'YotpoComments',
+  inputs: [
+    {
+      name: 'id',
+      type: 'number',
+      defaultValue: '',
+      required: true,
+    },
+    {
+      name: 'title',
+      type: 'string',
+      defaultValue: 'Product name',
+      required: true,
+    },
+    {
+      name: 'imageUrl',
+      type: 'string',
+      defaultValue: '',
+      required: true,
+    },
+    {
+      name: 'productUrl',
+      type: 'string',
+      defaultValue: '',
+      required: false,
+    },
+    {
+      name: 'description',
+      type: 'string',
+      defaultValue: '',
+      required: false,
     },
   ],
 })

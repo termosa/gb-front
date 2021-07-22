@@ -58,6 +58,7 @@
     "react-slick": "^0.28.1",
     "styled-components": "^5.2.3",
     "svg-sprite-loader": "4.2.1",
+    "tiny-script-loader": "^2.2.1",
     "use-defer": "^2.1.0"
   },
   "devDependencies": {

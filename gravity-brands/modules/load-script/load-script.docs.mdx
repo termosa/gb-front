@@ -1,0 +1,12 @@
+---
+labels: ['async', 'load', 'script', 'js']
+description: 'Loads code in script tag'
+---
+
+```js
+loadScript('//site.com/script.js')
+  .then(
+    () => console.log('script loaded'),
+    () => console.log('script failed to load'),
+  )
+```
