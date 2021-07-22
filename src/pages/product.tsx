@@ -15,7 +15,11 @@ const Product = ({ product, recommendedProducts, potentialProducts }: ProductPag
   const [isDiscountApplied, setDiscountApplied] = useState(true)
   const [currentVariant, setCurrentVariant] = useState(product.variants[0].variant_id)
   const [actualPrice, setActualPrice] = useState(product.variants[0].actual_price)
-  const comparePrice = product.variants[0].compare_at_price
+
+  const label = {
+    members: product.tags && product.tags.includes('Member Only'),
+    silver: product.tags && product.tags.includes('925 Silver Sterling'),
+  }
 
   return (
     <MainPageLayout>
@@ -179,12 +183,18 @@ const Product = ({ product, recommendedProducts, potentialProducts }: ProductPag
                         {isDiscountApplied ? (
                           <>
                             <span className="pdp-product-details__discount-price">{formatPrice(actualPrice)}</span>
-                            <span className="pdp-product-details__price"> {formatPrice(comparePrice)}</span>
+                            <span className="pdp-product-details__price">
+                              &nbsp;{(actualPrice - actualPrice * 0.2).toFixed(2)}
+                            </span>
                           </>
                         ) : (
                           <span>{formatPrice(actualPrice)}</span>
                         )}
-                        <span className="pdp-product-details__tag"> | Sterling silver</span>
+                        {label.silver ? (
+                          <span className="pdp-product-details__silver-tag"> | 925 Sterling Silver</span>
+                        ) : (
+                          label.members && <span className="pdp-product-details__members-tag"> | Members Only</span>
+                        )}
                       </div>
                       <div className="pdp-pi-selector-wrapper">
                         <div className="pdp-pi-rs-text">Select a ring size to reserve this box:</div>
