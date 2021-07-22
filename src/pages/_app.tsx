@@ -5,10 +5,10 @@ import { ThemeProvider } from '@fragrantjewels/gravity-brands.helpers.theme-prov
 import './styles/product.scss'
 import './styles/styles.scss'
 
-const apiUrl = typeof window === 'undefined' ? process.env.BASE_API_URL : process.env.CLIENT_API_URL
+const API_URL_PROPERTY_NAME = typeof window === 'undefined' ? 'BASE_API_URL' : 'CLIENT_API_URL'
 
-if (!baseApiUrl(apiUrl)) {
-  throw new Error('BASE_API_URL env variable is not set')
+if (!baseApiUrl(process.env[API_URL_PROPERTY_NAME])) {
+  throw new Error(`${API_URL_PROPERTY_NAME} env variable is not set`)
 }
 
 const CustomApp: FC<AppProps> = ({ Component, pageProps }) => (
