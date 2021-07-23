@@ -8,15 +8,11 @@ export type SearchFieldProps = {
 }
 
 const SWrapper = styled.div`
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
   width: 100%;
   @media (max-width: 1199px) {
-    padding: 0 15px;
+    padding-top: 15px;
   }
 `
 
@@ -41,11 +37,7 @@ const SButton = styled.button`
   border: 1px solid #797979;
   border-left: none;
   background-color: #fff;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
   cursor: pointer;
   & > svg {

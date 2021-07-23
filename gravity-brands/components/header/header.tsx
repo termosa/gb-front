@@ -520,7 +520,7 @@ export const ExtendableBlockContent = ({ name }: { name: string }): JSX.Element 
 
 export function Header({ className, onSearch, user }: HeaderProps): React.ReactElement | null {
   const [searchDropdownVisible, setSearchDropdownVisible] = useState(false)
-  const [extendableBlockContent, setExtendableBlockContent] = useState<ExtendableBlockContentType>('')
+  const [extendableBlockContent, setExtendableBlockContent] = useState('')
   const [isBurgerMenuOpen, setBurgerMenuOpen] = useState(false)
 
   return (
@@ -596,9 +596,7 @@ export function Header({ className, onSearch, user }: HeaderProps): React.ReactE
                 />
               </SIconsWrapper>
             </SSearchContent>
-            {/* <SSearchDropdown ref={searchDropdownRef}>
-              <h1>lol olodsaldlas</h1>
-            </SSearchDropdown> */}
+            {searchDropdownVisible && <SearchField onSubmit={onSearch} />}
           </SSearchWrapper>
           <NavTabs setExtendableBlockContent={setExtendableBlockContent} />
         </SContentWrapper>
