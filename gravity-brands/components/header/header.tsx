@@ -42,7 +42,6 @@ const SWrapper = styled.div`
 const SInnerWrapper = styled.div`
   box-sizing: border-box;
   padding: 0;
-  -webkit-box-shadow: 0 4px 9px rgba(0, 0, 0, 0.1);
   box-shadow: 0 4px 9px rgba(0, 0, 0, 0.1);
   position: relative;
   z-index: 10;
@@ -76,27 +75,17 @@ const SSearchWrapper = styled.div`
 
 const SSearchContent = styled.div`
   display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
   justify-content: space-between;
 
   @media (min-width: 1200px) {
-    -ms-flex-wrap: nowrap;
     flex-wrap: nowrap;
   }
 `
 
 const SLogoWrapper = styled.div`
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
 `
 
@@ -141,8 +130,6 @@ const SHamburgerMenu = styled.span`
 
 const SFieldWrapper = styled.div`
   margin: 0 15px;
-  -webkit-box-flex: 1;
-  -ms-flex-positive: 1;
   flex-grow: 1;
 
   @media (min-width: 1200px) {
@@ -150,8 +137,6 @@ const SFieldWrapper = styled.div`
   }
 
   @media (max-width: 1199px) {
-    -webkit-box-ordinal-group: 6;
-    -ms-flex-order: 5;
     order: 5;
     width: 100%;
     display: none !important;
@@ -161,18 +146,12 @@ const SFieldWrapper = styled.div`
 const SIconsWrapper = styled.div`
   margin: 0 15px;
   display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
   justify-content: space-between;
   min-width: fit-content;
 
   @media (min-width: 1200px) {
-    -ms-flex-wrap: nowrap;
     flex-wrap: nowrap;
     min-width: 405px;
     min-height: 43px;
@@ -251,16 +230,13 @@ const ExtendableBlockListText = styled.p`
 `
 
 const ExtendableBlockList = styled.ul`
-  & {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 15px;
-    text-transform: none;
-  }
+  list-style: none;
+  padding: 0;
+  margin: 0 0 15px;
+  text-transform: none;
+
   @media (min-width: 1200px) {
-    & {
-      margin: 0 0 25px;
-    }
+    margin: 0 0 25px;
   }
 `
 
@@ -279,7 +255,6 @@ const ExtendableBlockListItem = styled.li`
     padding: 15px 0 15px;
     font: 400 14px/1.5 'Montserrat', sans-serif;
     letter-spacing: 0.05em;
-    -webkit-transition: color linear 0.2s;
     transition: color linear 0.2s;
     color: #000;
     text-decoration: none;
@@ -530,7 +505,7 @@ const ExtendableBlockContent = ({ name }: { name: ExtendableBlockContentType }) 
   }
 }
 
-export function Header({ className, onSearch }: HeaderProps): React.ReactElement | null {
+export function Header({ className, onSearch, user }: HeaderProps): React.ReactElement | null {
   const [searchDropdownVisible, setSearchDropdownVisible] = useState(false)
   const [extendableBlockContent, setExtendableBlockContent] = useState<ExtendableBlockContentType>('')
   const [isBurgerMenuOpen, setBurgerMenuOpen] = useState(false)
@@ -593,12 +568,19 @@ export function Header({ className, onSearch }: HeaderProps): React.ReactElement
                 <SearchField onSubmit={onSearch} />
               </SFieldWrapper>
               <SIconsWrapper>
-                <SSignSignup />
+                <SSignSignup userName={user?.name} />
                 <SPointsWidget>
                   <PointsWidget points={100} />
                 </SPointsWidget>
-                <NavMobile isBurgerMenuOpen={isBurgerMenuOpen} setBurgerMenuOpen={setBurgerMenuOpen} />
-                <NavIcons onSearchClick={() => setSearchDropdownVisible(!searchDropdownVisible)} />
+                <NavMobile
+                  isBurgerMenuOpen={isBurgerMenuOpen}
+                  setBurgerMenuOpen={setBurgerMenuOpen}
+                  userName={user?.name}
+                />
+                <NavIcons
+                  onSearchClick={() => setSearchDropdownVisible(!searchDropdownVisible)}
+                  userName={user?.name}
+                />
               </SIconsWrapper>
             </SSearchContent>
             {/* <SSearchDropdown ref={searchDropdownRef}>

@@ -6,6 +6,7 @@ import { SigninSignup } from '@fragrantjewels/gravity-brands.components.signin-s
 export type NavIconsProps = {
   className?: ClassName
   onSearchClick: () => void
+  userName?: string
 }
 
 const SWrapper = styled.div`
@@ -166,6 +167,12 @@ const SLinkWrapper = styled.ul`
   }
 `
 
+const SSignOutLink = styled.a`
+  text-decoration: underline;
+  color: #bdbdbd;
+  font-size: 13px;
+`
+
 const LINKS_LIST = [
   {
     title: 'Order Status',
@@ -185,7 +192,7 @@ const LINKS_LIST = [
   },
 ]
 
-export function NavIcons({ className, onSearchClick }: NavIconsProps): React.ReactElement | null {
+export function NavIcons({ className, onSearchClick, userName }: NavIconsProps): React.ReactElement | null {
   const profileLinkRef = useRef<HTMLAnchorElement | null>(null)
   const dropDownRef = useRef<HTMLDivElement | null>(null)
 
@@ -264,7 +271,7 @@ export function NavIcons({ className, onSearchClick }: NavIconsProps): React.Rea
             ))}
             <li>
               <div style={{ margin: '0 auto', maxWidth: 'fit-content' }}>
-                <SigninSignup />
+                {userName ? <SSignOutLink>Sign Out</SSignOutLink> : <SigninSignup />}
               </div>
             </li>
           </SLinkWrapper>

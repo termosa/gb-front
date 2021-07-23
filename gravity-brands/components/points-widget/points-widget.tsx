@@ -41,6 +41,8 @@ const SValue = styled.div`
 `
 
 export function PointsWidget({ points }: PointsWidgetProps) {
+  const gradientId = `app-points-gold-des${Math.floor(Math.random() * 100)}`
+
   return (
     <SWrapper>
       <SLinkWrapper href="/pages/rewards-boutique">
@@ -55,7 +57,7 @@ export function PointsWidget({ points }: PointsWidgetProps) {
           ></path>
           <path
             d="M24.2053 39L47.892 11.4247L38.6073 1H24.3827H24.522H10.2847L1 11.4247L24.6993 39"
-            fill="url(#app-points-gold-des)"
+            fill={`url(#${gradientId})`}
           ></path>
           <path
             d="M24.4719 39L47.9305 11.4247L38.6332 1H24.4085H24.5479H10.3105L1.02588 11.4247L24.4719 39Z"
@@ -90,7 +92,7 @@ export function PointsWidget({ points }: PointsWidgetProps) {
             strokeLinejoin="round"
           ></path>
           <defs>
-            <linearGradient id="app-points-gold-des" x1="5" y1="5.5" x2="48" y2="28" gradientUnits="userSpaceOnUse">
+            <linearGradient id={gradientId} x1="5" y1="5.5" x2="48" y2="28" gradientUnits="userSpaceOnUse">
               <animate attributeName="x1" values="5;4;5" dur="7s" repeatCount="indefinite"></animate>
               <animate attributeName="y1" values="5.5;4.5;5.5" dur="7s" repeatCount="indefinite"></animate>
               <animate attributeName="x2" values="48;108.5;48" dur="7s" repeatCount="indefinite"></animate>

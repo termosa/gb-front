@@ -4,6 +4,7 @@ import styled from 'styled-components'
 
 export type SearchFieldProps = {
   className?: ClassName
+  userName?: string
 }
 
 const SWrapper = styled.div`
@@ -25,11 +26,16 @@ const SLabel = styled.a`
   }
 `
 
-export function SigninSignup({ className }: SearchFieldProps): React.ReactElement | null {
+export function SigninSignup({ className, userName }: SearchFieldProps): React.ReactElement | null {
   return (
     <SWrapper className={cn('SigninSignup', className)}>
-      <SLabel href="/account/login?return_url=/">Sign in</SLabel>
-      &nbsp;/&nbsp;
+      {userName ? (
+        <div>Hi, {userName}</div>
+      ) : (
+        <span>
+          <SLabel href="/account/login?return_url=/">Sign in</SLabel> /{' '}
+        </span>
+      )}
       <SLabel href="/account/register">Sign up</SLabel>
     </SWrapper>
   )

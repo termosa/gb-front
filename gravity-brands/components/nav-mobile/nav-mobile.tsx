@@ -6,6 +6,7 @@ import { SigninSignup } from '@fragrantjewels/gravity-brands.components.signin-s
 export type SearchFieldProps = {
   isBurgerMenuOpen: boolean
   setBurgerMenuOpen: (isBurgerMenuOpen: boolean) => void
+  userName?: string
 }
 
 const SWrapper = styled.div`
@@ -330,7 +331,11 @@ const CARDS_LIST = [
   },
 ]
 
-export function NavMobile({ isBurgerMenuOpen, setBurgerMenuOpen }: SearchFieldProps): React.ReactElement | null {
+export function NavMobile({
+  isBurgerMenuOpen,
+  setBurgerMenuOpen,
+  userName,
+}: SearchFieldProps): React.ReactElement | null {
   useEffect(() => {
     document.body.style.overflow = isBurgerMenuOpen ? 'hidden' : 'auto'
   }, [isBurgerMenuOpen])
@@ -347,7 +352,7 @@ export function NavMobile({ isBurgerMenuOpen, setBurgerMenuOpen }: SearchFieldPr
                   <PointsWidget points={100} />
                 </SPointsWidget>
               </div>
-              <SigninSignup />
+              <SigninSignup userName={userName} />
             </SNavTopInnerLeft>
             <SCloseBtn type="button" id="app-nav__mobile__close-btn" onClick={() => setBurgerMenuOpen(false)}>
               <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
