@@ -1,6 +1,10 @@
 import React from 'react'
-import { NavMobile, SearchFieldProps } from './nav-mobile'
+import { NavMobile } from './nav-mobile'
 
-export const BasicRingSize = (props: SearchFieldProps): React.ReactElement => {
-  return <NavMobile {...props} />
-}
+export const BasicNavMobile = (): React.ReactElement => (
+  <NavMobile isBurgerMenuOpen setBurgerMenuOpen={() => alert('Burger menu is opened')} />
+)
+
+export const NavMobileWithUserName = (): React.ReactElement => (
+  <NavMobile isBurgerMenuOpen setBurgerMenuOpen={() => alert('Burger menu is opened')} userName="Kelya" />
+)

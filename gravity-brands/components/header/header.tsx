@@ -8,11 +8,13 @@ import { SigninSignup } from '@fragrantjewels/gravity-brands.components.signin-s
 import { PointsWidget } from '@fragrantjewels/gravity-brands.components.points-widget'
 import { NavIcons } from '@fragrantjewels/gravity-brands.components.nav-icons'
 import { NavMobile } from '@fragrantjewels/gravity-brands.components.nav-mobile'
+import { ProductsChunk } from '@fragrantjewels/gravity-brands.modules.normalize-products-chunk'
 
 export type HeaderProps = {
   className?: ClassName
   onSearch: (value: string) => void
   userName?: string
+  searchedProducts?: ProductsChunk
 }
 
 const SWrapper = styled.div`
@@ -518,8 +520,8 @@ export const ExtendableBlockContent = ({ name }: { name: string }): JSX.Element 
   }
 }
 
-export function Header({ className, onSearch, userName }: HeaderProps): React.ReactElement | null {
-  const [searchDropdownVisible, setSearchDropdownVisible] = useState(false)
+export function Header({ className, onSearch, userName, searchedProducts }: HeaderProps): React.ReactElement | null {
+  const [isSearchDropdownVisible, setIsSearchDropdownVisible] = useState(false)
   const [extendableBlockContent, setExtendableBlockContent] = useState('')
   const [isBurgerMenuOpen, setBurgerMenuOpen] = useState(false)
 
@@ -578,7 +580,7 @@ export function Header({ className, onSearch, userName }: HeaderProps): React.Re
                 </SLogo>
               </SLogoWrapper>
               <SFieldWrapper>
-                <SearchField onSubmit={onSearch} />
+                <SearchField onSubmit={onSearch} searchedProducts={searchedProducts} />
               </SFieldWrapper>
               <SIconsWrapper>
                 <SSignSignup userName={userName} />
@@ -590,10 +592,13 @@ export function Header({ className, onSearch, userName }: HeaderProps): React.Re
                   setBurgerMenuOpen={setBurgerMenuOpen}
                   userName={userName}
                 />
-                <NavIcons onSearchClick={() => setSearchDropdownVisible(!searchDropdownVisible)} userName={userName} />
+                <NavIcons
+                  onSearchClick={() => setIsSearchDropdownVisible(!isSearchDropdownVisible)}
+                  userName={userName}
+                />
               </SIconsWrapper>
             </SSearchContent>
-            {searchDropdownVisible && <SearchField onSubmit={onSearch} />}
+            {isSearchDropdownVisible && <SearchField onSubmit={onSearch} searchedProducts={searchedProducts} />}
           </SSearchWrapper>
           <NavTabs setExtendableBlockContent={setExtendableBlockContent} />
         </SContentWrapper>

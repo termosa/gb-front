@@ -2,6 +2,8 @@ import React from 'react'
 import Footer from '@fragrantjewels/gravity-brands.components.footer'
 import styled from 'styled-components'
 import Header from '@fragrantjewels/gravity-brands.components.header'
+import loadProductsChunk from '@fragrantjewels/gravity-brands.modules.load-products-chunk'
+import useDefer from 'use-defer'
 
 export type MainPageLayoutProps = {
   children: React.ReactNode
@@ -21,14 +23,18 @@ const MainPageLayoutWrapper = styled.div`
   }
 `
 
-export const MainPageLayout = ({ children, userName }: MainPageLayoutProps): React.ReactElement => (
-  <MainPageLayoutWrapper>
-    <Header onSearch={(value) => console.log(value)} userName={userName} />
-    <div className="app-re-wrapper" id="app-wrapper">
-      <div className="app-re-content" id="app-content">
-        <main className="app-h-main">{children}</main>
+export const MainPageLayout = ({ children, userName }: MainPageLayoutProps): React.ReactElement => {
+  const searchRequest = useDefer(loadProductsChunk)
+
+  return (
+    <MainPageLayoutWrapper>
+      <Header onSearch={(value) => console.log(value)} userName={userName} searchedProducts={searchRequest.value} />
+      <div className="app-re-wrapper" id="app-wrapper">
+        <div className="app-re-content" id="app-content">
+          <main className="app-h-main">{children}</main>
+        </div>
       </div>
-    </div>
-    <Footer className="Footer-Colored" />
-  </MainPageLayoutWrapper>
-)
+      <Footer className="Footer-Colored" />
+    </MainPageLayoutWrapper>
+  )
+}

@@ -331,6 +331,12 @@
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/modules/load-script"
     },
+    "modules/load-products-chunk": {
+        "scope": "",
+        "version": "",
+        "mainFile": "index.ts",
+        "rootDir": "gravity-brands/modules/load-products-chunk"
+    },
     "modules/move-point": {
         "scope": "fragrantjewels.gravity-brands",
         "version": "0.0.4",
@@ -372,6 +378,12 @@
         "version": "0.0.4",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/modules/normalize-product-variant"
+    },
+    "modules/normalize-products-chunk": {
+        "scope": "",
+        "version": "",
+        "mainFile": "index.ts",
+        "rootDir": "gravity-brands/modules/normalize-products-chunk"
     },
     "modules/parse-filters-from-products": {
         "scope": "fragrantjewels.gravity-brands",
