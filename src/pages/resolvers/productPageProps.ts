@@ -2,9 +2,7 @@ import { GetServerSidePropsContext } from 'next'
 import resolvePageProps from '@fragrantjewels/gravity-brands.modules.resolve-page-props'
 import loadProduct from '@fragrantjewels/gravity-brands.modules.load-product'
 import loadCollection, { Product } from '@fragrantjewels/gravity-brands.modules.load-collection'
-
-const RECOMMENDED_PRODUCTS_COLLECTION_ID = 173959905370
-const POTENTIAL_PRODUCTS_COLLECTION_ID = 174027145306
+import { POTENTIAL_PRODUCTS_COLLECTION_ID, RECOMMENDED_PRODUCTS_COLLECTION_ID } from 'src/settings/ids'
 
 const loadCollectionProducts = (collectionId: number): Promise<Product[] | null> =>
   loadCollection(collectionId).then(

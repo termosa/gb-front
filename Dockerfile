@@ -10,6 +10,7 @@ ARG BASE_API_URL
 ARG CLIENT_API_URL
 ARG NEXT_PUBLIC_BUILDER_PUBLIC_KEY
 ARG BIT_TOKEN
+ARG APP_ENV=production
 
 COPY /package.json /yarn.lock /.npmrc ./
 
