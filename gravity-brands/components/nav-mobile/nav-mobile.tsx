@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { PointsWidget } from '@fragrantjewels/gravity-brands.components.points-widget'
 import { SigninSignup } from '@fragrantjewels/gravity-brands.components.signin-signup'
+import { ExtendableBlockContent } from '@fragrantjewels/gravity-brands.components.header'
 
 export type SearchFieldProps = {
   isBurgerMenuOpen: boolean
@@ -340,6 +341,8 @@ export function NavMobile({
     document.body.style.overflow = isBurgerMenuOpen ? 'hidden' : 'auto'
   }, [isBurgerMenuOpen])
 
+  const [extendableBlock, setExtendableBlock] = useState('')
+
   return isBurgerMenuOpen ? (
     <SWrapper id="app-nav-secondary-mobile">
       <SOverlay />
@@ -373,7 +376,15 @@ export function NavMobile({
               {TABS_LIST.map((item) =>
                 item.extendable ? (
                   <SNavItemExtendable key={item.title}>
-                    <SNavLink href={item.href}>{item.title}</SNavLink>
+                    <SNavLink
+                      onClick={(event) => {
+                        event.preventDefault()
+                        extendableBlock === item.title ? setExtendableBlock('') : setExtendableBlock(item.title)
+                      }}
+                    >
+                      {item.title}
+                    </SNavLink>
+                    {extendableBlock === item.title && <ExtendableBlockContent name={item.title} />}
                   </SNavItemExtendable>
                 ) : (
                   <SNavItem key={item.title}>

@@ -209,6 +209,19 @@ const ExtendableBlockContainer = styled.div`
   width: 990px;
   display: flex;
   justify-content: space-between;
+
+  @media (max-width: 1200px) {
+    width: 100%;
+    flex-direction: column;
+
+    img {
+      width: 100%;
+    }
+
+    & > div {
+      margin: 0 0 25px 0;
+    }
+  }
 `
 
 const ExtendableBlockListTitle = styled.strong`
@@ -293,6 +306,8 @@ const ExtendableBlockItem = styled.div`
   margin: 0 1.5em 25px 1.5em;
   width: 80%;
   text-align: start;
+  display: flex;
+  flex-direction: column;
 `
 
 const AllContent = () => (
@@ -490,9 +505,7 @@ const RewardsContent = () => (
   </ExtendableBlock>
 )
 
-export type ExtendableBlockContentType = 'All' | 'Rewards' | 'Subscription' | ''
-
-const ExtendableBlockContent = ({ name }: { name: ExtendableBlockContentType }) => {
+export const ExtendableBlockContent = ({ name }: { name: string }): JSX.Element | null => {
   switch (name) {
     case 'All':
       return <AllContent />
