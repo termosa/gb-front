@@ -5,19 +5,19 @@ import PromiseBar from '@fragrantjewels/gravity-brands.components.promise-bar'
 import InlineSignupForm from '@fragrantjewels/gravity-brands.components.inline-signup-form'
 import ReviewsSection from '@fragrantjewels/gravity-brands.components.reviews-section'
 import ShopByProductsOverview from '@fragrantjewels/gravity-brands.components.shop-by-products-overview'
-import InnerCircleExclusive from '@fragrantjewels/gravity-brands.components.inner-circle-exclusive'
+import InnerCircleExclusive, { Product } from '@fragrantjewels/gravity-brands.components.inner-circle-exclusive'
 import ProductsCarousel from '@fragrantjewels/gravity-brands.components.products-carousel'
 import homePageProps from './resolvers/homePageProps'
 import signup from '@fragrantjewels/gravity-brands.modules.signup'
 import MainPageLayout from '@fragrantjewels/gravity-brands.components.main-page-layout'
 import FollowUs from '@fragrantjewels/gravity-brands.components.follow-us'
 import MostFunOverview from '@fragrantjewels/gravity-brands.components.most-fun-overview'
-import { Product } from '@fragrantjewels/gravity-brands.modules.load-product'
-
+import { ActiveCustomer } from '@fragrantjewels/gravity-brands.modules.load-active-customer'
 
 type HomePageProps = {
-  trendingProducts: Array<Product> | null
-  innerCircleProduct: Product | null
+  trendingProducts: null | Array<Product>
+  innerCircleProduct: null | Product
+  activeCustomer: null | ActiveCustomer
   context: unknown
 }
 
