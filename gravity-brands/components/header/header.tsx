@@ -12,7 +12,7 @@ import { NavMobile } from '@fragrantjewels/gravity-brands.components.nav-mobile'
 export type HeaderProps = {
   className?: ClassName
   onSearch: (value: string) => void
-  user?: { name: string }
+  userName?: string
 }
 
 const SWrapper = styled.div`
@@ -518,7 +518,7 @@ export const ExtendableBlockContent = ({ name }: { name: string }): JSX.Element 
   }
 }
 
-export function Header({ className, onSearch, user }: HeaderProps): React.ReactElement | null {
+export function Header({ className, onSearch, userName }: HeaderProps): React.ReactElement | null {
   const [searchDropdownVisible, setSearchDropdownVisible] = useState(false)
   const [extendableBlockContent, setExtendableBlockContent] = useState('')
   const [isBurgerMenuOpen, setBurgerMenuOpen] = useState(false)
@@ -581,19 +581,16 @@ export function Header({ className, onSearch, user }: HeaderProps): React.ReactE
                 <SearchField onSubmit={onSearch} />
               </SFieldWrapper>
               <SIconsWrapper>
-                <SSignSignup userName={user?.name} />
+                <SSignSignup userName={userName} />
                 <SPointsWidget>
                   <PointsWidget points={100} />
                 </SPointsWidget>
                 <NavMobile
                   isBurgerMenuOpen={isBurgerMenuOpen}
                   setBurgerMenuOpen={setBurgerMenuOpen}
-                  userName={user?.name}
+                  userName={userName}
                 />
-                <NavIcons
-                  onSearchClick={() => setSearchDropdownVisible(!searchDropdownVisible)}
-                  userName={user?.name}
-                />
+                <NavIcons onSearchClick={() => setSearchDropdownVisible(!searchDropdownVisible)} userName={userName} />
               </SIconsWrapper>
             </SSearchContent>
             {searchDropdownVisible && <SearchField onSubmit={onSearch} />}

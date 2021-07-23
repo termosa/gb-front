@@ -5,6 +5,7 @@ import Header from '@fragrantjewels/gravity-brands.components.header'
 
 export type MainPageLayoutProps = {
   children: React.ReactNode
+  userName?: string
 }
 
 const MainPageLayoutWrapper = styled.div`
@@ -20,9 +21,9 @@ const MainPageLayoutWrapper = styled.div`
   }
 `
 
-export const MainPageLayout = ({ children }: MainPageLayoutProps): React.ReactElement => (
+export const MainPageLayout = ({ children, userName }: MainPageLayoutProps): React.ReactElement => (
   <MainPageLayoutWrapper>
-    <Header onSearch={(value) => console.log(value)} />
+    <Header onSearch={(value) => console.log(value)} userName={userName} />
     <div className="app-re-wrapper" id="app-wrapper">
       <div className="app-re-content" id="app-content">
         <main className="app-h-main">{children}</main>

@@ -21,8 +21,8 @@ type HomePageProps = {
   context: unknown
 }
 
-const HomePage = ({ trendingProducts, innerCircleProduct }: HomePageProps): React.ReactElement => (
-  <MainPageLayout>
+const HomePage = ({ trendingProducts, innerCircleProduct, activeCustomer }: HomePageProps): React.ReactElement => (
+  <MainPageLayout userName={activeCustomer?.firstName}>
     <HeroGallery
       slides={[
         {
