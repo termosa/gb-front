@@ -2421,9 +2421,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fragrantjewels/gravity-brands.components.accepted-payments@npm:0.0.14":
-  version: 0.0.14
-  resolution: "@fragrantjewels/gravity-brands.components.accepted-payments@npm:0.0.14::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.components.accepted-payments%2F-%2F%40fragrantjewels-gravity-brands.components.accepted-payments-0.0.14.tgz"
+"@fragrantjewels/gravity-brands.components.accepted-payments@npm:0.0.15":
+  version: 0.0.15
+  resolution: "@fragrantjewels/gravity-brands.components.accepted-payments@npm:0.0.15::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.components.accepted-payments%2F-%2F%40fragrantjewels-gravity-brands.components.accepted-payments-0.0.15.tgz"
   dependencies:
     classnames: ^2.3.1
     core-js: ^3.0.0
@@ -2431,13 +2431,13 @@ __metadata:
   peerDependencies:
     react: ^16.8.0 || ^17.0.0
     react-dom: ^16.8.0 || ^17.0.0
-  checksum: e73fb9fc73196742d7a0f550f0e0c1e9f2aa8d7d306219b93f64192ccab0b9d988d45590d9efa2cc70059fbb7fc412c8e6ffe350438369e5cb1128a405f0ac59
+  checksum: 7c5e81a3e76ceee480a84a04b41651da62673a004ece62edd72b49b6fc7520397800446ed2fbea2520a30436ad9b4bd37d50f334543ae9a48d1f3c95f33d8b7f
   languageName: node
   linkType: hard
 
-"@fragrantjewels/gravity-brands.components.accepted-payments@npm:0.0.9":
-  version: 0.0.9
-  resolution: "@fragrantjewels/gravity-brands.components.accepted-payments@npm:0.0.9::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.components.accepted-payments%2F-%2F%40fragrantjewels-gravity-brands.components.accepted-payments-0.0.9.tgz"
+"@fragrantjewels/gravity-brands.components.button@npm:0.0.21":
+  version: 0.0.21
+  resolution: "@fragrantjewels/gravity-brands.components.button@npm:0.0.21::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.components.button%2F-%2F%40fragrantjewels-gravity-brands.components.button-0.0.21.tgz"
   dependencies:
     classnames: ^2.3.1
     core-js: ^3.0.0
@@ -2445,42 +2445,28 @@ __metadata:
   peerDependencies:
     react: ^16.8.0 || ^17.0.0
     react-dom: ^16.8.0 || ^17.0.0
-  checksum: 491106b514101dcc1cc2e6b276a7db47cca7dc7653fb4589bb41a143dab2dc1b5a24e459191b9131a96049d903123d710c33c670269367e22e697ccd8e1e275a
+  checksum: e4d80b42ab3be93eed9b99a632e0436f3a4975f2754509723f58c2c83e57bb99ca2920f17bab0f53110bc35dcf82c150a65d71adda1920dbcdeec7a530e3ca8c
   languageName: node
   linkType: hard
 
-"@fragrantjewels/gravity-brands.components.button@npm:0.0.20":
-  version: 0.0.20
-  resolution: "@fragrantjewels/gravity-brands.components.button@npm:0.0.20::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.components.button%2F-%2F%40fragrantjewels-gravity-brands.components.button-0.0.20.tgz"
+"@fragrantjewels/gravity-brands.components.category-shop-card@npm:^0.0.28":
+  version: 0.0.28
+  resolution: "@fragrantjewels/gravity-brands.components.category-shop-card@npm:0.0.28::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.components.category-shop-card%2F-%2F%40fragrantjewels-gravity-brands.components.category-shop-card-0.0.28.tgz"
   dependencies:
+    "@fragrantjewels/gravity-brands.components.button": 0.0.21
     classnames: ^2.3.1
     core-js: ^3.0.0
     styled-components: ^5.2.3
   peerDependencies:
     react: ^16.8.0 || ^17.0.0
     react-dom: ^16.8.0 || ^17.0.0
-  checksum: 46435c8ddee929c9fe18336b2decb33c6202d191398b8a7102465c8e79ae56fd2c8341fe2cd187c5e4d290a681f9c56b7efc3c45f5dd0be62f20a58e49d8be6a
+  checksum: f76fb48185d81683064bbb8df78b95ea0f44eaacb3e9ceb6ed6da4ca0956907c73c474d8c64a775dab033eda142bfb4ec533840f3d93cc83ebb6a7e2a0616c5f
   languageName: node
   linkType: hard
 
-"@fragrantjewels/gravity-brands.components.category-shop-card@npm:^0.0.27":
-  version: 0.0.27
-  resolution: "@fragrantjewels/gravity-brands.components.category-shop-card@npm:0.0.27::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.components.category-shop-card%2F-%2F%40fragrantjewels-gravity-brands.components.category-shop-card-0.0.27.tgz"
-  dependencies:
-    "@fragrantjewels/gravity-brands.components.button": 0.0.20
-    classnames: ^2.3.1
-    core-js: ^3.0.0
-    styled-components: ^5.2.3
-  peerDependencies:
-    react: ^16.8.0 || ^17.0.0
-    react-dom: ^16.8.0 || ^17.0.0
-  checksum: 322cec3b232b5ae7058bec425ee83e7201594af2cf4d326dbd8f8a1fd59ba89a59c6123663990ff00b916cf3af7afd9e731ebd66dfa25611e68338acd5eadf19
-  languageName: node
-  linkType: hard
-
-"@fragrantjewels/gravity-brands.components.collection-filters@npm:^0.0.12":
-  version: 0.0.12
-  resolution: "@fragrantjewels/gravity-brands.components.collection-filters@npm:0.0.12::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.components.collection-filters%2F-%2F%40fragrantjewels-gravity-brands.components.collection-filters-0.0.12.tgz"
+"@fragrantjewels/gravity-brands.components.collection-filters@npm:^0.0.13":
+  version: 0.0.13
+  resolution: "@fragrantjewels/gravity-brands.components.collection-filters@npm:0.0.13::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.components.collection-filters%2F-%2F%40fragrantjewels-gravity-brands.components.collection-filters-0.0.13.tgz"
   dependencies:
     "@fragrantjewels/gravity-brands.hooks.use-on-click-outside": 0.0.3
     "@fragrantjewels/gravity-brands.hooks.use-popper": 0.0.3
@@ -2491,30 +2477,30 @@ __metadata:
   peerDependencies:
     react: ^16.8.0 || ^17.0.0
     react-dom: ^16.8.0 || ^17.0.0
-  checksum: 70b661f8ceee9c0878a6261966a2f34ba712730ba5eb6bcd260777096d3aacf72b5c86934cda01b29028f03e865914dfde95a09270143af48c7354b07246aafa
+  checksum: 8767726f252b302d9c4976c72635d0418cf209fc06a79a72fdf6ad928e2cb977c8503cadc196ae3277dbd5be80454083a8699ba42bcaae2a01c96108467ae5c0
   languageName: node
   linkType: hard
 
-"@fragrantjewels/gravity-brands.components.follow-us@npm:^0.0.10":
-  version: 0.0.10
-  resolution: "@fragrantjewels/gravity-brands.components.follow-us@npm:0.0.10::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.components.follow-us%2F-%2F%40fragrantjewels-gravity-brands.components.follow-us-0.0.10.tgz"
+"@fragrantjewels/gravity-brands.components.follow-us@npm:^0.0.11":
+  version: 0.0.11
+  resolution: "@fragrantjewels/gravity-brands.components.follow-us@npm:0.0.11::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.components.follow-us%2F-%2F%40fragrantjewels-gravity-brands.components.follow-us-0.0.11.tgz"
   dependencies:
     core-js: ^3.0.0
     styled-components: ^5.2.3
   peerDependencies:
     react: ^16.8.0 || ^17.0.0
     react-dom: ^16.8.0 || ^17.0.0
-  checksum: bfc79e0e8a954c6432becd238e453106ea15e206190f03ab02545628311ba3d302e9fe24f8a6ff0130b4d6c2fe8ec782e68db5ddac3f320cdef484b8534cd1dd
+  checksum: 4e5bdffe2282ed3246e4b60f2a5d29eaa83081aefccd8286dc0e0e8664d97c189a62b4b92bb64623c30c4c83733e8596a96f336e537da11e186f539e263a1343
   languageName: node
   linkType: hard
 
-"@fragrantjewels/gravity-brands.components.footer@npm:0.0.10":
-  version: 0.0.10
-  resolution: "@fragrantjewels/gravity-brands.components.footer@npm:0.0.10::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.components.footer%2F-%2F%40fragrantjewels-gravity-brands.components.footer-0.0.10.tgz"
+"@fragrantjewels/gravity-brands.components.footer@npm:0.0.16, @fragrantjewels/gravity-brands.components.footer@npm:^0.0.16":
+  version: 0.0.16
+  resolution: "@fragrantjewels/gravity-brands.components.footer@npm:0.0.16::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.components.footer%2F-%2F%40fragrantjewels-gravity-brands.components.footer-0.0.16.tgz"
   dependencies:
-    "@fragrantjewels/gravity-brands.components.accepted-payments": 0.0.9
-    "@fragrantjewels/gravity-brands.components.links-column-group": 0.0.13
-    "@fragrantjewels/gravity-brands.components.social-links": 0.0.9
+    "@fragrantjewels/gravity-brands.components.accepted-payments": 0.0.15
+    "@fragrantjewels/gravity-brands.components.links-column-group": 0.0.19
+    "@fragrantjewels/gravity-brands.components.social-links": 0.0.15
     classnames: ^2.3.1
     core-js: ^3.0.0
     react-media-hook: ^0.4.9
@@ -2522,17 +2508,15 @@ __metadata:
   peerDependencies:
     react: ^16.8.0 || ^17.0.0
     react-dom: ^16.8.0 || ^17.0.0
-  checksum: 59edb9f5cae85ff4a56e24185669a3bdc1a048c24b0f3a47044773e7e8618f66485022b200b742b9f0005c7a7dce06c048b3dd4759948a6f9915365cb556a3b0
+  checksum: 936a4a006ae1ce0d587481208d89c2dcb53a227295246a02845077355c63c53666cc0147912bf09b186af88ff68c12a1c0df66351c3a90dba352c4dfe1f31e2f
   languageName: node
   linkType: hard
 
-"@fragrantjewels/gravity-brands.components.footer@npm:^0.0.15":
-  version: 0.0.15
-  resolution: "@fragrantjewels/gravity-brands.components.footer@npm:0.0.15::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.components.footer%2F-%2F%40fragrantjewels-gravity-brands.components.footer-0.0.15.tgz"
+"@fragrantjewels/gravity-brands.components.full-width-banner@npm:^0.0.14":
+  version: 0.0.14
+  resolution: "@fragrantjewels/gravity-brands.components.full-width-banner@npm:0.0.14::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.components.full-width-banner%2F-%2F%40fragrantjewels-gravity-brands.components.full-width-banner-0.0.14.tgz"
   dependencies:
-    "@fragrantjewels/gravity-brands.components.accepted-payments": 0.0.14
-    "@fragrantjewels/gravity-brands.components.links-column-group": 0.0.18
-    "@fragrantjewels/gravity-brands.components.social-links": 0.0.14
+    "@fragrantjewels/gravity-brands.components.site-section": 0.0.10
     classnames: ^2.3.1
     core-js: ^3.0.0
     react-media-hook: ^0.4.9
@@ -2540,52 +2524,36 @@ __metadata:
   peerDependencies:
     react: ^16.8.0 || ^17.0.0
     react-dom: ^16.8.0 || ^17.0.0
-  checksum: f7fa180b586f9332faac65b20bad85629b23e5278ca9f63817f3b44f4999f329ccfcf5787af647fcea749600c52d403467a4e9c86c1021d3bcd4a041fae6633d
+  checksum: b87f813b7e612bf60702b471a453b97e395f92469fb76f04a1fabf86898612de2cedc66a758adeb3075af40dc324c51230d2ed0e9147fb182abee392d0f0bb07
   languageName: node
   linkType: hard
 
-"@fragrantjewels/gravity-brands.components.full-width-banner@npm:^0.0.13":
-  version: 0.0.13
-  resolution: "@fragrantjewels/gravity-brands.components.full-width-banner@npm:0.0.13::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.components.full-width-banner%2F-%2F%40fragrantjewels-gravity-brands.components.full-width-banner-0.0.13.tgz"
+"@fragrantjewels/gravity-brands.components.header@npm:0.0.33":
+  version: 0.0.33
+  resolution: "@fragrantjewels/gravity-brands.components.header@npm:0.0.33::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.components.header%2F-%2F%40fragrantjewels-gravity-brands.components.header-0.0.33.tgz"
   dependencies:
-    "@fragrantjewels/gravity-brands.components.site-section": 0.0.4
-    classnames: ^2.3.1
-    core-js: ^3.0.0
-    react-media-hook: ^0.4.9
-    styled-components: ^5.2.3
-  peerDependencies:
-    react: ^16.8.0 || ^17.0.0
-    react-dom: ^16.8.0 || ^17.0.0
-  checksum: 31c497646826ed459d277d89582d52d8b06016212d095a893359f55bef17176d793ed9961fb1b9a0ec9e6824bee735d6e177f117058e1081fd7b29e658b3a82c
-  languageName: node
-  linkType: hard
-
-"@fragrantjewels/gravity-brands.components.header@npm:0.0.25":
-  version: 0.0.25
-  resolution: "@fragrantjewels/gravity-brands.components.header@npm:0.0.25::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.components.header%2F-%2F%40fragrantjewels-gravity-brands.components.header-0.0.25.tgz"
-  dependencies:
-    "@fragrantjewels/gravity-brands.components.nav-icons": 0.0.10
-    "@fragrantjewels/gravity-brands.components.nav-mobile": 0.0.1
-    "@fragrantjewels/gravity-brands.components.nav-tabs": 0.0.19
-    "@fragrantjewels/gravity-brands.components.points-widget": 0.0.6
-    "@fragrantjewels/gravity-brands.components.rolling-banner": 0.0.10
-    "@fragrantjewels/gravity-brands.components.search-field": 0.0.6
-    "@fragrantjewels/gravity-brands.components.signin-signup": 0.0.7
+    "@fragrantjewels/gravity-brands.components.nav-icons": 0.0.16
+    "@fragrantjewels/gravity-brands.components.nav-mobile": 0.0.7
+    "@fragrantjewels/gravity-brands.components.nav-tabs": 0.0.27
+    "@fragrantjewels/gravity-brands.components.points-widget": 0.0.12
+    "@fragrantjewels/gravity-brands.components.rolling-banner": 0.0.16
+    "@fragrantjewels/gravity-brands.components.search-field": 0.0.12
+    "@fragrantjewels/gravity-brands.components.signin-signup": 0.0.13
     classnames: ^2.3.1
     core-js: ^3.0.0
     styled-components: ^5.2.3
   peerDependencies:
     react: ^16.8.0 || ^17.0.0
     react-dom: ^16.8.0 || ^17.0.0
-  checksum: 30f1bef534d1d8cc05dcfc22caa71d630ba0bba9d7f695d5bb4bd1daf99d1e5cf4f5906d732997d6a88f2712d85435765b23d8f2aad12d3efd1343c62ff703f9
+  checksum: 169bdea7f98cd6e77ed74a324ffeb2c823e0d0c026ad6382c5e259f151c8d83290dcd9855a250c7cadb8bc710916c1f074e7ce4ee6345e03bc52b7a100ecbcce
   languageName: node
   linkType: hard
 
-"@fragrantjewels/gravity-brands.components.hero-gallery@npm:^0.0.27":
-  version: 0.0.27
-  resolution: "@fragrantjewels/gravity-brands.components.hero-gallery@npm:0.0.27::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.components.hero-gallery%2F-%2F%40fragrantjewels-gravity-brands.components.hero-gallery-0.0.27.tgz"
+"@fragrantjewels/gravity-brands.components.hero-gallery@npm:^0.0.28":
+  version: 0.0.28
+  resolution: "@fragrantjewels/gravity-brands.components.hero-gallery@npm:0.0.28::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.components.hero-gallery%2F-%2F%40fragrantjewels-gravity-brands.components.hero-gallery-0.0.28.tgz"
   dependencies:
-    "@fragrantjewels/gravity-brands.components.button": 0.0.20
+    "@fragrantjewels/gravity-brands.components.button": 0.0.21
     classnames: ^2.3.1
     core-js: ^3.0.0
     react-slick: ^0.28.1
@@ -2593,13 +2561,13 @@ __metadata:
   peerDependencies:
     react: ^16.8.0 || ^17.0.0
     react-dom: ^16.8.0 || ^17.0.0
-  checksum: e35fa9022a8a8d38bf483951ab6f71372ed8547f562e3751cdb4d9e7e0919fcfabd6d6c414d00f9848d82bd0ed7532b6c727e9bbfe8efafde089a541442d731b
+  checksum: b01b92cc31781f47f6c13f451dde16ef64a03a9dad5b9c35b5ad3dc19c92e8ba4706a8782b5f25be3513ebd3adc130684566802b6e82ddaea7d68011d5e629f0
   languageName: node
   linkType: hard
 
-"@fragrantjewels/gravity-brands.components.information-card@npm:0.0.19":
-  version: 0.0.19
-  resolution: "@fragrantjewels/gravity-brands.components.information-card@npm:0.0.19::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.components.information-card%2F-%2F%40fragrantjewels-gravity-brands.components.information-card-0.0.19.tgz"
+"@fragrantjewels/gravity-brands.components.information-card@npm:0.0.20":
+  version: 0.0.20
+  resolution: "@fragrantjewels/gravity-brands.components.information-card@npm:0.0.20::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.components.information-card%2F-%2F%40fragrantjewels-gravity-brands.components.information-card-0.0.20.tgz"
   dependencies:
     classnames: ^2.3.1
     core-js: ^3.0.0
@@ -2607,30 +2575,30 @@ __metadata:
   peerDependencies:
     react: ^16.8.0 || ^17.0.0
     react-dom: ^16.8.0 || ^17.0.0
-  checksum: b56d0738e63b9a3ff370374804d26e63bd75031d2e59b7a36ac3487dbd20a6fca2a6f0e1c00f60f7e2bfbda6bfb3037e75820b71695325171e4c165a9bcb7899
+  checksum: 41a7240e2d23696c2194337a5698607e4e00fa11c5700b4f31bb7e8880a67a20c664601589ac224ebc8b6720b000868c07bbf22a3733d3d19d57360a02e6052d
   languageName: node
   linkType: hard
 
-"@fragrantjewels/gravity-brands.components.information-overview@npm:^0.0.9":
-  version: 0.0.9
-  resolution: "@fragrantjewels/gravity-brands.components.information-overview@npm:0.0.9::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.components.information-overview%2F-%2F%40fragrantjewels-gravity-brands.components.information-overview-0.0.9.tgz"
+"@fragrantjewels/gravity-brands.components.information-overview@npm:^0.0.10":
+  version: 0.0.10
+  resolution: "@fragrantjewels/gravity-brands.components.information-overview@npm:0.0.10::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.components.information-overview%2F-%2F%40fragrantjewels-gravity-brands.components.information-overview-0.0.10.tgz"
   dependencies:
-    "@fragrantjewels/gravity-brands.components.information-card": 0.0.19
+    "@fragrantjewels/gravity-brands.components.information-card": 0.0.20
     classnames: ^2.3.1
     core-js: ^3.0.0
     styled-components: ^5.2.3
   peerDependencies:
     react: ^16.8.0 || ^17.0.0
     react-dom: ^16.8.0 || ^17.0.0
-  checksum: 68eed5f3eff143d43590dfc6e520eae1626eb837cd29496e1fd5093f3478d5fd709639b6b167c7771214714cfe3a59830735259c3bd22c4406a08131e262a1ce
+  checksum: c11734f14f6fbd5af5e08381a03d242fe2c1de6e8e037ded4b67d3855d4170306e0e0dc8a0576461b5f9274cdf5c8b0ccf5645c328a8e4f27a52aba52f8eef39
   languageName: node
   linkType: hard
 
-"@fragrantjewels/gravity-brands.components.inline-signup-form@npm:^0.0.26":
-  version: 0.0.26
-  resolution: "@fragrantjewels/gravity-brands.components.inline-signup-form@npm:0.0.26::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.components.inline-signup-form%2F-%2F%40fragrantjewels-gravity-brands.components.inline-signup-form-0.0.26.tgz"
+"@fragrantjewels/gravity-brands.components.inline-signup-form@npm:^0.0.27":
+  version: 0.0.27
+  resolution: "@fragrantjewels/gravity-brands.components.inline-signup-form@npm:0.0.27::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.components.inline-signup-form%2F-%2F%40fragrantjewels-gravity-brands.components.inline-signup-form-0.0.27.tgz"
   dependencies:
-    "@fragrantjewels/gravity-brands.components.button": 0.0.20
+    "@fragrantjewels/gravity-brands.components.button": 0.0.21
     classnames: ^2.3.1
     core-js: ^3.0.0
     styled-components: ^5.2.3
@@ -2638,16 +2606,16 @@ __metadata:
   peerDependencies:
     react: ^16.8.0 || ^17.0.0
     react-dom: ^16.8.0 || ^17.0.0
-  checksum: 7361a4eb3c0795abbed6b85a91ce1908de14168b39c68979681913ccc2f8dc0bd1ffc06d3ed475f214c9fa930b66e66c683e5d1fdd5dbfcc239be6aec2bb3260
+  checksum: 351eeaefe3b7e8be2487df108e9b5860b5f5b07ced4085e93e4f334e5290968b139895fa53702f76b72d6722fa7530a7bff63e2f3f432f46469a27a6f4b00889
   languageName: node
   linkType: hard
 
-"@fragrantjewels/gravity-brands.components.inner-circle-exclusive@npm:^0.0.32":
-  version: 0.0.32
-  resolution: "@fragrantjewels/gravity-brands.components.inner-circle-exclusive@npm:0.0.32::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.components.inner-circle-exclusive%2F-%2F%40fragrantjewels-gravity-brands.components.inner-circle-exclusive-0.0.32.tgz"
+"@fragrantjewels/gravity-brands.components.inner-circle-exclusive@npm:^0.0.33":
+  version: 0.0.33
+  resolution: "@fragrantjewels/gravity-brands.components.inner-circle-exclusive@npm:0.0.33::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.components.inner-circle-exclusive%2F-%2F%40fragrantjewels-gravity-brands.components.inner-circle-exclusive-0.0.33.tgz"
   dependencies:
-    "@fragrantjewels/gravity-brands.components.button": 0.0.20
-    "@fragrantjewels/gravity-brands.components.ring-size": 0.0.20
+    "@fragrantjewels/gravity-brands.components.button": 0.0.21
+    "@fragrantjewels/gravity-brands.components.ring-size": 0.0.21
     "@fragrantjewels/gravity-brands.modules.format-price": 0.0.4
     "@fragrantjewels/gravity-brands.modules.normalize-product": 0.0.6
     classnames: ^2.3.1
@@ -2656,129 +2624,115 @@ __metadata:
   peerDependencies:
     react: ^16.8.0 || ^17.0.0
     react-dom: ^16.8.0 || ^17.0.0
-  checksum: 2bfdfd3cb89d53516d9857855ac248ea922b1cb9d599d54181ced3e5d4a4a3e5dd29aa366d9225aad494ada1b0d000658c04ff267d0dd51ad51f7456fe54f362
+  checksum: 8c55bcb517bcbc59ceb62ea795de16b18c3f256f2d652be5b4906c96fd4f97b79235e3ca4a15be50adb35ed57a713926fc376b4ec8ca0c9c63771c952052c6fb
   languageName: node
   linkType: hard
 
-"@fragrantjewels/gravity-brands.components.links-column-group@npm:0.0.13":
-  version: 0.0.13
-  resolution: "@fragrantjewels/gravity-brands.components.links-column-group@npm:0.0.13::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.components.links-column-group%2F-%2F%40fragrantjewels-gravity-brands.components.links-column-group-0.0.13.tgz"
-  dependencies:
-    classnames: ^2.3.1
-    core-js: ^3.0.0
-    styled-components: ^5.2.3
-  peerDependencies:
-    react: ^16.8.0 || ^17.0.0
-    react-dom: ^16.8.0 || ^17.0.0
-  checksum: a977d474ea0858a296f419dbf3d24903e502ac683c464a02348dcf70a666cbf2fae74d03054e0aa3769084adbc045afa10520257f60fd0b7e0d17b350761a885
-  languageName: node
-  linkType: hard
-
-"@fragrantjewels/gravity-brands.components.links-column-group@npm:0.0.18":
-  version: 0.0.18
-  resolution: "@fragrantjewels/gravity-brands.components.links-column-group@npm:0.0.18::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.components.links-column-group%2F-%2F%40fragrantjewels-gravity-brands.components.links-column-group-0.0.18.tgz"
-  dependencies:
-    classnames: ^2.3.1
-    core-js: ^3.0.0
-    styled-components: ^5.2.3
-  peerDependencies:
-    react: ^16.8.0 || ^17.0.0
-    react-dom: ^16.8.0 || ^17.0.0
-  checksum: e2177fd6690708efbdd32121ff99d32ae668a2a5eaccb98aea89f2c6c658fd8b45fa71709a102929f77ec8f65b506d38b83e38f6f58c98347816fdccf6bfd5dc
-  languageName: node
-  linkType: hard
-
-"@fragrantjewels/gravity-brands.components.main-page-layout@npm:^0.0.22":
-  version: 0.0.22
-  resolution: "@fragrantjewels/gravity-brands.components.main-page-layout@npm:0.0.22::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.components.main-page-layout%2F-%2F%40fragrantjewels-gravity-brands.components.main-page-layout-0.0.22.tgz"
-  dependencies:
-    "@fragrantjewels/gravity-brands.components.footer": 0.0.10
-    "@fragrantjewels/gravity-brands.components.header": 0.0.25
-    core-js: ^3.0.0
-    styled-components: ^5.2.3
-  peerDependencies:
-    react: ^16.8.0 || ^17.0.0
-    react-dom: ^16.8.0 || ^17.0.0
-  checksum: cdbf63542791b6f1556f0c9ac52705d32df2b5de37273af6eb1679d6ab8f0d1834ee8ad47e8fef9ae69a6d1b06854106b65a37a08b2a822d0c315585d6f9c4eb
-  languageName: node
-  linkType: hard
-
-"@fragrantjewels/gravity-brands.components.most-fun-overview@npm:^0.0.9":
-  version: 0.0.9
-  resolution: "@fragrantjewels/gravity-brands.components.most-fun-overview@npm:0.0.9::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.components.most-fun-overview%2F-%2F%40fragrantjewels-gravity-brands.components.most-fun-overview-0.0.9.tgz"
-  dependencies:
-    classnames: ^2.3.1
-    core-js: ^3.0.0
-    react-slick: ^0.28.1
-    styled-components: ^5.2.3
-  peerDependencies:
-    react: ^16.8.0 || ^17.0.0
-    react-dom: ^16.8.0 || ^17.0.0
-  checksum: 5cc5b7e79a094406dda5c782f3b997936241fe5f067ab246db3ac5da59f64383766bcd3a51cc3bcf841d1b9c911f9e48d855b8c882ca3d45cdd4789897b1c524
-  languageName: node
-  linkType: hard
-
-"@fragrantjewels/gravity-brands.components.nav-icons@npm:0.0.10":
-  version: 0.0.10
-  resolution: "@fragrantjewels/gravity-brands.components.nav-icons@npm:0.0.10::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.components.nav-icons%2F-%2F%40fragrantjewels-gravity-brands.components.nav-icons-0.0.10.tgz"
-  dependencies:
-    "@fragrantjewels/gravity-brands.components.signin-signup": 0.0.7
-    classnames: ^2.3.1
-    core-js: ^3.0.0
-    styled-components: ^5.2.3
-  peerDependencies:
-    react: ^16.8.0 || ^17.0.0
-    react-dom: ^16.8.0 || ^17.0.0
-  checksum: de7489f22aaa5da6acfdf0de434a15dd795c45cfbc7bcb8915fa6ad43f8f7c985c45b138a3dbbf684f4cc79bef2e5b6d4f0386ed97708b3ea2dc35299633a2e0
-  languageName: node
-  linkType: hard
-
-"@fragrantjewels/gravity-brands.components.nav-mobile@npm:0.0.1":
-  version: 0.0.1
-  resolution: "@fragrantjewels/gravity-brands.components.nav-mobile@npm:0.0.1::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.components.nav-mobile%2F-%2F%40fragrantjewels-gravity-brands.components.nav-mobile-0.0.1.tgz"
-  dependencies:
-    "@fragrantjewels/gravity-brands.components.points-widget": 0.0.6
-    "@fragrantjewels/gravity-brands.components.signin-signup": 0.0.7
-    core-js: ^3.0.0
-    styled-components: ^5.2.3
-  peerDependencies:
-    react: ^16.8.0 || ^17.0.0
-    react-dom: ^16.8.0 || ^17.0.0
-  checksum: aa3678fc5f938ab80eedb9e95f98b66f382b4503b01f34ffe63f4e3476a316e541cdf2c2b72ba0ee19bfe5810dbf2cdaa413abd4132a181e18e69b30f9747047
-  languageName: node
-  linkType: hard
-
-"@fragrantjewels/gravity-brands.components.nav-tabs@npm:0.0.19":
+"@fragrantjewels/gravity-brands.components.links-column-group@npm:0.0.19":
   version: 0.0.19
-  resolution: "@fragrantjewels/gravity-brands.components.nav-tabs@npm:0.0.19::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.components.nav-tabs%2F-%2F%40fragrantjewels-gravity-brands.components.nav-tabs-0.0.19.tgz"
+  resolution: "@fragrantjewels/gravity-brands.components.links-column-group@npm:0.0.19::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.components.links-column-group%2F-%2F%40fragrantjewels-gravity-brands.components.links-column-group-0.0.19.tgz"
   dependencies:
-    "@fragrantjewels/gravity-brands.components.header": 0.0.25
     classnames: ^2.3.1
     core-js: ^3.0.0
     styled-components: ^5.2.3
   peerDependencies:
     react: ^16.8.0 || ^17.0.0
     react-dom: ^16.8.0 || ^17.0.0
-  checksum: 0475e90ceeae2b709cfb94c924b44139db7934363d33c4c8a9de046c1ff8932c62eb456044d6877eee2893877222304c0dbf295104cfdaef1a12e1618e4a1cb1
+  checksum: 6c42d6aa52a7823c9ef60ff059a37dc25ffddd24d902760ec3d840b85052c2df06eaedc91d8171980f93b050ee8755cbff6289cdf35531cb6e8b06beb2d6c351
   languageName: node
   linkType: hard
 
-"@fragrantjewels/gravity-brands.components.points-widget@npm:0.0.6":
-  version: 0.0.6
-  resolution: "@fragrantjewels/gravity-brands.components.points-widget@npm:0.0.6::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.components.points-widget%2F-%2F%40fragrantjewels-gravity-brands.components.points-widget-0.0.6.tgz"
+"@fragrantjewels/gravity-brands.components.main-page-layout@npm:^0.0.23":
+  version: 0.0.23
+  resolution: "@fragrantjewels/gravity-brands.components.main-page-layout@npm:0.0.23::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.components.main-page-layout%2F-%2F%40fragrantjewels-gravity-brands.components.main-page-layout-0.0.23.tgz"
+  dependencies:
+    "@fragrantjewels/gravity-brands.components.footer": 0.0.16
+    "@fragrantjewels/gravity-brands.components.header": 0.0.33
+    core-js: ^3.0.0
+    styled-components: ^5.2.3
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0
+    react-dom: ^16.8.0 || ^17.0.0
+  checksum: 322c0da2070538aef5bcda93bda25765c6df0dcd97c7dc1de6c47d696c5f2b777078cd0791857b37c1edc980224c0f9fa5732f6aff9d5dc27435700b0685c7d0
+  languageName: node
+  linkType: hard
+
+"@fragrantjewels/gravity-brands.components.most-fun-overview@npm:^0.0.10":
+  version: 0.0.10
+  resolution: "@fragrantjewels/gravity-brands.components.most-fun-overview@npm:0.0.10::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.components.most-fun-overview%2F-%2F%40fragrantjewels-gravity-brands.components.most-fun-overview-0.0.10.tgz"
+  dependencies:
+    classnames: ^2.3.1
+    core-js: ^3.0.0
+    react-slick: ^0.28.1
+    styled-components: ^5.2.3
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0
+    react-dom: ^16.8.0 || ^17.0.0
+  checksum: df93d2904f324a1e5c4886cfc7f3703b775c3c97b5543da1a46ef2d1396e918433e05e7f7bef7a556e015d4a3fb21f21ee5877941805005cb5ad689b552d61c8
+  languageName: node
+  linkType: hard
+
+"@fragrantjewels/gravity-brands.components.nav-icons@npm:0.0.16":
+  version: 0.0.16
+  resolution: "@fragrantjewels/gravity-brands.components.nav-icons@npm:0.0.16::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.components.nav-icons%2F-%2F%40fragrantjewels-gravity-brands.components.nav-icons-0.0.16.tgz"
+  dependencies:
+    "@fragrantjewels/gravity-brands.components.signin-signup": 0.0.13
+    classnames: ^2.3.1
+    core-js: ^3.0.0
+    styled-components: ^5.2.3
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0
+    react-dom: ^16.8.0 || ^17.0.0
+  checksum: e96e88429c6d2c09b2697ce315440cbd88ec8d50b475d62947dd5b3aa4071554f96adf98432cc0324018d9f43de6d352a5c881ba875ac207d391634b7ddc1572
+  languageName: node
+  linkType: hard
+
+"@fragrantjewels/gravity-brands.components.nav-mobile@npm:0.0.7":
+  version: 0.0.7
+  resolution: "@fragrantjewels/gravity-brands.components.nav-mobile@npm:0.0.7::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.components.nav-mobile%2F-%2F%40fragrantjewels-gravity-brands.components.nav-mobile-0.0.7.tgz"
+  dependencies:
+    "@fragrantjewels/gravity-brands.components.points-widget": 0.0.12
+    "@fragrantjewels/gravity-brands.components.signin-signup": 0.0.13
+    core-js: ^3.0.0
+    styled-components: ^5.2.3
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0
+    react-dom: ^16.8.0 || ^17.0.0
+  checksum: b93a9399f791dfe2b5c847973afb0b3de3629f45b4be12bcbf005a9ec62064927e2ff310f709eba3ac3c50577d3be4caa766b4985dfcaa7a0dc3e5e997199793
+  languageName: node
+  linkType: hard
+
+"@fragrantjewels/gravity-brands.components.nav-tabs@npm:0.0.27":
+  version: 0.0.27
+  resolution: "@fragrantjewels/gravity-brands.components.nav-tabs@npm:0.0.27::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.components.nav-tabs%2F-%2F%40fragrantjewels-gravity-brands.components.nav-tabs-0.0.27.tgz"
+  dependencies:
+    "@fragrantjewels/gravity-brands.components.header": 0.0.33
+    classnames: ^2.3.1
+    core-js: ^3.0.0
+    styled-components: ^5.2.3
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0
+    react-dom: ^16.8.0 || ^17.0.0
+  checksum: 88b38b53ef4f4844fbb16f7086d08588f3a377b732c25a24d90b50527edb739376de835ccfe619d8f85776181ebe6d9aa9d5a899aecf9164562b479721651627
+  languageName: node
+  linkType: hard
+
+"@fragrantjewels/gravity-brands.components.points-widget@npm:0.0.12":
+  version: 0.0.12
+  resolution: "@fragrantjewels/gravity-brands.components.points-widget@npm:0.0.12::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.components.points-widget%2F-%2F%40fragrantjewels-gravity-brands.components.points-widget-0.0.12.tgz"
   dependencies:
     core-js: ^3.0.0
     styled-components: ^5.2.3
   peerDependencies:
     react: ^16.8.0 || ^17.0.0
     react-dom: ^16.8.0 || ^17.0.0
-  checksum: aa62406270635e35c61ce1a9b5b6e6f9d675af885cb1a88384878ec16a01828d3545583f79d81904f8c85d96d95883673739751d6eceea5c51e65fd7123f4026
+  checksum: f2208570163c0627e1a3cfcf37aceda8f5e0f30857fedfedf33f49e032873a7844071df5d243c193983c4e9a952d744ad201643a7cbb1f725eb94b3bc5a25933
   languageName: node
   linkType: hard
 
-"@fragrantjewels/gravity-brands.components.product-card@npm:0.0.23":
-  version: 0.0.23
-  resolution: "@fragrantjewels/gravity-brands.components.product-card@npm:0.0.23::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.components.product-card%2F-%2F%40fragrantjewels-gravity-brands.components.product-card-0.0.23.tgz"
+"@fragrantjewels/gravity-brands.components.product-card@npm:0.0.24":
+  version: 0.0.24
+  resolution: "@fragrantjewels/gravity-brands.components.product-card@npm:0.0.24::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.components.product-card%2F-%2F%40fragrantjewels-gravity-brands.components.product-card-0.0.24.tgz"
   dependencies:
     "@fragrantjewels/gravity-brands.modules.format-price": 0.0.4
     "@fragrantjewels/gravity-brands.modules.normalize-product": 0.0.6
@@ -2788,15 +2742,15 @@ __metadata:
   peerDependencies:
     react: ^16.8.0 || ^17.0.0
     react-dom: ^16.8.0 || ^17.0.0
-  checksum: d73bb46c5f6f77fe9d402099895504e8dc523f39a2c5df079f7500b7b19d510375cb7f7876276cf81b8f69d823107a24c5c1ce67dd87e01a68f7fc44d2a5ca77
+  checksum: e37f67c63a41f07867133ad303447756933b53253ffc1825232d6fa7483df2ba924729c1dfed5c90a20057a1c5f136f2b7bfd3854538736a6f479776d5328e87
   languageName: node
   linkType: hard
 
-"@fragrantjewels/gravity-brands.components.products-carousel@npm:^0.0.28":
-  version: 0.0.28
-  resolution: "@fragrantjewels/gravity-brands.components.products-carousel@npm:0.0.28::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.components.products-carousel%2F-%2F%40fragrantjewels-gravity-brands.components.products-carousel-0.0.28.tgz"
+"@fragrantjewels/gravity-brands.components.products-carousel@npm:^0.0.29":
+  version: 0.0.29
+  resolution: "@fragrantjewels/gravity-brands.components.products-carousel@npm:0.0.29::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.components.products-carousel%2F-%2F%40fragrantjewels-gravity-brands.components.products-carousel-0.0.29.tgz"
   dependencies:
-    "@fragrantjewels/gravity-brands.components.product-card": 0.0.23
+    "@fragrantjewels/gravity-brands.components.product-card": 0.0.24
     classnames: ^2.3.1
     core-js: ^3.0.0
     react-slick: ^0.28.1
@@ -2804,28 +2758,28 @@ __metadata:
   peerDependencies:
     react: ^16.8.0 || ^17.0.0
     react-dom: ^16.8.0 || ^17.0.0
-  checksum: 63df3241439714873608aec321b103476f6d38cfb9c44187fd2aa03d1bb370c768e8602e67e4ffda84b504e6c179c1e1719cba1ce6b546321df4d0bc6d3508f7
+  checksum: c62e6d9b8e0ac98145c5ec5fd2b1624ed07ef11e3e8fda446cd4c0747dfc11ec3ae522d1ecfd9c9272749f6d57592eb9c11196924505026034b8b54c4f06c8f9
   languageName: node
   linkType: hard
 
-"@fragrantjewels/gravity-brands.components.products-list@npm:^0.0.26":
-  version: 0.0.26
-  resolution: "@fragrantjewels/gravity-brands.components.products-list@npm:0.0.26::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.components.products-list%2F-%2F%40fragrantjewels-gravity-brands.components.products-list-0.0.26.tgz"
+"@fragrantjewels/gravity-brands.components.products-list@npm:^0.0.27":
+  version: 0.0.27
+  resolution: "@fragrantjewels/gravity-brands.components.products-list@npm:0.0.27::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.components.products-list%2F-%2F%40fragrantjewels-gravity-brands.components.products-list-0.0.27.tgz"
   dependencies:
-    "@fragrantjewels/gravity-brands.components.product-card": 0.0.23
-    "@fragrantjewels/gravity-brands.components.site-section": 0.0.4
+    "@fragrantjewels/gravity-brands.components.product-card": 0.0.24
+    "@fragrantjewels/gravity-brands.components.site-section": 0.0.10
     core-js: ^3.0.0
     styled-components: ^5.2.3
   peerDependencies:
     react: ^16.8.0 || ^17.0.0
     react-dom: ^16.8.0 || ^17.0.0
-  checksum: 3c0760b8a0b9fb3cecced7b58292bc8f33dd5d98e8b7638455874cf929048f51429a302f9b55d01fab9a603cc854c2b942c932e91a2a0a8a58ae02951637cb85
+  checksum: 852fa112eea0e2e44a29e2cec7f0bb9abe6f1e8ffe545b1c10e2b0122569849edb21c6446436e18a5b9c3b3bb1edf346b5926d6f31a7030db98725204007be2b
   languageName: node
   linkType: hard
 
-"@fragrantjewels/gravity-brands.components.promise-bar@npm:^0.0.20":
-  version: 0.0.20
-  resolution: "@fragrantjewels/gravity-brands.components.promise-bar@npm:0.0.20::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.components.promise-bar%2F-%2F%40fragrantjewels-gravity-brands.components.promise-bar-0.0.20.tgz"
+"@fragrantjewels/gravity-brands.components.promise-bar@npm:^0.0.21":
+  version: 0.0.21
+  resolution: "@fragrantjewels/gravity-brands.components.promise-bar@npm:0.0.21::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.components.promise-bar%2F-%2F%40fragrantjewels-gravity-brands.components.promise-bar-0.0.21.tgz"
   dependencies:
     classnames: ^2.3.1
     core-js: ^3.0.0
@@ -2833,13 +2787,13 @@ __metadata:
   peerDependencies:
     react: ^16.8.0 || ^17.0.0
     react-dom: ^16.8.0 || ^17.0.0
-  checksum: 16ffcbc0f2548c2dc506a33972d701333a101eac6343d65faf478af31565d7f8a96c4a95669fd6748390cecb90de79259f298b0412fd28b65f3da1ac889fc9b7
+  checksum: f9afd026275f04bf045cbe9473e717998cebf740b713f9d6919d1777e23c36dc4da3d7fc85a6430bbbcaf0a45d280bf1a7a9987ff164d6fbadcbac0a9e5ed357
   languageName: node
   linkType: hard
 
-"@fragrantjewels/gravity-brands.components.reviews-section@npm:^0.0.24":
-  version: 0.0.24
-  resolution: "@fragrantjewels/gravity-brands.components.reviews-section@npm:0.0.24::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.components.reviews-section%2F-%2F%40fragrantjewels-gravity-brands.components.reviews-section-0.0.24.tgz"
+"@fragrantjewels/gravity-brands.components.reviews-section@npm:^0.0.25":
+  version: 0.0.25
+  resolution: "@fragrantjewels/gravity-brands.components.reviews-section@npm:0.0.25::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.components.reviews-section%2F-%2F%40fragrantjewels-gravity-brands.components.reviews-section-0.0.25.tgz"
   dependencies:
     classnames: ^2.3.1
     core-js: ^3.0.0
@@ -2848,13 +2802,13 @@ __metadata:
   peerDependencies:
     react: ^16.8.0 || ^17.0.0
     react-dom: ^16.8.0 || ^17.0.0
-  checksum: aec4effd32593e37c545f7fbd9dca1afb6ae38b735ff4493d66c8fe67d327d277269abe4da6be16ea9271a491527ee7091c585d23611913a19ac0cd059214c5f
+  checksum: 77a313c2c8a86b771b225f0236ae93cb62a66c708c3dedd022666544ad73f9314915560e2a35cc971a5d00e5090dd2e509d40eec7652db6426ca84f178c387fd
   languageName: node
   linkType: hard
 
-"@fragrantjewels/gravity-brands.components.ring-size@npm:0.0.20":
-  version: 0.0.20
-  resolution: "@fragrantjewels/gravity-brands.components.ring-size@npm:0.0.20::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.components.ring-size%2F-%2F%40fragrantjewels-gravity-brands.components.ring-size-0.0.20.tgz"
+"@fragrantjewels/gravity-brands.components.ring-size@npm:0.0.21":
+  version: 0.0.21
+  resolution: "@fragrantjewels/gravity-brands.components.ring-size@npm:0.0.21::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.components.ring-size%2F-%2F%40fragrantjewels-gravity-brands.components.ring-size-0.0.21.tgz"
   dependencies:
     "@fragrantjewels/gravity-brands.modules.normalize-product": 0.0.6
     classnames: ^2.3.1
@@ -2863,41 +2817,98 @@ __metadata:
   peerDependencies:
     react: ^16.8.0 || ^17.0.0
     react-dom: ^16.8.0 || ^17.0.0
-  checksum: f29ef61e29a3334acbd822122c67148fe6b09f652351f9a4198ddb40fafe3028f8f993c110054265ba75d27c46bacc9c612e10a1d030aacda00b8e743b3d2f04
+  checksum: 069c5ac20ff3891f693052f16994b6aceaeb652541d8128f9a00096afb8fb4821c6c3753c221efdb12fe674cd7df0ad6bfc09270fa21269888431467db1b9934
   languageName: node
   linkType: hard
 
-"@fragrantjewels/gravity-brands.components.rolling-banner@npm:0.0.10":
+"@fragrantjewels/gravity-brands.components.rolling-banner@npm:0.0.16, @fragrantjewels/gravity-brands.components.rolling-banner@npm:^0.0.16":
+  version: 0.0.16
+  resolution: "@fragrantjewels/gravity-brands.components.rolling-banner@npm:0.0.16::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.components.rolling-banner%2F-%2F%40fragrantjewels-gravity-brands.components.rolling-banner-0.0.16.tgz"
+  dependencies:
+    core-js: ^3.0.0
+    react-slick: ^0.28.1
+    styled-components: ^5.2.3
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0
+    react-dom: ^16.8.0 || ^17.0.0
+  checksum: 4080ecfdcc083384fbe2bb18e974258fde4c76328ba2898a4df84a140b492941d983fa9742e436176ca112deae3314db3385e09628abd34f00d956c3e3e81c26
+  languageName: node
+  linkType: hard
+
+"@fragrantjewels/gravity-brands.components.search-field@npm:0.0.12":
+  version: 0.0.12
+  resolution: "@fragrantjewels/gravity-brands.components.search-field@npm:0.0.12::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.components.search-field%2F-%2F%40fragrantjewels-gravity-brands.components.search-field-0.0.12.tgz"
+  dependencies:
+    classnames: ^2.3.1
+    core-js: ^3.0.0
+    styled-components: ^5.2.3
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0
+    react-dom: ^16.8.0 || ^17.0.0
+  checksum: ce8112c3223526675865b1732e90d1eba97bdb3d93b9242d82e47c07a2a3ddeead62fb34584312069360ec2eb62f78b0959b69af56776d010b287e7be0b48503
+  languageName: node
+  linkType: hard
+
+"@fragrantjewels/gravity-brands.components.shop-by-product-card@npm:0.0.26":
+  version: 0.0.26
+  resolution: "@fragrantjewels/gravity-brands.components.shop-by-product-card@npm:0.0.26::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.components.shop-by-product-card%2F-%2F%40fragrantjewels-gravity-brands.components.shop-by-product-card-0.0.26.tgz"
+  dependencies:
+    "@fragrantjewels/gravity-brands.components.button": 0.0.21
+    classnames: ^2.3.1
+    core-js: ^3.0.0
+    styled-components: ^5.2.3
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0
+    react-dom: ^16.8.0 || ^17.0.0
+  checksum: 602b530360cbe361955b35f5d6056362598fc4641f9061881efad0c7fa474c2cd9a9654459c163ae0ee0c90e5a7adfd81a7ce60e3a1504032f104e93864833b0
+  languageName: node
+  linkType: hard
+
+"@fragrantjewels/gravity-brands.components.shop-by-products-overview@npm:^0.0.32":
+  version: 0.0.32
+  resolution: "@fragrantjewels/gravity-brands.components.shop-by-products-overview@npm:0.0.32::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.components.shop-by-products-overview%2F-%2F%40fragrantjewels-gravity-brands.components.shop-by-products-overview-0.0.32.tgz"
+  dependencies:
+    "@fragrantjewels/gravity-brands.components.shop-by-product-card": 0.0.26
+    core-js: ^3.0.0
+    react-slick: ^0.28.1
+    styled-components: ^5.2.3
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0
+    react-dom: ^16.8.0 || ^17.0.0
+  checksum: 9606a7e537e496b1cd1725cbe4a82fac8118abd71f6c6333d9e0236cba4dd97d8dab666f899e3de231bed25d3c76e55fbd139ab3b5a1b910b4400d68926fd144
+  languageName: node
+  linkType: hard
+
+"@fragrantjewels/gravity-brands.components.signin-signup@npm:0.0.13":
+  version: 0.0.13
+  resolution: "@fragrantjewels/gravity-brands.components.signin-signup@npm:0.0.13::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.components.signin-signup%2F-%2F%40fragrantjewels-gravity-brands.components.signin-signup-0.0.13.tgz"
+  dependencies:
+    classnames: ^2.3.1
+    core-js: ^3.0.0
+    styled-components: ^5.2.3
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0
+    react-dom: ^16.8.0 || ^17.0.0
+  checksum: ec5b32481ff901926669a798e1e2f44630ab14e5b2c1bf8e7346e6d7b8be45b06511ba5315b966cfccaf3b68286ae9f4ff4ab7dd78a233c5e87cf2be4b528893
+  languageName: node
+  linkType: hard
+
+"@fragrantjewels/gravity-brands.components.site-section@npm:0.0.10, @fragrantjewels/gravity-brands.components.site-section@npm:^0.0.10":
   version: 0.0.10
-  resolution: "@fragrantjewels/gravity-brands.components.rolling-banner@npm:0.0.10::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.components.rolling-banner%2F-%2F%40fragrantjewels-gravity-brands.components.rolling-banner-0.0.10.tgz"
+  resolution: "@fragrantjewels/gravity-brands.components.site-section@npm:0.0.10::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.components.site-section%2F-%2F%40fragrantjewels-gravity-brands.components.site-section-0.0.10.tgz"
   dependencies:
     core-js: ^3.0.0
-    react-slick: ^0.28.1
     styled-components: ^5.2.3
   peerDependencies:
     react: ^16.8.0 || ^17.0.0
     react-dom: ^16.8.0 || ^17.0.0
-  checksum: 809b1148f135d264b9d1560273a2d0dff40148453d3ec0b1fe9f1b59e8f32b03ffe8a6715cb14789d3ce8c12a5263083550805cc43ff7d4bbfe7a03728e89098
+  checksum: b99f02760ed07e9b3b74779b7ecde68897f052c1a1a1a4ae0b2251656330196ed31125e586278291cb0d9c484b01bfb4df0f504f867b41fea75645f4006b2094
   languageName: node
   linkType: hard
 
-"@fragrantjewels/gravity-brands.components.rolling-banner@npm:^0.0.15":
+"@fragrantjewels/gravity-brands.components.social-links@npm:0.0.15":
   version: 0.0.15
-  resolution: "@fragrantjewels/gravity-brands.components.rolling-banner@npm:0.0.15::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.components.rolling-banner%2F-%2F%40fragrantjewels-gravity-brands.components.rolling-banner-0.0.15.tgz"
-  dependencies:
-    core-js: ^3.0.0
-    react-slick: ^0.28.1
-    styled-components: ^5.2.3
-  peerDependencies:
-    react: ^16.8.0 || ^17.0.0
-    react-dom: ^16.8.0 || ^17.0.0
-  checksum: 72f2ddea7b24433d3a22ffcca1f49ce17d508313341e29df1ca234ed7219c1d069ae76150cc34d4bd322a69d7c1c7ea157a6f71e8ff69426b0e795812062cc73
-  languageName: node
-  linkType: hard
-
-"@fragrantjewels/gravity-brands.components.search-field@npm:0.0.6":
-  version: 0.0.6
-  resolution: "@fragrantjewels/gravity-brands.components.search-field@npm:0.0.6::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.components.search-field%2F-%2F%40fragrantjewels-gravity-brands.components.search-field-0.0.6.tgz"
+  resolution: "@fragrantjewels/gravity-brands.components.social-links@npm:0.0.15::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.components.social-links%2F-%2F%40fragrantjewels-gravity-brands.components.social-links-0.0.15.tgz"
   dependencies:
     classnames: ^2.3.1
     core-js: ^3.0.0
@@ -2905,105 +2916,20 @@ __metadata:
   peerDependencies:
     react: ^16.8.0 || ^17.0.0
     react-dom: ^16.8.0 || ^17.0.0
-  checksum: 8b695d4f4557012605c482cda4280e5bcc216aa697bbf71b0246897a147940e02d91b5adad250378bc75afff15f67131545d8d8cd2e13aca802d2ee44758a4b5
+  checksum: 5c1063583e1ad4ae72e5a12fa16ed3a7031332b94a750228c0bd24b18d09995e260351efa75bfbb90c8ee178f4237c6d7b4cc66ca72552cbb942f288bb4446b8
   languageName: node
   linkType: hard
 
-"@fragrantjewels/gravity-brands.components.shop-by-product-card@npm:0.0.25":
-  version: 0.0.25
-  resolution: "@fragrantjewels/gravity-brands.components.shop-by-product-card@npm:0.0.25::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.components.shop-by-product-card%2F-%2F%40fragrantjewels-gravity-brands.components.shop-by-product-card-0.0.25.tgz"
+"@fragrantjewels/gravity-brands.components.yotpo-comments@npm:^0.0.1":
+  version: 0.0.1
+  resolution: "@fragrantjewels/gravity-brands.components.yotpo-comments@npm:0.0.1::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.components.yotpo-comments%2F-%2F%40fragrantjewels-gravity-brands.components.yotpo-comments-0.0.1.tgz"
   dependencies:
-    "@fragrantjewels/gravity-brands.components.button": 0.0.20
-    classnames: ^2.3.1
+    "@fragrantjewels/gravity-brands.modules.load-script": 0.0.1
     core-js: ^3.0.0
-    styled-components: ^5.2.3
   peerDependencies:
     react: ^16.8.0 || ^17.0.0
     react-dom: ^16.8.0 || ^17.0.0
-  checksum: a21eb8568988d51640ce28d526bef59e085b9983b96b20cac3c38a80fae197f3a838d8743b8bddeb14a70a9ec56dd77c221b17b3fa53e0ab6814d8b9fc20bcbc
-  languageName: node
-  linkType: hard
-
-"@fragrantjewels/gravity-brands.components.shop-by-products-overview@npm:^0.0.30":
-  version: 0.0.30
-  resolution: "@fragrantjewels/gravity-brands.components.shop-by-products-overview@npm:0.0.30::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.components.shop-by-products-overview%2F-%2F%40fragrantjewels-gravity-brands.components.shop-by-products-overview-0.0.30.tgz"
-  dependencies:
-    "@fragrantjewels/gravity-brands.components.shop-by-product-card": 0.0.25
-    core-js: ^3.0.0
-    react-slick: ^0.28.1
-    styled-components: ^5.2.3
-  peerDependencies:
-    react: ^16.8.0 || ^17.0.0
-    react-dom: ^16.8.0 || ^17.0.0
-  checksum: 8b4437bdb8818356a83c5ff156c930c298ba9d3eda6f3a966f29b374693bacf2a099bd10b8c2b6f0bed836710bcde29a0c99e7f2f92d5dcc636d19cf5e530721
-  languageName: node
-  linkType: hard
-
-"@fragrantjewels/gravity-brands.components.signin-signup@npm:0.0.7":
-  version: 0.0.7
-  resolution: "@fragrantjewels/gravity-brands.components.signin-signup@npm:0.0.7::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.components.signin-signup%2F-%2F%40fragrantjewels-gravity-brands.components.signin-signup-0.0.7.tgz"
-  dependencies:
-    classnames: ^2.3.1
-    core-js: ^3.0.0
-    styled-components: ^5.2.3
-  peerDependencies:
-    react: ^16.8.0 || ^17.0.0
-    react-dom: ^16.8.0 || ^17.0.0
-  checksum: 7aca96154aaca3e7fc15f0c593033034f4164d1a18babf8e5744f073671f8c56fd6f153736e0c1c4c06ab1c0857a549b0d5cea6e7c266860a52f118e327e1ae0
-  languageName: node
-  linkType: hard
-
-"@fragrantjewels/gravity-brands.components.site-section@npm:0.0.4":
-  version: 0.0.4
-  resolution: "@fragrantjewels/gravity-brands.components.site-section@npm:0.0.4::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.components.site-section%2F-%2F%40fragrantjewels-gravity-brands.components.site-section-0.0.4.tgz"
-  dependencies:
-    core-js: ^3.0.0
-    styled-components: ^5.2.3
-  peerDependencies:
-    react: ^16.8.0 || ^17.0.0
-    react-dom: ^16.8.0 || ^17.0.0
-  checksum: 2146a410308540c6f6cf8b8070d91fed2999ad10d6aa5f0f7431ba1c2254978ff1dbad3f88d2ba07bbd3f9d0913813bc5d48c8ae384bb433326a5eb67ba9a12c
-  languageName: node
-  linkType: hard
-
-"@fragrantjewels/gravity-brands.components.site-section@npm:^0.0.9":
-  version: 0.0.9
-  resolution: "@fragrantjewels/gravity-brands.components.site-section@npm:0.0.9::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.components.site-section%2F-%2F%40fragrantjewels-gravity-brands.components.site-section-0.0.9.tgz"
-  dependencies:
-    core-js: ^3.0.0
-    styled-components: ^5.2.3
-  peerDependencies:
-    react: ^16.8.0 || ^17.0.0
-    react-dom: ^16.8.0 || ^17.0.0
-  checksum: 676cdd86eb6395316974788c5e79b918659c62bfec24f7bd88cc6e232aeea62a06fb9e14a56b0c1dcf9fa565fafd08ab1faf92588d19ef6bbfeb5a6b406784fe
-  languageName: node
-  linkType: hard
-
-"@fragrantjewels/gravity-brands.components.social-links@npm:0.0.14":
-  version: 0.0.14
-  resolution: "@fragrantjewels/gravity-brands.components.social-links@npm:0.0.14::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.components.social-links%2F-%2F%40fragrantjewels-gravity-brands.components.social-links-0.0.14.tgz"
-  dependencies:
-    classnames: ^2.3.1
-    core-js: ^3.0.0
-    styled-components: ^5.2.3
-  peerDependencies:
-    react: ^16.8.0 || ^17.0.0
-    react-dom: ^16.8.0 || ^17.0.0
-  checksum: 99ec3e850a2737da65951d6b9229d80a42480f3bf11ddb05dfb24a98deb5958b43e893114c86eb96acd459ff8bb1b458b34a810796413e593e3558ad0ab6fcf8
-  languageName: node
-  linkType: hard
-
-"@fragrantjewels/gravity-brands.components.social-links@npm:0.0.9":
-  version: 0.0.9
-  resolution: "@fragrantjewels/gravity-brands.components.social-links@npm:0.0.9::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.components.social-links%2F-%2F%40fragrantjewels-gravity-brands.components.social-links-0.0.9.tgz"
-  dependencies:
-    classnames: ^2.3.1
-    core-js: ^3.0.0
-    styled-components: ^5.2.3
-  peerDependencies:
-    react: ^16.8.0 || ^17.0.0
-    react-dom: ^16.8.0 || ^17.0.0
-  checksum: a8e33e8005f7223d5f0666d8235fe0042b32054560778302109b49e1fb757e7397d8a2dffa475855990755d454ead596110c3f60f65f151595f273cc8cff77fc
+  checksum: 241fc6b629d092debd635be96a65dd381183c8eb6d3151a81cba313afe61a3ffd8022600bf5c5aa2482488278f7795b4ef4b3c5ce6e9e1a8368da032bba3969c
   languageName: node
   linkType: hard
 
@@ -3046,24 +2972,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fragrantjewels/gravity-brands.modules.api@npm:0.0.13":
-  version: 0.0.13
-  resolution: "@fragrantjewels/gravity-brands.modules.api@npm:0.0.13::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.modules.api%2F-%2F%40fragrantjewels-gravity-brands.modules.api-0.0.13.tgz"
+"@fragrantjewels/gravity-brands.modules.api@npm:0.0.14":
+  version: 0.0.14
+  resolution: "@fragrantjewels/gravity-brands.modules.api@npm:0.0.14::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.modules.api%2F-%2F%40fragrantjewels-gravity-brands.modules.api-0.0.14.tgz"
   dependencies:
-    "@fragrantjewels/gravity-brands.modules.base-api-url": 0.0.4
+    "@fragrantjewels/gravity-brands.modules.base-api-url": 0.0.6
     "@fragrantjewels/gravity-brands.modules.http": 0.0.5
-  checksum: 00e55b001874e47ba11b0d7b1af0ec34d734829f727ae4f4ab21e2e1212c7ea2ab063419072421f424a050b51b70e2782b9cf493867746ef518d51d3206e7293
+  checksum: 436ab0599264e31b005131eb9d013ab8de964a167757c130119837da9ec0c53754f6549fa829b65a5566b9eb7ce6c90672ed1cf32d380cdd86b52378655d63fa
   languageName: node
   linkType: hard
 
-"@fragrantjewels/gravity-brands.modules.base-api-url@npm:0.0.4":
-  version: 0.0.4
-  resolution: "@fragrantjewels/gravity-brands.modules.base-api-url@npm:0.0.4::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.modules.base-api-url%2F-%2F%40fragrantjewels-gravity-brands.modules.base-api-url-0.0.4.tgz"
-  checksum: b7d38d596e5121969feb322a226de9e95cde68c5318d2421f4d31df2ea266dd55e5d8e94eb6395d61e4febeaf5d0dbc2e2235fcfa670c34ff1dfff17bb3e4678
-  languageName: node
-  linkType: hard
-
-"@fragrantjewels/gravity-brands.modules.base-api-url@npm:^0.0.6":
+"@fragrantjewels/gravity-brands.modules.base-api-url@npm:0.0.6, @fragrantjewels/gravity-brands.modules.base-api-url@npm:^0.0.6":
   version: 0.0.6
   resolution: "@fragrantjewels/gravity-brands.modules.base-api-url@npm:0.0.6::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.modules.base-api-url%2F-%2F%40fragrantjewels-gravity-brands.modules.base-api-url-0.0.6.tgz"
   checksum: 7317bddcd321db41f897fb55fb89cf4582e9c59a314884965c43177af1ae3ff4b57783b5e9773575b33243dd3d0c311f7fb26e833c6ceb790d8965777a83dcfb
@@ -3097,23 +3016,32 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fragrantjewels/gravity-brands.modules.load-collection@npm:^0.0.16":
-  version: 0.0.16
-  resolution: "@fragrantjewels/gravity-brands.modules.load-collection@npm:0.0.16::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.modules.load-collection%2F-%2F%40fragrantjewels-gravity-brands.modules.load-collection-0.0.16.tgz"
+"@fragrantjewels/gravity-brands.modules.load-collection@npm:^0.0.17":
+  version: 0.0.17
+  resolution: "@fragrantjewels/gravity-brands.modules.load-collection@npm:0.0.17::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.modules.load-collection%2F-%2F%40fragrantjewels-gravity-brands.modules.load-collection-0.0.17.tgz"
   dependencies:
-    "@fragrantjewels/gravity-brands.modules.api": 0.0.13
+    "@fragrantjewels/gravity-brands.modules.api": 0.0.14
     "@fragrantjewels/gravity-brands.modules.normalize-collection": 0.0.6
-  checksum: f58fbb32347f34a2db4e59e972c24e78f821637649a5c34a2a35e3cc49fc42955568c74721559bf160bfae0dc1e6f292cf6c51dca87ca42eb5fa2e3adeb8e1d7
+  checksum: cbc9d8f195bfb2c801c365b48034946a0ee30fc5b3df67022be0c63a2cbf3a8b461c8f56e39e6e74d9efe8b8184a9ceb2ae240234acf535688f05ce301fe5f63
   languageName: node
   linkType: hard
 
-"@fragrantjewels/gravity-brands.modules.load-product@npm:^0.0.15":
-  version: 0.0.15
-  resolution: "@fragrantjewels/gravity-brands.modules.load-product@npm:0.0.15::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.modules.load-product%2F-%2F%40fragrantjewels-gravity-brands.modules.load-product-0.0.15.tgz"
+"@fragrantjewels/gravity-brands.modules.load-product@npm:^0.0.16":
+  version: 0.0.16
+  resolution: "@fragrantjewels/gravity-brands.modules.load-product@npm:0.0.16::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.modules.load-product%2F-%2F%40fragrantjewels-gravity-brands.modules.load-product-0.0.16.tgz"
   dependencies:
-    "@fragrantjewels/gravity-brands.modules.api": 0.0.13
+    "@fragrantjewels/gravity-brands.modules.api": 0.0.14
     "@fragrantjewels/gravity-brands.modules.normalize-product": 0.0.6
-  checksum: e34210ac69e634053f225519a2ca5eea240177d6e0b94b3f460596237757468fab7f7e066e00c5dc22f7b9b8f898d7b63aae6cb5f50efc169e90236b2d85ddfe
+  checksum: b5383185f90e69878ec81bb493dd89c499167c54c726309b486294e450809af73fd1c4074b62650f35fc1b0c78e5ffc282397b94d6d3d3337936097261ddfa28
+  languageName: node
+  linkType: hard
+
+"@fragrantjewels/gravity-brands.modules.load-script@npm:0.0.1":
+  version: 0.0.1
+  resolution: "@fragrantjewels/gravity-brands.modules.load-script@npm:0.0.1::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.modules.load-script%2F-%2F%40fragrantjewels-gravity-brands.modules.load-script-0.0.1.tgz"
+  dependencies:
+    tiny-script-loader: ^2.2.1
+  checksum: 3be903957bf17b2f65d9e590f6d4002efa60cc7719ae73c5254170d9acee7b604c379595ad43ef82e9be04428ff4d96130e94b6b26af5e2f8c99f62e04a3a446
   languageName: node
   linkType: hard
 
@@ -3184,12 +3112,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fragrantjewels/gravity-brands.modules.signup@npm:^0.0.14":
-  version: 0.0.14
-  resolution: "@fragrantjewels/gravity-brands.modules.signup@npm:0.0.14::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.modules.signup%2F-%2F%40fragrantjewels-gravity-brands.modules.signup-0.0.14.tgz"
+"@fragrantjewels/gravity-brands.modules.signup@npm:^0.0.15":
+  version: 0.0.15
+  resolution: "@fragrantjewels/gravity-brands.modules.signup@npm:0.0.15::__archiveUrl=https%3A%2F%2Fnode.bit.dev%2F%40fragrantjewels%2Fgravity-brands.modules.signup%2F-%2F%40fragrantjewels-gravity-brands.modules.signup-0.0.15.tgz"
   dependencies:
-    "@fragrantjewels/gravity-brands.modules.api": 0.0.13
-  checksum: a0c3884a91d4cf76d335889ab6eb87343965181b21bfb5ec7a1fe9bde370baec4b94e587d8fbb5355a53779d5c73755cb0b8382f110a648ab8ebc7643722eb8f
+    "@fragrantjewels/gravity-brands.modules.api": 0.0.14
+  checksum: 33c9103566d10b0b4184bde44999bd376cf3879412f448f54bf5489c894f796d46c9be31aa8c4a2685caaea1962c81ee15c29d8962d3bed326bf50faf015067b
   languageName: node
   linkType: hard
 
@@ -9772,9 +9700,9 @@ __metadata:
   linkType: hard
 
 "@types/node@npm:*":
-  version: 16.4.0
-  resolution: "@types/node@npm:16.4.0"
-  checksum: 9107dbdd9b7ad9deacc1bcabdf7205ea512bbf5ffe982f2b8a0d8ad776296d610e7c52363f2d62ba5a87f7547619df4bd66319ac487641d519ae52d3867743b6
+  version: 16.4.1
+  resolution: "@types/node@npm:16.4.1"
+  checksum: 6cff78c802a1efecc900506a468a9bdaa321c7132a05e87552ab710f3d3a5cd230308317634f94b8db4833c66c72a765b28670d5ccf8c7c5a7363fcce32d1b1e
   languageName: node
   linkType: hard
 
@@ -12210,6 +12138,98 @@ __metadata:
   languageName: node
   linkType: hard
 
+"babel-helper-call-delegate@npm:^6.24.1":
+  version: 6.24.1
+  resolution: "babel-helper-call-delegate@npm:6.24.1"
+  dependencies:
+    babel-helper-hoist-variables: ^6.24.1
+    babel-runtime: ^6.22.0
+    babel-traverse: ^6.24.1
+    babel-types: ^6.24.1
+  checksum: b6277d6e48c10cf416632f6dfbac77bdf6ba8ec4ac2f6359a77d6b731dae941c2a3ec7f35e1eba78aad2a7e0838197731d1ef75af529055096c4cb7d96432c88
+  languageName: node
+  linkType: hard
+
+"babel-helper-define-map@npm:^6.24.1":
+  version: 6.26.0
+  resolution: "babel-helper-define-map@npm:6.26.0"
+  dependencies:
+    babel-helper-function-name: ^6.24.1
+    babel-runtime: ^6.26.0
+    babel-types: ^6.26.0
+    lodash: ^4.17.4
+  checksum: 08e201eb009a7dbd020232fb7468ac772ebb8cfd33ec9a41113a54f4c90fd1e3474497783d635b8f87d797706323ca0c1758c516a630b0c95277112fc2fe4f13
+  languageName: node
+  linkType: hard
+
+"babel-helper-function-name@npm:^6.24.1":
+  version: 6.24.1
+  resolution: "babel-helper-function-name@npm:6.24.1"
+  dependencies:
+    babel-helper-get-function-arity: ^6.24.1
+    babel-runtime: ^6.22.0
+    babel-template: ^6.24.1
+    babel-traverse: ^6.24.1
+    babel-types: ^6.24.1
+  checksum: d651db9e0b29e135877e90e7858405750a684220d22a6f7c78bb163305a1b322cc1c8bea1bc617625c34d92d0927fdbaa49ee46822e2f86b524eced4c88c7ff0
+  languageName: node
+  linkType: hard
+
+"babel-helper-get-function-arity@npm:^6.24.1":
+  version: 6.24.1
+  resolution: "babel-helper-get-function-arity@npm:6.24.1"
+  dependencies:
+    babel-runtime: ^6.22.0
+    babel-types: ^6.24.1
+  checksum: 37e344d6c5c00b67a3b378490a5d7ba924bab1c2ccd6ecf1b7da96ca679be12d75fbec6279366ae9772e482fb06a7b48293954dd79cbeba9b947e2db67252fbd
+  languageName: node
+  linkType: hard
+
+"babel-helper-hoist-variables@npm:^6.24.1":
+  version: 6.24.1
+  resolution: "babel-helper-hoist-variables@npm:6.24.1"
+  dependencies:
+    babel-runtime: ^6.22.0
+    babel-types: ^6.24.1
+  checksum: 6af1c165d5f0ad192df07daa194d13de77572bd914d2fc9a270d56b93b2705d98eebabf412b1211505535af131fbe95886fcfad8b3a07b4d501c24b9cb8e57fe
+  languageName: node
+  linkType: hard
+
+"babel-helper-optimise-call-expression@npm:^6.24.1":
+  version: 6.24.1
+  resolution: "babel-helper-optimise-call-expression@npm:6.24.1"
+  dependencies:
+    babel-runtime: ^6.22.0
+    babel-types: ^6.24.1
+  checksum: 16e6aba819b473dbf013391f759497df9f57bc7060bc4e5f7f6b60fb03670eb1dec65dd2227601d58f151e9d647e1f676a12466f5e6674379978820fa02c0fbb
+  languageName: node
+  linkType: hard
+
+"babel-helper-regex@npm:^6.24.1":
+  version: 6.26.0
+  resolution: "babel-helper-regex@npm:6.26.0"
+  dependencies:
+    babel-runtime: ^6.26.0
+    babel-types: ^6.26.0
+    lodash: ^4.17.4
+  checksum: ab949a4c90ab255abaafd9ec11a4a6dc77dba360875af2bb0822b699c058858773792c1e969c425c396837f61009f30c9ee5ba4b9a8ca87b0779ae1622f89fb3
+  languageName: node
+  linkType: hard
+
+"babel-helper-replace-supers@npm:^6.24.1":
+  version: 6.24.1
+  resolution: "babel-helper-replace-supers@npm:6.24.1"
+  dependencies:
+    babel-helper-optimise-call-expression: ^6.24.1
+    babel-messages: ^6.23.0
+    babel-runtime: ^6.22.0
+    babel-template: ^6.24.1
+    babel-traverse: ^6.24.1
+    babel-types: ^6.24.1
+  checksum: ca1d216c5c6afc6af2ef55ea16777ba99e108780ea25da61d93edb09fd85f5e96c756306e2a21e737c3b0c7a16c99762b62a0e5f529d3865b14029fef7351cba
+  languageName: node
+  linkType: hard
+
 "babel-helpers@npm:^6.24.1":
   version: 6.24.1
   resolution: "babel-helpers@npm:6.24.1"
@@ -12322,6 +12342,15 @@ __metadata:
   peerDependencies:
     "@babel/core": ^7.11.6
   checksum: 227a6a9380da04127d89c5290503b21c3108f67725214a1c1091c668f4487346623d86bc77a50d9cad2bfaa05f617495f30bd4e97ffa95c36e7a55de9fbe8efd
+  languageName: node
+  linkType: hard
+
+"babel-plugin-check-es2015-constants@npm:^6.22.0":
+  version: 6.22.0
+  resolution: "babel-plugin-check-es2015-constants@npm:6.22.0"
+  dependencies:
+    babel-runtime: ^6.22.0
+  checksum: 39168cb4ff078911726bfaf9d111d1e18f3e99d8b6f6101d343249b28346c3869e415c97fe7e857e7f34b913f8a052634b2b9dcfb4c0272e5f64ed22df69c735
   languageName: node
   linkType: hard
 
@@ -12504,10 +12533,263 @@ __metadata:
   languageName: node
   linkType: hard
 
+"babel-plugin-transform-es2015-arrow-functions@npm:^6.22.0":
+  version: 6.22.0
+  resolution: "babel-plugin-transform-es2015-arrow-functions@npm:6.22.0"
+  dependencies:
+    babel-runtime: ^6.22.0
+  checksum: 746e2be0fed20771c07f0984ba79ef0bab37d6e98434267ec96cef57272014fe53a180bfb9047bf69ed149d367a2c97baad54d6057531cd037684f371aab2333
+  languageName: node
+  linkType: hard
+
+"babel-plugin-transform-es2015-block-scoped-functions@npm:^6.22.0":
+  version: 6.22.0
+  resolution: "babel-plugin-transform-es2015-block-scoped-functions@npm:6.22.0"
+  dependencies:
+    babel-runtime: ^6.22.0
+  checksum: f251611f723d94b4068d2a873a2783e019bd81bd7144cfdbcfc31ef166f4d82fa2f1efba64342ba2630dab93a2b12284067725c0aa08315712419a2bc3b92a75
+  languageName: node
+  linkType: hard
+
+"babel-plugin-transform-es2015-block-scoping@npm:^6.24.1":
+  version: 6.26.0
+  resolution: "babel-plugin-transform-es2015-block-scoping@npm:6.26.0"
+  dependencies:
+    babel-runtime: ^6.26.0
+    babel-template: ^6.26.0
+    babel-traverse: ^6.26.0
+    babel-types: ^6.26.0
+    lodash: ^4.17.4
+  checksum: 5e4dee33bf4aab0ce7751a9ae845c25d3bf03944ffdfc8d784e1de2123a3eec19657dd59274c9969461757f5e2ab75c517e978bafe5309a821a41e278ad38a63
+  languageName: node
+  linkType: hard
+
+"babel-plugin-transform-es2015-classes@npm:^6.24.1":
+  version: 6.24.1
+  resolution: "babel-plugin-transform-es2015-classes@npm:6.24.1"
+  dependencies:
+    babel-helper-define-map: ^6.24.1
+    babel-helper-function-name: ^6.24.1
+    babel-helper-optimise-call-expression: ^6.24.1
+    babel-helper-replace-supers: ^6.24.1
+    babel-messages: ^6.23.0
+    babel-runtime: ^6.22.0
+    babel-template: ^6.24.1
+    babel-traverse: ^6.24.1
+    babel-types: ^6.24.1
+  checksum: 999392b47a83cf9297e49fbde00bc9b15fb6d71bc041f7b3d621ac45361486ec4b66f55c47f98dca6c398ceaa8bfc9f3c21257854822c4523e7475a92e6c000a
+  languageName: node
+  linkType: hard
+
+"babel-plugin-transform-es2015-computed-properties@npm:^6.24.1":
+  version: 6.24.1
+  resolution: "babel-plugin-transform-es2015-computed-properties@npm:6.24.1"
+  dependencies:
+    babel-runtime: ^6.22.0
+    babel-template: ^6.24.1
+  checksum: 34e466bfd4b021aa3861db66cf10a9093fa6a4fcedbc8c82a55f6ca1fcbd212a9967f2df6c5f9e9a20046fa43c8967633a476f2bbc15cb8d3769cbba948a5c16
+  languageName: node
+  linkType: hard
+
+"babel-plugin-transform-es2015-destructuring@npm:^6.22.0":
+  version: 6.23.0
+  resolution: "babel-plugin-transform-es2015-destructuring@npm:6.23.0"
+  dependencies:
+    babel-runtime: ^6.22.0
+  checksum: 1343d27f09846e6e1e48da7b83d0d4f2d5571559c468ad8ad4c3715b8ff3e21b2d553e90ad420dc6840de260b7f3b9f9c057606d527e3d838a52a3a7c5fffdbe
+  languageName: node
+  linkType: hard
+
+"babel-plugin-transform-es2015-duplicate-keys@npm:^6.24.1":
+  version: 6.24.1
+  resolution: "babel-plugin-transform-es2015-duplicate-keys@npm:6.24.1"
+  dependencies:
+    babel-runtime: ^6.22.0
+    babel-types: ^6.24.1
+  checksum: 756a7a13517c3e80c8312137b9872b9bc32fbfbb905e9f1e45bf321e2b464d0e6a6e6deca22c61b62377225bd8136b73580897cccb394995d6e00bc8ce882ba4
+  languageName: node
+  linkType: hard
+
+"babel-plugin-transform-es2015-for-of@npm:^6.22.0":
+  version: 6.23.0
+  resolution: "babel-plugin-transform-es2015-for-of@npm:6.23.0"
+  dependencies:
+    babel-runtime: ^6.22.0
+  checksum: 0124e320c32b25de84ddaba951a6f0ad031fa5019de54de32bd317d2a97b3f967026008f32e8c88728330c1cce7c4f1d0ecb15007020d50bd5ca1438a882e205
+  languageName: node
+  linkType: hard
+
+"babel-plugin-transform-es2015-function-name@npm:^6.24.1":
+  version: 6.24.1
+  resolution: "babel-plugin-transform-es2015-function-name@npm:6.24.1"
+  dependencies:
+    babel-helper-function-name: ^6.24.1
+    babel-runtime: ^6.22.0
+    babel-types: ^6.24.1
+  checksum: 629ecd824d53ec973a3ef85e74d9fd8c710203084ca2f7ac833879ddfa3b83a28f0270fe2ee5f3b8c078bb4b3e4b843173a646a7cd4abc49e8c1c563d31fb711
+  languageName: node
+  linkType: hard
+
+"babel-plugin-transform-es2015-literals@npm:^6.22.0":
+  version: 6.22.0
+  resolution: "babel-plugin-transform-es2015-literals@npm:6.22.0"
+  dependencies:
+    babel-runtime: ^6.22.0
+  checksum: 40e270580a0236990f2555f5dc7ae24b4db9f4709ca455ed1a6724b0078592482274be7448579b14122bd06481641a38e7b2e48d0b49b8c81c88e154a26865b4
+  languageName: node
+  linkType: hard
+
+"babel-plugin-transform-es2015-modules-amd@npm:^6.24.1":
+  version: 6.24.1
+  resolution: "babel-plugin-transform-es2015-modules-amd@npm:6.24.1"
+  dependencies:
+    babel-plugin-transform-es2015-modules-commonjs: ^6.24.1
+    babel-runtime: ^6.22.0
+    babel-template: ^6.24.1
+  checksum: 084c7a1ef3bd0b2b9f4851b27cfb65f8ea1408349af05b4d88f994c23844a0754abfa4799bbc5f3f0ec94232b3a54a2e46d7f1dff1bdd40fa66a46f645197dfa
+  languageName: node
+  linkType: hard
+
+"babel-plugin-transform-es2015-modules-commonjs@npm:^6.24.1":
+  version: 6.26.2
+  resolution: "babel-plugin-transform-es2015-modules-commonjs@npm:6.26.2"
+  dependencies:
+    babel-plugin-transform-strict-mode: ^6.24.1
+    babel-runtime: ^6.26.0
+    babel-template: ^6.26.0
+    babel-types: ^6.26.0
+  checksum: 9cd93a84037855c1879bcc100229bee25b44c4805a9a9f040e8927f772c4732fa17a0706c81ea0db77b357dd9baf84388eec03ceb36597932c48fe32fb3d4171
+  languageName: node
+  linkType: hard
+
+"babel-plugin-transform-es2015-modules-systemjs@npm:^6.24.1":
+  version: 6.24.1
+  resolution: "babel-plugin-transform-es2015-modules-systemjs@npm:6.24.1"
+  dependencies:
+    babel-helper-hoist-variables: ^6.24.1
+    babel-runtime: ^6.22.0
+    babel-template: ^6.24.1
+  checksum: b34877e201d7b4d293d87c04962a3575fe7727a9593e99ce3a7f8deea3da8883a08bd87a6a12927083ac26f47f6944a31cdbfe3d6eb4d18dd884cb2d304ee943
+  languageName: node
+  linkType: hard
+
+"babel-plugin-transform-es2015-modules-umd@npm:^6.24.1":
+  version: 6.24.1
+  resolution: "babel-plugin-transform-es2015-modules-umd@npm:6.24.1"
+  dependencies:
+    babel-plugin-transform-es2015-modules-amd: ^6.24.1
+    babel-runtime: ^6.22.0
+    babel-template: ^6.24.1
+  checksum: 735857b9f2ad0c41ceda31a1594fe2a063025f4428f9e243885a437b5bd415aca445a5e8495ff34b7120617735b1c3a2158033f0be23f1f5a90e655fff742a01
+  languageName: node
+  linkType: hard
+
+"babel-plugin-transform-es2015-object-super@npm:^6.24.1":
+  version: 6.24.1
+  resolution: "babel-plugin-transform-es2015-object-super@npm:6.24.1"
+  dependencies:
+    babel-helper-replace-supers: ^6.24.1
+    babel-runtime: ^6.22.0
+  checksum: 97b2968f699ac94cb55f4f1e7ea53dc9e4264ec99cab826f40f181da9f6db5980cd8b4985f05c7b6f1e19fbc31681e6e63894dfc5ecf4b3a673d736c4ef0f9db
+  languageName: node
+  linkType: hard
+
+"babel-plugin-transform-es2015-parameters@npm:^6.24.1":
+  version: 6.24.1
+  resolution: "babel-plugin-transform-es2015-parameters@npm:6.24.1"
+  dependencies:
+    babel-helper-call-delegate: ^6.24.1
+    babel-helper-get-function-arity: ^6.24.1
+    babel-runtime: ^6.22.0
+    babel-template: ^6.24.1
+    babel-traverse: ^6.24.1
+    babel-types: ^6.24.1
+  checksum: bb6c047dc10499be8ccebdffac22c77f14aee5d3106da8f2e96c801d2746403c809d8c6922e8ebd2eb31d8827b4bb2321ba43378fcdc9dca206417bb345c4f93
+  languageName: node
+  linkType: hard
+
+"babel-plugin-transform-es2015-shorthand-properties@npm:^6.24.1":
+  version: 6.24.1
+  resolution: "babel-plugin-transform-es2015-shorthand-properties@npm:6.24.1"
+  dependencies:
+    babel-runtime: ^6.22.0
+    babel-types: ^6.24.1
+  checksum: 9302c5de158a28432e932501a783560094c624c3659f4e0a472b6b2e9d6e8ab2634f82ef74d3e75363d46ccff6aad119267dbc34f67464c70625e24a651ad9e5
+  languageName: node
+  linkType: hard
+
+"babel-plugin-transform-es2015-spread@npm:^6.22.0":
+  version: 6.22.0
+  resolution: "babel-plugin-transform-es2015-spread@npm:6.22.0"
+  dependencies:
+    babel-runtime: ^6.22.0
+  checksum: 8694a8a7802d905503194ab81c155354b36d39fc819ad2148f83146518dd37d2c6926c8568712f5aa890169afc9353fd4bcc49397959c6dc9da3480b449c0ae9
+  languageName: node
+  linkType: hard
+
+"babel-plugin-transform-es2015-sticky-regex@npm:^6.24.1":
+  version: 6.24.1
+  resolution: "babel-plugin-transform-es2015-sticky-regex@npm:6.24.1"
+  dependencies:
+    babel-helper-regex: ^6.24.1
+    babel-runtime: ^6.22.0
+    babel-types: ^6.24.1
+  checksum: d9c45401caf0d74779a1170e886976d4c865b7de2e90dfffc7557481b9e73b6e37e9f1028aa07b813896c4df88f4d7e89968249a74547c7875e6c499c90c801d
+  languageName: node
+  linkType: hard
+
+"babel-plugin-transform-es2015-template-literals@npm:^6.22.0":
+  version: 6.22.0
+  resolution: "babel-plugin-transform-es2015-template-literals@npm:6.22.0"
+  dependencies:
+    babel-runtime: ^6.22.0
+  checksum: 4fad2b7b383a2e784858ee7bf837419ee8ff9602afe218e1472f8c33a0c008f01d06f23ff2f2322fb23e1ed17e37237a818575fe88ecc5417d85331973b0ea4d
+  languageName: node
+  linkType: hard
+
+"babel-plugin-transform-es2015-typeof-symbol@npm:^6.22.0":
+  version: 6.23.0
+  resolution: "babel-plugin-transform-es2015-typeof-symbol@npm:6.23.0"
+  dependencies:
+    babel-runtime: ^6.22.0
+  checksum: 68a1609c6abcddf5f138c56bafcd9fad7c6b3b404fe40910148ab70eb21d6c7807a343a64eb81ce45daf4b70c384c528c55fad45e0d581e4b09efa4d574a6a1b
+  languageName: node
+  linkType: hard
+
+"babel-plugin-transform-es2015-unicode-regex@npm:^6.24.1":
+  version: 6.24.1
+  resolution: "babel-plugin-transform-es2015-unicode-regex@npm:6.24.1"
+  dependencies:
+    babel-helper-regex: ^6.24.1
+    babel-runtime: ^6.22.0
+    regexpu-core: ^2.0.0
+  checksum: 739ddb02e5f77904f83ea45323c9a636e3aed34b2a49c7c68208b5f2834eecb6b655e772f870f16a7aaf09ac8219f754ad69d61741d088f5b681d13cda69265d
+  languageName: node
+  linkType: hard
+
 "babel-plugin-transform-react-remove-prop-types@npm:0.4.24":
   version: 0.4.24
   resolution: "babel-plugin-transform-react-remove-prop-types@npm:0.4.24"
   checksum: 54afe56d67f0d118c9da23996f39948e502a152b3f582eb6e8f163fcb76c2c1ea4e0cdd4f9fac5c0ef050eab4fe0a950b0b74aae6237bcc0d31d8fc4cc808d1a
+  languageName: node
+  linkType: hard
+
+"babel-plugin-transform-regenerator@npm:^6.24.1":
+  version: 6.26.0
+  resolution: "babel-plugin-transform-regenerator@npm:6.26.0"
+  dependencies:
+    regenerator-transform: ^0.10.0
+  checksum: 41a51d8f692bf4a5cbd705fa70f3cb6abebae66d9ba3dccfb5921da262f8c30f630e1fe9f7b132e29b96fe0d99385a801f6aa204278c5bd0af4284f7f93a665a
+  languageName: node
+  linkType: hard
+
+"babel-plugin-transform-strict-mode@npm:^6.24.1":
+  version: 6.24.1
+  resolution: "babel-plugin-transform-strict-mode@npm:6.24.1"
+  dependencies:
+    babel-runtime: ^6.22.0
+    babel-types: ^6.24.1
+  checksum: 32d70ce9d8c8918a6a840e46df03dfe1e265eb9b25df5a800fedb5065ef1b4b5f24d7c62d92fca0e374db8b0b9b6f84e68edd02ad21883d48f608583ec29f638
   languageName: node
   linkType: hard
 
@@ -12560,6 +12842,38 @@ __metadata:
   peerDependencies:
     "@babel/core": ^7.0.0
   checksum: d118c2742498c5492c095bc8541f4076b253e705b5f1ad9a2e7d302d81a84866f0070346662355c8e25fc02caa28dc2da8d69bcd67794a0d60c4d6fab6913cc8
+  languageName: node
+  linkType: hard
+
+"babel-preset-es2015@npm:^6.24.1":
+  version: 6.24.1
+  resolution: "babel-preset-es2015@npm:6.24.1"
+  dependencies:
+    babel-plugin-check-es2015-constants: ^6.22.0
+    babel-plugin-transform-es2015-arrow-functions: ^6.22.0
+    babel-plugin-transform-es2015-block-scoped-functions: ^6.22.0
+    babel-plugin-transform-es2015-block-scoping: ^6.24.1
+    babel-plugin-transform-es2015-classes: ^6.24.1
+    babel-plugin-transform-es2015-computed-properties: ^6.24.1
+    babel-plugin-transform-es2015-destructuring: ^6.22.0
+    babel-plugin-transform-es2015-duplicate-keys: ^6.24.1
+    babel-plugin-transform-es2015-for-of: ^6.22.0
+    babel-plugin-transform-es2015-function-name: ^6.24.1
+    babel-plugin-transform-es2015-literals: ^6.22.0
+    babel-plugin-transform-es2015-modules-amd: ^6.24.1
+    babel-plugin-transform-es2015-modules-commonjs: ^6.24.1
+    babel-plugin-transform-es2015-modules-systemjs: ^6.24.1
+    babel-plugin-transform-es2015-modules-umd: ^6.24.1
+    babel-plugin-transform-es2015-object-super: ^6.24.1
+    babel-plugin-transform-es2015-parameters: ^6.24.1
+    babel-plugin-transform-es2015-shorthand-properties: ^6.24.1
+    babel-plugin-transform-es2015-spread: ^6.22.0
+    babel-plugin-transform-es2015-sticky-regex: ^6.24.1
+    babel-plugin-transform-es2015-template-literals: ^6.22.0
+    babel-plugin-transform-es2015-typeof-symbol: ^6.22.0
+    babel-plugin-transform-es2015-unicode-regex: ^6.24.1
+    babel-plugin-transform-regenerator: ^6.24.1
+  checksum: ce8af7631f20b9e249f49bb55b64d91665828b7c272131163c58ee3a7f4ac73b9fd4dee6943f71bfd4f307d689f1af9b35887ac5430ed7f2ddc92ad7251b6343
   languageName: node
   linkType: hard
 
@@ -12662,7 +12976,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"babel-runtime@npm:^6.22.0, babel-runtime@npm:^6.26.0":
+"babel-runtime@npm:^6.18.0, babel-runtime@npm:^6.22.0, babel-runtime@npm:^6.26.0":
   version: 6.26.0
   resolution: "babel-runtime@npm:6.26.0"
   dependencies:
@@ -12685,7 +12999,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"babel-traverse@npm:^6.26.0":
+"babel-traverse@npm:^6.24.1, babel-traverse@npm:^6.26.0":
   version: 6.26.0
   resolution: "babel-traverse@npm:6.26.0"
   dependencies:
@@ -12702,7 +13016,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"babel-types@npm:^6.26.0":
+"babel-types@npm:^6.19.0, babel-types@npm:^6.24.1, babel-types@npm:^6.26.0":
   version: 6.26.0
   resolution: "babel-types@npm:6.26.0"
   dependencies:
@@ -16046,9 +16360,9 @@ __metadata:
   linkType: hard
 
 "electron-to-chromium@npm:^1.3.378, electron-to-chromium@npm:^1.3.585, electron-to-chromium@npm:^1.3.723":
-  version: 1.3.784
-  resolution: "electron-to-chromium@npm:1.3.784"
-  checksum: 38160ccbc2dfb5c7fbf42d817f1363876acd0f92e28479603533a71a217d7b90626fd5d3a6123bde3aa7ca652af03c2d516d6c349ba845d503e8e2116cdc9640
+  version: 1.3.785
+  resolution: "electron-to-chromium@npm:1.3.785"
+  checksum: 0ede1fccdf1e4f646048a6303579af582e8d73c2258cb74f4d34c366067da8d649e8ffeae77c5966e614849b79d17f54fe04e3b7286f084cb840b5b4dd70117e
   languageName: node
   linkType: hard
 
@@ -17815,38 +18129,32 @@ __metadata:
     "@babel/core": 7.9.0
     "@babel/runtime": 7.12.18
     "@builder.io/react": ^1.1.46
-    "@fragrantjewels/gravity-brands.components.category-shop-card": ^0.0.27
-    "@fragrantjewels/gravity-brands.components.collection-filters": ^0.0.12
-    "@fragrantjewels/gravity-brands.components.follow-us": ^0.0.10
-    "@fragrantjewels/gravity-brands.components.footer": ^0.0.15
-    "@fragrantjewels/gravity-brands.components.full-width-banner": ^0.0.13
-    "@fragrantjewels/gravity-brands.components.header": 0.0.25
-    "@fragrantjewels/gravity-brands.components.hero-gallery": ^0.0.27
-    "@fragrantjewels/gravity-brands.components.information-overview": ^0.0.9
-    "@fragrantjewels/gravity-brands.components.inline-signup-form": ^0.0.26
-    "@fragrantjewels/gravity-brands.components.inner-circle-exclusive": ^0.0.32
-    "@fragrantjewels/gravity-brands.components.main-page-layout": ^0.0.22
-    "@fragrantjewels/gravity-brands.components.most-fun-overview": ^0.0.9
-    "@fragrantjewels/gravity-brands.components.nav-icons": 0.0.10
-    "@fragrantjewels/gravity-brands.components.nav-mobile": 0.0.1
-    "@fragrantjewels/gravity-brands.components.nav-tabs": 0.0.19
-    "@fragrantjewels/gravity-brands.components.points-widget": 0.0.6
-    "@fragrantjewels/gravity-brands.components.products-carousel": ^0.0.28
-    "@fragrantjewels/gravity-brands.components.products-list": ^0.0.26
-    "@fragrantjewels/gravity-brands.components.promise-bar": ^0.0.20
-    "@fragrantjewels/gravity-brands.components.reviews-section": ^0.0.24
-    "@fragrantjewels/gravity-brands.components.rolling-banner": ^0.0.15
-    "@fragrantjewels/gravity-brands.components.search-field": 0.0.6
-    "@fragrantjewels/gravity-brands.components.shop-by-products-overview": ^0.0.30
-    "@fragrantjewels/gravity-brands.components.signin-signup": 0.0.7
-    "@fragrantjewels/gravity-brands.components.site-section": ^0.0.9
+    "@fragrantjewels/gravity-brands.components.category-shop-card": ^0.0.28
+    "@fragrantjewels/gravity-brands.components.collection-filters": ^0.0.13
+    "@fragrantjewels/gravity-brands.components.follow-us": ^0.0.11
+    "@fragrantjewels/gravity-brands.components.footer": ^0.0.16
+    "@fragrantjewels/gravity-brands.components.full-width-banner": ^0.0.14
+    "@fragrantjewels/gravity-brands.components.hero-gallery": ^0.0.28
+    "@fragrantjewels/gravity-brands.components.information-overview": ^0.0.10
+    "@fragrantjewels/gravity-brands.components.inline-signup-form": ^0.0.27
+    "@fragrantjewels/gravity-brands.components.inner-circle-exclusive": ^0.0.33
+    "@fragrantjewels/gravity-brands.components.main-page-layout": ^0.0.23
+    "@fragrantjewels/gravity-brands.components.most-fun-overview": ^0.0.10
+    "@fragrantjewels/gravity-brands.components.products-carousel": ^0.0.29
+    "@fragrantjewels/gravity-brands.components.products-list": ^0.0.27
+    "@fragrantjewels/gravity-brands.components.promise-bar": ^0.0.21
+    "@fragrantjewels/gravity-brands.components.reviews-section": ^0.0.25
+    "@fragrantjewels/gravity-brands.components.rolling-banner": ^0.0.16
+    "@fragrantjewels/gravity-brands.components.shop-by-products-overview": ^0.0.32
+    "@fragrantjewels/gravity-brands.components.site-section": ^0.0.10
+    "@fragrantjewels/gravity-brands.components.yotpo-comments": ^0.0.1
     "@fragrantjewels/gravity-brands.helpers.theme-provider": ^0.0.10
     "@fragrantjewels/gravity-brands.modules.base-api-url": ^0.0.6
-    "@fragrantjewels/gravity-brands.modules.load-collection": ^0.0.16
-    "@fragrantjewels/gravity-brands.modules.load-product": ^0.0.15
+    "@fragrantjewels/gravity-brands.modules.load-collection": ^0.0.17
+    "@fragrantjewels/gravity-brands.modules.load-product": ^0.0.16
     "@fragrantjewels/gravity-brands.modules.parse-filters-from-products": ^0.0.8
     "@fragrantjewels/gravity-brands.modules.resolve-page-props": ^0.0.5
-    "@fragrantjewels/gravity-brands.modules.signup": ^0.0.14
+    "@fragrantjewels/gravity-brands.modules.signup": ^0.0.15
     "@popperjs/core": ^2.9.2
     "@teambit/cli": ^0.0.352
     "@teambit/generator": ^0.0.375
@@ -17870,6 +18178,7 @@ __metadata:
     babel-jest: 25.2.4
     babel-loader: 8.1.0
     babel-plugin-module-resolver: 4.0.0
+    babel-preset-es2015: ^6.24.1
     classnames: ^2.3.1
     core-js: ^3.0.0
     eslint: 7.17.0
@@ -17884,6 +18193,7 @@ __metadata:
     jest-svg-transformer: 1.0.0
     lint-staged: 10.1.0
     next: 10.0.3
+    node-html-parser: ^4.1.0
     node-sass: ^5.0.0
     postcss-preset-env: 6.7.0
     prettier: 2.0.2
@@ -18002,6 +18312,25 @@ __metadata:
   languageName: node
   linkType: hard
 
+fsevents@^1.2.7:
+  version: 1.2.13
+  resolution: "fsevents@npm:1.2.13"
+  dependencies:
+    bindings: ^1.5.0
+    nan: ^2.12.1
+  checksum: ae855aa737aaa2f9167e9f70417cf6e45a5cd11918e1fee9923709a0149be52416d765433b4aeff56c789b1152e718cd1b13ddec6043b78cdda68260d86383c1
+  languageName: node
+  linkType: hard
+
+"fsevents@^2.1.2, fsevents@~2.3.1, fsevents@~2.3.2":
+  version: 2.3.2
+  resolution: "fsevents@npm:2.3.2"
+  dependencies:
+    node-gyp: latest
+  checksum: 97ade64e75091afee5265e6956cb72ba34db7819b4c3e94c431d4be2b19b8bb7a2d4116da417950c3425f17c8fe693d25e20212cac583ac1521ad066b77ae31f
+  languageName: node
+  linkType: hard
+
 "fsevents@patch:fsevents@^1.2.7#~builtin<compat/fsevents>":
   version: 1.2.13
   resolution: "fsevents@patch:fsevents@npm%3A1.2.13#~builtin<compat/fsevents>::version=1.2.13&hash=1cc4b2"
@@ -18027,6 +18356,15 @@ __metadata:
   dependencies:
     node-gyp: latest
   checksum: 37502954e1b2cf7d1f555561e45956521afa12e12cbfe05445ffa1f2852a3d8932980cacb808d504b1def84b12b3b7b41c26673180691295001fa7740cc63fba
+  languageName: node
+  linkType: hard
+
+fsevents@~2.1.2:
+  version: 2.1.3
+  resolution: "fsevents@npm:2.1.3"
+  dependencies:
+    node-gyp: latest
+  checksum: b5ec0516b44d75b60af5c01ff80a80cd995d175e4640d2a92fbabd02991dd664d76b241b65feef0775c23d531c3c74742c0fbacd6205af812a9c3cef59f04292
   languageName: node
   linkType: hard
 
@@ -23677,6 +24015,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"node-html-parser@npm:^4.1.0":
+  version: 4.1.0
+  resolution: "node-html-parser@npm:4.1.0"
+  dependencies:
+    css-select: ^4.1.3
+    he: 1.2.0
+  checksum: 9a1cbcd5bc25cfd780ae1df422af77c0b88d1f987933b0b7550a867a34b2b19a5cb9884b9d60435df17a64f6e454358787c37b0bf54c4bf8103925d42fd5b1e7
+  languageName: node
+  linkType: hard
+
 "node-int64@npm:^0.4.0":
   version: 0.4.0
   resolution: "node-int64@npm:0.4.0"
@@ -23844,6 +24192,12 @@ __metadata:
 "normalize-product-143444@workspace:gravity-brands/modules/normalize-product":
   version: 0.0.0-use.local
   resolution: "normalize-product-143444@workspace:gravity-brands/modules/normalize-product"
+  languageName: unknown
+  linkType: soft
+
+"normalize-product-description-494e63@workspace:gravity-brands/modules/normalize-product-description":
+  version: 0.0.0-use.local
+  resolution: "normalize-product-description-494e63@workspace:gravity-brands/modules/normalize-product-description"
   languageName: unknown
   linkType: soft
 
@@ -27090,7 +27444,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"regenerate@npm:^1.4.0":
+"regenerate@npm:^1.2.1, regenerate@npm:^1.4.0":
   version: 1.4.2
   resolution: "regenerate@npm:1.4.2"
   checksum: 3317a09b2f802da8db09aa276e469b57a6c0dd818347e05b8862959c6193408242f150db5de83c12c3fa99091ad95fb42a6db2c3329bfaa12a0ea4cbbeb30cb0
@@ -27105,9 +27459,20 @@ __metadata:
   linkType: hard
 
 "regenerator-runtime@npm:^0.13.3, regenerator-runtime@npm:^0.13.4":
-  version: 0.13.7
-  resolution: "regenerator-runtime@npm:0.13.7"
-  checksum: 52b66e6669152c0b1bccd95c8e11aabbfe67bb97bdf00e223bdf723b0f0052d4da5c02001d4c4bef576bdc5bcdc38a20496d1b5363b65c950c8434ed5071d9e0
+  version: 0.13.9
+  resolution: "regenerator-runtime@npm:0.13.9"
+  checksum: 65ed455fe5afd799e2897baf691ca21c2772e1a969d19bb0c4695757c2d96249eb74ee3553ea34a91062b2a676beedf630b4c1551cc6299afb937be1426ec55e
+  languageName: node
+  linkType: hard
+
+"regenerator-transform@npm:^0.10.0":
+  version: 0.10.1
+  resolution: "regenerator-transform@npm:0.10.1"
+  dependencies:
+    babel-runtime: ^6.18.0
+    babel-types: ^6.19.0
+    private: ^0.1.6
+  checksum: bd366a3b0fa0d0975c48fb9eff250363a9ab28c25b472ecdc397bb19a836746640a30d8f641718a895f9178564bd8a01a0179a9c8e5813f76fc29e62a115d9d7
   languageName: node
   linkType: hard
 
@@ -27154,6 +27519,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"regexpu-core@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "regexpu-core@npm:2.0.0"
+  dependencies:
+    regenerate: ^1.2.1
+    regjsgen: ^0.2.0
+    regjsparser: ^0.1.4
+  checksum: 14a78eb4608fa991ded6a1433ee6a570f95a4cfb7fe312145a44d6ecbb3dc8c707016a099494c741aa0ac75a1329b40814d30ff134c0d67679c80187029c7d2d
+  languageName: node
+  linkType: hard
+
 "regexpu-core@npm:^4.2.0, regexpu-core@npm:^4.7.1":
   version: 4.7.1
   resolution: "regexpu-core@npm:4.7.1"
@@ -27168,10 +27544,28 @@ __metadata:
   languageName: node
   linkType: hard
 
+"regjsgen@npm:^0.2.0":
+  version: 0.2.0
+  resolution: "regjsgen@npm:0.2.0"
+  checksum: 1f3ae570151e2c29193cdc5a5890c0b83cd8c5029ed69315b0ea303bc2644f9ab5d536d2288fd9b70293fd351d7dd7fc1fc99ebe24554015c894dbce883bcf2b
+  languageName: node
+  linkType: hard
+
 "regjsgen@npm:^0.5.1":
   version: 0.5.2
   resolution: "regjsgen@npm:0.5.2"
   checksum: 87c83d8488affae2493a823904de1a29a1867a07433c5e1142ad749b5606c5589b305fe35bfcc0972cf5a3b0d66b1f7999009e541be39a5d42c6041c59e2fb52
+  languageName: node
+  linkType: hard
+
+"regjsparser@npm:^0.1.4":
+  version: 0.1.5
+  resolution: "regjsparser@npm:0.1.5"
+  dependencies:
+    jsesc: ~0.5.0
+  bin:
+    regjsparser: bin/parser
+  checksum: 1feba2f3f2d4f1ef9f5f4e0f20c827cf866d4f65c51502eb64db4d4dd9c656f8c70f6c79537c892bf0fc9592c96f732519f7d8ad4a82f3b622756118ac737970
   languageName: node
   linkType: hard
 
@@ -27575,6 +27969,23 @@ __metadata:
   version: 0.2.1
   resolution: "resolve-url@npm:0.2.1"
   checksum: 7b7035b9ed6e7bc7d289e90aef1eab5a43834539695dac6416ca6e91f1a94132ae4796bbd173cdacfdc2ade90b5f38a3fb6186bebc1b221cd157777a23b9ad14
+  languageName: node
+  linkType: hard
+
+resolve@1.1.7:
+  version: 1.1.7
+  resolution: "resolve@npm:1.1.7"
+  checksum: afd20873fbde7641c9125efe3f940c2a99f6b1f90f1b7b743e744bdaac1cb105b2e4e0317bcc052ed7e31d57afa86b394a4dc9a1b33a297977be134fdf0250ab
+  languageName: node
+  linkType: hard
+
+"resolve@^1.1.6, resolve@^1.10.0, resolve@^1.12.0, resolve@^1.13.1, resolve@^1.14.2, resolve@^1.17.0, resolve@^1.18.1, resolve@^1.19.0, resolve@^1.3.2, resolve@^1.8.1":
+  version: 1.20.0
+  resolution: "resolve@npm:1.20.0"
+  dependencies:
+    is-core-module: ^2.2.0
+    path-parse: ^1.0.6
+  checksum: 40cf70b2cde00ef57f99daf2dc63c6a56d6c14a1b7fc51735d06a6f0a3b97cb67b4fb7ef6c747b4e13a7baba83b0ef625d7c4ce92a483cd5af923c3b65fd16fe
   languageName: node
   linkType: hard
 
@@ -30690,6 +31101,26 @@ __metadata:
   languageName: node
   linkType: hard
 
+typescript@3.8.3:
+  version: 3.8.3
+  resolution: "typescript@npm:3.8.3"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: 3ef07f997a9a3af80d663cc611be984d3e22df3dc2b5ecfa6cbe7dbd54f1984fa1c679ba67e6a9d36d73ffdbbab88a0fbb58eb30ffc4f748f3a3c28d562b546a
+  languageName: node
+  linkType: hard
+
+typescript@4.1.5:
+  version: 4.1.5
+  resolution: "typescript@npm:4.1.5"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: af660e69aa5184520dfa57362dcf7fd1b26d08b869d76b3bd58dcc04058a757983f470cd61ded824ab01fa08a81d58c7f607d8e360f4e550664b9439d04f8e41
+  languageName: node
+  linkType: hard
+
 "typescript@patch:typescript@3.8.3#~builtin<compat/typescript>":
   version: 3.8.3
   resolution: "typescript@patch:typescript@npm%3A3.8.3#~builtin<compat/typescript>::version=3.8.3&hash=d8b4e7"
@@ -30737,11 +31168,11 @@ __metadata:
   linkType: hard
 
 "uglify-js@npm:^3.1.4":
-  version: 3.13.10
-  resolution: "uglify-js@npm:3.13.10"
+  version: 3.14.0
+  resolution: "uglify-js@npm:3.14.0"
   bin:
     uglifyjs: bin/uglifyjs
-  checksum: e5e51fc9b27c19745cc64cc3bd83e6e4d515e7a0cc1842e2bc92df9d687728b336a8276d46e85a588e434397e97032e95e006f91f2b3b9fdf599ced65790e236
+  checksum: 2a310b278b521648855dda446189ad14f5a0ef92749f6b2938a3fac5e89940b6c99bc398f15840e1aa73cabdd732cd7856a622381982f20442dfe71baeaec16f
   languageName: node
   linkType: hard
 

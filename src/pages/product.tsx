@@ -3,14 +3,25 @@ import ProductsCarousel, { Product as ProductType } from '@fragrantjewels/gravit
 import productPageProps from './resolvers/productPageProps'
 import MainPageLayout from 'gravity-brands/components/main-page-layout'
 import formatPrice from '@fragrantjewels/gravity-brands.modules.format-price'
+import { ProductDescription } from '../../gravity-brands/modules/normalize-product-description'
 
 type ProductPageProps = {
   product: ProductType
   recommendedProducts: Array<ProductType> | null
   potentialProducts: Array<ProductType> | null
+  productDescription: Array<ProductDescription> | null
 }
 
-const Product = ({ product, recommendedProducts, potentialProducts }: ProductPageProps): React.ReactElement => {
+const Product = ({
+  product,
+  recommendedProducts,
+  potentialProducts,
+  productDescription,
+}: ProductPageProps): React.ReactElement => {
+  if (!product) {
+    return <p>NO PRODUCT</p>
+  }
+
   const [isDropdownOpened, setIsDropdownOpened] = useState(false)
   const [isDiscountApplied, setDiscountApplied] = useState(true)
   const [currentVariant, setCurrentVariant] = useState(product.variants[0].variant_id)
@@ -888,62 +899,65 @@ const Product = ({ product, recommendedProducts, potentialProducts }: ProductPag
                   </div>
                 </div>
                 <div className="pdp-accordion" id="pdp-description">
-                  <div className="pdp-a-item">
-                    <div className="pdp-a-item__title pdp-a-item__title_active">
-                      <span className="acc__icon-wrapper">
-                        <svg
-                          className="acc__icon-plus"
-                          width={17}
-                          height={17}
-                          viewBox="0 0 17 17"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M16.5152 8.73767H1"
-                            stroke="black"
-                            strokeWidth="0.5"
-                            strokeMiterlimit={10}
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          />
-                          <path
-                            d="M9 0.737671V16.2528"
-                            stroke="black"
-                            strokeWidth="0.5"
-                            strokeMiterlimit={10}
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          />
-                        </svg>
-                        <svg
-                          className="acc__icon-minus"
-                          width={17}
-                          height={17}
-                          viewBox="0 0 17 17"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M16.5152 8.73767H1"
-                            stroke="black"
-                            strokeWidth="0.5"
-                            strokeMiterlimit={10}
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          />
-                        </svg>
-                      </span>
-                      <p>
-                        Overview
-                        <br />
-                      </p>
+                  {productDescription?.map((el, i) => (
+                    <div className="pdp-a-item">
+                      <div className={`pdp-a-item__title ${i === 0 ? 'pdp-a-item__title_active' : ''}`}>
+                        <span className="acc__icon-wrapper">
+                          <svg
+                            className="acc__icon-plus"
+                            width={17}
+                            height={17}
+                            viewBox="0 0 17 17"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M16.5152 8.73767H1"
+                              stroke="black"
+                              strokeWidth="0.5"
+                              strokeMiterlimit={10}
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                            <path
+                              d="M9 0.737671V16.2528"
+                              stroke="black"
+                              strokeWidth="0.5"
+                              strokeMiterlimit={10}
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                          </svg>
+                          <svg
+                            className="acc__icon-minus"
+                            width={17}
+                            height={17}
+                            viewBox="0 0 17 17"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M16.5152 8.73767H1"
+                              stroke="black"
+                              strokeWidth="0.5"
+                              strokeMiterlimit={10}
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                          </svg>
+                        </span>
+                        <p>
+                          {el.title}
+                          <br />
+                        </p>
+                      </div>
+                      <div className="pdp-a-item__description" style={i === 0 ? { display: 'block' } : {}}>
+                        <span>{el.content}</span>
+                      </div>
                     </div>
-                    <div className="pdp-a-item__description" style={{ display: 'block' }}>
-                      <span>Give the gift of pure relaxation with our fan-favorite:&nbsp;Lemon Drop.&nbsp;</span>
-                    </div>
-                  </div>
-                  <div className="pdp-a-item">
+                  ))}
+
+                  {/*<div className="pdp-a-item">
                     <div className="pdp-a-item__title">
                       <span className="acc__icon-wrapper">
                         <svg
@@ -1140,7 +1154,7 @@ const Product = ({ product, recommendedProducts, potentialProducts }: ProductPag
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </div>*/}
                 </div>
               </div>
             </div>

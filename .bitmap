@@ -325,6 +325,12 @@
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/modules/normalize-product"
     },
+    "modules/normalize-product-description": {
+        "scope": "",
+        "version": "",
+        "mainFile": "index.ts",
+        "rootDir": "gravity-brands/modules/normalize-product-description"
+    },
     "modules/normalize-product-image": {
         "scope": "fragrantjewels.gravity-brands",
         "version": "0.0.4",

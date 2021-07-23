@@ -47,6 +47,7 @@ export type Product = {
   variants: Array<ProductVariant>
   product_type: string
   published_at_shop: string
+  body_html?: string
   tags?: Array<string>
   fragrance?: string
   material?: string
@@ -82,6 +83,7 @@ export const normalizeProduct = (product: ServerProduct): Product => {
       .map(normalizeProductVariant),
     product_type: product.product_type,
     published_at_shop: product.published_at_shop,
+    body_html: product.body_html,
     ...(tags.length && { tags }),
     ...(tagsProperties.fragrance && { fragrance: selectValueFromTags(allTags, 'fragrance:') }),
     ...(tagsProperties.material && { material: selectValueFromTags(allTags, 'material:') }),
