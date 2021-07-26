@@ -1,4 +1,5 @@
 $mainClr: #9059C8;
+$pinkClr: #ee67a0;
 $blackClr: #000;
 $whiteClr: #fff;
 .app-h-breadcrumbs {
@@ -112,8 +113,14 @@ $whiteClr: #fff;
 }
 
 .pdp-pi-selector-wrapper {
+  font: 400 16px/1.5 "Montserrat", sans-serif;
+
   .pdp-pi-rs-text {
-    font: 400 16px/1.5 "Montserrat", sans-serif;
+    margin: 0 0 12px;
+  }
+
+  .pdp-pi-rs-error {
+    color: $pinkClr;
     margin: 0 0 12px;
   }
 }

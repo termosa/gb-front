@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useCallback, useState } from 'react'
 import ProductsCarousel, { Product as ProductType } from '@fragrantjewels/gravity-brands.components.products-carousel'
 import productPageProps, { ProductDescription } from './resolvers/productPageProps'
 import MainPageLayout from 'gravity-brands/components/main-page-layout'
@@ -23,7 +23,8 @@ const Product = ({
 
   const [isDropdownOpened, setIsDropdownOpened] = useState(false)
   const [isDiscountApplied, setDiscountApplied] = useState(true)
-  const [currentVariant, setCurrentVariant] = useState(product.variants[0].variant_id)
+  const [isSelectRingError, setSelectRingError] = useState(false)
+  const [currentVariant, setCurrentVariant] = useState(null)
   const [actualPrice, setActualPrice] = useState(product.variants[0].actual_price)
 
   const label = {
@@ -203,27 +204,26 @@ const Product = ({
                 <div className="pdp-pi-selector-wrapper">
                   <div className="pdp-pi-rs-text">Select a ring size to reserve this box:</div>
                   <div id="pdp-pi-selector" className="pdp-pi-selector">
-                    {product.variants
-                      .slice(0)
-                      .reverse()
-                      .map((variant) => (
-                        <div className="pdp-pi-selector__btn-holder" key={variant.title}>
-                          <button
-                            className={`pdp-pi-selector__btn ${
-                              variant.variant_id === currentVariant && 'pdp-pi-selector__btn_active'
-                            }`}
-                            type="button"
-                            value={Number(variant.title)}
-                            onClick={() => {
-                              setCurrentVariant(variant.variant_id)
-                              setActualPrice(variant.actual_price)
-                            }}
-                          >
-                            {variant.title}
-                          </button>
-                        </div>
-                      ))}
+                    {product.variants.slice(0).map((variant) => (
+                      <div className="pdp-pi-selector__btn-holder" key={variant.title}>
+                        <button
+                          className={`pdp-pi-selector__btn ${
+                            variant.variant_id === currentVariant && 'pdp-pi-selector__btn_active'
+                          }`}
+                          type="button"
+                          value={Number(variant.title)}
+                          onClick={() => {
+                            setSelectRingError(false)
+                            setCurrentVariant(variant.variant_id)
+                            setActualPrice(variant.actual_price)
+                          }}
+                        >
+                          {variant.title}
+                        </button>
+                      </div>
+                    ))}
                   </div>
+                  {isSelectRingError ? <div className="pdp-pi-rs-error">Please select ring size</div> : null}
                 </div>
                 <div className="pdp__chooser-container" id="pdp-ic-chooser-container">
                   <div className="pdp__chooser" id="pdp-ic-chooser">
@@ -733,7 +733,16 @@ const Product = ({
                     Already a member?
                   </a>
                 </div>
-                <button id="add-to-cart-btn" type="button" className="pdp-btn">
+                <button
+                  id="add-to-cart-btn"
+                  type="button"
+                  className="pdp-btn"
+                  onClick={() => {
+                    if (!currentVariant) {
+                      setSelectRingError(true)
+                    }
+                  }}
+                >
                   Add to Cart
                 </button>
                 <div className="pdp-modal-btns">
@@ -1141,7 +1150,15 @@ const Product = ({
               )}
             </div>
             <div className="app-pdp-footer__col app-pdp-footer__col-2">
-              <button type="button" className="app-pdp-footer__btn">
+              <button
+                type="button"
+                className="app-pdp-footer__btn"
+                onClick={() => {
+                  if (!currentVariant) {
+                    setSelectRingError(true)
+                  }
+                }}
+              >
                 Add to Cart
               </button>
             </div>
