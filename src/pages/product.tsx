@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
 import ProductsCarousel, { Product as ProductType } from '@fragrantjewels/gravity-brands.components.products-carousel'
-import productPageProps from './resolvers/productPageProps'
+import productPageProps, { ProductDescription } from './resolvers/productPageProps'
 import MainPageLayout from 'gravity-brands/components/main-page-layout'
 import formatPrice from '@fragrantjewels/gravity-brands.modules.format-price'
-import { ProductDescription } from '../../gravity-brands/modules/normalize-product-description'
 
 type ProductPageProps = {
   product: ProductType

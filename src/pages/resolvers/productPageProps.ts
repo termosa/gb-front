@@ -5,7 +5,7 @@ import loadCollection, { Product } from '@fragrantjewels/gravity-brands.modules.
 import { POTENTIAL_PRODUCTS_COLLECTION_ID, RECOMMENDED_PRODUCTS_COLLECTION_ID } from 'src/settings/ids'
 import { parse } from 'node-html-parser'
 
-type ProductDescription = {
+export type ProductDescription = {
   title: string
   content: string
 }
