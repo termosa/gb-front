@@ -16,6 +16,8 @@
     "lint:types": "tsc -p . --noEmit",
     "bit": "bit link && bit start",
     "start:library": "npm run bit",
+    "proxy": "lcp --proxyUrl http://k8s-default-djangolb-f355e68fee-da67faa0143d6707.elb.us-west-1.amazonaws.com --proxyPartial \"\" --port 3033",
+    "proxy:prod": "lcp --proxyUrl http://k8s-default-djangolb-766aaf61e8-14636e29744cd427.elb.us-west-2.amazonaws.com --proxyPartial \"\" --port 3033",
     "create:component": "bit create generators/component -n components",
     "create:module": "bit create generators/module -n modules",
     "upgrade:bit": "yarn upgrade --scope @fragrantjewels"
@@ -93,6 +95,7 @@
     "eslint-plugin-react": "7.22.0",
     "eslint-plugin-react-hooks": "4.2.0",
     "husky": "4.2.3",
+    "local-cors-proxy": "^1.1.0",
     "identity-obj-proxy": "3.0.0",
     "jest": "25.2.4",
     "jest-svg-transformer": "1.0.0",

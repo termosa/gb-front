@@ -1,3 +1,4 @@
+import { useContext } from 'react'
 import { builder, Builder, withChildren } from '@builder.io/react'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import builderIoProps from './resolvers/builderIoProps'
@@ -19,6 +20,7 @@ import InnerCircleExclusiveContainer from '@containers/InnerCircleExclusive'
 import ProductCarouselContainer from '@containers/ProductCarousel'
 import MainPageLayout from '@fragrantjewels/gravity-brands.components.main-page-layout'
 import YotpoComments from '@fragrantjewels/gravity-brands.components.yotpo-comments'
+import CollectionProvider, { CollectionContext } from 'src/providers/CollectionProvider'
 
 builder.init(config.apiKey)
 
@@ -370,6 +372,49 @@ Builder.registerComponent(YotpoComments, {
       type: 'string',
       defaultValue: '',
       required: false,
+    },
+  ],
+})
+
+Builder.registerComponent(withChildren(CollectionProvider), {
+  name: 'CollectionProvider',
+  inputs: [
+    {
+      description: 'ID of the collection to be loaded and passed to its child components',
+      name: 'collectionId',
+      type: 'number',
+      defaultValue: '',
+      required: true,
+    },
+  ],
+  defaultChildren: [
+    {
+      '@type': '@builder.io/sdk:Element',
+      component: {
+        name: 'Text',
+        options: { text: 'Components inside of this provider can use its data' },
+      },
+    },
+  ],
+})
+
+const CollectionPreview = ({ collectionId }: { collectionId?: number }): null | React.ReactElement => {
+  const collection = useContext(CollectionContext)
+  if (typeof collectionId === 'number' && collection?.collection_id !== collectionId) return null
+  return (
+    <div style={{ padding: '3em', textAlign: 'center', background: 'red' }}>
+      Collection Preview: {collection?.title || 'Unknown'}
+    </div>
+  )
+}
+
+Builder.registerComponent(CollectionPreview, {
+  name: 'CollectionPreview',
+  inputs: [
+    {
+      description: 'If given, will only appear if collectionId matches with collection from CollectionProvider',
+      name: 'collectionId',
+      type: 'number',
     },
   ],
 })
