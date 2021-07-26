@@ -44,6 +44,9 @@ $whiteClr: #fff;
 }
 
 .pdp-product-info {
+  position: sticky;
+  top: 183px;
+  height: fit-content;
   max-width: 350px;
   margin: 0 auto;
 
@@ -74,15 +77,6 @@ $whiteClr: #fff;
 
     .pdp-star-icon {
       margin-right: 2px;
-    }
-  }
-
-  &__sold {
-    display: flex;
-    align-items: center;
-
-    .pdp-fire-icon {
-      margin-right: 4px;
     }
   }
 
@@ -120,6 +114,7 @@ $whiteClr: #fff;
   }
 
   .pdp-pi-rs-error {
+    text-align: center;
     color: $pinkClr;
     margin: 0 0 12px;
   }

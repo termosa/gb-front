@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import ProductsCarousel, { Product as ProductType } from '@fragrantjewels/gravity-brands.components.products-carousel'
 import productPageProps, { ProductDescription } from './resolvers/productPageProps'
 import MainPageLayout from 'gravity-brands/components/main-page-layout'
@@ -21,11 +21,20 @@ const Product = ({
     return <p>NO PRODUCT</p>
   }
 
-  const [isDropdownOpened, setIsDropdownOpened] = useState(false)
-  const [isDiscountApplied, setDiscountApplied] = useState(true)
-  const [isSelectRingError, setSelectRingError] = useState(false)
-  const [currentVariant, setCurrentVariant] = useState(null)
-  const [actualPrice, setActualPrice] = useState(product.variants[0].actual_price)
+  console.log(productDescription)
+
+  const [isDropdownOpened, setIsDropdownOpened] = useState<boolean>(false)
+  const [isDiscountApplied, setDiscountApplied] = useState<boolean>(true)
+  const [isSelectRingError, setSelectRingError] = useState<boolean>(false)
+  const [currentVariant, setCurrentVariant] = useState<number | null>(null)
+  const [actualPrice, setActualPrice] = useState<number>(product.variants[0].actual_price)
+
+  const ringSizeRef = useRef<HTMLDivElement>(null)
+  const executeScroll = () => {
+    if (ringSizeRef.current !== null) {
+      ringSizeRef.current.scrollIntoView()
+    }
+  }
 
   const label = {
     members: product.tags && product.tags.includes('Member Only'),
@@ -163,26 +172,6 @@ const Product = ({
                       121
                     </a>
                   </div>
-                  <div className="pdp-pi-rating__sold">
-                    <svg
-                      className="pdp-fire-icon"
-                      width={12}
-                      height={16}
-                      viewBox="0 0 12 16"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M10.4216 12.732C10.4216 14.5369 8.44824 16 6.01402 16C3.5798 16 1.6066 14.5369 1.60648 12.732C1.60636 10.9271 3.5798 7.19931 6.01402 7.19931C8.44824 7.19931 10.4216 10.9271 10.4216 12.732Z"
-                        fill="white"
-                      />
-                      <path
-                        d="M11.6444 9.79983C11.6232 10.3877 11.5059 13.6839 8.85265 15.2542C8.57371 15.4187 8.28081 15.5573 7.9775 15.6681C8.57354 15.0601 8.76939 14.2163 8.7165 13.5598C8.63642 12.5684 8.01744 11.7593 7.77337 11.5416C7.59498 11.3869 7.43404 11.2125 7.29352 11.0215C7.28439 11.0087 7.20367 10.8993 7.13379 10.7832C6.87209 10.3498 6.78967 9.88152 6.75314 9.66267C6.68549 9.25477 6.68019 8.83864 6.73742 8.42908C6.45091 8.66143 6.19123 8.92626 5.96337 9.21846C5.7147 9.53946 5.50508 9.89001 5.33908 10.2625C5.10397 10.7901 4.95639 11.354 4.90236 11.9309C4.74706 11.8032 4.61971 11.6437 4.52851 11.4627C4.29676 11.0029 4.383 10.5543 4.41592 10.4146C4.18977 10.6513 3.99217 10.9148 3.82732 11.1994C3.68479 11.4464 3.22024 12.2714 3.25762 13.3277C3.26654 13.5849 3.31327 14.8802 4.21477 15.726C3.47131 15.477 2.78032 15.0666 2.21211 14.4893C1.01239 13.2718 0.618993 11.5788 0.7252 10.2618C0.884512 8.27935 2.12375 6.66006 2.61145 6.22582C2.96813 5.91536 3.29012 5.56567 3.57157 5.18313C3.59005 5.15821 3.75085 4.9387 3.8902 4.70793C4.41423 3.84119 4.57885 2.90554 4.65213 2.46653C4.78746 1.65095 4.79807 0.818898 4.68357 0C5.25648 0.464763 5.77571 0.994498 6.23123 1.57899C6.72855 2.221 7.14766 2.92219 7.47939 3.66719C7.94984 4.72246 8.24515 5.85014 8.35326 7.00415C8.66385 6.74943 8.91894 6.43143 9.10224 6.07045C9.56552 5.14997 9.39262 4.25398 9.32698 3.97358C9.77938 4.4472 10.1747 4.97423 10.5046 5.54347C10.7905 6.03708 11.719 7.68715 11.6444 9.79983Z"
-                        fill="#9952BD"
-                      />
-                    </svg>
-                    <span>54 sold in the last hour</span>
-                  </div>
                 </div>
                 <div className="pdp-product-details">
                   {isDiscountApplied ? (
@@ -202,7 +191,9 @@ const Product = ({
                   )}
                 </div>
                 <div className="pdp-pi-selector-wrapper">
-                  <div className="pdp-pi-rs-text">Select a ring size to reserve this box:</div>
+                  <div className="pdp-pi-rs-text" ref={ringSizeRef}>
+                    Select a ring size to reserve this box:
+                  </div>
                   <div id="pdp-pi-selector" className="pdp-pi-selector">
                     {product.variants.slice(0).map((variant) => (
                       <div className="pdp-pi-selector__btn-holder" key={variant.title}>
@@ -1155,6 +1146,7 @@ const Product = ({
                 className="app-pdp-footer__btn"
                 onClick={() => {
                   if (!currentVariant) {
+                    executeScroll()
                     setSelectRingError(true)
                   }
                 }}
