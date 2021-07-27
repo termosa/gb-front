@@ -2,6 +2,7 @@ import { GetServerSidePropsContext } from 'next'
 import resolvePageProps from '@fragrantjewels/gravity-brands.modules.resolve-page-props'
 import loadProduct from '@fragrantjewels/gravity-brands.modules.load-product'
 import loadCollection, { Product } from '@fragrantjewels/gravity-brands.modules.load-collection'
+import formatText from '@fragrantjewels/gravity-brands.modules.format-text'
 import { POTENTIAL_PRODUCTS_COLLECTION_ID, RECOMMENDED_PRODUCTS_COLLECTION_ID } from 'src/settings/ids'
 import { parse } from 'node-html-parser'
 
@@ -18,12 +19,6 @@ const loadCollectionProducts = (collectionId: number): Promise<Product[] | null>
 
 const getProductDescription = async (context: GetServerSidePropsContext): Promise<ProductDescription[] | null> => {
   const product = await loadProduct(Number(context.query.id)).catch(() => null)
-  const formatText = (str: string) => {
-    return str
-      .trim()
-      .replace('&amp;', '')
-      .replace(/[\r\n]{3,}/g, '\n\n')
-  }
 
   if (!product || !product.body_html) {
     return null

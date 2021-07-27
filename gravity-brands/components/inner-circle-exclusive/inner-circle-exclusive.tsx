@@ -324,8 +324,11 @@ const STaxInfo = styled.div`
   color: #878787;
 `
 
-const SErrorLabel = styled.span`
-  color: red;
+const SErrorLabel = styled.div`
+  font: 400 16px/1.5 'Montserrat', sans-serif;
+  text-align: center;
+  margin-bottom: 15px;
+  color: #ee67a0;
 `
 
 export function InnerCircleExclusive({
@@ -433,6 +436,11 @@ export function InnerCircleExclusive({
                       }}
                     />
                   </SRingSizeWrapper>
+                  {error && (
+                    <SErrorLabel>
+                      <span>Please select ring size</span>
+                    </SErrorLabel>
+                  )}
                   <Button
                     compact={false}
                     frontColor={'#fff'}
@@ -447,11 +455,6 @@ export function InnerCircleExclusive({
                   >
                     RESERVE NOW
                   </Button>
-                  {error && (
-                    <div style={{ textAlign: 'center', marginBottom: '15px' }}>
-                      <SErrorLabel>Please select ring size</SErrorLabel>
-                    </div>
-                  )}
                 </div>
                 <STaxInfo>
                   *Monthly membership price does not include tax. Shipping is always free. Cancel anytime.
