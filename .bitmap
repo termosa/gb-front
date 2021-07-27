@@ -31,6 +31,12 @@
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/collection-filters"
     },
+    "components/collection-provider": {
+        "scope": "",
+        "version": "",
+        "mainFile": "index.ts",
+        "rootDir": "gravity-brands/components/collection-provider"
+    },
     "components/collection-tag-filter": {
         "scope": "",
         "version": "",

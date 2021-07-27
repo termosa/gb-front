@@ -9,7 +9,7 @@ export type CollectionProviderProps = {
   collectionId: number
 }
 
-export default function CollectionProvider({ collectionId, children }: CollectionProviderProps): React.ReactElement {
+export function CollectionProvider({ collectionId, children }: CollectionProviderProps): React.ReactElement {
   const collectionRequest = useDefer(() => loadCollection(collectionId), [collectionId], [])
   return <CollectionContext.Provider value={collectionRequest.value}>{children}</CollectionContext.Provider>
 }
