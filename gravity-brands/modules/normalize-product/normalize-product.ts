@@ -61,12 +61,11 @@ const selectValueFromTags = (tags: Array<string>, prefix: string) =>
     .trim()
 
 export const normalizeProduct = (product: ServerProduct): Product => {
-  const allTags = product.tags.length ? product.tags.split(',').map((tag) => tag.trim()) : []
-  const tags = allTags.filter((tag) => !~tag.indexOf(':'))
+  const tags = product.tags.length ? product.tags.split(',').map((tag) => tag.trim()) : []
   const tagsProperties = {
-    fragrance: selectValueFromTags(allTags, 'fragrance:'),
-    material: selectValueFromTags(allTags, 'material:'),
-    color: selectValueFromTags(allTags, 'metal color:'),
+    fragrance: selectValueFromTags(tags, 'fragrance:'),
+    material: selectValueFromTags(tags, 'material:'),
+    color: selectValueFromTags(tags, 'metal color:'),
   }
 
   return {
@@ -85,8 +84,8 @@ export const normalizeProduct = (product: ServerProduct): Product => {
     published_at_shop: product.published_at_shop,
     body_html: product.body_html,
     ...(tags.length && { tags }),
-    ...(tagsProperties.fragrance && { fragrance: selectValueFromTags(allTags, 'fragrance:') }),
-    ...(tagsProperties.material && { material: selectValueFromTags(allTags, 'material:') }),
-    ...(tagsProperties.color && { color: selectValueFromTags(allTags, 'metal color:') }),
+    ...(tagsProperties.fragrance && { fragrance: selectValueFromTags(tags, 'fragrance:') }),
+    ...(tagsProperties.material && { material: selectValueFromTags(tags, 'material:') }),
+    ...(tagsProperties.color && { color: selectValueFromTags(tags, 'metal color:') }),
   }
 }

@@ -175,8 +175,10 @@ const SLeftSliderPart = styled.div`
   }
 `
 
-const SLeftImageContainer = styled.div`
-  margin: 0 0 10px;
+const SLeftImageContainer = styled.div<{
+  isPresent: boolean
+}>`
+  margin: ${(props) => (props.isPresent ? '0 0 15px' : '0 0 33px')};
   box-sizing: border-box;
   background: #fff;
   border: 6px solid #ffffff;
@@ -187,11 +189,13 @@ const SLeftImageContainer = styled.div`
   height: 123px;
 
   @media (min-width: 420px) {
+    margin: ${(props) => (props.isPresent ? '0 0 15px' : '0 0 41px')};
     width: 154px;
     height: 154px;
   }
 
   @media (min-width: 768px) {
+    margin: ${(props) => (props.isPresent ? '0 0 21px' : '0 0 76px')};
     width: 248px;
     height: 248px;
   }
@@ -201,6 +205,12 @@ const SLeftImageContainer = styled.div`
     height: auto;
     display: block;
   }
+`
+
+const SButtonContainer = styled.div<{
+  isPresent: boolean
+}>`
+  display: ${(props) => (props.isPresent ? 'block' : 'none')};
 `
 
 const SSliderButton = styled.button<{
@@ -245,8 +255,8 @@ const SRightSliderPart = styled.div`
   height: 189px;
 
   @media (min-width: 420px) {
-    width: 235px;
-    height: 235px;
+    width: 236px;
+    height: 236px;
   }
 
   @media (min-width: 768px) {
@@ -373,37 +383,35 @@ export function InnerCircleExclusive({
             <SImagesWrapper>
               <SImagesContainer>
                 <SLeftSliderPart>
-                  <SLeftImageContainer>
+                  <SLeftImageContainer isPresent={slideImages.length > 2}>
                     <img src={slideImages[0]} alt={productTitle} />
                   </SLeftImageContainer>
-                  {slideImages.length > 2 && (
-                    <>
-                      <SSliderButton transform={'rotate(180deg)'}>
-                        <svg viewBox="0 0 15 27" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path
-                            d="M1.1499 0.799805L13.8501 13.5L1.1499 26.2002"
-                            stroke="#9059C8"
-                            strokeWidth="0.577281"
-                            strokeMiterlimit="10"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          />
-                        </svg>
-                      </SSliderButton>
-                      <SSliderButton>
-                        <svg viewBox="0 0 15 27" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path
-                            d="M1.1499 0.799805L13.8501 13.5L1.1499 26.2002"
-                            stroke="#9059C8"
-                            strokeWidth="0.577281"
-                            strokeMiterlimit="10"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          />
-                        </svg>
-                      </SSliderButton>
-                    </>
-                  )}
+                  <SButtonContainer isPresent={slideImages.length > 2}>
+                    <SSliderButton transform={'rotate(180deg)'}>
+                      <svg viewBox="0 0 15 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M1.1499 0.799805L13.8501 13.5L1.1499 26.2002"
+                          stroke="#9059C8"
+                          strokeWidth="0.577281"
+                          strokeMiterlimit="10"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </SSliderButton>
+                    <SSliderButton>
+                      <svg viewBox="0 0 15 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M1.1499 0.799805L13.8501 13.5L1.1499 26.2002"
+                          stroke="#9059C8"
+                          strokeWidth="0.577281"
+                          strokeMiterlimit="10"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </SSliderButton>
+                  </SButtonContainer>
                 </SLeftSliderPart>
                 <SRightSliderPart>
                   <img src={slideImages[1]} alt={productTitle} />
@@ -418,8 +426,8 @@ export function InnerCircleExclusive({
                   <SPriceShippingInfo>
                     {comparePrice ? (
                       <>
-                        <SDiscountPriceLabel>{formatPrice(actualPrice)}</SDiscountPriceLabel>{' '}
-                        <SPriceLabel>{formatPrice(comparePrice)}</SPriceLabel>
+                        <SDiscountPriceLabel>{formatPrice(comparePrice)}</SDiscountPriceLabel>{' '}
+                        <SPriceLabel>{formatPrice(actualPrice)}</SPriceLabel>
                       </>
                     ) : (
                       <SPriceLabel>{formatPrice(actualPrice)}</SPriceLabel>

@@ -1,8 +1,12 @@
 import React, { useRef, useState } from 'react'
-import ProductsCarousel, { Product as ProductType } from '@fragrantjewels/gravity-brands.components.products-carousel'
+import ProductsCarousel from '@fragrantjewels/gravity-brands.components.products-carousel'
 import productPageProps, { ProductDescription } from './resolvers/productPageProps'
 import MainPageLayout from 'gravity-brands/components/main-page-layout'
 import formatPrice from '@fragrantjewels/gravity-brands.modules.format-price'
+import getLabel from '@fragrantjewels/gravity-brands.modules.get-label'
+import { ProductImage } from '@fragrantjewels/gravity-brands.modules.normalize-product-image'
+import { ProductVariant } from '@fragrantjewels/gravity-brands.modules.normalize-product-variant'
+import { Product as ProductType } from '@fragrantjewels/gravity-brands.modules.normalize-product'
 
 type ProductPageProps = {
   product: ProductType
@@ -28,16 +32,31 @@ const Product = ({
   const [actualPrice, setActualPrice] = useState<number>(product.variants[0].actual_price)
   const comparePrice = product.variants[0].compare_at_price
 
-  const ringSizeRef = useRef<HTMLDivElement>(null)
+  const productHeadingRef = useRef<HTMLDivElement>(null)
   const executeScroll = () => {
-    if (ringSizeRef.current !== null) {
-      ringSizeRef.current.scrollIntoView()
+    if (productHeadingRef.current !== null) {
+      productHeadingRef.current.scrollIntoView()
     }
   }
 
-  const label = {
-    members: product.tags && product.tags.includes('Member Only'),
-    silver: product.tags && product.tags.includes('925 Silver Sterling'),
+  const label = getLabel(product)
+
+  const checkForLabel = (): React.ReactElement => {
+    if (label.members) {
+      return <span className="pdp-product-details__members-tag"> | Members Only</span>
+    }
+
+    if (label.silver) {
+      return <span className="pdp-product-details__silver-tag"> | 925 Sterling Silver</span>
+    } else if (label.gold) {
+      return <span className="pdp-product-details__silver-tag"> | Gold</span>
+    } else if (label.copper) {
+      return <span className="pdp-product-details__silver-tag"> | Copper</span>
+    } else if (label.zinc) {
+      return <span className="pdp-product-details__silver-tag"> | Zinc</span>
+    } else {
+      return <span className="pdp-product-details__silver-tag"> | -</span>
+    }
   }
 
   return (
@@ -56,7 +75,7 @@ const Product = ({
                   <div className="pdp-s-row">
                     <div className="pdp-s-col pdp-s-col-sm pdp-carousel-items">
                       <ul className="pdp-carousel-items__list" id="pdp-carousel-items__list">
-                        {product.images?.map((image) => (
+                        {product.images?.map((image: ProductImage) => (
                           <li key={image.src}>
                             <img src={image.src} alt={image.alt} />
                           </li>
@@ -65,7 +84,7 @@ const Product = ({
                     </div>
                     <div className="pdp-s-col pdp-s-col-lg">
                       <div className="pdp-carousel" id="pdp-carousel">
-                        {product.images?.map((image) => (
+                        {product.images?.map((image: ProductImage) => (
                           <div className="pdp-carousel__item" key={image?.src}>
                             <img src={image?.src} alt={image?.alt} />
                           </div>
@@ -78,7 +97,9 @@ const Product = ({
             </div>
             <div className="pdp-col pdp-col-35">
               <div className="pdp-product-info">
-                <h3 className="pdp-product-info__ic-title">INNER CIRCLE EXCLUSIVE</h3>
+                <h3 className="pdp-product-info__ic-title" ref={productHeadingRef}>
+                  INNER CIRCLE EXCLUSIVE
+                </h3>
                 <h2 className="pdp-product-info__title">{product.title}</h2>
                 <div className="pdp-pi-rating">
                   <div className="pdp-pi-rating__stars">
@@ -179,25 +200,22 @@ const Product = ({
                   ) : (
                     <>
                       {comparePrice ? (
-                        <span className="pdp-product-details__discount-price">
-                          {comparePrice ? formatPrice(comparePrice) : formatPrice(actualPrice)}&nbsp;
-                        </span>
+                        <>
+                          <span className="pdp-product-details__discount-price">
+                            {comparePrice ? formatPrice(comparePrice) : formatPrice(actualPrice)}
+                          </span>
+                          &nbsp;
+                        </>
                       ) : null}
                       <span className="pdp-product-details__price">{formatPrice(actualPrice)}</span>
                     </>
                   )}
-                  {label.silver ? (
-                    <span className="pdp-product-details__silver-tag"> | 925 Sterling Silver</span>
-                  ) : (
-                    label.members && <span className="pdp-product-details__members-tag"> | Members Only</span>
-                  )}
+                  {checkForLabel()}
                 </div>
                 <div className="pdp-pi-selector-wrapper">
-                  <div className="pdp-pi-rs-text" ref={ringSizeRef}>
-                    Select a ring size to reserve this box:
-                  </div>
+                  <div className="pdp-pi-rs-text">Select a ring size to reserve this box:</div>
                   <div id="pdp-pi-selector" className="pdp-pi-selector">
-                    {product.variants.slice(0).map((variant) => (
+                    {product.variants.slice(0).map((variant: ProductVariant) => (
                       <div className="pdp-pi-selector__btn-holder" key={variant.title}>
                         <button
                           className={`pdp-pi-selector__btn ${
@@ -732,6 +750,7 @@ const Product = ({
                   className="pdp-btn"
                   onClick={() => {
                     if (!currentVariant) {
+                      executeScroll()
                       setSelectRingError(true)
                     }
                   }}
@@ -1143,16 +1162,7 @@ const Product = ({
               )}
             </div>
             <div className="app-pdp-footer__col app-pdp-footer__col-2">
-              <button
-                type="button"
-                className="app-pdp-footer__btn"
-                onClick={() => {
-                  if (!currentVariant) {
-                    executeScroll()
-                    setSelectRingError(true)
-                  }
-                }}
-              >
+              <button type="button" className="app-pdp-footer__btn">
                 Add to Cart
               </button>
             </div>

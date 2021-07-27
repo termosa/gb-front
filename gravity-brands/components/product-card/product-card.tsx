@@ -3,8 +3,7 @@ import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
 import { Product } from '@fragrantjewels/gravity-brands.modules.normalize-product'
 import formatPrice from '@fragrantjewels/gravity-brands.modules.format-price'
-
-export type { Product } from '@fragrantjewels/gravity-brands.modules.normalize-product'
+import getLabel from '@fragrantjewels/gravity-brands.modules.get-label'
 
 export type ProductCardProps = {
   className?: ClassName
@@ -101,10 +100,12 @@ const ProductCardImgWrapperInner = styled.div`
   transform: translate(-50%, -50%);
 `
 
-const ProductCardTag = styled.div`
+const ProductCardTag = styled.div<{
+  color?: string
+}>`
   text-transform: uppercase;
   padding: 6px 0;
-  color: #878787;
+  color: ${(props) => props.color || '#878787'};
   font: 500 10px/1.2 'Montserrat', sans-serif;
   letter-spacing: 0.02em;
   margin: 0 0 14px;
@@ -215,9 +216,24 @@ export function ProductCard({ className, style, product, onClick }: ProductCardP
   const productTitle = product.title.split('-')[0].split(':')[0]
   const productType = product.product_type.split('(')[0]
 
-  const label = {
-    members: product.tags && product.tags.includes('IC Members Only'),
-    silver: product.tags && product.tags.includes('Material: 925 Sterling Silver'),
+  const label = getLabel(product)
+
+  const checkForLabel = (): React.ReactElement => {
+    if (label.members) {
+      return <ProductCardMembers>Members Only</ProductCardMembers>
+    }
+
+    if (label.silver) {
+      return <ProductCardTag color={'#878787'}>925 Sterling Silver</ProductCardTag>
+    } else if (label.gold) {
+      return <ProductCardTag>Gold</ProductCardTag>
+    } else if (label.copper) {
+      return <ProductCardTag>Copper</ProductCardTag>
+    } else if (label.zinc) {
+      return <ProductCardTag>Zinc</ProductCardTag>
+    } else {
+      return <ProductCardTag>-</ProductCardTag>
+    }
   }
 
   const actualPrice = product.variants[0].actual_price
@@ -234,11 +250,7 @@ export function ProductCard({ className, style, product, onClick }: ProductCardP
             <img src={product.image?.src} alt={product.image?.alt} />
           </ProductCardImgWrapperInner>
         </ProductCardImgWrapper>
-        {label.silver ? (
-          <ProductCardTag>925 Sterling Silver</ProductCardTag>
-        ) : (
-          label.members && <ProductCardMembers>Members Only</ProductCardMembers>
-        )}
+        {checkForLabel()}
         <ProductCardStars>
           <ProductCardStar>
             <svg viewBox="0 0 15 13" fill="none" xmlns="http://www.w3.org/2000/svg">
