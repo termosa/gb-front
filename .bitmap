@@ -133,6 +133,12 @@
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/nav-tabs"
     },
+    "components/page-provider": {
+        "scope": "",
+        "version": "",
+        "mainFile": "index.ts",
+        "rootDir": "gravity-brands/components/page-provider"
+    },
     "components/points-widget": {
         "scope": "fragrantjewels.gravity-brands",
         "version": "0.0.13",

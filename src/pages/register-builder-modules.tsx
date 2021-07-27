@@ -18,7 +18,8 @@ import MainPageLayout from '@fragrantjewels/gravity-brands.components.main-page-
 import YotpoComments from '@fragrantjewels/gravity-brands.components.yotpo-comments'
 import CollectionTagFilter from '../../gravity-brands/components/collection-tag-filter'
 import CollectionProvider from '../../gravity-brands/components/collection-provider'
-import CollectionContext from '../../gravity-brands/modules/collection-context'
+import PageProvider from '../../gravity-brands/components/page-provider'
+import CollectionContext from '@fragrantjewels/gravity-brands.modules.collection-context'
 
 builder.init(builderConfig.apiKey)
 
@@ -404,6 +405,19 @@ Builder.registerComponent(CollectionTagFilter, {
       type: 'string',
       defaultValue: 'Halloween',
       required: true,
+    },
+  ],
+})
+
+Builder.registerComponent(withChildren(PageProvider), {
+  name: 'PageProvider',
+  defaultChildren: [
+    {
+      '@type': '@builder.io/sdk:Element',
+      component: {
+        name: 'Text',
+        options: { text: 'Components inside of this provider can use its data' },
+      },
     },
   ],
 })
