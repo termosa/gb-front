@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
 import Button from '@fragrantjewels/gravity-brands.components.button'
@@ -324,6 +324,10 @@ const STaxInfo = styled.div`
   color: #878787;
 `
 
+const SErrorLabel = styled.span`
+  color: red;
+`
+
 export function InnerCircleExclusive({
   className,
   product,
@@ -335,15 +339,7 @@ export function InnerCircleExclusive({
   onReserve,
 }: InnerCircleExclusiveProps): React.ReactElement | null {
   const [selectedVariant, setVariant] = useState<ProductVariant | undefined>()
-  const [reserveAbility, setReserveAbility] = useState<boolean>(false)
-
-  useEffect(() => {
-    if (selectedVariant) {
-      setReserveAbility(true)
-    } else {
-      setReserveAbility(false)
-    }
-  }, [selectedVariant])
+  const [error, setError] = useState<boolean>(false)
 
   const productTitle = product.title.split('-')[0].split(':')[0]
   const actualPrice = (selectedVariant || product.variants[0]).actual_price
@@ -429,18 +425,33 @@ export function InnerCircleExclusive({
                   </SPriceShippingInfo>
                   <SSelectRingLabel>Select a ring size to reserve this box:</SSelectRingLabel>
                   <SRingSizeWrapper>
-                    <RingSize variants={product.variants} onChange={setVariant} />
+                    <RingSize
+                      variants={product.variants}
+                      onChange={(variant) => {
+                        setError(false)
+                        setVariant(variant)
+                      }}
+                    />
                   </SRingSizeWrapper>
                   <Button
                     compact={false}
                     frontColor={'#fff'}
                     backColor={'#000'}
                     style={{ width: '100%', marginBottom: 18 }}
-                    onClick={() => selectedVariant && onReserve(selectedVariant)}
-                    disabled={!reserveAbility}
+                    onClick={() => {
+                      selectedVariant && onReserve(selectedVariant)
+                      if (!selectedVariant) {
+                        setError(true)
+                      }
+                    }}
                   >
                     RESERVE NOW
                   </Button>
+                  {error && (
+                    <div style={{ textAlign: 'center', marginBottom: '15px' }}>
+                      <SErrorLabel>Please select ring size</SErrorLabel>
+                    </div>
+                  )}
                 </div>
                 <STaxInfo>
                   *Monthly membership price does not include tax. Shipping is always free. Cancel anytime.
