@@ -21,8 +21,6 @@ const Product = ({
     return <p>NO PRODUCT</p>
   }
 
-  console.log(productDescription)
-
   const [isDropdownOpened, setIsDropdownOpened] = useState<boolean>(false)
   const [isDiscountApplied, setDiscountApplied] = useState<boolean>(true)
   const [isSelectRingError, setSelectRingError] = useState<boolean>(false)
