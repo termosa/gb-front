@@ -18,8 +18,11 @@ import MainPageLayout from '@fragrantjewels/gravity-brands.components.main-page-
 import YotpoComments from '@fragrantjewels/gravity-brands.components.yotpo-comments'
 import CollectionTagFilter from '../../gravity-brands/components/collection-tag-filter'
 import CollectionProvider from '../../gravity-brands/components/collection-provider'
-import PageProvider from '../../gravity-brands/components/page-provider'
+import CollectionPageProvider from '../../gravity-brands/components/collection-page-provider'
 import CollectionContext from '@fragrantjewels/gravity-brands.modules.collection-context'
+import ProductTagFilter from '../../gravity-brands/components/product-tag-filter'
+import ProductProvider from '../../gravity-brands/components/product-provider'
+import ProductPageProvider from '../../gravity-brands/components/product-page-provider'
 
 builder.init(builderConfig.apiKey)
 
@@ -375,6 +378,53 @@ Builder.registerComponent(YotpoComments, {
   ],
 })
 
+Builder.registerComponent(withChildren(ProductPageProvider), {
+  name: 'ProductPageProvider',
+  defaultChildren: [
+    {
+      '@type': '@builder.io/sdk:Element',
+      component: {
+        name: 'Text',
+        options: { text: 'Components inside of this provider can use its data' },
+      },
+    },
+  ],
+})
+
+Builder.registerComponent(withChildren(ProductProvider), {
+  name: 'ProductProvider',
+  inputs: [
+    {
+      description: 'ID of the product to be loaded and passed to its child components',
+      name: 'productId',
+      type: 'number',
+      defaultValue: '',
+      required: true,
+    },
+  ],
+  defaultChildren: [
+    {
+      '@type': '@builder.io/sdk:Element',
+      component: {
+        name: 'Text',
+        options: { text: 'Components inside of this provider can use its data' },
+      },
+    },
+  ],
+})
+
+Builder.registerComponent(ProductTagFilter, {
+  name: 'ProductTagFilter',
+  inputs: [
+    {
+      name: 'tag',
+      type: 'string',
+      defaultValue: 'Nucleus Created',
+      required: true,
+    },
+  ],
+})
+
 Builder.registerComponent(withChildren(CollectionProvider), {
   name: 'CollectionProvider',
   inputs: [
@@ -409,8 +459,8 @@ Builder.registerComponent(CollectionTagFilter, {
   ],
 })
 
-Builder.registerComponent(withChildren(PageProvider), {
-  name: 'PageProvider',
+Builder.registerComponent(withChildren(CollectionPageProvider), {
+  name: 'CollectionPageProvider',
   defaultChildren: [
     {
       '@type': '@builder.io/sdk:Element',

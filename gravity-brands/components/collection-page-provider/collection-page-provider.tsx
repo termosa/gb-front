@@ -7,7 +7,7 @@ export const getCollectionId = (): string | undefined => {
   if (typeof window !== 'undefined') return window.location.search.slice(4)
 }
 
-export const PageProvider = ({ children }: { children: React.ReactElement }): React.ReactElement => {
+export const CollectionPageProvider = ({ children }: { children: React.ReactElement }): React.ReactElement => {
   const collectionId = getCollectionId() || 0
   const collectionRequest = useDefer(() => loadCollection(+collectionId), [collectionId], [])
 
