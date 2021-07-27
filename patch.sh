@@ -8,7 +8,7 @@ spec:
   template:
     spec:
       containers:
-      - image: $REGISTRY/$IMG_NAME:$TAG
+      - image: $1
         imagePullPolicy: Always
         name: front
 EOF
