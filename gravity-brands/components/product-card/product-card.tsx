@@ -216,8 +216,8 @@ export function ProductCard({ className, style, product, onClick }: ProductCardP
   const productType = product.product_type.split('(')[0]
 
   const label = {
-    members: product.tags && product.tags.includes('Member Only'),
-    silver: product.tags && product.tags.includes('925 Silver Sterling'),
+    members: product.tags && product.tags.includes('IC Members Only'),
+    silver: product.tags && product.tags.includes('Material: 925 Sterling Silver'),
   }
 
   const actualPrice = product.variants[0].actual_price
