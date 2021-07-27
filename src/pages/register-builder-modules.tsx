@@ -16,6 +16,7 @@ import InnerCircleExclusiveContainer from '../containers/InnerCircleExclusive'
 import ProductCarouselContainer from '@containers/ProductCarousel'
 import MainPageLayout from '@fragrantjewels/gravity-brands.components.main-page-layout'
 import YotpoComments from '@fragrantjewels/gravity-brands.components.yotpo-comments'
+import CollectionTagFilter from '../../gravity-brands/components/collection-tag-filter'
 import CollectionProvider, { CollectionContext } from 'src/providers/CollectionProvider'
 
 builder.init(builderConfig.apiKey)
@@ -390,6 +391,18 @@ Builder.registerComponent(withChildren(CollectionProvider), {
         name: 'Text',
         options: { text: 'Components inside of this provider can use its data' },
       },
+    },
+  ],
+})
+
+Builder.registerComponent(CollectionTagFilter, {
+  name: 'CollectionTagFilter',
+  inputs: [
+    {
+      name: 'tag',
+      type: 'string',
+      defaultValue: 'Halloween',
+      required: true,
     },
   ],
 })

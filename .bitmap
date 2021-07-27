@@ -31,6 +31,12 @@
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/collection-filters"
     },
+    "components/collection-tag-filter": {
+        "scope": "",
+        "version": "",
+        "mainFile": "index.ts",
+        "rootDir": "gravity-brands/components/collection-tag-filter"
+    },
     "components/follow-us": {
         "scope": "fragrantjewels.gravity-brands",
         "version": "0.0.11",
