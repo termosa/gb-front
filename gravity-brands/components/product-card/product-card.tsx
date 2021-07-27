@@ -303,8 +303,8 @@ export function ProductCard({ className, style, product, onClick }: ProductCardP
           <ProductCardPrice>
             {comparePrice ? (
               <>
-                <SDiscountPriceLabel>{formatPrice(actualPrice)}</SDiscountPriceLabel>{' '}
-                <SPriceLabel>{formatPrice(comparePrice)}</SPriceLabel>
+                <SDiscountPriceLabel>{formatPrice(comparePrice)}</SDiscountPriceLabel>{' '}
+                <SPriceLabel>{formatPrice(actualPrice)}</SPriceLabel>
               </>
             ) : (
               <SPriceLabel>{formatPrice(actualPrice)}</SPriceLabel>

@@ -562,6 +562,7 @@ $whiteClr: #fff;
 
 .pdp-accordion .pdp-a-item__description {
   font: 400 16px/1.5 "Montserrat", sans-serif;
+  white-space: pre-line;
   display: none;
   padding: 0 0 15px 0;
 }

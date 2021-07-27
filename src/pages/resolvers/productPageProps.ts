@@ -18,6 +18,12 @@ const loadCollectionProducts = (collectionId: number): Promise<Product[] | null>
 
 const getProductDescription = async (context: GetServerSidePropsContext): Promise<ProductDescription[] | null> => {
   const product = await loadProduct(Number(context.query.id)).catch(() => null)
+  const formatText = (str: string) => {
+    return str
+      .trim()
+      .replace('&amp;', '')
+      .replace(/[\r\n]{3,}/g, '\n\n')
+  }
 
   if (!product || !product.body_html) {
     return null
@@ -27,8 +33,8 @@ const getProductDescription = async (context: GetServerSidePropsContext): Promis
   return trArr
     .filter((el: HTMLElement) => el.querySelectorAll('td').length === 2)
     .map((el: HTMLElement) => ({
-      title: el.querySelectorAll('td')[0].innerText,
-      content: el.querySelectorAll('td')[1].innerText,
+      title: el.querySelectorAll('td')[0].innerText.trim(),
+      content: formatText(el.querySelectorAll('td')[1].innerText),
     }))
 }
 

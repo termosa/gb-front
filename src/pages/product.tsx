@@ -28,6 +28,7 @@ const Product = ({
   const [isSelectRingError, setSelectRingError] = useState<boolean>(false)
   const [currentVariant, setCurrentVariant] = useState<number | null>(null)
   const [actualPrice, setActualPrice] = useState<number>(product.variants[0].actual_price)
+  const comparePrice = product.variants[0].compare_at_price
 
   const ringSizeRef = useRef<HTMLDivElement>(null)
   const executeScroll = () => {
@@ -57,9 +58,6 @@ const Product = ({
                   <div className="pdp-s-row">
                     <div className="pdp-s-col pdp-s-col-sm pdp-carousel-items">
                       <ul className="pdp-carousel-items__list" id="pdp-carousel-items__list">
-                        <li className="pdp-carousel-item_active">
-                          <img src={product.image?.src} alt={product.image?.alt} />
-                        </li>
                         {product.images?.map((image) => (
                           <li key={image.src}>
                             <img src={image.src} alt={image.alt} />
@@ -69,9 +67,6 @@ const Product = ({
                     </div>
                     <div className="pdp-s-col pdp-s-col-lg">
                       <div className="pdp-carousel" id="pdp-carousel">
-                        <div className="pdp-carousel__item">
-                          <img src={product.image?.src} alt={product.image?.alt} />
-                        </div>
                         {product.images?.map((image) => (
                           <div className="pdp-carousel__item" key={image?.src}>
                             <img src={image?.src} alt={image?.alt} />
@@ -176,13 +171,22 @@ const Product = ({
                 <div className="pdp-product-details">
                   {isDiscountApplied ? (
                     <>
-                      <span className="pdp-product-details__discount-price">{formatPrice(actualPrice)}</span>
+                      <span className="pdp-product-details__discount-price">
+                        {comparePrice ? formatPrice(comparePrice) : formatPrice(actualPrice)}
+                      </span>
                       <span className="pdp-product-details__price">
                         &nbsp;${(actualPrice - actualPrice * 0.2).toFixed(2)}
                       </span>
                     </>
                   ) : (
-                    <span>{formatPrice(actualPrice)}</span>
+                    <>
+                      {comparePrice ? (
+                        <span className="pdp-product-details__discount-price">
+                          {comparePrice ? formatPrice(comparePrice) : formatPrice(actualPrice)}&nbsp;
+                        </span>
+                      ) : null}
+                      <span className="pdp-product-details__price">{formatPrice(actualPrice)}</span>
+                    </>
                   )}
                   {label.silver ? (
                     <span className="pdp-product-details__silver-tag"> | 925 Sterling Silver</span>
