@@ -283,6 +283,12 @@
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/modules/base-api-url"
     },
+    "modules/collection-context": {
+        "scope": "",
+        "version": "",
+        "mainFile": "index.ts",
+        "rootDir": "gravity-brands/modules/collection-context"
+    },
     "modules/filter-collection-products": {
         "scope": "fragrantjewels.gravity-brands",
         "version": "0.0.8",

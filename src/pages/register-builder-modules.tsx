@@ -17,7 +17,8 @@ import ProductCarouselContainer from '@containers/ProductCarousel'
 import MainPageLayout from '@fragrantjewels/gravity-brands.components.main-page-layout'
 import YotpoComments from '@fragrantjewels/gravity-brands.components.yotpo-comments'
 import CollectionTagFilter from '../../gravity-brands/components/collection-tag-filter'
-import CollectionProvider, { CollectionContext } from '../../gravity-brands/components/collection-provider'
+import CollectionProvider from '../../gravity-brands/components/collection-provider'
+import CollectionContext from '../../gravity-brands/modules/collection-context'
 
 builder.init(builderConfig.apiKey)
 

@@ -1,8 +1,7 @@
 import React from 'react'
 import useDefer from 'use-defer'
-import loadCollection, { Collection } from '@fragrantjewels/gravity-brands.modules.load-collection'
-
-export const CollectionContext = React.createContext<undefined | Collection>(undefined)
+import loadCollection from '@fragrantjewels/gravity-brands.modules.load-collection'
+import CollectionContext from '@fragrantjewels/gravity-brands.modules.collection-context'
 
 export type CollectionProviderProps = {
   children?: React.ReactNode
