@@ -101,8 +101,10 @@ const ProductCardImgWrapperInner = styled.div`
 `
 
 const ProductCardTag = styled.div<{
+  isVisible?: boolean
   color?: string
 }>`
+  visibility: ${(props) => (props.isVisible ? 'visible' : 'hidden')};
   text-transform: uppercase;
   padding: 6px 0;
   color: ${(props) => props.color || '#878787'};
@@ -224,9 +226,9 @@ export function ProductCard({ className, style, product, onClick }: ProductCardP
     }*/
 
     if (label.silver) {
-      return <ProductCardTag color={'#878787'}>925 Sterling Silver</ProductCardTag>
+      return <ProductCardTag isVisible={true} color={'#878787'}>925 Sterling Silver</ProductCardTag>
     } else {
-      return <ProductCardTag>-</ProductCardTag>
+      return <ProductCardTag isVisible={false}>-</ProductCardTag>
     }
   }
 

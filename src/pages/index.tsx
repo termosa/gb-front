@@ -5,18 +5,18 @@ import PromiseBar from '@fragrantjewels/gravity-brands.components.promise-bar'
 import InlineSignupForm from '@fragrantjewels/gravity-brands.components.inline-signup-form'
 import ReviewsSection from '@fragrantjewels/gravity-brands.components.reviews-section'
 import ShopByProductsOverview from '@fragrantjewels/gravity-brands.components.shop-by-products-overview'
-import InnerCircleExclusive, { Product } from '@fragrantjewels/gravity-brands.components.inner-circle-exclusive'
-import ProductsCarousel, {
-  Product as TrendingProduct,
-} from '@fragrantjewels/gravity-brands.components.products-carousel'
+import InnerCircleExclusive from '@fragrantjewels/gravity-brands.components.inner-circle-exclusive'
+import ProductsCarousel from '@fragrantjewels/gravity-brands.components.products-carousel'
 import homePageProps from './resolvers/homePageProps'
 import signup from '@fragrantjewels/gravity-brands.modules.signup'
 import MainPageLayout from '@fragrantjewels/gravity-brands.components.main-page-layout'
 import FollowUs from '@fragrantjewels/gravity-brands.components.follow-us'
 import MostFunOverview from '@fragrantjewels/gravity-brands.components.most-fun-overview'
+import { Product } from '@fragrantjewels/gravity-brands.modules.load-product'
+
 
 type HomePageProps = {
-  trendingProducts: Array<TrendingProduct> | null
+  trendingProducts: Array<Product> | null
   innerCircleProduct: Product | null
   context: unknown
 }
@@ -30,8 +30,8 @@ const HomePage = ({ trendingProducts, innerCircleProduct }: HomePageProps): Reac
           centerFirstText: 'SAVOR the',
           centerSecondText: 'MOMENTS',
           bottomText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. At eget iaculis eget eget neque.',
-          buttonText: 'SHOP NOW',
-          buttonLink: 'https://www.fragrantjewels.com/pages/inner-circle#how-it-works',
+          buttonText: 'SHOP COLLECTION',
+          buttonLink: 'http://k8s-default-front-94daf2c14f-0f359d69d3e419c3.elb.us-west-1.amazonaws.com/collection?id=160593838170',
           backgroundImg: '',
         },
       ]}

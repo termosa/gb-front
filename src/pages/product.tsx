@@ -41,7 +41,7 @@ const Product = ({
 
   const label = getLabel(product)
 
-  const checkForLabel = (): React.ReactElement => {
+  const checkForLabel = (): React.ReactElement | null => {
     /*if (label.members) {
       return <span className="pdp-product-details__members-tag"> | Members Only</span>
     }*/
@@ -49,7 +49,7 @@ const Product = ({
     if (label.silver) {
       return <span className="pdp-product-details__silver-tag"> | 925 Sterling Silver</span>
     } else {
-      return <span className="pdp-product-details__silver-tag"> | -</span>
+      return null
     }
   }
 
