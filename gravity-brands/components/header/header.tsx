@@ -325,6 +325,9 @@ const AllContent = () => (
             <a href="/collections/jewel-candles">Candles</a>
           </ExtendableBlockListItem>
           <ExtendableBlockListItem>
+            <a href="/collections/body-scrubs">Body Scrubs</a>
+          </ExtendableBlockListItem>
+          <ExtendableBlockListItem>
             <a href="/collections/the-jewelry-store">Jewelry</a>
           </ExtendableBlockListItem>
           <ExtendableBlockListItem>
@@ -359,13 +362,16 @@ const AllContent = () => (
             <a href="/collections/all-products#fragrance=Fragrance:%20Fruity">Fruity</a>
           </ExtendableBlockListItem>
           <ExtendableBlockListItem>
+            <a href="/collections/all-products#fragrance=Fragrance:%20Gourmand">Gourmand</a>
+          </ExtendableBlockListItem>
+          <ExtendableBlockListItem>
             <a href="/collections/all-products#fragrance=Fragrance:%20Green">Green</a>
           </ExtendableBlockListItem>
           <ExtendableBlockListItem>
-            <a href="/collections/all-products#fragrance=Fragrance:%20Spicy/%20Smoky">Spicy/ Smoky</a>
+            <a href="/collections/all-products#fragrance=Fragrance:%20Musky">Musky</a>
           </ExtendableBlockListItem>
           <ExtendableBlockListItem>
-            <a href="/collections/all-products#fragrance=Fragrance:%20Woodsy">Woodsy</a>
+            <a href="/collections/all-products#fragrance=Fragrance:%20Spicy/%20Smoky">Spicy/ Smoky</a>
           </ExtendableBlockListItem>
           <ExtendableBlockListItem>
             <AnimatedLink href="/collections/all-products">Shop all</AnimatedLink>
@@ -396,6 +402,9 @@ const AllContent = () => (
           <ExtendableBlockListTitle>Shop by Metal Color</ExtendableBlockListTitle>
           <ExtendableBlockList>
             <ExtendableBlockListItem>
+              <a href="/collections/all-products#color=Metal%20Color:%20Black">Black</a>
+            </ExtendableBlockListItem>
+            <ExtendableBlockListItem>
               <a href="/collections/all-products#color=Metal%20Color:%20Gold">Gold</a>
             </ExtendableBlockListItem>
             <ExtendableBlockListItem>
@@ -413,9 +422,9 @@ const AllContent = () => (
         </div>
       </ExtendableBlockItem>
       <ExtendableBlockItem>
-        <a href="/products/piece-by-piece-bath-bomb">
-          <img src="https://fragrantjewels.s3.amazonaws.com/app/app-nav/nav-all-img-6-dt.jpg" />
-          <AnimatedLink as="span">Celebrate Autism Acceptance</AnimatedLink>
+        <a href="/collections/summer-collection">
+          <img src="https://fragrantjewels.s3.amazonaws.com/app/app-nav/watch-me-bloom-nav-all-img-dt.jpg" />
+          <AnimatedLink as="span">New! Candle + Planter in 1</AnimatedLink>
         </a>
       </ExtendableBlockItem>
     </ExtendableBlockContainer>
@@ -427,17 +436,17 @@ const SubscriptionContent = () => (
     <ExtendableBlockContainer>
       <ExtendableBlockItem>
         <a href="/pages/inner-circle">
-          <img src="https://fragrantjewels-assets.s3.amazonaws.com/images/under-the-sea/uts-nav-subscription.jpg" />
-          <ExtendableBlockListTitle>New Inner Circle Exclusive Collections Every Month</ExtendableBlockListTitle>
+          <img src="https://fragrantjewels-assets.s3.amazonaws.com/images/island-time/nav-subscription-july.jpg" />
+          <ExtendableBlockListTitle>Exclusive Savings On New Collections Every Month</ExtendableBlockListTitle>
           <ExtendableBlockListText>
-            This month discover the beauty that lies beneath with the new Under the Sea collection.
+            Create a tropical oasis right in your own home with our new, exclusive collection.
           </ExtendableBlockListText>
           <AnimatedLink as="span">Learn more</AnimatedLink>
         </a>
       </ExtendableBlockItem>
       <ExtendableBlockItem>
         <a href="/pages/rare-ic-page">
-          <img src="https://fragrantjewels.s3.amazonaws.com/app/app-nav/nav-subscription-img-rare.jpg" />
+          <img src="https://fragrantjewels.s3.amazonaws.com/app/app-nav/nav-subscription-img-rare-5.jpg" />
           <ExtendableBlockListTitle>Everything There Is To Know About Rare Collections</ExtendableBlockListTitle>
           <ExtendableBlockListText>
             Start collecting unique limited edition sets not available for sale! Find out how you can qualify.

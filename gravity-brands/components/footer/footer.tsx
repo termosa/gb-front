@@ -72,12 +72,14 @@ export function Footer({ className }: FooterProps): React.ReactElement {
             <LinksColumnGroup
               title="Shop"
               links={[
+                { name: 'Mystery Bundles', href: '/collections/mystery-bundles' },
                 { name: 'Bath Bombs', href: '/collections/bath-bombs' },
                 { name: 'Candles', href: '/collections/jewel-candles' },
-                { name: 'Jewelry', href: '/collections/the-jewelry-store' },
-                { name: 'Gift Sets', href: '/collections/gift-sets' },
+                { name: 'Body Scrubs', href: '/collections/body-scrubs' },
                 { name: 'All', href: '/collections/all-products' },
                 { name: 'Subscription', href: '/pages/inner-circle' },
+                { name: 'Rewards', href: '/pages/rewards-boutique' },
+                { name: 'Vault', href: '/pages/vault-appraise' },
               ]}
               mobile={isMobileScreen}
             />

@@ -279,9 +279,9 @@ const SAccountListSubscription = styled.li`
 
 const TABS_LIST = [
   {
-    title: 'Spring',
+    title: 'Mystery Bundles',
     extendable: false,
-    href: '/collections/spring',
+    href: '/collections/mystery-bundles',
   },
   {
     title: 'Bath Bombs',
@@ -292,6 +292,11 @@ const TABS_LIST = [
     title: 'Candles',
     extendable: false,
     href: '/collections/jewel-candles',
+  },
+  {
+    title: 'Body Scrubs',
+    extendable: false,
+    href: '/collections/body-scrubs',
   },
   {
     title: 'All',
@@ -316,19 +321,14 @@ const TABS_LIST = [
 ]
 const CARDS_LIST = [
   {
-    href: '/products/piece-by-piece-bath-bomb',
-    imgLink: 'https://fragrantjewels.s3.amazonaws.com/app/app-nav/nav-all-img-6-mb.jpg',
-    text: 'Celebrate Autism Acceptance',
+    href: '/collections/summer-collection',
+    imgLink: 'https://fragrantjewels.s3.amazonaws.com/app/app-nav/watch-me-bloom-nav-all-img-dt.jpg',
+    text: 'New! Candle + Planter in 1',
   },
   {
-    href: '/collections/fantas',
-    imgLink: 'https://fragrantjewels.s3.amazonaws.com/app/app-nav/nav-all-img-5-mob.jpg',
-    text: 'Fantasy favourites',
-  },
-  {
-    href: '/collections/spring',
-    imgLink: 'https://fragrantjewels.s3.amazonaws.com/app/app-nav/nav-all-img-4.jpg',
-    text: 'Shop spring bling',
+    href: '/products/havana-nights-satin-collection-bath-bomb-and-candle-set',
+    imgLink: 'https://fragrantjewels.s3.amazonaws.com/app/app-time-travel/img/havana-nights/havana-nav-all-img-mb.png',
+    text: 'New! Free Bonus Perfume',
   },
 ]
 

@@ -143,13 +143,16 @@ export function NavTabs({ className, setExtendableBlockContent }: NavTabsProps):
           <a href="/pages/inner-circle">Subscribe</a>
         </SSubscribeButton>
         <SNavItem>
-          <a href="/collections/spring">Spring</a>
+          <a href="/collections/mystery-bundles">Mystery Bundles</a>
         </SNavItem>
         <SNavItem>
           <a href="/collections/bath-bombs">Bath bombs</a>
         </SNavItem>
         <SNavItem>
           <a href="/collections/jewel-candles">Candles</a>
+        </SNavItem>
+        <SNavItem>
+          <a href="/collections/body-scrubs">Body Scrubs</a>
         </SNavItem>
         <SNavItemExtendable onMouseEnter={() => setExtendableBlockContent('All')}>
           <a href="/collections/all-products">All</a>
