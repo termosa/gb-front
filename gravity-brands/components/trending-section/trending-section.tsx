@@ -292,7 +292,6 @@ const ProductCardTitle = styled.h4`
   margin: 0 0 10px;
   padding: 0 5px;
   height: 45px;
-  text-overflow: scroll;
   @media (min-width: 768px) {
     height: 30px;
     margin: 0 0 18px;
@@ -522,7 +521,7 @@ export const TrendingSection = ({ products, className, onSelectProduct }: Trendi
         },
       },
     ],
-    beforeChange(currentSlide: number, nextSlide: number) {
+    beforeChange(_: number, nextSlide: number) {
       const mockedProductLengthValue = 4
       const progressCalc = (nextSlide / (mockedProductLengthValue - 1)) * 100
       setProgress(progressCalc)
