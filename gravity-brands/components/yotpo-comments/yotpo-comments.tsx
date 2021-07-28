@@ -1,4 +1,4 @@
-import React, { useState, useLayoutEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import loadScript from '@fragrantjewels/gravity-brands.modules.load-script'
 
 export type Yotpo = {
@@ -33,7 +33,7 @@ export function YotpoComments({
 }: YotpoCommentsProps): React.ReactElement {
   const [visible, setVisibility] = useState(false)
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     let countdown = 1000
     loadYotpo().then((yotpo) => {
       const interval = setInterval(() => {
