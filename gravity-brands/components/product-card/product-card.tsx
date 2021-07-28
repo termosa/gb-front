@@ -116,7 +116,7 @@ const ProductCardTag = styled.div<{
   }
 `
 
-const ProductCardMembers = styled.div`
+/*const ProductCardMembers = styled.div`
   color: #9059c8;
   padding: 6px 0;
   text-transform: uppercase;
@@ -131,7 +131,7 @@ const ProductCardMembers = styled.div`
   @media (min-width: 768px) {
     margin: 0 0 16px;
   }
-`
+`*/
 
 const ProductCardTitle = styled.h4`
   font: 400 16px/1.3 'Montserrat', sans-serif;
@@ -219,18 +219,12 @@ export function ProductCard({ className, style, product, onClick }: ProductCardP
   const label = getLabel(product)
 
   const checkForLabel = (): React.ReactElement => {
-    if (label.members) {
+    /*if (label.members) {
       return <ProductCardMembers>Members Only</ProductCardMembers>
-    }
+    }*/
 
     if (label.silver) {
       return <ProductCardTag color={'#878787'}>925 Sterling Silver</ProductCardTag>
-    } else if (label.gold) {
-      return <ProductCardTag>Gold</ProductCardTag>
-    } else if (label.copper) {
-      return <ProductCardTag>Copper</ProductCardTag>
-    } else if (label.zinc) {
-      return <ProductCardTag>Zinc</ProductCardTag>
     } else {
       return <ProductCardTag>-</ProductCardTag>
     }
