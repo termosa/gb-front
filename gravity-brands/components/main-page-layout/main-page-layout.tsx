@@ -6,7 +6,7 @@ import loadProductsChunk from '@fragrantjewels/gravity-brands.modules.load-produ
 import useDefer from 'use-defer'
 
 export type MainPageLayoutProps = {
-  children: React.ReactNode
+  children: React.ReactNode | any
   userName?: string
 }
 

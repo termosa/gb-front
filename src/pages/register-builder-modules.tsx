@@ -348,7 +348,7 @@ Builder.registerComponent(YotpoComments, {
     {
       name: 'title',
       type: 'string',
-      defaultValue: 'Product name',
+      defaultValue: 'StaticProduct name',
       required: true,
     },
     {
