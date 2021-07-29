@@ -1,18 +1,13 @@
 import React, { useContext } from 'react'
-import { ProductContext } from '@fragrantjewels/gravity-brands.modules.product-context'
+import ProductContext from '@fragrantjewels/gravity-brands.modules.product-context'
 
 export type ProductTagFilterProps = {
-  tag: string
+  children?: React.ReactElement
+  tag?: string
 }
 
-export const ProductTagFilter = ({ tag }: ProductTagFilterProps): React.ReactElement | null => {
+export const ProductTagFilter = ({ tag, children }: ProductTagFilterProps): React.ReactElement | null => {
   const product = useContext(ProductContext)
-
-  if (typeof tag === 'string' && !product?.tags?.includes(tag)) return null
-
-  return (
-    <div style={{ padding: '3em', textAlign: 'center', background: '#b10dc9' }}>
-      Product Preview: {product?.title || 'Unknown'}
-    </div>
-  )
+  if (children && product && (!tag || product?.tags?.includes(tag))) return children
+  return null
 }

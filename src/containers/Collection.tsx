@@ -8,8 +8,8 @@ import SiteSection from '@fragrantjewels/gravity-brands.components.site-section'
 import styled from 'styled-components'
 import parseFiltersFromProducts from '@fragrantjewels/gravity-brands.modules.parse-filters-from-products'
 import filterCollectionProducts from '@fragrantjewels/gravity-brands.modules.filter-collection-products'
-import { Product } from '../../gravity-brands/modules/load-product'
-import loadCollection from '../../gravity-brands/modules/load-collection'
+import { Product } from '@fragrantjewels/gravity-brands.modules.load-product'
+import loadCollection from '@fragrantjewels/gravity-brands.modules.load-collection'
 import { useRouter } from 'next/router'
 
 const SFiltersSection = styled(SiteSection)`

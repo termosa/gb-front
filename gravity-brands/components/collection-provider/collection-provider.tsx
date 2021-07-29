@@ -5,10 +5,14 @@ import CollectionContext from '@fragrantjewels/gravity-brands.modules.collection
 
 export type CollectionProviderProps = {
   children?: React.ReactNode
-  collectionId: number
+  collectionId?: number
 }
 
 export const CollectionProvider = ({ collectionId, children }: CollectionProviderProps): React.ReactElement => {
-  const collectionRequest = useDefer(() => loadCollection(collectionId), [collectionId], [])
+  const collectionRequest = useDefer(
+    () => (collectionId ? loadCollection(collectionId) : Promise.resolve(undefined)),
+    [collectionId],
+    []
+  )
   return <CollectionContext.Provider value={collectionRequest.value}>{children}</CollectionContext.Provider>
 }

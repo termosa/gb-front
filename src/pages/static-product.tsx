@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react'
 import ProductsCarousel from '@fragrantjewels/gravity-brands.components.products-carousel'
 import productPageProps, { ProductDescription } from './resolvers/productPageProps'
-import MainPageLayout from 'gravity-brands/components/main-page-layout'
+import MainPageLayout from '@fragrantjewels/gravity-brands.components.main-page-layout'
 import formatPrice from '@fragrantjewels/gravity-brands.modules.format-price'
 import getLabel from '@fragrantjewels/gravity-brands.modules.get-label'
 import { ProductImage } from '@fragrantjewels/gravity-brands.modules.normalize-product-image'

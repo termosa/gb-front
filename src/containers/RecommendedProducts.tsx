@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { Product as ProductType } from '../../gravity-brands/modules/normalize-product'
-import { loadCollection } from '../../gravity-brands/modules/load-collection'
+import { Product as ProductType } from '@fragrantjewels/gravity-brands.modules.load-product'
+import loadCollection from '@fragrantjewels/gravity-brands.modules.load-collection'
+import ProductsCarousel from '@fragrantjewels/gravity-brands.components.products-carousel'
 import { RECOMMENDED_PRODUCTS_COLLECTION_ID } from '../settings/ids'
-import { ProductsCarousel } from '@fragrantjewels/gravity-brands.components.products-carousel/products-carousel'
 
 const RecommendedProducts = () => {
   const [recommendedProducts, setRecommendedProducts] = useState<ProductType[]>([])

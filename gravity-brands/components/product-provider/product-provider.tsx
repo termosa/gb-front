@@ -5,10 +5,14 @@ import ProductContext from '@fragrantjewels/gravity-brands.modules.product-conte
 
 export type ProductProviderProps = {
   children?: React.ReactNode
-  productId: number
+  productId?: number
 }
 
 export const ProductProvider = ({ productId, children }: ProductProviderProps): React.ReactElement => {
-  const productRequest = useDefer(() => loadProduct(productId), [productId], [])
+  const productRequest = useDefer(
+    () => (productId ? loadProduct(productId) : Promise.resolve(undefined)),
+    [productId],
+    []
+  )
   return <ProductContext.Provider value={productRequest.value}>{children}</ProductContext.Provider>
 }

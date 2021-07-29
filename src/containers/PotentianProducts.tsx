@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { Product as ProductType } from '../../gravity-brands/modules/normalize-product'
-import { loadCollection } from '../../gravity-brands/modules/load-collection'
+import { Product as ProductType } from '@fragrantjewels/gravity-brands.modules.normalize-product'
+import { loadCollection } from '@fragrantjewels/gravity-brands.modules.load-collection'
 import { POTENTIAL_PRODUCTS_COLLECTION_ID } from '../settings/ids'
-import { ProductsCarousel } from '../../gravity-brands/components/products-carousel'
+import { ProductsCarousel } from '@fragrantjewels/gravity-brands.components.products-carousel'
 
-const PotentialProducts = () => {
+const PotentialProducts = (): React.ReactElement => {
   const [potentialProducts, setPotentialProducts] = useState<ProductType[]>([])
 
   useEffect(() => {
