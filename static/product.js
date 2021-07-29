@@ -70,7 +70,7 @@ function initChooser($elem) {
 init()
 
 function initProductCarousel($elem) {
-  var $itemsList = $('#pdp-carousel-items__list'),
+  var $itemsList = $('#pdp-carousel-icons__list'),
     isBlockedList
 
   $elem.on('init', function (event, slick) {

@@ -656,7 +656,7 @@ $whiteClr: #fff;
     .pdp-s-col {
       width: 100%;
 
-      &.pdp-carousel-items {
+      &.pdp-carousel-icons {
         @media (max-width: 991px) {
           order: 1;
           // margin: 0 -1%;
@@ -677,7 +677,11 @@ $whiteClr: #fff;
   }
 }
 
-.pdp-carousel-items {
+.pdp-carousel-icons {
+  position: sticky;
+  top: 183px;
+  height: fit-content;
+
   &__list {
     padding: 0;
     margin: 0;
@@ -704,8 +708,8 @@ $whiteClr: #fff;
         width: 23%;
       }
 
-      &.pdp-carousel-item_active {
-        border-color: $blackClr;
+      &.active {
+        border: 1px solid $blackClr;
       }
 
       &:after {
@@ -721,6 +725,16 @@ $whiteClr: #fff;
         position: absolute;
       }
     }
+  }
+}
+
+.pdp-carousel-item {
+  display: flex;
+  align-items: center;
+  min-height: 474px;
+
+  img {
+    width: 100%;
   }
 }
 

@@ -2,7 +2,7 @@ import { GetServerSidePropsContext } from 'next'
 import resolvePageProps from '@fragrantjewels/gravity-brands.modules.resolve-page-props'
 import loadProduct from '@fragrantjewels/gravity-brands.modules.load-product'
 import loadCollection, { Product } from '@fragrantjewels/gravity-brands.modules.load-collection'
-import formatText from '@fragrantjewels/gravity-brands.modules.format-text'
+import removeNewLineCharacters from '@fragrantjewels/gravity-brands.modules.remove-new-line-characters'
 import { POTENTIAL_PRODUCTS_COLLECTION_ID, RECOMMENDED_PRODUCTS_COLLECTION_ID } from 'src/settings/ids'
 import { parse } from 'node-html-parser'
 
@@ -29,7 +29,7 @@ const getProductDescription = async (context: GetServerSidePropsContext): Promis
     .filter((el: HTMLElement) => el.querySelectorAll('td').length === 2)
     .map((el: HTMLElement) => ({
       title: el.querySelectorAll('td')[0].innerText.trim(),
-      content: formatText(el.querySelectorAll('td')[1].innerText),
+      content: removeNewLineCharacters(el.querySelectorAll('td')[1].innerText).replace('&amp;', ''),
     }))
 }
 

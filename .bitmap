@@ -283,12 +283,6 @@
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/modules/format-price"
     },
-    "modules/format-text": {
-        "scope": "fragrantjewels.gravity-brands",
-        "version": "0.0.1",
-        "mainFile": "index.ts",
-        "rootDir": "gravity-brands/modules/format-text"
-    },
     "modules/get-label": {
         "scope": "fragrantjewels.gravity-brands",
         "version": "0.0.4",
@@ -354,6 +348,12 @@
         "version": "0.0.10",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/modules/parse-filters-from-products"
+    },
+    "modules/remove-new-line-characters": {
+        "scope": "",
+        "version": "",
+        "mainFile": "index.ts",
+        "rootDir": "gravity-brands/modules/remove-new-line-characters"
     },
     "modules/resolve-page-props": {
         "scope": "fragrantjewels.gravity-brands",

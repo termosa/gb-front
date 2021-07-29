@@ -11,13 +11,8 @@ const MainPageLayoutWrapper = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  overflow: hidden;
   transition: opacity linear 0.5s;
-  padding-top: 138px;
-
-  @media (max-width: 1199px) {
-    padding-top: 146px;
-  }
+  padding-top: 146px;
 `
 
 export const MainPageLayout = ({ children }: MainPageLayoutProps): React.ReactElement => (

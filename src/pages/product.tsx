@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import ProductsCarousel from '@fragrantjewels/gravity-brands.components.products-carousel'
 import productPageProps, { ProductDescription } from './resolvers/productPageProps'
 import MainPageLayout from 'gravity-brands/components/main-page-layout'
@@ -7,6 +7,7 @@ import getLabel from '@fragrantjewels/gravity-brands.modules.get-label'
 import { ProductImage } from '@fragrantjewels/gravity-brands.modules.normalize-product-image'
 import { ProductVariant } from '@fragrantjewels/gravity-brands.modules.normalize-product-variant'
 import { Product as ProductType } from '@fragrantjewels/gravity-brands.modules.normalize-product'
+import { handleGalleryScrolling } from '../../gravity-brands/modules/handle-gallery-scrolling'
 
 type ProductPageProps = {
   product: ProductType
@@ -29,8 +30,44 @@ const Product = ({
   const [isDiscountApplied, setDiscountApplied] = useState<boolean>(true)
   const [isSelectRingError, setSelectRingError] = useState<boolean>(false)
   const [currentVariant, setCurrentVariant] = useState<number | null>(null)
+  const [activeGalleryItem, setActiveGalleryItem] = useState<number | null>(0)
+  const [isLargeScreen, setLargeScreen] = useState<boolean>()
   const [actualPrice, setActualPrice] = useState<number>(product.variants[0].actual_price)
   const comparePrice = product.variants[0].compare_at_price
+
+  const myRef = useRef<HTMLDivElement>(null)
+  const galleryImageHeight = 474
+
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      product.images && handleGalleryScrolling(myRef, product.images, setActiveGalleryItem, galleryImageHeight)
+    })
+    return () => {
+      window.removeEventListener("scroll", () => {
+        product.images && handleGalleryScrolling(myRef, product.images, setActiveGalleryItem, galleryImageHeight)
+      })
+    }
+  }, [handleGalleryScrolling])
+
+  useEffect(() => {
+    if (!isLargeScreen) {
+      setLargeScreen(window.innerWidth > 992)
+    }
+    return () => {}
+  })
+
+  useEffect(() => {
+    window.addEventListener("resize", () => {
+      setLargeScreen(window.innerWidth > 992)
+    })
+    return () => {
+      window.removeEventListener("resize", () => {
+        setLargeScreen(window.innerWidth > 992)
+      })
+    }
+  }, [setLargeScreen])
+
+  console.log(isLargeScreen)
 
   const productHeadingRef = useRef<HTMLDivElement>(null)
   const executeScroll = () => {
@@ -66,26 +103,55 @@ const Product = ({
             <div className="pdp-col pdp-col-61">
               <div className="pdp-s-carousel-wrapper">
                 <div className="pdp-s-row-wrapper">
-                  <div className="pdp-s-row">
-                    <div className="pdp-s-col pdp-s-col-sm pdp-carousel-items">
-                      <ul className="pdp-carousel-items__list" id="pdp-carousel-items__list">
+                  {isLargeScreen ? (
+                    <div className="pdp-s-row">
+                      <div className="pdp-s-col pdp-s-col-sm pdp-carousel-icons">
+                        <ul className="pdp-carousel-icons__list" id="pdp-carousel-icons__list">
+                          {product.images?.map((image: ProductImage, i: number) => (
+                            <li key={image.src} className={activeGalleryItem === i ? 'active' : ''} onClick={() => {
+                              if (!product.images) {
+                                return
+                              }
+                              myRef.current && window.scrollTo({
+                                top: 51 + (galleryImageHeight * i),
+                                behavior: 'smooth'
+                              })
+                            }}>
+                              <img src={image.src} alt={image.alt} />
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      <div className="pdp-s-col pdp-s-col-lg" ref={myRef}>
                         {product.images?.map((image: ProductImage) => (
-                          <li key={image.src}>
-                            <img src={image.src} alt={image.alt} />
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                    <div className="pdp-s-col pdp-s-col-lg">
-                      <div className="pdp-carousel" id="pdp-carousel">
-                        {product.images?.map((image: ProductImage) => (
-                          <div className="pdp-carousel__item" key={image?.src}>
+                          <div className="pdp-carousel-item">
                             <img src={image?.src} alt={image?.alt} />
                           </div>
                         ))}
                       </div>
                     </div>
-                  </div>
+                  ) : (
+                    <div className="pdp-s-row">
+                      <div className="pdp-s-col pdp-s-col-sm pdp-carousel-icons">
+                        <ul className="pdp-carousel-icons__list" id="pdp-carousel-icons__list">
+                          {product.images?.map((image) => (
+                            <li key={image.src}>
+                              <img src={image.src} alt={image.alt} />
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      <div className="pdp-s-col pdp-s-col-lg">
+                        <div className="pdp-carousel" id="pdp-carousel">
+                          {product.images?.map((image) => (
+                            <div className="pdp-carousel__item" key={image?.src}>
+                              <img src={image?.src} alt={image?.alt} />
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
@@ -275,10 +341,12 @@ const Product = ({
                               <img
                                 className="pdp__chooser__info-icon pdp__chooser__info-icon-1"
                                 src="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/pdp/pdp-info-icon.png"
+                                alt="Info"
                               />
                               <img
                                 className="pdp__chooser__info-icon pdp__chooser__info-icon-2"
                                 src="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/pdp/pdp-close-icon.png"
+                                alt="Close"
                               />
                             </button>
                           </div>
