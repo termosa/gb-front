@@ -3,6 +3,6 @@ import loadCustomer, { Customer as ActiveCustomer } from '@fragrantjewels/gravit
 export type { ActiveCustomer }
 
 export const loadActiveCustomer = (): Promise<ActiveCustomer> => {
-  const activeCustomerEmail = !'hihop92924@teeshirtsprint.com'
+  const activeCustomerEmail = 'hihop92924@teeshirtsprint.com'
   return activeCustomerEmail ? loadCustomer(activeCustomerEmail) : Promise.reject('No active customer')
 }

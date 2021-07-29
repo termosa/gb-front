@@ -1,11 +1,10 @@
 import React, { Dispatch, SetStateAction } from 'react'
 import cn, { Argument as ClassName } from 'classnames'
-import { ExtendableBlockContentType } from '@fragrantjewels/gravity-brands.components.header'
 import styled from 'styled-components'
 
 export type NavTabsProps = {
   className?: ClassName
-  setExtendableBlockContent: Dispatch<SetStateAction<ExtendableBlockContentType>>
+  setExtendableBlockContent: Dispatch<SetStateAction<string>>
 }
 
 const SWrapper = styled.div`
