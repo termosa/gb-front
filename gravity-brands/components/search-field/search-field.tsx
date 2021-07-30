@@ -1,22 +1,22 @@
 import React, { useCallback, useState } from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
+import usePopper from '@fragrantjewels/gravity-brands.hooks.use-popper'
+import useOnClickOutside from '@fragrantjewels/gravity-brands.hooks.use-on-click-outside'
+import { ProductsChunk } from '@fragrantjewels/gravity-brands.modules.normalize-products-chunk'
 
 export type SearchFieldProps = {
   className?: ClassName
   onSubmit: (value: string) => void
+  searchedProducts?: ProductsChunk
 }
 
 const SWrapper = styled.div`
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
   width: 100%;
   @media (max-width: 1199px) {
-    padding: 0 15px;
+    padding-top: 15px;
   }
 `
 
@@ -41,11 +41,7 @@ const SButton = styled.button`
   border: 1px solid #797979;
   border-left: none;
   background-color: #fff;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
   cursor: pointer;
   & > svg {
@@ -53,7 +49,22 @@ const SButton = styled.button`
   }
 `
 
-export function SearchField({ className, onSubmit }: SearchFieldProps): React.ReactElement | null {
+const SSearchedProducts = styled.div`
+  background: #fff;
+  z-index: 9999;
+  box-shadow: 0 3px 6px rgb(0 0 0 / 10%);
+`
+
+const SSearchedProductLink = styled.a<{ underline?: boolean }>`
+  padding: 10px 15px;
+  display: block;
+  text-align: left;
+  cursor: pointer;
+  text-decoration: ${({ underline }) => (underline ? 'underline' : 'none')};
+  color: #000;
+`
+
+export function SearchField({ className, onSubmit, searchedProducts }: SearchFieldProps): React.ReactElement | null {
   const [value, setValue] = useState<string>('')
 
   const handleChange = useCallback(
@@ -64,11 +75,22 @@ export function SearchField({ className, onSubmit }: SearchFieldProps): React.Re
   )
 
   const handleSubmit = useCallback(() => {
+    setIsSearchedProductsDropdownVisible(true)
     onSubmit(value)
   }, [onSubmit])
 
+  const [isSearchedProductsDropdownVisible, setIsSearchedProductsDropdownVisible] = useState(true)
+
+  const [referenceElement, setReferenceElement] = useState<HTMLDivElement | null>(null)
+  const [popperElement, setPopperElement] = useState<HTMLDivElement | null>(null)
+  useOnClickOutside({ current: popperElement }, () => setIsSearchedProductsDropdownVisible(false))
+
+  const { styles, attributes } = usePopper(referenceElement, popperElement, {
+    placement: 'bottom-start',
+  })
+
   return (
-    <SWrapper className={cn('SearchField', className)}>
+    <SWrapper className={cn('SearchField', className)} ref={setReferenceElement}>
       <SField onChange={handleChange} onSubmit={handleSubmit} />
       <SButton onClick={handleSubmit}>
         <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -82,6 +104,22 @@ export function SearchField({ className, onSubmit }: SearchFieldProps): React.Re
           ></path>
         </svg>
       </SButton>
+      {searchedProducts && isSearchedProductsDropdownVisible && (
+        <SSearchedProducts
+          ref={setPopperElement}
+          style={{ ...styles.popper, width: referenceElement?.clientWidth }}
+          {...attributes.popper}
+        >
+          {searchedProducts.products.map((product) => (
+            <SSearchedProductLink key={product.product_id} href={`/product?id=${product.product_id}`}>
+              {product.title}
+            </SSearchedProductLink>
+          ))}
+          <SSearchedProductLink href={`/search?type=product&q=${value}`} underline>
+            See all results ({searchedProducts?.totalAmount})
+          </SSearchedProductLink>
+        </SSearchedProducts>
+      )}
     </SWrapper>
   )
 }

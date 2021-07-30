@@ -26,7 +26,12 @@ const SCardsWrapper = styled.div`
   justify-content: space-around;
 `
 
-export function InformationOverview({ className, titleFirst, titleSecond, cards }: InformationOverviewProps) {
+export function InformationOverview({
+  className,
+  titleFirst,
+  titleSecond,
+  cards,
+}: InformationOverviewProps): React.ReactElement {
   return (
     <SWrapper className={cn('InformationOverview', className)}>
       <STitle>
@@ -36,7 +41,7 @@ export function InformationOverview({ className, titleFirst, titleSecond, cards 
       </STitle>
       <SCardsWrapper>
         {cards.map((card) => (
-          <InformationCard card={card} />
+          <InformationCard key={card.image + card.title} card={card} />
         ))}
       </SCardsWrapper>
     </SWrapper>

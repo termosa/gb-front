@@ -1,7 +1,4 @@
-const {
-  PHASE_DEVELOPMENT_SERVER,
-  PHASE_PRODUCTION_BUILD,
-} = require('next/constants')
+const { PHASE_DEVELOPMENT_SERVER, PHASE_PRODUCTION_BUILD } = require('next/constants')
 
 const getBuildConfig = () => {
   const path = require('path')
@@ -28,6 +25,7 @@ const getBuildConfig = () => {
     env: {
       BASE_API_URL: process.env.BASE_API_URL,
       CLIENT_API_URL: process.env.CLIENT_API_URL,
+      BUILDER_KEY: process.env.BUILDER_KEY,
     },
     webpack(config) {
       config.module.rules.push({
@@ -55,7 +53,6 @@ const getBuildConfig = () => {
 }
 
 module.exports = (phase) => {
-  const shouldAddBuildConfig =
-    phase === PHASE_DEVELOPMENT_SERVER || phase === PHASE_PRODUCTION_BUILD
+  const shouldAddBuildConfig = phase === PHASE_DEVELOPMENT_SERVER || phase === PHASE_PRODUCTION_BUILD
   return shouldAddBuildConfig ? getBuildConfig() : {}
 }

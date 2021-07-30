@@ -1,0 +1,9 @@
+---
+labels: ['customer', 'data', 'address']
+description: 'Transform server response to standard format'
+---
+
+```js
+normalizeCustomerAddress(serverResponseWithCutomerData.default_address)
+.then(normalizedAddress => console.log(normalizedAddress.countryName))
+```

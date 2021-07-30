@@ -1813,17 +1813,46 @@
     core-js "^3.0.0"
     styled-components "^5.2.3"
 
-"@fragrantjewels/gravity-brands.components.collection-filters@^0.0.13":
-  version "0.0.13"
-  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.components.collection-filters/-/@fragrantjewels-gravity-brands.components.collection-filters-0.0.13.tgz#de5acf8a7c53fb1e766e1835dfadde8b32fe4432"
-  integrity sha1-3lrPinxT+x52bhg1363eizL+RDI=
+"@fragrantjewels/gravity-brands.components.collection-filters@^0.0.15":
+  version "0.0.15"
+  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.components.collection-filters/-/@fragrantjewels-gravity-brands.components.collection-filters-0.0.15.tgz#6418febfa860255eb8ad2a1a7ab24c8d10f2f0f0"
+  integrity sha1-ZBj+v6hgJV64rSoaerJMjRDy8PA=
   dependencies:
     "@fragrantjewels/gravity-brands.hooks.use-on-click-outside" "0.0.3"
     "@fragrantjewels/gravity-brands.hooks.use-popper" "0.0.3"
-    "@fragrantjewels/gravity-brands.modules.filter-collection-products" "0.0.6"
+    "@fragrantjewels/gravity-brands.modules.filter-collection-products" "0.0.8"
     classnames "^2.3.1"
     core-js "^3.0.0"
     styled-components "^5.2.3"
+
+"@fragrantjewels/gravity-brands.components.collection-page-provider@^0.0.1":
+  version "0.0.1"
+  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.components.collection-page-provider/-/@fragrantjewels-gravity-brands.components.collection-page-provider-0.0.1.tgz#6842a5e3834f98c47bee224f0bbf9c77df0320ee"
+  integrity sha1-aEKl44NPmMR77iJPC7+cd98DIO4=
+  dependencies:
+    "@fragrantjewels/gravity-brands.hooks.use-query" "0.0.1"
+    "@fragrantjewels/gravity-brands.modules.collection-context" "0.0.1"
+    "@fragrantjewels/gravity-brands.modules.load-collection" "0.0.19"
+    core-js "^3.0.0"
+    use-defer "^2.1.0"
+
+"@fragrantjewels/gravity-brands.components.collection-provider@^0.0.1":
+  version "0.0.1"
+  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.components.collection-provider/-/@fragrantjewels-gravity-brands.components.collection-provider-0.0.1.tgz#aa52c59095aecf8677d5fae55e36f30f8c219dd0"
+  integrity sha1-qlLFkJWuz4Z31frlXjbzD4whndA=
+  dependencies:
+    "@fragrantjewels/gravity-brands.modules.collection-context" "0.0.1"
+    "@fragrantjewels/gravity-brands.modules.load-collection" "0.0.19"
+    core-js "^3.0.0"
+    use-defer "^2.1.0"
+
+"@fragrantjewels/gravity-brands.components.collection-tag-filter@^0.0.1":
+  version "0.0.1"
+  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.components.collection-tag-filter/-/@fragrantjewels-gravity-brands.components.collection-tag-filter-0.0.1.tgz#e92eb351ba321328d672abcf5e50cd59c18c202c"
+  integrity sha1-6S6zUboyEyjWcqvPXlDNWcGMICw=
+  dependencies:
+    "@fragrantjewels/gravity-brands.modules.collection-context" "0.0.1"
+    core-js "^3.0.0"
 
 "@fragrantjewels/gravity-brands.components.follow-us@^0.0.11":
   version "0.0.11"
@@ -1893,10 +1922,10 @@
     core-js "^3.0.0"
     styled-components "^5.2.3"
 
-"@fragrantjewels/gravity-brands.components.information-overview@^0.0.10":
-  version "0.0.10"
-  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.components.information-overview/-/@fragrantjewels-gravity-brands.components.information-overview-0.0.10.tgz#00b94f8d1cbca9ce9fe6a8e3994f167e88101942"
-  integrity sha1-ALlPjRy8qc6f5qjjmU8WfogQGUI=
+"@fragrantjewels/gravity-brands.components.information-overview@^0.0.11":
+  version "0.0.11"
+  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.components.information-overview/-/@fragrantjewels-gravity-brands.components.information-overview-0.0.11.tgz#9b0d48681cee65e212598dde7a8b8665ca6b97a8"
+  integrity sha1-mw1IaBzuZeISWY3eeouGZcprl6g=
   dependencies:
     "@fragrantjewels/gravity-brands.components.information-card" "0.0.20"
     classnames "^2.3.1"
@@ -1914,7 +1943,7 @@
     styled-components "^5.2.3"
     use-defer "^2.1.0"
 
-"@fragrantjewels/gravity-brands.components.inner-circle-exclusive@^0.0.33":
+"@fragrantjewels/gravity-brands.components.inner-circle-exclusive@0.0.33":
   version "0.0.33"
   resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.components.inner-circle-exclusive/-/@fragrantjewels-gravity-brands.components.inner-circle-exclusive-0.0.33.tgz#9ab8f2c1141d4657b3c2d4b722ac2e37f092d89a"
   integrity sha1-mrjywRQdRlezwtS3IqwuN/CS2Jo=
@@ -1923,6 +1952,19 @@
     "@fragrantjewels/gravity-brands.components.ring-size" "0.0.21"
     "@fragrantjewels/gravity-brands.modules.format-price" "0.0.4"
     "@fragrantjewels/gravity-brands.modules.normalize-product" "0.0.6"
+    classnames "^2.3.1"
+    core-js "^3.0.0"
+    styled-components "^5.2.3"
+
+"@fragrantjewels/gravity-brands.components.inner-circle-exclusive@^0.0.38":
+  version "0.0.38"
+  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.components.inner-circle-exclusive/-/@fragrantjewels-gravity-brands.components.inner-circle-exclusive-0.0.38.tgz#0be4aaaa1eba6c2ba80eb941b912d2b92e95f754"
+  integrity sha1-C+Sqqh66bCuoDrlBuRLSuS6V91Q=
+  dependencies:
+    "@fragrantjewels/gravity-brands.components.button" "0.0.21"
+    "@fragrantjewels/gravity-brands.components.ring-size" "0.0.23"
+    "@fragrantjewels/gravity-brands.modules.format-price" "0.0.4"
+    "@fragrantjewels/gravity-brands.modules.normalize-product" "0.0.8"
     classnames "^2.3.1"
     core-js "^3.0.0"
     styled-components "^5.2.3"
@@ -1936,10 +1978,10 @@
     core-js "^3.0.0"
     styled-components "^5.2.3"
 
-"@fragrantjewels/gravity-brands.components.main-page-layout@^0.0.23":
-  version "0.0.23"
-  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.components.main-page-layout/-/@fragrantjewels-gravity-brands.components.main-page-layout-0.0.23.tgz#ae46a31962ac0d43a66c261a9e64dcf8aa60dcf9"
-  integrity sha1-rkajGWKsDUOmbCYanmTc+Kpg3Pk=
+"@fragrantjewels/gravity-brands.components.main-page-layout@^0.0.25":
+  version "0.0.25"
+  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.components.main-page-layout/-/@fragrantjewels-gravity-brands.components.main-page-layout-0.0.25.tgz#51ca70cc55988f743c7ac3ae7f48b1a064afb843"
+  integrity sha1-UcpwzFWYj3Q8esOuf0ixoGSvuEM=
   dependencies:
     "@fragrantjewels/gravity-brands.components.footer" "0.0.16"
     "@fragrantjewels/gravity-brands.components.header" "0.0.33"
@@ -1994,35 +2036,67 @@
     core-js "^3.0.0"
     styled-components "^5.2.3"
 
-"@fragrantjewels/gravity-brands.components.product-card@0.0.24":
-  version "0.0.24"
-  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.components.product-card/-/@fragrantjewels-gravity-brands.components.product-card-0.0.24.tgz#ec297fb46395529a70ca5fe4f5fb4c6ced667e4b"
-  integrity sha1-7Cl/tGOVUppwyl/k9ftMbO1mfks=
+"@fragrantjewels/gravity-brands.components.product-card@0.0.34":
+  version "0.0.34"
+  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.components.product-card/-/@fragrantjewels-gravity-brands.components.product-card-0.0.34.tgz#ca4a199fecb202d244ac6e725d620af1101353ea"
+  integrity sha1-ykoZn+yyAtJErG5yXWIK8RATU+o=
   dependencies:
     "@fragrantjewels/gravity-brands.modules.format-price" "0.0.4"
-    "@fragrantjewels/gravity-brands.modules.normalize-product" "0.0.6"
+    "@fragrantjewels/gravity-brands.modules.get-label" "0.0.4"
+    "@fragrantjewels/gravity-brands.modules.normalize-product" "0.0.8"
     classnames "^2.3.1"
     core-js "^3.0.0"
     styled-components "^5.2.3"
 
-"@fragrantjewels/gravity-brands.components.products-carousel@^0.0.29":
-  version "0.0.29"
-  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.components.products-carousel/-/@fragrantjewels-gravity-brands.components.products-carousel-0.0.29.tgz#066e1f2093cf3f4255fb78623ed34226a24b9aef"
-  integrity sha1-Bm4fIJPPP0JV+3hiPtNCJqJLmu8=
+"@fragrantjewels/gravity-brands.components.product-page-provider@^0.0.1":
+  version "0.0.1"
+  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.components.product-page-provider/-/@fragrantjewels-gravity-brands.components.product-page-provider-0.0.1.tgz#5021d4faeaae3ff61f62b410f35bb7bd2fe6552d"
+  integrity sha1-UCHU+uquP/YfYrQQ81u3vS/mVS0=
   dependencies:
-    "@fragrantjewels/gravity-brands.components.product-card" "0.0.24"
+    "@fragrantjewels/gravity-brands.hooks.use-query" "0.0.1"
+    "@fragrantjewels/gravity-brands.modules.load-product" "0.0.18"
+    "@fragrantjewels/gravity-brands.modules.product-context" "0.0.1"
+    core-js "^3.0.0"
+    use-defer "^2.1.0"
+
+"@fragrantjewels/gravity-brands.components.product-provider@^0.0.1":
+  version "0.0.1"
+  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.components.product-provider/-/@fragrantjewels-gravity-brands.components.product-provider-0.0.1.tgz#5887d09f58a1dea9c893aca7a4a1a9bc1937ea58"
+  integrity sha1-WIfQn1ih3qnIk6ynpKGpvBk36lg=
+  dependencies:
+    "@fragrantjewels/gravity-brands.modules.load-product" "0.0.18"
+    "@fragrantjewels/gravity-brands.modules.product-context" "0.0.1"
+    core-js "^3.0.0"
+    use-defer "^2.1.0"
+
+"@fragrantjewels/gravity-brands.components.product-tag-filter@^0.0.1":
+  version "0.0.1"
+  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.components.product-tag-filter/-/@fragrantjewels-gravity-brands.components.product-tag-filter-0.0.1.tgz#212456596905ef9b095b69e5a5a73f7867c0f467"
+  integrity sha1-ISRWWWkF75sJW2nlpac/eGfA9Gc=
+  dependencies:
+    "@fragrantjewels/gravity-brands.modules.product-context" "0.0.1"
+    core-js "^3.0.0"
+
+"@fragrantjewels/gravity-brands.components.products-carousel@^0.0.39":
+  version "0.0.39"
+  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.components.products-carousel/-/@fragrantjewels-gravity-brands.components.products-carousel-0.0.39.tgz#7d2d8dc846ef7408067d78a4fdda6c10a4098b73"
+  integrity sha1-fS2NyEbvdAgGfXik/dpsEKQJi3M=
+  dependencies:
+    "@fragrantjewels/gravity-brands.components.product-card" "0.0.34"
+    "@fragrantjewels/gravity-brands.modules.normalize-product" "0.0.8"
     classnames "^2.3.1"
     core-js "^3.0.0"
     react-slick "^0.28.1"
     styled-components "^5.2.3"
 
-"@fragrantjewels/gravity-brands.components.products-list@^0.0.27":
-  version "0.0.27"
-  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.components.products-list/-/@fragrantjewels-gravity-brands.components.products-list-0.0.27.tgz#e1692f23f696e7822a75373d2918e8eeead7ede3"
-  integrity sha1-4WkvI/aW54IqdTc9KRjo7urX7eM=
+"@fragrantjewels/gravity-brands.components.products-list@^0.0.37":
+  version "0.0.37"
+  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.components.products-list/-/@fragrantjewels-gravity-brands.components.products-list-0.0.37.tgz#38e24080cec0d041ac9b41f4499bdc65b50b1f8b"
+  integrity sha1-OOJAgM7A0EGsm0H0SZvcZbULH4s=
   dependencies:
-    "@fragrantjewels/gravity-brands.components.product-card" "0.0.24"
+    "@fragrantjewels/gravity-brands.components.product-card" "0.0.34"
     "@fragrantjewels/gravity-brands.components.site-section" "0.0.10"
+    "@fragrantjewels/gravity-brands.modules.normalize-product" "0.0.8"
     core-js "^3.0.0"
     styled-components "^5.2.3"
 
@@ -2055,6 +2129,16 @@
     core-js "^3.0.0"
     styled-components "^5.2.3"
 
+"@fragrantjewels/gravity-brands.components.ring-size@0.0.23":
+  version "0.0.23"
+  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.components.ring-size/-/@fragrantjewels-gravity-brands.components.ring-size-0.0.23.tgz#dd566506316e0082839812968aab9c8e54f6732a"
+  integrity sha1-3VZlBjFuAIKDmBKWiqucjlT2cyo=
+  dependencies:
+    "@fragrantjewels/gravity-brands.modules.normalize-product" "0.0.8"
+    classnames "^2.3.1"
+    core-js "^3.0.0"
+    styled-components "^5.2.3"
+
 "@fragrantjewels/gravity-brands.components.rolling-banner@0.0.16", "@fragrantjewels/gravity-brands.components.rolling-banner@^0.0.16":
   version "0.0.16"
   resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.components.rolling-banner/-/@fragrantjewels-gravity-brands.components.rolling-banner-0.0.16.tgz#91debf93ced3ba815f8942d819fceb4158e56e16"
@@ -2083,10 +2167,10 @@
     core-js "^3.0.0"
     styled-components "^5.2.3"
 
-"@fragrantjewels/gravity-brands.components.shop-by-products-overview@^0.0.32":
-  version "0.0.32"
-  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.components.shop-by-products-overview/-/@fragrantjewels-gravity-brands.components.shop-by-products-overview-0.0.32.tgz#701d29eba690510741c0b2993bdc101c3237d1cc"
-  integrity sha1-cB0p66aQUQdBwLKZO9wQHDI30cw=
+"@fragrantjewels/gravity-brands.components.shop-by-products-overview@^0.0.33":
+  version "0.0.33"
+  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.components.shop-by-products-overview/-/@fragrantjewels-gravity-brands.components.shop-by-products-overview-0.0.33.tgz#e0fa002b28e8d7f0102a5e769a26039be32fc23e"
+  integrity sha1-4PoAKyjo1/AQKl52miYDm+Mvwj4=
   dependencies:
     "@fragrantjewels/gravity-brands.components.shop-by-product-card" "0.0.26"
     core-js "^3.0.0"
@@ -2119,10 +2203,10 @@
     core-js "^3.0.0"
     styled-components "^5.2.3"
 
-"@fragrantjewels/gravity-brands.components.yotpo-comments@^0.0.1":
-  version "0.0.1"
-  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.components.yotpo-comments/-/@fragrantjewels-gravity-brands.components.yotpo-comments-0.0.1.tgz#4b07fad9185333a22a1717f7a72b816e9c840d7b"
-  integrity sha1-Swf62RhTM6IqFxf3pyuBbpyEDXs=
+"@fragrantjewels/gravity-brands.components.yotpo-comments@^0.0.2":
+  version "0.0.2"
+  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.components.yotpo-comments/-/@fragrantjewels-gravity-brands.components.yotpo-comments-0.0.2.tgz#c5fb9c822490fc08a90a7852ba73c06ebcc168fa"
+  integrity sha1-xfucgiSQ/AipCnhSunPAbrzBaPo=
   dependencies:
     "@fragrantjewels/gravity-brands.modules.load-script" "0.0.1"
     core-js "^3.0.0"
@@ -2151,6 +2235,13 @@
     core-js "^3.0.0"
     react-popper "^2.2.5"
 
+"@fragrantjewels/gravity-brands.hooks.use-query@0.0.1":
+  version "0.0.1"
+  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.hooks.use-query/-/@fragrantjewels-gravity-brands.hooks.use-query-0.0.1.tgz#6b984fa782f91eadb04efe0fa0d7aee4d87f37cf"
+  integrity sha1-a5hPp4L5Hq2wTv4PoNeu5Nh/N88=
+  dependencies:
+    core-js "^3.0.0"
+
 "@fragrantjewels/gravity-brands.modules.api@0.0.14":
   version "0.0.14"
   resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.modules.api/-/@fragrantjewels-gravity-brands.modules.api-0.0.14.tgz#3ab917fef2ebf2f6d88efbd5f308f5b80c3dfab7"
@@ -2164,12 +2255,19 @@
   resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.modules.base-api-url/-/@fragrantjewels-gravity-brands.modules.base-api-url-0.0.6.tgz#c75b5a82a90b9775a23a9e13c48e8c21d90797cd"
   integrity sha1-x1tagqkLl3WiOp4TxI6MIdkHl80=
 
-"@fragrantjewels/gravity-brands.modules.filter-collection-products@0.0.6":
-  version "0.0.6"
-  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.modules.filter-collection-products/-/@fragrantjewels-gravity-brands.modules.filter-collection-products-0.0.6.tgz#9e5dd2b52844e7dc428fa0a6ee055aae808a0b03"
-  integrity sha1-nl3StShE59xCj6Cm7gVaroCKCwM=
+"@fragrantjewels/gravity-brands.modules.collection-context@0.0.1":
+  version "0.0.1"
+  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.modules.collection-context/-/@fragrantjewels-gravity-brands.modules.collection-context-0.0.1.tgz#cddac4072857f5c515978eebd9ecaed9d4107ffa"
+  integrity sha1-zdrEByhX9cUVl47r2eyu2dQQf/o=
   dependencies:
-    "@fragrantjewels/gravity-brands.modules.normalize-collection" "0.0.6"
+    "@fragrantjewels/gravity-brands.modules.load-collection" "0.0.19"
+
+"@fragrantjewels/gravity-brands.modules.filter-collection-products@0.0.8":
+  version "0.0.8"
+  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.modules.filter-collection-products/-/@fragrantjewels-gravity-brands.modules.filter-collection-products-0.0.8.tgz#e1336a89808fc05d29637c3614fcd0de33d94a83"
+  integrity sha1-4TNqiYCPwF0pY3w2FPzQ3jPZSoM=
+  dependencies:
+    "@fragrantjewels/gravity-brands.modules.normalize-collection" "0.0.8"
 
 "@fragrantjewels/gravity-brands.modules.format-price@0.0.4":
   version "0.0.4"
@@ -2178,6 +2276,13 @@
   dependencies:
     "@fragrantjewels/gravity-brands.modules.round-price" "0.0.4"
 
+"@fragrantjewels/gravity-brands.modules.get-label@0.0.4":
+  version "0.0.4"
+  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.modules.get-label/-/@fragrantjewels-gravity-brands.modules.get-label-0.0.4.tgz#073332f1f2d4e410c97b704e96b2dd96c27ef927"
+  integrity sha1-BzMy8fLU5BDJe3BOlrLdlsJ++Sc=
+  dependencies:
+    "@fragrantjewels/gravity-brands.components.inner-circle-exclusive" "0.0.33"
+
 "@fragrantjewels/gravity-brands.modules.http@0.0.5":
   version "0.0.5"
   resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.modules.http/-/@fragrantjewels-gravity-brands.modules.http-0.0.5.tgz#2e3d14d7623c03771bcdd9bb070eab2c3a3bba53"
@@ -2185,21 +2290,21 @@
   dependencies:
     "@fragrantjewels/gravity-brands.modules.stringify-query" "0.0.4"
 
-"@fragrantjewels/gravity-brands.modules.load-collection@^0.0.17":
-  version "0.0.17"
-  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.modules.load-collection/-/@fragrantjewels-gravity-brands.modules.load-collection-0.0.17.tgz#55d5d765fb47e9ae45525aae3333370321a2e14e"
-  integrity sha1-VdXXZftH6a5FUlquMzM3AyGi4U4=
+"@fragrantjewels/gravity-brands.modules.load-collection@0.0.19", "@fragrantjewels/gravity-brands.modules.load-collection@^0.0.19":
+  version "0.0.19"
+  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.modules.load-collection/-/@fragrantjewels-gravity-brands.modules.load-collection-0.0.19.tgz#2fbedbf8a7e0afa04d27cd4403a7a9d2b35d2674"
+  integrity sha1-L77b+Kfgr6BNJ81EA6ep0rNdJnQ=
   dependencies:
     "@fragrantjewels/gravity-brands.modules.api" "0.0.14"
-    "@fragrantjewels/gravity-brands.modules.normalize-collection" "0.0.6"
+    "@fragrantjewels/gravity-brands.modules.normalize-collection" "0.0.8"
 
-"@fragrantjewels/gravity-brands.modules.load-product@^0.0.16":
-  version "0.0.16"
-  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.modules.load-product/-/@fragrantjewels-gravity-brands.modules.load-product-0.0.16.tgz#7f0a71ff847c8c7f8dd9db69ce2544d2290aea26"
-  integrity sha1-fwpx/4R8jH+N2dtpziVE0ikK6iY=
+"@fragrantjewels/gravity-brands.modules.load-product@0.0.18", "@fragrantjewels/gravity-brands.modules.load-product@^0.0.18":
+  version "0.0.18"
+  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.modules.load-product/-/@fragrantjewels-gravity-brands.modules.load-product-0.0.18.tgz#1c756d2ac236dae5144de491277be3a41da04c2f"
+  integrity sha1-HHVtKsI22uUUTeSRJ3vjpB2gTC8=
   dependencies:
     "@fragrantjewels/gravity-brands.modules.api" "0.0.14"
-    "@fragrantjewels/gravity-brands.modules.normalize-product" "0.0.6"
+    "@fragrantjewels/gravity-brands.modules.normalize-product" "0.0.8"
 
 "@fragrantjewels/gravity-brands.modules.load-script@0.0.1":
   version "0.0.1"
@@ -2213,12 +2318,12 @@
   resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.modules.move-point/-/@fragrantjewels-gravity-brands.modules.move-point-0.0.4.tgz#5495eb7d92f7df192d35ab9e0513054879e0969d"
   integrity sha1-VJXrfZL33xktNaueBRMFSHnglp0=
 
-"@fragrantjewels/gravity-brands.modules.normalize-collection@0.0.6":
-  version "0.0.6"
-  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.modules.normalize-collection/-/@fragrantjewels-gravity-brands.modules.normalize-collection-0.0.6.tgz#44cbd84a14cf82563474d830ffab75e6b82c53f7"
-  integrity sha1-RMvYShTPglY0dNgw/6t15rgsU/c=
+"@fragrantjewels/gravity-brands.modules.normalize-collection@0.0.8":
+  version "0.0.8"
+  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.modules.normalize-collection/-/@fragrantjewels-gravity-brands.modules.normalize-collection-0.0.8.tgz#44ae923cfc2abdc645f428be382e22bf2270073c"
+  integrity sha1-RK6SPPwqvcZF9Ci+OC4ivyJwBzw=
   dependencies:
-    "@fragrantjewels/gravity-brands.modules.normalize-product" "0.0.6"
+    "@fragrantjewels/gravity-brands.modules.normalize-product" "0.0.8"
 
 "@fragrantjewels/gravity-brands.modules.normalize-product-image@0.0.4":
   version "0.0.4"
@@ -2238,12 +2343,27 @@
     "@fragrantjewels/gravity-brands.modules.normalize-product-image" "0.0.4"
     "@fragrantjewels/gravity-brands.modules.normalize-product-variant" "0.0.4"
 
-"@fragrantjewels/gravity-brands.modules.parse-filters-from-products@^0.0.8":
+"@fragrantjewels/gravity-brands.modules.normalize-product@0.0.8":
   version "0.0.8"
-  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.modules.parse-filters-from-products/-/@fragrantjewels-gravity-brands.modules.parse-filters-from-products-0.0.8.tgz#d089acd3eff53e77be2157ae16bbdf8da9670f9b"
-  integrity sha1-0Ims0+/1Pne+IVeuFrvfjalnD5s=
+  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.modules.normalize-product/-/@fragrantjewels-gravity-brands.modules.normalize-product-0.0.8.tgz#7ce7c4513a5b3ff8811871b0022a54ccce3c7ca3"
+  integrity sha1-fOfEUTpbP/iBGHGwAipUzM48fKM=
   dependencies:
-    "@fragrantjewels/gravity-brands.modules.normalize-product" "0.0.6"
+    "@fragrantjewels/gravity-brands.modules.normalize-product-image" "0.0.4"
+    "@fragrantjewels/gravity-brands.modules.normalize-product-variant" "0.0.4"
+
+"@fragrantjewels/gravity-brands.modules.parse-filters-from-products@^0.0.10":
+  version "0.0.10"
+  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.modules.parse-filters-from-products/-/@fragrantjewels-gravity-brands.modules.parse-filters-from-products-0.0.10.tgz#8a1e4262035210d3c90cac8c5b660916200f561b"
+  integrity sha1-ih5CYgNSENPJDKyMW2YJFiAPVhs=
+  dependencies:
+    "@fragrantjewels/gravity-brands.modules.normalize-product" "0.0.8"
+
+"@fragrantjewels/gravity-brands.modules.product-context@0.0.1":
+  version "0.0.1"
+  resolved "https://node.bit.dev/@fragrantjewels/gravity-brands.modules.product-context/-/@fragrantjewels-gravity-brands.modules.product-context-0.0.1.tgz#0a081a2018ef15c332523b5b65377868f213c3bd"
+  integrity sha1-CggaIBjvFcMyUjtbZTd4aPITw70=
+  dependencies:
+    "@fragrantjewels/gravity-brands.modules.load-product" "0.0.18"
 
 "@fragrantjewels/gravity-brands.modules.resolve-page-props@^0.0.5":
   version "0.0.5"
@@ -2457,14 +2577,14 @@
     unixify "1.0.0"
     valid-url "1.0.9"
 
-"@graphql-tools/merge@^6.2.12", "@graphql-tools/merge@^6.2.4":
-  version "6.2.14"
-  resolved "https://registry.yarnpkg.com/@graphql-tools/merge/-/merge-6.2.14.tgz#694e2a2785ba47558e5665687feddd2935e9d94e"
-  integrity sha512-RWT4Td0ROJai2eR66NHejgf8UwnXJqZxXgDWDI+7hua5vNA2OW8Mf9K1Wav1ZkjWnuRp4ztNtkZGie5ISw55ow==
+"@graphql-tools/merge@6.2.16", "@graphql-tools/merge@^6.2.12", "@graphql-tools/merge@^6.2.4":
+  version "6.2.16"
+  resolved "https://registry.yarnpkg.com/@graphql-tools/merge/-/merge-6.2.16.tgz#5dd5f582075c21ef4d74ef84dfcc4e8d0c2db186"
+  integrity sha512-KjZ1pppzKcr2Uspgb53p8uw5yhWVuGIL+sEroar7vLsClSsuiGib8OKVICAGWjC9wrCxGaL9SjJGavfXpJMQIg==
   dependencies:
-    "@graphql-tools/schema" "^7.0.0"
-    "@graphql-tools/utils" "^7.7.0"
-    tslib "~2.2.0"
+    "@graphql-tools/schema" "^8.0.1"
+    "@graphql-tools/utils" "8.0.1"
+    tslib "~2.3.0"
 
 "@graphql-tools/mock@^6.2.4":
   version "6.2.4"
@@ -2484,22 +2604,23 @@
     tslib "~2.1.0"
 
 "@graphql-tools/relay-operation-optimizer@^6.2.4":
-  version "6.3.0"
-  resolved "https://registry.yarnpkg.com/@graphql-tools/relay-operation-optimizer/-/relay-operation-optimizer-6.3.0.tgz#f8c7f6c8aa4a9cf50ab151fbc5db4f4282a79532"
-  integrity sha512-Or3UgRvkY9Fq1AAx7q38oPqFmTepLz7kp6wDHKyR0ceG7AvHv5En22R12mAeISInbhff4Rpwgf6cE8zHRu6bCw==
+  version "6.3.2"
+  resolved "https://registry.yarnpkg.com/@graphql-tools/relay-operation-optimizer/-/relay-operation-optimizer-6.3.2.tgz#585bafdeba9266888801c937b974d891b7bffb35"
+  integrity sha512-3WsDTqKnAJR29q2E5JmQ3iUo1Y2T/4jub+gfhLhOOrQc3kQrcP4FaIJhVYoRBcR2cIve3fcQ6P1jVwensjTDJw==
   dependencies:
-    "@graphql-tools/utils" "^7.1.0"
-    relay-compiler "10.1.0"
-    tslib "~2.0.1"
+    "@graphql-tools/utils" "8.0.1"
+    relay-compiler "11.0.2"
+    tslib "~2.3.0"
 
 "@graphql-tools/resolvers-composition@^6.2.4":
-  version "6.2.8"
-  resolved "https://registry.yarnpkg.com/@graphql-tools/resolvers-composition/-/resolvers-composition-6.2.8.tgz#fa91be40ef424e88290cc101e1ab67b1201ce04f"
-  integrity sha512-/2xedRZYhvts88x9Rv/VWrk69wpl84M7cuYZ4aAacqxnXNm7zxT+MqeL54lsRhq2Kb2yjEhtfguEiqOn+kV8Xg==
+  version "6.3.1"
+  resolved "https://registry.yarnpkg.com/@graphql-tools/resolvers-composition/-/resolvers-composition-6.3.1.tgz#3dd60b2a382f76718802fe5ed4cbd780b0d1ed6e"
+  integrity sha512-UKJM5qmy3lq/dxLHUtBqK2cLzMJRAbGKaRIm7kv8owdxP4XX8gM7MTsylf5EXlTkdvP1wsDybZbqeD9XTAKk4w==
   dependencies:
-    "@graphql-tools/utils" "^7.9.1"
+    "@graphql-tools/utils" "8.0.1"
     lodash "4.17.21"
-    tslib "~2.2.0"
+    micromatch "^4.0.4"
+    tslib "~2.3.0"
 
 "@graphql-tools/schema@^6.2.4":
   version "6.2.4"
@@ -2509,7 +2630,7 @@
     "@graphql-tools/utils" "^6.2.4"
     tslib "~2.0.1"
 
-"@graphql-tools/schema@^7.0.0", "@graphql-tools/schema@^7.1.5":
+"@graphql-tools/schema@^7.1.5":
   version "7.1.5"
   resolved "https://registry.yarnpkg.com/@graphql-tools/schema/-/schema-7.1.5.tgz#07b24e52b182e736a6b77c829fc48b84d89aa711"
   integrity sha512-uyn3HSNSckf4mvQSq0Q07CPaVZMNFCYEVxroApOaw802m9DcZPgf9XVPy/gda5GWj9AhbijfRYVTZQgHnJ4CXA==
@@ -2517,6 +2638,16 @@
     "@graphql-tools/utils" "^7.1.2"
     tslib "~2.2.0"
     value-or-promise "1.0.6"
+
+"@graphql-tools/schema@^8.0.1":
+  version "8.0.1"
+  resolved "https://registry.yarnpkg.com/@graphql-tools/schema/-/schema-8.0.1.tgz#178b734f3784e632a76bdd144ffa8a32169a6f4a"
+  integrity sha512-QG2HGLJjmsNc1wcj+rwZTEArgfMp7rsrb8iVq4P8ce1mDYAt6kRV6bLyPVb9q/j8Ik2zBc/B/Y1jPsnAVUHwdA==
+  dependencies:
+    "@graphql-tools/merge" "6.2.16"
+    "@graphql-tools/utils" "8.0.1"
+    tslib "~2.3.0"
+    value-or-promise "1.0.10"
 
 "@graphql-tools/stitch@^6.2.4":
   version "6.2.4"
@@ -2557,6 +2688,13 @@
     valid-url "1.0.9"
     ws "7.4.5"
 
+"@graphql-tools/utils@8.0.1":
+  version "8.0.1"
+  resolved "https://registry.yarnpkg.com/@graphql-tools/utils/-/utils-8.0.1.tgz#bf09e8d6d17c4a0830f0fbf2c69dd725de19058c"
+  integrity sha512-gjQk6sht4b0/hcG+QEVxfMyO8bn5tuU1nIOVhQ4whgFaUmrnb3hx2mwzz1EJzfIOAuHKE8tY0lu6jt3bGTD4yg==
+  dependencies:
+    tslib "~2.3.0"
+
 "@graphql-tools/utils@^6.2.4":
   version "6.2.4"
   resolved "https://registry.yarnpkg.com/@graphql-tools/utils/-/utils-6.2.4.tgz#38a2314d2e5e229ad4f78cca44e1199e18d55856"
@@ -2566,7 +2704,7 @@
     camel-case "4.1.1"
     tslib "~2.0.1"
 
-"@graphql-tools/utils@^7.0.0", "@graphql-tools/utils@^7.1.0", "@graphql-tools/utils@^7.1.2", "@graphql-tools/utils@^7.5.0", "@graphql-tools/utils@^7.7.0", "@graphql-tools/utils@^7.7.1", "@graphql-tools/utils@^7.8.1", "@graphql-tools/utils@^7.9.0", "@graphql-tools/utils@^7.9.1":
+"@graphql-tools/utils@^7.0.0", "@graphql-tools/utils@^7.1.2", "@graphql-tools/utils@^7.5.0", "@graphql-tools/utils@^7.7.0", "@graphql-tools/utils@^7.7.1", "@graphql-tools/utils@^7.8.1", "@graphql-tools/utils@^7.9.0":
   version "7.10.0"
   resolved "https://registry.yarnpkg.com/@graphql-tools/utils/-/utils-7.10.0.tgz#07a4cb5d1bec1ff1dc1d47a935919ee6abd38699"
   integrity sha512-d334r6bo9mxdSqZW6zWboEnnOOFRrAPVQJ7LkU8/6grglrbcu6WhwCLzHb90E94JI3TD3ricC3YGbUqIi9Xg0w==
@@ -6835,9 +6973,9 @@
   integrity sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==
 
 "@types/node@*":
-  version "16.4.0"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.4.0.tgz#2c219eaa3b8d1e4d04f4dd6e40bc68c7467d5272"
-  integrity sha512-HrJuE7Mlqcjj+00JqMWpZ3tY8w7EUd+S0U3L1+PQSWiXZbOgyQDvi+ogoUxaHApPJq5diKxYBQwA3iIlNcPqOg==
+  version "16.4.7"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.4.7.tgz#f7afa78769d4b477f5092d7c3468e2e8653d779c"
+  integrity sha512-aDDY54sst8sx47CWT6QQqIZp45yURq4dic0+HCYfYNcY5Ejlb/CLmFnRLfy3wQuYafOeh3lB/DAKaqRKBtcZmA==
 
 "@types/node@13.9.5":
   version "13.9.5"
@@ -6902,9 +7040,9 @@
     "@types/react" "*"
 
 "@types/react@*":
-  version "17.0.14"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.14.tgz#f0629761ca02945c4e8fea99b8177f4c5c61fb0f"
-  integrity sha512-0WwKHUbWuQWOce61UexYuWTGuGY/8JvtUe/dtQ6lR4sZ3UiylHotJeWpf3ArP9+DSGUoLY3wbU59VyMrJps5VQ==
+  version "17.0.15"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.15.tgz#c7533dc38025677e312606502df7656a6ea626d0"
+  integrity sha512-uTKHDK9STXFHLaKv6IMnwp52fm0hwU+N89w/p9grdUqcFA6WuqDyPhaWopbNyE1k/VhgzmHl8pu1L4wITtmlLw==
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"
@@ -7125,14 +7263,14 @@
     eslint-utils "^2.0.0"
 
 "@typescript-eslint/experimental-utils@^4.0.1":
-  version "4.28.4"
-  resolved "https://registry.yarnpkg.com/@typescript-eslint/experimental-utils/-/experimental-utils-4.28.4.tgz#9c70c35ebed087a5c70fb0ecd90979547b7fec96"
-  integrity sha512-OglKWOQRWTCoqMSy6pm/kpinEIgdcXYceIcH3EKWUl4S8xhFtN34GQRaAvTIZB9DD94rW7d/U7tUg3SYeDFNHA==
+  version "4.28.5"
+  resolved "https://registry.yarnpkg.com/@typescript-eslint/experimental-utils/-/experimental-utils-4.28.5.tgz#66c28bef115b417cf9d80812a713e0e46bb42a64"
+  integrity sha512-bGPLCOJAa+j49hsynTaAtQIWg6uZd8VLiPcyDe4QPULsvQwLHGLSGKKcBN8/lBxIX14F74UEMK2zNDI8r0okwA==
   dependencies:
     "@types/json-schema" "^7.0.7"
-    "@typescript-eslint/scope-manager" "4.28.4"
-    "@typescript-eslint/types" "4.28.4"
-    "@typescript-eslint/typescript-estree" "4.28.4"
+    "@typescript-eslint/scope-manager" "4.28.5"
+    "@typescript-eslint/types" "4.28.5"
+    "@typescript-eslint/typescript-estree" "4.28.5"
     eslint-scope "^5.1.1"
     eslint-utils "^3.0.0"
 
@@ -7200,13 +7338,13 @@
     "@typescript-eslint/types" "4.15.1"
     "@typescript-eslint/visitor-keys" "4.15.1"
 
-"@typescript-eslint/scope-manager@4.28.4":
-  version "4.28.4"
-  resolved "https://registry.yarnpkg.com/@typescript-eslint/scope-manager/-/scope-manager-4.28.4.tgz#bdbce9b6a644e34f767bd68bc17bb14353b9fe7f"
-  integrity sha512-ZJBNs4usViOmlyFMt9X9l+X0WAFcDH7EdSArGqpldXu7aeZxDAuAzHiMAeI+JpSefY2INHrXeqnha39FVqXb8w==
+"@typescript-eslint/scope-manager@4.28.5":
+  version "4.28.5"
+  resolved "https://registry.yarnpkg.com/@typescript-eslint/scope-manager/-/scope-manager-4.28.5.tgz#3a1b70c50c1535ac33322786ea99ebe403d3b923"
+  integrity sha512-PHLq6n9nTMrLYcVcIZ7v0VY1X7dK309NM8ya9oL/yG8syFINIMHxyr2GzGoBYUdv3NUfCOqtuqps0ZmcgnZTfQ==
   dependencies:
-    "@typescript-eslint/types" "4.28.4"
-    "@typescript-eslint/visitor-keys" "4.28.4"
+    "@typescript-eslint/types" "4.28.5"
+    "@typescript-eslint/visitor-keys" "4.28.5"
 
 "@typescript-eslint/scope-manager@4.4.1":
   version "4.4.1"
@@ -7231,10 +7369,10 @@
   resolved "https://registry.yarnpkg.com/@typescript-eslint/types/-/types-4.15.1.tgz#da702f544ef1afae4bc98da699eaecd49cf31c8c"
   integrity sha512-iGsaUyWFyLz0mHfXhX4zO6P7O3sExQpBJ2dgXB0G5g/8PRVfBBsmQIc3r83ranEQTALLR3Vko/fnCIVqmH+mPw==
 
-"@typescript-eslint/types@4.28.4":
-  version "4.28.4"
-  resolved "https://registry.yarnpkg.com/@typescript-eslint/types/-/types-4.28.4.tgz#41acbd79b5816b7c0dd7530a43d97d020d3aeb42"
-  integrity sha512-3eap4QWxGqkYuEmVebUGULMskR6Cuoc/Wii0oSOddleP4EGx1tjLnZQ0ZP33YRoMDCs5O3j56RBV4g14T4jvww==
+"@typescript-eslint/types@4.28.5":
+  version "4.28.5"
+  resolved "https://registry.yarnpkg.com/@typescript-eslint/types/-/types-4.28.5.tgz#d33edf8e429f0c0930a7c3d44e9b010354c422e9"
+  integrity sha512-MruOu4ZaDOLOhw4f/6iudyks/obuvvZUAHBDSW80Trnc5+ovmViLT2ZMDXhUV66ozcl6z0LJfKs1Usldgi/WCA==
 
 "@typescript-eslint/types@4.4.1":
   version "4.4.1"
@@ -7282,13 +7420,13 @@
     semver "^7.3.2"
     tsutils "^3.17.1"
 
-"@typescript-eslint/typescript-estree@4.28.4":
-  version "4.28.4"
-  resolved "https://registry.yarnpkg.com/@typescript-eslint/typescript-estree/-/typescript-estree-4.28.4.tgz#252e6863278dc0727244be9e371eb35241c46d00"
-  integrity sha512-z7d8HK8XvCRyN2SNp+OXC2iZaF+O2BTquGhEYLKLx5k6p0r05ureUtgEfo5f6anLkhCxdHtCf6rPM1p4efHYDQ==
+"@typescript-eslint/typescript-estree@4.28.5":
+  version "4.28.5"
+  resolved "https://registry.yarnpkg.com/@typescript-eslint/typescript-estree/-/typescript-estree-4.28.5.tgz#4906d343de693cf3d8dcc301383ed638e0441cd1"
+  integrity sha512-FzJUKsBX8poCCdve7iV7ShirP8V+ys2t1fvamVeD1rWpiAnIm550a+BX/fmTHrjEpQJ7ZAn+Z7ZZwJjytk9rZw==
   dependencies:
-    "@typescript-eslint/types" "4.28.4"
-    "@typescript-eslint/visitor-keys" "4.28.4"
+    "@typescript-eslint/types" "4.28.5"
+    "@typescript-eslint/visitor-keys" "4.28.5"
     debug "^4.3.1"
     globby "^11.0.3"
     is-glob "^4.0.1"
@@ -7333,12 +7471,12 @@
     "@typescript-eslint/types" "4.15.1"
     eslint-visitor-keys "^2.0.0"
 
-"@typescript-eslint/visitor-keys@4.28.4":
-  version "4.28.4"
-  resolved "https://registry.yarnpkg.com/@typescript-eslint/visitor-keys/-/visitor-keys-4.28.4.tgz#92dacfefccd6751cbb0a964f06683bfd72d0c4d3"
-  integrity sha512-NIAXAdbz1XdOuzqkJHjNKXKj8QQ4cv5cxR/g0uQhCYf/6//XrmfpaYsM7PnBcNbfvTDLUkqQ5TPNm1sozDdTWg==
+"@typescript-eslint/visitor-keys@4.28.5":
+  version "4.28.5"
+  resolved "https://registry.yarnpkg.com/@typescript-eslint/visitor-keys/-/visitor-keys-4.28.5.tgz#ffee2c602762ed6893405ee7c1144d9cc0a29675"
+  integrity sha512-dva/7Rr+EkxNWdJWau26xU/0slnFlkh88v3TsyTgRS/IIYFi5iIfpCFM4ikw0vQTFUR9FYSSyqgK4w64gsgxhg==
   dependencies:
-    "@typescript-eslint/types" "4.28.4"
+    "@typescript-eslint/types" "4.28.5"
     eslint-visitor-keys "^2.0.0"
 
 "@typescript-eslint/visitor-keys@4.4.1":
@@ -8571,9 +8709,9 @@ aws4@^1.8.0:
   integrity sha512-xh1Rl34h6Fi1DC2WWKfxUTVqRsNnr6LsKz2+hfwDxQJWmrx8+c7ylaqBMcHfl1U1r2dsifOvKX3LQuLNZ+XSvA==
 
 axe-core@^4.0.2:
-  version "4.3.1"
-  resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-4.3.1.tgz#0c6a076e4a1c3e0544ba6a9479158f9be7a7928e"
-  integrity sha512-3WVgVPs/7OnKU3s+lqMtkv3wQlg3WxK1YifmpJSDO0E1aPBrZWlrrTO6cxRqCXLuX2aYgCljqXIQd0VnRidV0g==
+  version "4.3.2"
+  resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-4.3.2.tgz#fcf8777b82c62cfc69c7e9f32c0d2226287680e7"
+  integrity sha512-5LMaDRWm8ZFPAEdzTYmgjjEdj1YnQcpfrVajO/sn/LhbpGp0Y0H64c2hLZI1gRMxfA+w1S71Uc/nHaOXgcCvGg==
 
 axobject-query@^2.2.0:
   version "2.2.0"
@@ -8891,9 +9029,9 @@ babel-plugin-polyfill-corejs2@^0.2.2:
     semver "^6.1.1"
 
 babel-plugin-polyfill-corejs3@^0.2.2:
-  version "0.2.3"
-  resolved "https://registry.yarnpkg.com/babel-plugin-polyfill-corejs3/-/babel-plugin-polyfill-corejs3-0.2.3.tgz#72add68cf08a8bf139ba6e6dfc0b1d504098e57b"
-  integrity sha512-rCOFzEIJpJEAU14XCcV/erIf/wZQMmMT5l5vXOpL5uoznyOGfDIjPj6FVytMvtzaKSTSVKouOCTPJ5OMUZH30g==
+  version "0.2.4"
+  resolved "https://registry.yarnpkg.com/babel-plugin-polyfill-corejs3/-/babel-plugin-polyfill-corejs3-0.2.4.tgz#68cb81316b0e8d9d721a92e0009ec6ecd4cd2ca9"
+  integrity sha512-z3HnJE5TY/j4EFEa/qpQMSbcUJZ5JQi+3UFjXzn6pQCmIKc5Ug5j98SuYyH+m4xQnvKlMDIW4plLfgyVnd0IcQ==
   dependencies:
     "@babel/helper-define-polyfill-provider" "^0.2.2"
     core-js-compat "^3.14.0"
@@ -9918,9 +10056,9 @@ caniuse-api@^3.0.0:
     lodash.uniq "^4.5.0"
 
 caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000981, caniuse-lite@^1.0.30001035, caniuse-lite@^1.0.30001093, caniuse-lite@^1.0.30001109, caniuse-lite@^1.0.30001113, caniuse-lite@^1.0.30001154, caniuse-lite@^1.0.30001219:
-  version "1.0.30001246"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001246.tgz#fe17d9919f87124d6bb416ef7b325356d69dc76c"
-  integrity sha512-Tc+ff0Co/nFNbLOrziBXmMVtpt9S2c2Y+Z9Nk9Khj09J+0zR9ejvIW5qkZAErCbOrVODCx/MN+GpB5FNBs5GFA==
+  version "1.0.30001248"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001248.tgz#26ab45e340f155ea5da2920dadb76a533cb8ebce"
+  integrity sha512-NwlQbJkxUFJ8nMErnGtT0QTM2TJ33xgz4KXJSMIrjXIbDVdaYueGyjOrLKRtJC+rTiWfi6j5cnZN1NBiSBJGNw==
 
 capture-exit@^2.0.0:
   version "2.0.0"
@@ -11881,9 +12019,9 @@ ejs@^2.6.1:
   integrity sha512-7vmuyh5+kuUyJKePhQfRQBhXV5Ce+RnaeeQArKu1EAMpL3WbgMt5WG6uQZpEVvYSSsxMXRKOewtDk9RaTKXRlA==
 
 electron-to-chromium@^1.3.378, electron-to-chromium@^1.3.585, electron-to-chromium@^1.3.723:
-  version "1.3.784"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.784.tgz#c370be79374b02b7f13e8a8fb0d7a02641161dac"
-  integrity sha512-JTPxdUibkefeomWNaYs8lI/x/Zb4cOhZWX+d7kpzsNKzUd07pNuo/AcHeNJ/qgEchxM1IAxda9aaGUhKN/poOg==
+  version "1.3.790"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.790.tgz#5c569290929d92c8094fa08c79bc9393ca9e94e7"
+  integrity sha512-epMH/S2MkhBv+Y0+nHK8dC7bzmOaPwcmiYqt+VwxSUJLgPzkqZnGUEQ8eVhy5zGmgWm9tDDdXkHDzOEsVU979A==
 
 elegant-spinner@^1.0.1:
   version "1.0.1"
@@ -13098,9 +13236,9 @@ flatted@^2.0.0:
   integrity sha512-r5wGx7YeOwNWNlCA0wQ86zKyDLMQr+/RB8xy74M4hTphfmjlijTSSXGuH8rnvKZnfT9i+75zmd8jcKdMR4O6jA==
 
 flatted@^3.1.0:
-  version "3.2.1"
-  resolved "https://registry.yarnpkg.com/flatted/-/flatted-3.2.1.tgz#bbef080d95fca6709362c73044a1634f7c6e7d05"
-  integrity sha512-OMQjaErSFHmHqZe+PSidH5n8j3O0F2DdnVh8JB4j4eUQ2k6KvB0qGfrKIhapvez5JerBbmWkaLYUYWISaESoXg==
+  version "3.2.2"
+  resolved "https://registry.yarnpkg.com/flatted/-/flatted-3.2.2.tgz#64bfed5cb68fe3ca78b3eb214ad97b63bedce561"
+  integrity sha512-JaTY/wtrcSyvXJl4IMFHPKyFur1sE9AUqc0QnhOaJ0CxHtAoIV8pYDzeEfAaNEtGkOfq4gr3LBFmdXW5mOQFnA==
 
 flatten@^1.0.2:
   version "1.0.3"
@@ -14552,7 +14690,7 @@ interpret@^1.0.0:
   resolved "https://registry.yarnpkg.com/interpret/-/interpret-1.4.0.tgz#665ab8bc4da27a774a40584e812e3e0fa45b1a1e"
   integrity sha512-agE4QfB2Lkp9uICn7BAqoscw4SZP9kTE2hxiFI3jBPmXJfdqiahTbUuKGsMoN2GtqL9AxhYioAcVvgsb1HvRbA==
 
-invariant@^2.2.2:
+invariant@^2.2.2, invariant@^2.2.4:
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/invariant/-/invariant-2.2.4.tgz#610f3c92c9359ce1db616e538008d23ff35158e6"
   integrity sha512-phJfQVBuaJM5raOpJjSfkiD6BpbCE4Ns//LaXl6wGYtUBY83nWS6Rf9tXm2e8VaK60JEjYldbPif/A2B1C2gNA==
@@ -14980,9 +15118,9 @@ is-stream@^1.0.1, is-stream@^1.1.0:
   integrity sha1-EtSj3U5o4Lec6428hBc66A2RykQ=
 
 is-stream@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/is-stream/-/is-stream-2.0.0.tgz#bde9c32680d6fae04129d6ac9d921ce7815f78e3"
-  integrity sha512-XCoy+WlUr7d1+Z8GgSuXmpuUFC9fOhRXglJMx+dwLKTkL44Cjd4W1Z5P+BQZpr+cR93aGP4S/s7Ftw6Nd/kiEw==
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/is-stream/-/is-stream-2.0.1.tgz#fac1e3d53b97ad5a9d0ae9cef2389f5810a5c077"
+  integrity sha512-hFoiJiTl63nn+kstHGBtewWSKnQLpyb155KHheA1l39uvtO9nWIop1p3udqPcUd/xbF1VLMO4n7OI6p7RbngDg==
 
 is-string@^1.0.5, is-string@^1.0.6:
   version "1.0.6"
@@ -16962,17 +17100,17 @@ miller-rabin@^4.0.0:
     bn.js "^4.0.0"
     brorand "^1.0.1"
 
-mime-db@1.48.0, "mime-db@>= 1.43.0 < 2":
-  version "1.48.0"
-  resolved "https://registry.yarnpkg.com/mime-db/-/mime-db-1.48.0.tgz#e35b31045dd7eada3aaad537ed88a33afbef2d1d"
-  integrity sha512-FM3QwxV+TnZYQ2aRqhlKBMHxk10lTbMt3bBkMAp54ddrNeVSfcQYOOKuGuy3Ddrm38I04If834fOUSq1yzslJQ==
+mime-db@1.49.0, "mime-db@>= 1.43.0 < 2":
+  version "1.49.0"
+  resolved "https://registry.yarnpkg.com/mime-db/-/mime-db-1.49.0.tgz#f3dfde60c99e9cf3bc9701d687778f537001cbed"
+  integrity sha512-CIc8j9URtOVApSFCQIF+VBkX1RwXp/oMMOrqdyXSBXq5RWNEsRfyj1kiRnQgmNXmHxPoFIxOroKA3zcU9P+nAA==
 
 mime-types@^2.1.12, mime-types@^2.1.27, mime-types@^2.1.30, mime-types@~2.1.17, mime-types@~2.1.19, mime-types@~2.1.24:
-  version "2.1.31"
-  resolved "https://registry.yarnpkg.com/mime-types/-/mime-types-2.1.31.tgz#a00d76b74317c61f9c2db2218b8e9f8e9c5c9e6b"
-  integrity sha512-XGZnNzm3QvgKxa8dpzyhFTHmpP3l5YNusmne07VUOXxou9CqUqYa/HBy124RqtVh/O2pECas/MOcsDgpilPOPg==
+  version "2.1.32"
+  resolved "https://registry.yarnpkg.com/mime-types/-/mime-types-2.1.32.tgz#1d00e89e7de7fe02008db61001d9e02852670fd5"
+  integrity sha512-hJGaVS4G4c9TSMYh2n6SQAGrC4RnfU+daP8G7cSCmaqNjiOoUY0VHCMS42pxnQmVF1GWwFhbHWn3RIxCqTmZ9A==
   dependencies:
-    mime-db "1.48.0"
+    mime-db "1.49.0"
 
 mime@1.6.0, mime@^1.4.1:
   version "1.6.0"
@@ -20004,9 +20142,9 @@ regenerator-runtime@^0.11.0:
   integrity sha512-MguG95oij0fC3QV3URf4V2SDYGJhJnJGqvIIgdECeODCT98wSWDAJ94SSuVpYQUoTcGUIL6L4yNB7j1DFFHSBg==
 
 regenerator-runtime@^0.13.3, regenerator-runtime@^0.13.4:
-  version "0.13.7"
-  resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.13.7.tgz#cac2dacc8a1ea675feaabaeb8ae833898ae46f55"
-  integrity sha512-a54FxoJDIr27pgf7IgeQGxmqUNYrcV338lf/6gH456HZ/PhX+5BcwHXG9ajESmwe6WRO0tAzRUrRmNONWgkrew==
+  version "0.13.9"
+  resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.13.9.tgz#8925742a98ffd90814988d7566ad30ca3b263b52"
+  integrity sha512-p3VT+cOEgxFsRRA9X4lkI1E+k2/CtnKtU4gcxyaCUreilL/vqI6CdZ3wxVUx3UOUg+gnUOQQcRI7BmSI656MYA==
 
 regenerator-transform@^0.10.0:
   version "0.10.1"
@@ -20100,10 +20238,10 @@ relateurl@0.2.x, relateurl@^0.2.7:
   resolved "https://registry.yarnpkg.com/relateurl/-/relateurl-0.2.7.tgz#54dbf377e51440aca90a4cd274600d3ff2d888a9"
   integrity sha1-VNvzd+UUQKypCkzSdGANP/LYiKk=
 
-relay-compiler@10.1.0:
-  version "10.1.0"
-  resolved "https://registry.yarnpkg.com/relay-compiler/-/relay-compiler-10.1.0.tgz#fb4672cdbe9b54869a3a79759edd8c2d91609cbe"
-  integrity sha512-HPqc3N3tNgEgUH5+lTr5lnLbgnsZMt+MRiyS0uAVNhuPY2It0X1ZJG+9qdA3L9IqKFUNwVn6zTO7RArjMZbARQ==
+relay-compiler@11.0.2:
+  version "11.0.2"
+  resolved "https://registry.yarnpkg.com/relay-compiler/-/relay-compiler-11.0.2.tgz#e1e09a1c881d169a7a524ead728ad6a89c7bd4af"
+  integrity sha512-nDVAURT1YncxSiDOKa39OiERkAr0DUcPmlHlg+C8zD+EiDo2Sgczf2R6cDsN4UcDvucYtkLlDLFErPwgLs8WzA==
   dependencies:
     "@babel/core" "^7.0.0"
     "@babel/generator" "^7.5.0"
@@ -20117,18 +20255,20 @@ relay-compiler@10.1.0:
     fbjs "^3.0.0"
     glob "^7.1.1"
     immutable "~3.7.6"
+    invariant "^2.2.4"
     nullthrows "^1.1.1"
-    relay-runtime "10.1.0"
+    relay-runtime "11.0.2"
     signedsource "^1.0.0"
     yargs "^15.3.1"
 
-relay-runtime@10.1.0:
-  version "10.1.0"
-  resolved "https://registry.yarnpkg.com/relay-runtime/-/relay-runtime-10.1.0.tgz#4753bf36e95e8d862cef33608e3d98b4ed730d16"
-  integrity sha512-bxznLnQ1ST6APN/cFi7l0FpjbZVchWQjjhj9mAuJBuUqNNCh9uV+UTRhpQF7Q8ycsPp19LHTpVyGhYb0ustuRQ==
+relay-runtime@11.0.2:
+  version "11.0.2"
+  resolved "https://registry.yarnpkg.com/relay-runtime/-/relay-runtime-11.0.2.tgz#c3650477d45665b9628b852b35f203e361ad55e8"
+  integrity sha512-xxZkIRnL8kNE1cxmwDXX8P+wSeWLR+0ACFyAiAhvfWWAyjXb+bhjJ2FSsRGlNYfkqaTNEuDqpnodQV1/fF7Idw==
   dependencies:
     "@babel/runtime" "^7.0.0"
     fbjs "^3.0.0"
+    invariant "^2.2.4"
 
 remark-footnotes@2.0.0:
   version "2.0.0"
@@ -20520,9 +20660,9 @@ rollup-plugin-terser@^7.0.0:
     terser "^5.0.0"
 
 rollup@^2.43.1:
-  version "2.53.3"
-  resolved "https://registry.yarnpkg.com/rollup/-/rollup-2.53.3.tgz#14b0e57f0874d4ad23bdbb13050cf70bcd1eabf7"
-  integrity sha512-79QIGP5DXz5ZHYnCPi3tLz+elOQi6gudp9YINdaJdjG0Yddubo6JRFUM//qCZ0Bap/GJrsUoEBVdSOc4AkMlRA==
+  version "2.55.1"
+  resolved "https://registry.yarnpkg.com/rollup/-/rollup-2.55.1.tgz#66a444648e2fb603d8e329e77a61c608a6510fda"
+  integrity sha512-1P9w5fpb6b4qroePh8vHKGIvPNxwoCQhjJpIqfZGHLKpZ0xcU2/XBmFxFbc9697/6bmHpmFTLk5R1dAQhFSo0g==
   optionalDependencies:
     fsevents "~2.3.2"
 
@@ -22034,9 +22174,9 @@ tar-stream@^2.1.4:
     readable-stream "^3.1.1"
 
 tar@^6.0.2:
-  version "6.1.0"
-  resolved "https://registry.yarnpkg.com/tar/-/tar-6.1.0.tgz#d1724e9bcc04b977b18d5c573b333a2207229a83"
-  integrity sha512-DUCttfhsnLCjwoDoFcI+B2iJgYa93vBnDUATYEeRx6sntCTdN01VnqsIuTlALXla/LWooNg0yEGeB+Y8WdFxGA==
+  version "6.1.2"
+  resolved "https://registry.yarnpkg.com/tar/-/tar-6.1.2.tgz#1f045a90a6eb23557a603595f41a16c57d47adc6"
+  integrity sha512-EwKEgqJ7nJoS+s8QfLYVGMDmAsj+StbI2AM/RTHeUSsOw6Z8bwNBRv5z3CY0m7laC5qUAqruLX5AhMuc5deY3Q==
   dependencies:
     chownr "^2.0.0"
     fs-minipass "^2.0.0"
@@ -22454,7 +22594,7 @@ tslib@^1.10.0, tslib@^1.11.1, tslib@^1.14.1, tslib@^1.8.1, tslib@^1.9.0, tslib@^
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.14.1.tgz#cf2d38bdc34a134bcaf1091c41f6619e2f672d00"
   integrity sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==
 
-tslib@^2.0.3, tslib@^2.1.0:
+tslib@^2.0.3, tslib@^2.1.0, tslib@~2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.3.0.tgz#803b8cdab3e12ba581a4ca41c8839bbb0dacb09e"
   integrity sha512-N82ooyxVNm6h1riLCoyS9e3fuJ3AMG2zIZs2Gd1ATcSFjSA23Q0fzjjZeh0jbJvWVDZ0cJT8yaNNaaXHzueNjg==
@@ -22656,9 +22796,9 @@ uglify-js@3.4.x:
     source-map "~0.6.1"
 
 uglify-js@^3.1.4:
-  version "3.14.0"
-  resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-3.14.0.tgz#2d723a0afee81e0d08db9354a9c277006e942386"
-  integrity sha512-R/tiGB1ZXp2BC+TkRGLwj8xUZgdfT2f4UZEgX6aVjJ5uttPrr4fYmwTWDGqVnBCLbOXRMY6nr/BTbwCtVfps0g==
+  version "3.14.1"
+  resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-3.14.1.tgz#e2cb9fe34db9cb4cf7e35d1d26dfea28e09a7d06"
+  integrity sha512-JhS3hmcVaXlp/xSo3PKY5R0JqKs5M3IV+exdLHW99qKvKivPO4Z8qbej6mte17SOPqAOVMjt/XGgWacnFSzM3g==
 
 unbox-primitive@^1.0.1:
   version "1.0.1"
@@ -23161,6 +23301,11 @@ value-equal@^1.0.1:
   resolved "https://registry.yarnpkg.com/value-equal/-/value-equal-1.0.1.tgz#1e0b794c734c5c0cade179c437d356d931a34d6c"
   integrity sha512-NOJ6JZCAWr0zlxZt+xqCHNTEKOsrks2HQd4MqhP1qy4z1SkbEP467eNx6TgDKXMvUOb+OENfJCZwM+16n7fRfw==
 
+value-or-promise@1.0.10:
+  version "1.0.10"
+  resolved "https://registry.yarnpkg.com/value-or-promise/-/value-or-promise-1.0.10.tgz#5bf041f1e9a8e7043911875547636768a836e446"
+  integrity sha512-1OwTzvcfXkAfabk60UVr5NdjtjJ0Fg0T5+B1bhxtrOEwSH2fe8y4DnLgoksfCyd8yZCOQQHB0qLMQnwgCjbXLQ==
+
 value-or-promise@1.0.6:
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/value-or-promise/-/value-or-promise-1.0.6.tgz#218aa4794aa2ee24dcf48a29aba4413ed584747f"
@@ -23450,13 +23595,18 @@ webpack-sources@1.4.3, webpack-sources@^1.1.0, webpack-sources@^1.4.0, webpack-s
     source-list-map "^2.0.0"
     source-map "~0.6.1"
 
-webpack-sources@^2.1.1, webpack-sources@^2.2.0, webpack-sources@^2.3.1:
+webpack-sources@^2.1.1, webpack-sources@^2.2.0:
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/webpack-sources/-/webpack-sources-2.3.1.tgz#570de0af163949fe272233c2cefe1b56f74511fd"
   integrity sha512-y9EI9AO42JjEcrTJFOYmVywVZdKVUfOvDUPsJea5GIr1JOEGFVqwlY2K098fFoIjOkDzHn2AjRvM8dsBZu+gCA==
   dependencies:
     source-list-map "^2.0.1"
     source-map "^0.6.1"
+
+webpack-sources@^3.1.1:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/webpack-sources/-/webpack-sources-3.1.1.tgz#586d15bc9a9723765f6a735f672357d6402f9c57"
+  integrity sha512-ztUmIWq0LWaw+1YyR3bXtUPjt8vQedtI9WxGn/q1V1ASHsombnaso7MN9S25lzKS/OuC9Q8lEg3GsZexjDbdlQ==
 
 webpack@4.44.1:
   version "4.44.1"
@@ -23517,9 +23667,9 @@ webpack@5.35.0:
     webpack-sources "^2.1.1"
 
 webpack@^5:
-  version "5.46.0"
-  resolved "https://registry.yarnpkg.com/webpack/-/webpack-5.46.0.tgz#105d20d96f79db59b316b0ae54316f0f630314b5"
-  integrity sha512-qxD0t/KTedJbpcXUmvMxY5PUvXDbF8LsThCzqomeGaDlCA6k998D8yYVwZMvO8sSM3BTEOaD4uzFniwpHaTIJw==
+  version "5.47.1"
+  resolved "https://registry.yarnpkg.com/webpack/-/webpack-5.47.1.tgz#20fb7d76f68912a2249a6dd7ff16faa178049ad2"
+  integrity sha512-cW+Mzy9SCDapFV4OrkHuP6EFV2mAsiQd+gOa3PKtHNoKg6qPqQXZzBlHH+CnQG1osplBCqwsJZ8CfGO6XWah0g==
   dependencies:
     "@types/eslint-scope" "^3.7.0"
     "@types/estree" "^0.0.50"
@@ -23543,7 +23693,7 @@ webpack@^5:
     tapable "^2.1.1"
     terser-webpack-plugin "^5.1.3"
     watchpack "^2.2.0"
-    webpack-sources "^2.3.1"
+    webpack-sources "^3.1.1"
 
 websocket-driver@>=0.5.1, websocket-driver@^0.7.4:
   version "0.7.4"

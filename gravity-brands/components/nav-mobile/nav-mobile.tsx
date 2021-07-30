@@ -1,11 +1,13 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { PointsWidget } from '@fragrantjewels/gravity-brands.components.points-widget'
 import { SigninSignup } from '@fragrantjewels/gravity-brands.components.signin-signup'
+import { ExtendableBlockContent } from '@fragrantjewels/gravity-brands.components.header'
 
 export type SearchFieldProps = {
   isBurgerMenuOpen: boolean
   setBurgerMenuOpen: (isBurgerMenuOpen: boolean) => void
+  userName?: string
 }
 
 const SWrapper = styled.div`
@@ -75,23 +77,15 @@ const SNavTop = styled.div`
 `
 
 const SNavTopInner = styled.div`
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   padding: 6px 0 3px;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
   justify-content: space-between;
   width: 100%;
 `
 
 const SNavTopInnerLeft = styled.div`
   display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
 `
 
@@ -122,17 +116,12 @@ const SPointsWidget = styled.div`
 const SNavItem = styled.li`
   cursor: pointer;
   @media (max-width: 1199px) {
-    -webkit-box-ordinal-group: 3;
-    -ms-flex-order: 2;
     order: 2;
   }
 
   @media (min-width: 1200px) {
     font-size: 0.85em;
     margin: 0;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: row;
     flex-direction: row;
     padding: 0;
   }
@@ -160,13 +149,10 @@ const SNavItemExtendable = styled(SNavItem)`
     top: 50%;
     border: solid #636363;
     border-width: 0 1px 1px 0;
-    -webkit-transform: rotate(-45deg) translateY(-50%);
     transform: rotate(-45deg) translateY(-50%);
     width: 0.9em;
     height: 0.9em;
-    -webkit-transition: all ease-out 0.15s;
     transition: all ease-out 0.15s;
-    -webkit-transform-origin: top;
     transform-origin: top;
   }
 
@@ -175,13 +161,11 @@ const SNavItemExtendable = styled(SNavItem)`
       border: solid #636363;
       display: block;
       border-width: 0 1px 1px 0;
-      -webkit-transform: rotate(45deg);
       transform: rotate(45deg);
       width: 0.5em;
       height: 0.5em;
     }
     &:hover > a:after {
-      -webkit-transform: rotate(-135deg);
       transform: rotate(-135deg);
       top: 0.42em;
       border-width: 0 2px 2px 0;
@@ -195,7 +179,6 @@ const SNavLink = styled.a`
   color: #000;
   text-decoration: none;
   text-align: start;
-  -webkit-transition: color linear 0.2s;
   transition: color linear 0.2s;
   padding: 15px 5px;
   display: block;
@@ -216,9 +199,6 @@ const SNavList = styled.ul`
   font-size: 1em;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
   flex-direction: column;
   & > li {
     margin: 0;
@@ -231,12 +211,7 @@ const SNavList = styled.ul`
 
 const SCard = styled.a`
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
   flex-direction: column;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
   justify-content: space-between;
   margin-bottom: 15px;
   & > img {
@@ -260,6 +235,7 @@ const SCardLink = styled.span`
   letter-spacing: 0.08em;
   @media (min-width: 1200px) {
     padding: 8px 0;
+  }
 `
 
 const SAccountWrapper = styled.div`
@@ -303,56 +279,69 @@ const SAccountListSubscription = styled.li`
 
 const TABS_LIST = [
   {
-    title: 'Spring',
+    title: 'Mystery Bundles',
     extendable: false,
+    href: '/collections/mystery-bundles',
   },
   {
     title: 'Bath Bombs',
     extendable: false,
+    href: '/collections/bath-bombs',
   },
   {
     title: 'Candles',
     extendable: false,
+    href: '/collections/jewel-candles',
+  },
+  {
+    title: 'Body Scrubs',
+    extendable: false,
+    href: '/collections/body-scrubs',
   },
   {
     title: 'All',
     extendable: true,
+    href: '/collections/all-products',
   },
   {
     title: 'Subscription',
     extendable: true,
+    href: '/pages/inner-circle',
   },
   {
     title: 'Rewards',
     extendable: true,
+    href: '/pages/rewards-boutique',
   },
   {
     title: 'Vault',
     extendable: false,
+    href: '/pages/vault-appraise',
   },
 ]
 const CARDS_LIST = [
   {
-    href: '/products/piece-by-piece-bath-bomb',
-    imgLink: 'https://fragrantjewels.s3.amazonaws.com/app/app-nav/nav-all-img-6-mb.jpg',
-    text: 'Celebrate Autism Acceptance',
+    href: '/collections/summer-collection',
+    imgLink: 'https://fragrantjewels.s3.amazonaws.com/app/app-nav/watch-me-bloom-nav-all-img-dt.jpg',
+    text: 'New! Candle + Planter in 1',
   },
   {
-    href: '/collections/fantas',
-    imgLink: 'https://fragrantjewels.s3.amazonaws.com/app/app-nav/nav-all-img-5-mob.jpg',
-    text: 'Fantasy favourites',
-  },
-  {
-    href: '/collections/spring',
-    imgLink: 'https://fragrantjewels.s3.amazonaws.com/app/app-nav/nav-all-img-4.jpg',
-    text: 'Shop spring bling',
+    href: '/products/havana-nights-satin-collection-bath-bomb-and-candle-set',
+    imgLink: 'https://fragrantjewels.s3.amazonaws.com/app/app-time-travel/img/havana-nights/havana-nav-all-img-mb.png',
+    text: 'New! Free Bonus Perfume',
   },
 ]
 
-export function NavMobile({ isBurgerMenuOpen, setBurgerMenuOpen }: SearchFieldProps): React.ReactElement | null {
+export function NavMobile({
+  isBurgerMenuOpen,
+  setBurgerMenuOpen,
+  userName,
+}: SearchFieldProps): React.ReactElement | null {
   useEffect(() => {
     document.body.style.overflow = isBurgerMenuOpen ? 'hidden' : 'auto'
   }, [isBurgerMenuOpen])
+
+  const [extendableBlock, setExtendableBlock] = useState('')
 
   return isBurgerMenuOpen ? (
     <SWrapper id="app-nav-secondary-mobile">
@@ -366,7 +355,7 @@ export function NavMobile({ isBurgerMenuOpen, setBurgerMenuOpen }: SearchFieldPr
                   <PointsWidget points={100} />
                 </SPointsWidget>
               </div>
-              <SigninSignup />
+              <SigninSignup userName={userName} />
             </SNavTopInnerLeft>
             <SCloseBtn type="button" id="app-nav__mobile__close-btn" onClick={() => setBurgerMenuOpen(false)}>
               <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -387,18 +376,26 @@ export function NavMobile({ isBurgerMenuOpen, setBurgerMenuOpen }: SearchFieldPr
               {TABS_LIST.map((item) =>
                 item.extendable ? (
                   <SNavItemExtendable key={item.title}>
-                    <SNavLink href="">{item.title}</SNavLink>
+                    <SNavLink
+                      onClick={(event) => {
+                        event.preventDefault()
+                        extendableBlock === item.title ? setExtendableBlock('') : setExtendableBlock(item.title)
+                      }}
+                    >
+                      {item.title}
+                    </SNavLink>
+                    {extendableBlock === item.title && <ExtendableBlockContent name={item.title} />}
                   </SNavItemExtendable>
                 ) : (
                   <SNavItem key={item.title}>
-                    <SNavLink href="">{item.title}</SNavLink>
+                    <SNavLink href={item.href}>{item.title}</SNavLink>
                   </SNavItem>
                 )
               )}
             </SNavList>
             <div>
               {CARDS_LIST.map((item) => (
-                <SCard href={item.href} className="app-col app-add-product-col">
+                <SCard key={item.imgLink} href={item.href} className="app-col app-add-product-col">
                   <img src={item.imgLink} alt="" />
                   <div>
                     <SCardLink className="app-animated-link app-nav__mobile-content__link">
@@ -411,23 +408,23 @@ export function NavMobile({ isBurgerMenuOpen, setBurgerMenuOpen }: SearchFieldPr
           </div>
           <SAccountWrapper>
             <SAccountTitle>
-              <a href="/account/login">Account</a>
+              <a href="/account">Account</a>
             </SAccountTitle>
             <SAccountList>
               <li>
                 <a href="/pages/order-status-check">Order Status</a>
               </li>
               <SAccountListSubscription>
-                <a href="/account/login">My Subscription</a>
+                <a href="/account#/subscription">My Subscription</a>
               </SAccountListSubscription>
               <li>
-                <a href="/account/login">My Orders</a>
+                <a href="/account#/orders">My Orders</a>
               </li>
               <li>
-                <a href="/account/login">My FJ Rewards</a>
+                <a href="/account#/rewards">My FJ Rewards</a>
               </li>
               <li>
-                <a href="/account/login">My Birthday Gift</a>
+                <a href="/account#/birthday">My Birthday Gift</a>
               </li>
             </SAccountList>
           </SAccountWrapper>

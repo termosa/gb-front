@@ -1,10 +1,10 @@
-import { useContext } from 'react'
-import { builder, Builder, withChildren } from '@builder.io/react'
 import { GetStaticPaths, GetStaticProps } from 'next'
+import builderConfig from 'config/builder'
 import builderIoProps from './resolvers/builderIoProps'
 import builderIoPaths from './resolvers/builderIoPaths'
 import BuilderIoPage from './BuilderIoPage'
-import config from 'config/builder'
+import { useContext } from 'react'
+import { builder, Builder, withChildren } from '@builder.io/react'
 import Header from '@fragrantjewels/gravity-brands.components.header'
 import HeroGallery from '@fragrantjewels/gravity-brands.components.hero-gallery'
 import InformationOverview from '@fragrantjewels/gravity-brands.components.information-overview'
@@ -16,13 +16,20 @@ import InlineSignupForm from '@fragrantjewels/gravity-brands.components.inline-s
 import FollowUs from '@fragrantjewels/gravity-brands.components.follow-us'
 import Footer from '@fragrantjewels/gravity-brands.components.footer'
 import SiteSection from '@fragrantjewels/gravity-brands.components.site-section'
-import InnerCircleExclusiveContainer from '@containers/InnerCircleExclusive'
+import InnerCircleExclusiveContainer from '../containers/InnerCircleExclusive'
 import ProductCarouselContainer from '@containers/ProductCarousel'
 import MainPageLayout from '@fragrantjewels/gravity-brands.components.main-page-layout'
 import YotpoComments from '@fragrantjewels/gravity-brands.components.yotpo-comments'
-import CollectionProvider, { CollectionContext } from 'src/providers/CollectionProvider'
+import CollectionTagFilter from '@fragrantjewels/gravity-brands.components.collection-tag-filter'
+import CollectionProvider from '@fragrantjewels/gravity-brands.components.collection-provider'
+import CollectionPageProvider from '@fragrantjewels/gravity-brands.components.collection-page-provider'
+import CollectionContext from '@fragrantjewels/gravity-brands.modules.collection-context'
+import ProductTagFilter from '@fragrantjewels/gravity-brands.components.product-tag-filter'
+import ProductProvider from '@fragrantjewels/gravity-brands.components.product-provider'
+import ProductPageProvider from '@fragrantjewels/gravity-brands.components.product-page-provider'
+import ProductContext from '@fragrantjewels/gravity-brands.modules.product-context'
 
-builder.init(config.apiKey)
+builder.init(builderConfig.apiKey)
 
 Builder.registerComponent(Header, {
   name: 'Header',
@@ -376,6 +383,65 @@ Builder.registerComponent(YotpoComments, {
   ],
 })
 
+Builder.registerComponent(withChildren(ProductPageProvider), {
+  name: 'ProductPageProvider',
+  defaultChildren: [
+    {
+      '@type': '@builder.io/sdk:Element',
+      component: {
+        name: 'Text',
+        options: { text: 'Components inside of this provider can use its data' },
+      },
+    },
+  ],
+})
+
+Builder.registerComponent(withChildren(ProductProvider), {
+  name: 'ProductProvider',
+  inputs: [
+    {
+      description: 'ID of the product to be loaded and passed to its child components',
+      name: 'productId',
+      type: 'number',
+      defaultValue: '',
+      required: true,
+    },
+  ],
+  defaultChildren: [
+    {
+      '@type': '@builder.io/sdk:Element',
+      component: {
+        name: 'Text',
+        options: { text: 'Components inside of this provider can use its data' },
+      },
+    },
+  ],
+})
+
+Builder.registerComponent(withChildren(ProductTagFilter), {
+  name: 'ProductTagFilter',
+  inputs: [
+    {
+      name: 'tag',
+      type: 'string',
+      defaultValue: 'Nucleus Created',
+      required: false,
+    },
+  ],
+  defaultChildren: [
+    {
+      '@type': '@builder.io/sdk:Element',
+      component: {
+        name: 'Text',
+        options: {
+          text:
+            'Children of this element will only be visible if tag is not set or if it matches the tag of the product set by Product provider',
+        },
+      },
+    },
+  ],
+})
+
 Builder.registerComponent(withChildren(CollectionProvider), {
   name: 'CollectionProvider',
   inputs: [
@@ -398,26 +464,67 @@ Builder.registerComponent(withChildren(CollectionProvider), {
   ],
 })
 
-const CollectionPreview = ({ collectionId }: { collectionId?: number }): null | React.ReactElement => {
+Builder.registerComponent(withChildren(CollectionTagFilter), {
+  name: 'CollectionTagFilter',
+  inputs: [
+    {
+      name: 'tag',
+      type: 'string',
+      defaultValue: 'Halloween',
+      required: false,
+    },
+  ],
+  defaultChildren: [
+    {
+      '@type': '@builder.io/sdk:Element',
+      component: {
+        name: 'Text',
+        options: {
+          text:
+            'Children of this element will only be visible if tag is not set or if it matches the tag of the collection set by Collection provider',
+        },
+      },
+    },
+  ],
+})
+
+Builder.registerComponent(withChildren(CollectionPageProvider), {
+  name: 'CollectionPageProvider',
+  defaultChildren: [
+    {
+      '@type': '@builder.io/sdk:Element',
+      component: {
+        name: 'Text',
+        options: { text: 'Components inside of this provider can use its data' },
+      },
+    },
+  ],
+})
+
+const CollectionPreview = (): null | React.ReactElement => {
   const collection = useContext(CollectionContext)
-  if (typeof collectionId === 'number' && collection?.collection_id !== collectionId) return null
   return (
     <div style={{ padding: '3em', textAlign: 'center', background: 'red' }}>
-      Collection Preview: {collection?.title || 'Unknown'}
+      Global Collection: {collection?.title || 'Unknown'}
     </div>
   )
 }
 
-Builder.registerComponent(CollectionPreview, {
-  name: 'CollectionPreview',
-  inputs: [
-    {
-      description: 'If given, will only appear if collectionId matches with collection from CollectionProvider',
-      name: 'collectionId',
-      type: 'number',
-    },
-  ],
-})
+Builder.registerComponent(CollectionPreview, { name: 'CollectionPreview' })
+
+const ProductPreview = (): null | React.ReactElement => {
+  const product = useContext(ProductContext)
+  return (
+    <div style={{ padding: '3em', textAlign: 'center', background: 'red' }}>
+      Global Product: {product?.title || 'Unknown'}
+      {product && <p>{product.tags?.join(', ')}</p>}
+    </div>
+  )
+}
+
+Builder.registerComponent(ProductPreview, { name: 'ProductPreview' })
+
+builder.init(builderConfig.apiKey)
 
 export const getStaticProps: GetStaticProps = builderIoProps('home', 5)
 

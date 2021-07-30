@@ -31,6 +31,24 @@
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/collection-filters"
     },
+    "components/collection-page-provider": {
+        "scope": "fragrantjewels.gravity-brands",
+        "version": "0.0.1",
+        "mainFile": "index.ts",
+        "rootDir": "gravity-brands/components/collection-page-provider"
+    },
+    "components/collection-provider": {
+        "scope": "fragrantjewels.gravity-brands",
+        "version": "0.0.1",
+        "mainFile": "index.ts",
+        "rootDir": "gravity-brands/components/collection-provider"
+    },
+    "components/collection-tag-filter": {
+        "scope": "fragrantjewels.gravity-brands",
+        "version": "0.0.1",
+        "mainFile": "index.ts",
+        "rootDir": "gravity-brands/components/collection-tag-filter"
+    },
     "components/follow-us": {
         "scope": "fragrantjewels.gravity-brands",
         "version": "0.0.11",
@@ -39,7 +57,7 @@
     },
     "components/footer": {
         "scope": "fragrantjewels.gravity-brands",
-        "version": "0.0.16",
+        "version": "0.0.17",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/footer"
     },
@@ -51,7 +69,7 @@
     },
     "components/header": {
         "scope": "fragrantjewels.gravity-brands",
-        "version": "0.0.33",
+        "version": "0.0.34",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/header"
     },
@@ -69,7 +87,7 @@
     },
     "components/information-overview": {
         "scope": "fragrantjewels.gravity-brands",
-        "version": "0.0.10",
+        "version": "0.0.11",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/information-overview"
     },
@@ -93,7 +111,7 @@
     },
     "components/main-page-layout": {
         "scope": "fragrantjewels.gravity-brands",
-        "version": "0.0.25",
+        "version": "0.0.29",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/main-page-layout"
     },
@@ -105,43 +123,61 @@
     },
     "components/nav-icons": {
         "scope": "fragrantjewels.gravity-brands",
-        "version": "0.0.16",
+        "version": "0.0.17",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/nav-icons"
     },
     "components/nav-mobile": {
         "scope": "fragrantjewels.gravity-brands",
-        "version": "0.0.7",
+        "version": "0.0.8",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/nav-mobile"
     },
     "components/nav-tabs": {
         "scope": "fragrantjewels.gravity-brands",
-        "version": "0.0.27",
+        "version": "0.0.28",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/nav-tabs"
     },
     "components/points-widget": {
         "scope": "fragrantjewels.gravity-brands",
-        "version": "0.0.12",
+        "version": "0.0.13",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/points-widget"
     },
     "components/product-card": {
         "scope": "fragrantjewels.gravity-brands",
-        "version": "0.0.34",
+        "version": "0.0.35",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/product-card"
     },
+    "components/product-page-provider": {
+        "scope": "fragrantjewels.gravity-brands",
+        "version": "0.0.1",
+        "mainFile": "index.ts",
+        "rootDir": "gravity-brands/components/product-page-provider"
+    },
+    "components/product-provider": {
+        "scope": "fragrantjewels.gravity-brands",
+        "version": "0.0.1",
+        "mainFile": "index.ts",
+        "rootDir": "gravity-brands/components/product-provider"
+    },
+    "components/product-tag-filter": {
+        "scope": "fragrantjewels.gravity-brands",
+        "version": "0.0.1",
+        "mainFile": "index.ts",
+        "rootDir": "gravity-brands/components/product-tag-filter"
+    },
     "components/products-carousel": {
         "scope": "fragrantjewels.gravity-brands",
-        "version": "0.0.39",
+        "version": "0.0.40",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/products-carousel"
     },
     "components/products-list": {
         "scope": "fragrantjewels.gravity-brands",
-        "version": "0.0.37",
+        "version": "0.0.38",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/products-list"
     },
@@ -171,7 +207,7 @@
     },
     "components/search-field": {
         "scope": "fragrantjewels.gravity-brands",
-        "version": "0.0.12",
+        "version": "0.0.13",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/search-field"
     },
@@ -183,13 +219,13 @@
     },
     "components/shop-by-products-overview": {
         "scope": "fragrantjewels.gravity-brands",
-        "version": "0.0.32",
+        "version": "0.0.33",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/shop-by-products-overview"
     },
     "components/signin-signup": {
         "scope": "fragrantjewels.gravity-brands",
-        "version": "0.0.13",
+        "version": "0.0.14",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/signin-signup"
     },
@@ -219,7 +255,7 @@
     },
     "components/yotpo-comments": {
         "scope": "fragrantjewels.gravity-brands",
-        "version": "0.0.1",
+        "version": "0.0.2",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/yotpo-comments"
     },
@@ -259,6 +295,12 @@
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/hooks/use-popper"
     },
+    "hooks/use-query": {
+        "scope": "fragrantjewels.gravity-brands",
+        "version": "0.0.1",
+        "mainFile": "index.ts",
+        "rootDir": "gravity-brands/hooks/use-query"
+    },
     "modules/api": {
         "scope": "fragrantjewels.gravity-brands",
         "version": "0.0.14",
@@ -270,6 +312,12 @@
         "version": "0.0.6",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/modules/base-api-url"
+    },
+    "modules/collection-context": {
+        "scope": "fragrantjewels.gravity-brands",
+        "version": "0.0.1",
+        "mainFile": "index.ts",
+        "rootDir": "gravity-brands/modules/collection-context"
     },
     "modules/filter-collection-products": {
         "scope": "fragrantjewels.gravity-brands",
@@ -285,7 +333,7 @@
     },
     "modules/get-label": {
         "scope": "fragrantjewels.gravity-brands",
-        "version": "0.0.4",
+        "version": "0.0.5",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/modules/get-label"
     },
@@ -295,17 +343,35 @@
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/modules/http"
     },
+    "modules/load-active-customer": {
+        "scope": "fragrantjewels.gravity-brands",
+        "version": "0.0.1",
+        "mainFile": "index.ts",
+        "rootDir": "gravity-brands/modules/load-active-customer"
+    },
     "modules/load-collection": {
         "scope": "fragrantjewels.gravity-brands",
         "version": "0.0.19",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/modules/load-collection"
     },
+    "modules/load-customer": {
+        "scope": "fragrantjewels.gravity-brands",
+        "version": "0.0.1",
+        "mainFile": "index.ts",
+        "rootDir": "gravity-brands/modules/load-customer"
+    },
     "modules/load-product": {
         "scope": "fragrantjewels.gravity-brands",
         "version": "0.0.18",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/modules/load-product"
+    },
+    "modules/load-products-chunk": {
+        "scope": "fragrantjewels.gravity-brands",
+        "version": "0.0.1",
+        "mainFile": "index.ts",
+        "rootDir": "gravity-brands/modules/load-products-chunk"
     },
     "modules/load-script": {
         "scope": "fragrantjewels.gravity-brands",
@@ -325,6 +391,18 @@
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/modules/normalize-collection"
     },
+    "modules/normalize-customer": {
+        "scope": "fragrantjewels.gravity-brands",
+        "version": "0.0.1",
+        "mainFile": "index.ts",
+        "rootDir": "gravity-brands/modules/normalize-customer"
+    },
+    "modules/normalize-customer-address": {
+        "scope": "fragrantjewels.gravity-brands",
+        "version": "0.0.1",
+        "mainFile": "index.ts",
+        "rootDir": "gravity-brands/modules/normalize-customer-address"
+    },
     "modules/normalize-product": {
         "scope": "fragrantjewels.gravity-brands",
         "version": "0.0.8",
@@ -343,11 +421,23 @@
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/modules/normalize-product-variant"
     },
+    "modules/normalize-products-chunk": {
+        "scope": "fragrantjewels.gravity-brands",
+        "version": "0.0.1",
+        "mainFile": "index.ts",
+        "rootDir": "gravity-brands/modules/normalize-products-chunk"
+    },
     "modules/parse-filters-from-products": {
         "scope": "fragrantjewels.gravity-brands",
         "version": "0.0.10",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/modules/parse-filters-from-products"
+    },
+    "modules/product-context": {
+        "scope": "fragrantjewels.gravity-brands",
+        "version": "0.0.1",
+        "mainFile": "index.ts",
+        "rootDir": "gravity-brands/modules/product-context"
     },
     "modules/remove-new-line-characters": {
         "scope": "",

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import loadProduct, { Product } from '@fragrantjewels/gravity-brands.modules.load-product'
-import { InnerCircleExclusive } from '@fragrantjewels/gravity-brands.components.inner-circle-exclusive'
+import InnerCircleExclusive from '@fragrantjewels/gravity-brands.components.inner-circle-exclusive'
 
 type InnerCircleExclusiveProps = {
   productId: number
@@ -24,8 +24,9 @@ const InnerCircleExclusiveContainer = ({
   return product ? (
     <InnerCircleExclusive
       product={product}
+      title=""
       frontImage={frontImage}
-      sideImage={sideImage}
+      slideImages={[sideImage]}
       onReserve={(variant) => {
         console.log(variant)
       }}
