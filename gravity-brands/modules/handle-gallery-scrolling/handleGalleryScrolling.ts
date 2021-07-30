@@ -8,7 +8,6 @@ export const handleGalleryScrolling = (
   galleryImageHeight: number,
 ): void => {
   const initialDistance = 160;
-  console.log(111111111111)
   const arr = images?.map((_: ProductImage, i: number) => initialDistance - (galleryImageHeight * i))
     .filter((el) => myRef?.current && el >= myRef.current.getBoundingClientRect().top - 149)
   setActiveGalleryItem(arr.length - 1)

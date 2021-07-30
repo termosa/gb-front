@@ -1,7 +1,6 @@
-import { GetStaticPaths, GetStaticProps } from 'next'
+import { GetStaticProps } from 'next'
 import builderConfig from 'config/builder'
 import builderIoProps from './resolvers/builderIoProps'
-import builderIoPaths from './resolvers/builderIoPaths'
 import BuilderIoPage from './BuilderIoPage'
 import { useContext } from 'react'
 import { builder, Builder, withChildren } from '@builder.io/react'
@@ -527,7 +526,5 @@ Builder.registerComponent(ProductPreview, { name: 'ProductPreview' })
 builder.init(builderConfig.apiKey)
 
 export const getStaticProps: GetStaticProps = builderIoProps('home', 5)
-
-export const getStaticPaths: GetStaticPaths = builderIoPaths('home', true)
 
 export default BuilderIoPage

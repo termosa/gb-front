@@ -339,7 +339,7 @@
     },
     "modules/handle-gallery-scrolling": {
         "scope": "fragrantjewels.gravity-brands",
-        "version": "0.0.1",
+        "version": "0.0.2",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/modules/handle-gallery-scrolling"
     },
