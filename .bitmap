@@ -111,7 +111,7 @@
     },
     "components/main-page-layout": {
         "scope": "fragrantjewels.gravity-brands",
-        "version": "0.0.29",
+        "version": "0.0.30",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/main-page-layout"
     },
@@ -337,6 +337,12 @@
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/modules/get-label"
     },
+    "modules/handle-gallery-scrolling": {
+        "scope": "fragrantjewels.gravity-brands",
+        "version": "0.0.1",
+        "mainFile": "index.ts",
+        "rootDir": "gravity-brands/modules/handle-gallery-scrolling"
+    },
     "modules/http": {
         "scope": "fragrantjewels.gravity-brands",
         "version": "0.0.5",
@@ -440,8 +446,8 @@
         "rootDir": "gravity-brands/modules/product-context"
     },
     "modules/remove-new-line-characters": {
-        "scope": "",
-        "version": "",
+        "scope": "fragrantjewels.gravity-brands",
+        "version": "0.0.1",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/modules/remove-new-line-characters"
     },

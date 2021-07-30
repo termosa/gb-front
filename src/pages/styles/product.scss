@@ -675,6 +675,19 @@ $whiteClr: #fff;
       }
     }
   }
+
+  .slick-track {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.pdp-carousel-item-mobile {
+  outline: none;
+
+  img {
+    width: 100%;
+  }
 }
 
 .pdp-carousel-icons {
@@ -690,7 +703,7 @@ $whiteClr: #fff;
     margin-bottom: 20px;
     @media (max-width: 991px) {
       width: 100%;
-      display: flex;
+      display: flex !important;
       overflow-x: auto;
     }
 
@@ -708,7 +721,8 @@ $whiteClr: #fff;
         width: 23%;
       }
 
-      &.active {
+      &.active,
+      &.slick-active {
         border: 1px solid $blackClr;
       }
 
@@ -722,7 +736,6 @@ $whiteClr: #fff;
         width: 100%;
         height: auto;
         display: block;
-        position: absolute;
       }
     }
   }
@@ -737,145 +750,6 @@ $whiteClr: #fff;
     width: 100%;
   }
 }
-
-.pdp-carousel {
-  margin: 0 0 20px;
-  // padding-top: 15px;
-  opacity: 0;
-  // .slick-slide>div {
-  //     margin: 0 7.5px;
-  // }
-  .slick-slide img {
-    width: 100%;
-    height: auto;
-  }
-
-  .slick-dots {
-    position: absolute;
-    bottom: -30px;
-    display: block;
-    width: 100%;
-    padding: 0;
-    margin: 0;
-    list-style: none;
-    text-align: center;
-  }
-
-  .slick-dots li {
-    position: relative;
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    margin: 0 5px;
-    padding: 0;
-    cursor: pointer;
-  }
-
-  .slick-dots li button {
-    font-size: 0;
-    line-height: 0;
-    display: block;
-    width: 20px;
-    height: 20px;
-    padding: 5px;
-    cursor: pointer;
-    color: transparent;
-    border: 0;
-    outline: none;
-    background: transparent;
-  }
-
-  .slick-dots li.slick-active button:before {
-    opacity: .75;
-    color: #ee67a0;
-  }
-
-  .slick-dots li button:before {
-    font-size: 25px;
-    font-family: Lato, Arial, sans-serif;
-    line-height: 20px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 20px;
-    height: 20px;
-    content: '•';
-    text-align: center;
-    opacity: .25;
-    color: #ee67a0;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-
-  .slick-prev,
-  .slick-next {
-    font-size: 0;
-    line-height: 0;
-    position: absolute;
-    top: 50%;
-    display: block;
-    width: 40px;
-    height: 40px;
-    padding: 0;
-    -webkit-transform: translate(0, -50%);
-    -ms-transform: translate(0, -50%);
-    transform: translate(0, -50%);
-    cursor: pointer;
-    color: transparent;
-    border: none;
-    outline: none;
-    background: transparent;
-    cursor: pointer;
-  }
-
-  .collection-carousel-holder {
-    padding: 0 15px;
-    max-width: 450px;
-    margin: 0 auto;
-  }
-
-  @media (min-width: 768px) {
-    .collection-carousel {
-      margin-bottom: 50px;
-    }
-    .collection-carousel-holder {
-      max-width: 100%;
-      padding-left: 35px;
-      padding-right: 35px
-    }
-  }
-  @media (max-width: 768px) {
-    .slick-prev,
-    .slick-next {
-      display: none !important;
-    }
-  }
-
-  .slick-dots li button:hover,
-  .slick-dots li button:focus {
-    outline: none;
-  }
-
-  .slick-dots li button:hover:before,
-  .slick-dots li button:focus:before {
-    opacity: 1;
-  }
-
-  .slick-next {
-    right: -10px;
-    background: url(https://fragrantjewels-assets.s3.amazonaws.com/images/media/next-pink.png) no-repeat;
-    background-size: 100% 100%;
-    z-index: 30;
-  }
-
-  .slick-prev {
-    left: -10px;
-    background: url(https://fragrantjewels-assets.s3.amazonaws.com/images/media/back-pink.png) no-repeat;
-    background-size: 100% 100%;
-    z-index: 30;
-  }
-}
-
 
 /* \PDP Slider */
 
@@ -892,7 +766,7 @@ $whiteClr: #fff;
   min-height: 55px;
   background: $whiteClr;
   z-index: 10;
-  box-shadow: 0px 0 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.15);
 
   svg {
     position: relative;
