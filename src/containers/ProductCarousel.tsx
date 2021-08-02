@@ -26,9 +26,7 @@ const ProductCarouselContainer = ({
       products={collection?.products}
       title={title}
       subTitle={subTitle}
-      onSelectProduct={(product) => {
-        console.log(product)
-      }}
+      onSelectProduct={(productId) => (location.href = `/products/${productId}`)}
     />
   ) : null
 }

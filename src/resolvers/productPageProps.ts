@@ -26,9 +26,7 @@ const loadCollectionProducts = (collectionId: number): Promise<Product[] | null>
     () => null
   )
 
-const getProductDescription = async (context: GetServerSidePropsContext): Promise<ProductDescription[] | null> => {
-  const product = await loadProduct(Number(context.query.id)).catch(() => null)
-
+const getProductDescription = async (product: Product): Promise<ProductDescription[] | null> => {
   if (!product || !product.body_html) {
     return null
   }
@@ -49,7 +47,9 @@ function productPageProps<PropsType>(): (context: GetServerSidePropsContext) => 
       product: productPromise.catch(() => null),
       recommendedProducts: loadCollectionProducts(RECOMMENDED_PRODUCTS_COLLECTION_ID),
       potentialProducts: loadCollectionProducts(POTENTIAL_PRODUCTS_COLLECTION_ID),
-      productDescription: getProductDescription(context),
+      productDescription: productPromise
+        .then((product) => getProductDescription(product))
+        .catch((error) => console.error(error)),
       builderContent: productPromise
         .then((product) => loadModelTemplate('product', product.template))
         .catch((error) => (console.error(error), null)),
