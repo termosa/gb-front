@@ -1,4 +1,4 @@
-import { resolveBuilderContent } from '../../../lib/resolve-builder-content'
+import { resolveBuilderContent } from 'src/builder/resolve-builder-content'
 
 export default () => async () => {
   const modelName = 'collection'

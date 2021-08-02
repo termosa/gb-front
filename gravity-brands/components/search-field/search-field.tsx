@@ -111,7 +111,7 @@ export function SearchField({ className, onSubmit, searchedProducts }: SearchFie
           {...attributes.popper}
         >
           {searchedProducts.products.map((product) => (
-            <SSearchedProductLink key={product.product_id} href={`/product?id=${product.product_id}`}>
+            <SSearchedProductLink key={product.product_id} href={`/products/${product.product_id}`}>
               {product.title}
             </SSearchedProductLink>
           ))}

@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react'
 import ProductsCarousel from '@fragrantjewels/gravity-brands.components.products-carousel'
-import productPageProps, { ProductDescription } from './resolvers/productPageProps'
+import productPageProps, { ProductDescription } from 'src/resolvers/productPageProps'
 import MainPageLayout from '@fragrantjewels/gravity-brands.components.main-page-layout'
 import formatPrice from '@fragrantjewels/gravity-brands.modules.format-price'
 import getLabel from '@fragrantjewels/gravity-brands.modules.get-label'
@@ -993,11 +993,7 @@ const StaticProduct = ({
           <ProductsCarousel
             title="Recommended for you"
             products={recommendedProducts}
-            onSelectProduct={(productId) =>
-              (location.href = `/product?id=${productId}&${
-                location.search.match(/(?:\?|&)(base_url=[^&]+)(?:&|$)/)?.[1] || ''
-              }`)
-            }
+            onSelectProduct={(productId) => (location.href = `/product?products/${productId}`)}
           />
         )}
       </section>
@@ -1006,11 +1002,7 @@ const StaticProduct = ({
           <ProductsCarousel
             title="More you might like"
             products={potentialProducts}
-            onSelectProduct={(productId) =>
-              (location.href = `/product?id=${productId}&${
-                location.search.match(/(?:\?|&)(base_url=[^&]+)(?:&|$)/)?.[1] || ''
-              }`)
-            }
+            onSelectProduct={(productId) => (location.href = `/products/${productId}`)}
           />
         )}
       </section>

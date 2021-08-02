@@ -27,6 +27,7 @@ export const BasicProductsCarousel = (): React.ReactElement => (
             height: 40,
           },
           published_at_shop: '',
+          template: 'Default',
         },
         {
           product_id: 10419939918,
@@ -49,6 +50,7 @@ export const BasicProductsCarousel = (): React.ReactElement => (
             height: 40,
           },
           published_at_shop: '',
+          template: 'Default',
         },
         {
           product_id: 10419939918,
@@ -71,6 +73,7 @@ export const BasicProductsCarousel = (): React.ReactElement => (
             height: 40,
           },
           published_at_shop: '',
+          template: 'Default',
         },
         {
           product_id: 10419921743,
@@ -93,6 +96,7 @@ export const BasicProductsCarousel = (): React.ReactElement => (
             height: 40,
           },
           published_at_shop: '',
+          template: 'Default',
         },
       ]}
     />

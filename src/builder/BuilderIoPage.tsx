@@ -16,7 +16,7 @@ const BuilderIoPage = ({ content, modelName }: { content: BuilderContent; modelN
     )
   }
 
-  return <BuilderComponent model="home" entry="e07aaf1fc28d49189cf94860a51229d6" content={content} />
+  return <BuilderComponent model={modelName} content={content} />
 }
 
 export default BuilderIoPage

@@ -52,6 +52,7 @@ export type Product = {
   fragrance?: string
   material?: string
   color?: string
+  template: string
 }
 
 const selectValueFromTags = (tags: Array<string>, prefix: string) =>
@@ -66,6 +67,7 @@ export const normalizeProduct = (product: ServerProduct): Product => {
     fragrance: selectValueFromTags(tags, 'fragrance:'),
     material: selectValueFromTags(tags, 'material:'),
     color: selectValueFromTags(tags, 'metal color:'),
+    template: selectValueFromTags(tags, 'template:'),
   }
 
   return {
@@ -84,8 +86,9 @@ export const normalizeProduct = (product: ServerProduct): Product => {
     published_at_shop: product.published_at_shop,
     body_html: product.body_html,
     ...(tags.length && { tags }),
-    ...(tagsProperties.fragrance && { fragrance: selectValueFromTags(tags, 'fragrance:') }),
-    ...(tagsProperties.material && { material: selectValueFromTags(tags, 'material:') }),
-    ...(tagsProperties.color && { color: selectValueFromTags(tags, 'metal color:') }),
+    ...(tagsProperties.fragrance && { fragrance: tagsProperties.fragrance }),
+    ...(tagsProperties.material && { material: tagsProperties.material }),
+    ...(tagsProperties.color && { color: tagsProperties.color }),
+    template: tagsProperties.template || 'Default',
   }
 }

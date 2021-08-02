@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react'
-import collectionPageProps from './resolvers/collectionPageProps'
+import collectionPageProps from 'src/resolvers/collectionPageProps'
 import MainPageLayout from '@fragrantjewels/gravity-brands.components.main-page-layout'
 import FullWidthBanner from '@fragrantjewels/gravity-brands.components.full-width-banner'
 import CollectionFilters, {

@@ -1,13 +1,10 @@
-import builderConfig from 'config/builder'
-import { builder, Builder } from '@builder.io/react'
-import { MainPageLayout } from '@fragrantjewels/gravity-brands.components.main-page-layout/main-page-layout'
-import BuilderIoPage from './BuilderIoPage'
+import { Builder, BuilderComponent } from '@builder.io/react'
 import React from 'react'
-import builderCollectionProps from './resolvers/builderCollectionProps'
-import { FullWidthBanner } from '@fragrantjewels/gravity-brands.components.full-width-banner/full-width-banner'
+import 'src/builder/register-components'
+import FullWidthBanner from '@fragrantjewels/gravity-brands.components.full-width-banner'
 import Collection from '@containers/Collection'
-
-builder.init(builderConfig.apiKey)
+import CollectionContext from '@fragrantjewels/gravity-brands.modules.collection-context'
+import collectionPageProps, { CollectionPageProps } from 'src/resolvers/collectionPageProps'
 
 Builder.registerComponent(FullWidthBanner, {
   name: 'Full Width Banner',
@@ -45,14 +42,14 @@ Builder.registerComponent(Collection, {
   name: 'Collection',
 })
 
-const CollectionPage = ({ content }) => {
+export default function CollectionPage({ collection, builderContent }: CollectionPageProps): React.ReactElement {
+  if (!collection) return <h1>404 Not found</h1>
+
   return (
-    <MainPageLayout>
-      <BuilderIoPage content={content} modelName={'collection'} />
-    </MainPageLayout>
+    <CollectionContext.Provider value={collection}>
+      <BuilderComponent model="Product" content={builderContent} />
+    </CollectionContext.Provider>
   )
 }
 
-export const getStaticProps = builderCollectionProps()
-
-export default CollectionPage
+export const getServerSideProps = collectionPageProps()

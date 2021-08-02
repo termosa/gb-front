@@ -81,6 +81,7 @@ export const BasicInnerCircleExclusive = (): React.ReactElement => (
           product_id: 1,
         },
       ],
+      template: 'Default',
     }}
   />
 )

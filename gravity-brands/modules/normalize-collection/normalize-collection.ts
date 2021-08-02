@@ -21,6 +21,7 @@ export type Collection = {
   title: string
   handle: string
   products: Array<Product>
+  template: string
 }
 
 export const normalizeCollection = (collection: ServerCollection): Collection => ({
@@ -28,4 +29,5 @@ export const normalizeCollection = (collection: ServerCollection): Collection =>
   title: collection.title,
   handle: collection.handle,
   products: collection.products.map(normalizeProduct),
+  template: 'Default',
 })
