@@ -43,19 +43,12 @@ Builder.registerComponent(Collection, {
 })
 
 export default function CollectionPage({ collection, builderContent }: CollectionPageProps): React.ReactElement {
-  if (!collection) {
-    console.error('Collection is missing')
-    return <h1>404 Not found</h1>
-  }
-
-  if (!builderContent) {
-    console.error('Builder content is missing')
-    return <h1>404 Not found</h1>
-  }
+  if (!collection) throw new Error('Collection not found')
+  if (!builderContent) throw new Error('Builder content is missing')
 
   return (
     <CollectionContext.Provider value={collection}>
-      <BuilderComponent model="Product" content={builderContent} />
+      <BuilderComponent model="Collection" content={builderContent} />
     </CollectionContext.Provider>
   )
 }
