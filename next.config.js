@@ -1,4 +1,5 @@
 const { PHASE_DEVELOPMENT_SERVER, PHASE_PRODUCTION_BUILD } = require('next/constants')
+const basePath = require('./config/base-path')
 
 const getBuildConfig = () => {
   const path = require('path')
@@ -21,7 +22,7 @@ const getBuildConfig = () => {
 
   const nextConfig = {
     ...cssOptions,
-    basePath: '/ws30',
+    basePath: basePath,
     typescript: { ignoreBuildErrors: true },
     env: {
       BASE_API_URL: process.env.BASE_API_URL,
