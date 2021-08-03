@@ -17,9 +17,11 @@ function Error({ err, statusCode }: ErrorProps) {
 }
 
 Error.getInitialProps = (ctx: NextPageContext) => {
+  console.log(ctx.err)
+
   return {
     statusCode: ctx.res?.statusCode,
-    err: ctx.err?.toString()
+    err: ctx.err ? JSON.stringify(ctx.err) : ''
   }
 }
 
