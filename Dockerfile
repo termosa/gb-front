@@ -25,4 +25,4 @@ EXPOSE 3000
 
 #CMD ["npm", "start"]
 #CMD ["run.sh"]
-CMD ["npm", "start 2>&1"]
+CMD npm start 2>&1
