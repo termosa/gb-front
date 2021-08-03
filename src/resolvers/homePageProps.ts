@@ -26,6 +26,6 @@ export default function homePageProps(): (context: GetServerSidePropsContext) =>
     trendingProducts: loadTrendingProducts(),
     innerCircleProduct: loadInnerCircleProduct(context?.query?.id?.toString()),
     activeCustomer: loadActiveCustomer().catch(() => null),
-    builderContent: loadModelTemplate('Homes').catch(() => null),
+    builderContent: loadModelTemplate('Home').catch(() => null),
   }))
 }
