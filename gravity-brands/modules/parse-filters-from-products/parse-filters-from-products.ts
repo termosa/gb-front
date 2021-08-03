@@ -31,7 +31,7 @@ const collectSizes = (products: Array<Product>) => {
   return sizeFilters
 }
 
-export const parseFiltersFromProducts = (products: Array<Product> | null): CollectedFilters => {
+export const parseFiltersFromProducts = (products: Array<Product> | undefined): CollectedFilters => {
   const filters: CollectedFilters = {
     sizes: products ? collectSizes(products) : [],
     fragrances: [],

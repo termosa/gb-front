@@ -222,7 +222,7 @@ const TEST_IMAGES = [
   'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/popsugar.png',
 ]
 
-export function ReviewsSection({ images, quote, author, className }: ReviewsSectionProps): React.ReactElement {
+export function ReviewsSection({ quote, author, className }: ReviewsSectionProps): React.ReactElement {
   const settings: Settings = {
     slidesToShow: 6,
     slidesToScroll: 1,

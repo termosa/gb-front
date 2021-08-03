@@ -301,7 +301,9 @@ const CloseButton = ({ onClick, small }: { onClick: () => void; small?: boolean 
 
 export type FilterGroup = 'fragrances' | 'materials' | 'sizes' | 'colors'
 
-const isEmptyFilter = (filters: CollectionProductsFilter) => Object.values(filters).every((values) => !values.length)
+const isEmptyFilter = (filters: CollectionProductsFilter) => Object.values(filters).every((values) => {
+  return values && !values.length
+})
 
 const gradients: Record<string, ColorGradient> = {
   Black: [],

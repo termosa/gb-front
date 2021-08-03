@@ -12,7 +12,6 @@ export default class CustomDocument extends Document<CustomDocumentProps> {
     const spriteContent = sprite.stringify()
     const sheet = new ServerStyleSheet()
     const originalRenderPage = ctx.renderPage
-
     try {
       ctx.renderPage = () =>
         originalRenderPage({
