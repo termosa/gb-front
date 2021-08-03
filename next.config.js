@@ -21,6 +21,7 @@ const getBuildConfig = () => {
 
   const nextConfig = {
     ...cssOptions,
+    basePath: '/ws30',
     typescript: { ignoreBuildErrors: true },
     env: {
       BASE_API_URL: process.env.BASE_API_URL,
