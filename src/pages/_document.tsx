@@ -13,6 +13,8 @@ export default class CustomDocument extends Document<CustomDocumentProps> {
     const sheet = new ServerStyleSheet()
     const originalRenderPage = ctx.renderPage
 
+    console.log('Err: ', ctx.err)
+
     try {
       ctx.renderPage = () =>
         originalRenderPage({
