@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import { AppProps } from 'next/app'
 import baseApiUrl from '@fragrantjewels/gravity-brands.modules.base-api-url'
 import { ThemeProvider } from '@fragrantjewels/gravity-brands.helpers.theme-provider'
-import './_require-env'
+import '../_require-env'
 import './styles/product.scss'
 import './styles/styles.scss'
 
