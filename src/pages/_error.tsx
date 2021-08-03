@@ -1,26 +1,26 @@
 import { NextPageContext } from 'next'
 
 type ErrorProps = {
-  ctx: NextPageContext
+  statusCode: number
+  err: string
 }
 
-function Error({ ctx }: ErrorProps) {
-  if (!ctx) {
-    return <h2>No context</h2>
-  }
-
+function Error({ err, statusCode }: ErrorProps) {
   return (
     <>
-      <h1>{ctx.res?.statusCode}</h1>
+      <h1>{statusCode ? statusCode : "No status code"}</h1>
       <p>
-        {ctx.err}
+        {err}
       </p>
     </>
   )
 }
 
 Error.getInitialProps = (ctx: NextPageContext) => {
-  return ctx
+  return {
+    statusCode: ctx.res?.statusCode,
+    err: ctx.err?.toString()
+  }
 }
 
 export default Error
