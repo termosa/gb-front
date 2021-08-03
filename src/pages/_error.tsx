@@ -5,6 +5,10 @@ type ErrorProps = {
 }
 
 function Error({ ctx }: ErrorProps) {
+  if (!ctx) {
+    return <h2>No context</h2>
+  }
+
   return (
     <>
       <h1>{ctx.res?.statusCode}</h1>
@@ -16,9 +20,6 @@ function Error({ ctx }: ErrorProps) {
 }
 
 Error.getInitialProps = (ctx: NextPageContext) => {
-  if (ctx.err) {
-    console.log(ctx.err)
-  }
   return ctx
 }
 
