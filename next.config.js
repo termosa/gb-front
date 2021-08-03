@@ -1,4 +1,4 @@
-const { PHASE_DEVELOPMENT_SERVER, PHASE_PRODUCTION_BUILD } = require('next/constants')
+const { PHASE_DEVELOPMENT_SERVER, PHASE_PRODUCTION_BUILD, PHASE_PRODUCTION_SERVER } = require('next/constants')
 const basePath = require('./config/base-path')
 
 const getBuildConfig = () => {
@@ -55,6 +55,6 @@ const getBuildConfig = () => {
 }
 
 module.exports = (phase) => {
-  const shouldAddBuildConfig = phase === PHASE_DEVELOPMENT_SERVER || phase === PHASE_PRODUCTION_BUILD
+  const shouldAddBuildConfig = [PHASE_DEVELOPMENT_SERVER, PHASE_PRODUCTION_BUILD, PHASE_PRODUCTION_SERVER].includes(phase)
   return shouldAddBuildConfig ? getBuildConfig() : {}
 }
