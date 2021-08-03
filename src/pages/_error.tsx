@@ -1,28 +1,23 @@
-import { NextPageContext } from 'next'
+import Error from 'next/error'
 
-type ErrorProps = {
-  statusCode: number
-  err: string
+function ErrorPage({ statusCode, title }: { statusCode: number; title?: string }): React.ReactElement {
+  return <Error statusCode={statusCode} title={title} />
 }
 
-function Error({ err, statusCode }: ErrorProps) {
-  return (
-    <>
-      <h1>{statusCode ? statusCode : "No status code"}</h1>
-      <p>
-        {err}
-      </p>
-    </>
-  )
+ErrorPage.getInitialProps = ({
+  res,
+  err,
+}: {
+  res?: { statusCode: number }
+  err?: { statusCode: number; message?: string; stack?: string }
+}) => {
+  const statusCode = res ? res.statusCode : err ? err.statusCode : 404
+  const title = (process.env.APP_ENV !== 'production' && err?.message) || undefined
+  const message = err
+    ? (err.message && `${err.message}${err.stack ? `\n${err.stack}` : ''}`) || err
+    : 'Unknown problem this time'
+  console.error({ status: statusCode, message })
+  return { statusCode, title }
 }
 
-Error.getInitialProps = (ctx: NextPageContext) => {
-  console.log(ctx.err)
-
-  return {
-    statusCode: ctx.res?.statusCode,
-    err: ctx.err ? JSON.stringify(ctx.err) : ''
-  }
-}
-
-export default Error
+export default ErrorPage
