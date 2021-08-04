@@ -42,7 +42,10 @@ const getProductDescription = async (product: Product): Promise<ProductDescripti
 
 function productPageProps<PropsType>(): (context: GetServerSidePropsContext) => Promise<{ props: PropsType }> {
   return resolvePageProps((context) => {
-    const productPromise = loadProduct(+context.query.productId)
+    const productId = +context.query.productId
+    if (!productId) throw new Error('Product id is not valid')
+
+    const productPromise = loadProduct(productId)
     return {
       product: productPromise.catch(() => null),
       recommendedProducts: loadCollectionProducts(RECOMMENDED_PRODUCTS_COLLECTION_ID),
@@ -51,8 +54,8 @@ function productPageProps<PropsType>(): (context: GetServerSidePropsContext) => 
         .then((product) => getProductDescription(product))
         .catch((error) => console.error(error)),
       builderContent: productPromise
-        .then((product) => loadModelTemplate('product', product.template))
-        .catch((error) => (console.error(error), null)),
+        .then((product) => loadModelTemplate('Product', product.template))
+        .catch(() => null),
     }
   })
 }

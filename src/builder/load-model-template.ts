@@ -54,7 +54,7 @@ export default function loadModelTemplate(modelName: ModelName, templateName?: s
   return new Promise((resolve, reject) => {
     const origin = 'https://cdn.builder.io'
     const path = `/api/v2/content/${modelName.toLowerCase()}`
-    const query = qs.stringify({ apiKey, limit: 1, ...(templateName && { 'query.name': templateName }) })
+    const query = qs.stringify({ apiKey, limit: 1, 'query.name': templateName || defaultTemplateName })
     const fail = (reason?: any) => {
       console.error(`Could not load template for ${modelName}${templateName ? `:${templateName}` : ''}`, reason)
       return reject(reason)

@@ -1,7 +1,10 @@
 const { PHASE_DEVELOPMENT_SERVER, PHASE_PRODUCTION_BUILD, PHASE_PRODUCTION_SERVER } = require('next/constants')
 const basePath = require('./config/base-path')
 
-const getBuildConfig = () => {
+module.exports = (phase) => {
+  const shouldAddBuildConfig = [PHASE_DEVELOPMENT_SERVER, PHASE_PRODUCTION_BUILD, PHASE_PRODUCTION_SERVER].includes(phase)
+  if (!shouldAddBuildConfig) return {}
+
   const path = require('path')
   const postcssPresetEnv = require('postcss-preset-env')
   const postcssPresetEnvOptions = {
@@ -22,7 +25,7 @@ const getBuildConfig = () => {
 
   const nextConfig = {
     ...cssOptions,
-    basePath: basePath,
+    ...(phase !== PHASE_DEVELOPMENT_SERVER && { basePath: basePath }),
     typescript: { ignoreBuildErrors: true },
     env: {
       BASE_API_URL: process.env.BASE_API_URL,
@@ -52,9 +55,4 @@ const getBuildConfig = () => {
     },
   }
   return nextConfig
-}
-
-module.exports = (phase) => {
-  const shouldAddBuildConfig = [PHASE_DEVELOPMENT_SERVER, PHASE_PRODUCTION_BUILD, PHASE_PRODUCTION_SERVER].includes(phase)
-  return shouldAddBuildConfig ? getBuildConfig() : {}
 }

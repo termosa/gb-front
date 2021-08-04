@@ -361,6 +361,12 @@
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/modules/load-collection"
     },
+    "modules/load-collection-meta-fields": {
+        "scope": "fragrantjewels.gravity-brands",
+        "version": "0.0.1",
+        "mainFile": "index.ts",
+        "rootDir": "gravity-brands/modules/load-collection-meta-fields"
+    },
     "modules/load-customer": {
         "scope": "fragrantjewels.gravity-brands",
         "version": "0.0.1",
@@ -408,6 +414,12 @@
         "version": "0.0.1",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/modules/normalize-customer-address"
+    },
+    "modules/normalize-meta-fields": {
+        "scope": "fragrantjewels.gravity-brands",
+        "version": "0.0.1",
+        "mainFile": "index.ts",
+        "rootDir": "gravity-brands/modules/normalize-meta-fields"
     },
     "modules/normalize-product": {
         "scope": "fragrantjewels.gravity-brands",
