@@ -50,6 +50,13 @@ const SRingSizeContainer = styled.div`
   justify-content: center;
 `
 
+const SRingSizeError = styled.div`
+  font: 400 16px/1.5 "Montserrat", sans-serif;
+  text-align: center;
+  color: #ee67a0;
+  margin: 16px 0 0;
+`
+
 const SBtnHolder = styled.div`
   margin: 0 4px;
   width: 43px;
@@ -167,7 +174,7 @@ export function FloatingCta({ className, ...props }: FloatingCtaProps): React.Re
           </SBtnHolder>
         ))}
       </SRingSizeContainer>
-      {props.isSelectRingError ? <div className='pdp-pi-rs-error'>Please select ring size</div> : null}
+      {props.isSelectRingError ? <SRingSizeError>Please select ring size</SRingSizeError> : null}
       <SFloatingAddToCardBtn
         className="pdp-btn"
         onClick={() => {
