@@ -1,11 +1,12 @@
 import { GetServerSidePropsContext } from 'next'
 import resolvePageProps from '@fragrantjewels/gravity-brands.modules.resolve-page-props'
-import loadProduct, { Product } from '@fragrantjewels/gravity-brands.modules.load-product'
+import loadProduct from '@fragrantjewels/gravity-brands.modules.load-product'
 import loadCollection from '@fragrantjewels/gravity-brands.modules.load-collection'
 import removeNewLineCharacters from '@fragrantjewels/gravity-brands.modules.remove-new-line-characters'
 import { POTENTIAL_PRODUCTS_COLLECTION_ID, RECOMMENDED_PRODUCTS_COLLECTION_ID } from 'src/settings/ids'
 import loadModelTemplate, { ModelTemplate } from 'src/builder/load-model-template'
 import { parse } from 'node-html-parser'
+import { Product } from '@fragrantjewels/gravity-brands.modules.normalize-product'
 
 export type ProductDescription = {
   title: string
@@ -52,7 +53,7 @@ function productPageProps<PropsType>(): (context: GetServerSidePropsContext) => 
       potentialProducts: loadCollectionProducts(POTENTIAL_PRODUCTS_COLLECTION_ID),
       productDescription: productPromise
         .then((product) => getProductDescription(product))
-        .catch((error) => console.error(error)),
+        .catch(() => null),
       builderContent: productPromise
         .then((product) => loadModelTemplate('Product', product.template))
         .catch(() => null),

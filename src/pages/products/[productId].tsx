@@ -1,6 +1,8 @@
 import React from 'react'
 import { Builder, BuilderComponent } from '@builder.io/react'
-import productPageProps, { ProductPageProps } from 'src/resolvers/productPageProps'
+import productPageProps, {
+  ProductPageProps,
+} from 'src/resolvers/productPageProps'
 import 'src/builder/register-components'
 import FjWild from '@components/FjWild'
 import PotentialProducts from '@containers/PotentianProducts'
@@ -25,8 +27,8 @@ Builder.registerComponent(Product, {
 })
 
 export default function ProductPage({ product, builderContent }: ProductPageProps): React.ReactElement {
-  if (!product) throw new Error('Product not found')
-  if (!builderContent) throw new Error('Builder content is missing')
+  //if (!product) throw new Error('Product not found')
+  //if (!builderContent) throw new Error('Builder content is missing')
 
   return (
     <ProductContext.Provider value={product}>
