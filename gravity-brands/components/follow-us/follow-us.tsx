@@ -1,6 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
 
+const SFollowUsContainer = styled.div`
+  margin: 76px 0 38px;
+  @media (min-width: 768px) {
+    margin: 88px 0 96px;
+  }
+`
+
 const SFollowTitle = styled.strong`
   display: block;
   font-weight: 500;
@@ -36,13 +43,13 @@ const SSInstTitlePart = styled.span`
 
 export function FollowUs(): React.ReactElement {
   return (
-    <>
+    <SFollowUsContainer>
       <SFollowTitle>Follow us</SFollowTitle>
       <SInstTitle>
         <span>
           <SSInstTitlePart>@Fragrant_Jewels</SSInstTitlePart>
         </span>
       </SInstTitle>
-    </>
+    </SFollowUsContainer>
   )
 }

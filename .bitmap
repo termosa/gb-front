@@ -57,7 +57,7 @@
     },
     "components/follow-us": {
         "scope": "fragrantjewels.gravity-brands",
-        "version": "0.0.11",
+        "version": "0.0.12",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/follow-us"
     },
@@ -81,7 +81,7 @@
     },
     "components/hero-gallery": {
         "scope": "fragrantjewels.gravity-brands",
-        "version": "0.0.28",
+        "version": "0.0.29",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/hero-gallery"
     },
@@ -93,13 +93,13 @@
     },
     "components/information-overview": {
         "scope": "fragrantjewels.gravity-brands",
-        "version": "0.0.11",
+        "version": "0.0.12",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/information-overview"
     },
     "components/inline-signup-form": {
         "scope": "fragrantjewels.gravity-brands",
-        "version": "0.0.27",
+        "version": "0.0.28",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/inline-signup-form"
     },
@@ -225,7 +225,7 @@
     },
     "components/shop-by-products-overview": {
         "scope": "fragrantjewels.gravity-brands",
-        "version": "0.0.33",
+        "version": "0.0.34",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/shop-by-products-overview"
     },
@@ -321,7 +321,7 @@
     },
     "modules/cart-context": {
         "scope": "fragrantjewels.gravity-brands",
-        "version": "0.0.1",
+        "version": "0.0.2",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/modules/cart-context"
     },
@@ -333,7 +333,7 @@
     },
     "modules/customer-context": {
         "scope": "fragrantjewels.gravity-brands",
-        "version": "0.0.1",
+        "version": "0.0.2",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/modules/customer-context"
     },
@@ -417,7 +417,7 @@
     },
     "modules/normalize-cart": {
         "scope": "fragrantjewels.gravity-brands",
-        "version": "0.0.1",
+        "version": "0.0.2",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/modules/normalize-cart"
     },
