@@ -281,30 +281,7 @@ export const HeroGallery = ({ className, slides }: HeroGalleryProps): React.Reac
               <SlideText>
                 <p>{slide.bottomText}</p>
               </SlideText>
-              <Button backColor={'#000'} frontColor={'#fff'}>
-                <SlideLinkInner href={slide.buttonLink}>{slide.buttonText}</SlideLinkInner>
-              </Button>
-            </SlideContent>
-          </Slide>
-        ))}
-        {slides.map((slide: GalleryItem) => (
-          <Slide
-            key={`${slide.buttonLink}${slide.backgroundImg}${slide.buttonText}`}
-            backgroundImg={
-              slide.backgroundImg || 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/home-banner-img-1-dt.jpg'
-            }
-          >
-            <SlideContent>
-              <SlidePreTitle>{slide.topText}</SlidePreTitle>
-              <SlideTitle>
-                {slide.centerFirstText}
-                <br />
-                {slide.centerSecondText}
-              </SlideTitle>
-              <SlideText>
-                <p>{slide.bottomText}</p>
-              </SlideText>
-              <Button backColor={'#000'} frontColor={'#fff'}>
+              <Button backColor={'#000'} frontColor={'#fff'} width={'210px'}>
                 <SlideLinkInner href={slide.buttonLink}>{slide.buttonText}</SlideLinkInner>
               </Button>
             </SlideContent>

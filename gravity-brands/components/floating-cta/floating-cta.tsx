@@ -10,6 +10,7 @@ export type FloatingCtaProps = {
   setCurrentVariant: Dispatch<number | null>
   isSelectRingError: boolean
   setSelectRingError: Dispatch<boolean>
+  actualPrice: number
   setActualPrice: Dispatch<number>
   addToCartRef: RefObject<HTMLButtonElement>
 }
@@ -22,8 +23,8 @@ const SFloatingCtaClosed = styled.div<{
   position: sticky;
   z-index: 3;
   bottom: 16px;
-  left: 50%;
   width: 100%;
+  margin: 0 auto 48px;
   padding: 0 16px 16px;
   transform: ${(props) => props.isVisible ? 'translate(0, 0)' : 'translate(0, 150%)'};
   transition: transform .25s ease-in-out;
@@ -46,8 +47,8 @@ const SFloatingCtaOpened = styled.div<{
   position: sticky;
   z-index: 3;
   bottom: 16px;
-  left: 50%;
   width: 100%;
+  margin: 0 auto 48px;
   padding: 16px;
   transform: ${(props) => props.isVisible ? 'translate(0, 0)' : 'translate(0, 150%)'};
   transition: transform .25s ease-in-out;
@@ -152,24 +153,26 @@ const SFloatingCrossBtn = styled.div`
   cursor: pointer;
 `
 
-export function FloatingCta({ className, ...props }: FloatingCtaProps): React.ReactElement {
+export function FloatingCta(): React.ReactElement {
   const product = useContext<ProductType | undefined>(ProductContext)
   const [isFloatingCtaClosed, setFloatingCtaClosed] = useState<boolean>(true)
-  const [isFloatingCtaVisible, setFloatingCtaVisible] = useState<boolean>(false)
-
-  const setListener = () => {
-    const position = props.addToCartRef.current?.getBoundingClientRect()
-    if (!position) {
-      return
-    }
-    setFloatingCtaVisible(position.top <= 157)
-  }
+  const [isFloatingCtaVisible, setFloatingCtaVisible] = useState<boolean>(true)
+  const [isSelectRingError, setSelectRingError] = useState<boolean>(false)
+  const [currentRingSize, setCurrentRingSize] = useState<number>()
 
   useEffect(() => {
-    window.addEventListener('scroll', setListener)
+    window.addEventListener('scroll', () => {
+      setFloatingCtaVisible(JSON.parse(localStorage.getItem('isFloatingCtaVisible') || '{}'));
+    })
     return () => {
-      window.removeEventListener('scroll', setListener)
+      window.removeEventListener('scroll', () => {
+        setFloatingCtaVisible(JSON.parse(localStorage.getItem('isFloatingCtaVisible') || '{}'));
+      })
     }
+  }, [])
+
+  useEffect(() => {
+    setCurrentRingSize(JSON.parse(localStorage.getItem('currentRingSize') || '{}'))
   }, [])
 
   return isFloatingCtaClosed ? (
@@ -186,13 +189,16 @@ export function FloatingCta({ className, ...props }: FloatingCtaProps): React.Re
       <SRingSizeContainer>
         {product && product.variants.slice(0).map((variant: ProductVariant) => (
           <SBtnHolder key={variant.title}>
+            {/*isActive={variant.variant_id === props.currentVariant}
+            */}
             <SFloatingRingSizeBtn
-              isActive={variant.variant_id === props.currentVariant}
+              isActive={variant.variant_id === currentRingSize}
               value={Number(variant.title)}
               onClick={() => {
-                props.setSelectRingError(false)
-                props.setCurrentVariant(variant.variant_id)
-                props.setActualPrice(variant.actual_price)
+                localStorage.setItem('selectRingError', JSON.stringify(false))
+                setSelectRingError(false)
+                setCurrentRingSize(variant.variant_id)
+                localStorage.setItem('currentRingSize', JSON.stringify(variant.variant_id))
               }}
             >
               {variant.title}
@@ -200,11 +206,12 @@ export function FloatingCta({ className, ...props }: FloatingCtaProps): React.Re
           </SBtnHolder>
         ))}
       </SRingSizeContainer>
-      {props.isSelectRingError ? <SRingSizeError>Please select ring size</SRingSizeError> : null}
+      {isSelectRingError ? <SRingSizeError>Please select ring size</SRingSizeError> : null}
       <SFloatingAddToCardBtn
         onClick={() => {
-          if (!props.currentVariant) {
-            props.setSelectRingError(true)
+          if (!currentRingSize) {
+            localStorage.setItem('selectRingError', JSON.stringify(true))
+            setSelectRingError(true)
           }
         }}
       >

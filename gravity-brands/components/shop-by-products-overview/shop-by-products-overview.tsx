@@ -220,7 +220,7 @@ export function ShopByProductsOverview({ products }: ShopByProductsOverviewProps
             {products &&
               products.map((product) => (
                 <ShopByProductCard
-                  key={product.id}
+                  key={product.image + product.id}
                   image={product.image}
                   buttonLink={product.buttonLink}
                   className={'slick-slide'}

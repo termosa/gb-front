@@ -11,7 +11,6 @@ import removeNewLineCharacters from '@fragrantjewels/gravity-brands.modules.remo
 import handleGalleryScrolling from '@fragrantjewels/gravity-brands.modules.handle-gallery-scrolling'
 import Slider, { Settings } from 'react-slick'
 import ProductContext from '@fragrantjewels/gravity-brands.modules.product-context'
-import { FloatingCta } from '../../gravity-brands/components/floating-cta'
 
 type ProductDescription = {
   title: string
@@ -21,20 +20,35 @@ type ProductDescription = {
 const Product = (): null | React.ReactElement => {
   const product = useContext<ProductType | undefined>(ProductContext)
 
+  const addToCartRef = useRef<HTMLButtonElement>(null)
+  const [currentRingSize, setCurrentRingSize] = useState<number | null>(null)
+  const [isSelectRingError, setSelectRingError] = useState<boolean>(false)
+  const [actualPrice, setActualPrice] = useState<number>(0)
   const [productDescription, setProductDescription] = useState<any>()
   const [isDiscountApplied, setDiscountApplied] = useState<boolean>(true)
-  const [isSelectRingError, setSelectRingError] = useState<boolean>(false)
-  const [currentVariant, setCurrentVariant] = useState<number | null>(null)
   const [activeGalleryItem, setActiveGalleryItem] = useState<number | null>(0)
   const [isLargeScreen, setLargeScreen] = useState<boolean>()
-  const [actualPrice, setActualPrice] = useState<number>(0)
   const [comparePrice, setComparePrice] = useState<number | null>(0)
   const [activeAccordion, setActiveAccordion] = useState<number | null>(0)
   const productHeadingRef = useRef<HTMLDivElement>(null)
   const galleryRef = useRef<HTMLDivElement>(null)
-  const addToCartRef = useRef<HTMLButtonElement>(null)
 
   const galleryImageHeight = 474
+
+  const setListener = () => {
+    const position = addToCartRef.current?.getBoundingClientRect()
+    if (!position) {
+      return
+    }
+    localStorage.setItem('isFloatingCtaVisible', JSON.stringify(position.top <= 150))
+  }
+
+  useEffect(() => {
+    window.addEventListener('scroll', setListener)
+    return () => {
+      window.removeEventListener('scroll', setListener)
+    }
+  }, [])
 
   useEffect(() => {
     window.addEventListener('scroll', () => {
@@ -300,7 +314,9 @@ const Product = (): null | React.ReactElement => {
                   {isDiscountApplied ? (
                     <>
                       <span className='pdp-product-details__discount-price'>
-                        {comparePrice ? formatPrice(comparePrice) : formatPrice(actualPrice)}
+                        {actualPrice ?
+                          comparePrice ? formatPrice(comparePrice) : formatPrice(actualPrice) :
+                          null}
                       </span>
                       <span className='pdp-product-details__price'>
                         &nbsp;${(actualPrice - actualPrice * 0.2).toFixed(2)}
@@ -311,7 +327,9 @@ const Product = (): null | React.ReactElement => {
                       {comparePrice ? (
                         <>
                           <span className='pdp-product-details__discount-price'>
-                            {comparePrice ? formatPrice(comparePrice) : formatPrice(actualPrice)}
+                            {actualPrice ?
+                              comparePrice ? formatPrice(comparePrice) : formatPrice(actualPrice) :
+                            null}
                           </span>
                           &nbsp;
                         </>
@@ -328,13 +346,15 @@ const Product = (): null | React.ReactElement => {
                       <div className='pdp-pi-selector__btn-holder' key={variant.title}>
                         <button
                           className={`pdp-pi-selector__btn ${
-                            variant.variant_id === currentVariant && 'pdp-pi-selector__btn_active'
+                            variant.variant_id === currentRingSize && 'pdp-pi-selector__btn_active'
                           }`}
                           type='button'
                           value={Number(variant.title)}
                           onClick={() => {
                             setSelectRingError(false)
-                            setCurrentVariant(variant.variant_id)
+                            localStorage.setItem('selectRingError', JSON.stringify(false))
+                            localStorage.setItem('currentRingSize', JSON.stringify(variant.variant_id))
+                            setCurrentRingSize(variant.variant_id)
                             setActualPrice(variant.actual_price)
                           }}
                         >
@@ -859,8 +879,9 @@ const Product = (): null | React.ReactElement => {
                   className='pdp-btn'
                   ref={addToCartRef}
                   onClick={() => {
-                    if (!currentVariant) {
+                    if (!currentRingSize) {
                       executeScroll()
+                      localStorage.setItem('selectRingError', JSON.stringify(true))
                       setSelectRingError(true)
                     }
                   }}
@@ -1098,13 +1119,6 @@ const Product = (): null | React.ReactElement => {
           </div>
         </div>
       </div>
-      <FloatingCta currentVariant={currentVariant}
-                   setCurrentVariant={setCurrentVariant}
-                   isSelectRingError={isSelectRingError}
-                   setSelectRingError={setSelectRingError}
-                   setActualPrice={setActualPrice}
-                   addToCartRef={addToCartRef}
-      />
     </>
   )
 }

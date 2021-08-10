@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import Header from '@fragrantjewels/gravity-brands.components.header'
 import loadProductsChunk from '@fragrantjewels/gravity-brands.modules.load-products-chunk'
 import useDefer from 'use-defer'
-import { FloatingCta } from '../floating-cta'
+import FloatingCta from '@fragrantjewels/gravity-brands.components.floating-cta'
 
 export type MainPageLayoutProps = {
   children: React.ReactNode | any
@@ -27,16 +27,12 @@ export const MainPageLayout = ({ children, userName }: MainPageLayoutProps): Rea
       <Header onSearch={(value) => console.log(value)} userName={userName} searchedProducts={searchRequest.value} />
       <div className="app-re-wrapper" id="app-wrapper">
         <div className="app-re-content" id="app-content">
-          <main className="app-h-main">{children}</main>
+          <main className="app-h-main">
+            {children}
+          </main>
         </div>
       </div>
-      <FloatingCta currentVariant={currentVariant}
-                   setCurrentVariant={setCurrentVariant}
-                   isSelectRingError={isSelectRingError}
-                   setSelectRingError={setSelectRingError}
-                   setActualPrice={setActualPrice}
-                   addToCartRef={addToCartRef}
-      />
+      <FloatingCta/>
       <Footer className="Footer-Colored" />
     </MainPageLayoutWrapper>
   )
