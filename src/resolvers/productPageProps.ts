@@ -4,9 +4,10 @@ import loadProduct from '@fragrantjewels/gravity-brands.modules.load-product'
 import loadCollection from '@fragrantjewels/gravity-brands.modules.load-collection'
 import removeNewLineCharacters from '@fragrantjewels/gravity-brands.modules.remove-new-line-characters'
 import { POTENTIAL_PRODUCTS_COLLECTION_ID, RECOMMENDED_PRODUCTS_COLLECTION_ID } from 'src/settings/ids'
-import loadModelTemplate, { ModelTemplate } from 'src/builder/load-model-template'
+import loadModelTemplate  from 'src/builder/load-model-template'
 import { parse } from 'node-html-parser'
 import { Product } from '@fragrantjewels/gravity-brands.modules.normalize-product'
+import { BuilderContent } from '@builder.io/sdk'
 
 export type ProductDescription = {
   title: string
@@ -18,7 +19,7 @@ export type ProductPageProps = {
   recommendedProducts: Array<Product>
   potentialProducts: Array<Product>
   productDescription: ProductDescription
-  builderContent: ModelTemplate
+  builderContent: BuilderContent
 }
 
 const loadCollectionProducts = (collectionId: number): Promise<Product[] | null> =>

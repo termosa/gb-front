@@ -1,10 +1,7 @@
-import React, { Dispatch, RefObject, useContext, useEffect, useRef, useState } from 'react'
+import React, { Dispatch, RefObject, useContext, useEffect, useState } from 'react'
 import styled from 'styled-components'
-import {
-  Product as ProductType,
-  ProductVariant,
-} from '@fragrantjewels/gravity-brands.modules.normalize-product'
-import cn, { Argument as ClassName } from 'classnames'
+import { Product as ProductType, ProductVariant } from '@fragrantjewels/gravity-brands.modules.normalize-product'
+import { Argument as ClassName } from 'classnames'
 import ProductContext from '@fragrantjewels/gravity-brands.modules.product-context'
 
 export type FloatingCtaProps = {
@@ -13,27 +10,53 @@ export type FloatingCtaProps = {
   setCurrentVariant: Dispatch<number | null>
   isSelectRingError: boolean
   setSelectRingError: Dispatch<boolean>
+  actualPrice: number
   setActualPrice: Dispatch<number>
   addToCartRef: RefObject<HTMLButtonElement>
 }
 
-const SFloatingCtaWrapper = styled.div<{
+const SFloatingCtaClosed = styled.div<{
   isVisible?: boolean
 }>`
   display: flex;
   flex-direction: column;
-  position: fixed;
+  position: sticky;
   z-index: 3;
   bottom: 16px;
-  left: 50%;
   width: 100%;
-  transform: ${(props) => props.isVisible ? 'translate(-50%, 0)' : 'translate(-50%, 150%)'};
+  margin: 0 auto 48px;
+  padding: 0 16px 16px;
+  transform: ${(props) => props.isVisible ? 'translate(0, 0)' : 'translate(0, 200%)'};
+  transition: transform .25s ease-in-out;
+
+  @media (min-width: 768px) {
+    width: 560px;
+    bottom: 40px;
+  }
+  
+  & > button {
+    box-shadow: 0 0 24px rgba(0, 0, 0, 0.35);
+  }
+`
+
+const SFloatingCtaOpened = styled.div<{
+  isVisible?: boolean
+}>`
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  z-index: 3;
+  bottom: 16px;
+  width: 100%;
+  margin: 0 auto 48px;
+  padding: 16px;
+  transform: ${(props) => props.isVisible ? 'translate(0, 0)' : 'translate(0, 200%)'};
   transition: transform .25s ease-in-out;
   background: #fff;
   border: 1px solid #000000;
   box-shadow: 0 0 24px rgba(0, 0, 0, 0.35);
-  
-  @media(min-width: 768px) {
+
+  @media (min-width: 768px) {
     width: 560px;
     bottom: 40px;
   }
@@ -42,19 +65,20 @@ const SFloatingCtaWrapper = styled.div<{
 const SFloatingCtaTitle = styled.h3`
   font: 400 16px/1.5 'Montserrat', sans-serif;
   text-align: center;
-  margin: 16px auto 12px;
+  margin: 0 auto 12px;
 `
 
 const SRingSizeContainer = styled.div`
   display: flex;
   justify-content: center;
+  margin-bottom: 16px;
 `
 
 const SRingSizeError = styled.div`
   font: 400 16px/1.5 "Montserrat", sans-serif;
   text-align: center;
   color: #ee67a0;
-  margin: 16px 0 0;
+  margin-bottom: 16px;
 `
 
 const SBtnHolder = styled.div`
@@ -111,7 +135,6 @@ const SFloatingAddToCardBtn = styled.button`
   background-color: #000;
   color: #fff;
   cursor: pointer;
-  margin: 20px 16px 16px;
   width: auto;
   min-height: 55px;
 
@@ -130,43 +153,52 @@ const SFloatingCrossBtn = styled.div`
   cursor: pointer;
 `
 
-export function FloatingCta({ className, ...props }: FloatingCtaProps): React.ReactElement {
-  const isClosedBtnClickedRef = useRef(false);
+export function FloatingCta(): React.ReactElement {
   const product = useContext<ProductType | undefined>(ProductContext)
-  const [isFloatingCtaClosed, setFloatingCtaClosed] = useState<boolean>(false)
-  const [isFloatingCtaVisible, setFloatingCtaVisible] = useState<boolean>(false)
-
-  const setListener = () => {
-    const position = props.addToCartRef.current?.getBoundingClientRect();
-    if (!position || isFloatingCtaClosed) {
-      return
-    }
-    setFloatingCtaVisible(position.top <= 157 && !isClosedBtnClickedRef.current)
-  }
+  const [isFloatingCtaClosed, setFloatingCtaClosed] = useState<boolean>(true)
+  const [isFloatingCtaVisible, setFloatingCtaVisible] = useState<boolean>(true)
+  const [isSelectRingError, setSelectRingError] = useState<boolean>(false)
+  const [currentRingSize, setCurrentRingSize] = useState<number>()
 
   useEffect(() => {
-    window.addEventListener('scroll', setListener)
+    window.addEventListener('scroll', () => {
+      setFloatingCtaVisible(JSON.parse(localStorage.getItem('isFloatingCtaVisible') || '{}'));
+    })
     return () => {
-      window.removeEventListener('scroll', setListener)
+      window.removeEventListener('scroll', () => {
+        setFloatingCtaVisible(JSON.parse(localStorage.getItem('isFloatingCtaVisible') || '{}'));
+      })
     }
   }, [])
 
-  return (
-    <SFloatingCtaWrapper className={cn('FloatingCta', className)} isVisible={isFloatingCtaVisible}>
+  useEffect(() => {
+    setCurrentRingSize(JSON.parse(localStorage.getItem('currentRingSize') || '{}'))
+  }, [])
+
+  return isFloatingCtaClosed ? (
+    <SFloatingCtaClosed isVisible={isFloatingCtaVisible}>
+      <SFloatingAddToCardBtn
+        onClick={() => setFloatingCtaClosed(false)}
+      >
+        Choose my ring size
+      </SFloatingAddToCardBtn>
+    </SFloatingCtaClosed>
+  ) : (
+    <SFloatingCtaOpened isVisible={isFloatingCtaVisible}>
       <SFloatingCtaTitle>Select a ring size to reserve this box:</SFloatingCtaTitle>
       <SRingSizeContainer>
         {product && product.variants.slice(0).map((variant: ProductVariant) => (
           <SBtnHolder key={variant.title}>
+            {/*isActive={variant.variant_id === props.currentVariant}
+            */}
             <SFloatingRingSizeBtn
-              className={`pdp-pi-selector__btn ${
-                variant.variant_id === props.currentVariant && 'pdp-pi-selector__btn_active'
-              }`}
-              isActive={variant.variant_id === props.currentVariant}
+              isActive={variant.variant_id === currentRingSize}
               value={Number(variant.title)}
               onClick={() => {
-                props.setSelectRingError(false)
-                props.setCurrentVariant(variant.variant_id)
-                props.setActualPrice(variant.actual_price)
+                localStorage.setItem('selectRingError', JSON.stringify(false))
+                setSelectRingError(false)
+                setCurrentRingSize(variant.variant_id)
+                localStorage.setItem('currentRingSize', JSON.stringify(variant.variant_id))
               }}
             >
               {variant.title}
@@ -174,12 +206,12 @@ export function FloatingCta({ className, ...props }: FloatingCtaProps): React.Re
           </SBtnHolder>
         ))}
       </SRingSizeContainer>
-      {props.isSelectRingError ? <SRingSizeError>Please select ring size</SRingSizeError> : null}
+      {isSelectRingError ? <SRingSizeError>Please select ring size</SRingSizeError> : null}
       <SFloatingAddToCardBtn
-        className="pdp-btn"
         onClick={() => {
-          if (!props.currentVariant) {
-            props.setSelectRingError(true)
+          if (!currentRingSize) {
+            localStorage.setItem('selectRingError', JSON.stringify(true))
+            setSelectRingError(true)
           }
         }}
       >
@@ -187,13 +219,12 @@ export function FloatingCta({ className, ...props }: FloatingCtaProps): React.Re
       </SFloatingAddToCardBtn>
       <SFloatingCrossBtn onClick={() => {
         setFloatingCtaClosed(true)
-        setFloatingCtaVisible(false)
-        isClosedBtnClickedRef.current = true;
       }}>
-        <svg width="21" height="22" viewBox="0 0 21 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M20.6487 1L0.648682 21M0.648682 1L20.6487 21" stroke="black" strokeWidth="0.5" strokeLinecap="round" strokeLinejoin="round"/>
+        <svg width='21' height='22' viewBox='0 0 21 22' fill='none' xmlns='http://www.w3.org/2000/svg'>
+          <path d='M20.6487 1L0.648682 21M0.648682 1L20.6487 21' stroke='black' strokeWidth='0.5'
+                strokeLinecap='round' strokeLinejoin='round' />
         </svg>
       </SFloatingCrossBtn>
-    </SFloatingCtaWrapper>
+    </SFloatingCtaOpened>
   )
 }
