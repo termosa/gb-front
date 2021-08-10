@@ -75,7 +75,7 @@
     },
     "components/header": {
         "scope": "fragrantjewels.gravity-brands",
-        "version": "0.0.35",
+        "version": "0.0.36",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/header"
     },
@@ -117,7 +117,7 @@
     },
     "components/main-page-layout": {
         "scope": "fragrantjewels.gravity-brands",
-        "version": "0.0.34",
+        "version": "0.0.35",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/main-page-layout"
     },
@@ -129,13 +129,13 @@
     },
     "components/nav-icons": {
         "scope": "fragrantjewels.gravity-brands",
-        "version": "0.0.17",
+        "version": "0.0.18",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/nav-icons"
     },
     "components/nav-mobile": {
         "scope": "fragrantjewels.gravity-brands",
-        "version": "0.0.9",
+        "version": "0.0.10",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/components/nav-mobile"
     },
