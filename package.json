@@ -29,6 +29,7 @@
     "@fragrantjewels/gravity-brands.components.collection-page-provider": "^0.0.5",
     "@fragrantjewels/gravity-brands.components.collection-provider": "^0.0.5",
     "@fragrantjewels/gravity-brands.components.collection-tag-filter": "^0.0.5",
+    "@fragrantjewels/gravity-brands.components.floating-cta": "^0.0.5",
     "@fragrantjewels/gravity-brands.components.follow-us": "^0.0.11",
     "@fragrantjewels/gravity-brands.components.footer": "^0.0.17",
     "@fragrantjewels/gravity-brands.components.full-width-banner": "^0.0.14",
