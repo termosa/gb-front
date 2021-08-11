@@ -13,6 +13,10 @@ const SWrapper = styled.div`
   @media (max-width: 1199px) {
     padding: 0;
     margin: 0 -7.5px;
+    overflow: auto;
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 
   @media (max-width: 991px) {
@@ -46,6 +50,7 @@ const SNavItem = styled.li`
   cursor: pointer;
   @media (max-width: 1199px) {
     order: 2;
+    margin-right: 13px;
   }
 
   @media (min-width: 1200px) {
@@ -56,7 +61,7 @@ const SNavItem = styled.li`
 
   & > a {
     text-decoration: none;
-
+    white-space: nowrap;
     color: #000;
   }
 
@@ -109,6 +114,9 @@ const SSubscribeButton = styled.li`
   @media (min-width: 1200px) {
     order: 2;
   }
+  @media (max-width: 1199px) {
+    margin-right: 13px;
+  }
   & > a {
     font: 400 14px/1.5 'Montserrat', sans-serif;
     letter-spacing: 0.05em;
@@ -117,10 +125,10 @@ const SSubscribeButton = styled.li`
     text-decoration: none;
     text-transform: uppercase;
     cursor: pointer;
-    background-color: #ee67a0;
+    background-color: #9059c8;
     color: #fff;
     border-radius: 2em;
-    border: 1px solid #ee67a0;
+    border: 1px solid #9059c8;
     padding: 0.7em 1.6em;
     transition: all linear 0.2s;
 
