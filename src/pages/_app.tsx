@@ -7,7 +7,7 @@ import '../_require-env'
 import './styles/product.scss'
 import './styles/styles.scss'
 
-baseSiteUrl(process.env.SITE_URL)
+baseSiteUrl(process.env.SITE_URL || 'https://www.fragrantjewels.com')
 baseApiUrl(typeof window === 'undefined' ? process.env.BASE_API_URL : process.env.CLIENT_API_URL)
 
 const CustomApp: FC<AppProps> = ({ Component, pageProps }) => (
