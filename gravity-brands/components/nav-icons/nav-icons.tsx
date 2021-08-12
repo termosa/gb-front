@@ -3,6 +3,7 @@ import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
 import { SigninSignup } from 'gravity-brands/components/signin-signup'
 import { useMediaPredicate } from 'react-media-hook'
+import useCart from 'gravity-brands/hooks/use-cart'
 
 export type NavIconsProps = {
   className?: ClassName
@@ -171,6 +172,28 @@ const SSignOutLink = styled.a`
   font-size: 13px;
 `
 
+const SCartBadge = styled.span`
+  font-weight: 400;
+  position: absolute;
+  top: -4px;
+  right: -8px;
+  width: 1em;
+  height: 1em;
+  background: #ee67a0;
+  color: #fff;
+  font-size: 0.8em;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 9px;
+  transition: all linear 0.2s;
+  width: 1.8em;
+  height: 1.8em;
+  box-sizing: border-box;
+  outline: 0;
+`
+
 const LINKS_LIST = [
   {
     title: 'Order Status',
@@ -191,6 +214,7 @@ const LINKS_LIST = [
 ]
 
 export function NavIcons({ className, onSearchClick, userName }: NavIconsProps): React.ReactElement | null {
+  const cartRequest = useCart()
   const isMobileScreen = useMediaPredicate('(max-width: 1200px)')
   const [dropdownVisibility, setDropdownVisibility] = useState(false)
 
@@ -284,6 +308,7 @@ export function NavIcons({ className, onSearchClick, userName }: NavIconsProps):
             strokeLinejoin="round"
           ></path>
         </svg>
+        {cartRequest.value && <SCartBadge>{cartRequest.value.items.length}</SCartBadge>}
       </SCartButton>
     </SWrapper>
   )
