@@ -1,11 +1,11 @@
-import React, { useContext } from 'react'
-import Footer from 'gravity-brands/components/footer'
+import React from 'react'
 import styled from 'styled-components'
+import Footer from 'gravity-brands/components/footer'
 import Header from 'gravity-brands/components/header'
 import loadProductsChunk from 'gravity-brands/modules/load-products-chunk'
 import useDefer from 'use-defer'
 import FloatingCta from 'gravity-brands/components/floating-cta'
-import CustomerContext from 'gravity-brands/modules/customer-context'
+import loadCustomer from 'gravity-brands/modules/load-customer'
 
 export type MainPageLayoutProps = {
   children: React.ReactNode
@@ -22,12 +22,12 @@ const MainPageLayoutWrapper = styled.div`
 
 export const MainPageLayout = ({ children }: MainPageLayoutProps): React.ReactElement => {
   const searchRequest = useDefer(loadProductsChunk)
-  const customer = useContext(CustomerContext)
+  const customerRequest = useDefer(() => loadCustomer().catch(() => null), [], [])
 
   return (
     <MainPageLayoutWrapper>
       <Header
-        userName={customer?.fullName}
+        userName={customerRequest.value?.fullName}
         onSearch={(value) => console.log(value)}
         searchedProducts={searchRequest.value}
       />
