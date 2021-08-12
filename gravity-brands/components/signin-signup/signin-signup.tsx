@@ -33,10 +33,11 @@ export function SigninSignup({ className, userName }: SearchFieldProps): React.R
         <div>Hi, {userName}</div>
       ) : (
         <span>
-          <SLabel href="/account/login?return_url=/">Sign in</SLabel> /{' '}
+          <SLabel href="/account/login?return_url=/">Sign in</SLabel>
+          {' / '}
+          <SLabel href="/account/register">Sign up</SLabel>
         </span>
       )}
-      <SLabel href="/account/register">Sign up</SLabel>
     </SWrapper>
   )
 }
