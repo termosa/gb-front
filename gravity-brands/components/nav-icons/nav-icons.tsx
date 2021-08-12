@@ -266,7 +266,7 @@ export function NavIcons({ className, onSearchClick, userName }: NavIconsProps):
               ))}
               <li>
                 <div style={{ margin: '0 auto', maxWidth: 'fit-content' }}>
-                  {userName ? <SSignOutLink>Sign Out</SSignOutLink> : <SigninSignup />}
+                  {userName ? <SSignOutLink href="/account/logout">Sign Out</SSignOutLink> : <SigninSignup />}
                 </div>
               </li>
             </SLinkWrapper>
