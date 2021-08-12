@@ -1,14 +1,14 @@
 import normalizeProductVariant, {
   ServerProductVariant,
   ProductVariant,
-} from '@fragrantjewels/gravity-brands.modules.normalize-product-variant'
+} from 'gravity-brands/modules/normalize-product-variant'
 import normalizeProductImage, {
   ServerProductImage,
   ProductImage,
-} from '@fragrantjewels/gravity-brands.modules.normalize-product-image'
+} from 'gravity-brands/modules/normalize-product-image'
 
-export type { ProductVariant } from '@fragrantjewels/gravity-brands.modules.normalize-product-variant'
-export type { ProductImage } from '@fragrantjewels/gravity-brands.modules.normalize-product-image'
+export type { ProductVariant } from 'gravity-brands/modules/normalize-product-variant'
+export type { ProductImage } from 'gravity-brands/modules/normalize-product-image'
 
 export type ServerProductOption = {
   id: number

@@ -1,11 +1,11 @@
 import React, { useContext } from 'react'
-import Footer from '@fragrantjewels/gravity-brands.components.footer'
+import Footer from 'gravity-brands/components/footer'
 import styled from 'styled-components'
-import Header from '@fragrantjewels/gravity-brands.components.header'
-import loadProductsChunk from '@fragrantjewels/gravity-brands.modules.load-products-chunk'
+import Header from 'gravity-brands/components/header'
+import loadProductsChunk from 'gravity-brands/modules/load-products-chunk'
 import useDefer from 'use-defer'
-import FloatingCta from '@fragrantjewels/gravity-brands.components.floating-cta'
-import CustomerContext from '@fragrantjewels/gravity-brands.modules.customer-context'
+import FloatingCta from 'gravity-brands/components/floating-cta'
+import CustomerContext from 'gravity-brands/modules/customer-context'
 
 export type MainPageLayoutProps = {
   children: React.ReactNode

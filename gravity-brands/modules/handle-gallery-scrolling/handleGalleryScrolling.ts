@@ -1,5 +1,5 @@
 import { Dispatch, MutableRefObject, SetStateAction } from 'react'
-import { ProductImage } from '@fragrantjewels/gravity-brands.modules.normalize-product-image'
+import { ProductImage } from 'gravity-brands/modules/normalize-product-image'
 
 export const handleGalleryScrolling = (
   myRef: MutableRefObject<HTMLDivElement | null> | null,

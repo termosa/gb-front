@@ -1,4 +1,4 @@
-import { normalizeProduct, Product, ServerProduct } from '@fragrantjewels/gravity-brands.modules.normalize-product'
+import { normalizeProduct, Product, ServerProduct } from 'gravity-brands/modules/normalize-product'
 
 export type ServerCart = {
   currency: string

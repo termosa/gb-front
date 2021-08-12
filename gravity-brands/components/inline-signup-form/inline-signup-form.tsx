@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
-import Button from '@fragrantjewels/gravity-brands.components.button'
+import Button from 'gravity-brands/components/button'
 import useDefer, { Status } from 'use-defer'
 
 export type InlineSignupFormProps = {

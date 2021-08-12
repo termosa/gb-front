@@ -1,4 +1,4 @@
-import stringifyQuery, { Query } from '@fragrantjewels/gravity-brands.modules.stringify-query'
+import stringifyQuery, { Query } from 'gravity-brands/modules/stringify-query'
 
 const patchURLWithQuery = (path: string, query?: Query) =>
   query ? `${path}${path.includes('?') ? '&' : '?'}${stringifyQuery(query)}` : path

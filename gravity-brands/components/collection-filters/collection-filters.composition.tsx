@@ -1,6 +1,6 @@
 import React from 'react'
 import { CollectionFilters } from './collection-filters'
-import PresentationCanvas from '@fragrantjewels/gravity-brands.helpers.presentation-canvas'
+import PresentationCanvas from 'gravity-brands/helpers/presentation-canvas'
 
 const filters = {
   fragrances: [

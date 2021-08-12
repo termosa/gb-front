@@ -1,7 +1,7 @@
 import React from 'react'
-import ProductCard from '@fragrantjewels/gravity-brands.components.product-card'
-import { Product } from '@fragrantjewels/gravity-brands.modules.normalize-product'
-import SiteSection from '@fragrantjewels/gravity-brands.components.site-section'
+import ProductCard from 'gravity-brands/components/product-card'
+import { Product } from 'gravity-brands/modules/normalize-product'
+import SiteSection from 'gravity-brands/components/site-section'
 import styled from 'styled-components'
 
 export type ProductsListProps = {

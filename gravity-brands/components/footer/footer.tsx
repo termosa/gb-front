@@ -1,9 +1,9 @@
 import React from 'react'
-import LinksColumnGroup from '@fragrantjewels/gravity-brands.components.links-column-group'
+import LinksColumnGroup from 'gravity-brands/components/links-column-group'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
-import { Social } from '@fragrantjewels/gravity-brands.components.social-links'
-import { AcceptedPayments } from '@fragrantjewels/gravity-brands.components.accepted-payments'
+import { Social } from 'gravity-brands/components/social-links'
+import { AcceptedPayments } from 'gravity-brands/components/accepted-payments'
 import { useMediaPredicate } from 'react-media-hook'
 
 export type FooterProps = {

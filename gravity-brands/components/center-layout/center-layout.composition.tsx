@@ -1,4 +1,4 @@
-import PresentationCanvas from '@fragrantjewels/gravity-brands.helpers.presentation-canvas'
+import PresentationCanvas from 'gravity-brands/helpers/presentation-canvas'
 import React from 'react'
 import { CenterLayout } from './center-layout'
 

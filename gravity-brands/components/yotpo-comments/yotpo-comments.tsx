@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import loadScript from '@fragrantjewels/gravity-brands.modules.load-script'
+import loadScript from 'gravity-brands/modules/load-script'
 
 export type Yotpo = {
   refreshWidgets: () => void

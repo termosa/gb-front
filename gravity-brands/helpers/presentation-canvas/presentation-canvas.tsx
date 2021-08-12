@@ -1,7 +1,7 @@
 import React from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled, { css } from 'styled-components'
-import { ThemeProvider } from '@fragrantjewels/gravity-brands.helpers.theme-provider'
+import { ThemeProvider } from 'gravity-brands/helpers/theme-provider'
 import './fonts.css'
 
 const name = 'PresentationCanvas'

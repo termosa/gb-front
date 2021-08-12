@@ -1,12 +1,12 @@
 import React, { useRef, useState } from 'react'
-import ProductsCarousel from '@fragrantjewels/gravity-brands.components.products-carousel'
+import ProductsCarousel from 'gravity-brands/components/products-carousel'
 import productPageProps, { ProductDescription } from 'src/resolvers/productPageProps'
-import MainPageLayout from '@fragrantjewels/gravity-brands.components.main-page-layout'
-import formatPrice from '@fragrantjewels/gravity-brands.modules.format-price'
-import getLabel from '@fragrantjewels/gravity-brands.modules.get-label'
-import { ProductImage } from '@fragrantjewels/gravity-brands.modules.normalize-product-image'
-import { ProductVariant } from '@fragrantjewels/gravity-brands.modules.normalize-product-variant'
-import { Product as ProductType } from '@fragrantjewels/gravity-brands.modules.normalize-product'
+import MainPageLayout from 'gravity-brands/components/main-page-layout'
+import formatPrice from 'gravity-brands/modules/format-price'
+import getLabel from 'gravity-brands/modules/get-label'
+import { ProductImage } from 'gravity-brands/modules/normalize-product-image'
+import { ProductVariant } from 'gravity-brands/modules/normalize-product-variant'
+import { Product as ProductType } from 'gravity-brands/modules/normalize-product'
 
 type ProductPageProps = {
   product: ProductType

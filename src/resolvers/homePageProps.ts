@@ -1,9 +1,9 @@
 import { GetServerSidePropsContext } from 'next'
-import resolvePageProps from '@fragrantjewels/gravity-brands.modules.resolve-page-props'
-import loadCollection, { Product } from '@fragrantjewels/gravity-brands.modules.load-collection'
-import loadProduct from '@fragrantjewels/gravity-brands.modules.load-product'
+import resolvePageProps from 'gravity-brands/modules/resolve-page-props'
+import loadCollection, { Product } from 'gravity-brands/modules/load-collection'
+import loadProduct from 'gravity-brands/modules/load-product'
 import { INNER_CIRCLE_PRODUCT_ID, TRENDING_PRODUCTS_COLLECTION_ID } from 'src/settings/ids'
-import loadCustomer, { Customer } from '@fragrantjewels/gravity-brands.modules.load-customer'
+import loadCustomer, { Customer } from 'gravity-brands/modules/load-customer'
 import loadModelTemplate, { ModelTemplate } from 'src/builder/load-model-template'
 
 export const loadTrendingProducts = (): Promise<Product[] | null> =>

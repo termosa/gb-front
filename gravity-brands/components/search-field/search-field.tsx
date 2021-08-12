@@ -1,9 +1,9 @@
 import React, { useCallback, useState } from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
-import usePopper from '@fragrantjewels/gravity-brands.hooks.use-popper'
-import useOnClickOutside from '@fragrantjewels/gravity-brands.hooks.use-on-click-outside'
-import { ProductsChunk } from '@fragrantjewels/gravity-brands.modules.normalize-products-chunk'
+import usePopper from 'gravity-brands/hooks/use-popper'
+import useOnClickOutside from 'gravity-brands/hooks/use-on-click-outside'
+import { ProductsChunk } from 'gravity-brands/modules/normalize-products-chunk'
 
 export type SearchFieldProps = {
   className?: ClassName

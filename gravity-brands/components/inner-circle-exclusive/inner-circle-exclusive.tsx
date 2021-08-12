@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
-import Button from '@fragrantjewels/gravity-brands.components.button'
-import RingSize from '@fragrantjewels/gravity-brands.components.ring-size'
-import formatPrice from '@fragrantjewels/gravity-brands.modules.format-price'
-import { Product, ProductVariant } from '@fragrantjewels/gravity-brands.modules.normalize-product'
+import Button from 'gravity-brands/components/button'
+import RingSize from 'gravity-brands/components/ring-size'
+import formatPrice from 'gravity-brands/modules/format-price'
+import { Product, ProductVariant } from 'gravity-brands/modules/normalize-product'
 
-export type { Product, ProductVariant, ProductImage } from '@fragrantjewels/gravity-brands.modules.normalize-product'
+export type { Product, ProductVariant, ProductImage } from 'gravity-brands/modules/normalize-product'
 
 export type InnerCircleExclusiveProps = {
   className?: ClassName

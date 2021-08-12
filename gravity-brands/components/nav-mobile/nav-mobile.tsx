@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import { PointsWidget } from '@fragrantjewels/gravity-brands.components.points-widget'
-import { SigninSignup } from '@fragrantjewels/gravity-brands.components.signin-signup'
-import { ExtendableBlockContent } from '@fragrantjewels/gravity-brands.components.header'
+import { PointsWidget } from 'gravity-brands/components/points-widget'
+import { SigninSignup } from 'gravity-brands/components/signin-signup'
+import { ExtendableBlockContent } from 'gravity-brands/components/header'
 
 export type SearchFieldProps = {
   isBurgerMenuOpen: boolean

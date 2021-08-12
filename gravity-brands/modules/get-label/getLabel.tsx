@@ -1,4 +1,4 @@
-import { Product } from '@fragrantjewels/gravity-brands.components.inner-circle-exclusive'
+import { Product } from 'gravity-brands/components/inner-circle-exclusive'
 
 export type Label = {
   members: boolean

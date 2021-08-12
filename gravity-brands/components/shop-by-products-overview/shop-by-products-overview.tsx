@@ -1,8 +1,5 @@
 import React from 'react'
-import {
-  ShopByProductCard,
-  ShopByProductCardProps,
-} from '@fragrantjewels/gravity-brands.components.shop-by-product-card'
+import { ShopByProductCard, ShopByProductCardProps } from 'gravity-brands/components/shop-by-product-card'
 import Slider, { Settings } from 'react-slick'
 import styled from 'styled-components'
 

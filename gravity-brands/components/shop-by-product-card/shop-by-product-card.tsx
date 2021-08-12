@@ -1,5 +1,5 @@
 import React from 'react'
-import Button from '@fragrantjewels/gravity-brands.components.button'
+import Button from 'gravity-brands/components/button'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
 

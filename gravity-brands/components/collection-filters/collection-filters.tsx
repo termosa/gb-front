@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
-import usePopper from '@fragrantjewels/gravity-brands.hooks.use-popper'
-import useOnClickOutside from '@fragrantjewels/gravity-brands.hooks.use-on-click-outside'
-import { CollectionProductsFilter } from '@fragrantjewels/gravity-brands.modules.filter-collection-products'
+import usePopper from 'gravity-brands/hooks/use-popper'
+import useOnClickOutside from 'gravity-brands/hooks/use-on-click-outside'
+import { CollectionProductsFilter } from 'gravity-brands/modules/filter-collection-products'
 
-export { filterCollectionProducts } from '@fragrantjewels/gravity-brands.modules.filter-collection-products'
-export type { CollectionProductsFilter } from '@fragrantjewels/gravity-brands.modules.filter-collection-products'
+export { filterCollectionProducts } from 'gravity-brands/modules/filter-collection-products'
+export type { CollectionProductsFilter } from 'gravity-brands/modules/filter-collection-products'
 
 export interface Filter {
   name: string
@@ -301,9 +301,10 @@ const CloseButton = ({ onClick, small }: { onClick: () => void; small?: boolean 
 
 export type FilterGroup = 'fragrances' | 'materials' | 'sizes' | 'colors'
 
-const isEmptyFilter = (filters: CollectionProductsFilter) => Object.values(filters).every((values) => {
-  return values && !values.length
-})
+const isEmptyFilter = (filters: CollectionProductsFilter) =>
+  Object.values(filters).every((values) => {
+    return values && !values.length
+  })
 
 const gradients: Record<string, ColorGradient> = {
   Black: [],

@@ -1,12 +1,12 @@
 import { GetServerSidePropsContext } from 'next'
-import resolvePageProps from '@fragrantjewels/gravity-brands.modules.resolve-page-props'
-import loadProduct from '@fragrantjewels/gravity-brands.modules.load-product'
-import loadCollection from '@fragrantjewels/gravity-brands.modules.load-collection'
-import removeNewLineCharacters from '@fragrantjewels/gravity-brands.modules.remove-new-line-characters'
+import resolvePageProps from 'gravity-brands/modules/resolve-page-props'
+import loadProduct from 'gravity-brands/modules/load-product'
+import loadCollection from 'gravity-brands/modules/load-collection'
+import removeNewLineCharacters from 'gravity-brands/modules/remove-new-line-characters'
 import { POTENTIAL_PRODUCTS_COLLECTION_ID, RECOMMENDED_PRODUCTS_COLLECTION_ID } from 'src/settings/ids'
-import loadModelTemplate  from 'src/builder/load-model-template'
+import loadModelTemplate from 'src/builder/load-model-template'
 import { parse } from 'node-html-parser'
-import { Product } from '@fragrantjewels/gravity-brands.modules.normalize-product'
+import { Product } from 'gravity-brands/modules/normalize-product'
 import { BuilderContent } from '@builder.io/sdk'
 
 export type ProductDescription = {
@@ -52,9 +52,7 @@ function productPageProps<PropsType>(): (context: GetServerSidePropsContext) => 
       product: productPromise.catch(() => null),
       recommendedProducts: loadCollectionProducts(RECOMMENDED_PRODUCTS_COLLECTION_ID),
       potentialProducts: loadCollectionProducts(POTENTIAL_PRODUCTS_COLLECTION_ID),
-      productDescription: productPromise
-        .then((product) => getProductDescription(product))
-        .catch(() => null),
+      productDescription: productPromise.then((product) => getProductDescription(product)).catch(() => null),
       builderContent: productPromise
         .then((product) => loadModelTemplate('Product', product.template))
         .catch(() => null),

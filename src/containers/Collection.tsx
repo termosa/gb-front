@@ -2,13 +2,13 @@ import React, { useContext, useMemo, useState } from 'react'
 import CollectionFilters, {
   CollectionProductsFilter,
   SelectedSorting,
-} from '@fragrantjewels/gravity-brands.components.collection-filters'
-import ProductsList from '@fragrantjewels/gravity-brands.components.products-list'
-import SiteSection from '@fragrantjewels/gravity-brands.components.site-section'
+} from 'gravity-brands/components/collection-filters'
+import ProductsList from 'gravity-brands/components/products-list'
+import SiteSection from 'gravity-brands/components/site-section'
 import styled from 'styled-components'
-import parseFiltersFromProducts from '@fragrantjewels/gravity-brands.modules.parse-filters-from-products'
-import filterCollectionProducts from '@fragrantjewels/gravity-brands.modules.filter-collection-products'
-import CollectionContext from '@fragrantjewels/gravity-brands.modules.collection-context'
+import parseFiltersFromProducts from 'gravity-brands/modules/parse-filters-from-products'
+import filterCollectionProducts from 'gravity-brands/modules/filter-collection-products'
+import CollectionContext from 'gravity-brands/modules/collection-context'
 
 const SFiltersSection = styled(SiteSection)`
   margin-bottom: 2em;

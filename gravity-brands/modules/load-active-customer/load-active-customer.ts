@@ -1,5 +1,5 @@
-import http from '@fragrantjewels/gravity-brands.modules.http'
-import normalizeCustomer, { Customer } from '@fragrantjewels/gravity-brands.modules.normalize-customer'
+import http from 'gravity-brands/modules/http'
+import normalizeCustomer, { Customer } from 'gravity-brands/modules/normalize-customer'
 
 export type { Customer }
 

@@ -1,8 +1,8 @@
 import React, { Dispatch, RefObject, useContext, useEffect, useState } from 'react'
 import styled from 'styled-components'
-import { Product as ProductType, ProductVariant } from '@fragrantjewels/gravity-brands.modules.normalize-product'
+import { Product as ProductType, ProductVariant } from 'gravity-brands/modules/normalize-product'
 import { Argument as ClassName } from 'classnames'
-import ProductContext from '@fragrantjewels/gravity-brands.modules.product-context'
+import ProductContext from 'gravity-brands/modules/product-context'
 
 export type FloatingCtaProps = {
   className?: ClassName

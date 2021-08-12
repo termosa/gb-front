@@ -2,7 +2,7 @@ import React from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
 import { useMediaPredicate } from 'react-media-hook'
-import SiteSection from '@fragrantjewels/gravity-brands.components.site-section'
+import SiteSection from 'gravity-brands/components/site-section'
 
 export type FullWidthBannerProps = {
   className?: ClassName

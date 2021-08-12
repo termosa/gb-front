@@ -1,5 +1,5 @@
 import React from 'react'
-import PresentationCanvas from '@fragrantjewels/gravity-brands.helpers.presentation-canvas'
+import PresentationCanvas from 'gravity-brands/helpers/presentation-canvas'
 import { FullWidthBanner } from './full-width-banner'
 
 export const BasicFullWidthBanner = (): React.ReactElement => (

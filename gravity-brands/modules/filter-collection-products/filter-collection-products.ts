@@ -1,4 +1,4 @@
-import { Product } from '@fragrantjewels/gravity-brands.modules.normalize-collection'
+import { Product } from 'gravity-brands/modules/normalize-collection'
 
 export type CollectionProductsFilter = {
   sizes?: Array<string>

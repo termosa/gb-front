@@ -1,4 +1,4 @@
-import { ServerCustomerAddress } from '@fragrantjewels/gravity-brands.modules.normalize-customer-address'
+import { ServerCustomerAddress } from 'gravity-brands/modules/normalize-customer-address'
 
 export type ServerCustomer = {
   id: number

@@ -1,6 +1,6 @@
 import React from 'react'
 import { CategoryShopCard } from './category-shop-card'
-import PresentationCanvas from '@fragrantjewels/gravity-brands.helpers.presentation-canvas'
+import PresentationCanvas from 'gravity-brands/helpers/presentation-canvas'
 
 export const BasicCategoryShopCard = (): React.ReactElement => (
   <PresentationCanvas>

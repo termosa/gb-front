@@ -1,6 +1,6 @@
 import React from 'react'
 import { ProductsCarousel } from './products-carousel'
-import PresentationCanvas from '@fragrantjewels/gravity-brands.helpers.presentation-canvas'
+import PresentationCanvas from 'gravity-brands/helpers/presentation-canvas'
 
 export const BasicProductsCarousel = (): React.ReactElement => (
   <PresentationCanvas>

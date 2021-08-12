@@ -1,4 +1,4 @@
-import normalizeProduct, { ServerProduct, Product } from '@fragrantjewels/gravity-brands.modules.normalize-product'
+import normalizeProduct, { ServerProduct, Product } from 'gravity-brands/modules/normalize-product'
 
 export type ServerProductsChunk = {
   links: {

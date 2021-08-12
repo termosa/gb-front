@@ -1,6 +1,9 @@
 node_modules/
 /dist/
 /coverage/
+/.docs-dist/
+/.docs-cache/
+/.cache/
 /.next/
 /.idea/
 /.project/

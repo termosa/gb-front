@@ -1,14 +1,12 @@
 import React from 'react'
 import { Builder, BuilderComponent } from '@builder.io/react'
-import productPageProps, {
-  ProductPageProps,
-} from 'src/resolvers/productPageProps'
+import productPageProps, { ProductPageProps } from 'src/resolvers/productPageProps'
 import 'src/builder/register-components'
 import FjWild from '@components/FjWild'
 import PotentialProducts from '@containers/PotentianProducts'
 import RecommendedProducts from '@containers/RecommendedProducts'
 import Product from '@containers/Product'
-import ProductContext from '@fragrantjewels/gravity-brands.modules.product-context'
+import ProductContext from 'gravity-brands/modules/product-context'
 
 Builder.registerComponent(FjWild, {
   name: 'FJ Wild',

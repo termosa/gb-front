@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import cn from 'classnames'
-import { InformationCard } from '@fragrantjewels/gravity-brands.components.information-card'
+import { InformationCard } from 'gravity-brands/components/information-card'
 import Slider, { Settings } from 'react-slick'
 
 export type InformationOverviewProps = {
@@ -63,7 +63,7 @@ const SCardsWrapper = styled.div`
   padding: 10px 0 38px;
   display: flex;
   justify-content: space-around;
-  
+
   * {
     box-sizing: border-box;
   }
@@ -91,7 +91,7 @@ const SCardsWrapper = styled.div`
   .slick-slider .slick-list {
     transform: translate3d(0, 0, 0);
   }
-  
+
   .slick-arrow {
     top: 150px;
   }
@@ -227,9 +227,9 @@ export function InformationOverview({
         {titleSecond}
       </STitle>
       <SCardsWrapper>
-        {isLargeScreen ? cards.map((card) => (
-          <InformationCard key={card.image + card.title} card={card} />
-        )) : (
+        {isLargeScreen ? (
+          cards.map((card) => <InformationCard key={card.image + card.title} card={card} />)
+        ) : (
           <Slider {...sliderSettings}>
             {cards.map((card) => (
               <InformationCard key={card.image + card.title} card={card} />

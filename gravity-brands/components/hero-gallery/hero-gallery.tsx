@@ -2,7 +2,7 @@ import React from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import Slider, { Settings } from 'react-slick'
 import styled from 'styled-components'
-import Button from '@fragrantjewels/gravity-brands.components.button'
+import Button from 'gravity-brands/components/button'
 
 type GalleryItem = {
   topText: string

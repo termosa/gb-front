@@ -1,7 +1,7 @@
 import React from 'react'
 import useDefer from 'use-defer'
-import loadProduct from '@fragrantjewels/gravity-brands.modules.load-product'
-import ProductContext from '@fragrantjewels/gravity-brands.modules.product-context'
+import loadProduct from 'gravity-brands/modules/load-product'
+import ProductContext from 'gravity-brands/modules/product-context'
 
 export type ProductProviderProps = {
   children?: React.ReactNode

@@ -1,6 +1,6 @@
-import normalizeProduct, { ServerProduct, Product } from '@fragrantjewels/gravity-brands.modules.normalize-product'
+import normalizeProduct, { ServerProduct, Product } from 'gravity-brands/modules/normalize-product'
 
-export type { Product } from '@fragrantjewels/gravity-brands.modules.normalize-product'
+export type { Product } from 'gravity-brands/modules/normalize-product'
 
 export type ServerCollection = {
   collection_id: number

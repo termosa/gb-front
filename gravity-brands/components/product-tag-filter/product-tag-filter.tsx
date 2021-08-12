@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import ProductContext from '@fragrantjewels/gravity-brands.modules.product-context'
+import ProductContext from 'gravity-brands/modules/product-context'
 
 export type ProductTagFilterProps = {
   children?: React.ReactElement

@@ -1,4 +1,4 @@
-import { Product } from '@fragrantjewels/gravity-brands.modules.normalize-product'
+import { Product } from 'gravity-brands/modules/normalize-product'
 
 export type Filter = {
   name: string

@@ -1,4 +1,4 @@
-import api from '@fragrantjewels/gravity-brands.modules.api'
+import api from 'gravity-brands/modules/api'
 
 export const signup = (email: string): Promise<void> =>
   api<void>({

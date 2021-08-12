@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import Slider, { Settings } from 'react-slick'
 import styled from 'styled-components'
 import cn, { Argument as ClassName } from 'classnames'
-import ProductCard from '@fragrantjewels/gravity-brands.components.product-card'
-import { Product } from '@fragrantjewels/gravity-brands.modules.normalize-product'
+import ProductCard from 'gravity-brands/components/product-card'
+import { Product } from 'gravity-brands/modules/normalize-product'
 
 export type ProductsCarouselProps = {
   products: Array<Product>

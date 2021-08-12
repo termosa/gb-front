@@ -1,8 +1,8 @@
 import React from 'react'
-import CollectionContext from '@fragrantjewels/gravity-brands.modules.collection-context'
-import loadCollection from '@fragrantjewels/gravity-brands.modules.load-collection'
+import CollectionContext from 'gravity-brands/modules/collection-context'
+import loadCollection from 'gravity-brands/modules/load-collection'
 import useDefer from 'use-defer'
-import useQuery from '@fragrantjewels/gravity-brands.hooks.use-query'
+import useQuery from 'gravity-brands/hooks/use-query'
 
 export const CollectionPageProvider = ({ children }: { children: React.ReactElement }): React.ReactElement => {
   const { collectionId } = useQuery()

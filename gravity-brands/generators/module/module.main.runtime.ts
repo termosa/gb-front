@@ -14,7 +14,7 @@ export { ${names.moduleName} as default } from './${names.fileName}'
 `
 
 const moduleContent = (names: TemplateProps) =>
-  `import log from '@fragrantjewels/gravity-brands.modules.log'
+  `import log from 'gravity-brands/modules/log'
 
 export function ${names.moduleName}(): void {
   log('${names.moduleName} is executed')
@@ -22,8 +22,8 @@ export function ${names.moduleName}(): void {
 `
 
 const specContent = (names: TemplateProps) =>
-  `import log from '@fragrantjewels/gravity-brands.modules.log'
-jest.mock('@fragrantjewels/gravity-brands.modules.log')
+  `import log from 'gravity-brands/modules/log'
+jest.mock('gravity-brands/modules/log')
 
 describe('${names.moduleName}', () => {
   beforeEach(() => {
@@ -44,7 +44,7 @@ description: 'Renders given content in a block'
 
 Basic example:
 \`\`\`js
-import ${names.moduleName} from '@fragrantjewels/gravity-brands.modules.${names.fileName}'
+import ${names.moduleName} from 'gravity-brands/modules/${names.fileName}'
 
 ${names.moduleName}()
 \`\`\`

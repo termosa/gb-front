@@ -1,6 +1,6 @@
 import React from 'react'
 import { InformationCard } from './information-card'
-import PresentationCanvas from '@fragrantjewels/gravity-brands.helpers.presentation-canvas'
+import PresentationCanvas from 'gravity-brands/helpers/presentation-canvas'
 
 export const BasicInformationCard = (): React.ReactElement => (
   <PresentationCanvas>

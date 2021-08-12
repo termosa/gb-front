@@ -1,5 +1,5 @@
 import React from 'react'
-import PresentationCanvas from '@fragrantjewels/gravity-brands.helpers.presentation-canvas'
+import PresentationCanvas from 'gravity-brands/helpers/presentation-canvas'
 import { InformationOverview } from './information-overview'
 
 export const BasicInformationCard = (): React.ReactElement => (

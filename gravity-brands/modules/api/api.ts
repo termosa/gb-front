@@ -1,5 +1,5 @@
-import http, { Query, Method } from '@fragrantjewels/gravity-brands.modules.http'
-import baseApiUrl from '@fragrantjewels/gravity-brands.modules.base-api-url'
+import http, { Query, Method } from 'gravity-brands/modules/http'
+import baseApiUrl from 'gravity-brands/modules/base-api-url'
 
 const defaultParseResponse = <APIResponse>(response: Response): Promise<APIResponse> =>
   response

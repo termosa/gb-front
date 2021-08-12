@@ -1,6 +1,6 @@
 import React from 'react'
 import { ShopByProductsOverview } from './shop-by-products-overview'
-import PresentationCanvas from '@fragrantjewels/gravity-brands.helpers.presentation-canvas'
+import PresentationCanvas from 'gravity-brands/helpers/presentation-canvas'
 
 export const BasicShopByProductsOverview = () => (
   <PresentationCanvas>

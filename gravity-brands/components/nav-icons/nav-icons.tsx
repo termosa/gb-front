@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
-import { SigninSignup } from '@fragrantjewels/gravity-brands.components.signin-signup'
+import { SigninSignup } from 'gravity-brands/components/signin-signup'
 import { useMediaPredicate } from 'react-media-hook'
 
 export type NavIconsProps = {

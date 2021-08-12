@@ -1,9 +1,9 @@
 import React from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
-import { Product } from '@fragrantjewels/gravity-brands.modules.normalize-product'
-import formatPrice from '@fragrantjewels/gravity-brands.modules.format-price'
-import getLabel from '@fragrantjewels/gravity-brands.modules.get-label'
+import { Product } from 'gravity-brands/modules/normalize-product'
+import formatPrice from 'gravity-brands/modules/format-price'
+import getLabel from 'gravity-brands/modules/get-label'
 
 export type ProductCardProps = {
   className?: ClassName

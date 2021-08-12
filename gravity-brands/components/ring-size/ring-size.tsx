@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
-import { ProductVariant } from '@fragrantjewels/gravity-brands.modules.normalize-product'
+import { ProductVariant } from 'gravity-brands/modules/normalize-product'
 
-export type { ProductVariant } from '@fragrantjewels/gravity-brands.modules.normalize-product'
+export type { ProductVariant } from 'gravity-brands/modules/normalize-product'
 
 export type RingSizeProps = {
   className?: ClassName

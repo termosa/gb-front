@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
-import { RollingBanner } from '@fragrantjewels/gravity-brands.components.rolling-banner'
-import { NavTabs } from '@fragrantjewels/gravity-brands.components.nav-tabs'
-import { SearchField } from '@fragrantjewels/gravity-brands.components.search-field'
-import { SigninSignup } from '@fragrantjewels/gravity-brands.components.signin-signup'
-import { PointsWidget } from '@fragrantjewels/gravity-brands.components.points-widget'
-import { NavIcons } from '@fragrantjewels/gravity-brands.components.nav-icons'
-import { NavMobile } from '@fragrantjewels/gravity-brands.components.nav-mobile'
-import { ProductsChunk } from '@fragrantjewels/gravity-brands.modules.normalize-products-chunk'
+import { RollingBanner } from 'gravity-brands/components/rolling-banner'
+import { NavTabs } from 'gravity-brands/components/nav-tabs'
+import { SearchField } from 'gravity-brands/components/search-field'
+import { SigninSignup } from 'gravity-brands/components/signin-signup'
+import { PointsWidget } from 'gravity-brands/components/points-widget'
+import { NavIcons } from 'gravity-brands/components/nav-icons'
+import { NavMobile } from 'gravity-brands/components/nav-mobile'
+import { ProductsChunk } from 'gravity-brands/modules/normalize-products-chunk'
 
 export type HeaderProps = {
   className?: ClassName

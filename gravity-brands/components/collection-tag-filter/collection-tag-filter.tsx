@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import CollectionContext from '@fragrantjewels/gravity-brands.modules.collection-context'
+import CollectionContext from 'gravity-brands/modules/collection-context'
 
 export type CollectionTagFilterProps = {
   children?: React.ReactElement

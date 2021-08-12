@@ -1,8 +1,8 @@
 import React from 'react'
-import ProductContext from '@fragrantjewels/gravity-brands.modules.product-context'
-import loadProduct from '@fragrantjewels/gravity-brands.modules.load-product'
+import ProductContext from 'gravity-brands/modules/product-context'
+import loadProduct from 'gravity-brands/modules/load-product'
 import useDefer from 'use-defer'
-import useQuery from '@fragrantjewels/gravity-brands.hooks.use-query'
+import useQuery from 'gravity-brands/hooks/use-query'
 
 export const ProductPageProvider = ({ children }: { children: React.ReactElement }): React.ReactElement => {
   const { productId } = useQuery()

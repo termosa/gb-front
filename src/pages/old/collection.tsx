@@ -1,17 +1,17 @@
 import React, { useMemo, useState } from 'react'
 import collectionPageProps from 'src/resolvers/collectionPageProps'
-import MainPageLayout from '@fragrantjewels/gravity-brands.components.main-page-layout'
-import FullWidthBanner from '@fragrantjewels/gravity-brands.components.full-width-banner'
+import MainPageLayout from 'gravity-brands/components/main-page-layout'
+import FullWidthBanner from 'gravity-brands/components/full-width-banner'
 import CollectionFilters, {
   CollectionProductsFilter,
   SelectedSorting,
-} from '@fragrantjewels/gravity-brands.components.collection-filters'
-import ProductsList from '@fragrantjewels/gravity-brands.components.products-list'
-import SiteSection from '@fragrantjewels/gravity-brands.components.site-section'
+} from 'gravity-brands/components/collection-filters'
+import ProductsList from 'gravity-brands/components/products-list'
+import SiteSection from 'gravity-brands/components/site-section'
 import styled from 'styled-components'
-import parseFiltersFromProducts from '@fragrantjewels/gravity-brands.modules.parse-filters-from-products'
-import { Product } from '@fragrantjewels/gravity-brands.modules.load-collection'
-import filterCollectionProducts from '@fragrantjewels/gravity-brands.modules.filter-collection-products'
+import parseFiltersFromProducts from 'gravity-brands/modules/parse-filters-from-products'
+import { Product } from 'gravity-brands/modules/load-collection'
+import filterCollectionProducts from 'gravity-brands/modules/filter-collection-products'
 
 type ProductPageProps = {
   collectionProducts: Array<Product> | null

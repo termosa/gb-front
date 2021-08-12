@@ -25,7 +25,8 @@ module.exports = (phase) => {
 
   const nextConfig = {
     ...cssOptions,
-    ...(phase !== PHASE_DEVELOPMENT_SERVER && { basePath: basePath }),
+    basePath: basePath,
+    // ...(phase !== PHASE_DEVELOPMENT_SERVER && { basePath: basePath }),
     typescript: { ignoreBuildErrors: true },
     env: {
       BASE_API_URL: process.env.BASE_API_URL,
