@@ -4,9 +4,15 @@
 
 ```sh
 # BIT_TOKEN should be replaced with the real one
-$ docker build --build-arg BIT_TOKEN=00000000-0000-0000-0000-000000000000 --build-arg BASE_API_URL=http://endpoint-for-nextjs.com --build-arg CLIENT_API_URL=http://endpoint-for-browser.com . -t fj-front
+$ docker build \
+  --build-arg APP_ENV=production \
+  --build-arg BUILDER_KEY=0123456789abcdef0123456789abcdef \
+  --build-arg BIT_TOKEN=00000000-0000-0000-0000-000000000000 \
+  --build-arg BASE_API_URL=http://endpoint-for-nextjs.com \
+  --build-arg CLIENT_API_URL=http://endpoint-for-browser.com \
+  . -t fj-front
 
-$ docker run -it --rm -p 3000:3000 fj-front
+$ docker run -it --rm -p 3000:3000 -e APP_ENV=production fj-front
 ```
 
 

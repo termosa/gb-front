@@ -3,7 +3,7 @@ import resolvePageProps from '@fragrantjewels/gravity-brands.modules.resolve-pag
 import loadCollection, { Product } from '@fragrantjewels/gravity-brands.modules.load-collection'
 import loadProduct from '@fragrantjewels/gravity-brands.modules.load-product'
 import { INNER_CIRCLE_PRODUCT_ID, TRENDING_PRODUCTS_COLLECTION_ID } from 'src/settings/ids'
-import loadActiveCustomer, { ActiveCustomer } from '@fragrantjewels/gravity-brands.modules.load-active-customer'
+import loadCustomer, { Customer } from '@fragrantjewels/gravity-brands.modules.load-customer'
 import loadModelTemplate, { ModelTemplate } from 'src/builder/load-model-template'
 
 export const loadTrendingProducts = (): Promise<Product[] | null> =>
@@ -17,7 +17,7 @@ const loadInnerCircleProduct = (id: string) => loadProduct(id ? Number(id) : INN
 export type HomePageProps = {
   trendingProducts: null | Array<Product>
   innerCircleProduct: null | Product
-  activeCustomer: null | ActiveCustomer
+  activeCustomer: null | Customer
   builderContent: ModelTemplate
 }
 
@@ -25,7 +25,7 @@ export default function homePageProps(): (context: GetServerSidePropsContext) =>
   return resolvePageProps((context) => ({
     trendingProducts: loadTrendingProducts(),
     innerCircleProduct: loadInnerCircleProduct(context?.query?.id?.toString()),
-    activeCustomer: loadActiveCustomer().catch(() => null),
+    activeCustomer: loadCustomer().catch(() => null),
     builderContent: loadModelTemplate('Home').catch(() => null),
   }))
 }

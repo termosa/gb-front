@@ -1,8 +1,10 @@
-import loadCustomer, { Customer as ActiveCustomer } from '@fragrantjewels/gravity-brands.modules.load-customer'
+import http from '@fragrantjewels/gravity-brands.modules.http'
+import normalizeCustomer, { Customer } from '@fragrantjewels/gravity-brands.modules.normalize-customer'
 
-export type { ActiveCustomer }
+export type { Customer }
 
-export const loadActiveCustomer = (): Promise<ActiveCustomer> => {
-  const activeCustomerEmail = 'hihop92924@teeshirtsprint.com'
-  return activeCustomerEmail ? loadCustomer(activeCustomerEmail) : Promise.reject('No active customer')
+export const loadActiveCustomer = (): Promise<Customer> => {
+  return http({ url: '/pages/api-customer-json' })
+    .then((r) => r.json())
+    .then(normalizeCustomer)
 }

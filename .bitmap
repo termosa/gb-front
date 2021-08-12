@@ -319,6 +319,12 @@
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/modules/base-api-url"
     },
+    "modules/base-site-url": {
+        "scope": "",
+        "version": "",
+        "mainFile": "index.ts",
+        "rootDir": "gravity-brands/modules/base-site-url"
+    },
     "modules/cart-context": {
         "scope": "fragrantjewels.gravity-brands",
         "version": "0.0.2",
@@ -366,12 +372,6 @@
         "version": "0.0.5",
         "mainFile": "index.ts",
         "rootDir": "gravity-brands/modules/http"
-    },
-    "modules/load-active-customer": {
-        "scope": "fragrantjewels.gravity-brands",
-        "version": "0.0.1",
-        "mainFile": "index.ts",
-        "rootDir": "gravity-brands/modules/load-active-customer"
     },
     "modules/load-collection": {
         "scope": "fragrantjewels.gravity-brands",
