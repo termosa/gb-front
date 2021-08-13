@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from 'react'
+import React, { useCallback, useContext, useEffect, useRef, useState } from 'react'
 import formatPrice from 'gravity-brands/modules/format-price'
 import getLabel from 'gravity-brands/modules/get-label'
 import { Product as ProductType, ProductImage, ProductVariant } from 'gravity-brands/modules/normalize-product'
@@ -16,16 +16,19 @@ type ProductDescription = {
 const Product = (): null | React.ReactElement => {
   const product = useContext<ProductType | undefined>(ProductContext)
 
-  const addToCartRef = useRef<HTMLButtonElement>(null)
   const [currentRingSize, setCurrentRingSize] = useState<number | null>(null)
   const [isSelectRingError, setSelectRingError] = useState<boolean>(false)
   const [actualPrice, setActualPrice] = useState<number>(0)
-  const [productDescription, setProductDescription] = useState<any>()
+  const [productDescription, setProductDescription] = useState<Array<ProductDescription>>()
   const [isDiscountApplied, setDiscountApplied] = useState<boolean>(true)
   const [activeGalleryItem, setActiveGalleryItem] = useState<number | null>(0)
   const [isLargeScreen, setLargeScreen] = useState<boolean>()
   const [comparePrice, setComparePrice] = useState<number | null>(0)
   const [activeAccordion, setActiveAccordion] = useState<number | null>(0)
+  const [infoDistanceFromTop, setInfoDistanceFromTop] = useState<number>(183)
+  const [yPosition, setYPosition] = useState<number>(0)
+  const addToCartRef = useRef<HTMLButtonElement>(null)
+  const productInfoRef = useRef<HTMLDivElement>(null)
   const productHeadingRef = useRef<HTMLDivElement>(null)
   const galleryRef = useRef<HTMLDivElement>(null)
 
@@ -39,12 +42,39 @@ const Product = (): null | React.ReactElement => {
     localStorage.setItem('isFloatingCtaVisible', JSON.stringify(position.top <= 150))
   }
 
+  const handleScrollDirection = useCallback(
+    (e) => {
+      const productInfoPosition = productInfoRef.current?.getBoundingClientRect()
+      if (!productInfoPosition) {
+        return
+      }
+      const window = e.currentTarget
+      const isProductInfoScrollable = productInfoPosition.bottom >= window.innerHeight
+      setYPosition(window.scrollY)
+      if (!isProductInfoScrollable) {
+        return
+      }
+      const distance = yPosition > window.scrollY ? infoDistanceFromTop - 53 : infoDistanceFromTop + 53
+      console.log('L57', distance)
+      setInfoDistanceFromTop(distance)
+    },
+    [yPosition]
+  )
+
   useEffect(() => {
     window.addEventListener('scroll', handlePosition)
     return () => {
       window.removeEventListener('scroll', handlePosition)
     }
   }, [])
+
+  useEffect(() => {
+    setYPosition(window.scrollY)
+    window.addEventListener('scroll', handleScrollDirection)
+    return () => {
+      window.removeEventListener('scroll', handleScrollDirection)
+    }
+  }, [handleScrollDirection])
 
   useEffect(() => {
     window.addEventListener('scroll', () => {
@@ -215,7 +245,7 @@ const Product = (): null | React.ReactElement => {
               </div>
             </div>
             <div className="pdp-col pdp-col-35">
-              <div className="pdp-product-info">
+              <div className="pdp-product-info" ref={productInfoRef} style={{ top: infoDistanceFromTop }}>
                 <h3 className="pdp-product-info__ic-title" ref={productHeadingRef}>
                   INNER CIRCLE EXCLUSIVE
                 </h3>
