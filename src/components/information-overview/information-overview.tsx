@@ -6,8 +6,7 @@ import { InformationCard } from '../information-card'
 
 export type InformationOverviewProps = {
   className?: string
-  titleFirst: string
-  titleSecond: string
+  title: string
   cards: InformationCard[]
 }
 
@@ -190,12 +189,7 @@ const SCardsWrapper = styled.div`
   }
 `
 
-export function InformationOverview({
-  className,
-  titleFirst,
-  titleSecond,
-  cards,
-}: InformationOverviewProps): React.ReactElement {
+export function InformationOverview({ className, title, cards }: InformationOverviewProps): React.ReactElement {
   const [isLargeScreen, setLargeScreen] = useState<boolean>()
 
   useEffect(() => {
@@ -230,11 +224,9 @@ export function InformationOverview({
 
   return (
     <SWrapper className={cn('InformationOverview', className)}>
-      <STitle>
-        {titleFirst}
-        <br />
-        {titleSecond}
-      </STitle>
+      <div style={{ maxWidth: 300, margin: '0 auto' }}>
+        <STitle>{title}</STitle>
+      </div>
       <SCardsWrapper>
         {isLargeScreen ? (
           cards.map((card) => <InformationCard key={card.image + card.title} card={card} />)

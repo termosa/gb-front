@@ -27,7 +27,7 @@ Builder.registerComponent(Header, {
 })
 
 Builder.registerComponent(HeroGallery, {
-  name: 'Hero Gallery',
+  name: 'Hero Image with Content Overlay',
   inputs: [
     {
       name: 'slides',
@@ -85,7 +85,7 @@ Builder.registerComponent(HeroGallery, {
 })
 
 Builder.registerComponent(CategoryShopCard, {
-  name: 'Category Shop Card',
+  name: 'Image Block with Content Overlay',
   inputs: [
     {
       name: 'image',
@@ -98,7 +98,7 @@ Builder.registerComponent(CategoryShopCard, {
       defaultValue: 'Title',
     },
     {
-      name: 'subtitle',
+      name: 'subTitle',
       type: 'string',
       defaultValue: 'Subtitle',
     },
@@ -111,15 +111,10 @@ Builder.registerComponent(CategoryShopCard, {
 })
 
 Builder.registerComponent(InformationOverview, {
-  name: 'Information Overview',
+  name: 'Content Blocks',
   inputs: [
     {
-      name: 'titleFirst',
-      type: 'string',
-      defaultValue: '',
-    },
-    {
-      name: 'titleSecond',
+      name: 'title',
       type: 'string',
       defaultValue: '',
     },
@@ -168,7 +163,7 @@ Builder.registerComponent(InformationOverview, {
 })
 
 Builder.registerComponent(ReviewsSection, {
-  name: 'Review Section',
+  name: 'Social Reviews',
   inputs: [
     {
       name: 'quote',
@@ -197,7 +192,7 @@ Builder.registerComponent(ReviewsSection, {
 })
 
 Builder.registerComponent(ShopByProductsOverview, {
-  name: 'Shop By Product Overview',
+  name: 'Image Block',
   inputs: [
     {
       name: 'products',
@@ -224,11 +219,11 @@ Builder.registerComponent(ShopByProductsOverview, {
 })
 
 Builder.registerComponent(PromiseBar, {
-  name: 'Promise Bar',
+  name: 'Our Promise',
 })
 
 Builder.registerComponent(InlineSignupForm, {
-  name: 'Inline Signup Form',
+  name: 'Klaviyo sign-up form',
   inputs: [
     {
       name: 'onSignup',
@@ -239,7 +234,7 @@ Builder.registerComponent(InlineSignupForm, {
 })
 
 Builder.registerComponent(FollowUs, {
-  name: 'Follow Us',
+  name: 'Yotpo Instagram Tool',
 })
 
 Builder.registerComponent(Footer, {
@@ -247,7 +242,7 @@ Builder.registerComponent(Footer, {
 })
 
 Builder.registerComponent(InnerCircleExclusiveContainer, {
-  name: 'Inner Circle Exclusive',
+  name: 'Member Product Highlight',
   inputs: [
     {
       name: 'productId',
@@ -255,14 +250,15 @@ Builder.registerComponent(InnerCircleExclusiveContainer, {
       defaultValue: 10419937998,
     },
     {
-      name: 'frontImage',
-      type: 'string',
-      defaultValue: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/ic-img.jpg',
-    },
-    {
-      name: 'sideImage',
-      type: 'string',
-      defaultValue: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/ic-img-jewelry.jpg',
+      name: 'slideImages',
+      type: 'list',
+      subFields: [
+        {
+          name: 'slide',
+          type: 'file',
+          defaultValue: '',
+        },
+      ],
     },
     {
       name: 'title',
@@ -278,6 +274,11 @@ Builder.registerComponent(InnerCircleExclusiveContainer, {
       name: 'topButtonText',
       type: 'string',
       defaultValue: 'GET STARTED',
+    },
+    {
+      name: 'buttonLink',
+      type: 'string',
+      defaultValue: '',
     },
   ],
 })

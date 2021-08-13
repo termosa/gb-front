@@ -20,7 +20,7 @@ const SCol = styled.div`
 
 const SLayout = styled.div`
   position: relative;
-  max-width: 450px;
+  max-width: 463px;
   margin: 0 auto;
   padding: 16px 0;
   @media (min-width: 768px) {
@@ -29,8 +29,8 @@ const SLayout = styled.div`
 `
 
 const SLayoutImage = styled.img`
-  width: 100%;
-  height: auto;
+  width: 463px;
+  height: 463px;
   display: block;
 `
 

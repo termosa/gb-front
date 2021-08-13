@@ -24,8 +24,8 @@ const SCardImage = styled.img`
   margin: 0 auto 23px;
   width: 60vw;
   height: 60vw;
-  max-width: 300px;
-  max-height: 300px;
+  width: 300px;
+  height: 300px;
   display: block;
 
   @media (min-width: 768px) {

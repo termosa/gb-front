@@ -4,14 +4,20 @@ import InnerCircleExclusive from '../components/inner-circle-exclusive'
 
 type InnerCircleExclusiveProps = {
   productId: number
-  frontImage: string
-  sideImage: string
+  slideImages: { slide: string }[]
+  title: string
+  subTitle: string
+  topButtonText: string
+  buttonLink: string
 }
 
 const InnerCircleExclusiveContainer = ({
   productId,
-  frontImage,
-  sideImage,
+  slideImages,
+  title,
+  subTitle,
+  topButtonText,
+  buttonLink,
 }: InnerCircleExclusiveProps): React.ReactElement | null => {
   const [product, setProduct] = useState<Product>()
 
@@ -24,9 +30,11 @@ const InnerCircleExclusiveContainer = ({
   return product ? (
     <InnerCircleExclusive
       product={product}
-      title=""
-      frontImage={frontImage}
-      slideImages={[sideImage]}
+      title={title}
+      buttonLink={buttonLink}
+      slideImages={slideImages.map((s) => s.slide)}
+      subTitle={subTitle}
+      topButtonText={topButtonText}
       onReserve={(variant) => {
         console.log(variant)
       }}
