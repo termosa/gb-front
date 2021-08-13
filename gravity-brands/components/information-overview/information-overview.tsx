@@ -13,10 +13,14 @@ export type InformationOverviewProps = {
 
 const SWrapper = styled.section`
   text-align: center;
+  padding: 0 30px;
+  max-width: 1020px;
+  margin: 0 auto;
 `
 
 const STitle = styled.h2`
-  font-size: 32px;
+  font: 700 40px/1.1 'Cormorant Garamond', serif;
+  letter-spacing: -0.02em;
   margin: 0 auto 10px;
   text-align: center;
 `
@@ -66,9 +70,6 @@ const SCardsWrapper = styled.div`
 
   * {
     box-sizing: border-box;
-  }
-  @media (min-width: 768px) {
-    margin: 0 -16px;
   }
 
   .slick-slider {

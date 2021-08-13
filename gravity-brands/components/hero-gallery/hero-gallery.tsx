@@ -117,6 +117,10 @@ const SliderWrapper = styled.div`
   .slick-arrow.slick-hidden {
     display: none;
   }
+
+  .slick-dots {
+    bottom: 18px;
+  }
   margin-bottom: 48px;
   @media (min-width: 768px) {
     margin-bottom: 72px;
@@ -132,10 +136,6 @@ const Dots = styled.div`
   margin: 0;
   list-style: none;
   text-align: center;
-
-  @media (min-width: 768px) {
-    bottom: 17px;
-  }
 
   & > li {
     position: relative;
@@ -213,7 +213,7 @@ const SlideContent = styled.div`
   text-align: center;
 
   @media (min-width: 768px) {
-    bottom: -114px;
+    bottom: -102px;
     padding: 32px;
     transform: translate(-50%, -50%);
   }
