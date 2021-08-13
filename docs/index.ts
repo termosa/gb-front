@@ -1,8 +1,5 @@
 import React from 'react'
 import { render } from 'react-dom'
-import Gallery from './Gallery'
-import collectDocs from './collect-docs'
+import Documentation from './Documentation'
 
-console.log(collectDocs())
-
-render(React.createElement(Gallery, { items: collectDocs() }), document.querySelector('#application'))
+render(React.createElement(Documentation), document.querySelector('#application'))

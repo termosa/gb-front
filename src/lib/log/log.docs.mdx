@@ -1,0 +1,24 @@
+export const meta = {
+  name: 'log',
+  tags: ['function'],
+}
+
+## Usage
+
+```js
+import log from '../log'
+
+log('hello')
+
+// Pass any amount of values of any type
+log(42, { status: 'ok' }, [null])
+
+// Turn on detailed log to print time next to each log
+log.enableDetails()
+log('start loading')
+loadData().then(() => log('loading is completed'))
+
+// Turn off displaying logs
+log.disable()
+log('whatever') // this won't be shown in the console
+```

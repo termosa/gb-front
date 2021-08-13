@@ -1,0 +1,14 @@
+import {{ camelCase name }} from '.'
+import log from '../log'
+jest.mock('../log')
+
+describe('{{ camelCase name }}()', () => {
+  beforeEach(() => {
+    log.mockReset()
+  })
+
+  it('should log execution', () => {
+    {{ camelCase name }}()
+    expect(log).toBeCalledWith('{{ camelCase name }} function is executed')
+  })
+})

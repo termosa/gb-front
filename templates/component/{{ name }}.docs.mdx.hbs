@@ -1,0 +1,29 @@
+import {{ pascalCase name }} from '.'
+
+export const meta = {
+  name: '{{ pascalCase name }}',
+  tags: ['component'],
+  scope: { {{ pascalCase name }} },
+}
+
+<{{ pascalCase name }}>Component content here</{{ pascalCase name }}>
+
+## Properties
+
+|Property|Type|Description|
+| :-- | :-- | :-- |
+| children | React.ReactNode | Content that will be rendered inside of the block |
+| [className] | classnames.Argument | One or multiple class names that will be added to the main container |
+| [style] | React.CSSProperties | Inline styles for the main container |
+
+## Usage
+
+```jsx
+<{{ pascalCase name }} className="class" style={{ color: 'red' }}>Put content here</{{ pascalCase name }}>
+```
+
+## Playground
+
+```jsx live
+<{{ pascalCase name }} style={{ color: 'red' }}>Put content here</{{ pascalCase name }}>
+```
