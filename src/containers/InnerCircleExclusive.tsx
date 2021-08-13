@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import loadProduct, { Product } from 'gravity-brands/modules/load-product'
-import InnerCircleExclusive from 'gravity-brands/components/inner-circle-exclusive'
+import loadProduct, { Product } from '../modules/load-product'
+import InnerCircleExclusive from '../components/inner-circle-exclusive'
 
 type InnerCircleExclusiveProps = {
   productId: number

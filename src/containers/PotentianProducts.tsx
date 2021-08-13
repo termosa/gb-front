@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { Product as ProductType } from 'gravity-brands/modules/normalize-product'
-import { loadCollection } from 'gravity-brands/modules/load-collection'
+import { ProductsCarousel } from '../components/products-carousel'
+import { Product as ProductType } from '../modules/normalize-product'
+import { loadCollection } from '../modules/load-collection'
 import { POTENTIAL_PRODUCTS_COLLECTION_ID } from '../settings/ids'
-import { ProductsCarousel } from 'gravity-brands/components/products-carousel'
 
 const PotentialProducts = (): null | React.ReactElement => {
   const [potentialProducts, setPotentialProducts] = useState<ProductType[]>([])

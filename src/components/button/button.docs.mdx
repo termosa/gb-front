@@ -1,0 +1,21 @@
+---
+labels: ['ui', 'react']
+description: 'Renders given content in a block'
+---
+
+import { Button } from './button'
+import PresentationCanvas from '../../helpers/presentation-canvas'
+
+Basic example:
+```js live
+<PresentationCanvas centered>
+  <Button className="Component-Content">Content</Button>
+</PresentationCanvas>
+```
+
+Custom colors:
+```js live
+<PresentationCanvas centered>
+  <Button className="Component-Content" frontColor="#fff" backColor="#9059c8">Submit</Button>
+</PresentationCanvas>
+```

@@ -1,5 +1,5 @@
 import React from 'react'
-import sourceItems from '../gravity-brands/**/*.mdx'
+import sourceItems from '../src/**/*.mdx'
 
 export default function collectDocs(
   items = sourceItems

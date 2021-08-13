@@ -6,6 +6,5 @@ ports:
   - port: 2000
     onOpen: ignore
 tasks:
-  - before: ./setup-bit.sh
-    init: ./install-dependencies.sh
+  - init: yarn
     command: npm run dev

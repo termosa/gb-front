@@ -7,16 +7,14 @@ ENV PATH /app/node_modules/.bin:$PATH
 RUN apk update && apk add yarn python3 g++ make
 
 ARG BASE_API_URL
+ARG SITE_URL
 ARG CLIENT_API_URL
 ARG BUILDER_KEY
 ARG APP_ENV
-ARG BIT_TOKEN
 
-COPY /package.json /yarn.lock /.npmrc ./
+COPY /package.json /yarn.lock ./
 
-RUN echo "//node.bit.dev/:_authToken=$BIT_TOKEN" >> .npmrc \
-   && yarn \
-   && sed -i '/_authToken/d' .npmrc
+RUN yarn
 
 COPY / ./
 

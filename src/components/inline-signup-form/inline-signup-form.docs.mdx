@@ -1,0 +1,27 @@
+---
+labels: ['ui', 'react', 'form']
+description: 'Renders given content in a block'
+---
+
+import { InlineSignupForm } from './inline-signup-form'
+import PresentationCanvas from '../../helpers/presentation-canvas'
+
+Basic example:
+```js live
+<PresentationCanvas>
+  <InlineSignupForm
+    onSignup={
+      email => email.length < 10
+        ? Promise.reject('Email is too short')
+        : Promise.resolve()
+    }
+  />
+</PresentationCanvas>
+
+
+
+
+
+
+
+```

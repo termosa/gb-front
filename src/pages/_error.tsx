@@ -12,7 +12,7 @@ ErrorPage.getInitialProps = ({
   err?: { statusCode: number; message?: string; stack?: string }
 }) => {
   const statusCode = res ? res.statusCode : err ? err.statusCode : 404
-  const title = (process.env.APP_ENV !== 'production' && err?.message) || undefined
+  const title = err?.message
   const message = err
     ? (err.message && `${err.message}${err.stack ? `\n${err.stack}` : ''}`) || err
     : 'Unknown problem this time'

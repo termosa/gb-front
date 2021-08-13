@@ -32,7 +32,7 @@ export function ${names.componentName}({
 const compositionContent = (names: TemplateProps) =>
   `import React from 'react'
 import { ${names.componentName} } from './${names.fileName}'
-import PresentationCanvas from 'gravity-brands/helpers/presentation-canvas'
+import PresentationCanvas from '../../helpers/presentation-canvas'
 
 export const Basic${names.componentName} = (): React.ReactElement => (
   <PresentationCanvas>
@@ -62,7 +62,7 @@ description: 'Renders given content in a block'
 ---
 
 import { ${names.componentName} } from './${names.fileName}'
-import PresentationCanvas from 'gravity-brands/helpers/presentation-canvas'
+import PresentationCanvas from '../../helpers/presentation-canvas'
 
 Basic example:
 \`\`\`js live
