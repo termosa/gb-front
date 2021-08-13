@@ -16,23 +16,31 @@ export type InformationCard = {
 const SCardWrapper = styled.div`
   max-width: 300px;
   text-align: center;
-  margin: 0 16px 40px;
+  margin: 0 0 40px;
 `
 
 const SCardImage = styled.img`
-  width: 100%;
-  height: auto;
+  object-fit: cover;
+  margin: 0 auto 23px;
+  width: 60vw;
+  height: 60vw;
+  max-width: 300px;
+  max-height: 300px;
   display: block;
-  margin-bottom: 17px;
+
+  @media (min-width: 768px) {
+    width: 28vw;
+    height: 28vw;
+  }
 `
 
 const SCardTitle = styled.div`
-  margin: 0 0 15px;
-  padding: 0 0 12px;
+  margin: 0 auto 16px;
+  padding: 0 0 16px;
+  width: 80%;
   text-align: center;
   position: relative;
-  font: 700 32px/1.3 'Cormorant Garamond', serif;
-  white-space: nowrap;
+  font: 700 32px/1 'Cormorant Garamond', serif;
   font-variant-numeric: lining-nums;
   &:after {
     content: '';
@@ -44,6 +52,10 @@ const SCardTitle = styled.div`
     -webkit-transform: translateX(-50%);
     transform: translateX(-50%);
     position: absolute;
+  }
+
+  @media (min-width: 992px) {
+    width: 100%;
   }
 `
 

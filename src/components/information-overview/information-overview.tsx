@@ -13,16 +13,25 @@ export type InformationOverviewProps = {
 
 const SWrapper = styled.section`
   text-align: center;
-  padding: 0 30px;
   max-width: 1020px;
+  padding: 0;
   margin: 0 auto;
+
+  @media (min-width: 768px) {
+    padding: 0 30px;
+  }
 `
 
 const STitle = styled.h2`
   font: 700 40px/1.1 'Cormorant Garamond', serif;
   letter-spacing: -0.02em;
   margin: 0 auto 10px;
+  padding: 0 30px;
   text-align: center;
+
+  @media (min-width: 768px) {
+    padding: 0;
+  }
 `
 
 const PrevArrow = styled.button`
@@ -66,7 +75,7 @@ const NextArrow = styled.button`
 const SCardsWrapper = styled.div`
   padding: 10px 0 38px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
 
   * {
     box-sizing: border-box;
@@ -76,12 +85,16 @@ const SCardsWrapper = styled.div`
     opacity: 1;
     padding: 10px 0 0;
     margin: 0 auto;
-    max-width: 414px;
+    max-width: 100%;
     position: relative;
     display: block;
     box-sizing: border-box;
     user-select: none;
     touch-action: pan-y;
+
+    @media (min-width: 500px) {
+      max-width: 414px;
+    }
 
     @media (min-width: 768px) {
       max-width: 100%;
@@ -94,7 +107,11 @@ const SCardsWrapper = styled.div`
   }
 
   .slick-arrow {
-    top: 150px;
+    top: 30vw;
+
+    @media (min-width: 500px) {
+      top: 150px;
+    }
   }
 
   .slick-list {
@@ -117,10 +134,13 @@ const SCardsWrapper = styled.div`
     top: 0;
     left: 0;
     display: flex;
-    align-items: center;
     justify-content: center;
     margin-left: auto;
     margin-right: auto;
+
+    @media (min-width: 768px) {
+      width: 100% !important;
+    }
   }
 
   .slick-track:before,
@@ -158,27 +178,15 @@ const SCardsWrapper = styled.div`
 
   .slick-slide img {
     display: block;
-    width: 100%;
-    height: auto;
-    margin-bottom: 10px;
     border-style: none;
-    @media (min-width: 768px) {
-      margin-bottom: 0;
-    }
   }
 
   .slick-prev {
     left: 9px;
-    @media (min-width: 500px) {
-      left: -12px;
-    }
   }
 
   .slick-next {
     right: 9px;
-    @media (min-width: 500px) {
-      right: -12px;
-    }
   }
 `
 

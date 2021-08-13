@@ -14,8 +14,8 @@ const SFloatingCtaClosed = styled.div<{
   width: 100%;
   margin: 0 auto 48px;
   padding: 0 16px 16px;
-  transform: ${(props) => (props.isVisible ? 'translate(0, 0)' : 'translate(0, 200%)')};
-  transition: transform 0.25s ease-in-out;
+  opacity: ${(props) => (props.isVisible ? 1 : 0)};
+  transition: opacity 0.5s ease-in-out;
 
   @media (min-width: 768px) {
     width: 560px;
@@ -38,8 +38,8 @@ const SFloatingCtaOpened = styled.div<{
   width: 100%;
   margin: 0 auto 48px;
   padding: 16px;
-  transform: ${(props) => (props.isVisible ? 'translate(0, 0)' : 'translate(0, 200%)')};
-  transition: transform 0.25s ease-in-out;
+  opacity: ${(props) => (props.isVisible ? 1 : 0)};
+  transition: opacity 0.5s ease-in-out;
   background: #fff;
   border: 1px solid #000000;
   box-shadow: 0 0 24px rgba(0, 0, 0, 0.35);
@@ -141,33 +141,40 @@ const SFloatingCrossBtn = styled.div`
   cursor: pointer;
 `
 
-export const FloatingCta = (): React.ReactElement => {
+export const FloatingCta = (): React.ReactElement | null => {
   const product = useContext<ProductType | undefined>(ProductContext)
   const isProductPage = typeof window !== 'undefined' && window.location.pathname.includes('/products/')
 
   const [isFloatingCtaClosed, setFloatingCtaClosed] = useState<boolean>(true)
   const [isFloatingCtaVisible, setFloatingCtaVisible] = useState<boolean>(false)
+  const [isFloatingCtaPresent, setFloatingCtaPresent] = useState<boolean>(false)
   const [isSelectRingError, setSelectRingError] = useState<boolean>(false)
   const [currentRingSize, setCurrentRingSize] = useState<number>()
+
+  const handleScroll = () => {
+    const isPresent = JSON.parse(localStorage.getItem('isFloatingCtaVisible') || '{}')
+    setFloatingCtaVisible(isPresent)
+    setTimeout(() => setFloatingCtaPresent(isPresent), 300)
+  }
 
   useEffect(() => {
     if (!isProductPage) {
       localStorage.setItem('isFloatingCtaVisible', JSON.stringify(false))
     }
 
-    window.addEventListener('scroll', () => {
-      setFloatingCtaVisible(JSON.parse(localStorage.getItem('isFloatingCtaVisible') || '{}'))
-    })
+    window.addEventListener('scroll', handleScroll)
     return () => {
-      window.removeEventListener('scroll', () => {
-        setFloatingCtaVisible(JSON.parse(localStorage.getItem('isFloatingCtaVisible') || '{}'))
-      })
+      window.removeEventListener('scroll', handleScroll)
     }
   }, [])
 
   useEffect(() => {
     setCurrentRingSize(JSON.parse(localStorage.getItem('currentRingSize') || '{}'))
   }, [])
+
+  if (!isFloatingCtaPresent) {
+    return null
+  }
 
   return isFloatingCtaClosed ? (
     <SFloatingCtaClosed isVisible={isFloatingCtaVisible}>

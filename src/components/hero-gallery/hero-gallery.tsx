@@ -205,7 +205,7 @@ const SlideContent = styled.div`
   max-width: 480px;
   width: 90%;
   position: absolute;
-  bottom: 54px;
+  bottom: 46px;
   left: 50%;
   transform: translateX(-50%);
   margin: 0;

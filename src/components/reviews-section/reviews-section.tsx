@@ -73,8 +73,12 @@ const STitle = styled.h3`
 `
 
 const SQuote = styled.figure`
-  margin: 0 auto 32px;
+  margin: 0;
   max-width: 900px;
+
+  @media (min-width: 768px) {
+    margin: 0 auto 32px;
+  }
 `
 
 const SBlockQuote = styled.blockquote`

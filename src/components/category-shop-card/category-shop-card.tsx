@@ -14,7 +14,7 @@ export interface CategoryShopCardProps extends Omit<React.HTMLProps<HTMLDivEleme
 const SCol = styled.div`
   @media (min-width: 768px) {
     width: 46%;
-    margin: 0 16px;
+    margin: 0 auto 92px;
   }
 `
 
