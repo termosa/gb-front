@@ -14,9 +14,10 @@ const SWrapper = styled.section`
   text-align: center;
   max-width: 1020px;
   padding: 0;
-  margin: 0 auto;
+  margin: 50px auto 0;
 
   @media (min-width: 768px) {
+    margin: 76px auto 0;
     padding: 0 30px;
   }
 `
@@ -24,11 +25,12 @@ const SWrapper = styled.section`
 const STitle = styled.h2`
   font: 700 40px/1.1 'Cormorant Garamond', serif;
   letter-spacing: -0.02em;
-  margin: 0 auto 10px;
+  margin: 0 auto 15px;
   padding: 0 30px;
   text-align: center;
 
   @media (min-width: 768px) {
+    margin: 0 auto 24px;
     padding: 0;
   }
 `
@@ -72,7 +74,7 @@ const NextArrow = styled.button`
 `
 
 const SCardsWrapper = styled.div`
-  padding: 10px 0 38px;
+  padding: 0 0 38px;
   display: flex;
   justify-content: space-between;
 
@@ -82,7 +84,6 @@ const SCardsWrapper = styled.div`
 
   .slick-slider {
     opacity: 1;
-    padding: 10px 0 0;
     margin: 0 auto;
     max-width: 100%;
     position: relative;
@@ -97,7 +98,6 @@ const SCardsWrapper = styled.div`
 
     @media (min-width: 768px) {
       max-width: 100%;
-      padding: 8px 0 0;
     }
   }
 
