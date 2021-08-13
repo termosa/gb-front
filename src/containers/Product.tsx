@@ -1,12 +1,12 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
-import formatPrice from 'gravity-brands/modules/format-price'
-import getLabel from 'gravity-brands/modules/get-label'
-import { Product as ProductType, ProductImage, ProductVariant } from 'gravity-brands/modules/normalize-product'
-import { parse } from 'node-html-parser'
-import removeNewLineCharacters from 'gravity-brands/modules/remove-new-line-characters'
-import handleGalleryScrolling from 'gravity-brands/modules/handle-gallery-scrolling'
 import Slider, { Settings } from 'react-slick'
-import ProductContext from 'gravity-brands/modules/product-context'
+import { parse } from 'node-html-parser'
+import formatPrice from '../modules/format-price'
+import getLabel from '../modules/get-label'
+import { Product as ProductType, ProductImage, ProductVariant } from '../modules/normalize-product'
+import removeNewLineCharacters from '../modules/remove-new-line-characters'
+import handleGalleryScrolling from '../modules/handle-gallery-scrolling'
+import ProductContext from '../modules/product-context'
 
 type ProductDescription = {
   title: string

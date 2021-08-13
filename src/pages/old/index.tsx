@@ -1,23 +1,23 @@
 import React from 'react'
-import HeroGallery from 'gravity-brands/components/hero-gallery'
-import CategoryShopCard from 'gravity-brands/components/category-shop-card'
-import PromiseBar from 'gravity-brands/components/promise-bar'
-import InlineSignupForm from 'gravity-brands/components/inline-signup-form'
-import ReviewsSection from 'gravity-brands/components/reviews-section'
-import ShopByProductsOverview from 'gravity-brands/components/shop-by-products-overview'
-import InnerCircleExclusive, { Product } from 'gravity-brands/components/inner-circle-exclusive'
-import ProductsCarousel from 'gravity-brands/components/products-carousel'
-import homePageProps from 'src/resolvers/homePageProps'
-import signup from 'gravity-brands/modules/signup'
-import MainPageLayout from 'gravity-brands/components/main-page-layout'
-import FollowUs from 'gravity-brands/components/follow-us'
-import MostFunOverview from 'gravity-brands/components/most-fun-overview'
-import { ActiveCustomer } from 'gravity-brands/modules/load-active-customer'
+import homePageProps from '../../resolvers/homePageProps'
+import HeroGallery from '../../components/hero-gallery'
+import CategoryShopCard from '../../components/category-shop-card'
+import PromiseBar from '../../components/promise-bar'
+import InlineSignupForm from '../../components/inline-signup-form'
+import ReviewsSection from '../../components/reviews-section'
+import ShopByProductsOverview from '../../components/shop-by-products-overview'
+import InnerCircleExclusive, { Product } from '../../components/inner-circle-exclusive'
+import ProductsCarousel from '../../components/products-carousel'
+import MainPageLayout from '../../components/main-page-layout'
+import FollowUs from '../../components/follow-us'
+import MostFunOverview from '../../components/most-fun-overview'
+import signup from '../../modules/signup'
+import { Customer } from '../../modules/load-active-customer'
 
 type HomePageProps = {
   trendingProducts: null | Array<Product>
   innerCircleProduct: null | Product
-  activeCustomer: null | ActiveCustomer
+  activeCustomer: null | Customer
   context: unknown
 }
 

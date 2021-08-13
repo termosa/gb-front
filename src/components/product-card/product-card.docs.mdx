@@ -1,0 +1,54 @@
+---
+labels: ['ui', 'react']
+description: 'Renders small block with product information'
+---
+
+import { ProductCard } from './product-card'
+import PresentationCanvas from '../../helpers/presentation-canvas'
+
+Basic example:
+```js live
+<PresentationCanvas centered>
+  <ProductCard
+    style={{ width: 300 }}
+    product={{
+      product_id: 1,
+      title: 'Monsoon candle',
+      product_type: 'Candles',
+      published_at_shop: '',
+      image: {
+        id: 1, 
+        src: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/ic-img.jpg',
+        width: 40,
+        height: 40,
+      },
+      variants: [
+        {
+          title: '5',
+          variant_id: 2,
+          actual_price: 12.5,
+          compare_at_price: 10.5,
+          available: true,
+          product: 1,
+        }
+      ],
+    }}
+  />
+</PresentationCanvas>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```

@@ -1,0 +1,42 @@
+---
+labels: ['ui', 'react']
+description: 'Renders given content in a block'
+---
+
+import { SoaringModalLayout } from './soaring-modal-layout'
+import CenterLayout from '../../components/center-layout'
+import Button from '../../components/button'
+import PresentationCanvas from '../../helpers/presentation-canvas'
+
+Basic example:
+<PresentationCanvas>
+  <CenterLayout
+    style={{ height: '100px', background: 'repeating-linear-gradient(45deg, #606dbc, #606dbc 10px, #465298 10px, #465298 20px)' }}
+  >
+    <SoaringModalLayout>Content</SoaringModalLayout>
+  </CenterLayout>
+</PresentationCanvas>
+
+Stylish example:
+<PresentationCanvas>
+  <CenterLayout
+    style={{
+      minHeight: '100px',
+      padding: '1em',
+      background: 'repeating-linear-gradient(45deg, #606dbc, #606dbc 10px, #465298 10px, #465298 20px)'
+    }}
+  >
+    <SoaringModalLayout>
+      <strong style={{ fontWeight: 600, textTransform: 'uppercase', display: 'block', letterSpacing: '2px', margin: '0px 0 10px', font: '14px/1.3 "Montserrat", sans-serif' }}>MINISUBLINER</strong>
+      <h3 style={{ font: '700 48px/1 "Cormorant Garamond", serif', margin: '0 0 15px' }}>SAVOR <span>the <br /></span> MOMENTS</h3>
+      <p style={{ font: '16px/1.5 "Montserrat", sans-serif', whiteSpace: 'break-spaces', marginBottom: '20px' }}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. At eget iaculis eget eget neque.</p>
+      <Button
+        borderColor="#000"
+        backColor={'#000'}
+        frontColor={'#fff'}
+      >
+        Shop Now
+      </Button>
+    </SoaringModalLayout>
+  </CenterLayout>
+</PresentationCanvas>

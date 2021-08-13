@@ -1,10 +1,10 @@
 import { Builder, BuilderComponent } from '@builder.io/react'
 import React from 'react'
-import 'src/builder/register-components'
-import FullWidthBanner from 'gravity-brands/components/full-width-banner'
-import Collection from '@containers/Collection'
-import CollectionContext from 'gravity-brands/modules/collection-context'
-import collectionPageProps, { CollectionPageProps } from 'src/resolvers/collectionPageProps'
+import '../../builder/register-components'
+import FullWidthBanner from '../../components/full-width-banner'
+import Collection from '../../containers/Collection'
+import CollectionContext from '../../modules/collection-context'
+import collectionPageProps, { CollectionPageProps } from '../../resolvers/collectionPageProps'
 
 Builder.registerComponent(FullWidthBanner, {
   name: 'Full Width Banner',

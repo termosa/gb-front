@@ -1,12 +1,12 @@
 import React, { useRef, useState } from 'react'
-import ProductsCarousel from 'gravity-brands/components/products-carousel'
-import productPageProps, { ProductDescription } from 'src/resolvers/productPageProps'
-import MainPageLayout from 'gravity-brands/components/main-page-layout'
-import formatPrice from 'gravity-brands/modules/format-price'
-import getLabel from 'gravity-brands/modules/get-label'
-import { ProductImage } from 'gravity-brands/modules/normalize-product-image'
-import { ProductVariant } from 'gravity-brands/modules/normalize-product-variant'
-import { Product as ProductType } from 'gravity-brands/modules/normalize-product'
+import productPageProps, { ProductDescription } from '../../resolvers/productPageProps'
+import ProductsCarousel from '../../components/products-carousel'
+import MainPageLayout from '../../components/main-page-layout'
+import formatPrice from '../../modules/format-price'
+import getLabel from '../../modules/get-label'
+import { ProductImage } from '../../modules/normalize-product-image'
+import { ProductVariant } from '../../modules/normalize-product-variant'
+import { Product as ProductType } from '../../modules/normalize-product'
 
 type ProductPageProps = {
   product: ProductType
