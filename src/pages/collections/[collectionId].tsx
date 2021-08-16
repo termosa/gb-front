@@ -1,10 +1,12 @@
 import { Builder, BuilderComponent } from '@builder.io/react'
 import React from 'react'
-import '../../builder/register-components'
+import registerComponents from '../../builder/register-components'
 import FullWidthBanner from '../../components/full-width-banner'
 import Collection from '../../containers/Collection'
 import CollectionContext from '../../modules/collection-context'
 import collectionPageProps, { CollectionPageProps } from '../../resolvers/collectionPageProps'
+
+registerComponents()
 
 Builder.registerComponent(FullWidthBanner, {
   name: 'Full Width Banner',

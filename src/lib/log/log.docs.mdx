@@ -1,6 +1,13 @@
 export const meta = {
+  type: 'function',
   name: 'log',
+  description: 'Prints data to the console',
   tags: ['function'],
+  lists: {
+    arguments: [
+      { name: '...values', type: 'any', description: 'One or multiple values to print to the console' },
+    ],
+  },
 }
 
 ## Usage
@@ -8,6 +15,7 @@ export const meta = {
 ```js
 import log from '../log'
 
+// Basic example
 log('hello')
 
 // Pass any amount of values of any type

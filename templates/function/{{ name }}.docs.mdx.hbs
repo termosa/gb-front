@@ -1,6 +1,16 @@
 export const meta = {
+  type: 'function',
   name: '{{ camelCase name }}',
+  description: 'Prints greeting to the console',
   tags: ['function'],
+  lists: {
+    arguments: [
+      { name: 'name', type: 'string', description: 'Name that should be in the greeting' },
+    ],
+    returns: [
+      { name: 'message', type: 'string', description: 'Text printed to the console' },
+    ],
+  },
 }
 
 ## Usage
@@ -8,5 +18,5 @@ export const meta = {
 ```js
 import {{ camelCase name }} from './{{ name }}'
 
-{{ camelCase name }}()
+{{ camelCase name }}('World')
 ```

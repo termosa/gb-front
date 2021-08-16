@@ -1,5 +1,7 @@
 import log from '../log'
 
-export function {{ camelCase name }}(): void {
-  log('{{ camelCase name }} function is executed')
+export function {{ camelCase name }}(name: string = 'there'): void {
+  const message = `Hello ${name}!`
+  log(message)
+  return message
 }

@@ -1,0 +1,49 @@
+import HeroGallery from '.'
+
+export const meta = {
+  type: 'component',
+  name: 'HeroGallery',
+  description: 'Full width gallery with customizable content',
+  tags: ['component', 'gallery'],
+  preview: (
+    <HeroGallery
+      slides={[
+        {
+          topText: 'MINISUBLINER',
+          centerFirstText: 'SAVOR the',
+          centerSecondText: 'MOMENTS',
+          bottomText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. At eget iaculis eget eget neque.',
+          buttonText: 'SHOP NOW',
+          buttonLink: 'https://www.fragrantjewels.com/pages/inner-circle#how-it-works',
+          backgroundImg: 'http://placehold.it/300x200',
+        },
+      ]}
+    />
+  ),
+  lists: {
+    attributes: [
+      { name: 'className', type: 'classnames.Argument', description: 'One or multiple class names that will be added to the main container' },
+      { name: 'style', type: 'React.CSSProperties', description: 'Inline styles for the main container' },
+      { name: 'slides', required: true, type: 'GalleryItem[]', description: 'List of slides' },
+    ],
+  },
+  scope: { HeroGallery },
+}
+
+## Playground
+
+```jsx live
+<HeroGallery
+  slides={[
+    {
+      topText: 'MINISUBLINER',
+      centerFirstText: 'SAVOR the',
+      centerSecondText: 'MOMENTS',
+      bottomText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. At eget iaculis eget eget neque.',
+      buttonText: 'SHOP NOW',
+      buttonLink: 'https://www.fragrantjewels.com/pages/inner-circle#how-it-works',
+      backgroundImg: 'http://placehold.it/300x200',
+    },
+  ]}
+/>
+```

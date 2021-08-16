@@ -1,10 +1,10 @@
 import React from 'react'
 import { render } from '@testing-library/react'
-import {{ pascalCase name }} from '.'
+import SiteHeader from '.'
 
-describe('<{{ pascalCase name }}>', () => {
+describe('<SiteHeader>', () => {
   it('should render with the correct text', () => {
-    const { getByText } = render(<{{ pascalCase name }}>Component content</{{ pascalCase name }}>)
+    const { getByText } = render(<SiteHeader />)
     const rendered = getByText('Component content')
     expect(rendered).toBeTruthy()
   })

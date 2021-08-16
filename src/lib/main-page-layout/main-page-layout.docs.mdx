@@ -1,11 +1,11 @@
-import {{ pascalCase name }} from '.'
+import MainPageLayout from '.'
 
 export const meta = {
   type: 'component',
-  name: '{{ pascalCase name }}',
-  description: 'Styled block with custom content',
-  tags: ['component'],
-  preview: <{{ pascalCase name }}>Component content here</{{ pascalCase name }}>,
+  name: 'MainPageLayout',
+  description: 'Layout with header and footer',
+  tags: ['component', 'layout'],
+  preview: <MainPageLayout>Page content should be located here</MainPageLayout>,
   lists: {
     attributes: [
       { name: 'children', required: true, type: 'React.ReactNode', description: 'Content that will be rendered inside of the block' },
@@ -13,17 +13,11 @@ export const meta = {
       { name: 'style', type: 'React.CSSProperties', description: 'Inline styles for the main container' },
     ],
   },
-  scope: { {{ pascalCase name }} },
+  scope: { MainPageLayout },
 }
 
 ## Usage
 
 ```jsx
-<{{ pascalCase name }} className="class" style=\{{ color: 'red' }}>Put content here</{{ pascalCase name }}>
-```
-
-## Playground
-
-```jsx live
-<{{ pascalCase name }} style=\{{ color: 'red' }}>Content text</{{ pascalCase name }}>
+<MainPageLayout>Put page content here</MainPageLayout>
 ```

@@ -1,0 +1,66 @@
+import SiteHeader from '.'
+
+export const meta = {
+  type: 'component',
+  name: 'SiteHeader',
+  description: 'Styled block with custom content',
+  tags: ['component', 'layout'],
+  preview: <SiteHeader onSearch={query => alert(`Searching for ${query}...`)} userName="Kelya Torres" />,
+  lists: {
+    attributes: [
+      { name: 'className', type: 'classnames.Argument', description: 'One or multiple class names that will be added to the main container' },
+      { name: 'style', type: 'React.CSSProperties', description: 'Inline styles for the main container' },
+      { name: 'onSearch', required: true, type: '(value: string) => void', description: 'Callback that should handle products searching by passing results to searchedProducts' },
+      { name: 'userName', type: 'string', description: 'The name of the user if authorized' },
+      { name: 'searchedProducts', type: 'normalize-products-chunk.ProductsChunk', description: 'Search results collected by onSearch callback' },
+    ],
+  },
+  scope: { SiteHeader },
+}
+
+## Usage
+
+```jsx
+<SiteHeader />
+```
+
+## Playground
+
+```jsx live render
+render(() => {
+  const [results, setResults] = React.useState()
+
+  const search = () => setTimeout(() => {
+    setResults({
+      totalAmount: 5,
+      amountPerPage: 2,
+      products: [
+        {
+          product_id: 1,
+          title: 'Random Bath Bomb',
+          variants: [],
+          product_type: 'bath bomb',
+          published_at_shop: '2020-04-03T06:33:09-07:00',
+          template: 'Default',
+        },
+        {
+          product_id: 2,
+          title: 'Another Bomb',
+          variants: [],
+          product_type: 'bath bomb',
+          published_at_shop: '2020-04-03T06:33:09-07:00',
+          template: 'Default',
+        },
+      ],
+    })
+  }, 1e3)
+
+  return (
+    <SiteHeader
+      onSearch={search}
+      userName="Keyla Torres"
+      searchedProducts={results}
+    />
+  )
+})
+```

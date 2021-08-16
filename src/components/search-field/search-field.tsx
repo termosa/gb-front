@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react'
+import React, { useRef, useCallback, useState } from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
 import usePopper from '../../hooks/use-popper'
@@ -11,7 +11,7 @@ export type SearchFieldProps = {
   searchedProducts?: ProductsChunk
 }
 
-const SWrapper = styled.div`
+const SWrapper = styled.form`
   display: flex;
   align-items: center;
   width: 100%;
@@ -65,19 +65,16 @@ const SSearchedProductLink = styled.a<{ underline?: boolean }>`
 `
 
 export function SearchField({ className, onSubmit, searchedProducts }: SearchFieldProps): React.ReactElement | null {
-  const [value, setValue] = useState<string>('')
+  const searchInputRef = useRef<HTMLInputElement>(null)
 
-  const handleChange = useCallback(
-    (e: React.SyntheticEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-      setValue(e.currentTarget.value)
+  const handleSubmit = useCallback(
+    (event: Event) => {
+      event.preventDefault()
+      setIsSearchedProductsDropdownVisible(true)
+      if (searchInputRef.current) onSubmit(searchInputRef.current.value)
     },
-    [setValue]
+    [onSubmit]
   )
-
-  const handleSubmit = useCallback(() => {
-    setIsSearchedProductsDropdownVisible(true)
-    onSubmit(value)
-  }, [onSubmit])
 
   const [isSearchedProductsDropdownVisible, setIsSearchedProductsDropdownVisible] = useState(true)
 
@@ -90,9 +87,9 @@ export function SearchField({ className, onSubmit, searchedProducts }: SearchFie
   })
 
   return (
-    <SWrapper className={cn('SearchField', className)} ref={setReferenceElement}>
-      <SField onChange={handleChange} onSubmit={handleSubmit} />
-      <SButton onClick={handleSubmit}>
+    <SWrapper className={cn('SearchField', className)} ref={setReferenceElement} onSubmit={handleSubmit}>
+      <SField ref={searchInputRef} required />
+      <SButton type="submit">
         <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
             d="M23 23L16.26 15.55M18.58 9.79C18.58 14.6446 14.6446 18.58 9.79001 18.58C4.93543 18.58 1 14.6446 1 9.79C1 4.93542 4.93543 1 9.79001 1C14.6446 1 18.58 4.93542 18.58 9.79Z"
@@ -115,7 +112,7 @@ export function SearchField({ className, onSubmit, searchedProducts }: SearchFie
               {product.title}
             </SSearchedProductLink>
           ))}
-          <SSearchedProductLink href={`/search?type=product&q=${value}`} underline>
+          <SSearchedProductLink href={`/search?type=product&q=${searchInputRef.current?.value || ''}`} underline>
             See all results ({searchedProducts?.totalAmount})
           </SSearchedProductLink>
         </SSearchedProducts>

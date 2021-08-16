@@ -6,12 +6,29 @@ import highlightTheme from 'prism-react-renderer/themes/vsLight'
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live'
 import collectDocsModules from './collect-docs-modules'
 
+const capitalize = (text: string) => `${text[0].toUpperCase()}${text.slice(1)}`
+
 export type Module = {
   name: string
   component: React.FC
 }
 
-export type MDXMeta = { name?: string; tags?: string[]; scope?: Record<string, React.FC> }
+export type MDXMeta = {
+  name?: string
+  type?: 'variable' | 'function' | 'component' | string
+  description?: string
+  tags?: string[]
+  scope?: Record<string, React.FC>
+  preview?: React.ReactNode
+  lists?: {
+    [name: string]: Array<{
+      name?: string
+      type?: string
+      description?: string | React.ReactNode
+      required?: boolean
+    }>
+  }
+}
 
 const MetaContext = React.createContext<MDXMeta | undefined>({})
 
@@ -79,9 +96,10 @@ const components = {
           <header style={{ background: 'whitesmoke', padding: '.5em 2em 1em' }}>
             {meta.name && (
               <h1 style={{ margin: 0 }}>
-                {meta.name} {meta.tags?.length ? <small style={{ color: 'gray' }}>{meta.tags[0]}</small> : null}
+                {meta.name} {meta.type ? <small style={{ color: 'gray' }}>{meta.type}</small> : null}
               </h1>
             )}
+
             {meta.tags?.reduce<Array<string | React.ReactNode>>(
               (elements, tag, index) =>
                 elements.concat([
@@ -94,7 +112,48 @@ const components = {
             )}
           </header>
         )}
-        <div style={{ padding: '2em 1em', flex: '1 0 auto', overflow: 'auto' }}>{children}</div>
+        <div style={{ flex: '1 0 auto', padding: '1em 1em 2em', overflow: 'auto' }}>
+          {meta && (
+            <div>
+              {meta.description && <p>{meta.description}</p>}
+
+              {meta.preview}
+
+              {meta.lists &&
+                Object.entries(meta.lists).map(([listName, values]) => (
+                  <div key={listName}>
+                    <h2>{capitalize(listName)}</h2>
+                    <table style={{ width: '100%', borderCollapse: 'collapse', boxSizing: 'border-box' }}>
+                      <thead>
+                        <tr>
+                          <th style={{ border: '1px solid black', padding: '.2em .3em' }}>Name</th>
+                          <th style={{ border: '1px solid black', padding: '.2em .3em' }}>Type</th>
+                          <th style={{ border: '1px solid black', padding: '.2em .3em' }}>Description</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {values.map((value) => (
+                          <tr key={value.name || value.description}>
+                            <td style={{ border: '1px solid black', padding: '.2em .3em' }}>
+                              <code style={{ fontWeight: 'bold' }}>
+                                {value.name}
+                                {value.required ? '*' : ''}
+                              </code>
+                            </td>
+                            <td style={{ border: '1px solid black', padding: '.2em .3em' }}>
+                              {value.type && <code>{value.type}</code>}
+                            </td>
+                            <td style={{ border: '1px solid black', padding: '.2em .3em' }}>{value.description}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                ))}
+            </div>
+          )}
+          {children}
+        </div>
       </div>
     </MetaContext.Provider>
   ),
@@ -119,7 +178,7 @@ const components = {
           theme={highlightTheme}
         >
           <LiveEditor />
-          <LivePreview />
+          <LivePreview style={{ whiteSpace: 'break-spaces' }} />
           <LiveError />
         </LiveProvider>
       )
@@ -174,7 +233,7 @@ export default function Documentation({
           boxSizing: 'border-box',
         }}
       >
-        <h2>List</h2>
+        <h2>Library</h2>
         {sorted.map((item) => (
           <p
             key={item.name}

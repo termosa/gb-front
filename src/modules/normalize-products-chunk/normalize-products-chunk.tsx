@@ -1,5 +1,7 @@
 import normalizeProduct, { ServerProduct, Product } from '../normalize-product'
 
+export type { Product }
+
 export type ServerProductsChunk = {
   links: {
     next: null | string

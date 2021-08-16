@@ -1,2 +1,2 @@
-export { SocialLinks as Social } from './social-links'
-export type { SocialLinksProps as SocialProps } from './social-links'
+export * from './social-links'
+export { SocialLinks as default } from './social-links'

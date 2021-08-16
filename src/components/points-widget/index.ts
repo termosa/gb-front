@@ -1,2 +1,2 @@
-export { PointsWidget } from './points-widget';
-export type { PointsWidgetProps } from './points-widget';
+export * from './points-widget'
+export { PointsWidget as default } from './points-widget'

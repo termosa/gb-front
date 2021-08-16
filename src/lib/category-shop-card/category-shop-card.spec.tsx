@@ -1,10 +1,10 @@
 import React from 'react'
 import { render } from '@testing-library/react'
-import {{ pascalCase name }} from '.'
+import CategoryShopCard from '.'
 
-describe('<{{ pascalCase name }}>', () => {
+describe('<CategoryShopCard>', () => {
   it('should render with the correct text', () => {
-    const { getByText } = render(<{{ pascalCase name }}>Component content</{{ pascalCase name }}>)
+    const { getByText } = render(<CategoryShopCard>Component content</CategoryShopCard>)
     const rendered = getByText('Component content')
     expect(rendered).toBeTruthy()
   })

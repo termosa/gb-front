@@ -1,12 +1,14 @@
 import React from 'react'
 import { Builder, BuilderComponent } from '@builder.io/react'
 import productPageProps, { ProductPageProps } from '../../resolvers/productPageProps'
-import '../../builder/register-components'
+import registerComponents from '../../builder/register-components'
 import FjWild from '../../components/fj-wild'
 import PotentialProducts from '../../containers/PotentianProducts'
 import RecommendedProducts from '../../containers/RecommendedProducts'
 import Product from '../../containers/Product'
 import ProductContext from '../../modules/product-context'
+
+registerComponents()
 
 Builder.registerComponent(FjWild, {
   name: 'FJ Wild',

@@ -1,2 +1,2 @@
-export { AcceptedPayments } from './accepted-payments'
-export type { AcceptedPaymentsProps } from './accepted-payments'
+export * from './accepted-payments'
+export { AcceptedPayments as default } from './accepted-payments'

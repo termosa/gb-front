@@ -1,6 +1,16 @@
 // https://www.npmjs.com/package/plop
 
-const testKebabCase = input => /^([a-z]|([a-z]+\-?)+[a-z])$/.test(input) || 'kebab-case is required'
+function withModifier(regExp, errorMessage) {
+  const validator = input => {
+    const result = this(input)
+    if (result === false || typeof result === 'string') return result
+    return regExp.test(input) || errorMessage
+  }
+  return Object.assign(validator, { with: withModifier })
+}
+
+const testName = input => /^([a-z]|([a-z]+\-?)+[a-z])$/.test(input) || 'kebab-case is required'
+testName.with = withModifier
 
 /**
  * 
@@ -14,7 +24,7 @@ module.exports = plop => {
         type: 'input',
         name: 'name',
         message: 'name of the component module',
-        validate: testKebabCase
+        validate: testName
       },
     ],
     actions: [
@@ -27,6 +37,26 @@ module.exports = plop => {
     ],
   })
 
+  plop.setGenerator('hook', {
+    description: 'React hook module',
+    prompts: [
+      {
+        type: 'input',
+        name: 'name',
+        message: 'name of the hook module',
+        validate: testName.with(/^use-/, 'should start with "use-"')
+      },
+    ],
+    actions: [
+      {
+        type: 'addMany',
+        destination: 'src/lib/{{name}}',
+        base: 'templates/hook',
+        templateFiles: 'templates/hook/*.hbs',
+      },
+    ],
+  })
+
   plop.setGenerator('function', {
     description: 'simply, the function',
     prompts: [
@@ -34,7 +64,7 @@ module.exports = plop => {
         type: 'input',
         name: 'name',
         message: 'name of the function module',
-        validate: testKebabCase
+        validate: testName
       },
     ],
     actions: [
@@ -54,7 +84,7 @@ module.exports = plop => {
         type: 'input',
         name: 'name',
         message: 'name of the variable module',
-        validate: testKebabCase
+        validate: testName
       },
     ],
     actions: [
