@@ -13,9 +13,9 @@ export type ShopByProductsOverviewProps = {
 
 const SSection = styled.section`
   font: 12px/1.3 'Montserrat', sans-serif;
-  padding: 52px 0 70px;
+  padding: 52px 0 66px;
   @media (min-width: 768px) {
-    padding: 82px 0 97px;
+    padding: 82px 0 60px;
   }
 `
 
@@ -30,7 +30,7 @@ const SContainer = styled.div`
 `
 
 const SCardsBlockTitle = styled.h2`
-  font: 700 40px/1 'Cormorant Garamond', serif;
+  font: 700 40px/1.2 'Cormorant Garamond', serif;
   letter-spacing: -0.02em;
   text-align: center;
   margin: 0 auto 20px;
@@ -42,7 +42,7 @@ const PrevArrow = styled.button`
   left: 1px;
   font-size: 0;
   z-index: 13;
-  top: 47%;
+  top: 142px !important;
   line-height: 1;
   position: absolute;
   width: 17px;
@@ -61,7 +61,7 @@ const NextArrow = styled.button`
   right: 1px;
   font-size: 0;
   z-index: 13;
-  top: 47%;
+  top: 142px !important;
   line-height: 1;
   position: absolute;
   width: 17px;
@@ -111,38 +111,47 @@ const SliderWrapper = styled.div`
     padding: 0;
   }
 
-  .slick-slider .slick-track {
-    padding: 0 0 16px;
-    @media (min-width: 768px) {
-      padding: 0 0 28px;
-    }
-  }
-
   .slick-track {
     position: relative;
     top: 0;
     left: 0;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
     margin-left: auto;
     margin-right: auto;
+
+    @media (min-width: 768px) {
+      flex-wrap: wrap;
+      width: 100% !important;
+    }
   }
 
   .slick-track:before,
   .slick-track:after {
     display: table;
     content: '';
+
+    @media (min-width: 768px) {
+      display: none;
+    }
   }
 
-  .slick-track: after {
+  .slick-track:after {
     clear: both;
+  }
+
+  .slick-track > .slick-slide {
+    margin: 0 25px 20px;
+    @media (min-width: 768px) {
+      margin: 0 16px 55px;
+    }
   }
 
   .slick-slide {
     outline: none;
     position: relative;
-    margin: 0 0 50px;
+    margin: 0 0 10px;
     height: 100%;
     min-height: 1px;
     @media (min-width: 768px) {
@@ -150,27 +159,10 @@ const SliderWrapper = styled.div`
     }
   }
 
-  .slick-slider .slick-slide {
-    margin: 0 25px;
-    @media (min-width: 768px) {
-      margin: 0 16px;
-    }
-  }
-
   .slick-initialized .slick-slide {
     display: flex;
     justify-content: center;
-  }
-
-  .slick-slide img {
-    display: block;
-    width: 100%;
-    height: auto;
-    margin-bottom: 10px;
-    border-style: none;
-    @media (min-width: 768px) {
-      margin-bottom: 0;
-    }
+    width: auto !important;
   }
 
   .slick-prev {

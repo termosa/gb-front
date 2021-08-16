@@ -254,7 +254,7 @@ export function ReviewsSection({ quote, author, className }: ReviewsSectionProps
     <SReviewSection className={cn('ReviewsSection', className)}>
       <SContainer>
         <SStars>
-          {[...Array(5)].map((_) => (
+          {[...Array(5)].map(() => (
             <SStar>
               <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
