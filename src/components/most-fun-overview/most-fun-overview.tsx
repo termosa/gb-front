@@ -156,14 +156,20 @@ const StyledSlider = styled(Slider)`
   }
 
   .slick-prev {
-    left: 9px;
+    left: -2px;
+    @media (min-width: 375px) {
+      left: 9px;
+    }
     @media (min-width: 420px) {
       left: -12px;
     }
   }
 
   .slick-next {
-    right: 9px;
+    right: -2px;
+    @media (min-width: 375px) {
+      right: 9px;
+    }
     @media (min-width: 420px) {
       right: -12px;
     }

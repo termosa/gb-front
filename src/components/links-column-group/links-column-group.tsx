@@ -17,11 +17,14 @@ export type LinksColumnGroupProps = {
 const name = 'LinksColumnGroup'
 
 const Group = styled.div<{ mobile?: boolean }>`
-  padding: 0 10px;
+  padding: 0;
   color: #fff;
   font: 400 14px/1.5 'Montserrat', sans-serif;
   letter-spacing: 0.05em;
 
+  @media (min-width: 375px) {
+    padding: 0 10px;
+  }
   ${(props) =>
     props.mobile
       ? css`

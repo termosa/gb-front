@@ -7,9 +7,13 @@ export type AcceptedPaymentsProps = {
 }
 
 const AcceptedPaymentsContainer = styled.div`
-  padding: 0 10px;
+  padding: 0;
   color: #fff;
   font: 12px/1.3 'Montserrat', sans-serif;
+
+  @media (min-width: 375px) {
+    padding: 0 10px;
+  }
 
   @media (min-width: 992px) {
     margin-bottom: 20px;
@@ -37,6 +41,7 @@ const AcceptedPaymentsList = styled.div`
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  justify-content: space-between;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
@@ -51,6 +56,7 @@ const AcceptedPaymentsList = styled.div`
 
   @media (min-width: 375px) {
     margin: 0 -5px;
+    justify-content: initial;
 
     li {
       margin: 0 5px 20px;
