@@ -22,11 +22,16 @@ const SLayout = styled.div`
 
 const SLayoutImage = styled.img`
   display: block;
-  width: 284px;
-  height: 284px;
+  width: 232px;
+  height: 232px;
   margin-bottom: 0;
   border-style: none;
   object-fit: cover;
+
+  @media (min-width: 420px) {
+    width: 284px;
+    height: 284px;
+  }
 `
 
 const SButtonWrapper = styled.div`

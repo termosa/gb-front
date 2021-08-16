@@ -42,7 +42,7 @@ const PrevArrow = styled.button`
   left: 1px;
   font-size: 0;
   z-index: 13;
-  top: 142px !important;
+  top: 116px !important;
   line-height: 1;
   position: absolute;
   width: 17px;
@@ -53,6 +53,10 @@ const PrevArrow = styled.button`
   background-color: transparent;
   cursor: pointer;
   margin: 0;
+
+  @media (min-width: 420px) {
+    top: 142px !important;
+  }
 `
 
 const NextArrow = styled.button`
@@ -61,7 +65,7 @@ const NextArrow = styled.button`
   right: 1px;
   font-size: 0;
   z-index: 13;
-  top: 142px !important;
+  top: 116px !important;
   line-height: 1;
   position: absolute;
   width: 17px;
@@ -72,6 +76,10 @@ const NextArrow = styled.button`
   background-color: transparent;
   cursor: pointer;
   margin: 0;
+
+  @media (min-width: 420px) {
+    top: 142px !important;
+  }
 `
 
 const SliderWrapper = styled.div`
@@ -117,13 +125,14 @@ const SliderWrapper = styled.div`
     left: 0;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
     margin-left: auto;
     margin-right: auto;
 
     @media (min-width: 768px) {
       flex-wrap: wrap;
       width: 100% !important;
+      justify-content: space-evenly;
     }
   }
 
@@ -142,7 +151,7 @@ const SliderWrapper = styled.div`
   }
 
   .slick-track > .slick-slide {
-    margin: 0 25px 20px;
+    margin: 0 0 20px;
     @media (min-width: 768px) {
       margin: 0 16px 55px;
     }
@@ -162,18 +171,26 @@ const SliderWrapper = styled.div`
   .slick-initialized .slick-slide {
     display: flex;
     justify-content: center;
-    width: auto !important;
+    @media (min-width: 768px) {
+      width: auto !important;
+    }
   }
 
   .slick-prev {
-    left: 9px;
+    left: -2px;
+    @media (min-width: 375px) {
+      left: 9px;
+    }
     @media (min-width: 500px) {
       left: -12px;
     }
   }
 
   .slick-next {
-    right: 9px;
+    right: -2px;
+    @media (min-width: 375px) {
+      right: 9px;
+    }
     @media (min-width: 500px) {
       right: -12px;
     }
