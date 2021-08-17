@@ -4,7 +4,6 @@ import registerSiteHeader from '../lib/site-header/site-header.builder'
 import registerSiteFooter from '../lib/site-footer/site-footer.builder'
 import registerHeroGallery from '../lib/hero-gallery/hero-gallery.builder'
 import registerInformationOverview from '../lib/information-overview/information-overview.builder'
-import registerCategoryShopCard from '../lib/category-shop-card/category-shop-card.builder'
 import registerMainPageLayout from '../lib/main-page-layout/main-page-layout.builder'
 
 import ReviewsSection from '../components/reviews-section'
@@ -16,14 +15,15 @@ import SiteSection from '../components/site-section'
 import InnerCircleExclusiveContainer from '../containers/InnerCircleExclusive'
 import ProductCarouselContainer from '../containers/ProductCarousel'
 import YotpoComments from '../components/yotpo-comments'
+import registerCategoryShopOverview from '../lib/category-shop-overview/category-shop-overview.builder'
 
 export default function registerComponents(): void {
   registerSiteHeader()
   registerSiteFooter()
   registerHeroGallery()
   registerInformationOverview()
-  registerCategoryShopCard()
   registerMainPageLayout()
+  registerCategoryShopOverview()
 
   Builder.registerComponent(ReviewsSection, {
     name: 'Social Reviews',
@@ -55,7 +55,7 @@ export default function registerComponents(): void {
   })
 
   Builder.registerComponent(ShopByProductsOverview, {
-    name: 'Image Block',
+    name: 'Image Block x3',
     inputs: [
       {
         name: 'products',
@@ -67,16 +67,21 @@ export default function registerComponents(): void {
             defaultValue: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/shop-by-product-img-1.jpg',
           },
           {
+            name: 'buttonText',
+            type: 'string',
+            defaultValue: 'Button Text',
+          },
+          {
             name: 'buttonLink',
             type: 'string',
             defaultValue: 'https://www.fragrantjewels.com/pages/inner-circle#how-it-works',
           },
-          {
-            name: 'title',
-            type: 'string',
-            defaultValue: 'Title',
-          },
         ],
+      },
+      {
+        name: 'title',
+        type: 'string',
+        defaultValue: 'Shop by Product',
       },
     ],
   })

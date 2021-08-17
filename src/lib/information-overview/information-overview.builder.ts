@@ -3,7 +3,7 @@ import InformationOverview from '.'
 
 export default function registerInformationOverview(): void {
   Builder.registerComponent(InformationOverview, {
-    name: 'Information overview',
+    name: 'Content Blocks x3',
     inputs: [
       {
         name: 'title',

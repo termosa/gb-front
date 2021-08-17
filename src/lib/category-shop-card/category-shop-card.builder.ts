@@ -3,7 +3,7 @@ import CategoryShopCard from '.'
 
 export default function registerCategoryShopCard(): void {
   Builder.registerComponent(CategoryShopCard, {
-    name: 'Category shop card',
+    name: 'Category Shop Card',
     inputs: [
       {
         name: 'image',

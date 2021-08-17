@@ -9,6 +9,7 @@ export type ShopByProductsOverviewProps = {
    * cards to be rendered inside component
    */
   products: ProductDetails[]
+  title: string
 }
 
 const SSection = styled.section`
@@ -197,7 +198,7 @@ const SliderWrapper = styled.div`
   }
 `
 
-export function ShopByProductsOverview({ products }: ShopByProductsOverviewProps): React.ReactElement {
+export function ShopByProductsOverview({ products, title }: ShopByProductsOverviewProps): React.ReactElement {
   const settings: Settings = {
     slidesToShow: 3,
     slidesToScroll: 1,
@@ -220,7 +221,7 @@ export function ShopByProductsOverview({ products }: ShopByProductsOverviewProps
   return (
     <SSection>
       <SContainer>
-        <SCardsBlockTitle>Shop by Product</SCardsBlockTitle>
+        <SCardsBlockTitle>{title}</SCardsBlockTitle>
         <SliderWrapper>
           <Slider {...settings}>
             {products &&

@@ -22,7 +22,7 @@ const SLayout = styled.div`
 
 const SLayoutImage = styled.img`
   width: 463px;
-  height: 463px;
+  height: 463px !important;
   display: block;
 `
 

@@ -6,8 +6,8 @@ import Button from '../button'
 export interface ShopByProductCardProps extends Omit<React.HTMLProps<HTMLDivElement>, 'className'> {
   className?: ClassName
   image: string
+  buttonText: string
   buttonLink: string
-  title: string
 }
 
 const SLayout = styled.div`
@@ -23,7 +23,7 @@ const SLayout = styled.div`
 const SLayoutImage = styled.img`
   display: block;
   width: 232px;
-  height: 232px;
+  height: 232px !important;
   margin-bottom: 0;
   border-style: none;
   object-fit: cover;
@@ -50,13 +50,18 @@ const SButtonLink = styled.a`
   color: inherit;
 `
 
-export function ShopByProductCard({ className, image, buttonLink, title }: ShopByProductCardProps): React.ReactElement {
+export function ShopByProductCard({
+  className,
+  image,
+  buttonText,
+  buttonLink,
+}: ShopByProductCardProps): React.ReactElement {
   return (
     <SLayout className={cn('ShopByProductCard', className)}>
       <SLayoutImage src={image} />
       <SButtonWrapper>
         <Button backColor={'#000'} frontColor={'#fff'}>
-          <SButtonLink href={buttonLink}>{title}</SButtonLink>
+          <SButtonLink href={buttonLink}>{buttonText}</SButtonLink>
         </Button>
       </SButtonWrapper>
     </SLayout>
