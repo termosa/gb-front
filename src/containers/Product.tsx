@@ -7,7 +7,7 @@ import { Product as ProductType, ProductImage, ProductVariant } from '../modules
 import removeNewLineCharacters from '../modules/remove-new-line-characters'
 import handleGalleryScrolling from '../modules/handle-gallery-scrolling'
 import ProductContext from '../modules/product-context'
-import addItemToCart from '../lib/add-item-to-cart'
+import useCart from '../lib/use-cart'
 
 type ProductDescription = {
   title: string
@@ -16,6 +16,7 @@ type ProductDescription = {
 
 const Product = (): null | React.ReactElement => {
   const product = useContext<ProductType | undefined>(ProductContext)
+  const cart = useCart()
 
   const addToCartRef = useRef<HTMLButtonElement>(null)
   const [currentRingSize, setCurrentRingSize] = useState<number | null>(null)
@@ -877,7 +878,7 @@ const Product = (): null | React.ReactElement => {
                       localStorage.setItem('selectRingError', JSON.stringify(true))
                       setSelectRingError(true)
                     } else {
-                      addItemToCart(currentRingSize)
+                      cart.addItem(currentRingSize)
                     }
                   }}
                 >

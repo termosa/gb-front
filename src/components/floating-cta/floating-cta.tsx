@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import addItemToCart from '../../lib/add-item-to-cart'
+import useCart from '../../lib/use-cart'
 import styled from 'styled-components'
 import { Product as ProductType, ProductVariant } from '../../modules/normalize-product'
 import ProductContext from '../../modules/product-context'
@@ -143,6 +143,7 @@ const SFloatingCrossBtn = styled.div`
 `
 
 export const FloatingCta = (): React.ReactElement | null => {
+  const cart = useCart(false)
   const product = useContext<ProductType | undefined>(ProductContext)
   const isProductPage = typeof window !== 'undefined' && window.location.pathname.includes('/products/')
 
@@ -212,7 +213,7 @@ export const FloatingCta = (): React.ReactElement | null => {
             localStorage.setItem('selectRingError', JSON.stringify(true))
             setSelectRingError(true)
           } else {
-            addItemToCart(currentRingSize)
+            cart.addItem(currentRingSize)
           }
         }}
       >
