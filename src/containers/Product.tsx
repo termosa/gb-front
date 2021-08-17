@@ -51,13 +51,13 @@ const Product = (): null | React.ReactElement => {
         return
       }
       const window = e.currentTarget
-      const isProductInfoScrollable = productInfoPosition.bottom >= window.innerHeight
+      const isUpScroll = yPosition > window.scrollY && infoDistanceFromTop < 183
+      const isDownScroll = yPosition < window.scrollY && productInfoPosition.bottom >= window.innerHeight
       setYPosition(window.scrollY)
-      if (!isProductInfoScrollable) {
+      if (!isUpScroll && !isDownScroll) {
         return
       }
-      const distance = yPosition > window.scrollY ? infoDistanceFromTop - 53 : infoDistanceFromTop + 53
-      console.log('L57', distance)
+      const distance = isDownScroll ? infoDistanceFromTop - 53 : infoDistanceFromTop + 53
       setInfoDistanceFromTop(distance)
     },
     [yPosition]
