@@ -24,20 +24,6 @@
       "dom",
       "es2017"
     ],
-    "paths": {
-      "@components/*": [
-        "./src/components/*"
-      ],
-      "@containers/*": [
-        "./src/containers/*"
-      ],
-      "@common/*": [
-        "./src/common/*"
-      ],
-      "@store/*": [
-        "./src/store/*"
-      ]
-    },
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "resolveJsonModule": true,

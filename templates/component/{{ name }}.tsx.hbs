@@ -1,0 +1,23 @@
+import React from 'react'
+import cn, { Argument as ClassName } from 'classnames'
+import styled from 'styled-components'
+
+const Wrapper = styled.div`
+  text-align: center;
+  background: pink;
+  padding: 2em;
+`
+
+export type {{ pascalCase name }}Props = {
+  children: React.ReactNode
+  className?: ClassName
+  style?: React.CSSProperties
+}
+
+export function {{ pascalCase name }}({ children, className, style }: {{ pascalCase name }}Props): React.ReactElement {
+  return (
+    <Wrapper className={cn(className)} style={style}>
+      {children}
+    </Wrapper>
+  )
+}

@@ -1,4 +1,4 @@
-import { resolveBuilderContent } from 'src/builder/resolve-builder-content'
+import { resolveBuilderContent } from '../builder/resolve-builder-content'
 
 export default (modelName: string, revalidate: number) => async () => {
   const page = await resolveBuilderContent(modelName, {

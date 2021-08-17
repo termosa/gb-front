@@ -1,0 +1,37 @@
+export const meta = {
+  type: 'hook',
+  name: 'useCart',
+  description: 'Use and update cart items',
+  tags: ['hook', 'cart'],
+  lists: {
+    arguments: [
+      { name: 'useData', type: 'boolean', description: 'Should data be loaded (default is true)' },
+    ],
+    returns: [
+      { name: 'cart', type: 'object' },
+      { name: 'cart.status', type: 'use-defer.Status', description: 'Request status' },
+      { name: 'cart.token', type: 'undefined | string', description: 'Cart unique identifier' },
+      { name: 'cart.items', type: 'Array<CartItem>', description: 'List of items added to the cart' },
+      { name: 'cart.itemCount', type: 'number', description: 'Total number of items in the cart' },
+      { name: 'cart.totalPrice', type: 'number', description: 'Total price of items in the cart' },
+      { name: 'cart.error', type: 'undefined | string', description: 'Error that happened during cart load' },
+      { name: 'cart.reload', type: '() => Promise<void>', description: 'Reloads cart information' },
+      { name: 'cart.addItem', type: '(variantId: number, quantity?: number) => Promise<void>', description: 'Adds item to the cart' },
+    ],
+  },
+}
+
+## Usage
+
+```jsx
+const Component = () => {
+  const { items } = useCart()
+  return (
+    <div>
+      {items.map(item => (
+        <p>{item.title} x{item.quantity}</p>
+      ))}
+    </div>
+  )
+}
+```

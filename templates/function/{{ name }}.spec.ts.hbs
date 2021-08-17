@@ -1,0 +1,27 @@
+import {{ camelCase name }} from '.'
+import log from '../log'
+jest.mock('../log')
+
+describe('{{ camelCase name }}()', () => {
+  beforeEach(() => {
+    log.mockReset()
+  })
+
+  it('should print greeting to the console', () => {
+    {{ camelCase name }}('World')
+    expect(log).toBeCalledWith('Hello World!')
+  })
+
+  it('should print default greeting to the console', () => {
+    {{ camelCase name }}()
+    expect(log).toBeCalledWith('Hello there!')
+  })
+
+  it('should return greeting', () => {
+    expect({{ camelCase name }}('World')).toBe('Hello World!')
+  })
+
+  it('should return default greeting', () => {
+    expect({{ camelCase name }}()).toBe('Hello there!')
+  })
+})

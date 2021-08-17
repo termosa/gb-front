@@ -1,18 +1,26 @@
 import React, { useEffect, useState } from 'react'
-import loadProduct, { Product } from 'gravity-brands/modules/load-product'
-import InnerCircleExclusive from 'gravity-brands/components/inner-circle-exclusive'
+import loadProduct, { Product } from '../modules/load-product'
+import InnerCircleExclusive from '../components/inner-circle-exclusive'
+import useCart from 'src/lib/use-cart'
 
 type InnerCircleExclusiveProps = {
   productId: number
-  frontImage: string
-  sideImage: string
+  slideImages: { slide: string }[]
+  title: string
+  subTitle: string
+  topButtonText: string
+  buttonLink: string
 }
 
 const InnerCircleExclusiveContainer = ({
   productId,
-  frontImage,
-  sideImage,
+  slideImages,
+  title,
+  subTitle,
+  topButtonText,
+  buttonLink,
 }: InnerCircleExclusiveProps): React.ReactElement | null => {
+  const cart = useCart()
   const [product, setProduct] = useState<Product>()
 
   useEffect(() => {
@@ -24,11 +32,13 @@ const InnerCircleExclusiveContainer = ({
   return product ? (
     <InnerCircleExclusive
       product={product}
-      title=""
-      frontImage={frontImage}
-      slideImages={[sideImage]}
+      title={title}
+      buttonLink={buttonLink}
+      slideImages={slideImages.map((s) => s.slide)}
+      subTitle={subTitle}
+      topButtonText={topButtonText}
       onReserve={(variant) => {
-        console.log(variant)
+        cart.addItem(variant.variant_id)
       }}
     />
   ) : null

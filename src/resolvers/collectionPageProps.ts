@@ -1,7 +1,7 @@
 import { GetServerSidePropsContext } from 'next'
-import resolvePageProps from 'gravity-brands/modules/resolve-page-props'
-import loadCollection, { Collection } from 'gravity-brands/modules/load-collection'
-import loadModelTemplate, { ModelTemplate } from 'src/builder/load-model-template'
+import resolvePageProps from '../modules/resolve-page-props'
+import loadCollection, { Collection } from '../modules/load-collection'
+import loadModelTemplate, { ModelTemplate } from '../builder/load-model-template'
 
 export type CollectionPageProps = {
   collection: null | Collection

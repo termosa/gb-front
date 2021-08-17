@@ -1,0 +1,20 @@
+export const meta = {
+  type: 'variable',
+  name: '{{ camelCase name }}',
+  description: 'Some value',
+  tags: ['variable'],
+  lists: {
+    properties: [
+      { name: 'toUpperCase', type: '() => string', description: 'Turns all characters in the string to upper case' },
+      { name: 'toLowerCase', type: '() => string', description: 'Turns all characters in the string to lower case' },
+    ],
+  },
+}
+
+## Usage
+
+```js
+import {{ camelCase name }} from './{{ name }}'
+
+console.log({{ camelCase name }})
+```

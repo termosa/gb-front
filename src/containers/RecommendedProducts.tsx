@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { Product as ProductType } from 'gravity-brands/modules/load-product'
-import loadCollection from 'gravity-brands/modules/load-collection'
-import ProductsCarousel from 'gravity-brands/components/products-carousel'
+import ProductsCarousel from '../components/products-carousel'
+import loadCollection from '../modules/load-collection'
+import { Product as ProductType } from '../modules/load-product'
 import { RECOMMENDED_PRODUCTS_COLLECTION_ID } from '../settings/ids'
 
 const RecommendedProducts = (): null | React.ReactElement => {

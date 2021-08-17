@@ -1,0 +1,32 @@
+export const meta = {
+  type: 'function',
+  name: 'log',
+  description: 'Prints data to the console',
+  tags: ['function'],
+  lists: {
+    arguments: [
+      { name: '...values', type: 'any', description: 'One or multiple values to print to the console' },
+    ],
+  },
+}
+
+## Usage
+
+```js
+import log from '../log'
+
+// Basic example
+log('hello')
+
+// Pass any amount of values of any type
+log(42, { status: 'ok' }, [null])
+
+// Turn on detailed log to print time next to each log
+log.enableDetails()
+log('start loading')
+loadData().then(() => log('loading is completed'))
+
+// Turn off displaying logs
+log.disable()
+log('whatever') // this won't be shown in the console
+```

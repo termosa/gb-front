@@ -1,13 +1,13 @@
 import { GetServerSidePropsContext } from 'next'
-import resolvePageProps from 'gravity-brands/modules/resolve-page-props'
-import loadProduct from 'gravity-brands/modules/load-product'
-import loadCollection from 'gravity-brands/modules/load-collection'
-import removeNewLineCharacters from 'gravity-brands/modules/remove-new-line-characters'
-import { POTENTIAL_PRODUCTS_COLLECTION_ID, RECOMMENDED_PRODUCTS_COLLECTION_ID } from 'src/settings/ids'
-import loadModelTemplate from 'src/builder/load-model-template'
 import { parse } from 'node-html-parser'
-import { Product } from 'gravity-brands/modules/normalize-product'
 import { BuilderContent } from '@builder.io/sdk'
+import resolvePageProps from '../modules/resolve-page-props'
+import loadProduct from '../modules/load-product'
+import loadCollection from '../modules/load-collection'
+import removeNewLineCharacters from '../modules/remove-new-line-characters'
+import { Product } from '../modules/normalize-product'
+import { POTENTIAL_PRODUCTS_COLLECTION_ID, RECOMMENDED_PRODUCTS_COLLECTION_ID } from '../settings/ids'
+import loadModelTemplate from '../builder/load-model-template'
 
 export type ProductDescription = {
   title: string

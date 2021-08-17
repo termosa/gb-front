@@ -1,0 +1,23 @@
+export const meta = {
+  type: 'function',
+  name: 'addItemToCart',
+  description: 'Save item to the Shopify cart',
+  tags: ['function', 'api', 'cart'],
+  lists: {
+    arguments: [
+      { name: 'variantId', required: true, type: 'number', description: 'Products variant ID to add to the cart' },
+      { name: 'quantity', type: 'number', description: 'Amount of products that need to be ordered' },
+    ],
+    returns: [
+      { name: 'promise', type: 'Promise' },
+    ],
+  },
+}
+
+## Usage
+
+```js
+import addItemToCart from './add-item-to-cart'
+
+addItemToCart(36110175633573, 2).then(() => alert('Successfully added to the cart!'))
+```

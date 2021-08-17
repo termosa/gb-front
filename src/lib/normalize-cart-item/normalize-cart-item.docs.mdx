@@ -1,0 +1,26 @@
+export const meta = {
+  type: 'function',
+  name: 'normalizeCartItem',
+  description: 'Normalize Shopify cart item information',
+  tags: ['function', 'cart'],
+  lists: {
+    arguments: [
+      { name: 'originalCartItem', type: 'ServerCartItem', description: 'Cart item from Shopify cart API' },
+    ],
+    returns: [
+      { name: 'cartItem', type: 'CartItem', description: 'Normalized cart item information' },
+      { name: 'cartItem.productId', type: 'number', description: 'Product identifier' },
+      { name: 'cartItem.title', type: 'string', description: 'Name of the product' },
+      { name: 'cartItem.quantity', type: 'number', description: 'Amount of the product items added to the cart' },
+    ],
+  },
+}
+
+## Usage
+
+```js
+import normalizeCartItem from './normalize-cart-item'
+import loadCart from './load-cart'
+
+loadCart().then(cart => cart.items.map(normalizeCartItem))
+```

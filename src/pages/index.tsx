@@ -1,13 +1,13 @@
 import React from 'react'
 import { BuilderComponent } from '@builder.io/react'
-import 'src/builder/register-components'
-import homePageProps, { HomePageProps } from 'src/resolvers/homePageProps'
-import CustomerContext from 'gravity-brands/modules/customer-context'
+import registerComponents from '../builder/register-components'
+import homePageProps, { HomePageProps } from '../resolvers/homePageProps'
+import CustomerContext from '../modules/customer-context'
+
+registerComponents()
 
 export default function HomePage({ builderContent, activeCustomer }: HomePageProps): React.ReactElement {
   if (!builderContent) throw new Error('Builder content is missing')
-
-  console.log({ activeCustomer })
 
   return (
     <CustomerContext.Provider value={activeCustomer || undefined}>

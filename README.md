@@ -3,11 +3,9 @@
 ## Build
 
 ```sh
-# BIT_TOKEN should be replaced with the real one
 $ docker build \
   --build-arg APP_ENV=production \
   --build-arg BUILDER_KEY=0123456789abcdef0123456789abcdef \
-  --build-arg BIT_TOKEN=00000000-0000-0000-0000-000000000000 \
   --build-arg BASE_API_URL=http://endpoint-for-nextjs.com \
   --build-arg CLIENT_API_URL=http://endpoint-for-browser.com \
   . -t fj-front
@@ -99,25 +97,9 @@ $ npm run test:dev
 
 ## Modules
 
-### TypeScript
-
-TypeScript and Babel are pre-configured with custom module resolvers.
-This means you can use absolute imports with custom namespaces by default for the following modules:
-
-```js
-/* import common library */
-import lib from '@common/<folder>/<lib>'
-/* import component */
-import Counter from '@components/counter/Counter'
-/* import container */
-import HomepageCounter from '@containers/counter/HomepageCounter'
-/* import store files */
-import { CounterAction } from '@store/counter/counterActions'
-```
-
 ### SCSS
 
-By default the path `./src/common/css` is configured as an included path for our scss loader.
+By default, the path `./src/common/css` is configured as an included path for our scss loader.
 This means you can import any of this folder's files directly without the relative or absolute path:
 
 ```css

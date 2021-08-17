@@ -1,0 +1,16 @@
+export const meta = {
+  type: 'variable',
+  name: 'console',
+  description: 'Global console object',
+  tags: ['variable'],
+}
+
+This is needed not to use global variables around the project
+
+## Usage
+
+```js
+import console from '../console'
+
+console?.log('hello!')
+```

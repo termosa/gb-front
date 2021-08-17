@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { Collection, loadCollection } from 'gravity-brands/modules/load-collection'
-import { ProductsCarousel } from 'gravity-brands/components/products-carousel'
+import { Collection, loadCollection } from '../modules/load-collection'
+import { ProductsCarousel } from '../components/products-carousel'
 
 type ProductCarouselProps = {
   collectionId: number
@@ -26,7 +26,7 @@ const ProductCarouselContainer = ({
       products={collection?.products}
       title={title}
       subTitle={subTitle}
-      onSelectProduct={(productId) => (location.href = `/products/${productId}`)}
+      onSelectProduct={(productId) => (location.href = `/ws30/products/${productId}`)}
     />
   ) : null
 }

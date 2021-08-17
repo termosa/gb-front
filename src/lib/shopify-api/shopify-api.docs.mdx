@@ -1,0 +1,40 @@
+export const meta = {
+  type: 'function',
+  name: 'shopifyApi',
+  description: 'Work with Shopify API',
+  tags: ['function', 'api'],
+  lists: {
+    arguments: [
+      { name: 'request', required: true, type: 'object' },
+      { name: 'request.path', required: true, type: 'string', description: 'Endpoint path, like \'/cart.js\'' },
+      { name: 'request.method', type: '\'GET\' | \'POST\' | \'PUT\' | \'DELETE\'', description: 'HTTP method' },
+      { name: 'request.query', type: 'Record<string, string | number | boolean | undefined>', description: 'GET parameters' },
+      { name: 'request.body', type: 'JSONObject', description: 'Data to be sent with request' },
+    ],
+    returns: [
+      { name: 'response', type: 'Promise<unknown>', description: 'Whatever you requested parsed as JSON' },
+    ],
+  },
+}
+
+## Usage
+
+```js
+import shopifyApi from './shopify-api'
+
+// Request cart information
+shopifyApi({ path: '/cart.js' })
+  .then(cart => alert(`${cart.item_count} item(s) in the cart`))
+
+// Add product to the cart
+shopifyApi({
+  path: '/cart/add.js',
+  method: 'POST',
+  body: {
+    items: [{
+      id: 36110175633573,
+      quantity: 2,
+    }],
+  },
+})
+```

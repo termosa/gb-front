@@ -1,0 +1,64 @@
+import InformationOverview from '.'
+
+export const meta = {
+  type: 'component',
+  name: 'InformationOverview',
+  description: 'Section to display 3 cards',
+  tags: ['component'],
+  preview: (
+    <InformationOverview
+      title="Trust us"
+      cards={[
+        {
+          image: "https://i.ibb.co/QFSL0Xd/Background.jpg",
+          title: "Info Card Title",
+          description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. At eget iaculis eget eget neque, posuere quis placerat arcu. Ipsum est felis varius faucibus praesent convallis."
+        },
+        {
+          image: "https://i.ibb.co/QFSL0Xd/Background.jpg",
+          title: "Info Card Title",
+          description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. At eget iaculis eget eget neque, posuere quis placerat arcu. Ipsum est felis varius faucibus praesent convallis."
+        },
+        {
+          image: "https://i.ibb.co/QFSL0Xd/Background.jpg",
+          title: "Info Card Title",
+          description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. At eget iaculis eget eget neque, posuere quis placerat arcu. Ipsum est felis varius faucibus praesent convallis."
+        },
+      ]}
+    />
+  ),
+  lists: {
+    attributes: [
+      { name: 'className', type: 'classnames.Argument', description: 'One or multiple class names that will be added to the main container' },
+      { name: 'style', type: 'React.CSSProperties', description: 'Inline styles for the main container' },
+      { name: 'title', required: true, type: 'string', description: 'Section title' },
+      { name: 'cards', required: true, type: 'InformationCard[]', description: 'Cards with any content' },
+    ],
+  },
+  scope: { InformationOverview },
+}
+
+## Playground
+
+```jsx live
+<InformationOverview
+  title="Trust us"
+  cards={[
+    {
+      image: "https://i.ibb.co/QFSL0Xd/Background.jpg",
+      title: "Info Card Title",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. At eget iaculis eget eget neque, posuere quis placerat arcu. Ipsum est felis varius faucibus praesent convallis."
+    },
+    {
+      image: "https://i.ibb.co/QFSL0Xd/Background.jpg",
+      title: "Info Card Title",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. At eget iaculis eget eget neque, posuere quis placerat arcu. Ipsum est felis varius faucibus praesent convallis."
+    },
+    {
+      image: "https://i.ibb.co/QFSL0Xd/Background.jpg",
+      title: "Info Card Title",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. At eget iaculis eget eget neque, posuere quis placerat arcu. Ipsum est felis varius faucibus praesent convallis."
+    },
+  ]}
+/>
+```

@@ -1,8 +1,8 @@
 node_modules/
 /dist/
 /coverage/
-/.docs-dist/
-/.docs-cache/
+/.docs/
+/.docs/
 /.cache/
 /.next/
 /.idea/
@@ -11,7 +11,6 @@ node_modules/
 /.jest/
 /.yarn/
 /out/
-/public/bit/
 /npm-error.log
 /yarn-error.log
 .DS_Store

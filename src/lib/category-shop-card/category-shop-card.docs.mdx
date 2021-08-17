@@ -1,0 +1,38 @@
+import CategoryShopCard from '.'
+
+export const meta = {
+  type: 'component',
+  name: 'CategoryShopCard',
+  description: 'Card with "Shop now" button',
+  tags: ['component'],
+  preview: (
+    <CategoryShopCard
+      title="Forrest Collection"
+      subTitle="Lorem ipsum bla bla lba"
+      image="https://i.ibb.co/QFSL0Xd/Background.jpg"
+      link="https://www.fragrantjewels.com/pages/inner-circle#how-it-works"
+    />
+  ),
+  lists: {
+    attributes: [
+      { name: 'className', type: 'classnames.Argument', description: 'One or multiple class names that will be added to the main container' },
+      { name: 'style', type: 'React.CSSProperties', description: 'Inline styles for the main container' },
+      { name: 'image', required: true, type: 'string', description: 'Background image URI' },
+      { name: 'title', required: true, type: 'string', description: 'Section title' },
+      { name: 'subTitle', required: true, type: 'string', description: 'Section secondary title' },
+      { name: 'link', required: true, type: 'string', description: 'Link for the "Shop now" button' },
+    ],
+  },
+  scope: { CategoryShopCard },
+}
+
+## Playground
+
+```jsx live
+<CategoryShopCard
+  title="Forrest Collection"
+  subTitle="Lorem ipsum bla bla lba"
+  image="https://i.ibb.co/QFSL0Xd/Background.jpg"
+  link="https://www.fragrantjewels.com/pages/inner-circle#how-it-works"
+/>
+```

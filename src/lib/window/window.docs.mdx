@@ -1,0 +1,16 @@
+export const meta = {
+  type: 'variable',
+  name: 'window',
+  description: 'Global window object',
+  tags: ['variable'],
+}
+
+This is needed so you don't have to do the check of it's exsisting with `typeof window !== 'undefined'`.
+
+## Usage
+
+```js
+import window from '../window'
+
+window?.console.log('hello!')
+```
