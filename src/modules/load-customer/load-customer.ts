@@ -3,5 +3,5 @@ import normalizeCustomer, { Customer, ServerCustomer } from '../normalize-custom
 
 export type { Customer } from '../normalize-customer'
 
-export const loadCustomer = (): Promise<Customer> =>
+export const loadCustomer = (): Promise<Customer | null> =>
   shopifyApi<ServerCustomer>({ path: `/pages/api-customer-json` }).then(normalizeCustomer)
