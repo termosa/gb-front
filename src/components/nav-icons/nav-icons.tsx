@@ -215,6 +215,7 @@ const LINKS_LIST = [
 
 export function NavIcons({ className, onSearchClick, userName }: NavIconsProps): React.ReactElement | null {
   const cart = useCart()
+  console.log(cart)
   const isMobileScreen = useMediaPredicate('(max-width: 1200px)')
   const [dropdownVisibility, setDropdownVisibility] = useState(false)
 

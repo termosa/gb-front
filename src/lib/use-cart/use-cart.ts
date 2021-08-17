@@ -83,6 +83,6 @@ export function useCart(useData = true): CartHookResult {
       reload,
       addItem,
     }),
-    [cartRequest.status, cartRequest.value, reload]
+    [state, reload, addItem]
   )
 }
