@@ -31,7 +31,6 @@ export type MainPageLayoutProps = {
 }
 
 export function MainPageLayout({ children, className, style }: MainPageLayoutProps): React.ReactElement {
-  console.log('\n\n\n\n\n\n', { customer: loadCustomer() })
   const searchRequest = useDefer(loadProductsChunk)
   const customerRequest = useDefer(() => loadCustomer().catch(() => null), [], [])
 

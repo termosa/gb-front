@@ -1,6 +1,6 @@
 import { ServerCustomerAddress } from '../normalize-customer-address'
 
-export type ServerCustomer = {
+export type ServerCustomer = null | {
   id: number
   email: string
   first_name: string
@@ -16,9 +16,10 @@ export type Customer = {
   phone?: string
 }
 
-export const normalizeCustomer = (customer: ServerCustomer): Customer => ({
-  customerId: customer.id,
-  email: customer.email,
-  fullName: [customer.first_name, customer.last_name].filter(Boolean).join(' '),
-  ...(customer.phone && { phone: customer.phone }),
-})
+export const normalizeCustomer = (customer: ServerCustomer): null | Customer =>
+  customer && {
+    customerId: customer.id,
+    email: customer.email,
+    fullName: [customer.first_name, customer.last_name].filter(Boolean).join(' '),
+    ...(customer.phone && { phone: customer.phone }),
+  }

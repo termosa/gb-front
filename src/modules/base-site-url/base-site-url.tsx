@@ -1,8 +1,3 @@
-let url: string | null = null
+import window from '../../lib/window'
 
-export const baseSiteUrl = (newBaseSiteUrl?: string | null): string | null => {
-  if (typeof newBaseSiteUrl !== 'undefined') {
-    url = newBaseSiteUrl
-  }
-  return url
-}
+export const baseSiteUrl = process.env.SITE_URL || window?.location.origin

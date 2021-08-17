@@ -1,0 +1,29 @@
+import useComponentRefresh from '.'
+
+export const meta = {
+  type: 'hook',
+  name: 'useComponentRefresh',
+  description: 'Rerendering component',
+  tags: ['hook'],
+  lists: {
+    returns: [
+      { name: 'refresh', type: '() => void', description: 'Forces component to rerender' },
+    ],
+  },
+  scope: { useComponentRefresh },
+}
+
+## Playground
+
+```jsx live render
+const Time = () => {
+  const refresh = useComponentRefresh()
+  const time = new Intl.DateTimeFormat('en', { hour: 'numeric', minute: 'numeric', second: 'numeric' }).format()
+  return <div>
+    <p>{time}</p>
+    <input type="button" onClick={refresh} value="Refresh time" />
+  </div>
+}
+
+render(<Time />)
+```

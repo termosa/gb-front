@@ -3,7 +3,7 @@ import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
 import { useMediaPredicate } from 'react-media-hook'
 import { SigninSignup } from '../signin-signup'
-import useCart from '../../hooks/use-cart'
+import useCart from '../../lib/use-cart'
 
 export type NavIconsProps = {
   className?: ClassName
@@ -214,7 +214,7 @@ const LINKS_LIST = [
 ]
 
 export function NavIcons({ className, onSearchClick, userName }: NavIconsProps): React.ReactElement | null {
-  const cartRequest = useCart()
+  const cart = useCart()
   const isMobileScreen = useMediaPredicate('(max-width: 1200px)')
   const [dropdownVisibility, setDropdownVisibility] = useState(false)
 
@@ -308,7 +308,7 @@ export function NavIcons({ className, onSearchClick, userName }: NavIconsProps):
             strokeLinejoin="round"
           ></path>
         </svg>
-        {cartRequest.value && <SCartBadge>{cartRequest.value.items.length}</SCartBadge>}
+        {!!cart.itemCount && <SCartBadge>{cart.itemCount}</SCartBadge>}
       </SCartButton>
     </SWrapper>
   )

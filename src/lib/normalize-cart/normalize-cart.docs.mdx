@@ -1,0 +1,25 @@
+export const meta = {
+  type: 'function',
+  name: 'normalizeCart',
+  description: 'Normalize Shopify cart information',
+  tags: ['function', 'cart'],
+  lists: {
+    arguments: [
+      { name: 'originalCart', type: 'ServerCart', description: 'Cart from Shopify cart API' },
+    ],
+    returns: [
+      { name: 'cart', type: 'Cart', description: 'Normalized cart information' },
+      { name: 'cart.token', type: 'string', description: 'Cart unique identifier' },
+      { name: 'cart.items', type: 'Array<normalize-cart-item.CartItem>', description: 'List of items added to the cart' },
+      { name: 'cart.itemCount', type: 'number', description: 'Total number of items in the cart' },
+      { name: 'cart.totalPrice', type: 'number', description: 'Total price of items in the cart' },
+    ],
+  },
+}
+
+## Usage
+
+```js
+loadCart().normalizeCart(cartResponseData)
+  .then(cart => alert(`Cart contains ${cart.itemCount} item(s) for total of $${cart.totalPrice}`))
+```

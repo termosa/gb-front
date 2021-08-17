@@ -7,6 +7,7 @@ import { Product as ProductType, ProductImage, ProductVariant } from '../modules
 import removeNewLineCharacters from '../modules/remove-new-line-characters'
 import handleGalleryScrolling from '../modules/handle-gallery-scrolling'
 import ProductContext from '../modules/product-context'
+import addItemToCart from '../lib/add-item-to-cart'
 
 type ProductDescription = {
   title: string
@@ -875,6 +876,8 @@ const Product = (): null | React.ReactElement => {
                       executeScroll()
                       localStorage.setItem('selectRingError', JSON.stringify(true))
                       setSelectRingError(true)
+                    } else {
+                      addItemToCart(currentRingSize)
                     }
                   }}
                 >

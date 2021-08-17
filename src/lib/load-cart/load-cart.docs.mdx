@@ -1,0 +1,19 @@
+export const meta = {
+  type: 'function',
+  name: 'loadCart',
+  description: 'Pulls cart information from Shopify',
+  tags: ['function', 'api', 'cart'],
+  lists: {
+    returns: [
+      { name: 'cart', type: 'normalize-cart.Cart', description: 'Normalized cart information' },
+    ],
+  },
+}
+
+## Usage
+
+```js
+import loadCart from './load-cart'
+
+loadCart().then(cart => alert(`${cart.itemCount} item(s) in the cart`))
+```

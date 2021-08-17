@@ -1,10 +1,7 @@
-import http from '../http'
-import normalizeCustomer, { Customer } from '../normalize-customer'
-import baseSiteUrl from '../base-site-url'
+import shopifyApi from '../../lib/shopify-api'
+import normalizeCustomer, { Customer, ServerCustomer } from '../normalize-customer'
 
 export type { Customer } from '../normalize-customer'
 
 export const loadCustomer = (): Promise<Customer> =>
-  http({ url: `${baseSiteUrl()}/pages/api-customer-json` })
-    .then((r) => r.json())
-    .then(normalizeCustomer)
+  shopifyApi<ServerCustomer>({ path: `/pages/api-customer-json` }).then(normalizeCustomer)
