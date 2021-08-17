@@ -1,0 +1,22 @@
+export const meta = {
+  type: 'function',
+  name: 'loadCollection',
+  description: 'Pulls information about requested collection',
+  tags: ['function', 'api', 'collection'],
+  lists: {
+    arguments: [
+      { name: 'collectionIdOrHandle', type: 'number | string', description: 'Either ID or handle property of the collection' },
+    ],
+    returns: [
+      { name: 'promise', type: 'Promise<normalize-collection.Collection>', description: 'Requested collection object' },
+    ],
+  },
+}
+
+## Usage
+
+```js
+import loadCollection from './load-collection'
+
+loadCollection(73418231).then(collection => alert(`Loaded ${collection.title} collection`))
+```

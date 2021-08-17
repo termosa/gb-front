@@ -10,7 +10,7 @@ export type ProductsCarouselProps = {
   className?: ClassName
   title?: string
   subTitle?: string
-  onSelectProduct: (productId: number) => void
+  onSelectProduct: (product: Product) => void
 }
 
 const Section = styled.section`
@@ -323,11 +323,7 @@ export const ProductsCarousel = ({
             {products
               .filter((product) => product.image)
               .map((product) => (
-                <ProductCard
-                  key={product.product_id}
-                  product={product}
-                  onClick={() => onSelectProduct(product.product_id)}
-                />
+                <ProductCard key={product.product_id} product={product} onClick={() => onSelectProduct(product)} />
               ))}
           </StyledSlider>
         </ProductCards>

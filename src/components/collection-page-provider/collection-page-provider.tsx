@@ -1,6 +1,6 @@
 import React from 'react'
 import CollectionContext from '../../modules/collection-context'
-import loadCollection from '../../modules/load-collection'
+import loadCollection from '../../lib/load-collection'
 import useDefer from 'use-defer'
 import useQuery from '../../hooks/use-query'
 

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import ProductsCarousel from '../components/products-carousel'
-import loadCollection from '../modules/load-collection'
-import { Product as ProductType } from '../modules/load-product'
+import loadCollection from '../lib/load-collection'
+import { Product as ProductType } from '../lib/load-product'
 import { RECOMMENDED_PRODUCTS_COLLECTION_ID } from '../settings/ids'
 
 const RecommendedProducts = (): null | React.ReactElement => {

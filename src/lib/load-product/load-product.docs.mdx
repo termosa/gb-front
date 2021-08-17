@@ -1,0 +1,22 @@
+export const meta = {
+  type: 'function',
+  name: 'loadProduct',
+  description: 'Pulls information about requested product',
+  tags: ['function', 'api', 'product'],
+  lists: {
+    arguments: [
+      { name: 'productIdOrHandle', type: 'number | string', description: 'Either ID or handle property of the product' },
+    ],
+    returns: [
+      { name: 'promise', type: 'Promise<normalize-product.Product>', description: 'Requested product object' },
+    ],
+  },
+}
+
+## Usage
+
+```js
+import loadProduct from './load-product'
+
+loadProduct(73418231).then(product => alert(`Loaded ${product.title} product`))
+```

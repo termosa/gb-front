@@ -35,6 +35,7 @@ export type ServerProduct = {
 
 export type Product = {
   product_id: number
+  handle: string
   title: string
   image?: ProductImage
   images?: Array<ProductImage>
@@ -66,6 +67,7 @@ export const normalizeProduct = (product: ServerProduct): Product => {
 
   return {
     product_id: product.product_id,
+    handle: product.handle,
     title: product.title,
     ...(product.front_image && { image: normalizeProductImage(product.front_image) }),
     ...(product.side_images?.length && {

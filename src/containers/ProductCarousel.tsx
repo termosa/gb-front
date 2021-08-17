@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Collection, loadCollection } from '../modules/load-collection'
+import { Collection, loadCollection } from '../lib/load-collection'
 import { ProductsCarousel } from '../components/products-carousel'
 
 type ProductCarouselProps = {
@@ -26,7 +26,7 @@ const ProductCarouselContainer = ({
       products={collection?.products}
       title={title}
       subTitle={subTitle}
-      onSelectProduct={(productId) => (location.href = `/ws30/products/${productId}`)}
+      onSelectProduct={(product) => (location.href = `/ws30/products/${product.handle}`)}
     />
   ) : null
 }

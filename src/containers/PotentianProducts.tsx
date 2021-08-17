@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { ProductsCarousel } from '../components/products-carousel'
 import { Product as ProductType } from '../modules/normalize-product'
-import { loadCollection } from '../modules/load-collection'
+import { loadCollection } from '../lib/load-collection'
 import { POTENTIAL_PRODUCTS_COLLECTION_ID } from '../settings/ids'
 
 const PotentialProducts = (): null | React.ReactElement => {

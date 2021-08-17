@@ -1,6 +1,6 @@
 import React from 'react'
 import useDefer from 'use-defer'
-import loadCollection from '../../modules/load-collection'
+import loadCollection from '../../lib/load-collection'
 import CollectionContext from '../../modules/collection-context'
 
 export type CollectionProviderProps = {

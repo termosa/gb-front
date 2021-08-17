@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import loadProduct, { Product } from '../modules/load-product'
+import loadProduct, { Product } from '../lib/load-product'
 import InnerCircleExclusive from '../components/inner-circle-exclusive'
 import useCart from 'src/lib/use-cart'
 

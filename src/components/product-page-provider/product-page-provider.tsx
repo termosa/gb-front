@@ -1,6 +1,6 @@
 import React from 'react'
 import ProductContext from '../../modules/product-context'
-import loadProduct from '../../modules/load-product'
+import loadProduct from '../../lib/load-product'
 import useDefer from 'use-defer'
 import useQuery from '../../hooks/use-query'
 

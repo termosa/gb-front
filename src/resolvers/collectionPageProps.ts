@@ -1,6 +1,6 @@
 import { GetServerSidePropsContext } from 'next'
 import resolvePageProps from '../modules/resolve-page-props'
-import loadCollection, { Collection } from '../modules/load-collection'
+import loadCollection, { Collection } from '../lib/load-collection'
 import loadModelTemplate, { ModelTemplate } from '../builder/load-model-template'
 
 export type CollectionPageProps = {
@@ -12,10 +12,13 @@ export default function collectionPageProps<PropsType>(): (
   context: GetServerSidePropsContext
 ) => Promise<{ props: PropsType }> {
   return resolvePageProps((context) => {
-    const collectionId = +context.query.collectionId
-    if (!collectionId) throw new Error('Collection id is not valid')
+    const collectionId =
+      context.query.collectionId instanceof Array
+        ? context.query.collectionId.find((id) => id.trim())
+        : context.query.collectionId
+    if (!collectionId) throw new Error('Collection id is missing')
 
-    const collectionPromise = loadCollection(+collectionId)
+    const collectionPromise = loadCollection(collectionId)
 
     return {
       collection: collectionPromise.catch(() => null),

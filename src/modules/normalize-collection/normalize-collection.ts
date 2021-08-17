@@ -14,6 +14,7 @@ export type ServerCollection = {
   body_html: null | string
   admin_graphql_api_id: string
   products: Array<ServerProduct>
+  template: null | string
 }
 
 export type Collection = {
@@ -29,5 +30,5 @@ export const normalizeCollection = (collection: ServerCollection): Collection =>
   title: collection.title,
   handle: collection.handle,
   products: collection.products.map(normalizeProduct),
-  template: 'Default',
+  template: collection.template || 'Default',
 })

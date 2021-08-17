@@ -2,8 +2,8 @@ import { GetServerSidePropsContext } from 'next'
 import { parse } from 'node-html-parser'
 import { BuilderContent } from '@builder.io/sdk'
 import resolvePageProps from '../modules/resolve-page-props'
-import loadProduct from '../modules/load-product'
-import loadCollection from '../modules/load-collection'
+import loadProduct from '../lib/load-product'
+import loadCollection from '../lib/load-collection'
 import removeNewLineCharacters from '../modules/remove-new-line-characters'
 import { Product } from '../modules/normalize-product'
 import { POTENTIAL_PRODUCTS_COLLECTION_ID, RECOMMENDED_PRODUCTS_COLLECTION_ID } from '../settings/ids'
@@ -44,8 +44,11 @@ const getProductDescription = async (product: Product): Promise<ProductDescripti
 
 function productPageProps<PropsType>(): (context: GetServerSidePropsContext) => Promise<{ props: PropsType }> {
   return resolvePageProps((context) => {
-    const productId = +context.query.productId
-    if (!productId) throw new Error('Product id is not valid')
+    const productId =
+      context.query.productId instanceof Array
+        ? context.query.productId.find((id) => id.trim())
+        : context.query.productId
+    if (!productId) throw new Error('Product id missing')
 
     const productPromise = loadProduct(productId)
     return {

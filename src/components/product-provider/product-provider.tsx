@@ -1,6 +1,6 @@
 import React from 'react'
 import useDefer from 'use-defer'
-import loadProduct from '../../modules/load-product'
+import loadProduct from '../../lib/load-product'
 import ProductContext from '../../modules/product-context'
 
 export type ProductProviderProps = {
