@@ -4,8 +4,15 @@ import CategoryShopCard from '.'
 
 describe('<CategoryShopCard>', () => {
   it('should render with the correct text', () => {
-    const { getByText } = render(<CategoryShopCard>Component content</CategoryShopCard>)
-    const rendered = getByText('Component content')
-    expect(rendered).toBeTruthy()
+    const { container } = render(
+      <CategoryShopCard
+        title="Forrest Collection"
+        subTitle="Lorem ipsum bla bla lba"
+        image="https://i.ibb.co/QFSL0Xd/Background.jpg"
+        link="https://www.fragrantjewels.com/pages/inner-circle#how-it-works"
+      />
+    )
+    expect(container).toHaveTextContent('Forrest Collection')
+    expect(container).toHaveTextContent('Lorem ipsum bla bla lba')
   })
 })

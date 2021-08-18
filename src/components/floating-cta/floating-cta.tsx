@@ -1,8 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react'
-import useCart from '../../lib/use-cart'
+import addItemToCart from '../../lib/add-item-to-cart'
 import styled from 'styled-components'
 import { Product as ProductType, ProductVariant } from '../../modules/normalize-product'
 import ProductContext from '../../modules/product-context'
+import window from '../../lib/window'
+import navigate from '../../lib/navigate'
 
 const SFloatingCtaClosed = styled.div<{
   isVisible?: boolean
@@ -143,7 +145,6 @@ const SFloatingCrossBtn = styled.div`
 `
 
 export const FloatingCta = (): React.ReactElement | null => {
-  const cart = useCart(false)
   const product = useContext<ProductType | undefined>(ProductContext)
   const isProductPage = typeof window !== 'undefined' && window.location.pathname.includes('/products/')
 
@@ -164,9 +165,9 @@ export const FloatingCta = (): React.ReactElement | null => {
       localStorage.setItem('isFloatingCtaVisible', JSON.stringify(false))
     }
 
-    window.addEventListener('scroll', handleScroll)
+    window?.addEventListener('scroll', handleScroll)
     return () => {
-      window.removeEventListener('scroll', handleScroll)
+      window?.removeEventListener('scroll', handleScroll)
     }
   }, [])
 
@@ -213,7 +214,7 @@ export const FloatingCta = (): React.ReactElement | null => {
             localStorage.setItem('selectRingError', JSON.stringify(true))
             setSelectRingError(true)
           } else {
-            cart.addItem(currentRingSize)
+            addItemToCart(currentRingSize).then(() => navigate('/cart'))
           }
         }}
       >

@@ -36,7 +36,7 @@ export type CartHookResult = {
   addItem: (variantId: number, quantity?: number) => Promise<void>
 }
 
-export function useCart(useData = true): CartHookResult {
+export function useCart(useData = false): CartHookResult {
   const [state, setState] = useGlobalState()
 
   const cartRequest = useDefer(() => (useData ? loadCart() : undefined), [useData], [])

@@ -3,6 +3,7 @@ import { ProductsCarousel } from '../components/products-carousel'
 import { Product as ProductType } from '../modules/normalize-product'
 import { loadCollection } from '../lib/load-collection'
 import { POTENTIAL_PRODUCTS_COLLECTION_ID } from '../settings/ids'
+import navigate from '../lib/navigate'
 
 const PotentialProducts = (): null | React.ReactElement => {
   const [potentialProducts, setPotentialProducts] = useState<ProductType[]>([])
@@ -18,7 +19,7 @@ const PotentialProducts = (): null | React.ReactElement => {
       <ProductsCarousel
         title="More you might like"
         products={potentialProducts}
-        onSelectProduct={(productId) => (location.href = `/products/${productId}`)}
+        onSelectProduct={(productId) => navigate(`/products/${productId}`)}
       />
     </section>
   )

@@ -14,6 +14,20 @@ export type ServerCart = {
   total_discount: number
   total_price: number
   total_weight: number
+  attributes: Record<string, unknown>
+  cart_level_discount_applications: Array<{
+    type: string
+    key: string
+    title: string
+    description: null | string
+    value: string
+    created_at: string
+    value_type: string
+    allocation_method: string
+    target_selection: string
+    target_type: string
+    total_allocated_amount: number
+  }>
 }
 
 export type Cart = {

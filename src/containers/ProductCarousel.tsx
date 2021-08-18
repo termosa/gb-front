@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Collection, loadCollection } from '../lib/load-collection'
 import { ProductsCarousel } from '../components/products-carousel'
+import navigate from '../lib/navigate'
 
 type ProductCarouselProps = {
   collectionId: number
@@ -26,7 +27,7 @@ const ProductCarouselContainer = ({
       products={collection?.products}
       title={title}
       subTitle={subTitle}
-      onSelectProduct={(product) => (location.href = `/ws30/products/${product.handle}`)}
+      onSelectProduct={(product) => navigate(`/products/${product.handle}`)}
     />
   ) : null
 }

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import navigate from '../lib/navigate'
 import ProductsCarousel from '../components/products-carousel'
 import loadCollection from '../lib/load-collection'
 import { Product as ProductType } from '../lib/load-product'
@@ -18,7 +19,7 @@ const RecommendedProducts = (): null | React.ReactElement => {
       <ProductsCarousel
         title="Recommended for you"
         products={recommendedProducts}
-        onSelectProduct={(productId: number) => (location.href = `/products/${productId}`)}
+        onSelectProduct={(product) => navigate(`/products/${product.product_id}`)}
       />
     </section>
   )

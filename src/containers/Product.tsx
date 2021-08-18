@@ -7,7 +7,9 @@ import { Product as ProductType, ProductImage, ProductVariant } from '../modules
 import removeNewLineCharacters from '../modules/remove-new-line-characters'
 import handleGalleryScrolling from '../modules/handle-gallery-scrolling'
 import ProductContext from '../modules/product-context'
-import useCart from '../lib/use-cart'
+import addItemToCart from '../lib/add-item-to-cart'
+import window from '../lib/window'
+import navigate from '../lib/navigate'
 
 type ProductDescription = {
   title: string
@@ -16,7 +18,6 @@ type ProductDescription = {
 
 const Product = (): null | React.ReactElement => {
   const product = useContext<ProductType | undefined>(ProductContext)
-  const cart = useCart()
 
   const [currentRingSize, setCurrentRingSize] = useState<number | null>(null)
   const [isSelectRingError, setSelectRingError] = useState<boolean>(false)
@@ -64,28 +65,30 @@ const Product = (): null | React.ReactElement => {
   )
 
   useEffect(() => {
-    window.addEventListener('scroll', handlePosition)
+    window?.addEventListener('scroll', handlePosition)
     return () => {
-      window.removeEventListener('scroll', handlePosition)
+      window?.removeEventListener('scroll', handlePosition)
     }
   }, [])
 
   useEffect(() => {
+    if (!window) return
+
     setYPosition(window.scrollY)
     window.addEventListener('scroll', handleScrollDirection)
     return () => {
-      window.removeEventListener('scroll', handleScrollDirection)
+      window?.removeEventListener('scroll', handleScrollDirection)
     }
   }, [handleScrollDirection])
 
   useEffect(() => {
-    window.addEventListener('scroll', () => {
+    window?.addEventListener('scroll', () => {
       product &&
         product.images &&
         handleGalleryScrolling(galleryRef, product.images, setActiveGalleryItem, galleryImageHeight)
     })
     return () => {
-      window.removeEventListener('scroll', () => {
+      window?.removeEventListener('scroll', () => {
         product &&
           product.images &&
           handleGalleryScrolling(galleryRef, product.images, setActiveGalleryItem, galleryImageHeight)
@@ -95,17 +98,16 @@ const Product = (): null | React.ReactElement => {
 
   useEffect(() => {
     handlePosition()
-    setMobile(window.innerWidth < 768)
-    return () => {}
+    if (window) setMobile(window.innerWidth > 992)
   }, [])
 
   useEffect(() => {
-    window.addEventListener('resize', () => {
-      setMobile(window.innerWidth < 768)
+    window?.addEventListener('resize', () => {
+      window && setMobile(window.innerWidth > 992)
     })
     return () => {
-      window.removeEventListener('resize', () => {
-        setMobile(window.innerWidth < 768)
+      window?.removeEventListener('resize', () => {
+        window && setMobile(window.innerWidth > 992)
       })
     }
   }, [setMobile])
@@ -220,7 +222,7 @@ const Product = (): null | React.ReactElement => {
                                   return
                                 }
                                 galleryRef.current &&
-                                  window.scrollTo({
+                                  window?.scrollTo({
                                     top: 51 + galleryImageHeight * i,
                                     behavior: 'smooth',
                                   })
@@ -905,7 +907,9 @@ const Product = (): null | React.ReactElement => {
                       localStorage.setItem('selectRingError', JSON.stringify(true))
                       setSelectRingError(true)
                     } else {
-                      cart.addItem(currentRingSize)
+                      addItemToCart(currentRingSize)
+                        .then(() => navigate('/cart'))
+                        .catch((err) => alert(err))
                     }
                   }}
                 >
