@@ -7,8 +7,6 @@ import CustomerContext from '../modules/customer-context'
 registerComponents()
 
 export default function HomePage({ builderContent, activeCustomer }: HomePageProps): React.ReactElement {
-  if (!builderContent) throw new Error('Builder content is missing')
-
   return (
     <CustomerContext.Provider value={activeCustomer || undefined}>
       <BuilderComponent model="Home" content={builderContent} />

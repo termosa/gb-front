@@ -28,7 +28,6 @@ Builder.registerComponent(Product, {
 
 export default function ProductPage({ product, builderContent }: ProductPageProps): React.ReactElement {
   if (!product) throw new Error('Product not found')
-  if (!builderContent) throw new Error('Builder content is missing')
 
   return (
     <ProductContext.Provider value={product}>

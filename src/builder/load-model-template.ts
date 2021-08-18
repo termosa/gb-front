@@ -1,5 +1,6 @@
 import https from 'https'
 import qs from 'qs'
+// import { BuilderContent } from '@builder.io/sdk' should I extend ModelTemplate with this object?
 
 const apiKey = process.env.BUILDER_KEY
 

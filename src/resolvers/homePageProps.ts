@@ -18,7 +18,7 @@ export type HomePageProps = {
   trendingProducts: null | Array<Product>
   innerCircleProduct: null | Product
   activeCustomer: null | Customer
-  builderContent: ModelTemplate
+  builderContent: null | ModelTemplate
 }
 
 export default function homePageProps(): (context: GetServerSidePropsContext) => Promise<{ props: HomePageProps }> {

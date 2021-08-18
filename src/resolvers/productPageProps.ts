@@ -1,13 +1,12 @@
 import { GetServerSidePropsContext } from 'next'
 import { parse } from 'node-html-parser'
-import { BuilderContent } from '@builder.io/sdk'
 import resolvePageProps from '../modules/resolve-page-props'
 import loadProduct from '../lib/load-product'
 import loadCollection from '../lib/load-collection'
 import removeNewLineCharacters from '../modules/remove-new-line-characters'
 import { Product } from '../modules/normalize-product'
 import { POTENTIAL_PRODUCTS_COLLECTION_ID, RECOMMENDED_PRODUCTS_COLLECTION_ID } from '../settings/ids'
-import loadModelTemplate from '../builder/load-model-template'
+import loadModelTemplate, { ModelTemplate } from '../builder/load-model-template'
 
 export type ProductDescription = {
   title: string
@@ -19,7 +18,7 @@ export type ProductPageProps = {
   recommendedProducts: Array<Product>
   potentialProducts: Array<Product>
   productDescription: ProductDescription
-  builderContent: BuilderContent
+  builderContent: null | ModelTemplate
 }
 
 const loadCollectionProducts = (collectionId: number): Promise<Product[] | null> =>
