@@ -51,11 +51,11 @@ $whiteClr: #fff;
   margin: 0 auto;
 
   &__ic-title {
-    font-size: 16px;
+    font: 600 16px/1.25 "Monserrat", sans-serif;
     color: $mainClr;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    margin: 0 0 6px;
+    margin: 0 0 9px;
   }
 
   &__title {
@@ -91,9 +91,9 @@ $whiteClr: #fff;
 }
 
 .pdp-product-details {
-  font: 400 16px/1.25 "Montserrat", sans-serif;
+  font: 400 16px/1.5 "Montserrat", sans-serif;
   letter-spacing: 0.05em;
-  margin: 0 0 16px;
+  margin: 0 0 12px;
 
   &__discount-price {
     text-decoration: line-through;
@@ -643,13 +643,19 @@ $whiteClr: #fff;
 }
 
 .pdp-s-row-wrapper {
-  margin: 0 -1%;
+  margin: 0 -1% 16px;
+  height: 369px;
+
+  @media (min-width: 768px) {
+    margin: 0 -1%;
+    height: initial;
+  }
 
   .pdp-s-row {
     display: flex;
     width: 100%;
     flex-direction: column;
-    @media (min-width: 992px) {
+    @media (min-width: 768px) {
       flex-direction: row;
     }
 
@@ -657,13 +663,13 @@ $whiteClr: #fff;
       width: 100%;
 
       &.pdp-carousel-icons {
-        @media (max-width: 991px) {
+        @media (max-width: 768px) {
           order: 1;
           // margin: 0 -1%;
         }
       }
 
-      @media (min-width: 992px) {
+      @media (min-width: 768px) {
         width: 48%;
         margin: 0 1%;
         &.pdp-s-col-sm {
@@ -684,9 +690,17 @@ $whiteClr: #fff;
 
 .pdp-carousel-item-mobile {
   outline: none;
+  display: flex !important;
+  justify-content: center;
 
   img {
-    width: 100%;
+    width: 279px;
+    height: 279px;
+    object-fit: contain;
+
+    @media (min-width: 768px) {
+      width: 100%;
+    }
   }
 }
 
@@ -697,14 +711,13 @@ $whiteClr: #fff;
 
   &__list {
     padding: 0;
-    margin: 0;
+    margin: 0 0 20px;
     list-style: none;
     display: block;
-    margin-bottom: 20px;
-    @media (max-width: 991px) {
-      width: 100%;
+    @media (max-width: 768px) {
       display: flex !important;
-      overflow-x: auto;
+      overflow-x: scroll;
+      position: absolute;
     }
 
     li {
@@ -716,7 +729,7 @@ $whiteClr: #fff;
       display: flex;
       align-items: center;
       min-width: 75px;
-      @media (max-width: 991px) {
+      @media (max-width: 768px) {
         margin: 0 1%;
         width: 23%;
       }
@@ -733,9 +746,15 @@ $whiteClr: #fff;
       }
 
       img {
-        width: 100%;
-        height: auto;
+        width: 73px;
+        height: 73px;
+        object-fit: contain;
         display: block;
+
+        @media (min-width: 768px) {
+          width: 100%;
+          height: auto;
+        }
       }
     }
   }

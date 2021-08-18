@@ -11,11 +11,7 @@ const PromoWrapper = styled.div`
   display: block;
   color: #fff;
   background-color: #000;
-  font-size: 9px;
   text-transform: uppercase;
-  @media (min-width: 375px) {
-    font-size: 11px;
-  }
 `
 
 const Container = styled.div`
@@ -25,16 +21,16 @@ const Container = styled.div`
 `
 
 const PromoSlider = styled(Slider)`
+  font: 500 9px/1.2 'Montserrat', sans-serif;
   color: #fff;
   text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 7px 0;
+  padding: 9px 0;
   position: relative;
-  font-weight: 500;
-  @media (min-width: 375px) {
-    padding: 9px 0;
+  @media (min-width: 768px) {
+    font: 500 11px/1.2 'Montserrat', sans-serif;
   }
 
   .slick-slider {
@@ -85,8 +81,8 @@ const PrevArrow = styled.button`
   display: block;
   transform: translateY(-50%) rotate(45deg);
   left: 0;
-  width: 7px;
-  height: 7px;
+  width: 10px;
+  height: 10px;
   z-index: 13;
   font-size: 0;
   top: 50%;
@@ -99,10 +95,6 @@ const PrevArrow = styled.button`
   cursor: pointer;
   margin: 0;
   padding: 0;
-  @media (min-width: 375px) {
-    width: 9px;
-    height: 9px;
-  }
 `
 
 const NextArrow = styled.button`
@@ -114,8 +106,8 @@ const NextArrow = styled.button`
   top: 50%;
   line-height: 1;
   position: absolute;
-  width: 7px;
-  height: 7px;
+  width: 10px;
+  height: 10px;
   border: none;
   border-bottom: 2px solid #fff;
   border-left: 2px solid #fff;
@@ -123,17 +115,13 @@ const NextArrow = styled.button`
   cursor: pointer;
   margin: 0;
   padding: 0;
-  @media (min-width: 375px) {
-    width: 9px;
-    height: 9px;
-  }
 `
 
 const PinkSpan = styled.span`
   color: #ee67a0;
 `
 
-export function RollingBanner() {
+export function RollingBanner(): React.ReactElement {
   const settings: Settings = {
     slidesToShow: 1,
     slidesToScroll: 1,

@@ -49,8 +49,10 @@ const SContentWrapper = styled.div`
 `
 
 const SSearchWrapper = styled.div`
+  display: flex;
   box-sizing: border-box;
   position: relative;
+  height: 62px;
   padding: 11px 15px;
 
   @media (min-width: 375px) {
@@ -68,6 +70,7 @@ const SSearchContent = styled.div`
   align-items: center;
   flex-wrap: wrap;
   justify-content: space-between;
+  width: 100%;
 
   @media (min-width: 1200px) {
     flex-wrap: nowrap;
@@ -172,7 +175,7 @@ const ExtendableBlock = styled.div`
   @media (min-width: 1200px) {
     padding: 2em 0 0;
     font-size: 0.75em;
-    box-shadow: 0px 4px 9px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 9px rgba(0, 0, 0, 0.1);
   }
 `
 

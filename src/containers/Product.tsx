@@ -24,7 +24,7 @@ const Product = (): null | React.ReactElement => {
   const [productDescription, setProductDescription] = useState<Array<ProductDescription>>()
   const [isDiscountApplied, setDiscountApplied] = useState<boolean>(true)
   const [activeGalleryItem, setActiveGalleryItem] = useState<number | null>(0)
-  const [isLargeScreen, setLargeScreen] = useState<boolean>()
+  const [isMobile, setMobile] = useState<boolean>()
   const [comparePrice, setComparePrice] = useState<number | null>(0)
   const [activeAccordion, setActiveAccordion] = useState<number | null>(0)
   const [infoDistanceFromTop, setInfoDistanceFromTop] = useState<number>(183)
@@ -95,22 +95,20 @@ const Product = (): null | React.ReactElement => {
 
   useEffect(() => {
     handlePosition()
-    if (!isLargeScreen) {
-      setLargeScreen(window.innerWidth > 992)
-    }
+    setMobile(window.innerWidth < 768)
     return () => {}
   }, [])
 
   useEffect(() => {
     window.addEventListener('resize', () => {
-      setLargeScreen(window.innerWidth > 992)
+      setMobile(window.innerWidth < 768)
     })
     return () => {
       window.removeEventListener('resize', () => {
-        setLargeScreen(window.innerWidth > 992)
+        setMobile(window.innerWidth < 768)
       })
     }
-  }, [setLargeScreen])
+  }, [setMobile])
 
   useEffect(() => {
     setActualPrice(product?.variants[0].actual_price || 0)
@@ -173,7 +171,7 @@ const Product = (): null | React.ReactElement => {
     <>
       <div className="app-h-container">
         <div className="app-h-breadcrumbs">
-          Home / All / Bundles / <span>{product.title}</span>
+          Home / All / Bundles / <span>{product.title.split('-')[0]}</span>
         </div>
       </div>
       <div className="app-h-container">
@@ -182,7 +180,34 @@ const Product = (): null | React.ReactElement => {
             <div className="pdp-col pdp-col-61">
               <div className="pdp-s-carousel-wrapper">
                 <div className="pdp-s-row-wrapper">
-                  {isLargeScreen ? (
+                  {isMobile ? (
+                    <>
+                      <Slider {...sliderSettings}>
+                        {product.images?.map((image) => (
+                          <div className="pdp-carousel-item-mobile" key={image?.src}>
+                            <img src={image?.src} alt={image?.alt} />
+                          </div>
+                        ))}
+                      </Slider>
+                      {/*<div className={'pdp-carousel-thumbs-mobile'}>
+                        <Slider {...thumbsSettings}>
+                          {product.images?.map((image: ProductImage, i: number) => (
+                            <li
+                              key={image.src}
+                              className={`pdp-carousel-thumbs-mobile__item ${activeGalleryItem === i ? 'active' : ''}`}
+                              onClick={() => {
+                                if (!product.images) {
+                                  return
+                                }
+                              }}
+                            >
+                              <img src={image.src} alt={image.alt} />
+                            </li>
+                          ))}
+                        </Slider>
+                      </div>*/}
+                    </>
+                  ) : (
                     <div className="pdp-s-row">
                       <div className="pdp-s-col pdp-s-col-sm pdp-carousel-icons">
                         <ul className="pdp-carousel-icons__list" id="pdp-carousel-icons__list">
@@ -214,35 +239,7 @@ const Product = (): null | React.ReactElement => {
                         ))}
                       </div>
                     </div>
-                  ) : (
-                    <Slider {...sliderSettings}>
-                      {product.images?.map((image) => (
-                        <div className="pdp-carousel-item-mobile" key={image?.src}>
-                          <img src={image?.src} alt={image?.alt} />
-                        </div>
-                      ))}
-                    </Slider>
                   )}
-                  {/*<div className="pdp-s-row" style={isLargeScreen ? {display: "none"} : {display: "flex"}}>
-                    <div className="pdp-s-col pdp-s-col-sm pdp-carousel-icons">
-                      <ul className="pdp-carousel-icons__list" id="pdp-carousel-icons__list">
-                        {product.images?.map((image) => (
-                          <li key={image.src}>
-                            <img src={image.src} alt={image.alt} />
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                    <div className="pdp-s-col pdp-s-col-lg">
-                      <div className="pdp-carousel" id="pdp-carousel">
-                        {product.images?.map((image) => (
-                          <div className="pdp-carousel__item" key={image?.src}>
-                            <img src={image?.src} alt={image?.alt} />
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>*/}
                 </div>
               </div>
             </div>

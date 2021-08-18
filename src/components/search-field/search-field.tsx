@@ -1,4 +1,4 @@
-import React, { useRef, useCallback, useState } from 'react'
+import React, { useRef, useCallback, useState, FormEvent } from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
 import usePopper from '../../hooks/use-popper'
@@ -68,7 +68,7 @@ export function SearchField({ className, onSubmit, searchedProducts }: SearchFie
   const searchInputRef = useRef<HTMLInputElement>(null)
 
   const handleSubmit = useCallback(
-    (event: Event) => {
+    (event: FormEvent<HTMLFormElement>) => {
       event.preventDefault()
       setIsSearchedProductsDropdownVisible(true)
       if (searchInputRef.current) onSubmit(searchInputRef.current.value)
@@ -78,7 +78,7 @@ export function SearchField({ className, onSubmit, searchedProducts }: SearchFie
 
   const [isSearchedProductsDropdownVisible, setIsSearchedProductsDropdownVisible] = useState(true)
 
-  const [referenceElement, setReferenceElement] = useState<HTMLDivElement | null>(null)
+  const [referenceElement, setReferenceElement] = useState<HTMLFormElement | null>(null)
   const [popperElement, setPopperElement] = useState<HTMLDivElement | null>(null)
   useOnClickOutside({ current: popperElement }, () => setIsSearchedProductsDropdownVisible(false))
 
@@ -98,7 +98,7 @@ export function SearchField({ className, onSubmit, searchedProducts }: SearchFie
             strokeMiterlimit="10"
             strokeLinecap="round"
             strokeLinejoin="round"
-          ></path>
+          />
         </svg>
       </SButton>
       {searchedProducts && isSearchedProductsDropdownVisible && (
