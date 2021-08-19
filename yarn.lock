@@ -11537,6 +11537,11 @@ q@^1.1.2:
   resolved "https://registry.yarnpkg.com/q/-/q-1.5.1.tgz#7e32f75b41381291d04611f1bf14109ac00651d7"
   integrity sha1-fjL3W0E4EpHQRhHxvxQQmsAGUdc=
 
+qinu@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/qinu/-/qinu-2.0.0.tgz#2eb18c1787515c12d572b6f8f53e4ed6b32d4827"
+  integrity sha512-TG1VdT6T7+ZHsRCBkNW5kN/nIHYQwiiTVpQ07dpLc5ZAUxyCy6ITUHcPhxvWx27N03K5ZQhEGQ+KgzgIMSv/pg==
+
 qs@6.7.0:
   version "6.7.0"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.7.0.tgz#41dc1a015e3d581f1621776be31afb2876a9b1bc"

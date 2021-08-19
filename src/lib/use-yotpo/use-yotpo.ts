@@ -15,6 +15,6 @@ const refreshWidgets = throttle(() => window?.yotpo?.refreshWidgets())
 
 export function useYotpo(deps: undefined | React.DependencyList = []): void {
   // Script loading is memoized, so it is okay to call it every time
-  loadScript(`//staticw2.yotpo.com/${process.env.YOTPO_APP_KEY}/widget.js`)
+  loadScript(`//staticw2.yotpo.com/LDoDRHPmIWai6MD5o41BGukBakwwgtNMncolHubV/widget.js`)
   useLayoutEffect(refreshWidgets, deps)
 }
