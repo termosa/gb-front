@@ -11,7 +11,7 @@ declare global {
   }
 }
 
-const refreshWidgets = throttle(() => window?.yotpo?.refreshWidgets())
+const refreshWidgets = throttle(() => window?.yotpo?.refreshWidgets(), 100)
 
 export function useYotpo(deps: undefined | React.DependencyList = []): void {
   // Script loading is memoized, so it is okay to call it every time
