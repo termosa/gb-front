@@ -3,11 +3,14 @@ import styled from 'styled-components'
 import { PointsWidget } from '../points-widget'
 import { SigninSignup } from '../signin-signup'
 import { ExtendableBlockContent } from '../../lib/site-header'
+import { CustomerLevel } from 'src/lib/use-customer-orders-details'
 
 export type SearchFieldProps = {
   isBurgerMenuOpen: boolean
   setBurgerMenuOpen: (isBurgerMenuOpen: boolean) => void
   userName?: string
+  points: number
+  customerLevel: CustomerLevel
 }
 
 const SWrapper = styled.div`
@@ -336,6 +339,8 @@ export function NavMobile({
   isBurgerMenuOpen,
   setBurgerMenuOpen,
   userName,
+  points,
+  customerLevel,
 }: SearchFieldProps): React.ReactElement | null {
   useEffect(() => {
     document.body.style.overflow = isBurgerMenuOpen ? 'hidden' : 'auto'
@@ -352,7 +357,7 @@ export function NavMobile({
             <SNavTopInnerLeft>
               <div>
                 <SPointsWidget>
-                  <PointsWidget points={100} />
+                  <PointsWidget points={points} customerLevel={customerLevel} />
                 </SPointsWidget>
               </div>
               <SigninSignup userName={userName} />

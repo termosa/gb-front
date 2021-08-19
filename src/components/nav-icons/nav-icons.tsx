@@ -9,6 +9,7 @@ export type NavIconsProps = {
   className?: ClassName
   onSearchClick: () => void
   userName?: string
+  isSubscriptionLinkShown: boolean
 }
 
 const SWrapper = styled.div`
@@ -194,26 +195,12 @@ const SCartBadge = styled.span`
   outline: 0;
 `
 
-const LINKS_LIST = [
-  {
-    title: 'Order Status',
-    path: '/pages/order-status-check',
-  },
-  {
-    title: 'My Orders',
-    path: '/account#/orders',
-  },
-  {
-    title: 'My FJ Rewards',
-    path: '/account#/rewards',
-  },
-  {
-    title: 'My Birthday Gift',
-    path: '/account#/birthday',
-  },
-]
-
-export function NavIcons({ className, onSearchClick, userName }: NavIconsProps): React.ReactElement | null {
+export function NavIcons({
+  className,
+  onSearchClick,
+  userName,
+  isSubscriptionLinkShown,
+}: NavIconsProps): React.ReactElement | null {
   const cart = useCart(true)
   const isMobileScreen = useMediaPredicate('(max-width: 1200px)')
   const [dropdownVisibility, setDropdownVisibility] = useState(false)
@@ -283,11 +270,23 @@ export function NavIcons({ className, onSearchClick, userName }: NavIconsProps):
               </svg>
             </SDropDownCloseBtn>
             <SLinkWrapper>
-              {LINKS_LIST.map((item) => (
-                <li key={item.path + item.title}>
-                  <a href={item.path}>{item.title}</a>
+              <li>
+                <a href="/pages/order-status-check">Order Status</a>
+              </li>
+              {isSubscriptionLinkShown && (
+                <li>
+                  <a href="/account#/subscription">My subscription</a>
                 </li>
-              ))}
+              )}
+              <li>
+                <a href="/account#/orders">My Orders</a>
+              </li>
+              <li>
+                <a href="/account#/rewards">My FJ Rewards</a>
+              </li>
+              <li>
+                <a href="/account#/birthday">My Birthday Gift</a>
+              </li>
               <li>
                 <div style={{ margin: '0 auto', maxWidth: 'fit-content' }}>
                   {userName ? <SSignOutLink href="/account/logout">Sign Out</SSignOutLink> : <SigninSignup />}
