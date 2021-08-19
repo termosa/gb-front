@@ -5,6 +5,7 @@ import registerSiteFooter from '../lib/site-footer/site-footer.builder'
 import registerHeroGallery from '../lib/hero-gallery/hero-gallery.builder'
 import registerInformationOverview from '../lib/information-overview/information-overview.builder'
 import registerMainPageLayout from '../lib/main-page-layout/main-page-layout.builder'
+import registerYotpoReviews from '../lib/yotpo-reviews/yotpo-reviews.builder'
 
 import ReviewsSection from '../components/reviews-section'
 import ShopByProductsOverview from '../components/shop-by-products-overview'
@@ -14,7 +15,6 @@ import FollowUs from '../components/follow-us'
 import SiteSection from '../components/site-section'
 import InnerCircleExclusiveContainer from '../containers/InnerCircleExclusive'
 import ProductCarouselContainer from '../containers/ProductCarousel'
-import YotpoComments from '../components/yotpo-comments'
 import registerCategoryShopOverview from '../lib/category-shop-overview/category-shop-overview.builder'
 
 export default function registerComponents(): void {
@@ -24,6 +24,7 @@ export default function registerComponents(): void {
   registerInformationOverview()
   registerMainPageLayout()
   registerCategoryShopOverview()
+  registerYotpoReviews()
 
   Builder.registerComponent(ReviewsSection, {
     name: 'Social Reviews',
@@ -180,42 +181,6 @@ export default function registerComponents(): void {
           name: 'Text',
           options: { text: 'I am child text block!' },
         },
-      },
-    ],
-  })
-
-  Builder.registerComponent(YotpoComments, {
-    name: 'YotpoComments',
-    inputs: [
-      {
-        name: 'id',
-        type: 'number',
-        defaultValue: '',
-        required: true,
-      },
-      {
-        name: 'title',
-        type: 'string',
-        defaultValue: 'Product name',
-        required: true,
-      },
-      {
-        name: 'imageUrl',
-        type: 'string',
-        defaultValue: '',
-        required: true,
-      },
-      {
-        name: 'productUrl',
-        type: 'string',
-        defaultValue: '',
-        required: false,
-      },
-      {
-        name: 'description',
-        type: 'string',
-        defaultValue: '',
-        required: false,
       },
     ],
   })
