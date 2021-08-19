@@ -13,10 +13,10 @@ const MainPageLayoutWrapper = styled.div`
   flex-direction: column;
   min-height: 100vh;
   transition: opacity linear 0.5s;
-  padding-top: 152px;
+  padding-top: 153px;
 
   @media (min-width: 768px) {
-    padding-top: 146px;
+    padding-top: 157px;
   }
 `
 

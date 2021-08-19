@@ -54,22 +54,22 @@ const SFloatingCtaOpened = styled.div<{
 `
 
 const SFloatingCtaTitle = styled.h3`
-  font: 400 16px/1.5 'Montserrat', sans-serif;
+  font: 400 16px/1 'Montserrat', sans-serif;
   text-align: center;
   margin: 0 auto 12px;
 `
 
 const SRingSizeContainer = styled.div`
+  font: 400 16px/1 'Montserrat', sans-serif;
   display: flex;
   justify-content: center;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 `
 
 const SRingSizeError = styled.div`
-  font: 400 16px/1.5 'Montserrat', sans-serif;
   text-align: center;
   color: #ee67a0;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 `
 
 const SBtnHolder = styled.div`
@@ -86,6 +86,8 @@ const SBtnHolder = styled.div`
 const SFloatingRingSizeBtn = styled.button<{
   isActive: boolean
 }>`
+  font: 400 16px/1 'Montserrat', sans-serif;
+  letter-spacing: 0.05em;
   background: ${(props) => (props.isActive ? '#9059C8' : '#fff')};
   border: ${(props) => (props.isActive ? '0.5px solid #9059C8' : '0.5px solid #000')};
   padding: 10px 5px;
