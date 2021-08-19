@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { Product } from '../../modules/normalize-product'
 import formatPrice from '../../modules/format-price'
 import getLabel from '../../modules/get-label'
-import YotpoStarRating from 'src/lib/yotpo-star-rating'
+import YotpoStarRating from '../../lib/yotpo-star-rating'
 
 export type ProductCardProps = {
   className?: ClassName

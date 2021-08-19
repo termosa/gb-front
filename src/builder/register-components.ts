@@ -11,11 +11,11 @@ import ReviewsSection from '../components/reviews-section'
 import ShopByProductsOverview from '../components/shop-by-products-overview'
 import PromiseBar from '../components/promise-bar'
 import InlineSignupForm from '../components/inline-signup-form'
-import FollowUs from '../components/follow-us'
 import SiteSection from '../components/site-section'
 import InnerCircleExclusiveContainer from '../containers/InnerCircleExclusive'
 import ProductCarouselContainer from '../containers/ProductCarousel'
 import registerCategoryShopOverview from '../lib/category-shop-overview/category-shop-overview.builder'
+import registerYotpoGallery from '../lib/yotpo-gallery/yotpo-gallery.builder'
 
 export default function registerComponents(): void {
   registerSiteHeader()
@@ -25,6 +25,7 @@ export default function registerComponents(): void {
   registerMainPageLayout()
   registerCategoryShopOverview()
   registerYotpoReviews()
+  registerYotpoGallery()
 
   Builder.registerComponent(ReviewsSection, {
     name: 'Social Reviews',
@@ -100,10 +101,6 @@ export default function registerComponents(): void {
         defaultValue: '(email) => console.log(email)',
       },
     ],
-  })
-
-  Builder.registerComponent(FollowUs, {
-    name: 'Yotpo Instagram Tool',
   })
 
   Builder.registerComponent(InnerCircleExclusiveContainer, {
