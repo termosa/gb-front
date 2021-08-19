@@ -98,16 +98,16 @@ const Product = (): null | React.ReactElement => {
 
   useEffect(() => {
     handlePosition()
-    if (window) setMobile(window.innerWidth > 992)
+    if (window) setMobile(window.innerWidth < 768)
   }, [])
 
   useEffect(() => {
     window?.addEventListener('resize', () => {
-      window && setMobile(window.innerWidth > 992)
+      window && setMobile(window.innerWidth < 768)
     })
     return () => {
       window?.removeEventListener('resize', () => {
-        window && setMobile(window.innerWidth > 992)
+        window && setMobile(window.innerWidth < 768)
       })
     }
   }, [setMobile])
