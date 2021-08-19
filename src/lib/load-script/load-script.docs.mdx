@@ -1,0 +1,29 @@
+export const meta = {
+  type: 'function',
+  name: 'loadScript',
+  description: 'Adds script to the page, once',
+  tags: ['function', 'script'],
+  lists: {
+    arguments: [
+      { name: 'url', required: true, type: 'string', description: 'Url of the script to load' },
+    ],
+    returns: [
+      { name: 'promise', type: 'Promise<void>', description: 'Will resolve when script has finished execution' },
+    ],
+  },
+}
+
+It adds script tag to the page, waits until the script will be executed and resolves returned promise.
+It doesn't add the same script second time, and instead returns the promise of the first call.
+
+## Usage
+
+```js
+import loadScript from './load-script'
+
+loadScript('//site.com/script.js')
+  .then(
+    () => console.log('script loaded'),
+    () => console.log('script failed to load'),
+  )
+```

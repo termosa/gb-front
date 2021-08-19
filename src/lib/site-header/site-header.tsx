@@ -10,6 +10,7 @@ import NavIcons from '../../components/nav-icons'
 import NavMobile from '../../components/nav-mobile'
 
 import { ProductsChunk } from '../../modules/normalize-products-chunk'
+import useCustomerOrdersDetails from '../use-customer-orders-details'
 
 const SWrapper = styled.div`
   text-align: center;
@@ -526,6 +527,7 @@ export type SiteHeaderProps = {
   onSearch: (value: string) => void
   userName?: string
   searchedProducts?: ProductsChunk
+  userEmail?: string
 }
 
 export function SiteHeader({
@@ -534,10 +536,12 @@ export function SiteHeader({
   onSearch,
   userName,
   searchedProducts,
+  userEmail,
 }: SiteHeaderProps): React.ReactElement | null {
   const [isSearchDropdownVisible, setIsSearchDropdownVisible] = useState(false)
   const [extendableBlockContent, setExtendableBlockContent] = useState('')
   const [isBurgerMenuOpen, setBurgerMenuOpen] = useState(false)
+  const customerOrdersDetails = useCustomerOrdersDetails(userEmail)
 
   return (
     <SWrapper className={cn(className)} style={style} onMouseLeave={() => setExtendableBlockContent('')}>
@@ -599,16 +603,24 @@ export function SiteHeader({
               <SIconsWrapper>
                 <SSignSignup userName={userName} />
                 <SPointsWidget>
-                  <PointsWidget points={100} />
+                  <PointsWidget
+                    points={customerOrdersDetails.totalPoints}
+                    customerLevel={customerOrdersDetails.level}
+                  />
                 </SPointsWidget>
                 <NavMobile
                   isBurgerMenuOpen={isBurgerMenuOpen}
                   setBurgerMenuOpen={setBurgerMenuOpen}
                   userName={userName}
+                  points={customerOrdersDetails.totalPoints}
+                  customerLevel={customerOrdersDetails.level}
                 />
                 <NavIcons
                   onSearchClick={() => setIsSearchDropdownVisible(!isSearchDropdownVisible)}
                   userName={userName}
+                  isSubscriptionLinkShown={
+                    customerOrdersDetails.isICMember && customerOrdersDetails.isICMembershipActive
+                  }
                 />
               </SIconsWrapper>
             </SSearchContent>

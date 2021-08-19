@@ -36,14 +36,15 @@ export type MainPageLayoutProps = {
 
 export function MainPageLayout({ children, className, style }: MainPageLayoutProps): React.ReactElement {
   const searchRequest = useDefer(loadProductsChunk)
-  const customerRequest = useDefer(() => loadCustomer().catch(() => null), [], [])
+  const { value: customer } = useDefer(() => loadCustomer().catch(() => null), [], [])
 
   return (
     <MainPageLayoutWrapper className={cn(className)} style={style}>
       <Header
-        userName={customerRequest.value?.fullName}
+        userName={customer?.fullName}
         onSearch={(value) => console.log(value)}
         searchedProducts={searchRequest.value}
+        userEmail={customer?.email}
       />
       <div className="app-re-wrapper" id="app-wrapper">
         <div className="app-re-content" id="app-content">

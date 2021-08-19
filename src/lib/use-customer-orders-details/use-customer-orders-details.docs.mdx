@@ -1,0 +1,51 @@
+import useCustomerOrdersDetails from '.'
+
+export const meta = {
+  type: 'hook',
+  name: 'useCustomerOrdersDetails',
+  description: 'Use customer order details',
+  tags: ['hook', 'customer'],
+  lists: {
+    arguments: [
+      { name: 'customerEmail', type: 'string', description: 'Specify customer email for getting customer data' },
+    ],
+    returns: [
+      {
+        name: 'customerOrdersDetails',
+        type: 'object',
+        description: 'Information about customer order details',
+      },
+      { name: 'customerOrdersDetails.status', type: 'use-defer.Status', description: 'Request status' },
+      {
+        name: 'customerOrdersDetails.error',
+        type: 'undefined | string',
+        description: 'The error that happened during order details load',
+      },
+      {
+        name: 'customerOrdersDetails.reload',
+        type: '() => Promise<void>',
+        description: 'Reloads order details information',
+      },
+      { name: 'customerOrdersDetails.totalPoints', type: 'number', description: 'Total number of rewards points' },
+      {
+        name: 'customerOrdersDetails.isIcMember',
+        type: 'boolean',
+        description: 'Is the customer is a member of the subscription program',
+      },
+      {
+        name: 'customerOrdersDetails.level',
+        type: 'CustomerLevel | null',
+        description: 'Current level of rewards program',
+      },
+    ],
+  },
+}
+
+## Usage
+
+```jsx
+const CustomerTotalPointsWidget = () => {
+  const customerOrdersDetails = useCustomerOrdersDetails('hihop92924@teeshirtsprint.com')
+  return <p>Now customer have {customerOrdersDetails.totalPoints} bonus points</p>
+}
+```

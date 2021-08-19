@@ -1,0 +1,46 @@
+import YotpoReviews from '.'
+
+export const meta = {
+  type: 'component',
+  name: 'YotpoReviews',
+  description: 'Yotpo widget with product reviews',
+  tags: ['component', 'yotpo'],
+  lists: {
+    attributes: [
+      { name: 'className', type: 'classnames.Argument', description: 'One or multiple class names that will be added to the main container' },
+      { name: 'style', type: 'React.CSSProperties', description: 'Inline styles for the main container' },
+      { name: 'productId', type: 'number', description: 'Will override the corresponding value from ProductContext' },
+      { name: 'productTitle', type: 'string', description: 'Will override the corresponding value from ProductContext' },
+      { name: 'productUrl', type: 'string', description: 'Will override the corresponding value from ProductContext' },
+      { name: 'productImageUrl', type: 'string', description: 'Will override the corresponding value from ProductContext' },
+    ],
+  },
+  scope: { YotpoReviews },
+}
+
+## Usage
+
+With context
+
+```jsx
+<ProductContext.Provider value={{ product_id: 68415324184, title: 'Original title' }}>
+  <YotpoReviews productTitle="New title" /> {/* it is possible to rewrite product details */}
+</ProductContext.Provider>
+```
+
+Setting product details within attributes
+
+```jsx
+<YotpoReviews
+  productId={68415324184}
+  productTitle="Water Lilies"
+  productUrl="https://www.fragrantjewels.com/ws30/products/water-lilies-jewel-candle"
+  productImageUrl="https://cdn.shopify.com/s/files/1/0548/5721/products/1199626307319709-Gravitybrands-1200x960-ZC-1.01.png?v=1609870978"
+/>
+```
+
+## Playground
+
+```jsx live
+<YotpoReviews productId={68415324184} />
+```
