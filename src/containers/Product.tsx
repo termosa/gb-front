@@ -1,16 +1,25 @@
-import React, { useCallback, useContext, useEffect, useRef, useState } from 'react'
+import React, {
+  Dispatch,
+  MutableRefObject,
+  SetStateAction,
+  useCallback,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from 'react'
 import Slider, { Settings } from 'react-slick'
 import { parse } from 'node-html-parser'
 import formatPrice from '../modules/format-price'
 import getLabel from '../modules/get-label'
 import { Product as ProductType, ProductImage, ProductVariant } from '../modules/normalize-product'
 import removeNewLineCharacters from '../modules/remove-new-line-characters'
-import handleGalleryScrolling from '../modules/handle-gallery-scrolling'
 import ProductContext from '../modules/product-context'
 import addItemToCart from '../lib/add-item-to-cart'
 import window from '../lib/window'
 import navigate from '../lib/navigate'
 import YotpoStarRating from 'src/lib/yotpo-star-rating'
+import { ScreenSize, useScreenSize } from '../lib/use-screen-size'
 
 type ProductDescription = {
   title: string
@@ -19,6 +28,7 @@ type ProductDescription = {
 
 const Product = (): null | React.ReactElement => {
   const product = useContext<ProductType | undefined>(ProductContext)
+  const screenSize = useScreenSize()
 
   const [currentRingSize, setCurrentRingSize] = useState<number | null>(null)
   const [isSelectRingError, setSelectRingError] = useState<boolean>(false)
@@ -26,7 +36,6 @@ const Product = (): null | React.ReactElement => {
   const [productDescription, setProductDescription] = useState<Array<ProductDescription>>()
   const [isDiscountApplied, setDiscountApplied] = useState<boolean>(true)
   const [activeGalleryItem, setActiveGalleryItem] = useState<number | null>(0)
-  const [isMobile, setMobile] = useState<boolean>()
   const [comparePrice, setComparePrice] = useState<number | null>(0)
   const [activeAccordion, setActiveAccordion] = useState<number | null>(0)
   const [infoDistanceFromTop, setInfoDistanceFromTop] = useState<number>(183)
@@ -44,6 +53,28 @@ const Product = (): null | React.ReactElement => {
       return
     }
     localStorage.setItem('isFloatingCtaVisible', JSON.stringify(position.top <= 150))
+  }
+
+  const handleGalleryScrolling = (
+    myRef: MutableRefObject<HTMLDivElement | null> | null,
+    images: Array<ProductImage>,
+    setActiveGalleryItem: Dispatch<SetStateAction<number | null>>,
+    screenSize: ScreenSize
+  ): void => {
+    const dimension = screenSize.greaterThenExtraLarge ? 473 : screenSize.greaterThenLarge ? 450 : 270
+    const initialDistance = 160
+    let distanceFromTop = 0
+
+    const listOfCheckpoints = images
+      ?.reduce((arr: Array<number>, curr: ProductImage) => {
+        const ratio = (Math.round(curr.height / 10) * 10) / (Math.round(curr.width / 10) * 10)
+        const galleryImageHeight = ratio === 1 ? dimension : Math.round(dimension * ratio)
+        arr.push(initialDistance - distanceFromTop)
+        distanceFromTop = distanceFromTop + galleryImageHeight
+        return arr
+      }, [])
+      .filter((el: number) => myRef?.current && el >= myRef.current.getBoundingClientRect().top - 149)
+    setActiveGalleryItem(listOfCheckpoints.length - 1)
   }
 
   const handleScrollDirection = useCallback(
@@ -84,30 +115,20 @@ const Product = (): null | React.ReactElement => {
 
   useEffect(() => {
     window?.addEventListener('scroll', () => {
-      product && product.images && handleGalleryScrolling(galleryRef, product.images, setActiveGalleryItem)
+      product && product.images && handleGalleryScrolling(galleryRef, product.images, setActiveGalleryItem, screenSize)
     })
     return () => {
       window?.removeEventListener('scroll', () => {
-        product && product.images && handleGalleryScrolling(galleryRef, product.images, setActiveGalleryItem)
+        product &&
+          product.images &&
+          handleGalleryScrolling(galleryRef, product.images, setActiveGalleryItem, screenSize)
       })
     }
   }, [product])
 
   useEffect(() => {
     handlePosition()
-    if (window) setMobile(window.innerWidth < 768)
   }, [])
-
-  useEffect(() => {
-    window?.addEventListener('resize', () => {
-      window && setMobile(window.innerWidth < 768)
-    })
-    return () => {
-      window?.removeEventListener('resize', () => {
-        window && setMobile(window.innerWidth < 768)
-      })
-    }
-  }, [setMobile])
 
   useEffect(() => {
     setActualPrice(product?.variants[0].actual_price || 0)
@@ -179,17 +200,7 @@ const Product = (): null | React.ReactElement => {
             <div className="pdp-col pdp-col-61">
               <div className="pdp-s-carousel-wrapper">
                 <div className="pdp-s-row-wrapper">
-                  {isMobile ? (
-                    <>
-                      <Slider {...sliderSettings}>
-                        {product.images?.map((image) => (
-                          <div className="pdp-carousel-item-mobile" key={image?.src}>
-                            <img src={image?.src} alt={image?.alt} />
-                          </div>
-                        ))}
-                      </Slider>
-                    </>
-                  ) : (
+                  {screenSize.greaterThenMedium ? (
                     <div className="pdp-s-row">
                       <div className="pdp-s-col pdp-s-col-sm pdp-carousel-icons">
                         <ul className="pdp-carousel-icons__list" id="pdp-carousel-icons__list">
@@ -221,6 +232,16 @@ const Product = (): null | React.ReactElement => {
                         ))}
                       </div>
                     </div>
+                  ) : (
+                    <>
+                      <Slider {...sliderSettings}>
+                        {product.images?.map((image) => (
+                          <div className="pdp-carousel-item-mobile" key={image?.src}>
+                            <img src={image?.src} alt={image?.alt} />
+                          </div>
+                        ))}
+                      </Slider>
+                    </>
                   )}
                 </div>
               </div>
