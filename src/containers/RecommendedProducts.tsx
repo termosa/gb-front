@@ -3,7 +3,6 @@ import React, { useContext, useEffect, useState } from 'react'
 import ProductsCarousel from '../components/products-carousel'
 import loadCollection from '../lib/load-collection'
 import { Product as ProductType } from '../lib/load-product'
-import { RECOMMENDED_PRODUCTS_COLLECTION_ID } from '../settings/ids'
 import ProductContext from '../modules/product-context'
 
 export type RecommendedProductsProps = {
@@ -16,7 +15,7 @@ const RecommendedProducts = ({ title, collectionId }: RecommendedProductsProps):
   const [recommendedProducts, setRecommendedProducts] = useState<ProductType[]>([])
 
   useEffect(() => {
-    loadCollection(collectionId || RECOMMENDED_PRODUCTS_COLLECTION_ID, {
+    loadCollection(collectionId || 57957515342, {
       limit: 6,
       productType: collectionId ? product?.product_type : '',
     }).then((collection) => setRecommendedProducts(collection.products))
