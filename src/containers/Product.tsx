@@ -84,15 +84,11 @@ const Product = (): null | React.ReactElement => {
 
   useEffect(() => {
     window?.addEventListener('scroll', () => {
-      product &&
-        product.images &&
-        handleGalleryScrolling(galleryRef, product.images, setActiveGalleryItem, galleryImageHeight)
+      product && product.images && handleGalleryScrolling(galleryRef, product.images, setActiveGalleryItem)
     })
     return () => {
       window?.removeEventListener('scroll', () => {
-        product &&
-          product.images &&
-          handleGalleryScrolling(galleryRef, product.images, setActiveGalleryItem, galleryImageHeight)
+        product && product.images && handleGalleryScrolling(galleryRef, product.images, setActiveGalleryItem)
       })
     }
   }, [product])
