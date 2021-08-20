@@ -11,7 +11,19 @@ import ProductContext from '../../modules/product-context'
 registerComponents()
 
 Builder.registerComponent(FjWild, {
-  name: 'FJ Wild',
+  name: 'Product Yotpo Instagram Tool',
+  inputs: [
+    {
+      name: 'title',
+      type: 'string',
+      defaultValue: 'FJ in the wild',
+    },
+    {
+      name: 'subTitle',
+      type: 'string',
+      defaultValue: 'See our products in action on customers just like you.',
+    },
+  ],
 })
 
 Builder.registerComponent(PotentialProducts, {
@@ -19,7 +31,20 @@ Builder.registerComponent(PotentialProducts, {
 })
 
 Builder.registerComponent(RecommendedProducts, {
-  name: 'Recommended Products',
+  name: 'Product Recommendation Carousel',
+  inputs: [
+    {
+      name: 'title',
+      type: 'string',
+      defaultValue: 'Recommended for you',
+    },
+    {
+      name: 'collectionId',
+      type: 'number',
+      required: false,
+      defaultValue: '',
+    },
+  ],
 })
 
 Builder.registerComponent(Product, {

@@ -3,6 +3,13 @@ import normalizeCollection, { ServerCollection, Collection } from '../../modules
 
 export type { Collection, Product } from '../../modules/normalize-collection'
 
-export function loadCollection(collectionIdOrHandle: number | string): Promise<Collection> {
-  return api<ServerCollection>({ path: `/inventory/collections/${collectionIdOrHandle}` }).then(normalizeCollection)
+export type GetCollectionQuery = {
+  productType?: string
+  limit?: number
+}
+
+export function loadCollection(collectionIdOrHandle: number | string, query?: GetCollectionQuery): Promise<Collection> {
+  return api<ServerCollection>({ path: `/inventory/collections/${collectionIdOrHandle}`, query }).then(
+    normalizeCollection
+  )
 }
