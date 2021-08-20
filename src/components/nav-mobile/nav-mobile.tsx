@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { PointsWidget } from '../points-widget'
 import { SigninSignup } from '../signin-signup'
 import { ExtendableBlockContent } from '../../lib/site-header'
-import { CustomerLevel } from 'src/lib/use-customer-orders-details'
+import { CustomerLevel } from '../../lib/use-customer-orders-details'
 
 export type SearchFieldProps = {
   isBurgerMenuOpen: boolean

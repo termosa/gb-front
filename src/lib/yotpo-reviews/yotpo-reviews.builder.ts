@@ -6,11 +6,6 @@ export default function registerYotpoReviews(): void {
     name: 'Yotpo reviews',
     inputs: [
       {
-        name: 'className',
-        type: 'string',
-        defaultValue: '',
-      },
-      {
         name: 'productId',
         type: 'number',
         defaultValue: '',

@@ -18,7 +18,7 @@ import ProductContext from '../modules/product-context'
 import addItemToCart from '../lib/add-item-to-cart'
 import window from '../lib/window'
 import navigate from '../lib/navigate'
-import YotpoStarRating from 'src/lib/yotpo-star-rating'
+import YotpoStarRating from '../lib/yotpo-star-rating'
 import { ScreenSize, useScreenSize } from '../lib/use-screen-size'
 
 type ProductDescription = {
