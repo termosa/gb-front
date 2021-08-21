@@ -1,13 +1,11 @@
 node_modules/
 /dist/
 /coverage/
-/.docs/
-/.docs/
+/.ovrw/
 /.cache/
 /.next/
 /.idea/
 /.project/
-/.vscode/
 /.jest/
 /.yarn/
 /out/

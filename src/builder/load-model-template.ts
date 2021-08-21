@@ -1,5 +1,5 @@
 import https from 'https'
-import qs from 'qs'
+import stringifyQuery from '../modules/stringify-query'
 // import { BuilderContent } from '@builder.io/sdk' should I extend ModelTemplate with this object?
 
 const apiKey = process.env.BUILDER_KEY
@@ -55,7 +55,7 @@ export default function loadModelTemplate(modelName: ModelName, templateName?: s
   return new Promise((resolve, reject) => {
     const origin = 'https://cdn.builder.io'
     const path = `/api/v2/content/${modelName.toLowerCase()}`
-    const query = qs.stringify({ apiKey, limit: 1, 'query.name': templateName || defaultTemplateName })
+    const query = stringifyQuery({ apiKey, limit: 1, 'query.name': templateName || defaultTemplateName })
     const fail = (reason?: any) => {
       console.error(`Could not load template for ${modelName}${templateName ? `:${templateName}` : ''}`, reason)
       return reject(reason)

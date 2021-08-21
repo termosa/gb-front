@@ -1,0 +1,28 @@
+{
+  "cSpell.words": [
+    "gravitybrandsorg",
+    "metafield",
+    "metafields",
+    "mockdate",
+    "multipass",
+    "ovrw",
+    "popperjs",
+    "stylelint",
+    "teambit",
+    "yotpo"
+  ],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "eslint.options": {
+    "extensions": [".js", ".jsx", ".md", ".mdx", ".ts", ".tsx", ".css"]
+  },
+  "eslint.validate": [
+    "markdown",
+    "mdx",
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ]
+}
