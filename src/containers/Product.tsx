@@ -14,6 +14,19 @@ import styled from 'styled-components'
 import { ProductModalButtons } from '../components/product-modal-button'
 import { SubscriptionHint } from '../components/subscription-hint'
 
+type ProductDescription = {
+  title: string
+  content: string
+}
+
+const SProductBreadcrumbs = styled.div`
+  padding: 28px 0 20px;
+
+  @media (min-width: 768px) {
+    padding: 16px 0;
+  }
+`
+
 const SProductContainer = styled.div`
   padding: 0 15px;
   max-width: 1020px;
@@ -40,11 +53,6 @@ const SProductInfo = styled.div`
     width: 35%;
   }
 `
-
-type ProductDescription = {
-  title: string
-  content: string
-}
 
 const Product = (): null | React.ReactElement => {
   const product = useContext<ProductType | undefined>(ProductContext)
@@ -163,9 +171,9 @@ const Product = (): null | React.ReactElement => {
   return (
     <>
       <SProductContainer>
-        <div className="app-h-breadcrumbs">
+        <SProductBreadcrumbs>
           Home / All / Bundles / <span>{product.title.split('-')[0]}</span>
-        </div>
+        </SProductBreadcrumbs>
       </SProductContainer>
       <SProductContainer>
         <SPdpRowWrapper>

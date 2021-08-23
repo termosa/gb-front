@@ -76,7 +76,6 @@ export function VerticalGallery({
 }: VerticalGalleryProps): React.ReactElement | null {
   const screenSize = useScreenSize()
   const [galleryImageWidth, setGalleryImageWidth] = useState<number>(465)
-  const [distanceFromTop, setDistanceFromTop] = useState<number>(0)
   const product = useContext<ProductType | undefined>(ProductContext)
 
   if (!product) {
@@ -92,7 +91,7 @@ export function VerticalGallery({
         product && product.images && handleGalleryScrolling(galleryRef, product.images, setActiveGalleryItem)
       })
     }
-  }, [product])
+  }, [product, screenSize])
 
   useEffect(() => {
     setGalleryImageWidth(screenSize.greaterThenExtraLarge ? 465 : screenSize.greaterThenLarge ? 400 : 300)
@@ -109,12 +108,14 @@ export function VerticalGallery({
     setActiveGalleryItem: Dispatch<SetStateAction<number | null>>
   ): void => {
     const initialDistance = 160
+    let distanceFromTop = 0
+    setGalleryImageWidth(screenSize.greaterThenExtraLarge ? 465 : screenSize.greaterThenLarge ? 400 : 300)
 
     const listOfCheckpoints = images
       ?.reduce((arr: Array<number>, curr: ProductImage) => {
         const galleryImageHeight = getImageHeight(curr)
         arr.push(initialDistance - distanceFromTop)
-        setDistanceFromTop(distanceFromTop + galleryImageHeight)
+        distanceFromTop = distanceFromTop + galleryImageHeight
         return arr
       }, [])
       .filter((el: number) => myRef?.current && el >= myRef.current.getBoundingClientRect().top - 160)

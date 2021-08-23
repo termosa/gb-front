@@ -9,10 +9,6 @@ const SubscriptionHintContainer = styled.div`
   border-top: 1px solid #9059c8;
   padding: 14px 0 0;
   margin-top: 11px;
-
-  @media (min-width: 768px) {
-    margin-left: 30px;
-  }
 `
 
 const SubscriptionHintList = styled.ul`
