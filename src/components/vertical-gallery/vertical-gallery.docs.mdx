@@ -1,0 +1,29 @@
+import VerticalGallery from '.'
+
+export const meta = {
+  type: 'component',
+  name: 'VerticalGallery',
+  description: 'Styled block with custom content',
+  tags: ['component'],
+  preview: <VerticalGallery>Component content here</VerticalGallery>,
+  lists: {
+    attributes: [
+      { name: 'children', required: true, type: 'React.ReactNode', description: 'Content that will be rendered inside of the block' },
+      { name: 'className', type: 'classnames.Argument', description: 'One or multiple class names that will be added to the main container' },
+      { name: 'style', type: 'React.CSSProperties', description: 'Inline styles for the main container' },
+    ],
+  },
+  scope: { VerticalGallery },
+}
+
+## Usage
+
+```jsx
+<VerticalGallery className="class" style={{ color: 'red' }}>Put content here</VerticalGallery>
+```
+
+## Playground
+
+```jsx live
+<VerticalGallery style={{ color: 'red' }}>Content text</VerticalGallery>
+```

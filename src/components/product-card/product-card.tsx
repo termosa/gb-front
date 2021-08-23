@@ -167,7 +167,7 @@ const ProductCardStars = styled.div`
   }
 `
 
-const ProductCardStar = styled.div`
+/*const ProductCardStar = styled.div`
   margin: 0 1px;
 
   svg {
@@ -181,7 +181,7 @@ const ProductCardStar = styled.div`
       height: 18px;
     }
   }
-`
+`*/
 
 const SPriceLabel = styled.span`
   text-transform: uppercase;
@@ -192,12 +192,12 @@ const SDiscountPriceLabel = styled(SPriceLabel)`
   text-decoration: line-through;
 `
 
-const ProductCardRatingLink = styled.div`
+/*const ProductCardRatingLink = styled.div`
   font: 500 11px/13px 'Montserrat', sans-serif;
   margin: 0 0 1px 4px;
   text-decoration: none;
   color: black;
-`
+`*/
 
 const ProductCardPrices = styled.div`
   font: 400 16px/1.25 'Montserrat', sans-serif;
