@@ -109,7 +109,6 @@ export function VerticalGallery({
   ): void => {
     const initialDistance = 160
     let distanceFromTop = 0
-    setGalleryImageWidth(screenSize.greaterThenExtraLarge ? 465 : screenSize.greaterThenLarge ? 400 : 300)
 
     const listOfCheckpoints = images
       ?.reduce((arr: Array<number>, curr: ProductImage) => {
@@ -157,7 +156,7 @@ export function VerticalGallery({
                         }
                         galleryRef.current &&
                           window?.scrollTo({
-                            top: 51 + getImageHeight(image) * i,
+                            top: 51 + 465 * i,
                             behavior: 'smooth',
                           })
                       }}
