@@ -1,14 +1,16 @@
 export const meta = {
   type: 'function',
   name: 'loadCustomerOrdersDetails',
-  description: 'Prints greeting to the console',
-  tags: ['function'],
+  description: 'Loads customer orders details and returns normalized data',
+  tags: ['function', 'customer'],
   lists: {
-    arguments: [
-      { name: 'name', type: 'string', description: 'Name that should be in the greeting' },
-    ],
+    arguments: [{ name: 'email', type: 'string', description: 'Customer email', required: true }],
     returns: [
-      { name: 'message', type: 'string', description: 'Text printed to the console' },
+      {
+        name: 'customerOrdersDetails',
+        type: 'normalize-customer-orders-details.CustomerOrdersDetails',
+        description: 'Normalized customer orders details',
+      },
     ],
   },
 }
@@ -18,5 +20,7 @@ export const meta = {
 ```js
 import loadCustomerOrdersDetails from './load-customer-orders-details'
 
-loadCustomerOrdersDetails('World')
+loadCustomerOrdersDetails('customerEmail@email.com').then((r) =>
+  console.log('Total customer points is: ', r.totalPoints)
+)
 ```

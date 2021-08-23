@@ -1,14 +1,23 @@
 export const meta = {
   type: 'function',
   name: 'normalizeCustomerOrdersDetails',
-  description: 'Prints greeting to the console',
-  tags: ['function'],
+  description: 'Normalize customer orders details data',
+  tags: ['function', 'customer'],
   lists: {
     arguments: [
-      { name: 'name', type: 'string', description: 'Name that should be in the greeting' },
+      {
+        name: 'serverCustomerOrdersDetails',
+        type: 'ServerCustomerOrdersDetails',
+        description: 'Server cusotmer orders details',
+        required: true,
+      },
     ],
     returns: [
-      { name: 'message', type: 'string', description: 'Text printed to the console' },
+      { name: 'customerOrdersDetails', type: 'object', description: 'Normalized customer orders details data' },
+      { name: 'customerOrdersDetails.totalPoints', type: 'number', description: 'Total bonus points' },
+      { name: 'customerOrdersDetails.isICMember', type: 'boolean', description: 'Is the customer a member of the Inner Circle program' },
+      { name: 'customerOrdersDetails.level', type: '{ NOIR = 0, GOLD = 1, PLATINUM = 2 }', description: 'Level of the customer bonus program' },
+      { name: 'customerOrdersDetails.isICMembershipActive', type: 'boolean', description: 'Is the customer an active member of the Inner Circle program' },
     ],
   },
 }
@@ -17,6 +26,10 @@ export const meta = {
 
 ```js
 import normalizeCustomerOrdersDetails from './normalize-customer-orders-details'
+import api from '../../../src/modules/api'
 
-normalizeCustomerOrdersDetails('World')
+api({
+  path: `/customers/customer_data/`,
+  query: { customer_email: email },
+}).then(normalizeCustomerOrdersDetails)
 ```

@@ -1,27 +1,33 @@
 import loadCustomerOrdersDetails from '.'
-import log from '../log'
-jest.mock('../log')
+import api from '../../modules/api'
+import { CustomerLevel } from '../use-customer-orders-details'
+jest.mock('../../modules/api')
 
 describe('loadCustomerOrdersDetails()', () => {
   beforeEach(() => {
-    log.mockReset()
+    ;(api as jest.Mock).mockReset()
+    ;(api as jest.Mock).mockResolvedValue({
+      total_points: 555,
+      is_ic_member: true,
+      level: { name: 'Gold' },
+      is_active: true,
+    })
   })
 
-  it('should print greeting to the console', () => {
-    loadCustomerOrdersDetails('World')
-    expect(log).toBeCalledWith('Hello World!')
+  it('should make a call to API', () => {
+    loadCustomerOrdersDetails('customerEmail@email.com')
+    expect(api).toBeCalledWith({
+      path: `/customers/customer_data/`,
+      query: { customer_email: 'customerEmail@email.com' },
+    })
   })
 
-  it('should print default greeting to the console', () => {
-    loadCustomerOrdersDetails()
-    expect(log).toBeCalledWith('Hello there!')
-  })
-
-  it('should return greeting', () => {
-    expect(loadCustomerOrdersDetails('World')).toBe('Hello World!')
-  })
-
-  it('should return default greeting', () => {
-    expect(loadCustomerOrdersDetails()).toBe('Hello there!')
+  it('should return normalized customer orders details', () => {
+    expect(loadCustomerOrdersDetails('customerEmail@email.com')).resolves.toEqual({
+      totalPoints: 555,
+      isICMember: true,
+      level: CustomerLevel.GOLD,
+      isICMembershipActive: true,
+    })
   })
 })

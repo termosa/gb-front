@@ -1,6 +1,7 @@
 import loadProduct from '.'
 import api from '../../modules/api'
 import normalizeProduct from '../../modules/normalize-product'
+import { waitFor } from '@testing-library/react'
 jest.mock('../../modules/api')
 jest.mock('../../modules/normalize-product')
 
@@ -15,6 +16,6 @@ describe('loadProduct()', () => {
   it('should call proper endpoint and normalize its response', () => {
     expect(loadProduct(123)).resolves.toEqual({ productId: 123 })
     expect(api).toBeCalledWith({ path: '/inventory/products/123' })
-    expect(normalizeProduct).toBeCalledWith({ product: 123 })
+    waitFor(() => expect(normalizeProduct).toBeCalledWith({ product: 123 }))
   })
 })

@@ -1,29 +1,35 @@
 import DiamondIcon from '.'
+import { CustomerLevel } from '../use-customer-orders-details'
 
 export const meta = {
   type: 'component',
   name: 'DiamondIcon',
-  description: 'Styled block with custom content',
+  description: 'Pass customer level to set diamond style',
   tags: ['component', 'icon'],
-  preview: <DiamondIcon>Component content here</DiamondIcon>,
+  preview: <DiamondIcon customerLevel={CustomerLevel.NOIR} />,
   lists: {
     attributes: [
-      { name: 'children', required: true, type: 'React.ReactNode', description: 'Content that will be rendered inside of the block' },
-      { name: 'className', type: 'classnames.Argument', description: 'One or multiple class names that will be added to the main container' },
-      { name: 'style', type: 'React.CSSProperties', description: 'Inline styles for the main container' },
+      {
+        name: 'customerLevel',
+        required: true,
+        type: '{ NOIR = 0 | GOLD = 1 | PLATINUM = 2 }',
+        description: 'A customer level depending on which will be displayed Noir(0), Gold(1) or Platinum(2) diamond',
+      },
     ],
   },
   scope: { DiamondIcon },
 }
 
-## Usage
-
-```jsx
-<DiamondIcon className="class" style={{ color: 'red' }}>Put content here</DiamondIcon>
-```
-
 ## Playground
 
-```jsx live
-<DiamondIcon style={{ color: 'red' }}>Content text</DiamondIcon>
+```jsx live render
+render(() => {
+  const CustomerLevel = {
+    NOIR: 0,
+    GOLD: 1,
+    PLATINUM: 2,
+  }
+
+  return <DiamondIcon customerLevel={CustomerLevel.GOLD} />
+})
 ```

@@ -1,5 +1,16 @@
 import { CustomerLevel } from '../use-customer-orders-details'
 
+export type ServerCustomerLevel = {
+  id: number
+  description: string
+  lower_bound: number
+  name?: 'Platinum' | 'Gold'
+  created: string
+  upper_bound: number
+  modified: string
+  author_id: number
+}
+
 export type ServerCustomerOrdersDetails = {
   id: number
   email: string
@@ -70,16 +81,7 @@ export type ServerCustomerOrdersDetails = {
   customer: {
     email: string
   }
-  level: {
-    id: number
-    description: string
-    lower_bound: number
-    name?: 'Platinum' | 'Gold'
-    created: string
-    upper_bound: number
-    modified: string
-    author_id: number
-  }
+  level: ServerCustomerLevel
   total_points: number
   total_points_spent: number
   total_dollars: number
