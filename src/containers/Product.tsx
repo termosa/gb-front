@@ -79,19 +79,27 @@ const Product = (): null | React.ReactElement => {
 
   const handleScrollDirection = useCallback(
     (e) => {
-      const productInfoPosition = productInfoRef.current?.getBoundingClientRect()
-      if (!productInfoPosition) {
-        return
-      }
+      let currentTop = infoDistanceFromTop
+      const element = productInfoRef.current
       const window = e.currentTarget
-      const isUpScroll = yPosition > window.scrollY && infoDistanceFromTop < 183
-      const isDownScroll = yPosition < window.scrollY && productInfoPosition.bottom >= window.innerHeight
-      setYPosition(window.scrollY)
-      if (!isUpScroll && !isDownScroll) {
+      if (!element) {
         return
       }
-      const distance = isDownScroll ? infoDistanceFromTop - 53 : infoDistanceFromTop + 53
-      setInfoDistanceFromTop(distance)
+      const initialTopOffset = 183
+      const productPosition = element?.getBoundingClientRect()
+
+      const maxTop = productPosition.top + window.scrollY - element?.offsetTop + initialTopOffset
+      const minTop = element.clientHeight - window.innerHeight
+
+      if (window.scrollY < yPosition) {
+        currentTop -= window.scrollY - yPosition
+      } else {
+        currentTop += yPosition - window.scrollY
+      }
+
+      currentTop = Math.min(Math.max(currentTop, -minTop), maxTop, initialTopOffset)
+      setInfoDistanceFromTop(currentTop)
+      setYPosition(window.scrollY)
     },
     [yPosition]
   )
