@@ -143,7 +143,7 @@ describe('loadCart()', () => {
         { productId: 794864229, quantity: 1, title: 'Red Rain Coat - Small' },
         { productId: 794864101, quantity: 2, title: 'Gray Fedora' },
       ],
-      itemCount: 2,
+      itemCount: 3,
       totalPrice: 91,
     })
   })

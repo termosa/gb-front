@@ -1,27 +1,51 @@
+import { act, renderHook } from '@testing-library/react-hooks'
+import { Status } from 'use-defer'
 import createGlobalStateHook from '.'
-import log from '../log'
-jest.mock('../log')
 
 describe('createGlobalStateHook()', () => {
-  beforeEach(() => {
-    log.mockReset()
-  })
+  it('should change state', () => {
+    const { result, waitFor } = renderHook(
+      createGlobalStateHook({
+        status: Status.IDLE,
+        token: undefined,
+        items: [],
+        itemCount: 0,
+        totalPrice: 0,
+        error: undefined,
+      })
+    )
 
-  it('should print greeting to the console', () => {
-    createGlobalStateHook('World')
-    expect(log).toBeCalledWith('Hello World!')
-  })
+    const [state, setState] = result.current
 
-  it('should print default greeting to the console', () => {
-    createGlobalStateHook()
-    expect(log).toBeCalledWith('Hello there!')
-  })
+    expect(state).toStrictEqual({
+      status: Status.IDLE,
+      token: undefined,
+      items: [],
+      itemCount: 0,
+      totalPrice: 0,
+      error: undefined,
+    })
 
-  it('should return greeting', () => {
-    expect(createGlobalStateHook('World')).toBe('Hello World!')
-  })
+    act(() =>
+      setState({
+        status: Status.SUCCESS,
+        token: '1234',
+        items: [1, 2, 3],
+        itemCount: 555,
+        totalPrice: 2,
+        error: undefined,
+      })
+    )
 
-  it('should return default greeting', () => {
-    expect(createGlobalStateHook()).toBe('Hello there!')
+    waitFor(() =>
+      expect(state).toStrictEqual({
+        status: Status.SUCCESS,
+        token: '1234',
+        items: [1, 2, 3],
+        itemCount: 555,
+        totalPrice: 2,
+        error: undefined,
+      })
+    )
   })
 })

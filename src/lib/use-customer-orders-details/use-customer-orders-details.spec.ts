@@ -1,32 +1,66 @@
-import { renderHook, act } from '@testing-library/react-hooks'
-import useCustomerOrdersDetails from '.'
+import { renderHook } from '@testing-library/react-hooks'
+import { Status } from 'use-defer'
+import useCustomerOrdersDetails, { CustomerLevel } from '.'
+import loadCustomerOrdersDetails, { CustomerOrdersDetails } from '../load-customer-orders-details'
+jest.mock('../load-customer-orders-details')
 
 describe('useCustomerOrdersDetails()', () => {
-  it('should have initial value', () => {
-    const { result } = renderHook(() => useCustomerOrdersDetails())
-    expect(result.current.count).toBe(0)
+  beforeEach(() => {
+    ;(loadCustomerOrdersDetails as jest.Mock).mockReset()
+    ;(loadCustomerOrdersDetails as jest.Mock).mockResolvedValue({
+      status: Status.SUCCESS,
+      error: undefined,
+      totalPoints: 1144,
+      isICMember: true,
+      level: CustomerLevel.GOLD,
+      isICMembershipActive: true,
+    } as CustomerOrdersDetails)
   })
 
-  it('should have set initial value with given number', () => {
-    const { result } = renderHook(() => useCustomerOrdersDetails(-10))
-    expect(result.current.count).toBe(-10)
+  it('should not receive data if email is not given', async () => {
+    const { result, waitForNextUpdate } = renderHook(useCustomerOrdersDetails)
+
+    await waitForNextUpdate()
+    expect(result.current).toStrictEqual({
+      status: Status.IDLE,
+      error: undefined,
+      totalPoints: 0,
+      isICMember: false,
+      level: CustomerLevel.NOIR,
+      isICMembershipActive: false,
+      reload: expect.any(Function),
+    })
   })
 
-  it('should have set initial value from given function', () => {
-    const { result } = renderHook(() => useCustomerOrdersDetails(() => -10))
-    expect(result.current.count).toBe(-10)
+  it('should have initial data and pending status', async () => {
+    const { result, waitForNextUpdate } = renderHook(() => useCustomerOrdersDetails('customerEmail@email.com'))
+
+    expect(result.current).toStrictEqual({
+      status: Status.PENDING,
+      error: undefined,
+      totalPoints: 0,
+      isICMember: false,
+      level: CustomerLevel.NOIR,
+      isICMembershipActive: false,
+      reload: expect.any(Function),
+    })
+
+    await waitForNextUpdate()
+    expect(result.current.status).toBe(Status.SUCCESS)
   })
 
-  it('should change initial value by 1', () => {
-    const { result } = renderHook(() => useCustomerOrdersDetails())
-    act(() => result.current.increment())
-    expect(result.current.count).toBe(1)
-  })
+  it('should return data', async () => {
+    const { result, waitForNextUpdate } = renderHook(() => useCustomerOrdersDetails('customerEmail@email.com'))
 
-  it('should change initial value incrementally', () => {
-    const { result } = renderHook(() => useCustomerOrdersDetails())
-    act(() => result.current.increment())
-    act(() => result.current.increment())
-    expect(result.current.count).toBe(2)
+    await waitForNextUpdate()
+    expect(result.current).toStrictEqual({
+      status: Status.SUCCESS,
+      error: undefined,
+      totalPoints: 1144,
+      isICMember: true,
+      level: CustomerLevel.GOLD,
+      isICMembershipActive: true,
+      reload: expect.any(Function),
+    })
   })
 })

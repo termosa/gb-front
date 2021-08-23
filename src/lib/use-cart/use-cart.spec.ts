@@ -33,7 +33,7 @@ describe('useCart()', () => {
     await waitForNextUpdate()
 
     expect(result.current).toStrictEqual({
-      status: 'idle',
+      status: Status.IDLE,
       items: [],
       itemCount: 0,
       totalPrice: 0,

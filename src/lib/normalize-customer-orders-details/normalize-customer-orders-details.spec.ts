@@ -1,27 +1,21 @@
 import normalizeCustomerOrdersDetails from '.'
-import log from '../log'
-jest.mock('../log')
+import { CustomerLevel } from '../use-customer-orders-details'
+import { ServerCustomerLevel, ServerCustomerOrdersDetails } from './normalize-customer-orders-details'
 
 describe('normalizeCustomerOrdersDetails()', () => {
-  beforeEach(() => {
-    log.mockReset()
-  })
-
-  it('should print greeting to the console', () => {
-    normalizeCustomerOrdersDetails('World')
-    expect(log).toBeCalledWith('Hello World!')
-  })
-
-  it('should print default greeting to the console', () => {
-    normalizeCustomerOrdersDetails()
-    expect(log).toBeCalledWith('Hello there!')
-  })
-
-  it('should return greeting', () => {
-    expect(normalizeCustomerOrdersDetails('World')).toBe('Hello World!')
-  })
-
-  it('should return default greeting', () => {
-    expect(normalizeCustomerOrdersDetails()).toBe('Hello there!')
+  it('normalizes a server customer orders details data', () => {
+    expect(
+      normalizeCustomerOrdersDetails({
+        total_points: 463,
+        is_ic_member: true,
+        level: { name: 'Platinum' } as ServerCustomerLevel,
+        is_active: false,
+      } as ServerCustomerOrdersDetails)
+    ).toStrictEqual({
+      totalPoints: 463,
+      isICMember: true,
+      level: CustomerLevel.PLATINUM,
+      isICMembershipActive: false,
+    })
   })
 })

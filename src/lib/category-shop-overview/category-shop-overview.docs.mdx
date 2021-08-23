@@ -1,64 +1,65 @@
-import InformationOverview from '.'
+import CategoryShopCardsOverview from '.'
 
 export const meta = {
   type: 'component',
-  name: 'InformationOverview',
-  description: 'Section to display 3 cards',
+  name: 'CategoryShopCardsOverview',
+  description: 'Section to see 2 cards',
   tags: ['component'],
   preview: (
-    <InformationOverview
-      title="Trust us"
-      cards={[
-        {
-          image: "https://i.ibb.co/QFSL0Xd/Background.jpg",
-          title: "Info Card Title",
-          description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. At eget iaculis eget eget neque, posuere quis placerat arcu. Ipsum est felis varius faucibus praesent convallis."
-        },
-        {
-          image: "https://i.ibb.co/QFSL0Xd/Background.jpg",
-          title: "Info Card Title",
-          description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. At eget iaculis eget eget neque, posuere quis placerat arcu. Ipsum est felis varius faucibus praesent convallis."
-        },
-        {
-          image: "https://i.ibb.co/QFSL0Xd/Background.jpg",
-          title: "Info Card Title",
-          description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. At eget iaculis eget eget neque, posuere quis placerat arcu. Ipsum est felis varius faucibus praesent convallis."
-        },
-      ]}
+    <CategoryShopCardsOverview
+      leftCard={{
+        image: 'https://i.ibb.co/QFSL0Xd/Background.jpg',
+        title: 'Left card title',
+        subTitle: 'Left card subtitle',
+        link: 'https://www.fragrantjewels.com/pages/inner-circle#how-it-works',
+      }}
+      rightCard={{
+        image: 'https://i.ibb.co/QFSL0Xd/Background.jpg',
+        title: 'Right card title',
+        subTitle: 'Right card subtitle',
+        link: 'https://www.fragrantjewels.com/pages/inner-circle#how-it-works',
+      }}
     />
   ),
   lists: {
     attributes: [
-      { name: 'className', type: 'classnames.Argument', description: 'One or multiple class names that will be added to the main container' },
-      { name: 'style', type: 'React.CSSProperties', description: 'Inline styles for the main container' },
-      { name: 'title', required: true, type: 'string', description: 'Section title' },
-      { name: 'cards', required: true, type: 'InformationCard[]', description: 'Cards with any content' },
+      {
+        name: 'leftCard',
+        type: '{ image: string, title: string, subTitle: string, link: string, className?: classnames.Argument}',
+        description: 'Object with left card info',
+        required: true,
+      },
+      {
+        name: 'rightCard',
+        type: '{ image: string, title: string, subTitle: string, link: string, className?: classnames.Argument}',
+        description: 'Object with right card info',
+        required: true,
+      },
+      {
+        name: 'className',
+        type: 'classnames.Argument',
+        description: 'One or multiple class names that will be added to the main container',
+      },
     ],
   },
-  scope: { InformationOverview },
+  scope: { CategoryShopCardsOverview },
 }
 
 ## Playground
 
 ```jsx live
-<InformationOverview
-  title="Trust us"
-  cards={[
-    {
-      image: "https://i.ibb.co/QFSL0Xd/Background.jpg",
-      title: "Info Card Title",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. At eget iaculis eget eget neque, posuere quis placerat arcu. Ipsum est felis varius faucibus praesent convallis."
-    },
-    {
-      image: "https://i.ibb.co/QFSL0Xd/Background.jpg",
-      title: "Info Card Title",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. At eget iaculis eget eget neque, posuere quis placerat arcu. Ipsum est felis varius faucibus praesent convallis."
-    },
-    {
-      image: "https://i.ibb.co/QFSL0Xd/Background.jpg",
-      title: "Info Card Title",
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. At eget iaculis eget eget neque, posuere quis placerat arcu. Ipsum est felis varius faucibus praesent convallis."
-    },
-  ]}
+<CategoryShopCardsOverview
+  leftCard={{
+    image: 'https://i.ibb.co/QFSL0Xd/Background.jpg',
+    title: 'Left card title',
+    subTitle: 'Left card subtitle',
+    link: 'https://www.fragrantjewels.com/pages/inner-circle#how-it-works',
+  }}
+  rightCard={{
+    image: 'https://i.ibb.co/QFSL0Xd/Background.jpg',
+    title: 'Right card title',
+    subTitle: 'Right card subtitle',
+    link: 'https://www.fragrantjewels.com/pages/inner-circle#how-it-works',
+  }}
 />
 ```
