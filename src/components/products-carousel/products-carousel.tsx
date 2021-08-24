@@ -9,6 +9,7 @@ export type ProductsCarouselProps = {
   products: Array<Product>
   className?: ClassName
   title?: string
+  titleHighlighted?: string
   subTitle?: string
   onSelectProduct: (product: Product) => void
 }
@@ -47,7 +48,7 @@ const SectionTitle = styled.div`
     &:after {
       content: '';
       width: 100%;
-      height: 8px;
+      height: 10px;
       background: rgba(77, 190, 186, 0.3);
       position: absolute;
       bottom: 6px;
@@ -282,6 +283,7 @@ export const ProductsCarousel = ({
   className,
   onSelectProduct,
   title,
+  titleHighlighted,
   subTitle,
 }: ProductsCarouselProps): React.ReactElement => {
   const [progress, setProgress] = useState(0)
@@ -314,7 +316,10 @@ export const ProductsCarousel = ({
   return (
     <Section className={cn('ProductsCarousel', className)}>
       <Container>
-        <SectionTitle>{title}</SectionTitle>
+        <SectionTitle>
+          {title + ' '}
+          <span>{titleHighlighted}</span>
+        </SectionTitle>
         <SectionText>
           <p>{subTitle}</p>
         </SectionText>

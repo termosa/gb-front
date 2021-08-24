@@ -1,5 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
+import cn, { Argument as ClassName } from 'classnames'
+
+type SubscriptionHintProps = {
+  className?: ClassName
+}
 
 const SubscriptionHintWrapper = styled.div`
   display: block;
@@ -21,6 +26,10 @@ const SubscriptionHintList = styled.ul`
     display: flex;
     align-items: center;
     margin: 0 0 12px;
+
+    &:last-child {
+      margin: 0;
+    }
   }
 `
 
@@ -37,9 +46,9 @@ const SubscriptionHintText = styled.span`
   padding-left: 6px;
 `
 
-export function SubscriptionHint(): React.ReactElement {
+export function SubscriptionHint({ className }: SubscriptionHintProps): React.ReactElement {
   return (
-    <SubscriptionHintWrapper>
+    <SubscriptionHintWrapper className={cn('SubscriptionHint', className)}>
       <SubscriptionHintContainer>
         <SubscriptionHintList>
           <li>

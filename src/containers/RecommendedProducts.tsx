@@ -7,10 +7,15 @@ import ProductContext from '../modules/product-context'
 
 export type RecommendedProductsProps = {
   title: string
+  titleHighlighted: string
   collectionId?: number
 }
 
-const RecommendedProducts = ({ title, collectionId }: RecommendedProductsProps): null | React.ReactElement => {
+const RecommendedProducts = ({
+  title,
+  titleHighlighted,
+  collectionId,
+}: RecommendedProductsProps): null | React.ReactElement => {
   const product = useContext<ProductType | undefined>(ProductContext)
   const [recommendedProducts, setRecommendedProducts] = useState<ProductType[]>([])
 
@@ -27,6 +32,7 @@ const RecommendedProducts = ({ title, collectionId }: RecommendedProductsProps):
     <section className="app-h-products-section">
       <ProductsCarousel
         title={title}
+        titleHighlighted={titleHighlighted}
         products={recommendedProducts}
         onSelectProduct={(product) => navigate(`/products/${product.product_id}`)}
       />

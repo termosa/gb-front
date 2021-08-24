@@ -7,7 +7,10 @@ export const meta = {
   tags: ['component'],
   preview: <SubscriptionHint>Component content here</SubscriptionHint>,
   lists: {
-    attributes: [],
+    attributes: [
+      { name: 'className', type: 'classnames.Argument', description: 'One or multiple class names that will be added to the main container' },
+      { name: 'isSubscriptionHintOpened', type: 'boolean', description: 'One or multiple class names that will be added to the main container' },
+    ],
   },
   scope: { SubscriptionHint },
 }

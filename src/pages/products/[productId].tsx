@@ -36,7 +36,12 @@ Builder.registerComponent(RecommendedProducts, {
     {
       name: 'title',
       type: 'string',
-      defaultValue: 'Recommended for you',
+      defaultValue: 'Recommended',
+    },
+    {
+      name: 'titleHighlighted',
+      type: 'string',
+      defaultValue: 'for you',
     },
     {
       name: 'collectionId',
