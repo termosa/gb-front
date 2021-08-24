@@ -5,7 +5,7 @@ import YotpoStarRating from '../yotpo-star-rating'
 import formatPrice from '../../modules/format-price'
 import { ProductVariant } from '../../modules/normalize-product-variant'
 import { SubscriptionHint } from '../../components/subscription-hint'
-import addItemToCart from '../add-item-to-cart'
+import addCartItem from '../add-cart-item'
 import navigate from '../navigate'
 import { ProductModalButtons } from '../../components/product-modal-button'
 import { parse } from 'node-html-parser'
@@ -14,6 +14,8 @@ import getLabel from '../../modules/get-label'
 import { Product as ProductType } from '../../modules/normalize-product'
 import ProductContext from '../../modules/product-context'
 import window from '../window/window'
+import useCart, { Status } from '../use-cart'
+import addCartItemWithSubscription from '../add-cart-item-with-subscription'
 
 const SProductInfo = styled.div`
   width: 100%;
@@ -440,13 +442,15 @@ export type ProductInfoProps = {
 }
 
 export function ProductInfo({ className, style, addToCartRef }: ProductInfoProps): React.ReactElement | null {
+  const cart = useCart(true)
+  const isDiscountAvailable = !cart.hasSubscriptionProduct && cart.status === Status.SUCCESS
   const product = useContext<ProductType | undefined>(ProductContext)
 
   const [infoDistanceFromTop, setInfoDistanceFromTop] = useState<number>(183)
   const [yPosition, setYPosition] = useState<number>(0)
   const [comparePrice, setComparePrice] = useState<number | null>(0)
   const [activeAccordion, setActiveAccordion] = useState<number | null>(0)
-  const [currentRingSize, setCurrentRingSize] = useState<number | null>(null)
+  const [selectedVariant, setSelectedVariant] = useState<ProductVariant | null>(null)
   const [isSelectRingError, setSelectRingError] = useState<boolean>(false)
   const [actualPrice, setActualPrice] = useState<number>(0)
   const [productDescription, setProductDescription] = useState<Array<ProductDescription>>()
@@ -458,6 +462,22 @@ export function ProductInfo({ className, style, addToCartRef }: ProductInfoProps
 
   if (!product) {
     return null
+  }
+
+  const addToCartHandler = () => {
+    if (!selectedVariant) {
+      executeScroll()
+      localStorage.setItem('selectRingError', JSON.stringify(true))
+      setSelectRingError(true)
+      return
+    }
+
+    ;(isDiscountApplied && !cart.hasSubscriptionProduct
+      ? addCartItemWithSubscription(selectedVariant.variant_id, selectedVariant.size || undefined)
+      : addCartItem(selectedVariant.variant_id)
+    )
+      .then(() => navigate('/cart'))
+      .catch((err) => alert(err))
   }
 
   const executeScroll = () => {
@@ -540,7 +560,7 @@ export function ProductInfo({ className, style, addToCartRef }: ProductInfoProps
         <SPdpProductInfoTitle>{product.title}</SPdpProductInfoTitle>
         <YotpoStarRating productId={product.product_id} />
         <SPdpProductDetails>
-          {isDiscountApplied ? (
+          {isDiscountApplied && isDiscountAvailable ? (
             <>
               <SPdpProductDetailsDiscountPrice>
                 {actualPrice ? (comparePrice ? formatPrice(comparePrice) : formatPrice(actualPrice)) : null}
@@ -568,14 +588,14 @@ export function ProductInfo({ className, style, addToCartRef }: ProductInfoProps
             {product.variants.slice(0).map((variant: ProductVariant) => (
               <SPdpPiSelectorBtnHolder key={variant.title}>
                 <SPdpPiSelectorBtn
-                  isActive={variant.variant_id === currentRingSize}
+                  isActive={variant.variant_id === selectedVariant?.variant_id}
                   type="button"
                   value={Number(variant.title)}
                   onClick={() => {
                     setSelectRingError(false)
                     localStorage.setItem('selectRingError', JSON.stringify(false))
                     localStorage.setItem('currentRingSize', JSON.stringify(variant.variant_id))
-                    setCurrentRingSize(variant.variant_id)
+                    setSelectedVariant(variant)
                     setActualPrice(variant.actual_price)
                   }}
                 >
@@ -587,73 +607,64 @@ export function ProductInfo({ className, style, addToCartRef }: ProductInfoProps
           {isSelectRingError ? <SPdpPiRsSelector>Please select ring size</SPdpPiRsSelector> : null}
         </SPdpPiSelectorWrapper>
         <SPdpChooserContainer>
-          <SPdpChooser>
-            <SPdpChooserItem htmlFor="pdp-ic-radio-1" onClick={() => setDiscountApplied(false)}>
-              <SPdpChooserItemPart>
-                <div>
-                  <SPdpRadioGroup type="radio" name="pdp-radio-group" checked={!isDiscountApplied} readOnly />
-                  <span />
-                </div>
-                <SPdpChooserItemPartTopContent>
-                  <SPdpChooserItemContentText isHighlighted={!isDiscountApplied}>
-                    Regular Price
-                  </SPdpChooserItemContentText>
-                  <SPdpChooserItemContentText isHighlighted={!isDiscountApplied}>
-                    ${actualPrice}
-                  </SPdpChooserItemContentText>
-                </SPdpChooserItemPartTopContent>
-              </SPdpChooserItemPart>
-            </SPdpChooserItem>
-            <SPdpChooserItem htmlFor="pdp-ic-radio-2" onClick={() => setDiscountApplied(true)}>
-              <SPdpChooserItemPart>
-                <div>
-                  <SPdpRadioGroup type="radio" name="pdp-radio-group" checked={isDiscountApplied} readOnly />
-                  <span />
-                </div>
-                <SPdpChooserItemPartTopContent>
-                  <SPdpChooserBtnHolder>
-                    <SPdpChooserItemContentText isHighlighted={isDiscountApplied}>
-                      Join &amp; Save 20%
+          {isDiscountAvailable && (
+            <SPdpChooser>
+              <SPdpChooserItem htmlFor="pdp-ic-radio-1" onClick={() => setDiscountApplied(false)}>
+                <SPdpChooserItemPart>
+                  <div>
+                    <SPdpRadioGroup type="radio" name="pdp-radio-group" checked={!isDiscountApplied} readOnly />
+                    <span />
+                  </div>
+                  <SPdpChooserItemPartTopContent>
+                    <SPdpChooserItemContentText isHighlighted={!isDiscountApplied}>
+                      Regular Price
                     </SPdpChooserItemContentText>
-                    <SPdpChooserBtn type="button" onClick={() => setSubscriptionHintOpened(!isSubscriptionHintOpened)}>
-                      {isSubscriptionHintOpened ? (
-                        <img
-                          src="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/pdp/pdp-close-icon.png"
-                          alt="close-icon"
-                        />
-                      ) : (
-                        <img
-                          src="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/pdp/pdp-info-icon.png"
-                          alt="info-icon"
-                        />
-                      )}
-                    </SPdpChooserBtn>
-                  </SPdpChooserBtnHolder>
-                  <SPdpChooserItemContentText isHighlighted={isDiscountApplied}>
-                    ${(actualPrice - actualPrice * 0.2).toFixed(2)}
-                  </SPdpChooserItemContentText>
-                </SPdpChooserItemPartTopContent>
-              </SPdpChooserItemPart>
-              {isSubscriptionHintOpened && <SubscriptionHint />}
-            </SPdpChooserItem>
-          </SPdpChooser>
+                    <SPdpChooserItemContentText isHighlighted={!isDiscountApplied}>
+                      ${actualPrice}
+                    </SPdpChooserItemContentText>
+                  </SPdpChooserItemPartTopContent>
+                </SPdpChooserItemPart>
+              </SPdpChooserItem>
+              <SPdpChooserItem htmlFor="pdp-ic-radio-2" onClick={() => setDiscountApplied(true)}>
+                <SPdpChooserItemPart>
+                  <div>
+                    <SPdpRadioGroup type="radio" name="pdp-radio-group" checked={isDiscountApplied} readOnly />
+                    <span />
+                  </div>
+                  <SPdpChooserItemPartTopContent>
+                    <SPdpChooserBtnHolder>
+                      <SPdpChooserItemContentText isHighlighted={isDiscountApplied}>
+                        Join &amp; Save 20%
+                      </SPdpChooserItemContentText>
+                      <SPdpChooserBtn
+                        type="button"
+                        onClick={() => setSubscriptionHintOpened(!isSubscriptionHintOpened)}
+                      >
+                        {isSubscriptionHintOpened ? (
+                          <img
+                            src="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/pdp/pdp-close-icon.png"
+                            alt="close-icon"
+                          />
+                        ) : (
+                          <img
+                            src="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/pdp/pdp-info-icon.png"
+                            alt="info-icon"
+                          />
+                        )}
+                      </SPdpChooserBtn>
+                    </SPdpChooserBtnHolder>
+                    <SPdpChooserItemContentText isHighlighted={isDiscountApplied}>
+                      ${(actualPrice - actualPrice * 0.2).toFixed(2)}
+                    </SPdpChooserItemContentText>
+                  </SPdpChooserItemPartTopContent>
+                </SPdpChooserItemPart>
+                {isSubscriptionHintOpened && <SubscriptionHint />}
+              </SPdpChooserItem>
+            </SPdpChooser>
+          )}
         </SPdpChooserContainer>
         <SPdpRingMessage>Please select your ring size</SPdpRingMessage>
-        <SPdpBtn
-          type="button"
-          ref={addToCartRef}
-          onClick={() => {
-            if (!currentRingSize) {
-              executeScroll()
-              localStorage.setItem('selectRingError', JSON.stringify(true))
-              setSelectRingError(true)
-            } else {
-              addItemToCart(currentRingSize)
-                .then(() => navigate('/cart'))
-                .catch((err) => alert(err))
-            }
-          }}
-        >
+        <SPdpBtn type="button" ref={addToCartRef} onClick={addToCartHandler}>
           Add to Cart
         </SPdpBtn>
         {isDiscountApplied && (

@@ -1,0 +1,28 @@
+export const meta = {
+  type: 'function',
+  name: 'addCartItem',
+  description: 'Adds a new item to the cart and returns an updated item',
+  tags: ['function', 'cart'],
+  lists: {
+    arguments: [
+      { name: 'varaintId', type: 'number', required: true, description: 'Id of the product variant' },
+      { name: 'quantity', type: 'number', required: true, description: 'Quantity of product' },
+    ],
+    returns: [
+      {
+        name: 'updatedCartItem | Error',
+        type: 'Promise<CartItem | Error>',
+        description: 'Updated cart item or an error object if the response is missing updated item',
+      },
+    ],
+  },
+}
+
+## Usage
+
+```js
+import addCartItem from './add-cart-item'
+addCartItem(123456, 3).then((r) =>
+  console.log(`${r.title} has been added to the cart in the amount of ${r.quantity} items`)
+)
+```

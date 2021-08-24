@@ -1,0 +1,40 @@
+export const meta = {
+  type: 'function',
+  name: 'addCartItems',
+  description: 'Adds a product to the cart and returns an array of an added items',
+  tags: ['function', 'cart'],
+  lists: {
+    arguments: [
+      {
+        name: 'patch',
+        type: 'Array<{ variantId: number; quantity?: number; properties?: CartItemProperties }>',
+        required: true,
+        description: 'An array of the products to add',
+      },
+    ],
+    returns: [{ name: 'cartItems', type: 'Array<CartItem>', description: 'An array of normalized cart items' }],
+  },
+}
+
+## Usage
+
+```js
+import addCartItems from './add-cart-items'
+addCartItems([
+  {
+    variantId: 123456,
+    quantity: 2,
+    properties: {
+      discount: 0.6,
+      shipping_discount: 0.3,
+      create_bt_subscription: true,
+      subscription_product_id: 123456,
+    },
+  },
+  {
+    variantId: 7889001,
+  },
+]).then((updatedProducts) =>
+  console.log(`${updatedProducts.map((product) => product.title).join(' ')} now is in your cart`)
+)
+```

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import addItemToCart from '../../lib/add-item-to-cart'
+import addCartItem from '../../lib/add-cart-item'
 import styled from 'styled-components'
 import { Product as ProductType, ProductVariant } from '../../modules/normalize-product'
 import ProductContext from '../../modules/product-context'
@@ -220,7 +220,7 @@ export const FloatingCta = (): React.ReactElement | null => {
             localStorage.setItem('selectRingError', JSON.stringify(true))
             setSelectRingError(true)
           } else {
-            addItemToCart(currentRingSize).then(() => navigate('/cart'))
+            addCartItem(currentRingSize).then(() => navigate('/cart'))
           }
         }}
       >

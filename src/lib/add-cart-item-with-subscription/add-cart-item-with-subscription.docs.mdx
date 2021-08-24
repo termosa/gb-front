@@ -1,0 +1,31 @@
+export const meta = {
+  type: 'function',
+  name: 'addCartItemWithSubscription',
+  description: 'Adds or updates item quantity and add subscription or return if it already exists',
+  tags: ['function'],
+  lists: {
+    arguments: [
+      { name: 'variantId', type: 'number', required: true, description: 'Variant id of the item to add' },
+      { name: 'subscriptionProductSize', type: 'VariantSize', description: 'The ring size of the subscription product' },
+      { name: 'quantity', type: 'number', description: 'Quantity of items to add' },
+    ],
+    returns: [
+      {
+        name: 'itemAndSubscriptionProduct',
+        type: 'Promise<object>',
+        description: 'The promise that returns updated product and subscription product',
+      },
+      { name: 'item', type: 'CartItem', description: 'Added or updated item' },
+      { name: 'subscriptionItem', type: 'CartItem', description: 'Subscription product item' },
+    ],
+  },
+}
+
+## Usage
+
+```js
+import addCartItemWithSubscription from './add-cart-item-with-subscription'
+addCartItemWithSubscription(12345, 5, 2).then((r) => {
+  console.log(`${r.item.title} updated`)
+})
+```

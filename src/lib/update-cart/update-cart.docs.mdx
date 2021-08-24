@@ -1,0 +1,48 @@
+export const meta = {
+  type: 'function',
+  name: 'updateCart',
+  description: 'Updates cart with given patch and returns updated cart',
+  tags: ['function', 'cart'],
+  lists: {
+    arguments: [
+      {
+        name: 'patch',
+        type: 'object',
+        required: true,
+        description: 'A patch object',
+      },
+      {
+        name: 'patch.note',
+        type: 'string',
+        description: 'An updated cart note',
+      },
+      {
+        name: 'patch.attributes',
+        type: 'Record<string, unknown>',
+        description: 'An updated cart attributes',
+      },
+      {
+        name: 'patch.updates',
+        type: '{ [cartItemKey: string]: number }',
+        description: `The object with key-quantity pairs. The key is the line item's variant_id.`,
+      },
+    ],
+    returns: [{ name: 'normalizedCart', type: 'Promise<Cart>', description: 'An updated and normalized cart' }],
+  },
+}
+
+## Usage
+
+```js
+import updateCart from './update-cart'
+updateCart({
+  note: 'This is a note about my order',
+  attributes: {
+    'Gift wrap': 'Yes',
+  },
+  updates: {
+    794864229: 1,
+    794864101: 2,
+  },
+}).then((r) => console.log(r.note))
+```
