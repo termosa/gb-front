@@ -9,7 +9,11 @@ import { Product as ProductType } from '../../modules/normalize-product'
 import ProductContext from '../../modules/product-context'
 
 const Wrapper = styled.div`
-  width: 100%;
+  width: 101%;
+
+  @media (min-width: 768px) {
+    width: 100%;
+  }
 `
 
 const SPdpCarouselItem = styled.div<{
@@ -168,7 +172,11 @@ export function VerticalGallery({
               </SCarouselIcons>
               <SVerticalImagesColumn ref={galleryRef}>
                 {product.images?.map((image: ProductImage) => (
-                  <SPdpCarouselItem width={`${galleryImageWidth}px`} height={`${getImageHeight(image)}px`}>
+                  <SPdpCarouselItem
+                    width={`${galleryImageWidth}px`}
+                    height={`${getImageHeight(image)}px`}
+                    key={image?.src}
+                  >
                     <img src={image?.src} alt={image?.alt} />
                   </SPdpCarouselItem>
                 ))}

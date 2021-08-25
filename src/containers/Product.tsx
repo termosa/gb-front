@@ -7,21 +7,20 @@ import styled from 'styled-components'
 import { ProductInfo } from '../lib/product-info'
 
 const SProductBreadcrumbs = styled.div`
-  padding: 16px 0;
+  padding: 16px;
 
   @media (min-width: 768px) {
-    padding: 28px 0 20px;
+    padding: 28px 16px 20px;
   }
 `
 
 const SProductContainer = styled.div`
-  padding: 0 15px;
   max-width: 1020px;
   margin: 0 auto;
 `
 
 const SPdpRowWrapper = styled.div`
-  padding-top: 10px;
+  padding: 10px 16px 0;
 
   .pdp-row {
     @media (min-width: 768px) {

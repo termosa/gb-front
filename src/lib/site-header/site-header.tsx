@@ -44,7 +44,7 @@ const SInnerWrapper = styled.div`
 `
 
 const SContentWrapper = styled.div`
-  max-width: 990px;
+  max-width: 1020px;
   margin: 0 auto;
   padding: 0;
 `
@@ -54,10 +54,10 @@ const SSearchWrapper = styled.div`
   box-sizing: border-box;
   position: relative;
   height: 62px;
-  padding: 11px 15px;
+  padding: 11px 16px;
 
   @media (min-width: 375px) {
-    padding: 15px;
+    padding: 15px 16px;
   }
 
   @media (min-width: 1200px) {
@@ -138,7 +138,7 @@ const SFieldWrapper = styled.div`
 `
 
 const SIconsWrapper = styled.div`
-  margin: 0 15px;
+  margin: 0 0 0 15px;
   display: flex;
   align-items: center;
   flex-wrap: wrap;

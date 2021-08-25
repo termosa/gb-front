@@ -19,15 +19,27 @@ Builder.registerComponent(FjWild, {
       defaultValue: 'FJ in the wild',
     },
     {
-      name: 'subTitle',
+      name: 'textFirstPart',
       type: 'string',
-      defaultValue: 'See our products in action on customers just like you.',
+      defaultValue: 'See our products in action on',
+    },
+    {
+      name: 'textSecondPart',
+      type: 'string',
+      defaultValue: 'customers just like you.',
     },
   ],
 })
 
 Builder.registerComponent(PotentialProducts, {
   name: 'Potential Products',
+  inputs: [
+    {
+      name: 'title',
+      type: 'string',
+      defaultValue: 'More you might like',
+    },
+  ],
 })
 
 Builder.registerComponent(RecommendedProducts, {

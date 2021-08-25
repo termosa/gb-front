@@ -51,10 +51,14 @@ $whiteClr: #fff;
   margin: 0 auto;
 
   &__ic-title {
-    font: 600 16px/0.8 "Monserrat", sans-serif;
-    color: $mainClr;
-    text-transform: uppercase;
+    font-family: Montserrat, sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
     letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: $mainClr;
     margin: 0 0 12px;
   }
 
@@ -214,6 +218,7 @@ $whiteClr: #fff;
     font-weight: 400;
     display: block;
     cursor: pointer;
+    background-color: #F5F5F5;
   }
 }
 
@@ -739,7 +744,7 @@ $whiteClr: #fff;
 
   &__list {
     padding: 0;
-    margin: 0 0 16px;
+    margin: 3px 0 16px;
     list-style: none;
     display: block;
     @media (max-width: 767px) {

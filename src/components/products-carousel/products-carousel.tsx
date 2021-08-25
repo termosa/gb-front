@@ -4,15 +4,8 @@ import styled from 'styled-components'
 import cn, { Argument as ClassName } from 'classnames'
 import ProductCard from '../product-card'
 import { Product } from '../../modules/normalize-product'
-
-export type ProductsCarouselProps = {
-  products: Array<Product>
-  className?: ClassName
-  title?: string
-  titleHighlighted?: string
-  subTitle?: string
-  onSelectProduct: (product: Product) => void
-}
+import { useScreenSize } from '../../lib/use-screen-size'
+import { useRouter } from 'next/router'
 
 const Section = styled.section`
   margin: 0 0 48px;
@@ -37,10 +30,13 @@ const Container = styled.div`
   }
 `
 
-const SectionTitle = styled.div`
-  font: 700 40px/1 'Cormorant Garamond', serif;
+const SectionTitle = styled.div<{
+  isMobile: boolean
+}>`
+  font: ${(props) => (props.isMobile ? `600 16px/1.5 'Montserrat', serif` : `700 40px/1 'Cormorant Garamond', serif`)};
+  text-transform: ${(props) => (props.isMobile ? `uppercase` : `initial`)};
   text-align: center;
-  margin: 0 auto 12px;
+  margin: 0 0 12px -15px;
 
   & > span {
     position: relative;
@@ -48,10 +44,10 @@ const SectionTitle = styled.div`
     &:after {
       content: '';
       width: 100%;
-      height: 10px;
+      height: ${(props) => (props.isMobile ? `9px` : `10px`)};
       background: rgba(77, 190, 186, 0.3);
       position: absolute;
-      bottom: 6px;
+      bottom: ${(props) => (props.isMobile ? `0` : `6px`)};
       left: 0;
     }
   }
@@ -278,6 +274,15 @@ const NextArrow = styled.button`
   }
 `
 
+export type ProductsCarouselProps = {
+  products: Array<Product>
+  className?: ClassName
+  title?: string
+  titleHighlighted?: string
+  subTitle?: string
+  onSelectProduct: (product: Product) => void
+}
+
 export const ProductsCarousel = ({
   products,
   className,
@@ -286,6 +291,8 @@ export const ProductsCarousel = ({
   titleHighlighted,
   subTitle,
 }: ProductsCarouselProps): React.ReactElement => {
+  const router = useRouter()
+  const screenSize = useScreenSize()
   const [progress, setProgress] = useState(0)
 
   const settings: Settings = {
@@ -316,10 +323,18 @@ export const ProductsCarousel = ({
   return (
     <Section className={cn('ProductsCarousel', className)}>
       <Container>
-        <SectionTitle>
-          {title + ' '}
-          <span>{titleHighlighted}</span>
-        </SectionTitle>
+        {!screenSize.greaterThenMedium && router.pathname === '/products/[productId]' ? (
+          <SectionTitle isMobile={true}>
+            <span>
+              {title} {titleHighlighted}
+            </span>
+          </SectionTitle>
+        ) : (
+          <SectionTitle isMobile={false}>
+            {title + ' '}
+            <span>{titleHighlighted}</span>
+          </SectionTitle>
+        )}
         <SectionText>
           <p>{subTitle}</p>
         </SectionText>

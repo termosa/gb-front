@@ -10,6 +10,7 @@ const FooterContainer = styled.div`
   font: 12px/1.3 'Montserrat', sans-serif;
   color: #fff;
   padding: 28px 0;
+  margin-top: 16px;
   background: black;
 `
 

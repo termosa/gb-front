@@ -15,14 +15,16 @@ const SFloatingCtaClosed = styled.div<{
   z-index: 3;
   bottom: 16px;
   width: 100%;
-  margin: 0 auto 48px;
-  padding: 0 16px 16px;
+  margin: 0 auto;
+  padding: 0 16px 0;
   opacity: ${(props) => (props.isVisible ? 1 : 0)};
   transition: opacity 0.5s ease-in-out;
 
   @media (min-width: 768px) {
     width: 560px;
     bottom: 40px;
+    margin: 0 auto 48px;
+    padding: 0 16px 16px;
   }
 
   & > button {
@@ -37,9 +39,9 @@ const SFloatingCtaOpened = styled.div<{
   flex-direction: column;
   position: sticky;
   z-index: 3;
-  bottom: 16px;
+  bottom: 0;
   width: 100%;
-  margin: 0 auto 48px;
+  margin: 0 auto;
   padding: 16px;
   opacity: ${(props) => (props.isVisible ? 1 : 0)};
   transition: opacity 0.5s ease-in-out;
@@ -50,13 +52,15 @@ const SFloatingCtaOpened = styled.div<{
   @media (min-width: 768px) {
     width: 560px;
     bottom: 40px;
+    margin: 0 auto 48px;
   }
 `
 
 const SFloatingCtaTitle = styled.h3`
-  font: 400 16px/1 'Montserrat', sans-serif;
+  font: 400 16px/1.5 'Montserrat', sans-serif;
   text-align: center;
   margin: 0 auto 12px;
+  width: 70%;
 `
 
 const SRingSizeContainer = styled.div`
