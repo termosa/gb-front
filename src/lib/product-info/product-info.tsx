@@ -25,6 +25,40 @@ const SProductInfo = styled.div`
   }
 `
 
+const SPdpProductInfo = styled.div<{
+  top: string
+}>`
+  position: sticky;
+  top: ${(props) => props.top || '183px'};
+  height: fit-content;
+  max-width: 350px;
+  margin: 0 auto;
+`
+
+const SPdpChooserItemPartTopContent = styled.div`
+  width: 100%;
+  padding-left: 5px;
+  justify-content: space-between;
+`
+
+const SPdpChooserBtnHolder = styled.div`
+  display: flex;
+
+  & > button {
+    margin: 0 6px;
+
+    &:focus {
+      outline: 0;
+    }
+  }
+
+  & > span,
+  & > button {
+    display: inline-flex;
+    align-items: center;
+  }
+`
+
 const SPdpChooserItemContentText = styled.span<{
   isHighlighted?: boolean
 }>`
@@ -34,13 +68,363 @@ const SPdpChooserItemContentText = styled.span<{
   color: ${(props) => (props.isHighlighted ? '#9059c8' : '#000')};
 `
 
-const SPdpChooserItem = styled.label`
-  padding: 14px 16px;
+const SPdpChooserBtn = styled.button`
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  border-radius: 0;
+  border: 0;
+
+  & > img {
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+  }
+`
+
+const SPdpChooserContainer = styled.div`
+  max-width: 400px;
+  @media (min-width: 768px) {
+    max-width: 340px;
+  }
+`
+
+const SPdpRingMessage = styled.div`
+  display: none;
+  color: #fa4b17;
+  text-align: center;
+  font-size: 16px;
+  padding-bottom: 2%;
+`
+
+const SPdpBtn = styled.button`
   display: block;
+  padding: 19px 15px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border: 0.5px solid #000;
+  border-radius: 0;
+  font: 600 16px/1 'Montserrat', sans-serif;
+  text-decoration: none;
+  -webkit-transition: all linear 0.2s;
+  transition: all linear 0.2s;
+  background-color: #000;
+  color: #fff;
+  cursor: pointer;
+  width: 100%;
+  margin: 0;
+  height: 55px;
+
+  &:not(.pdp-btn_disabled):hover {
+    @media (min-width: 1200px) {
+      color: #000;
+      background: #fff;
+    }
+  }
+
+  &:focus {
+    outline: 0;
+  }
+`
+
+const SPdpAdditionalText = styled.div`
+  font: 12px/1.4 'Montserrat', sans-serif;
+  max-width: 370px;
+  padding: 16px 0;
+  text-align: center;
+
+  @media (min-width: 768px) {
+    text-align: initial;
+  }
+
+  a {
+    color: #000;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+`
+
+const SPdpChooser = styled.div`
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  line-height: 1.2;
+  padding-bottom: 12px;
+`
+
+const SPdpChooserItem = styled.label`
+  font-weight: 400;
+  display: block;
+  background-color: #f5f5f5;
+  padding: 14px 16px;
   cursor: pointer;
 
   &:not(:last-child) {
     margin: 0 0 8px;
+  }
+`
+
+const SPdpChooserItemPart = styled.div`
+  display: flex;
+  align-items: center;
+
+  & > div {
+    display: flex;
+    align-items: center;
+  }
+`
+
+const SPdpRadioGroup = styled.input`
+  &:checked,
+  &:not(:checked) {
+    position: absolute;
+    left: -9999px;
+  }
+
+  &:checked + span,
+  &:not(:checked) + span {
+    position: relative;
+    padding-left: 28px;
+    cursor: pointer;
+    line-height: 20px;
+    display: inline-block;
+    color: #666;
+    height: 25px;
+  }
+
+  &:checked + span:before,
+  &:not(:checked) + span:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 25px;
+    height: 25px;
+    border: 1px solid #ddd;
+    border-radius: 100%;
+    background: #fff;
+    box-sizing: border-box;
+  }
+
+  &:checked + span:after,
+  &:not(:checked) + span:after {
+    content: '';
+    width: 17px;
+    height: 17px;
+    background: #9059c8;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    border-radius: 100%;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+  }
+
+  &:not(:checked) + span:after {
+    opacity: 0;
+    transform: scale(0);
+    box-sizing: border-box;
+  }
+
+  &:checked + span:after {
+    opacity: 1;
+    transform: scale(1);
+    box-sizing: border-box;
+  }
+`
+
+const SPdpProductInfoIcTitle = styled.h3`
+  font-family: Montserrat, sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #9059c8;
+  margin: 0 0 12px;
+`
+
+const SPdpProductInfoTitle = styled.h2`
+  font: 700 32px/1 'Cormorant Garamond', serif;
+  letter-spacing: -0.02em;
+  margin: 0 0 12px;
+`
+
+const SPdpProductDetails = styled.div`
+  font: 400 16px/1.5 'Montserrat', sans-serif;
+  letter-spacing: 0.05em;
+  margin: 10px 0 9px;
+`
+
+const SPdpPiSelectorWrapper = styled.div`
+  font: 400 16px/1.5 'Montserrat', sans-serif;
+`
+
+const SPdpProductDetailsDiscountPrice = styled.span`
+  text-decoration: line-through;
+`
+
+const SPdpProductDetailsSilverTag = styled.span`
+  background: linear-gradient(45deg, #9f9f9f, #555555);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+`
+
+const SPdpPiRsText = styled.div`
+  margin: 0 0 7px;
+`
+
+const SPdpPiSelector = styled.div`
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  margin: 0 0 12px;
+`
+
+const SPdpPiRsSelector = styled.div`
+  text-align: center;
+  color: #ee67a0;
+  margin: 0 0 12px;
+`
+
+const SPdpPiSelectorBtnHolder = styled.div`
+  margin: 0 2px;
+  position: relative;
+  width: 100%;
+  max-width: 50px;
+
+  @media (min-width: 768px) {
+    width: 45px;
+    margin: 0 5px;
+  }
+
+  @media (min-width: 850px) {
+    width: 48px;
+  }
+
+  &:first-child {
+    margin-left: 0;
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  &:after {
+    content: '';
+    display: block;
+    padding-top: 100%;
+  }
+`
+
+const SPdpPiSelectorBtn = styled.button<{
+  isActive: boolean
+}>`
+  background: ${(props) => (props.isActive ? '#9059C8' : '#fff')};
+  border: ${(props) => (props.isActive ? '0.5px solid #9059C8' : '0.5px solid #000')};
+  padding: 10px 5px;
+  font-size: 15px;
+  min-width: 35px;
+  margin: 0;
+  color: ${(props) => (props.isActive ? '#fff' : '#000')};
+  transition: all linear 0.3s;
+  outline: 0;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  cursor: pointer;
+
+  &:hover {
+    @media (min-width: 1200px) {
+      color: #fff;
+      background: #9059c8;
+      border-color: #9059c8;
+    }
+  }
+`
+
+const SPdpFragrance = styled.div`
+  padding: 16px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #e4e4e4;
+  overflow-x: auto;
+  width: 100%;
+`
+
+const SPdpFragranceItem = styled.div`
+  max-width: 62px;
+  text-align: center;
+
+  &:last-child {
+    margin-right: 0;
+  }
+`
+
+const SPdpFragranceImg = styled.img`
+  width: 54px;
+  height: 39px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto 5px;
+
+  @media (min-width: 768px) {
+    width: 62px;
+    height: 45px;
+  }
+`
+
+const SPdpAItem = styled.div`
+  border-bottom: 1px solid #e5e5e5;
+`
+
+const SPdpAItemTitle = styled.div`
+  font-size: 16px;
+  padding: 16px 0;
+  position: relative;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+
+  & > p {
+    margin: 0;
+    font: 500 16px/1.25 'Montserrat', sans-serif;
+    letter-spacing: 0.08em;
+  }
+`
+
+const SAccIconWrapper = styled.span`
+  position: absolute;
+  right: 0;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  width: 17px;
+  height: 17px;
+`
+
+const SPdpAItemDescription = styled.div<{
+  isActive: boolean
+}>`
+  font: 400 16px/1.5 'Montserrat', sans-serif;
+  white-space: pre-line;
+  display: ${(props) => (props.isActive ? 'block' : 'none')};
+  padding: 0 0 15px 0;
+
+  & > span {
+    margin: 0 0 10px;
   }
 `
 
@@ -90,7 +474,7 @@ export function ProductInfo({ className, style, addToCartRef }: ProductInfoProps
     }*/
 
     if (label.silver) {
-      return <span className="pdp-product-details__silver-tag"> | 925 Sterling Silver</span>
+      return <SPdpProductDetailsSilverTag> | 925 Sterling Silver</SPdpProductDetailsSilverTag>
     } else {
       return null
     }
@@ -151,44 +535,40 @@ export function ProductInfo({ className, style, addToCartRef }: ProductInfoProps
 
   return (
     <SProductInfo className={cn(className, 'ProductInfo')} style={style}>
-      <div className="pdp-product-info" ref={productInfoRef} style={{ top: infoDistanceFromTop }}>
-        <h3 className="pdp-product-info__ic-title" ref={productHeadingRef}>
-          INNER CIRCLE EXCLUSIVE
-        </h3>
-        <h2 className="pdp-product-info__title">{product.title}</h2>
+      <SPdpProductInfo top={infoDistanceFromTop + 'px'} ref={productInfoRef}>
+        <SPdpProductInfoIcTitle ref={productHeadingRef}>INNER CIRCLE EXCLUSIVE</SPdpProductInfoIcTitle>
+        <SPdpProductInfoTitle>{product.title}</SPdpProductInfoTitle>
         <YotpoStarRating productId={product.product_id} />
-        <div className="pdp-product-details">
+        <SPdpProductDetails>
           {isDiscountApplied ? (
             <>
-              <span className="pdp-product-details__discount-price">
+              <SPdpProductDetailsDiscountPrice>
                 {actualPrice ? (comparePrice ? formatPrice(comparePrice) : formatPrice(actualPrice)) : null}
-              </span>
-              <span className="pdp-product-details__price">&nbsp;${(actualPrice - actualPrice * 0.2).toFixed(2)}</span>
+              </SPdpProductDetailsDiscountPrice>
+              <span>&nbsp;${(actualPrice - actualPrice * 0.2).toFixed(2)}</span>
             </>
           ) : (
             <>
               {comparePrice ? (
                 <>
-                  <span className="pdp-product-details__discount-price">
+                  <SPdpProductDetailsDiscountPrice>
                     {actualPrice ? (comparePrice ? formatPrice(comparePrice) : formatPrice(actualPrice)) : null}
-                  </span>
+                  </SPdpProductDetailsDiscountPrice>
                   &nbsp;
                 </>
               ) : null}
-              <span className="pdp-product-details__price">{formatPrice(actualPrice)}</span>
+              <span>{formatPrice(actualPrice)}</span>
             </>
           )}
           {checkForLabel()}
-        </div>
-        <div className="pdp-pi-selector-wrapper">
-          <div className="pdp-pi-rs-text">Select a ring size to reserve this box:</div>
-          <div id="pdp-pi-selector" className="pdp-pi-selector">
+        </SPdpProductDetails>
+        <SPdpPiSelectorWrapper>
+          <SPdpPiRsText>Select a ring size to reserve this box:</SPdpPiRsText>
+          <SPdpPiSelector>
             {product.variants.slice(0).map((variant: ProductVariant) => (
-              <div className="pdp-pi-selector__btn-holder" key={variant.title}>
-                <button
-                  className={`pdp-pi-selector__btn ${
-                    variant.variant_id === currentRingSize && 'pdp-pi-selector__btn_active'
-                  }`}
+              <SPdpPiSelectorBtnHolder key={variant.title}>
+                <SPdpPiSelectorBtn
+                  isActive={variant.variant_id === currentRingSize}
                   type="button"
                   value={Number(variant.title)}
                   onClick={() => {
@@ -200,93 +580,67 @@ export function ProductInfo({ className, style, addToCartRef }: ProductInfoProps
                   }}
                 >
                   {variant.title}
-                </button>
-              </div>
+                </SPdpPiSelectorBtn>
+              </SPdpPiSelectorBtnHolder>
             ))}
-          </div>
-          {isSelectRingError ? <div className="pdp-pi-rs-error">Please select ring size</div> : null}
-        </div>
-        <div className="pdp__chooser-container" id="pdp-ic-chooser-container">
-          <div className="pdp__chooser" id="pdp-ic-chooser">
-            <SPdpChooserItem htmlFor="pdp-ic-radio-1">
-              <div className="pdp__chooser__item__part pdp__chooser__item__part-top">
+          </SPdpPiSelector>
+          {isSelectRingError ? <SPdpPiRsSelector>Please select ring size</SPdpPiRsSelector> : null}
+        </SPdpPiSelectorWrapper>
+        <SPdpChooserContainer>
+          <SPdpChooser>
+            <SPdpChooserItem htmlFor="pdp-ic-radio-1" onClick={() => setDiscountApplied(false)}>
+              <SPdpChooserItemPart>
                 <div>
-                  <input
-                    type="radio"
-                    id="pdp-ic-radio-1"
-                    className="pdp-radio-group"
-                    name="pdp-radio-group"
-                    defaultChecked
-                    onClick={() => {
-                      setDiscountApplied(false)
-                    }}
-                  />
+                  <SPdpRadioGroup type="radio" name="pdp-radio-group" checked={!isDiscountApplied} />
                   <span />
                 </div>
-                <div className="pdp__chooser__item__part pdp__chooser__item__part-top__content">
+                <SPdpChooserItemPartTopContent>
                   <SPdpChooserItemContentText isHighlighted={!isDiscountApplied}>
                     Regular Price
                   </SPdpChooserItemContentText>
                   <SPdpChooserItemContentText isHighlighted={!isDiscountApplied}>
                     ${actualPrice}
                   </SPdpChooserItemContentText>
-                </div>
-              </div>
+                </SPdpChooserItemPartTopContent>
+              </SPdpChooserItemPart>
             </SPdpChooserItem>
-            <SPdpChooserItem htmlFor="pdp-ic-radio-2">
-              <div className="pdp__chooser__item__part pdp__chooser__item__part-top">
+            <SPdpChooserItem htmlFor="pdp-ic-radio-2" onClick={() => setDiscountApplied(true)}>
+              <SPdpChooserItemPart>
                 <div>
-                  <input
-                    type="radio"
-                    id="pdp-ic-radio-2"
-                    className="pdp-radio-group pdp-radio-group-discount"
-                    name="pdp-radio-group"
-                    defaultValue="discount"
-                    defaultChecked
-                    onClick={() => setDiscountApplied(true)}
-                  />
+                  <SPdpRadioGroup type="radio" name="pdp-radio-group" checked={isDiscountApplied} />
                   <span />
                 </div>
-                <div className="pdp__chooser__item__part pdp__chooser__item__part-top__content">
-                  <div className="pdp__chooser__btn-holder">
+                <SPdpChooserItemPartTopContent>
+                  <SPdpChooserBtnHolder>
                     <SPdpChooserItemContentText isHighlighted={isDiscountApplied}>
                       Join &amp; Save 20%
                     </SPdpChooserItemContentText>
-                    <button
-                      type="button"
-                      id="pdp__chooser__info-btn"
-                      className="pdp__chooser__btn"
-                      onClick={() => setSubscriptionHintOpened(!isSubscriptionHintOpened)}
-                    >
+                    <SPdpChooserBtn type="button" onClick={() => setSubscriptionHintOpened(!isSubscriptionHintOpened)}>
                       {isSubscriptionHintOpened ? (
                         <img
-                          className="pdp__chooser__info-icon"
                           src="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/pdp/pdp-close-icon.png"
                           alt="close-icon"
                         />
                       ) : (
                         <img
-                          className="pdp__chooser__info-icon"
                           src="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/pdp/pdp-info-icon.png"
                           alt="info-icon"
                         />
                       )}
-                    </button>
-                  </div>
+                    </SPdpChooserBtn>
+                  </SPdpChooserBtnHolder>
                   <SPdpChooserItemContentText isHighlighted={isDiscountApplied}>
                     ${(actualPrice - actualPrice * 0.2).toFixed(2)}
                   </SPdpChooserItemContentText>
-                </div>
-              </div>
+                </SPdpChooserItemPartTopContent>
+              </SPdpChooserItemPart>
               {isSubscriptionHintOpened && <SubscriptionHint />}
             </SPdpChooserItem>
-          </div>
-        </div>
-        <div className="pdp-ring-message">Please select your ring size</div>
-        <button
-          id="add-to-cart-btn"
+          </SPdpChooser>
+        </SPdpChooserContainer>
+        <SPdpRingMessage>Please select your ring size</SPdpRingMessage>
+        <SPdpBtn
           type="button"
-          className="pdp-btn"
           ref={addToCartRef}
           onClick={() => {
             if (!currentRingSize) {
@@ -301,112 +655,98 @@ export function ProductInfo({ className, style, addToCartRef }: ProductInfoProps
           }}
         >
           Add to Cart
-        </button>
-        <div className="pdp__additional-text">
-          Join the Inner Circle today, then automatically receive a monthly set for $32.95 plus tax. No commitment,
-          cancel anytime.{' '}
-          <a href="/account/login?return_url=/products/lemon-drop-jewel-candle" id="pdp__already-a-member-link">
-            Already a member?
-          </a>
-        </div>
+        </SPdpBtn>
+        {isDiscountApplied && (
+          <SPdpAdditionalText>
+            Join the Inner Circle today, then automatically receive a monthly set for $32.95 plus tax. No commitment,
+            cancel anytime.{' '}
+            <a href="/account/login?return_url=/products/lemon-drop-jewel-candle" id="pdp__already-a-member-link">
+              Already a member?
+            </a>
+          </SPdpAdditionalText>
+        )}
         <ProductModalButtons />
-        <div className="pdp-fragrance">
-          <div className="pdp-fragrance__item">
-            <img
-              className="pdp-fragrance__img"
-              src="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/pdp/fragrances/black-currant.png"
+        <SPdpFragrance>
+          <SPdpFragranceItem>
+            <SPdpFragranceImg
+              src={'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/pdp/fragrances/black-currant.png'}
               alt=""
             />
             <span>Black Currant</span>
-          </div>
-          <div className="pdp-fragrance__item">
-            <img
-              className="pdp-fragrance__img"
-              src="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/pdp/fragrances/tart-rhubarb.png"
+          </SPdpFragranceItem>
+          <SPdpFragranceItem>
+            <SPdpFragranceImg
+              src={'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/pdp/fragrances/tart-rhubarb.png'}
               alt=""
             />
             <span>Tart Rhubarb</span>
-          </div>
-          <div className="pdp-fragrance__item">
-            <img
-              className="pdp-fragrance__img"
-              src="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/pdp/fragrances/refreshing-mint.png"
+          </SPdpFragranceItem>
+          <SPdpFragranceItem>
+            <SPdpFragranceImg
+              src={'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/pdp/fragrances/refreshing-mint.png'}
               alt=""
             />
             <span>Refreshing Mint</span>
-          </div>
-          <div className="pdp-fragrance__item">
-            <img
-              className="pdp-fragrance__img"
-              src="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/pdp/fragrances/spice-anise.png"
+          </SPdpFragranceItem>
+          <SPdpFragranceItem>
+            <SPdpFragranceImg
+              src={'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/pdp/fragrances/spice-anise.png'}
               alt=""
             />
             <span>Spicy Anise</span>
-          </div>
-        </div>
-        <div className="pdp-accordion" id="pdp-description">
+          </SPdpFragranceItem>
+        </SPdpFragrance>
+        <div>
           {productDescription?.map((el: ProductDescription, i: number) => (
-            <div className="pdp-a-item" key={el.title}>
-              <div
-                className={`pdp-a-item__title ${i === activeAccordion ? 'pdp-a-item__title_active' : ''}`}
+            <SPdpAItem key={el.title}>
+              <SPdpAItemTitle
                 onClick={() => (activeAccordion === i ? setActiveAccordion(null) : setActiveAccordion(i))}
               >
-                <span className="acc__icon-wrapper">
-                  <svg
-                    className="acc__icon-plus"
-                    width={17}
-                    height={17}
-                    viewBox="0 0 17 17"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M16.5152 8.73767H1"
-                      stroke="black"
-                      strokeWidth="0.5"
-                      strokeMiterlimit={10}
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                    <path
-                      d="M9 0.737671V16.2528"
-                      stroke="black"
-                      strokeWidth="0.5"
-                      strokeMiterlimit={10}
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                  <svg
-                    className="acc__icon-minus"
-                    width={17}
-                    height={17}
-                    viewBox="0 0 17 17"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M16.5152 8.73767H1"
-                      stroke="black"
-                      strokeWidth="0.5"
-                      strokeMiterlimit={10}
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </span>
+                <SAccIconWrapper>
+                  {activeAccordion === i ? (
+                    <svg width={17} height={17} viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M16.5152 8.73767H1"
+                        stroke="black"
+                        strokeWidth="0.5"
+                        strokeMiterlimit={10}
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  ) : (
+                    <svg width={17} height={17} viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M16.5152 8.73767H1"
+                        stroke="black"
+                        strokeWidth="0.5"
+                        strokeMiterlimit={10}
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                      <path
+                        d="M9 0.737671V16.2528"
+                        stroke="black"
+                        strokeWidth="0.5"
+                        strokeMiterlimit={10}
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  )}
+                </SAccIconWrapper>
                 <p>
                   {el.title}
                   <br />
                 </p>
-              </div>
-              <div className="pdp-a-item__description" style={activeAccordion === i ? { display: 'block' } : {}}>
+              </SPdpAItemTitle>
+              <SPdpAItemDescription isActive={activeAccordion === i}>
                 <span>{el.content}</span>
-              </div>
-            </div>
+              </SPdpAItemDescription>
+            </SPdpAItem>
           ))}
         </div>
-      </div>
+      </SPdpProductInfo>
     </SProductInfo>
   )
 }

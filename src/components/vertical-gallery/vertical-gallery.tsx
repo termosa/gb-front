@@ -16,6 +16,13 @@ const Wrapper = styled.div`
   }
 `
 
+const SPdpCarouselContainer = styled.div`
+  @media (max-width: 767px) {
+    max-width: 350px;
+    margin: 0 auto 16px;
+  }
+`
+
 const SPdpCarouselItem = styled.div<{
   width?: string
   height?: string
@@ -45,9 +52,12 @@ const SCarouselIcons = styled.div`
   position: sticky;
   top: 183px;
   height: fit-content;
+  order: 1;
 
   @media (min-width: 768px) {
+    order: 0;
     width: 19%;
+  }
 `
 
 const SPdpRowWrapper = styled.div`
@@ -58,10 +68,78 @@ const SPdpRowWrapper = styled.div`
   }
 `
 
+const SCarouselIconsList = styled.ul`
+  padding: 0;
+  margin: 3px 0 16px;
+  list-style: none;
+  display: block;
+  @media (max-width: 767px) {
+    display: flex !important;
+    overflow-x: scroll;
+    position: absolute;
+    width: calc(350px + (100vw - 350px) / 2);
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+`
+
+const SCarouselIconsItem = styled.li<{
+  isActive?: boolean
+}>`
+  cursor: pointer;
+  margin: 0 0 8px;
+  position: relative;
+  width: 100%;
+  border: ${(props) => (props.isActive ? '1px solid #000000' : '1px solid #ffffff')};
+  display: flex;
+  align-items: center;
+  min-width: 75px;
+  @media (max-width: 767px) {
+    margin: 0 0.5% 0 0;
+    width: 23%;
+  }
+
+  &:after {
+    content: '';
+    display: block;
+    padding-top: 100%;
+  }
+
+  img {
+    width: 73px;
+    height: 73px;
+    object-fit: contain;
+    display: block;
+
+    @media (min-width: 768px) {
+      width: 100%;
+      height: auto;
+    }
+  }
+`
+
 const SPdpRow = styled.div`
   @media (min-width: 768px) {
     display: flex;
     width: 100%;
+  }
+`
+
+const SPdpCarouselItemMobile = styled.div`
+  outline: none;
+  display: flex !important;
+  justify-content: center;
+
+  img {
+    width: 279px;
+    height: 279px;
+    object-fit: contain;
+
+    @media (min-width: 768px) {
+      width: 100%;
+    }
   }
 `
 
@@ -144,31 +222,37 @@ export function VerticalGallery({
 
   return (
     <Wrapper className={cn(className)}>
-      <div className="pdp-s-carousel-wrapper">
+      <SPdpCarouselContainer>
         <SPdpRowWrapper>
           {screenSize.greaterThenMedium ? (
             <SPdpRow>
-              <SCarouselIcons className="pdp-carousel-icons">
-                <ul className="pdp-carousel-icons__list" id="pdp-carousel-icons__list">
+              <SCarouselIcons>
+                <SCarouselIconsList>
                   {product.images?.map((image: ProductImage, i: number) => (
-                    <li
+                    <SCarouselIconsItem
                       key={image.src}
-                      className={activeGalleryItem === i ? 'active' : ''}
+                      isActive={activeGalleryItem === i}
                       onClick={() => {
                         if (!product.images) {
                           return
                         }
+                        const heightOfImages = product.images.reduce(
+                          (prev: number, curr: ProductImage, index: number) => {
+                            return index < i ? prev + getImageHeight(curr) : prev
+                          },
+                          0
+                        )
                         galleryRef.current &&
                           window?.scrollTo({
-                            top: 51 + 465 * i,
+                            top: 75 + heightOfImages,
                             behavior: 'smooth',
                           })
                       }}
                     >
                       <img src={image.src} alt={image.alt} />
-                    </li>
+                    </SCarouselIconsItem>
                   ))}
-                </ul>
+                </SCarouselIconsList>
               </SCarouselIcons>
               <SVerticalImagesColumn ref={galleryRef}>
                 {product.images?.map((image: ProductImage) => (
@@ -186,15 +270,15 @@ export function VerticalGallery({
             <>
               <Slider {...sliderSettings}>
                 {product.images?.map((image) => (
-                  <div className="pdp-carousel-item-mobile" key={image?.src}>
+                  <SPdpCarouselItemMobile key={image?.src}>
                     <img src={image?.src} alt={image?.alt} />
-                  </div>
+                  </SPdpCarouselItemMobile>
                 ))}
               </Slider>
             </>
           )}
         </SPdpRowWrapper>
-      </div>
+      </SPdpCarouselContainer>
     </Wrapper>
   )
 }

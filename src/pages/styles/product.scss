@@ -741,61 +741,6 @@ $whiteClr: #fff;
   position: sticky;
   top: 183px;
   height: fit-content;
-
-  &__list {
-    padding: 0;
-    margin: 3px 0 16px;
-    list-style: none;
-    display: block;
-    @media (max-width: 767px) {
-      display: flex !important;
-      overflow-x: scroll;
-      position: absolute;
-      width: calc(350px + (100vw - 350px) / 2);
-    }
-
-    &::-webkit-scrollbar {
-      display: none;
-    }
-
-    li {
-      cursor: pointer;
-      margin: 0 0 8px;
-      position: relative;
-      width: 100%;
-      border: 1px solid $whiteClr;
-      display: flex;
-      align-items: center;
-      min-width: 75px;
-      @media (max-width: 767px) {
-        margin: 0 0.5% 0 0;
-        width: 23%;
-      }
-
-      &.active,
-      &.slick-active {
-        border: 1px solid $blackClr;
-      }
-
-      &:after {
-        content: "";
-        display: block;
-        padding-top: 100%;
-      }
-
-      img {
-        width: 73px;
-        height: 73px;
-        object-fit: contain;
-        display: block;
-
-        @media (min-width: 768px) {
-          width: 100%;
-          height: auto;
-        }
-      }
-    }
-  }
 }
 
 .pdp-carousel-item {
