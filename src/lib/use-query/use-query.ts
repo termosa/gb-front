@@ -1,9 +1,9 @@
 import { useMemo } from 'react'
+import window from '../window'
 
-export const useQuery = (): Record<string, undefined | string> =>
-  useMemo(() => {
-    if (typeof window === 'undefined') return {}
-
+export function useQuery(): Record<string, undefined | string> {
+  return useMemo(() => {
+    if (!window) return {}
     return window.location.search
       .slice(1)
       .split('&')
@@ -14,3 +14,4 @@ export const useQuery = (): Record<string, undefined | string> =>
         {} as Record<string, undefined | string>
       )
   }, [typeof window])
+}
