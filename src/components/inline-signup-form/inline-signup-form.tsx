@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
 import useDefer, { Status } from 'use-defer'
-import Button from '../button'
+import Button from '../../lib/button'
 
 export type InlineSignupFormProps = {
   className?: ClassName

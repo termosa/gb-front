@@ -1,7 +1,7 @@
 import React from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
-import Button from '../../components/button'
+import Button from '../../lib/button'
 
 const SCol = styled.div`
   @media (min-width: 768px) {

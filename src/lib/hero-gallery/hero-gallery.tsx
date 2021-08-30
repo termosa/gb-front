@@ -2,7 +2,7 @@ import React from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
 import Slider, { Settings } from 'react-slick'
-import Button from '../../components/button'
+import Button from '../../lib/button'
 
 const settings: Settings = {
   slidesToShow: 1,

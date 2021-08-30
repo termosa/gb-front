@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
-import Button from '../button'
+import Button from '../../lib/button'
 import RingSize from '../ring-size'
 import formatPrice from '../../modules/format-price'
 import { Product, ProductVariant } from '../../modules/normalize-product'
