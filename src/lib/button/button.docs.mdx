@@ -1,21 +1,43 @@
----
-labels: ['ui', 'react']
-description: 'Renders given content in a block'
----
-
 import { Button } from './button'
-import PresentationCanvas from '../../helpers/presentation-canvas'
 
-Basic example:
-```js live
-<PresentationCanvas centered>
-  <Button className="Component-Content">Content</Button>
-</PresentationCanvas>
+export const meta = {
+  type: 'component',
+  name: 'Button',
+  description: 'Basic Button',
+  tags: ['component'],
+  preview: <Button>Basic Button</Button>,
+  lists: {
+    attributes: [
+      {
+        name: 'className',
+        type: 'classnames.Argument',
+        description: 'One or multiple class names that will be added to the main container',
+      },
+      { name: 'type', type: '"button" | "submit" | "reset" | undefined', description: 'Type styles for the button' },
+      { name: 'children', type: 'React.ReactNode', description: 'Children for button' },
+      { name: 'compact', type: 'boolean', description: 'min-width: {boolean} ? "35px" : "142px"' },
+      { name: 'font', type: 'string', description: 'default: "700 16px/1.25 Montserrat, sans-serif"' },
+      { name: 'width', type: 'string', description: 'Width for button' },
+      { name: 'frontColor', type: 'string', description: 'Front color for button' },
+      { name: 'backColor', type: 'string', description: ' Background-color for button' },
+      { name: 'borderColor', type: 'string', description: 'Color for border button' },
+      { name: 'disabledColor', type: 'string', description: 'Color for button' },
+    ],
+  },
+  scope: { Button },
+}
+
+## Playground
+
+***Disable***
+```jsx live
+<Button  disabled>
+  Button
+</Button>
 ```
 
-Custom colors:
-```js live
-<PresentationCanvas centered>
-  <Button className="Component-Content" frontColor="#fff" backColor="#9059c8">Submit</Button>
-</PresentationCanvas>
+```jsx live
+<Button backColor='#000' frontColor='#fff' width='180px'>
+  Button
+</Button>
 ```

@@ -1,8 +1,73 @@
----
-labels: ['extension', 'node', 'env', 'environment']
-description: 'A customized extension for Node environment.'
----
+import { useEffect, useState } from 'react'
+import useQuery from '.'
+import window from '../window'
+import createGlobalStateHook from '../create-global-state-hook'
 
-This is a customized extension for Node, based of the [Node Aspect](https://bit.dev/teambit/harmony/node).
+export const meta = {
+  type: 'hook',
+  name: 'useQuery',
+  description: 'Parse multiply parameters',
+  tags: ['hook', 'location'],
+  lists: {
+    returns: [
+      {
+        name: 'query',
+        type: '{ [parameterName: string]: string }',
+        description: 'Parses parameters and returns an object type ',
+      },
+    ],
+  },
+  scope: { useQuery, useEffect, useState },
+}
 
-Explain here the modified configurations and tools applied.
+## Usage
+```jsx
+const query = useQuery()
+```
+## Playground
+
+```jsx live render
+const defaultSearchValue = 'size=6&sortF=price-low-to-high'
+
+// It returns location.search value and the function to change it
+const useSearch = (defaultSearch) => {
+  const [search, setSearch] = useState(() => window.location.search.slice(1))
+
+  const changeSearch = newSearch => {
+    history.pushState({}, '', `${window.location.pathname}${newSearch ? `?${newSearch}` : ''}`)
+    setSearch(newSearch)
+  }
+
+  useEffect(() => {
+    if (defaultSearchValue && !window.location.search.slice(1))
+      changeSearch(defaultSearchValue)
+  }, [])
+
+  return [search, changeSearch]
+}
+
+const UseQueryExample = () => {
+  const query = useQuery()
+
+  const [search, setSearch] = useSearch()
+
+  return (
+    <div>
+      <p>
+        window.location.search = '?' +
+        <input
+          placeholder="List search params"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          style={{ borderWidth: '0', borderBottomWidth: '1px', width: '300px' }}
+        />
+      </p>
+
+      <h5>Parsed value:</h5>
+      <pre>{JSON.stringify(query, null, 2)}</pre>
+    </div>
+  )
+}
+
+render(<UseQueryExample />)
+```
