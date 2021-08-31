@@ -4,8 +4,8 @@ import styled from 'styled-components'
 import cn, { Argument as ClassName } from 'classnames'
 import ProductCard from '../product-card'
 import { Product } from '../../modules/normalize-product'
-import { useScreenSize } from '../../lib/use-screen-size'
-import { useRouter } from 'next/router'
+import useScreenSize from '../../lib/use-screen-size'
+import window from '../../lib/window'
 
 const Section = styled.section`
   margin: 0 0 48px;
@@ -291,7 +291,6 @@ export const ProductsCarousel = ({
   titleHighlighted,
   subTitle,
 }: ProductsCarouselProps): React.ReactElement => {
-  const router = useRouter()
   const screenSize = useScreenSize()
   const [progress, setProgress] = useState(0)
 
@@ -323,7 +322,7 @@ export const ProductsCarousel = ({
   return (
     <Section className={cn('ProductsCarousel', className)}>
       <Container>
-        {!screenSize.greaterThenMedium && router.pathname === '/products/[productId]' ? (
+        {!screenSize.greaterThenMedium && window?.location.pathname.match(/^\/products\/[^/]++$/i) ? (
           <SectionTitle isMobile={true}>
             <span>
               {title} {titleHighlighted}
