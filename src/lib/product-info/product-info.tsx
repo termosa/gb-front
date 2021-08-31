@@ -591,7 +591,7 @@ export function ProductInfo({ className, style, addToCartRef }: ProductInfoProps
             <SPdpChooserItem htmlFor="pdp-ic-radio-1" onClick={() => setDiscountApplied(false)}>
               <SPdpChooserItemPart>
                 <div>
-                  <SPdpRadioGroup type="radio" name="pdp-radio-group" checked={!isDiscountApplied} />
+                  <SPdpRadioGroup type="radio" name="pdp-radio-group" checked={!isDiscountApplied} readOnly />
                   <span />
                 </div>
                 <SPdpChooserItemPartTopContent>
@@ -607,7 +607,7 @@ export function ProductInfo({ className, style, addToCartRef }: ProductInfoProps
             <SPdpChooserItem htmlFor="pdp-ic-radio-2" onClick={() => setDiscountApplied(true)}>
               <SPdpChooserItemPart>
                 <div>
-                  <SPdpRadioGroup type="radio" name="pdp-radio-group" checked={isDiscountApplied} />
+                  <SPdpRadioGroup type="radio" name="pdp-radio-group" checked={isDiscountApplied} readOnly />
                   <span />
                 </div>
                 <SPdpChooserItemPartTopContent>

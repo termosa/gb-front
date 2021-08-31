@@ -1,11 +1,15 @@
 import React, { useState } from 'react'
 import Slider, { Settings } from 'react-slick'
+import UAParser from 'ua-parser-js'
 import styled from 'styled-components'
 import cn, { Argument as ClassName } from 'classnames'
 import ProductCard from '../product-card'
 import { Product } from '../../modules/normalize-product'
 import { useScreenSize } from '../../lib/use-screen-size'
 import { useRouter } from 'next/router'
+import Carousel from 'react-multi-carousel'
+import 'react-multi-carousel/lib/styles.css'
+import { NextPageContext } from 'next'
 
 const Section = styled.section`
   margin: 0 0 48px;
@@ -172,7 +176,7 @@ const ProductCards = styled.div`
   }
 `
 
-const StyledSlider = styled(Slider)`
+/*const StyledSlider = styled(Slider)`
   margin: 0 -15px;
   padding-left: 10px;
 
@@ -197,9 +201,9 @@ const StyledSlider = styled(Slider)`
     height: auto;
     display: flex;
   }
-`
+`*/
 
-const ProgressWrapper = styled.div`
+/*const ProgressWrapper = styled.div`
   max-width: 990px;
   margin: 0 auto;
   padding: 36px 23px 0;
@@ -232,9 +236,9 @@ const ProgressLabel = styled.div`
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   border: 0;
-`
+`*/
 
-const PrevArrow = styled.button`
+/*const PrevArrow = styled.button`
   font-size: 0;
   line-height: 1;
   position: absolute;
@@ -272,9 +276,10 @@ const NextArrow = styled.button`
   @media (min-width: 768px) {
     right: -15px;
   }
-`
+`*/
 
 export type ProductsCarouselProps = {
+  deviceType: string | undefined
   products: Array<Product>
   className?: ClassName
   title?: string
@@ -284,6 +289,7 @@ export type ProductsCarouselProps = {
 }
 
 export const ProductsCarousel = ({
+  deviceType,
   products,
   className,
   onSelectProduct,
@@ -293,9 +299,9 @@ export const ProductsCarousel = ({
 }: ProductsCarouselProps): React.ReactElement => {
   const router = useRouter()
   const screenSize = useScreenSize()
-  const [progress, setProgress] = useState(0)
+  // const [progress, setProgress] = useState(0)
 
-  const settings: Settings = {
+  /*const settings: Settings = {
     slidesToShow: 3,
     slidesToScroll: 1,
     dots: false,
@@ -309,7 +315,7 @@ export const ProductsCarousel = ({
           slidesToShow: 2,
           slidesToScroll: 1,
           arrows: false,
-          /*centerMode: true,*/
+          /!*centerMode: true,*!/
         },
       },
     ],
@@ -317,6 +323,23 @@ export const ProductsCarousel = ({
       const mockedProductLengthValue = 4
       const progressCalc = (nextSlide / (mockedProductLengthValue - 1)) * 100
       setProgress(progressCalc)
+    },
+  }*/
+  const responsive = {
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 5,
+      partialVisibilityGutter: 60,
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 4,
+      partialVisibilityGutter: 50,
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 2,
+      partialVisibilityGutter: 30,
     },
   }
 
@@ -339,20 +362,46 @@ export const ProductsCarousel = ({
           <p>{subTitle}</p>
         </SectionText>
         <ProductCards>
-          <StyledSlider {...settings}>
+          {/*<StyledSlider {...settings}>
             {products
               .filter((product) => product.image)
               .map((product) => (
                 <ProductCard key={product.product_id} product={product} onClick={() => onSelectProduct(product)} />
               ))}
-          </StyledSlider>
+          </StyledSlider>*/}
+          <Carousel ssr partialVisible deviceType={deviceType} itemClass="image-item" responsive={responsive}>
+            {products
+              .filter((product) => product.image)
+              .map((product) => {
+                return (
+                  <ProductCard key={product.product_id} product={product} onClick={() => onSelectProduct(product)} />
+                )
+              })}
+          </Carousel>
         </ProductCards>
       </Container>
-      <ProgressWrapper>
+      {/* <ProgressWrapper>
         <Progress progress={progress}>
           <ProgressLabel>{`${progress}% completed`}</ProgressLabel>
         </Progress>
-      </ProgressWrapper>
+      </ProgressWrapper>*/}
     </Section>
   )
+}
+
+ProductsCarousel.getInitialProps = ({ req }: NextPageContext) => {
+  let userAgent
+  if (req) {
+    userAgent = req.headers['user-agent']
+  } else {
+    userAgent = navigator.userAgent
+  }
+  if (!userAgent) {
+    return undefined
+  }
+  const parser = new UAParser()
+  parser.setUA(userAgent)
+  const result = parser.getResult()
+  const deviceType = (result.device && result.device.type) || 'desktop'
+  return { deviceType }
 }
