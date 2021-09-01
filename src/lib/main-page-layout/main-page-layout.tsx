@@ -9,7 +9,6 @@ import { PromotionSite } from '../promotion-site'
 import loadProductsChunk from '../../modules/load-products-chunk'
 import loadCustomer from '../../modules/load-customer'
 
-
 const MainPageLayoutWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -43,7 +42,6 @@ export type MainPageLayoutProps = {
 export function MainPageLayout({ children, className, style }: MainPageLayoutProps): React.ReactElement {
   const searchRequest = useDefer(loadProductsChunk)
   const { value: customer } = useDefer(() => loadCustomer().catch(() => null), [], [])
-
   return (
     <MainPageLayoutWrapper className={cn(className)} style={style}>
       <Header
