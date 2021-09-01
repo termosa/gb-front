@@ -1,0 +1,29 @@
+import PromotionBanner from '.'
+
+export const meta = {
+  type: 'component',
+  name: 'PromotionBanner',
+  description: 'Styled block with custom content',
+  tags: ['component'],
+  preview: <PromotionBanner>Component content here</PromotionBanner>,
+  lists: {
+    attributes: [
+      { name: 'children', required: true, type: 'React.ReactNode', description: 'Content that will be rendered inside of the block' },
+      { name: 'className', type: 'classnames.Argument', description: 'One or multiple class names that will be added to the main container' },
+      { name: 'style', type: 'React.CSSProperties', description: 'Inline styles for the main container' },
+    ],
+  },
+  scope: { PromotionBanner },
+}
+
+## Usage
+
+```jsx
+<PromotionBanner className="class" style={{ color: 'red' }}>Put content here</PromotionBanner>
+```
+
+## Playground
+
+```jsx live
+<PromotionBanner style={{ color: 'red' }}>Content text</PromotionBanner>
+```

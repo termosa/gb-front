@@ -1,0 +1,29 @@
+import PromotionSite from '.'
+
+export const meta = {
+  type: 'component',
+  name: 'PromotionSite',
+  description: 'Styled block with custom content',
+  tags: ['component'],
+  preview: <PromotionSite>Component content here</PromotionSite>,
+  lists: {
+    attributes: [
+      { name: 'children', required: true, type: 'React.ReactNode', description: 'Content that will be rendered inside of the block' },
+      { name: 'className', type: 'classnames.Argument', description: 'One or multiple class names that will be added to the main container' },
+      { name: 'style', type: 'React.CSSProperties', description: 'Inline styles for the main container' },
+    ],
+  },
+  scope: { PromotionSite },
+}
+
+## Usage
+
+```jsx
+<PromotionSite className="class" style={{ color: 'red' }}>Put content here</PromotionSite>
+```
+
+## Playground
+
+```jsx live
+<PromotionSite style={{ color: 'red' }}>Content text</PromotionSite>
+```
