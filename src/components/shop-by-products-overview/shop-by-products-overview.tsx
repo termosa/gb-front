@@ -1,7 +1,7 @@
 import React from 'react'
-import Slider, { Settings } from 'react-slick'
 import styled from 'styled-components'
 import { ShopByProductCard, ShopByProductCardProps } from '../shop-by-product-card'
+import { CarouselSlider } from '../../lib/carousel-slider'
 
 export type ProductDetails = ShopByProductCardProps
 export type ShopByProductsOverviewProps = {
@@ -35,52 +35,6 @@ const SCardsBlockTitle = styled.h2`
   letter-spacing: -0.02em;
   text-align: center;
   margin: 0 auto 20px;
-`
-
-const PrevArrow = styled.button`
-  display: block;
-  transform: translateY(-50%) rotate(45deg);
-  left: 1px;
-  font-size: 0;
-  z-index: 13;
-  top: 116px !important;
-  line-height: 1;
-  position: absolute;
-  width: 17px;
-  height: 17px;
-  border: none;
-  border-bottom: 1px solid #9059c8;
-  border-left: 1px solid #9059c8;
-  background-color: transparent;
-  cursor: pointer;
-  margin: 0;
-
-  @media (min-width: 420px) {
-    top: 142px !important;
-  }
-`
-
-const NextArrow = styled.button`
-  display: block;
-  transform: translateY(-50%) rotate(-135deg);
-  right: 1px;
-  font-size: 0;
-  z-index: 13;
-  top: 116px !important;
-  line-height: 1;
-  position: absolute;
-  width: 17px;
-  height: 17px;
-  border: none;
-  border-bottom: 1px solid #9059c8;
-  border-left: 1px solid #9059c8;
-  background-color: transparent;
-  cursor: pointer;
-  margin: 0;
-
-  @media (min-width: 420px) {
-    top: 142px !important;
-  }
 `
 
 const SliderWrapper = styled.div`
@@ -199,42 +153,24 @@ const SliderWrapper = styled.div`
 `
 
 export function ShopByProductsOverview({ products, title }: ShopByProductsOverviewProps): React.ReactElement {
-  const settings: Settings = {
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    dots: false,
-    arrows: false,
-    infinite: true,
-    responsive: [
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 1,
-          arrows: true,
-          prevArrow: <PrevArrow />,
-          nextArrow: <NextArrow />,
-        },
-      },
-    ],
-  }
-
   return (
     <SSection>
       <SContainer>
         <SCardsBlockTitle>{title}</SCardsBlockTitle>
         <SliderWrapper>
-          <Slider {...settings}>
+          <CarouselSlider isScrollbarPresent={false} isPartiallyVisible={false} arrows={false}>
             {products &&
               products.map((product) => (
                 <ShopByProductCard
                   key={product.image + product.id}
                   image={product.image}
                   buttonLink={product.buttonLink}
+                  buttonText={product.buttonText}
                   className={'slick-slide'}
                   title={product.title}
                 />
               ))}
-          </Slider>
+          </CarouselSlider>
         </SliderWrapper>
       </SContainer>
     </SSection>

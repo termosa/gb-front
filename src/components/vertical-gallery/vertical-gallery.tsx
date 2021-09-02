@@ -3,10 +3,10 @@ import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
 import { ProductImage } from '../../modules/normalize-product-image'
 import window from '../../lib/window/window'
-import Slider, { Settings } from 'react-slick'
 import { useScreenSize } from '../../lib/use-screen-size'
 import { Product as ProductType } from '../../modules/normalize-product'
 import ProductContext from '../../modules/product-context'
+import { CarouselSlider } from '../../lib/carousel-slider'
 
 const Wrapper = styled.div`
   width: 101%;
@@ -131,12 +131,10 @@ const SPdpCarouselItemMobile = styled.div`
   outline: none;
   display: flex !important;
   justify-content: center;
-
   img {
     width: 279px;
     height: 279px;
     object-fit: contain;
-
     @media (min-width: 768px) {
       width: 100%;
     }
@@ -203,23 +201,6 @@ export function VerticalGallery({
     setActiveGalleryItem(listOfCheckpoints.length - 1)
   }
 
-  const sliderSettings: Settings = {
-    customPaging: function (i) {
-      return (
-        <a>
-          <img src={product.images && product.images[i]?.src} alt={product.images && product.images[i]?.alt} />
-        </a>
-      )
-    },
-    arrows: false,
-    dots: true,
-    dotsClass: 'pdp-carousel-icons__list slick-tdhumb',
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-  }
-
   return (
     <Wrapper className={cn(className)}>
       <SPdpCarouselContainer>
@@ -268,13 +249,13 @@ export function VerticalGallery({
             </SPdpRow>
           ) : (
             <>
-              <Slider {...sliderSettings}>
+              <CarouselSlider partiallyVisible={false} arrows={false}>
                 {product.images?.map((image) => (
                   <SPdpCarouselItemMobile key={image?.src}>
                     <img src={image?.src} alt={image?.alt} />
                   </SPdpCarouselItemMobile>
                 ))}
-              </Slider>
+              </CarouselSlider>
             </>
           )}
         </SPdpRowWrapper>

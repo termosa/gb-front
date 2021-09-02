@@ -1,7 +1,9 @@
 import React from 'react'
-import Slider, { Settings } from 'react-slick'
+
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
+import { CarouselSlider } from '../../lib/carousel-slider'
+import { useScreenSize } from '../../lib/use-screen-size'
 
 export interface ReviewsSectionProps extends Omit<React.HTMLProps<HTMLDivElement>, 'className'> {
   className?: ClassName
@@ -100,6 +102,9 @@ const SliderWrapper = styled.div`
   padding: 0 16px;
 
   @media (min-width: 768px) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin: 26px auto 0;
     max-width: 100%;
     width: 100%;
@@ -185,44 +190,6 @@ const SliderWrapper = styled.div`
   }
 `
 
-const PrevArrow = styled.button`
-  display: block;
-  transform: translateY(-50%) rotate(45deg);
-  left: 0;
-  width: 13px;
-  height: 13px;
-  z-index: 13;
-  font-size: 0;
-  top: 50%;
-  line-height: 1;
-  position: absolute;
-  border: none;
-  border-bottom: 1px solid #9059c8;
-  border-left: 1px solid #9059c8;
-  background-color: transparent;
-  cursor: pointer;
-  margin: 0;
-`
-
-const NextArrow = styled.button`
-  display: block;
-  transform: translateY(-50%) rotate(-135deg);
-  right: 1px;
-  font-size: 0;
-  z-index: 13;
-  top: 47%;
-  line-height: 1;
-  position: absolute;
-  width: 13px;
-  height: 13px;
-  border: none;
-  border-bottom: 1px solid #9059c8;
-  border-left: 1px solid #9059c8;
-  background-color: transparent;
-  cursor: pointer;
-  margin: 0;
-`
-
 const TEST_IMAGES = [
   'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/buzzfeed.png',
   'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/cosmopolitan.png',
@@ -233,28 +200,7 @@ const TEST_IMAGES = [
 ]
 
 export function ReviewsSection({ quote, author, className }: ReviewsSectionProps): React.ReactElement {
-  const settings: Settings = {
-    slidesToShow: 6,
-    slidesToScroll: 1,
-    dots: false,
-    arrows: false,
-    pauseOnHover: true,
-    autoplay: true,
-    autoplaySpeed: 3000,
-    speed: 800,
-    responsive: [
-      {
-        breakpoint: 991,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 1,
-          arrows: true,
-          prevArrow: <PrevArrow />,
-          nextArrow: <NextArrow />,
-        },
-      },
-    ],
-  }
+  const useScreen = useScreenSize()
 
   return (
     <SReviewSection className={cn('ReviewsSection', className)}>
@@ -283,14 +229,18 @@ export function ReviewsSection({ quote, author, className }: ReviewsSectionProps
           <SFigcaption>{`- ${author}`}</SFigcaption>
         </SQuote>
         <SliderWrapper>
-          <Slider {...settings}>
-            {/*{images*/}
-            {/*  ? images.map((media, index) => <img src={media} alt="company" key={`revImage${index}`} />)*/}
-            {/*  : TEST_IMAGES.map((media, index) => <img src={media} alt="company" key={`revImage${index}`} />)}*/}
-            {TEST_IMAGES.map((media, index) => (
-              <img src={media} alt="company" key={`revImage${index}`} />
-            ))}
-          </Slider>
+          {useScreen.greaterThenMedium ? (
+            TEST_IMAGES.map((media, index) => <img src={media} alt="company" key={`revImage${index}`} />)
+          ) : (
+            <CarouselSlider partiallyVisible={false} arrows={true}>
+              {/*{images*/}
+              {/*  ? images.map((media, index) => <img src={media} alt="company" key={`revImage${index}`} />)*/}
+              {/*  : TEST_IMAGES.map((media, index) => <img src={media} alt="company" key={`revImage${index}`} />)}*/}
+              {TEST_IMAGES.map((media, index) => (
+                <img src={media} alt="company" key={`revImage${index}`} />
+              ))}
+            </CarouselSlider>
+          )}
         </SliderWrapper>
       </SContainer>
     </SReviewSection>

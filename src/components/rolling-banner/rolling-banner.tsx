@@ -1,6 +1,6 @@
 import React from 'react'
-import Slider, { Settings } from 'react-slick'
 import styled from 'styled-components'
+import { CarouselSlider } from '../../lib/carousel-slider'
 
 const PromoWrapper = styled.div`
   * {
@@ -20,7 +20,7 @@ const Container = styled.div`
   padding: 0 15px;
 `
 
-const PromoSlider = styled(Slider)`
+const PromoSlider = styled.div`
   font: 500 9px/1.2 'Montserrat', sans-serif;
   color: #fff;
   text-align: center;
@@ -77,78 +77,31 @@ const PromoSlider = styled(Slider)`
     }
   }
 `
-const PrevArrow = styled.button`
-  display: block;
-  transform: translateY(-50%) rotate(45deg);
-  left: 0;
-  width: 10px;
-  height: 10px;
-  z-index: 13;
-  font-size: 0;
-  top: 50%;
-  line-height: 1;
-  position: absolute;
-  border: none;
-  border-bottom: 2px solid #fff;
-  border-left: 2px solid #fff;
-  background-color: transparent;
-  cursor: pointer;
-  margin: 0;
-  padding: 0;
-`
-
-const NextArrow = styled.button`
-  display: block;
-  transform: translateY(-50%) rotate(-135deg);
-  right: 1px;
-  font-size: 0;
-  z-index: 13;
-  top: 50%;
-  line-height: 1;
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  border: none;
-  border-bottom: 2px solid #fff;
-  border-left: 2px solid #fff;
-  background-color: transparent;
-  cursor: pointer;
-  margin: 0;
-  padding: 0;
-`
 
 const PinkSpan = styled.span`
   color: #ee67a0;
 `
 
 export function RollingBanner(): React.ReactElement {
-  const settings: Settings = {
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    dots: false,
-    prevArrow: <PrevArrow />,
-    nextArrow: <NextArrow />,
-    autoplay: true,
-    autoplaySpeed: 4000,
-    infinite: true,
-  }
   return (
     <PromoWrapper>
       <Container>
-        <PromoSlider {...settings}>
-          <div>PARABEN FREE&nbsp;&nbsp;|&nbsp;&nbsp;HANDMADE IN USA&nbsp;&nbsp;|&nbsp;&nbsp;100% VEGAN</div>
-          <div>
-            <PinkSpan>FREE SHIPPING</PinkSpan> ON ORDERS $75+
-          </div>
-          <div>
-            COVID-19 SHIPPING UPDATE{' '}
-            <a
-              href="https://helpcenter.fragrantjewels.com/hc/en-us/sections/360008222572-COVID-19-Crisis-FAQ?mobile_site=true"
-              target="_blank"
-            >
-              LEARN MORE
-            </a>
-          </div>
+        <PromoSlider>
+          <CarouselSlider partiallyVisible={false} arrows={true}>
+            <div>PARABEN FREE&nbsp;&nbsp;|&nbsp;&nbsp;HANDMADE IN USA&nbsp;&nbsp;|&nbsp;&nbsp;100% VEGAN</div>
+            <div>
+              <PinkSpan>FREE SHIPPING</PinkSpan> ON ORDERS $75+
+            </div>
+            <div>
+              COVID-19 SHIPPING UPDATE{' '}
+              <a
+                href="https://helpcenter.fragrantjewels.com/hc/en-us/sections/360008222572-COVID-19-Crisis-FAQ?mobile_site=true"
+                target="_blank"
+              >
+                LEARN MORE
+              </a>
+            </div>
+          </CarouselSlider>
         </PromoSlider>
       </Container>
     </PromoWrapper>

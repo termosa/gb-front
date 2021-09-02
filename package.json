@@ -40,12 +40,10 @@
     "react-media-hook": "^0.4.9",
     "react-multi-carousel": "^2.6.5",
     "react-popper": "^2.2.5",
-    "react-slick": "^0.28.1",
     "src": "^1.1.2",
     "styled-components": "^5.2.3",
     "svg-sprite-loader": "4.2.1",
     "tiny-script-loader": "^2.2.1",
-    "ua-parser-js": "^0.7.28",
     "use-defer": "^2.2.0"
   },
   "devDependencies": {
