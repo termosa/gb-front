@@ -1,16 +1,16 @@
-import React, { useEffect, useState, useMemo } from 'react'
+import React from 'react'
 import useDefer from 'use-defer'
 import styled from 'styled-components'
 import { PromotionBanner } from '../promotion-banner'
 import useQuery from '../use-query'
-import { loadPromo, loadPromoProduct } from '../load-promo'
+import { loadPromo } from '../load-promo'
+import { loadPromoProduct } from '../load-promo-product'
 
 export function PromotionSite(): React.ReactElement {
   const { promo } = useQuery()
   const promoRequest = useDefer(() => (promo ? loadPromo(promo) : Promise.resolve(undefined)), [], [])
   const promoProductRequest = useDefer(() => (promo ? loadPromoProduct(promo) : Promise.resolve(undefined)), [], [])
-  console.log(888888, promoRequest.value)
-  console.log(999999, promoProductRequest.value)
+  // TODO: need for button
   // https://fjrecurly.herokuapp.com/shopify_endpoint/get_variants?product_id=6630796951630
 
   const PromotionContainer = styled.div`

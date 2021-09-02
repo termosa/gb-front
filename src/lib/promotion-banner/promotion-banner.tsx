@@ -1,17 +1,6 @@
 import React from 'react'
-import { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
-import { Button } from '../button'
-
-interface IPromoProductResponse {
-  id: string
-  name: string
-  promo: string
-  requirements: string
-  src: string
-  title: string
-  type: string
-}
+import { IPromoProductResponse } from '../load-promo-product'
 
 const PromoContainer = styled.div`
   position: relative;
@@ -42,14 +31,11 @@ const PromoContainer = styled.div`
 `
 export type PromotionBannerProps = {
   promoProduct: IPromoProductResponse
-  // children?: React.ReactNode
-  // className?: ClassName
-  // style?: React.CSSProperties
 }
 
 export function PromotionBanner({ promoProduct }: PromotionBannerProps): React.ReactElement {
   console.log(promoProduct)
-  const { src, title, name, requirements } = promoProduct
+  const { src, title, requirements } = promoProduct
   const WrapPromoContainer = styled.div`
     display: flex;
     flex-direction: row;
