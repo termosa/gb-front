@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { IPromoProductResponse } from '../load-promo-product'
+import { IPromoProductId } from '../load-product-id'
 
 const PromoContainer = styled.div`
   position: relative;
@@ -31,11 +32,12 @@ const PromoContainer = styled.div`
 `
 export type PromotionBannerProps = {
   promoProduct: IPromoProductResponse
+  promoProductId: IPromoProductId[]
 }
 
-export function PromotionBanner({ promoProduct }: PromotionBannerProps): React.ReactElement {
-  console.log(promoProduct)
+export function PromotionBanner({ promoProduct, promoProductId }: PromotionBannerProps): React.ReactElement {
   const { src, title, requirements } = promoProduct
+  const [unavailableRingSize, useUnavailableRingSize] = useState(false)
   const WrapPromoContainer = styled.div`
     display: flex;
     flex-direction: row;
@@ -132,19 +134,27 @@ export function PromotionBanner({ promoProduct }: PromotionBannerProps): React.R
         </PromoClock>
         <PromoDescription>{requirements}</PromoDescription>
       </WrapPromoContainer>
-      <PromoMessage>Select a ring size:</PromoMessage>
-      <SelectHolderBtn>
-        {[5, 6, 7, 8, 9, 10].map((el) => {
-          return el !== 9 ? (
-            <ButtonRingSize onClick={() => console.log(el)}>{el}</ButtonRingSize>
-          ) : (
-            <ButtonRingSize className="disabled" onClick={() => console.log(el)}>
-              {el}
-            </ButtonRingSize>
-          )
-        })}
-      </SelectHolderBtn>
-      <SizeIsUnavailable>This size is unavailable.</SizeIsUnavailable>
+      {promoProductId ? (
+        <>
+          <PromoMessage>Select a ring size:</PromoMessage>
+          <SelectHolderBtn>
+            {promoProductId
+              ? promoProductId.map((el) => {
+                  return el.available ? (
+                    <ButtonRingSize key={el.id} onClick={() => useUnavailableRingSize(false)}>
+                      {el.title}
+                    </ButtonRingSize>
+                  ) : (
+                    <ButtonRingSize key={el.id} className="disabled" onClick={() => useUnavailableRingSize(true)}>
+                      {el.title}
+                    </ButtonRingSize>
+                  )
+                })
+              : null}
+          </SelectHolderBtn>
+          {unavailableRingSize ? <SizeIsUnavailable>This size is unavailable.</SizeIsUnavailable> : null}
+        </>
+      ) : null}
     </PromoContainer>
   )
 }
