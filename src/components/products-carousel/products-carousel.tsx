@@ -322,7 +322,7 @@ export const ProductsCarousel = ({
   return (
     <Section className={cn('ProductsCarousel', className)}>
       <Container>
-        {/*{!screenSize.greaterThenMedium && window?.location.pathname.match(/^\/products\/[^/]++$/i) ? (*/}
+        {!screenSize.greaterThenMedium && window?.location.pathname.match(/^\/products\/[^/]+$/i) ? (
         <SectionTitle isMobile={true}>
           <span>
             {title} {titleHighlighted}
