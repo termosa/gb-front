@@ -12,7 +12,7 @@ const PromoContainer = styled.div`
   padding: 15px 25px;
   background-color: #fff;
   margin: 0 auto;
-  font-family: 'Montserrat', 'HelveticaNeue', 'Helvetica', 'Arial', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 14px;
   line-height: 1.6;
 
@@ -38,6 +38,7 @@ export type PromotionBannerProps = {
 export function PromotionBanner({ promoProduct, promoProductId }: PromotionBannerProps): React.ReactElement {
   const { src, title, requirements } = promoProduct
   const [unavailableRingSize, useUnavailableRingSize] = useState(false)
+  const [buyRingSize, useBuyRingSize] = useState('')
   const WrapPromoContainer = styled.div`
     display: flex;
     flex-direction: row;
@@ -134,6 +135,10 @@ export function PromotionBanner({ promoProduct, promoProductId }: PromotionBanne
     }
   `
 
+  const Congratulations = styled.div`
+    font-weight: bold;
+  `
+
   return (
     <PromoContainer>
       <WrapPromoContainer>
@@ -152,11 +157,24 @@ export function PromotionBanner({ promoProduct, promoProductId }: PromotionBanne
             {promoProductId
               ? promoProductId.map((el) => {
                   return el.available ? (
-                    <ButtonRingSize key={el.id} onClick={() => useUnavailableRingSize(false)}>
+                    <ButtonRingSize
+                      key={el.id}
+                      onClick={() => {
+                        useUnavailableRingSize(false)
+                        useBuyRingSize(el.title)
+                      }}
+                    >
                       {el.title}
                     </ButtonRingSize>
                   ) : (
-                    <ButtonRingSize key={el.id} className="disabled" onClick={() => useUnavailableRingSize(true)}>
+                    <ButtonRingSize
+                      key={el.id}
+                      className="disabled"
+                      onClick={() => {
+                        useUnavailableRingSize(true)
+                        useBuyRingSize('')
+                      }}
+                    >
                       {el.title}
                     </ButtonRingSize>
                   )
@@ -164,6 +182,13 @@ export function PromotionBanner({ promoProduct, promoProductId }: PromotionBanne
               : null}
           </SelectHolderBtn>
           {unavailableRingSize ? <SizeIsUnavailable>This size is unavailable.</SizeIsUnavailable> : null}
+          {buyRingSize ? (
+            <Congratulations>
+              Congratulations! Your gift is in your cart!
+              <br />
+              (Ring Size: {buyRingSize})
+            </Congratulations>
+          ) : null}
         </>
       ) : null}
     </PromoContainer>
