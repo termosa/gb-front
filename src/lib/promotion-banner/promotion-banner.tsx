@@ -150,7 +150,7 @@ export function PromotionBanner({ promoProduct, promoProductId }: PromotionBanne
         </PromoClock>
         <PromoDescription>{requirements}</PromoDescription>
       </WrapPromoContainer>
-      {promoProductId ? (
+      {!buyRingSize && promoProductId ? (
         <>
           <PromoMessage>Select a ring size:</PromoMessage>
           <SelectHolderBtn>
@@ -182,14 +182,14 @@ export function PromotionBanner({ promoProduct, promoProductId }: PromotionBanne
               : null}
           </SelectHolderBtn>
           {unavailableRingSize ? <SizeIsUnavailable>This size is unavailable.</SizeIsUnavailable> : null}
-          {buyRingSize ? (
-            <Congratulations>
-              Congratulations! Your gift is in your cart!
-              <br />
-              (Ring Size: {buyRingSize})
-            </Congratulations>
-          ) : null}
         </>
+      ) : null}
+      {buyRingSize ? (
+        <Congratulations>
+          Congratulations! Your gift is in your cart!
+          <br />
+          (Ring Size: {buyRingSize})
+        </Congratulations>
       ) : null}
     </PromoContainer>
   )
