@@ -12,7 +12,7 @@ const PromoContainer = styled.div`
   padding: 15px 25px;
   background-color: #fff;
   margin: 0 auto;
-  font-family: Lato, 'Montserrat', 'HelveticaNeue', 'Helvetica', 'Arial', sans-serif;
+  font-family: 'Montserrat', 'HelveticaNeue', 'Helvetica', 'Arial', sans-serif;
   font-size: 14px;
   line-height: 1.6;
 
@@ -41,6 +41,11 @@ export function PromotionBanner({ promoProduct, promoProductId }: PromotionBanne
   const WrapPromoContainer = styled.div`
     display: flex;
     flex-direction: row;
+
+    @media (max-width: 768px) {
+      align-items: center;
+      flex-direction: column;
+    }
   `
   const PromoImageBox = styled.div`
     align-items: center;
@@ -120,6 +125,12 @@ export function PromotionBanner({ promoProduct, promoProductId }: PromotionBanne
         color: #000;
         cursor: auto;
       }
+    }
+    @media (max-width: 768px) {
+      margin: 4px 4px;
+      width: 35px;
+      height: 35px;
+      min-width: 35px;
     }
   `
 
