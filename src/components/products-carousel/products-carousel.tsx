@@ -12,7 +12,7 @@ const Section = styled.section`
   margin: 0 0 48px;
 
   @media (min-width: 768px) {
-    margin: 0 0 92px;
+    margin: 30px 0 92px;
   }
 
   * {
@@ -21,6 +21,7 @@ const Section = styled.section`
 `
 
 const Container = styled.div`
+  position: relative;
   max-width: 990px;
   padding: 0 0 0 15px;
   margin: 0 auto;
@@ -89,6 +90,20 @@ export const ProductsCarousel = ({
   subTitle,
 }: ProductsCarouselProps): React.ReactElement => {
   const screenSize = useScreenSize()
+  const sliderSettings = {
+    desktop: {
+      breakpoint: { max: 3000, min: 768 },
+      items: 3,
+    },
+    tablet: {
+      breakpoint: { max: 768, min: 464 },
+      items: 2.5,
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1.5,
+    },
+  }
 
   return (
     <Section className={cn('ProductsCarousel', className)}>
@@ -108,7 +123,7 @@ export const ProductsCarousel = ({
         <SectionText>
           <p>{subTitle}</p>
         </SectionText>
-        <CarouselSlider partiallyVisible={true} arrows={screenSize.greaterThenMedium}>
+        <CarouselSlider responsive={sliderSettings} scrollbarPresent>
           {products
             .filter((product) => product.image)
             .map((product) => {

@@ -208,7 +208,7 @@ export function MostFunOverview({ className }: MostFunOverviewProps): React.Reac
           ever had relaxing
         </SSectionTitle>
         <StyledSlider>
-          <CarouselSlider partiallyVisible={false} arrows={true}>
+          <CarouselSlider arrows={true}>
             <div>
               <img src="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/most-fun-img-1.jpg" alt="" />
               <SSlideTitle>Guilt Free Ingredients</SSlideTitle>

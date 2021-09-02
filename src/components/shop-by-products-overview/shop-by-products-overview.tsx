@@ -158,7 +158,7 @@ export function ShopByProductsOverview({ products, title }: ShopByProductsOvervi
       <SContainer>
         <SCardsBlockTitle>{title}</SCardsBlockTitle>
         <SliderWrapper>
-          <CarouselSlider isScrollbarPresent={false} isPartiallyVisible={false} arrows={false}>
+          <CarouselSlider arrows={false}>
             {products &&
               products.map((product) => (
                 <ShopByProductCard

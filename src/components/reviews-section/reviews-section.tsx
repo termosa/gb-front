@@ -109,84 +109,17 @@ const SliderWrapper = styled.div`
     max-width: 100%;
     width: 100%;
   }
+`
 
-  .slick-slider {
-    user-select: none;
-    box-sizing: border-box;
-    touch-action: pan-y;
-    text-align: center;
-  }
-
-  .slick-list {
-    position: relative;
-    display: block;
-    overflow: hidden;
-    margin: 0;
-    padding: 0;
-  }
-
-  .slick-slider .slick-list {
-    transform: translate3d(0, 0, 0);
-  }
-
-  .slick-track {
-    position: relative;
-    top: 0;
-    left: 0;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .slick-slider .slick-track {
-    display: flex;
-    align-items: center;
-
-    @media (min-width: 768px) {
-      transform: translate3d(0, 0, 0);
-      justify-content: center;
-      width: 100%;
-    }
-  }
-
-  .slick-slider .slick-slide {
-    margin: 0 0.5%;
-    @media (min-width: 991px) {
-      margin: 0 1.2vw;
-    }
-
-    & > div {
-      display: flex;
-      align-items: center;
-    }
-  }
-
-  .slick-slide {
-    outline: none;
-    display: none;
-    float: left;
-    min-height: 1px;
-    @media (min-width: 991px) {
-      width: initial !important;
-    }
-  }
-
-  .slick-initialized .slick-slide {
-    display: block;
-  }
-
-  .slick-slider .slick-slide img {
-    height: auto;
-    width: auto !important;
-    max-width: 100%;
-    max-height: 33px;
-    margin: 0 auto;
-    display: block;
-  }
+const SCompanyImageContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  height: 100%;
 
   img {
+    height: max-content;
     border-style: none;
-    margin: 0 5px 10px;
   }
 `
 
@@ -232,12 +165,14 @@ export function ReviewsSection({ quote, author, className }: ReviewsSectionProps
           {useScreen.greaterThenMedium ? (
             TEST_IMAGES.map((media, index) => <img src={media} alt="company" key={`revImage${index}`} />)
           ) : (
-            <CarouselSlider partiallyVisible={false} arrows={true}>
+            <CarouselSlider partiallyVisible={false} arrows infinite>
               {/*{images*/}
               {/*  ? images.map((media, index) => <img src={media} alt="company" key={`revImage${index}`} />)*/}
               {/*  : TEST_IMAGES.map((media, index) => <img src={media} alt="company" key={`revImage${index}`} />)}*/}
               {TEST_IMAGES.map((media, index) => (
-                <img src={media} alt="company" key={`revImage${index}`} />
+                <SCompanyImageContainer>
+                  <img src={media} alt="company" key={`revImage${index}`} />
+                </SCompanyImageContainer>
               ))}
             </CarouselSlider>
           )}

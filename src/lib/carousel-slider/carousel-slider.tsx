@@ -2,28 +2,15 @@ import React, { useRef } from 'react'
 import Carousel, { ResponsiveType } from 'react-multi-carousel'
 import styled from 'styled-components'
 
-const getResponsive = (isPartiallyVisible: boolean): ResponsiveType => {
-  return {
-    desktop: {
-      breakpoint: { max: 3000, min: 768 },
-      items: isPartiallyVisible ? 3 : 1,
-    },
-    tablet: {
-      breakpoint: { max: 768, min: 464 },
-      items: isPartiallyVisible ? 2.5 : 1,
-    },
-    mobile: {
-      breakpoint: { max: 464, min: 0 },
-      items: isPartiallyVisible ? 1.5 : 1,
-    },
-  }
-}
-
 const SImageContainer = styled.div`
   padding: 15px 0;
 
   input[type='range'] {
     -webkit-appearance: none;
+  }
+
+  .react-multi-carousel-list {
+    position: initial;
   }
 
   input[type='range']::-webkit-slider-runnable-track {
@@ -108,7 +95,7 @@ const SPrevArrow = styled.button`
   cursor: pointer;
   z-index: 5;
   transform: rotate(45deg);
-  left: 3px;
+  left: 8px;
 `
 const SNextArrow = styled.button`
   font-size: 0;
@@ -123,16 +110,18 @@ const SNextArrow = styled.button`
   cursor: pointer;
   z-index: 5;
   transform: rotate(-135deg);
-  right: 3px;
+  right: 8px;
 `
 
 type SliderProps = {
-  partiallyVisible: boolean
+  children: JSX.Element[]
+  arrows?: boolean
+  responsive?: ResponsiveType
   scrollbarPresent?: boolean
   dotsPresent?: boolean
-  arrows: boolean | null
+  partiallyVisible?: boolean
+  infinite?: boolean
   itemClass?: string
-  children?: JSX.Element[]
 }
 
 interface CarouselState {
@@ -152,13 +141,32 @@ type CustomDotProps = {
   active?: boolean
 }
 
+const getResponsive = (partiallyVisible: boolean | undefined): ResponsiveType => {
+  return {
+    desktop: {
+      breakpoint: { max: 3000, min: 768 },
+      items: partiallyVisible ? 3 : 1,
+    },
+    tablet: {
+      breakpoint: { max: 768, min: 464 },
+      items: partiallyVisible ? 2.5 : 1,
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: partiallyVisible ? 1.5 : 1,
+    },
+  }
+}
+
 export const CarouselSlider = ({
+  children,
+  arrows,
   scrollbarPresent,
   dotsPresent,
   partiallyVisible,
-  arrows,
+  responsive,
+  infinite,
   itemClass,
-  children,
 }: SliderProps): React.ReactElement => {
   const carouselRef = useRef<Carousel | null>(null)
 
@@ -203,17 +211,16 @@ export const CarouselSlider = ({
   return (
     <SImageContainer>
       <Carousel
-        ssr={false}
         ref={carouselRef}
-        arrows={!!arrows}
+        arrows={!partiallyVisible || arrows === false}
         customLeftArrow={<SPrevArrow />}
         customRightArrow={<SNextArrow />}
         customButtonGroup={scrollbarPresent ? <CustomSlider /> : null}
         customDot={dotsPresent ? <CustomDot /> : null}
-        itemClass={itemClass || 'slider-image-item'}
-        infinite={!scrollbarPresent}
-        responsive={getResponsive(partiallyVisible)}
-        containerClass={partiallyVisible ? 'carousel-container-with-scrollbar' : 'container-with-dots'}
+        itemClass={itemClass || 'image-item'}
+        infinite={infinite}
+        responsive={responsive || getResponsive(partiallyVisible)}
+        containerClass={scrollbarPresent ? 'carousel-container-with-scrollbar' : 'container-with-dots'}
       >
         {children}
       </Carousel>

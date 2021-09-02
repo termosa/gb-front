@@ -29,42 +29,11 @@ const PromoSlider = styled.div`
   align-items: center;
   padding: 9px 0;
   position: relative;
+
   @media (min-width: 768px) {
     font: 500 11px/1.2 'Montserrat', sans-serif;
   }
 
-  .slick-slider {
-    box-sizing: border-box;
-    user-select: none;
-    touch-action: pan-y;
-  }
-
-  .slick-list {
-    position: relative;
-    display: block;
-    overflow: hidden;
-    margin: 0;
-    padding: 0;
-  }
-  .slick-slider .slick-track,
-  .slick-slider .slick-list {
-    transform: translate3d(0, 0, 0);
-  }
-
-  .slick-track {
-    position: relative;
-    top: 0;
-    left: 0;
-
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .slick-slide {
-    float: left;
-    height: 100%;
-    min-height: 1px;
-  }
   a {
     color: #ee67a0;
     text-decoration: none;
@@ -78,6 +47,11 @@ const PromoSlider = styled.div`
   }
 `
 
+const SPromoSlide = styled.div`
+  width: 100%;
+  display: block;
+`
+
 const PinkSpan = styled.span`
   color: #ee67a0;
 `
@@ -87,12 +61,14 @@ export function RollingBanner(): React.ReactElement {
     <PromoWrapper>
       <Container>
         <PromoSlider>
-          <CarouselSlider partiallyVisible={false} arrows={true}>
-            <div>PARABEN FREE&nbsp;&nbsp;|&nbsp;&nbsp;HANDMADE IN USA&nbsp;&nbsp;|&nbsp;&nbsp;100% VEGAN</div>
-            <div>
+          <CarouselSlider arrows={true}>
+            <SPromoSlide>
+              PARABEN FREE&nbsp;&nbsp;|&nbsp;&nbsp;HANDMADE IN USA&nbsp;&nbsp;|&nbsp;&nbsp;100% VEGAN
+            </SPromoSlide>
+            <SPromoSlide>
               <PinkSpan>FREE SHIPPING</PinkSpan> ON ORDERS $75+
-            </div>
-            <div>
+            </SPromoSlide>
+            <SPromoSlide>
               COVID-19 SHIPPING UPDATE{' '}
               <a
                 href="https://helpcenter.fragrantjewels.com/hc/en-us/sections/360008222572-COVID-19-Crisis-FAQ?mobile_site=true"
@@ -100,7 +76,7 @@ export function RollingBanner(): React.ReactElement {
               >
                 LEARN MORE
               </a>
-            </div>
+            </SPromoSlide>
           </CarouselSlider>
         </PromoSlider>
       </Container>
