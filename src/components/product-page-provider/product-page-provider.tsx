@@ -2,7 +2,7 @@ import React from 'react'
 import ProductContext from '../../modules/product-context'
 import loadProduct from '../../lib/load-product'
 import useDefer from 'use-defer'
-import useQuery from '../../hooks/use-query'
+import useQuery from '../../lib/use-query'
 
 export const ProductPageProvider = ({ children }: { children: React.ReactElement }): React.ReactElement => {
   const { productId } = useQuery()

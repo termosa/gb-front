@@ -2,8 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 import cn, { Argument as ClassName } from 'classnames'
 import { Product } from '../../modules/normalize-product'
-import { useScreenSize } from '../../lib/use-screen-size'
-import { useRouter } from 'next/router'
+import useScreenSize from '../../lib/use-screen-size'
+import window from '../../lib/window'
 import 'react-multi-carousel/lib/styles.css'
 import { CarouselSlider } from '../../lib/carousel-slider'
 import { ProductCard } from '../product-card'
@@ -88,13 +88,12 @@ export const ProductsCarousel = ({
   titleHighlighted,
   subTitle,
 }: ProductsCarouselProps): React.ReactElement => {
-  const router = useRouter()
   const screenSize = useScreenSize()
 
   return (
     <Section className={cn('ProductsCarousel', className)}>
       <Container>
-        {!screenSize.greaterThenMedium && router.pathname === '/products/[productId]' ? (
+        {!screenSize.greaterThenMedium && window?.location.pathname.search('products') !== -1 ? (
           <SectionTitle isMobile={true}>
             <span>
               {title} {titleHighlighted}
@@ -109,34 +108,6 @@ export const ProductsCarousel = ({
         <SectionText>
           <p>{subTitle}</p>
         </SectionText>
-        {/*<SCarouselWrapper>*/}
-        {/*  <Carousel*/}
-        {/*    ssr={false}*/}
-        {/*    ref={(el) => setCarousel(el)}*/}
-        {/*    partialVisbile={false}*/}
-        {/*    customButtonGroup={<CustomSlider />}*/}
-        {/*    itemClass="slider-image-item"*/}
-        {/*    responsive={responsive}*/}
-        {/*    containerClass="carousel-container-with-scrollbar"*/}
-        {/*    additionalTransfrom={-additionalTransform}*/}
-        {/*    beforeChange={(nextSlide) => {*/}
-        {/*      if (nextSlide !== 0 && additionalTransform !== 150) {*/}
-        {/*        setAdditionalTransform(150)*/}
-        {/*      }*/}
-        {/*      if (nextSlide === 0 && additionalTransform === 150) {*/}
-        {/*        setAdditionalTransform(0)*/}
-        {/*      }*/}
-        {/*    }}*/}
-        {/*  >*/}
-        {/*     {products
-              .filter((product) => product.image)
-              .map((product) => {
-                return (
-                  <ProductCard key={product.product_id} product={product} onClick={() => onSelectProduct(product)} />
-                )
-              })}*/}
-        {/*  </Carousel>*/}
-        {/*</SCarouselWrapper>*/}
         <CarouselSlider partiallyVisible={true} arrows={screenSize.greaterThenMedium}>
           {products
             .filter((product) => product.image)
@@ -145,6 +116,11 @@ export const ProductsCarousel = ({
             })}
         </CarouselSlider>
       </Container>
+      {/* <ProgressWrapper>
+        <Progress progress={progress}>
+          <ProgressLabel>{`${progress}% completed`}</ProgressLabel>
+        </Progress>
+      </ProgressWrapper>*/}
     </Section>
   )
 }

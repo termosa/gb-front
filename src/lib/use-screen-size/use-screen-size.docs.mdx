@@ -3,43 +3,42 @@ import useScreenSize from '.'
 export const meta = {
   type: 'hook',
   name: 'useScreenSize',
-  description: 'Simple value counter',
+  description: 'Hook for conditional rendering content on different viewports',
   tags: ['hook'],
   lists: {
-    arguments: [
-      { name: 'initialValue', type: 'number | () => number', description: 'Starting value' },
-    ],
+    arguments: [],
     returns: [
-      { name: 'counter', type: 'object' },
-      { name: 'counter.count', type: 'number', description: 'Current value' },
-      { name: 'counter.increment', type: '() => void', description: 'Increasing value by one' },
+      { name: 'width', type: 'number', description: 'Width of viewport' },
+      { name: 'height', type: 'number', description: 'Height of viewport' },
+      { name: 'lessThenSmall', type: 'boolean', description: 'Is width less than 576px' },
+      { name: 'greaterThenSmall', type: 'boolean', description: 'Is width more than 576px' },
+      { name: 'greaterThenMedium', type: 'boolean', description: 'Is width more than 768px' },
+      { name: 'greaterThenLarge', type: 'boolean', description: 'Is width more than 992px' },
+      { name: 'greaterThenExtraLarge', type: 'boolean', description: 'Is width more than 1200px' },
     ],
   },
   scope: { useScreenSize },
 }
 
-## Usage
-
-```jsx
-const Component = () => {
-  const { count, increment } = useScreenSize()
-  return <input type="button" onClick={increment} value={`Clicked ${count} time(s)`} />
-}
-```
-
 ## Playground
 
 ```jsx live render
-const ClickCounter = ({ initialValue }) => {
-  const { count, increment } = useScreenSize(initialValue)
-  return (
-    <input
-      type="button"
-      onClick={increment}
-      value={`Clicked ${count} time(s)`}
-    />
-  )
+const ScreenSize = () => {
+  const screenSize = useScreenSize()
+  const getStyle = (isTruthy) => isTruthy ? {color: 'green'} : {color: 'red'}
+
+  return <>
+    <h3>Resize the page to see hook in action</h3>
+    <p>Current width  - {screenSize.width}px</p>
+    <p>Current height - {screenSize.height}px</p>
+    <br/>
+    <p style={getStyle(screenSize.lessThenSmall)}><b>lessThenSmall</b> - width less than 576px</p>
+    <p style={getStyle(screenSize.greaterThenSmall)}><b>greaterThenSmall</b> - width more than 576px</p>
+    <p style={getStyle(screenSize.greaterThenMedium)}><b>greaterThenMedium</b> - width more than 768px</p>
+    <p style={getStyle(screenSize.greaterThenLarge)}><b>greaterThenLarge</b> - width more than 992px</p>
+    <p style={getStyle(screenSize.greaterThenExtraLarge)}><b>greaterThenExtraLarge</b> - width more than 1200px</p>
+  </>
 }
 
-render(<ClickCounter initialValue={-1} />)
+render(<ScreenSize />)
 ```

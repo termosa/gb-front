@@ -1,10 +1,10 @@
 import React from 'react'
 import { render } from '@testing-library/react'
-import { BasicButton } from './button.composition'
+import { Button } from './button'
 
-describe('Button', () => {
+describe('<Button>', () => {
   it('should render with the correct text', () => {
-    const { getByText } = render(<BasicButton />)
+    const { getByText } = render(<Button>Basic Button</Button>)
     const rendered = getByText('Basic Button')
     expect(rendered).toBeTruthy()
   })

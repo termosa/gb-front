@@ -2,7 +2,7 @@ import React from 'react'
 import CollectionContext from '../../modules/collection-context'
 import loadCollection from '../../lib/load-collection'
 import useDefer from 'use-defer'
-import useQuery from '../../hooks/use-query'
+import useQuery from '../../lib/use-query'
 
 export const CollectionPageProvider = ({ children }: { children: React.ReactElement }): React.ReactElement => {
   const { collectionId } = useQuery()

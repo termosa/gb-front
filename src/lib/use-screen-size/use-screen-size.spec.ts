@@ -1,32 +1,21 @@
-import { renderHook, act } from '@testing-library/react-hooks'
-import useScreenSize from '.'
+import { renderHook } from '@testing-library/react-hooks'
+import useScreenSize from '../use-screen-size'
 
 describe('useScreenSize()', () => {
-  it('should have initial value', () => {
+  it('should return a object', () => {
     const { result } = renderHook(() => useScreenSize())
-    expect(result.current.count).toBe(0)
+    expect(result.current).toBeInstanceOf(Object)
   })
 
-  it('should have set initial value with given number', () => {
-    const { result } = renderHook(() => useScreenSize(-10))
-    expect(result.current.count).toBe(-10)
-  })
-
-  it('should have set initial value from given function', () => {
-    const { result } = renderHook(() => useScreenSize(() => -10))
-    expect(result.current.count).toBe(-10)
-  })
-
-  it('should change initial value by 1', () => {
+  it('check return value width', () => {
     const { result } = renderHook(() => useScreenSize())
-    act(() => result.current.increment())
-    expect(result.current.count).toBe(1)
+    window = Object.assign(window, { innerWidth: 500 })
+    expect(result.current.width)
   })
 
-  it('should change initial value incrementally', () => {
+  it('check return value lessThenSmall', () => {
     const { result } = renderHook(() => useScreenSize())
-    act(() => result.current.increment())
-    act(() => result.current.increment())
-    expect(result.current.count).toBe(2)
+    window = Object.assign(window, { innerWidth: 500 })
+    expect(result.current.lessThenSmall)
   })
 })
