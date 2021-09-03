@@ -27,33 +27,34 @@ export interface PromoDetails {
   expiration: PromoExpiration
 }
 
-export async function loadPromoDetails(promo: string): Promise<PromoDetails> {
-  const promoProduct = await http({
+export function loadPromoDetails(promo: string): Promise<PromoDetails> {
+  return http({
     url: `https://fjrecurly.herokuapp.com/get_promo_product/`,
     query: { promo },
-  }).then((r) => r.json())
-
-  const getPromoDetails = http({
-    url: `https://fjrecurly.herokuapp.com/shopify_endpoint/get_variants`,
-    query: { product_id: promoProduct.id },
   })
-
-  const getPromo = http({
-    url: `https://fjrecurly.herokuapp.com/get_promo/?promo=blackcat`,
-    query: { product_id: promoProduct.id },
-  })
-  const [detailsResponse, promoResponse] = await Promise.all([getPromoDetails, getPromo])
-
-  const detailsVariants = await detailsResponse.json()
-  const promoJSON = await promoResponse.json()
-
-  return {
-    id: Number(promoProduct.id),
-    name: promoProduct.name,
-    src: promoProduct.src,
-    title: promoProduct.title,
-    requirements: promoProduct.requirements,
-    detailVariants: detailsVariants,
-    expiration: promoJSON.expiration,
-  }
+    .then((r) => r.json())
+    .then((promoProduct) =>
+      Promise.all([
+        promoProduct,
+        http({
+          url: `https://fjrecurly.herokuapp.com/shopify_endpoint/get_variants`,
+          query: { product_id: promoProduct.id },
+        }).then((r) => r.json()),
+        http({
+          url: `https://fjrecurly.herokuapp.com/get_promo/?promo=blackcat`,
+          query: { product_id: promoProduct.id },
+        }).then((r) => r.json()),
+      ])
+    )
+    .then(([promoProduct, detailsVariants, promoJSON]) => {
+      return {
+        id: Number(promoProduct.id),
+        name: promoProduct.name,
+        src: promoProduct.src,
+        title: promoProduct.title,
+        requirements: promoProduct.requirements,
+        detailVariants: detailsVariants,
+        expiration: promoJSON.expiration,
+      }
+    })
 }

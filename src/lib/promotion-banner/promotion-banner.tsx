@@ -142,7 +142,7 @@ export function PromotionBanner({ promo, className, style }: PromotionBannerProp
   if (!promo) {
     return null
   }
-  const promoDetails = useDefer(() => (promo ? loadPromoDetails(promo) : Promise.resolve(undefined)), [], [])
+  const promoDetails = useDefer(() => (promo ? loadPromoDetails(promo) : Promise.resolve(undefined)), [promo], [])
   const [unavailableRingSize, useUnavailableRingSize] = useState(false)
   const [buyRingSize, useBuyRingSize] = useState('')
   if (!promoDetails.value) {
