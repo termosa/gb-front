@@ -24,9 +24,9 @@ const PromoSlider = styled.div`
   font: 500 9px/1.2 'Montserrat', sans-serif;
   color: #fff;
   text-align: center;
-  display: flex;
+  /*  display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center;*/
   padding: 9px 0;
   position: relative;
 
@@ -47,9 +47,50 @@ const PromoSlider = styled.div`
   }
 `
 
-const SPromoSlide = styled.div`
-  width: 100%;
+const PrevArrow = styled.button`
   display: block;
+  transform: translateY(-50%) rotate(45deg);
+  left: 0;
+  width: 10px;
+  height: 10px;
+  z-index: 13;
+  font-size: 0;
+  top: 50%;
+  line-height: 1;
+  position: absolute;
+  border: none;
+  border-bottom: 2px solid #fff;
+  border-left: 2px solid #fff;
+  background-color: transparent;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+`
+
+const NextArrow = styled.button`
+  display: block;
+  transform: translateY(-50%) rotate(-135deg);
+  right: 1px;
+  font-size: 0;
+  z-index: 13;
+  top: 50%;
+  line-height: 1;
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border: none;
+  border-bottom: 2px solid #fff;
+  border-left: 2px solid #fff;
+  background-color: transparent;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+`
+
+const SPromoSlide = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
 `
 
 const PinkSpan = styled.span`
@@ -61,21 +102,27 @@ export function RollingBanner(): React.ReactElement {
     <PromoWrapper>
       <Container>
         <PromoSlider>
-          <CarouselSlider arrows={true}>
+          <CarouselSlider customLeftArrow={<PrevArrow />} customRightArrow={<NextArrow />} infinite>
+            <span>
+              <SPromoSlide>
+                PARABEN FREE&nbsp;&nbsp;|&nbsp;&nbsp;HANDMADE IN USA&nbsp;&nbsp;|&nbsp;&nbsp;100% VEGAN
+              </SPromoSlide>
+            </span>
             <SPromoSlide>
-              PARABEN FREE&nbsp;&nbsp;|&nbsp;&nbsp;HANDMADE IN USA&nbsp;&nbsp;|&nbsp;&nbsp;100% VEGAN
+              <span>
+                <PinkSpan>FREE SHIPPING</PinkSpan> ON ORDERS $75+
+              </span>
             </SPromoSlide>
             <SPromoSlide>
-              <PinkSpan>FREE SHIPPING</PinkSpan> ON ORDERS $75+
-            </SPromoSlide>
-            <SPromoSlide>
-              COVID-19 SHIPPING UPDATE{' '}
-              <a
-                href="https://helpcenter.fragrantjewels.com/hc/en-us/sections/360008222572-COVID-19-Crisis-FAQ?mobile_site=true"
-                target="_blank"
-              >
-                LEARN MORE
-              </a>
+              <span>
+                COVID-19 SHIPPING UPDATE{' '}
+                <a
+                  href="https://helpcenter.fragrantjewels.com/hc/en-us/sections/360008222572-COVID-19-Crisis-FAQ?mobile_site=true"
+                  target="_blank"
+                >
+                  LEARN MORE
+                </a>
+              </span>
             </SPromoSlide>
           </CarouselSlider>
         </PromoSlider>

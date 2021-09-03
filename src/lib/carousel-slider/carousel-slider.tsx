@@ -3,8 +3,6 @@ import Carousel, { ResponsiveType } from 'react-multi-carousel'
 import styled from 'styled-components'
 
 const SImageContainer = styled.div`
-  padding: 15px 0;
-
   input[type='range'] {
     -webkit-appearance: none;
   }
@@ -116,6 +114,8 @@ const SNextArrow = styled.button`
 type SliderProps = {
   children: JSX.Element[]
   arrows?: boolean
+  customLeftArrow?: JSX.Element
+  customRightArrow?: JSX.Element
   responsive?: ResponsiveType
   scrollbarPresent?: boolean
   dotsPresent?: boolean
@@ -161,6 +161,8 @@ const getResponsive = (partiallyVisible: boolean | undefined): ResponsiveType =>
 export const CarouselSlider = ({
   children,
   arrows,
+  customLeftArrow,
+  customRightArrow,
   scrollbarPresent,
   dotsPresent,
   partiallyVisible,
@@ -213,8 +215,8 @@ export const CarouselSlider = ({
       <Carousel
         ref={carouselRef}
         arrows={!partiallyVisible || arrows === false}
-        customLeftArrow={<SPrevArrow />}
-        customRightArrow={<SNextArrow />}
+        customLeftArrow={customLeftArrow || <SPrevArrow />}
+        customRightArrow={customRightArrow || <SNextArrow />}
         customButtonGroup={scrollbarPresent ? <CustomSlider /> : null}
         customDot={dotsPresent ? <CustomDot /> : null}
         itemClass={itemClass || 'image-item'}
