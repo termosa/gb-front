@@ -7,12 +7,14 @@ export const meta = {
   tags: ['component'],
   lists: {
     attributes: [
-      { name: 'partiallyVisible', type: 'boolean', description: 'Should gallery have one slide that overflows' },
-      { name: 'scrollbarPresent', required: true, type: 'boolean', description: 'Condition for horizontal scrollbar' },
-      { name: 'dotsPresent', type: 'boolean', description: 'Condition for dots' },
-      { name: 'arrows', required: true, type: 'boolean | null', description: 'Condition for arrows' },
-      { name: 'itemClass', type: 'string', description: 'Class for carousel item' },
       { name: 'children', required: true, type: 'JSX.Element[]', description: 'Content that will be rendered inside of the block' },
+      { name: 'arrows', type: 'boolean | null', description: 'Condition for arrows' },
+      { name: 'responsive', type: 'ResponsiveType', description: 'Object with resolution types and their settings' },
+      { name: 'scrollbarPresent', type: 'boolean', description: 'Condition for horizontal scrollbar' },
+      { name: 'dotsPresent', type: 'boolean', description: 'Condition for dots' },
+      { name: 'partiallyVisible', type: 'boolean', description: 'Should gallery have one slide that overflows' },
+      { name: 'infinite', type: 'boolean', description: 'Condition for infinite scrolling' },
+      { name: 'itemClass', type: 'string', description: 'ClassName for carousel item' },
     ],
   },
   scope: { CarouselSlider },
@@ -22,8 +24,9 @@ export const meta = {
 
 ```jsx live render
 const CarouselPreview = () => {
-  const [isScrollbarPresent, setScrollbarPresent] = useState()
-  const [isDotsPresent, setDotsPresent] = useState()
+  const [isScrollbarPresent, setScrollbarPresent] = React.useState()
+  const [isDotsPresent, setDotsPresent] = React.useState()
+  const [isPartiallyVisible, setPartiallyVisible] = React.useState(true)
   const sliderSettings = {
     desktop: {
        breakpoint: { max: 3000, min: 768 },
@@ -41,7 +44,6 @@ const CarouselPreview = () => {
   return (
   <CarouselSlider
     responsive={sliderSettings}
-    arrows={true}
     scrollbarPresent={isScrollbarPresent}
     dotsPresent={isDotsPresent}
   >
