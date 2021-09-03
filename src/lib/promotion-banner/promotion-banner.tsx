@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import styled from 'styled-components'
-import useDefer from 'use-defer'
-import { loadPromoDetails } from '../load-promo-details'
 import cn, { Argument as ClassName } from 'classnames'
+import useDefer from 'use-defer'
+import styled from 'styled-components'
+import loadPromoDetails from '../load-promo-details'
 
 const PromoContainer = styled.div`
   position: relative;

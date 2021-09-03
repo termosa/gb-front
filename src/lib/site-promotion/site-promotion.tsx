@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { PromotionBanner } from '../promotion-banner'
+import PromotionBanner from '../promotion-banner'
 import useQuery from '../use-query'
 
 export function SitePromotion(): React.ReactElement {
