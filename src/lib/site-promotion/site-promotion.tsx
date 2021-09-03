@@ -1,9 +1,15 @@
 import React from 'react'
 import styled from 'styled-components'
+import cn, { Argument as ClassName } from 'classnames'
 import PromotionBanner from '../promotion-banner'
 import useQuery from '../use-query'
 
-export function SitePromotion(): React.ReactElement {
+export type SitePromotionProps = {
+  className?: ClassName
+  style?: React.CSSProperties
+}
+
+export function SitePromotion({ style, className }: SitePromotionProps): React.ReactElement {
   const { promo } = useQuery()
   const PromotionContainer = styled.div`
     background-color: #464a4d;
@@ -17,7 +23,7 @@ export function SitePromotion(): React.ReactElement {
   return (
     <>
       {promo ? (
-        <PromotionContainer>
+        <PromotionContainer className={cn(className)} style={style}>
           <PromotionBanner promo={promo}></PromotionBanner>
         </PromotionContainer>
       ) : null}

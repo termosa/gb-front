@@ -16,7 +16,7 @@ export interface DetailsVariant {
 }
 
 export interface PromoDetails {
-  id: string
+  id: number
   name: string
   promo?: string
   requirements?: string
@@ -28,11 +28,10 @@ export interface PromoDetails {
 }
 
 export async function loadPromoDetails(promo: string): Promise<PromoDetails> {
-  const getPromoProduct = await http({
+  const promoProduct = await http({
     url: `https://fjrecurly.herokuapp.com/get_promo_product/`,
     query: { promo },
-  })
-  const promoProduct = await getPromoProduct.json()
+  }).then((r) => r.json())
 
   const getPromoDetails = http({
     url: `https://fjrecurly.herokuapp.com/shopify_endpoint/get_variants`,
@@ -49,7 +48,7 @@ export async function loadPromoDetails(promo: string): Promise<PromoDetails> {
   const promoJSON = await promoResponse.json()
 
   return {
-    id: promoProduct.id,
+    id: Number(promoProduct.id),
     name: promoProduct.name,
     src: promoProduct.src,
     title: promoProduct.title,

@@ -8,7 +8,6 @@ export const meta = {
   preview: <SitePromotion>Component content here</SitePromotion>,
   lists: {
     attributes: [
-      { name: 'children', required: true, type: 'React.ReactNode', description: 'Content that will be rendered inside of the block' },
       { name: 'className', type: 'classnames.Argument', description: 'One or multiple class names that will be added to the main container' },
       { name: 'style', type: 'React.CSSProperties', description: 'Inline styles for the main container' },
     ],
@@ -19,11 +18,5 @@ export const meta = {
 ## Usage
 
 ```jsx
-<SitePromotion className="class" style={{ color: 'red' }}>Put content here</SitePromotion>
-```
-
-## Playground
-
-```jsx live
-<SitePromotion style={{ color: 'red' }}>Content text</SitePromotion>
+<SitePromotion />
 ```

@@ -1,4 +1,9 @@
+import { useEffect, useState } from 'react'
 import PromotionBanner from '.'
+import SitePromotion from '../site-promotion'
+import window from '../window'
+import useQuery from '../use-query'
+import loadPromoDetails from '../load-promo-details'
 
 export const meta = {
   type: 'component',
@@ -8,22 +13,60 @@ export const meta = {
   preview: <PromotionBanner>Component content here</PromotionBanner>,
   lists: {
     attributes: [
-      { name: 'children', required: true, type: 'React.ReactNode', description: 'Content that will be rendered inside of the block' },
+      { name: 'promo', type: 'string', description: 'query parameter' },
       { name: 'className', type: 'classnames.Argument', description: 'One or multiple class names that will be added to the main container' },
       { name: 'style', type: 'React.CSSProperties', description: 'Inline styles for the main container' },
     ],
   },
-  scope: { PromotionBanner },
+  scope: { PromotionBanner, useQuery, useState, useEffect, loadPromoDetails, SitePromotion},
 }
 
 ## Usage
 
 ```jsx
-<PromotionBanner className="class" style={{ color: 'red' }}>Put content here</PromotionBanner>
+<PromotionBanner promo={'blackcat'}/>
 ```
 
 ## Playground
 
-```jsx live
-<PromotionBanner style={{ color: 'red' }}>Content text</PromotionBanner>
+```jsx live render
+const defaultQueryValue = 'promo=blackcat'
+
+const useSearch = (defaultSearch) => {
+  const [search, setSearch] = useState(() => window.location.search.slice(1))
+
+  const changeSearch = newSearch => {
+    history.pushState({}, '', `${window.location.pathname}${newSearch ? `?${newSearch}` : ''}`)
+    setSearch(newSearch)
+  }
+
+  useEffect(() => {
+    if (defaultQueryValue && !window.location.search.slice(1))
+      changeSearch(defaultQueryValue)
+  }, [])
+
+  return [search, changeSearch]
+}
+
+const PromotionBannerExample = () => {
+  const { promo } = useQuery()
+  const [search, setSearch] = useSearch()
+
+  return (
+    <div>
+      <p>
+        query = '?' +
+        <input
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          style={{ borderWidth: '0', borderBottomWidth: '1px', width: '300px' }}
+        />
+      </p>
+
+      <PromotionBanner promo={promo}></PromotionBanner>
+    </div>
+  )
+}
+
+render(<PromotionBannerExample />)
 ```

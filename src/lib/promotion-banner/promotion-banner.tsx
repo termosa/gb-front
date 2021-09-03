@@ -139,14 +139,17 @@ export type PromotionBannerProps = {
 }
 
 export function PromotionBanner({ promo, className, style }: PromotionBannerProps): React.ReactElement | null {
-  const promoProductRequest = useDefer(() => (promo ? loadPromoDetails(promo) : Promise.resolve(undefined)), [], [])
-  const [unavailableRingSize, useUnavailableRingSize] = useState(false)
-  const [buyRingSize, useBuyRingSize] = useState('')
-  if (!promoProductRequest.value) {
+  if (!promo) {
     return null
   }
-  const { detailVariants } = promoProductRequest.value
-  const { src, title, requirements } = promoProductRequest.value
+  const promoDetails = useDefer(() => (promo ? loadPromoDetails(promo) : Promise.resolve(undefined)), [], [])
+  const [unavailableRingSize, useUnavailableRingSize] = useState(false)
+  const [buyRingSize, useBuyRingSize] = useState('')
+  if (!promoDetails.value) {
+    return null
+  }
+  const { detailVariants } = promoDetails.value
+  const { src, title, requirements } = promoDetails.value
 
   return (
     <PromoContainer className={cn(className)} style={style}>
