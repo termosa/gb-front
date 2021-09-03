@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { IPromoProductResponse } from '../load-promo-product'
-import { IPromoProductId } from '../load-product-id'
+import useDefer from 'use-defer'
+import { loadPromoDetails } from '../load-promo-details'
+import cn, { Argument as ClassName } from 'classnames'
 
 const PromoContainer = styled.div`
   position: relative;
@@ -30,117 +31,125 @@ const PromoContainer = styled.div`
     left: 0;
   }
 `
+
+const WrapPromoContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+
+  @media (max-width: 768px) {
+    align-items: center;
+    flex-direction: column;
+  }
+`
+const PromoImageBox = styled.div`
+  align-items: center;
+  max-width: 160px;
+  justify-content: center;
+  display: flex;
+  padding: 0px 10px;
+  img {
+    max-width: 100%;
+    max-height: 100px;
+    height: auto;
+  }
+`
+const PromoClock = styled.div`
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  display: flex;
+  padding: 0px 10px;
+  h3 {
+    font-size: 1.2em;
+    color: #db3986;
+  }
+`
+const PromoDescription = styled.div`
+  display: flex;
+  align-items: center;
+  max-width: 400px;
+  font-size: 14px;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 1em;
+  text-align: left;
+
+  color: #333;
+  padding: 0px 10px;
+`
+const PromoMessage = styled.div`
+  display: block;
+  font-weight: 700;
+  line-height: 1.4;
+  font-size: 1.429em;
+`
+
+const SelectHolderBtn = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+`
+
+const SizeIsUnavailable = styled.div`
+  color: #ee7584;
+  text-align: center;
+  font-size: 16px;
+`
+
+const ButtonRingSize = styled.button`
+  background: #fff;
+  font: 500 14px/1.25 'Montserrat', sans-serif;
+  border: 1px solid #ee67a0;
+  color: #000;
+  width: 42px;
+  height: 42px;
+  padding: 8px 5px;
+  margin: 10px 10px;
+  min-width: 42px;
+  &:hover {
+    background: #ee67a0;
+    color: #fff;
+    cursor: pointer;
+  }
+  &.disabled {
+    background: #ddd;
+    border: 1px solid #ddd;
+    &:hover {
+      background: #ddd;
+      color: #000;
+      cursor: auto;
+    }
+  }
+  @media (max-width: 768px) {
+    margin: 4px 4px;
+    width: 35px;
+    height: 35px;
+    min-width: 35px;
+  }
+`
+
+const Congratulations = styled.div`
+  font-weight: bold;
+`
+
 export type PromotionBannerProps = {
-  promoProduct: IPromoProductResponse
-  promoProductId: IPromoProductId[]
+  promo: string
+  className?: ClassName
+  style?: React.CSSProperties
 }
 
-export function PromotionBanner({ promoProduct, promoProductId }: PromotionBannerProps): React.ReactElement {
-  const { src, title, requirements } = promoProduct
+export function PromotionBanner({ promo, className, style }: PromotionBannerProps): React.ReactElement | null {
+  const promoProductRequest = useDefer(() => (promo ? loadPromoDetails(promo) : Promise.resolve(undefined)), [], [])
   const [unavailableRingSize, useUnavailableRingSize] = useState(false)
   const [buyRingSize, useBuyRingSize] = useState('')
-  const WrapPromoContainer = styled.div`
-    display: flex;
-    flex-direction: row;
-
-    @media (max-width: 768px) {
-      align-items: center;
-      flex-direction: column;
-    }
-  `
-  const PromoImageBox = styled.div`
-    align-items: center;
-    max-width: 160px;
-    justify-content: center;
-    display: flex;
-    padding: 0px 10px;
-    img {
-      max-width: 100%;
-      max-height: 100px;
-      height: auto;
-    }
-  `
-  const PromoClock = styled.div`
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: flex-start;
-    display: flex;
-    padding: 0px 10px;
-    h3 {
-      font-size: 1.2em;
-      color: #db3986;
-    }
-  `
-  const PromoDescription = styled.div`
-    display: flex;
-    align-items: center;
-    max-width: 400px;
-    font-size: 14px;
-    justify-content: center;
-    flex-direction: column;
-    font-size: 1em;
-    text-align: left;
-
-    color: #333;
-    padding: 0px 10px;
-  `
-  const PromoMessage = styled.div`
-    display: block;
-    font-weight: 700;
-    line-height: 1.4;
-    font-size: 1.429em;
-  `
-
-  const SelectHolderBtn = styled.div`
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-  `
-
-  const SizeIsUnavailable = styled.div`
-    color: #ee7584;
-    text-align: center;
-    font-size: 16px;
-  `
-
-  const ButtonRingSize = styled.button`
-    background: #fff;
-    font: 500 14px/1.25 'Montserrat', sans-serif;
-    border: 1px solid #ee67a0;
-    color: #000;
-    width: 42px;
-    height: 42px;
-    padding: 8px 5px;
-    margin: 10px 10px;
-    min-width: 42px;
-    &:hover {
-      background: #ee67a0;
-      color: #fff;
-      cursor: pointer;
-    }
-    &.disabled {
-      background: #ddd;
-      border: 1px solid #ddd;
-      &:hover {
-        background: #ddd;
-        color: #000;
-        cursor: auto;
-      }
-    }
-    @media (max-width: 768px) {
-      margin: 4px 4px;
-      width: 35px;
-      height: 35px;
-      min-width: 35px;
-    }
-  `
-
-  const Congratulations = styled.div`
-    font-weight: bold;
-  `
+  if (!promoProductRequest.value) {
+    return null
+  }
+  const { detailVariants } = promoProductRequest.value
+  const { src, title, requirements } = promoProductRequest.value
 
   return (
-    <PromoContainer>
+    <PromoContainer className={cn(className)} style={style}>
       <WrapPromoContainer>
         <PromoImageBox>
           <img src={src} alt="" />
@@ -150,36 +159,34 @@ export function PromotionBanner({ promoProduct, promoProductId }: PromotionBanne
         </PromoClock>
         <PromoDescription>{requirements}</PromoDescription>
       </WrapPromoContainer>
-      {!buyRingSize && promoProductId ? (
+      {!buyRingSize ? (
         <>
           <PromoMessage>Select a ring size:</PromoMessage>
           <SelectHolderBtn>
-            {promoProductId
-              ? promoProductId.map((el) => {
-                  return el.available ? (
-                    <ButtonRingSize
-                      key={el.id}
-                      onClick={() => {
-                        useUnavailableRingSize(false)
-                        useBuyRingSize(el.title)
-                      }}
-                    >
-                      {el.title}
-                    </ButtonRingSize>
-                  ) : (
-                    <ButtonRingSize
-                      key={el.id}
-                      className="disabled"
-                      onClick={() => {
-                        useUnavailableRingSize(true)
-                        useBuyRingSize('')
-                      }}
-                    >
-                      {el.title}
-                    </ButtonRingSize>
-                  )
-                })
-              : null}
+            {detailVariants.map((el) => {
+              return el.available ? (
+                <ButtonRingSize
+                  key={el.id}
+                  onClick={() => {
+                    useUnavailableRingSize(false)
+                    useBuyRingSize(el.title)
+                  }}
+                >
+                  {el.title}
+                </ButtonRingSize>
+              ) : (
+                <ButtonRingSize
+                  key={el.id}
+                  className="disabled"
+                  onClick={() => {
+                    useUnavailableRingSize(true)
+                    useBuyRingSize('')
+                  }}
+                >
+                  {el.title}
+                </ButtonRingSize>
+              )
+            })}
           </SelectHolderBtn>
           {unavailableRingSize ? <SizeIsUnavailable>This size is unavailable.</SizeIsUnavailable> : null}
         </>

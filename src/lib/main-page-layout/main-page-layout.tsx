@@ -5,7 +5,7 @@ import useDefer from 'use-defer'
 import SiteFooter from '../site-footer'
 import SiteHeader from '../site-header'
 import FloatingCta from '../../components/floating-cta'
-import { PromotionSite } from '../promotion-site'
+import { SitePromotion } from '../site-promotion'
 import loadProductsChunk from '../../modules/load-products-chunk'
 import loadCustomer from '../../modules/load-customer'
 
@@ -39,9 +39,13 @@ export type MainPageLayoutProps = {
   style?: React.CSSProperties
 }
 
-export function MainPageLayout({ children, className, style }: MainPageLayoutProps): React.ReactElement {
+function MainPageLayout({ children, className, style }: MainPageLayoutProps): React.ReactElement | null {
   const searchRequest = useDefer(loadProductsChunk)
   const { value: customer } = useDefer(() => loadCustomer().catch(() => null), [], [])
+  if (customer === undefined) {
+    return null
+  }
+  console.log(1111111111)
   return (
     <MainPageLayoutWrapper className={cn(className)} style={style}>
       <Header
@@ -50,7 +54,7 @@ export function MainPageLayout({ children, className, style }: MainPageLayoutPro
         searchedProducts={searchRequest.value}
         userEmail={customer?.email}
       />
-      <PromotionSite />
+      <SitePromotion />
       <div className="app-re-wrapper" id="app-wrapper">
         <div className="app-re-content" id="app-content">
           <main className="app-h-main">{children}</main>
@@ -61,3 +65,5 @@ export function MainPageLayout({ children, className, style }: MainPageLayoutPro
     </MainPageLayoutWrapper>
   )
 }
+
+export default React.memo(MainPageLayout)

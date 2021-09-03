@@ -1,8 +1,8 @@
-import { Builder, withChildren } from '@builder.io/react'
+import { Builder} from '@builder.io/react'
 import PromotionBanner from '.'
 
 export default function registerPromotionBanner(): void {
-  Builder.registerComponent(withChildren(PromotionBanner), {
+  Builder.registerComponent(PromotionBanner, {
     name: 'Promotion banner',
     defaultChildren: [
       {
