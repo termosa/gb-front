@@ -24,9 +24,6 @@ const PromoSlider = styled.div`
   font: 500 9px/1.2 'Montserrat', sans-serif;
   color: #fff;
   text-align: center;
-  /*  display: flex;
-  justify-content: center;
-  align-items: center;*/
   padding: 9px 0;
   position: relative;
 

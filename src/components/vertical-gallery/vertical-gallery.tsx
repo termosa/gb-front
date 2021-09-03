@@ -60,6 +60,15 @@ const SCarouselIcons = styled.div`
   }
 `
 
+const SCarouselThumbnails = styled.div`
+  display: flex;
+
+  img {
+    width: 66px;
+    height: 66px;
+  }
+`
+
 const SPdpRowWrapper = styled.div`
   height: 355px;
 
@@ -256,6 +265,13 @@ export function VerticalGallery({
                   </SPdpCarouselItemMobile>
                 ))}
               </CarouselSlider>
+              <SCarouselThumbnails>
+                {product.images?.map((image) => (
+                  <a>
+                    <img src={product.images && image?.src} alt={product.images && image?.alt} />
+                  </a>
+                ))}
+              </SCarouselThumbnails>
             </>
           )}
         </SPdpRowWrapper>

@@ -7,8 +7,10 @@ export const meta = {
   tags: ['component'],
   lists: {
     attributes: [
-      { name: 'children', required: true, type: 'JSX.Element[]', description: 'Content that will be rendered inside of the block' },
+      { name: 'children', required: true, type: 'React.ReactElement[]', description: 'Content that will be rendered inside of the block' },
       { name: 'arrows', type: 'boolean | null', description: 'Condition for arrows' },
+      { name: 'customLeftArrow', type: 'React.ReactElement', description: 'JSX element for "previous" arrow' },
+      { name: 'customRightArrow', type: 'React.ReactElement', description: 'JSX element for "next" arrow' },
       { name: 'responsive', type: 'ResponsiveType', description: 'Object with resolution types and their settings' },
       { name: 'scrollbarPresent', type: 'boolean', description: 'Condition for horizontal scrollbar' },
       { name: 'dotsPresent', type: 'boolean', description: 'Condition for dots' },

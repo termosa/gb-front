@@ -21,12 +21,12 @@ const SProductContainer = styled.div`
 
 const SPdpRowWrapper = styled.div`
   padding: 10px 16px 0;
+`
 
-  .pdp-row {
-    @media (min-width: 768px) {
-      display: flex;
-      width: 100%;
-    }
+const SPdpRow = styled.div`
+  @media (min-width: 768px) {
+    display: flex;
+    width: 100%;
   }
 `
 
@@ -69,14 +69,14 @@ const Product = (): null | React.ReactElement => {
       </SProductContainer>
       <SProductContainer>
         <SPdpRowWrapper>
-          <div className="pdp-row">
+          <SPdpRow>
             <VerticalGallery
               activeGalleryItem={activeGalleryItem}
               setActiveGalleryItem={setActiveGalleryItem}
               galleryRef={galleryRef}
             />
             <ProductInfo addToCartRef={addToCartRef} />
-          </div>
+          </SPdpRow>
         </SPdpRowWrapper>
       </SProductContainer>
     </>

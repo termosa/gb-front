@@ -64,7 +64,7 @@ const SCustomSlider = styled.div`
   position: absolute;
   bottom: 0;
   width: 100%;
-  padding: 0 20px 0 22px;
+  padding: 0 64px 0 6px;
 
   & > input {
     width: 100%;
@@ -112,10 +112,10 @@ const SNextArrow = styled.button`
 `
 
 type SliderProps = {
-  children: JSX.Element[]
+  children: React.ReactNode
   arrows?: boolean
-  customLeftArrow?: JSX.Element
-  customRightArrow?: JSX.Element
+  customLeftArrow?: React.ReactElement
+  customRightArrow?: React.ReactElement
   responsive?: ResponsiveType
   scrollbarPresent?: boolean
   dotsPresent?: boolean
@@ -214,7 +214,7 @@ export const CarouselSlider = ({
     <SImageContainer>
       <Carousel
         ref={carouselRef}
-        arrows={!partiallyVisible || arrows === false}
+        arrows={arrows}
         customLeftArrow={customLeftArrow || <SPrevArrow />}
         customRightArrow={customRightArrow || <SNextArrow />}
         customButtonGroup={scrollbarPresent ? <CustomSlider /> : null}
