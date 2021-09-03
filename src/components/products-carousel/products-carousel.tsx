@@ -323,11 +323,19 @@ export const ProductsCarousel = ({
     <Section className={cn('ProductsCarousel', className)}>
       <Container>
         {!screenSize.greaterThenMedium && window?.location.pathname.match(/^\/products\/[^/]+$/i) ? (
+<<<<<<< HEAD
           <SectionTitle isMobile={true}>
             <span>
               {title} {titleHighlighted}
             </span>
           </SectionTitle>
+=======
+        <SectionTitle isMobile={true}>
+          <span>
+            {title} {titleHighlighted}
+          </span>
+        </SectionTitle>
+>>>>>>> 9cb4ebc118bfe41f7ef9f06b0c99e5e808755e93
         ) : (
           <SectionTitle isMobile={false}>
             {title + ' '}
