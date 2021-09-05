@@ -1,11 +1,9 @@
 import { GetServerSidePropsContext } from 'next'
 import resolvePageProps from '../modules/resolve-page-props'
 import loadCollection, { Collection } from '../lib/load-collection'
-import loadModelTemplate, { ModelTemplate } from '../builder/load-model-template'
 
 export type CollectionPageProps = {
   collection: null | Collection
-  builderContent: null | ModelTemplate
 }
 
 export default function collectionPageProps<PropsType>(): (
@@ -22,9 +20,6 @@ export default function collectionPageProps<PropsType>(): (
 
     return {
       collection: collectionPromise.catch(() => null),
-      builderContent: collectionPromise
-        .then((collection) => loadModelTemplate('Collection', collection.template))
-        .catch(() => null),
     }
   })
 }

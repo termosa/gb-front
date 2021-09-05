@@ -1,79 +1,42 @@
 import React from 'react'
-import { Builder, BuilderComponent } from '@builder.io/react'
 import productPageProps, { ProductPageProps } from '../../resolvers/productPageProps'
-import registerComponents from '../../builder/register-components'
 import FjWild from '../../components/fj-wild'
 import PotentialProducts from '../../containers/PotentianProducts'
 import RecommendedProducts from '../../containers/RecommendedProducts'
 import Product from '../../containers/Product'
 import ProductContext from '../../modules/product-context'
+import Frame from '../../lib/frame'
+import MainPageLayout from '../../lib/main-page-layout'
+import YotpoReviews from '../../lib/yotpo-reviews'
+import SiteSection from 'src/components/site-section'
 
-registerComponents()
-
-Builder.registerComponent(FjWild, {
-  name: 'Product Yotpo Instagram Tool',
-  inputs: [
-    {
-      name: 'title',
-      type: 'string',
-      defaultValue: 'FJ in the wild',
-    },
-    {
-      name: 'textFirstPart',
-      type: 'string',
-      defaultValue: 'See our products in action on',
-    },
-    {
-      name: 'textSecondPart',
-      type: 'string',
-      defaultValue: 'customers just like you.',
-    },
-  ],
-})
-
-Builder.registerComponent(PotentialProducts, {
-  name: 'Potential Products',
-  inputs: [
-    {
-      name: 'title',
-      type: 'string',
-      defaultValue: 'More you might like',
-    },
-  ],
-})
-
-Builder.registerComponent(RecommendedProducts, {
-  name: 'Product Recommendation Carousel',
-  inputs: [
-    {
-      name: 'title',
-      type: 'string',
-      defaultValue: 'Recommended',
-    },
-    {
-      name: 'titleHighlighted',
-      type: 'string',
-      defaultValue: 'for you',
-    },
-    {
-      name: 'collectionId',
-      type: 'number',
-      required: false,
-      defaultValue: '',
-    },
-  ],
-})
-
-Builder.registerComponent(Product, {
-  name: 'Product',
-})
-
-export default function ProductPage({ product, builderContent }: ProductPageProps): React.ReactElement {
+export default function ProductPage({ product }: ProductPageProps): React.ReactElement {
   if (!product) throw new Error('Product not found')
 
   return (
     <ProductContext.Provider value={product}>
-      <BuilderComponent model="Product" content={builderContent} />
+      <Frame
+        frames={{
+          component: MainPageLayout,
+          children: [
+            { component: Product },
+            {
+              component: FjWild,
+              props: {
+                title: 'FJ in the wild',
+                textFirstPart: 'See our products in action on',
+                textSecondPart: 'customers just like you.',
+              },
+            },
+            {
+              component: RecommendedProducts,
+              props: { title: 'Recommended', titleHighlighted: 'for you', collectionId: 57957515342 },
+            },
+            { component: PotentialProducts },
+            { component: SiteSection, children: { component: YotpoReviews } },
+          ],
+        }}
+      />
     </ProductContext.Provider>
   )
 }

@@ -1,0 +1,66 @@
+import Frame from '.'
+
+export const meta = {
+  type: 'component',
+  name: 'Frame',
+  description: 'Skeleton for composition of components',
+  tags: ['component'],
+  lists: {
+    attributes: [
+      { name: 'frames', required: true, type: 'Array<FramePart>', description: 'Ordered list of components' },
+      { name: 'frames[].component', required: true, type: 'React.FunctionComponent<Props> | React.ComponentClass<Props> | string', description: 'Component or the name of the tag to render' },
+      { name: 'frames[].props', type: 'Record<string, unknown>', description: 'Properties that should be passed to the component' },
+      { name: 'frames[].children', type: 'FramePart | Array<FramePart>', description: 'Nested components' },
+    ],
+  },
+  scope: { Frame },
+}
+
+## Usage
+
+```jsx
+import Frame from '../frame'
+import SinglePageLayout from '../single-page-layout'
+import Banner from '../banner'
+import NewsList from '../news-list'
+import Analytics from '../analytics'
+
+const Page = ({ news }) => (
+  <Frame frames={[
+    {
+      component: SinglePageLayout,
+      props: {
+        title: 'News',
+      },
+      children: [
+        { component: Banner },
+        { component: NewsList, props: { news } },
+      ],
+    },
+    { component: Analytics },
+  ]} />
+)
+```
+
+## Playground
+
+```jsx live
+<Frame
+  frames={[
+    {
+      component: ({ children, color }) => <div style={{ backgroundColor: color, padding: '1em' }}>{children}</div>,
+      props: { color: 'pink' },
+      children: [
+        { component: 'h1', children: ['Welcome'] },
+        {
+          component: 'main',
+          children: [
+            { component: 'h2', children: ['Last news'] },
+            { component: 'p', props: { style: { color: 'gray' }}, children: ['No news yet'] },
+          ],
+        },
+      ],
+    },
+  ]}
+/>
+```

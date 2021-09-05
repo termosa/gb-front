@@ -6,8 +6,6 @@ import loadCollection from '../lib/load-collection'
 import removeNewLineCharacters from '../modules/remove-new-line-characters'
 import { Product } from '../modules/normalize-product'
 import { POTENTIAL_PRODUCTS_COLLECTION_ID, RECOMMENDED_PRODUCTS_COLLECTION_ID } from '../settings/ids'
-import loadModelTemplate from '../builder/load-model-template'
-import { BuilderContent } from '@builder.io/sdk'
 
 export type ProductDescription = {
   title: string
@@ -19,7 +17,6 @@ export type ProductPageProps = {
   recommendedProducts: Array<Product>
   potentialProducts: Array<Product>
   productDescription: ProductDescription
-  builderContent: undefined | BuilderContent
 }
 
 const loadCollectionProducts = (collectionId: number): Promise<Product[] | null> =>
@@ -56,9 +53,6 @@ function productPageProps<PropsType>(): (context: GetServerSidePropsContext) => 
       recommendedProducts: loadCollectionProducts(RECOMMENDED_PRODUCTS_COLLECTION_ID),
       potentialProducts: loadCollectionProducts(POTENTIAL_PRODUCTS_COLLECTION_ID),
       productDescription: productPromise.then((product) => getProductDescription(product)).catch(() => null),
-      builderContent: productPromise
-        .then((product) => loadModelTemplate('Product', product.template))
-        .catch(() => null),
     }
   })
 }

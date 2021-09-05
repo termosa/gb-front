@@ -9,7 +9,6 @@ RUN apk update && apk add yarn python3 g++ make
 ARG BASE_API_URL
 ARG SITE_URL
 ARG CLIENT_API_URL
-ARG BUILDER_KEY
 ARG APP_ENV
 
 COPY /package.json /yarn.lock ./
