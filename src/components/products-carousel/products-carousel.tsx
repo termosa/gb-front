@@ -4,8 +4,7 @@ import cn, { Argument as ClassName } from 'classnames'
 import { Product } from '../../modules/normalize-product'
 import useScreenSize from '../../lib/use-screen-size'
 import window from '../../lib/window'
-import 'react-multi-carousel/lib/styles.css'
-import { CarouselSlider } from '../../lib/carousel-slider'
+import { Slider } from '../../lib/slider'
 import { ProductCard } from '../product-card'
 
 const Section = styled.section`
@@ -123,13 +122,13 @@ export const ProductsCarousel = ({
         <SectionText>
           <p>{subTitle}</p>
         </SectionText>
-        <CarouselSlider responsive={sliderSettings} scrollbarPresent={!!screenSize.greaterThenMedium}>
+        <Slider responsive={sliderSettings} scrollbarPresent={!!screenSize.greaterThenMedium}>
           {products
             .filter((product) => product.image)
             .map((product) => {
               return <ProductCard key={product.product_id} product={product} onClick={() => onSelectProduct(product)} />
             })}
-        </CarouselSlider>
+        </Slider>
       </Container>
       {/* <ProgressWrapper>
         <Progress progress={progress}>

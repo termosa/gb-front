@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { CarouselSlider } from '../../lib/carousel-slider'
+import { Slider } from '../../lib/slider'
 
 const PromoWrapper = styled.div`
   * {
@@ -99,7 +99,7 @@ export function RollingBanner(): React.ReactElement {
     <PromoWrapper>
       <Container>
         <PromoSlider>
-          <CarouselSlider customLeftArrow={<PrevArrow />} customRightArrow={<NextArrow />} infinite>
+          <Slider customLeftArrow={<PrevArrow />} customRightArrow={<NextArrow />} infinite>
             <span>
               <SPromoSlide>
                 PARABEN FREE&nbsp;&nbsp;|&nbsp;&nbsp;HANDMADE IN USA&nbsp;&nbsp;|&nbsp;&nbsp;100% VEGAN
@@ -121,7 +121,7 @@ export function RollingBanner(): React.ReactElement {
                 </a>
               </span>
             </SPromoSlide>
-          </CarouselSlider>
+          </Slider>
         </PromoSlider>
       </Container>
     </PromoWrapper>

@@ -3,7 +3,7 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 import cn, { Argument as ClassName } from 'classnames'
 import { Product } from '../../modules/normalize-product'
-import { CarouselSlider } from '../../lib/carousel-slider'
+import { Slider } from '../../lib/slider'
 
 export type { Product } from '../../modules/normalize-product'
 
@@ -466,7 +466,7 @@ export const TrendingSection = ({ products, className, onSelectProduct }: Trendi
         </SectionText>
         <ProductCards>
           <StyledSlider>
-            <CarouselSlider partiallyVisible={true} arrows={true}>
+            <Slider partiallyVisible={true} arrows={true}>
               {products.map((product) => (
                 <ProductCard
                   key={product.product_id}
@@ -474,7 +474,7 @@ export const TrendingSection = ({ products, className, onSelectProduct }: Trendi
                   onClick={() => onSelectProduct(product.product_id)}
                 />
               ))}
-            </CarouselSlider>
+            </Slider>
           </StyledSlider>
           {/*          <ProgressWrapper>
             <Progress progress={progress}>

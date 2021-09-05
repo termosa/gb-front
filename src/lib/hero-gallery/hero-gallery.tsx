@@ -2,7 +2,7 @@ import React from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
 import Button from '../../lib/button'
-import { CarouselSlider } from '../carousel-slider'
+import { Slider } from '../slider'
 
 const SliderWrapper = styled.div`
   * {
@@ -200,7 +200,7 @@ export type HeroGalleryProps = {
 export function HeroGallery({ className, style, slides }: HeroGalleryProps): React.ReactElement {
   return (
     <SliderWrapper className={cn(className)} style={style}>
-      <CarouselSlider partiallyVisible={false} dotsPresent arrows={false} itemClass={'slider-full-width-item'}>
+      <Slider partiallyVisible={false} dotsPresent arrows={false} itemClass={'slider-full-width-item'}>
         {slides.map((slide: GalleryItem) => (
           <Slide
             key={`${slide.buttonLink}${slide.backgroundImg}${slide.buttonText}`}
@@ -224,7 +224,7 @@ export function HeroGallery({ className, style, slides }: HeroGalleryProps): Rea
             </SlideContent>
           </Slide>
         ))}
-      </CarouselSlider>
+      </Slider>
     </SliderWrapper>
   )
 }

@@ -1,5 +1,6 @@
 import React, { useRef } from 'react'
 import Carousel, { ResponsiveType } from 'react-multi-carousel'
+import 'react-multi-carousel/lib/styles.css'
 import styled from 'styled-components'
 
 const SImageContainer = styled.div`
@@ -158,7 +159,7 @@ const getResponsive = (partiallyVisible: boolean | undefined): ResponsiveType =>
   }
 }
 
-export const CarouselSlider = ({
+export const Slider = ({
   children,
   arrows,
   customLeftArrow,

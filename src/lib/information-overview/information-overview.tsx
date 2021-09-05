@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
 import InformationCard from '../../components/information-card'
-import { CarouselSlider } from '../carousel-slider'
+import { Slider } from '../slider'
 
 export type { InformationCard }
 
@@ -177,11 +177,11 @@ export function InformationOverview({ className, style, title, cards }: Informat
         {isLargeScreen ? (
           cards.map((card) => <InformationCard key={card.image + card.title} card={card} />)
         ) : (
-          <CarouselSlider partiallyVisible={false} arrows={true}>
+          <Slider partiallyVisible={false} arrows={true}>
             {cards.map((card) => (
               <InformationCard key={card.image + card.title} card={card} />
             ))}
-          </CarouselSlider>
+          </Slider>
         )}
       </SCardsWrapper>
     </SWrapper>

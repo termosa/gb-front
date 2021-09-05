@@ -6,7 +6,7 @@ import window from '../../lib/window/window'
 import { useScreenSize } from '../../lib/use-screen-size'
 import { Product as ProductType } from '../../modules/normalize-product'
 import ProductContext from '../../modules/product-context'
-import { CarouselSlider } from '../../lib/carousel-slider'
+import { Slider } from '../../lib/slider'
 
 const Wrapper = styled.div`
   width: 101%;
@@ -258,13 +258,13 @@ export function VerticalGallery({
             </SPdpRow>
           ) : (
             <>
-              <CarouselSlider partiallyVisible={false} arrows={false}>
+              <Slider partiallyVisible={false} arrows={false}>
                 {product.images?.map((image) => (
                   <SPdpCarouselItemMobile key={image?.src}>
                     <img src={image?.src} alt={image?.alt} />
                   </SPdpCarouselItemMobile>
                 ))}
-              </CarouselSlider>
+              </Slider>
               <SCarouselThumbnails>
                 {product.images?.map((image) => (
                   <a>

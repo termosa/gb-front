@@ -1,7 +1,7 @@
 import React from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
-import { CarouselSlider } from '../../lib/carousel-slider'
+import { Slider } from '../../lib/slider'
 
 export interface MostFunOverviewProps extends Omit<React.HTMLProps<HTMLDivElement>, 'className'> {
   className?: ClassName
@@ -208,7 +208,7 @@ export function MostFunOverview({ className }: MostFunOverviewProps): React.Reac
           ever had relaxing
         </SSectionTitle>
         <StyledSlider>
-          <CarouselSlider arrows={true}>
+          <Slider arrows={true}>
             <div>
               <img src="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/most-fun-img-1.jpg" alt="" />
               <SSlideTitle>Guilt Free Ingredients</SSlideTitle>
@@ -241,7 +241,7 @@ export function MostFunOverview({ className }: MostFunOverviewProps): React.Reac
                 </p>
               </SSlideText>
             </div>
-          </CarouselSlider>
+          </Slider>
         </StyledSlider>
       </SMostFunContainer>
     </SMostFunSection>

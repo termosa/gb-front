@@ -2,7 +2,7 @@ import React from 'react'
 import { render } from '@testing-library/react'
 import CarouselSlider from '.'
 
-describe('<CarouselSlider>', () => {
+describe('<Slider>', () => {
   it('should render with the correct image', async () => {
     const imgSrc = 'https://source.unsplash.com/random/800x800/?img='
     const { container } = render(

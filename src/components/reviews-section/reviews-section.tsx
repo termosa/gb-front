@@ -2,7 +2,7 @@ import React from 'react'
 
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
-import { CarouselSlider } from '../../lib/carousel-slider'
+import { Slider } from '../../lib/slider'
 import { useScreenSize } from '../../lib/use-screen-size'
 
 export interface ReviewsSectionProps extends Omit<React.HTMLProps<HTMLDivElement>, 'className'> {
@@ -165,7 +165,7 @@ export function ReviewsSection({ quote, author, className }: ReviewsSectionProps
           {useScreen.greaterThenMedium ? (
             TEST_IMAGES.map((media, index) => <img src={media} alt="company" key={`revImage${index}`} />)
           ) : (
-            <CarouselSlider partiallyVisible={false} arrows infinite>
+            <Slider partiallyVisible={false} arrows infinite>
               {/*{images*/}
               {/*  ? images.map((media, index) => <img src={media} alt="company" key={`revImage${index}`} />)*/}
               {/*  : TEST_IMAGES.map((media, index) => <img src={media} alt="company" key={`revImage${index}`} />)}*/}
@@ -174,7 +174,7 @@ export function ReviewsSection({ quote, author, className }: ReviewsSectionProps
                   <img src={media} alt="company" key={`revImage${index}`} />
                 </SCompanyImageContainer>
               ))}
-            </CarouselSlider>
+            </Slider>
           )}
         </SliderWrapper>
       </SContainer>

@@ -1,8 +1,8 @@
-import CarouselSlider from '.'
+import Slider from '.'
 
 export const meta = {
   type: 'component',
-  name: 'CarouselSlider',
+  name: 'Slider',
   description: 'Styled block with custom content',
   tags: ['component'],
   lists: {
@@ -19,7 +19,7 @@ export const meta = {
       { name: 'itemClass', type: 'string', description: 'ClassName for carousel item' },
     ],
   },
-  scope: { CarouselSlider },
+  scope: { Slider },
 }
 
 ## Playground
@@ -44,7 +44,7 @@ const CarouselPreview = () => {
     },
   }
   return (
-  <CarouselSlider
+  <Slider
     responsive={sliderSettings}
     scrollbarPresent={isScrollbarPresent}
     dotsPresent={isDotsPresent}
@@ -52,7 +52,7 @@ const CarouselPreview = () => {
      {[...new Array(5).fill()].map((_, i) => {
         return <img src={"https://source.unsplash.com/random/800x800/?img=" + i} alt="" style={{width: "300px"}}/>
      })}
-  </CarouselSlider>
+  </Slider>
   )
 }
 

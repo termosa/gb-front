@@ -12,9 +12,10 @@ export interface ShopByProductCardProps extends Omit<React.HTMLProps<HTMLDivElem
 
 const SLayout = styled.div`
   position: relative;
+  display: flex;
+  justify-content: center;
   outline: none;
-  max-width: 400px;
-  margin: 0 25px;
+  margin: 0 auto;
   @media (min-width: 768px) {
     margin: 0 16px;
   }
@@ -22,16 +23,9 @@ const SLayout = styled.div`
 
 const SLayoutImage = styled.img`
   display: block;
-  width: 232px;
-  height: 232px !important;
   margin-bottom: 0;
   border-style: none;
   object-fit: cover;
-
-  @media (min-width: 420px) {
-    width: 284px;
-    height: 284px;
-  }
 `
 
 const SButtonWrapper = styled.div`
