@@ -7,7 +7,6 @@ import { useScreenSize } from '../../lib/use-screen-size'
 
 export interface ReviewsSectionProps extends Omit<React.HTMLProps<HTMLDivElement>, 'className'> {
   className?: ClassName
-  images: Array<string>
   quote: string
   author: string
 }
