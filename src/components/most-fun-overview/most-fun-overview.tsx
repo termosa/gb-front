@@ -1,7 +1,7 @@
 import React from 'react'
 import cn, { Argument as ClassName } from 'classnames'
-import Slider, { Settings } from 'react-slick'
 import styled from 'styled-components'
+import { Slider } from '../../lib/slider'
 
 export interface MostFunOverviewProps extends Omit<React.HTMLProps<HTMLDivElement>, 'className'> {
   className?: ClassName
@@ -31,47 +31,7 @@ const SMostFunContainer = styled.div`
   }
 `
 
-const PrevArrow = styled.button`
-  font-size: 0;
-  line-height: 1;
-  position: absolute;
-  width: 17px;
-  height: 17px;
-  border: 0;
-  border-bottom: 1px solid #9059c8;
-  border-left: 1px solid #9059c8;
-  background-color: transparent;
-  top: 50%;
-  cursor: pointer;
-
-  transform: rotate(45deg);
-  left: -12px;
-
-  @media (min-width: 768px) {
-    left: -15px;
-  }
-`
-const NextArrow = styled.button`
-  font-size: 0;
-  line-height: 1;
-  position: absolute;
-  width: 17px;
-  height: 17px;
-  border: 0;
-  border-bottom: 1px solid #9059c8;
-  border-left: 1px solid #9059c8;
-  background-color: transparent;
-  top: 50%;
-  cursor: pointer;
-  transform: rotate(-135deg);
-  right: -12px;
-
-  @media (min-width: 768px) {
-    right: -15px;
-  }
-`
-
-const StyledSlider = styled(Slider)`
+const StyledSlider = styled.div`
   margin: 0 auto;
 
   @media (min-width: 420px) {
@@ -236,26 +196,6 @@ const SSlideText = styled.div`
 `
 
 export function MostFunOverview({ className }: MostFunOverviewProps): React.ReactElement {
-  const settings: Settings = {
-    slidesToShow: 3,
-    slidesToScroll: 0,
-    dots: false,
-    arrows: false,
-    prevArrow: <PrevArrow />,
-    nextArrow: <NextArrow />,
-    responsive: [
-      {
-        breakpoint: 991,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          dots: true,
-          arrows: true,
-        },
-      },
-    ],
-  }
-
   return (
     <SMostFunSection className={cn('MostFunOverview', className)}>
       <SMostFunContainer>
@@ -267,39 +207,41 @@ export function MostFunOverview({ className }: MostFunOverviewProps): React.Reac
           you’ve <br />
           ever had relaxing
         </SSectionTitle>
-        <StyledSlider {...settings}>
-          <div>
-            <img src="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/most-fun-img-1.jpg" alt="" />
-            <SSlideTitle>Guilt Free Ingredients</SSlideTitle>
-            <SSlideText>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. At eget iaculis eget eget neque, posuere quis
-                placerat arcu. Ipsum est felis varius faucibus praesent convallis.
-              </p>
-            </SSlideText>
-          </div>
+        <StyledSlider>
+          <Slider arrows={true}>
+            <div>
+              <img src="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/most-fun-img-1.jpg" alt="" />
+              <SSlideTitle>Guilt Free Ingredients</SSlideTitle>
+              <SSlideText>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. At eget iaculis eget eget neque, posuere quis
+                  placerat arcu. Ipsum est felis varius faucibus praesent convallis.
+                </p>
+              </SSlideText>
+            </div>
 
-          <div>
-            <img src="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/most-fun-img-2.jpg" alt="" />
-            <SSlideTitle>Win $10,000 Ring</SSlideTitle>
-            <SSlideText>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. At eget iaculis eget eget neque, posuere quis
-                placerat arcu. Ipsum est felis varius faucibus praesent convallis.
-              </p>
-            </SSlideText>
-          </div>
+            <div>
+              <img src="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/most-fun-img-2.jpg" alt="" />
+              <SSlideTitle>Win $10,000 Ring</SSlideTitle>
+              <SSlideText>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. At eget iaculis eget eget neque, posuere quis
+                  placerat arcu. Ipsum est felis varius faucibus praesent convallis.
+                </p>
+              </SSlideText>
+            </div>
 
-          <div>
-            <img src="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/most-fun-img-3.jpg" alt="" />
-            <SSlideTitle>Collectible Jewelry</SSlideTitle>
-            <SSlideText>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. At eget iaculis eget eget neque, posuere quis
-                placerat arcu. Ipsum est felis varius faucibus praesent convallis.
-              </p>
-            </SSlideText>
-          </div>
+            <div>
+              <img src="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/most-fun-img-3.jpg" alt="" />
+              <SSlideTitle>Collectible Jewelry</SSlideTitle>
+              <SSlideText>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. At eget iaculis eget eget neque, posuere quis
+                  placerat arcu. Ipsum est felis varius faucibus praesent convallis.
+                </p>
+              </SSlideText>
+            </div>
+          </Slider>
         </StyledSlider>
       </SMostFunContainer>
     </SMostFunSection>

@@ -99,6 +99,12 @@ const ProductCardImgWrapperInner = styled.div`
   height: 100%;
   display: flex;
   transform: translate(-50%, -50%);
+
+  img {
+    width: 100%;
+    max-height: 178px;
+    cursor: pointer;
+  }
 `
 
 const ProductCardTag = styled.div<{
@@ -248,7 +254,7 @@ export function ProductCard({ className, style, product, onClick }: ProductCardP
         </SCircle>*/}
         <ProductCardImgWrapper>
           <ProductCardImgWrapperInner>
-            <img src={product.image?.src} alt={product.image?.alt} />
+            <img src={product.image?.src} alt={product.image?.alt} draggable={false} />
           </ProductCardImgWrapperInner>
         </ProductCardImgWrapper>
         {checkForLabel()}

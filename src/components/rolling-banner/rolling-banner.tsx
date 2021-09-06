@@ -1,6 +1,6 @@
 import React from 'react'
-import Slider, { Settings } from 'react-slick'
 import styled from 'styled-components'
+import { Slider } from '../../lib/slider'
 
 const PromoWrapper = styled.div`
   * {
@@ -20,51 +20,17 @@ const Container = styled.div`
   padding: 0 15px;
 `
 
-const PromoSlider = styled(Slider)`
+const PromoSlider = styled.div`
   font: 500 9px/1.2 'Montserrat', sans-serif;
   color: #fff;
   text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   padding: 9px 0;
   position: relative;
+
   @media (min-width: 768px) {
     font: 500 11px/1.2 'Montserrat', sans-serif;
   }
 
-  .slick-slider {
-    box-sizing: border-box;
-    user-select: none;
-    touch-action: pan-y;
-  }
-
-  .slick-list {
-    position: relative;
-    display: block;
-    overflow: hidden;
-    margin: 0;
-    padding: 0;
-  }
-  .slick-slider .slick-track,
-  .slick-slider .slick-list {
-    transform: translate3d(0, 0, 0);
-  }
-
-  .slick-track {
-    position: relative;
-    top: 0;
-    left: 0;
-
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .slick-slide {
-    float: left;
-    height: 100%;
-    min-height: 1px;
-  }
   a {
     color: #ee67a0;
     text-decoration: none;
@@ -77,6 +43,7 @@ const PromoSlider = styled(Slider)`
     }
   }
 `
+
 const PrevArrow = styled.button`
   display: block;
   transform: translateY(-50%) rotate(45deg);
@@ -117,38 +84,44 @@ const NextArrow = styled.button`
   padding: 0;
 `
 
+const SPromoSlide = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+`
+
 const PinkSpan = styled.span`
   color: #ee67a0;
 `
 
 export function RollingBanner(): React.ReactElement {
-  const settings: Settings = {
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    dots: false,
-    prevArrow: <PrevArrow />,
-    nextArrow: <NextArrow />,
-    autoplay: true,
-    autoplaySpeed: 4000,
-    infinite: true,
-  }
   return (
     <PromoWrapper>
       <Container>
-        <PromoSlider {...settings}>
-          <div>PARABEN FREE&nbsp;&nbsp;|&nbsp;&nbsp;HANDMADE IN USA&nbsp;&nbsp;|&nbsp;&nbsp;100% VEGAN</div>
-          <div>
-            <PinkSpan>FREE SHIPPING</PinkSpan> ON ORDERS $75+
-          </div>
-          <div>
-            COVID-19 SHIPPING UPDATE{' '}
-            <a
-              href="https://helpcenter.fragrantjewels.com/hc/en-us/sections/360008222572-COVID-19-Crisis-FAQ?mobile_site=true"
-              target="_blank"
-            >
-              LEARN MORE
-            </a>
-          </div>
+        <PromoSlider>
+          <Slider customLeftArrow={<PrevArrow />} customRightArrow={<NextArrow />} infinite>
+            <span>
+              <SPromoSlide>
+                PARABEN FREE&nbsp;&nbsp;|&nbsp;&nbsp;HANDMADE IN USA&nbsp;&nbsp;|&nbsp;&nbsp;100% VEGAN
+              </SPromoSlide>
+            </span>
+            <SPromoSlide>
+              <span>
+                <PinkSpan>FREE SHIPPING</PinkSpan> ON ORDERS $75+
+              </span>
+            </SPromoSlide>
+            <SPromoSlide>
+              <span>
+                COVID-19 SHIPPING UPDATE{' '}
+                <a
+                  href="https://helpcenter.fragrantjewels.com/hc/en-us/sections/360008222572-COVID-19-Crisis-FAQ?mobile_site=true"
+                  target="_blank"
+                >
+                  LEARN MORE
+                </a>
+              </span>
+            </SPromoSlide>
+          </Slider>
         </PromoSlider>
       </Container>
     </PromoWrapper>

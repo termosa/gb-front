@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
-import Slider, { Settings } from 'react-slick'
 import InformationCard from '../../components/information-card'
+import { Slider } from '../slider'
 
 export type { InformationCard }
 
@@ -29,44 +29,6 @@ const STitle = styled.h2`
     margin: 0 auto 24px;
     padding: 0;
   }
-`
-
-const PrevArrow = styled.button`
-  display: block;
-  transform: translateY(-50%) rotate(45deg);
-  left: 1px;
-  font-size: 0;
-  z-index: 13;
-  top: 47%;
-  line-height: 1;
-  position: absolute;
-  width: 17px;
-  height: 17px;
-  border: none;
-  border-bottom: 1px solid #9059c8;
-  border-left: 1px solid #9059c8;
-  background-color: transparent;
-  cursor: pointer;
-  margin: 0;
-`
-
-const NextArrow = styled.button`
-  display: block;
-  transform: translateY(-50%) rotate(-135deg);
-  right: 1px;
-  font-size: 0;
-  z-index: 13;
-  top: 47%;
-  line-height: 1;
-  position: absolute;
-  width: 17px;
-  height: 17px;
-  border: none;
-  border-bottom: 1px solid #9059c8;
-  border-left: 1px solid #9059c8;
-  background-color: transparent;
-  cursor: pointer;
-  margin: 0;
 `
 
 const SCardsWrapper = styled.div`
@@ -185,25 +147,6 @@ const SCardsWrapper = styled.div`
   }
 `
 
-const sliderSettings: Settings = {
-  slidesToShow: 3,
-  slidesToScroll: 1,
-  dots: false,
-  arrows: false,
-  infinite: true,
-  responsive: [
-    {
-      breakpoint: 768,
-      settings: {
-        slidesToShow: 1,
-        arrows: true,
-        prevArrow: <PrevArrow />,
-        nextArrow: <NextArrow />,
-      },
-    },
-  ],
-}
-
 export type InformationOverviewProps = {
   className?: ClassName
   style?: React.CSSProperties
@@ -234,7 +177,7 @@ export function InformationOverview({ className, style, title, cards }: Informat
         {isLargeScreen ? (
           cards.map((card) => <InformationCard key={card.image + card.title} card={card} />)
         ) : (
-          <Slider {...sliderSettings}>
+          <Slider partiallyVisible={false} arrows={true}>
             {cards.map((card) => (
               <InformationCard key={card.image + card.title} card={card} />
             ))}

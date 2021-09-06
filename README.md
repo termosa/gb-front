@@ -5,7 +5,6 @@
 ```sh
 $ docker build \
   --build-arg APP_ENV=production \
-  --build-arg BUILDER_KEY=0123456789abcdef0123456789abcdef \
   --build-arg BASE_API_URL=http://endpoint-for-nextjs.com \
   --build-arg CLIENT_API_URL=http://endpoint-for-browser.com \
   . -t fj-front
@@ -106,3 +105,5 @@ This means you can import any of this folder's files directly without the relati
 @import 'variables';
 @import 'colors';
 ```
+
+

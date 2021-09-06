@@ -1,18 +1,8 @@
 import React from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
-import Slider, { Settings } from 'react-slick'
 import Button from '../../lib/button'
-
-const settings: Settings = {
-  slidesToShow: 1,
-  slidesToScroll: 1,
-  dots: true,
-  arrows: false,
-  autoplay: true,
-  autoplaySpeed: 5000,
-  appendDots: (dots) => <Dots>{dots}</Dots>,
-}
+import { Slider } from '../slider'
 
 const SliderWrapper = styled.div`
   * {
@@ -122,60 +112,6 @@ const SliderWrapper = styled.div`
   }
 `
 
-const Dots = styled.div`
-  position: absolute;
-  bottom: 10px;
-  display: block;
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  list-style: none;
-  text-align: center;
-
-  & > li {
-    position: relative;
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    margin: 0;
-    padding: 0;
-    cursor: pointer;
-  }
-
-  & button {
-    font-size: 0;
-    line-height: 0;
-    display: block;
-    width: 20px;
-    height: 20px;
-    padding: 5px;
-    cursor: pointer;
-    color: transparent;
-    border: 0;
-    outline: none;
-    background: transparent;
-
-    &:before {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      content: '';
-      border-radius: 50%;
-      text-align: center;
-      opacity: 0.6;
-      background-color: #fff;
-      transform: translate(-50%, -50%);
-      width: 10px;
-      height: 10px;
-    }
-  }
-
-  & .slick-active button:before {
-    opacity: 1;
-    background-color: #fff;
-  }
-`
-
 const Slide = styled.div<{ backgroundImg: string }>`
   display: block !important;
   position: relative;
@@ -264,7 +200,7 @@ export type HeroGalleryProps = {
 export function HeroGallery({ className, style, slides }: HeroGalleryProps): React.ReactElement {
   return (
     <SliderWrapper className={cn(className)} style={style}>
-      <Slider {...settings}>
+      <Slider partiallyVisible={false} dotsPresent arrows={false} itemClass={'slider-full-width-item'}>
         {slides.map((slide: GalleryItem) => (
           <Slide
             key={`${slide.buttonLink}${slide.backgroundImg}${slide.buttonText}`}

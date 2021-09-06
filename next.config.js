@@ -31,7 +31,6 @@ module.exports = (phase) => {
     env: {
       BASE_API_URL: process.env.BASE_API_URL,
       CLIENT_API_URL: process.env.CLIENT_API_URL,
-      BUILDER_KEY: process.env.BUILDER_KEY,
     },
     webpack(config) {
       config.module.rules.push({

@@ -1,0 +1,60 @@
+import Slider from '.'
+
+export const meta = {
+  type: 'component',
+  name: 'Slider',
+  description: 'Styled block with custom content',
+  tags: ['component'],
+  lists: {
+    attributes: [
+      { name: 'children', required: true, type: 'React.ReactElement[]', description: 'Content that will be rendered inside of the block' },
+      { name: 'arrows', type: 'boolean | null', description: 'Condition for arrows' },
+      { name: 'customLeftArrow', type: 'React.ReactElement', description: 'JSX element for "previous" arrow' },
+      { name: 'customRightArrow', type: 'React.ReactElement', description: 'JSX element for "next" arrow' },
+      { name: 'responsive', type: 'ResponsiveType', description: 'Object with resolution types and their settings' },
+      { name: 'scrollbarPresent', type: 'boolean', description: 'Condition for horizontal scrollbar' },
+      { name: 'dotsPresent', type: 'boolean', description: 'Condition for dots' },
+      { name: 'partiallyVisible', type: 'boolean', description: 'Should gallery have one slide that overflows' },
+      { name: 'infinite', type: 'boolean', description: 'Condition for infinite scrolling' },
+      { name: 'itemClass', type: 'string', description: 'ClassName for carousel item' },
+    ],
+  },
+  scope: { Slider },
+}
+
+## Playground
+
+```jsx live render
+const CarouselPreview = () => {
+  const [isScrollbarPresent, setScrollbarPresent] = React.useState()
+  const [isDotsPresent, setDotsPresent] = React.useState()
+  const [isPartiallyVisible, setPartiallyVisible] = React.useState(true)
+  const sliderSettings = {
+    desktop: {
+       breakpoint: { max: 3000, min: 768 },
+       items: isPartiallyVisible ? 3 : 1,
+    },
+    tablet: {
+       breakpoint: { max: 768, min: 464 },
+       items: isPartiallyVisible ? 2.5 : 1,
+    },
+    mobile: {
+       breakpoint: { max: 464, min: 0 },
+       items: isPartiallyVisible ? 1.5 : 1,
+    },
+  }
+  return (
+  <Slider
+    responsive={sliderSettings}
+    scrollbarPresent={isScrollbarPresent}
+    dotsPresent={isDotsPresent}
+  >
+     {[...new Array(5).fill()].map((_, i) => {
+        return <img src={"https://source.unsplash.com/random/800x800/?img=" + i} alt="" style={{width: "300px"}}/>
+     })}
+  </Slider>
+  )
+}
+
+render(<CarouselPreview />)
+```

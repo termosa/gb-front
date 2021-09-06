@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
-import Slider, { Settings } from 'react-slick'
+import React from 'react'
+
 import styled, { css } from 'styled-components'
 import cn, { Argument as ClassName } from 'classnames'
 import { Product } from '../../modules/normalize-product'
+import { Slider } from '../../lib/slider'
 
 export type { Product } from '../../modules/normalize-product'
 
@@ -91,7 +92,6 @@ const ProductCards = styled.div`
   }
 
   .slick-list.dragging {
-    cursor: pointer;
     cursor: hand;
   }
 
@@ -165,7 +165,7 @@ const ProductCards = styled.div`
   }
 `
 
-const StyledSlider = styled(Slider)`
+const StyledSlider = styled.div`
   margin: 0 -15px;
   padding-left: 10px;
   @media (min-width: 500px) {
@@ -189,7 +189,7 @@ const StyledSlider = styled(Slider)`
 `
 
 const SProductCard = styled.div`
-  box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.1);
   background: white;
   padding: 13px 10px;
   text-align: center;
@@ -202,7 +202,7 @@ const SProductCard = styled.div`
   width: 100%;
   /* margin: 5px; */
   @media (min-width: 768px) {
-    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.25);
     padding: 12px 10px 24px;
   }
   ${(props: { newProduct?: boolean }) =>
@@ -337,7 +337,7 @@ const ProductCardPrice = styled.div`
   display: inline-block;
 `
 
-const ProgressWrapper = styled.div`
+/*const ProgressWrapper = styled.div`
   padding: 12px 0;
   @media (min-width: 500px) {
     padding: 32px 8px;
@@ -366,45 +366,7 @@ const ProgressLabel = styled.div`
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   border: 0;
-`
-
-const PrevArrow = styled.button`
-  font-size: 0;
-  line-height: 1;
-  position: absolute;
-  width: 17px;
-  height: 17px;
-  border: 0;
-  border-bottom: 1px solid #9059c8;
-  border-left: 1px solid #9059c8;
-  background-color: transparent;
-  top: 50%;
-  cursor: pointer;
-
-  transform: rotate(45deg);
-  left: -12px;
-  @media (min-width: 768px) {
-    left: -15px;
-  }
-`
-const NextArrow = styled.button`
-  font-size: 0;
-  line-height: 1;
-  position: absolute;
-  width: 17px;
-  height: 17px;
-  border: 0;
-  border-bottom: 1px solid #9059c8;
-  border-left: 1px solid #9059c8;
-  background-color: transparent;
-  top: 50%;
-  cursor: pointer;
-  transform: rotate(-135deg);
-  right: -12px;
-  @media (min-width: 768px) {
-    right: -15px;
-  }
-`
+`*/
 
 const ProductCardWrapper = styled.div`
   padding: 5px;
@@ -495,39 +457,6 @@ const ProductCard = ({ product, onClick }: { product: Product; onClick: () => vo
   ) : null
 
 export const TrendingSection = ({ products, className, onSelectProduct }: TrendingSectionProps): React.ReactElement => {
-  const [progress, setProgress] = useState(0)
-  const settings: Settings = {
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    dots: false,
-    arrows: true,
-    prevArrow: <PrevArrow />,
-    nextArrow: <NextArrow />,
-    responsive: [
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-          arrows: true,
-        },
-      },
-      {
-        breakpoint: 500,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-          arrows: false,
-        },
-      },
-    ],
-    beforeChange(_: number, nextSlide: number) {
-      const mockedProductLengthValue = 4
-      const progressCalc = (nextSlide / (mockedProductLengthValue - 1)) * 100
-      setProgress(progressCalc)
-    },
-  }
-
   return (
     <Section className={cn('TrendingSection', className)}>
       <Container>
@@ -536,20 +465,22 @@ export const TrendingSection = ({ products, className, onSelectProduct }: Trendi
           <p>Shop our newest and best selling collections.</p>
         </SectionText>
         <ProductCards>
-          <StyledSlider {...settings}>
-            {products.map((product) => (
-              <ProductCard
-                key={product.product_id}
-                product={product}
-                onClick={() => onSelectProduct(product.product_id)}
-              />
-            ))}
+          <StyledSlider>
+            <Slider partiallyVisible={true} arrows={true}>
+              {products.map((product) => (
+                <ProductCard
+                  key={product.product_id}
+                  product={product}
+                  onClick={() => onSelectProduct(product.product_id)}
+                />
+              ))}
+            </Slider>
           </StyledSlider>
-          <ProgressWrapper>
+          {/*          <ProgressWrapper>
             <Progress progress={progress}>
               <ProgressLabel>{`${progress}% completed`}</ProgressLabel>
             </Progress>
-          </ProgressWrapper>
+          </ProgressWrapper>*/}
         </ProductCards>
       </Container>
     </Section>

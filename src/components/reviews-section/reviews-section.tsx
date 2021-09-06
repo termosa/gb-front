@@ -1,11 +1,12 @@
 import React from 'react'
-import Slider, { Settings } from 'react-slick'
+
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
+import { Slider } from '../../lib/slider'
+import { useScreenSize } from '../../lib/use-screen-size'
 
 export interface ReviewsSectionProps extends Omit<React.HTMLProps<HTMLDivElement>, 'className'> {
   className?: ClassName
-  images: Array<string>
   quote: string
   author: string
 }
@@ -100,127 +101,25 @@ const SliderWrapper = styled.div`
   padding: 0 16px;
 
   @media (min-width: 768px) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin: 26px auto 0;
     max-width: 100%;
     width: 100%;
   }
+`
 
-  .slick-slider {
-    user-select: none;
-    box-sizing: border-box;
-    touch-action: pan-y;
-    text-align: center;
-  }
-
-  .slick-list {
-    position: relative;
-    display: block;
-    overflow: hidden;
-    margin: 0;
-    padding: 0;
-  }
-
-  .slick-slider .slick-list {
-    transform: translate3d(0, 0, 0);
-  }
-
-  .slick-track {
-    position: relative;
-    top: 0;
-    left: 0;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .slick-slider .slick-track {
-    display: flex;
-    align-items: center;
-
-    @media (min-width: 768px) {
-      transform: translate3d(0, 0, 0);
-      justify-content: center;
-      width: 100%;
-    }
-  }
-
-  .slick-slider .slick-slide {
-    margin: 0 0.5%;
-    @media (min-width: 991px) {
-      margin: 0 1.2vw;
-    }
-
-    & > div {
-      display: flex;
-      align-items: center;
-    }
-  }
-
-  .slick-slide {
-    outline: none;
-    display: none;
-    float: left;
-    min-height: 1px;
-    @media (min-width: 991px) {
-      width: initial !important;
-    }
-  }
-
-  .slick-initialized .slick-slide {
-    display: block;
-  }
-
-  .slick-slider .slick-slide img {
-    height: auto;
-    width: auto !important;
-    max-width: 100%;
-    max-height: 33px;
-    margin: 0 auto;
-    display: block;
-  }
+const SCompanyImageContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  height: 100%;
 
   img {
+    height: max-content;
     border-style: none;
-    margin: 0 5px 10px;
   }
-`
-
-const PrevArrow = styled.button`
-  display: block;
-  transform: translateY(-50%) rotate(45deg);
-  left: 0;
-  width: 13px;
-  height: 13px;
-  z-index: 13;
-  font-size: 0;
-  top: 50%;
-  line-height: 1;
-  position: absolute;
-  border: none;
-  border-bottom: 1px solid #9059c8;
-  border-left: 1px solid #9059c8;
-  background-color: transparent;
-  cursor: pointer;
-  margin: 0;
-`
-
-const NextArrow = styled.button`
-  display: block;
-  transform: translateY(-50%) rotate(-135deg);
-  right: 1px;
-  font-size: 0;
-  z-index: 13;
-  top: 47%;
-  line-height: 1;
-  position: absolute;
-  width: 13px;
-  height: 13px;
-  border: none;
-  border-bottom: 1px solid #9059c8;
-  border-left: 1px solid #9059c8;
-  background-color: transparent;
-  cursor: pointer;
-  margin: 0;
 `
 
 const TEST_IMAGES = [
@@ -233,28 +132,7 @@ const TEST_IMAGES = [
 ]
 
 export function ReviewsSection({ quote, author, className }: ReviewsSectionProps): React.ReactElement {
-  const settings: Settings = {
-    slidesToShow: 6,
-    slidesToScroll: 1,
-    dots: false,
-    arrows: false,
-    pauseOnHover: true,
-    autoplay: true,
-    autoplaySpeed: 3000,
-    speed: 800,
-    responsive: [
-      {
-        breakpoint: 991,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 1,
-          arrows: true,
-          prevArrow: <PrevArrow />,
-          nextArrow: <NextArrow />,
-        },
-      },
-    ],
-  }
+  const useScreen = useScreenSize()
 
   return (
     <SReviewSection className={cn('ReviewsSection', className)}>
@@ -283,14 +161,20 @@ export function ReviewsSection({ quote, author, className }: ReviewsSectionProps
           <SFigcaption>{`- ${author}`}</SFigcaption>
         </SQuote>
         <SliderWrapper>
-          <Slider {...settings}>
-            {/*{images*/}
-            {/*  ? images.map((media, index) => <img src={media} alt="company" key={`revImage${index}`} />)*/}
-            {/*  : TEST_IMAGES.map((media, index) => <img src={media} alt="company" key={`revImage${index}`} />)}*/}
-            {TEST_IMAGES.map((media, index) => (
-              <img src={media} alt="company" key={`revImage${index}`} />
-            ))}
-          </Slider>
+          {useScreen.greaterThenMedium ? (
+            TEST_IMAGES.map((media, index) => <img src={media} alt="company" key={`revImage${index}`} />)
+          ) : (
+            <Slider partiallyVisible={false} arrows infinite>
+              {/*{images*/}
+              {/*  ? images.map((media, index) => <img src={media} alt="company" key={`revImage${index}`} />)*/}
+              {/*  : TEST_IMAGES.map((media, index) => <img src={media} alt="company" key={`revImage${index}`} />)}*/}
+              {TEST_IMAGES.map((media, index) => (
+                <SCompanyImageContainer>
+                  <img src={media} alt="company" key={`revImage${index}`} />
+                </SCompanyImageContainer>
+              ))}
+            </Slider>
+          )}
         </SliderWrapper>
       </SContainer>
     </SReviewSection>

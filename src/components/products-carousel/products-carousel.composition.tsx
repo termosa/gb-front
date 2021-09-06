@@ -28,6 +28,7 @@ export const BasicProductsCarousel = (): React.ReactElement => (
           },
           published_at_shop: '',
           template: 'Default',
+          handle: '',
         },
         {
           product_id: 10419939918,
@@ -51,6 +52,7 @@ export const BasicProductsCarousel = (): React.ReactElement => (
           },
           published_at_shop: '',
           template: 'Default',
+          handle: '',
         },
         {
           product_id: 10419939918,
@@ -74,6 +76,7 @@ export const BasicProductsCarousel = (): React.ReactElement => (
           },
           published_at_shop: '',
           template: 'Default',
+          handle: '',
         },
         {
           product_id: 10419921743,
@@ -97,6 +100,7 @@ export const BasicProductsCarousel = (): React.ReactElement => (
           },
           published_at_shop: '',
           template: 'Default',
+          handle: '',
         },
       ]}
     />
