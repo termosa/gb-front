@@ -10,11 +10,11 @@ export const meta = {
     returns: [
       { name: 'width', type: 'number', description: 'Width of viewport' },
       { name: 'height', type: 'number', description: 'Height of viewport' },
-      { name: 'lessThenSmall', type: 'boolean', description: 'Is width less than 576px' },
-      { name: 'greaterThenSmall', type: 'boolean', description: 'Is width more than 576px' },
-      { name: 'greaterThenMedium', type: 'boolean', description: 'Is width more than 768px' },
-      { name: 'greaterThenLarge', type: 'boolean', description: 'Is width more than 992px' },
-      { name: 'greaterThenExtraLarge', type: 'boolean', description: 'Is width more than 1200px' },
+      { name: 'lessThanSmall', type: 'boolean', description: 'Is width less than 576px' },
+      { name: 'greaterThanSmall', type: 'boolean', description: 'Is width more than 576px' },
+      { name: 'greaterThanMedium', type: 'boolean', description: 'Is width more than 768px' },
+      { name: 'greaterThanLarge', type: 'boolean', description: 'Is width more than 992px' },
+      { name: 'greaterThanExtraLarge', type: 'boolean', description: 'Is width more than 1200px' },
     ],
   },
   scope: { useScreenSize },
@@ -32,11 +32,11 @@ const ScreenSize = () => {
     <p>Current width  - {screenSize.width}px</p>
     <p>Current height - {screenSize.height}px</p>
     <br/>
-    <p style={getStyle(screenSize.lessThenSmall)}><b>lessThenSmall</b> - width less than 576px</p>
-    <p style={getStyle(screenSize.greaterThenSmall)}><b>greaterThenSmall</b> - width more than 576px</p>
-    <p style={getStyle(screenSize.greaterThenMedium)}><b>greaterThenMedium</b> - width more than 768px</p>
-    <p style={getStyle(screenSize.greaterThenLarge)}><b>greaterThenLarge</b> - width more than 992px</p>
-    <p style={getStyle(screenSize.greaterThenExtraLarge)}><b>greaterThenExtraLarge</b> - width more than 1200px</p>
+    <p style={getStyle(screenSize.lessThanSmall)}><b>lessThanSmall</b> - width less than 576px</p>
+    <p style={getStyle(screenSize.greaterThanSmall)}><b>greaterThanSmall</b> - width more than 576px</p>
+    <p style={getStyle(screenSize.greaterThanMedium)}><b>greaterThanMedium</b> - width more than 768px</p>
+    <p style={getStyle(screenSize.greaterThanLarge)}><b>greaterThanLarge</b> - width more than 992px</p>
+    <p style={getStyle(screenSize.greaterThanExtraLarge)}><b>greaterThanExtraLarge</b> - width more than 1200px</p>
   </>
 }
 

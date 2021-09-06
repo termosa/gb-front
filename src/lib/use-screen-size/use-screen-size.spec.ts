@@ -13,9 +13,9 @@ describe('useScreenSize()', () => {
     expect(result.current.width)
   })
 
-  it('check return value lessThenSmall', () => {
+  it('check return value lessThanSmall', () => {
     const { result } = renderHook(() => useScreenSize())
     window = Object.assign(window, { innerWidth: 500 })
-    expect(result.current.lessThenSmall)
+    expect(result.current.lessThanSmall)
   })
 })

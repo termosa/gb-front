@@ -161,7 +161,7 @@ export function ReviewsSection({ quote, author, className }: ReviewsSectionProps
           <SFigcaption>{`- ${author}`}</SFigcaption>
         </SQuote>
         <SliderWrapper>
-          {useScreen.greaterThenMedium ? (
+          {useScreen.greaterThanMedium ? (
             TEST_IMAGES.map((media, index) => <img src={media} alt="company" key={`revImage${index}`} />)
           ) : (
             <Slider partiallyVisible={false} arrows infinite>

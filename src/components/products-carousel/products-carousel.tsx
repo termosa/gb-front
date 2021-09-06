@@ -107,7 +107,7 @@ export const ProductsCarousel = ({
   return (
     <Section className={cn('ProductsCarousel', className)}>
       <Container>
-        {!screenSize.greaterThenMedium && window?.location.pathname.search('products') !== -1 ? (
+        {!screenSize.greaterThanMedium && window?.location.pathname.search('products') !== -1 ? (
           <SectionTitle isMobile={true}>
             <span>
               {title} {titleHighlighted}
@@ -122,7 +122,7 @@ export const ProductsCarousel = ({
         <SectionText>
           <p>{subTitle}</p>
         </SectionText>
-        <Slider responsive={sliderSettings} scrollbarPresent={!!screenSize.greaterThenMedium}>
+        <Slider responsive={sliderSettings} scrollbarPresent={!!screenSize.greaterThanMedium}>
           {products
             .filter((product) => product.image)
             .map((product) => {

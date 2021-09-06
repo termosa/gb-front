@@ -183,7 +183,7 @@ export function VerticalGallery({
   }, [product, screenSize])
 
   useEffect(() => {
-    setGalleryImageWidth(screenSize.greaterThenExtraLarge ? 465 : screenSize.greaterThenLarge ? 400 : 300)
+    setGalleryImageWidth(screenSize.greaterThanExtraLarge ? 465 : screenSize.greaterThanLarge ? 400 : 300)
   }, [screenSize])
 
   const getImageHeight = (image: ProductImage): number => {
@@ -214,7 +214,7 @@ export function VerticalGallery({
     <Wrapper className={cn(className)}>
       <SPdpCarouselContainer>
         <SPdpRowWrapper>
-          {screenSize.greaterThenMedium ? (
+          {screenSize.greaterThanMedium ? (
             <SPdpRow>
               <SCarouselIcons>
                 <SCarouselIconsList>
