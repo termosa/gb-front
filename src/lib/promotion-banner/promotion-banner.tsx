@@ -3,8 +3,6 @@ import cn, { Argument as ClassName } from 'classnames'
 import useDefer from 'use-defer'
 import styled from 'styled-components'
 import loadPromoDetails from '../load-promo-details'
-import deleteCookie from '../delete-cookie'
-import getCookies from '../get-cookie'
 import setCookies from '../set-cookie'
 
 const PromoContainer = styled.div`
@@ -135,22 +133,19 @@ const Congratulations = styled.div`
   font-weight: bold;
 `
 
-const isGwpPresent = (): boolean => {
-  const promo = getCookies('c_promo')
-  const exp = getCookies('promo-expiration')
-  if (promo == null && !exp) {
-    return false
-  }
-  return Number(exp) - Date.now() > 0
-}
-
 export type PromotionBannerProps = {
   promo: string
+  isShow?: boolean
   className?: ClassName
   style?: React.CSSProperties
 }
 
-export function PromotionBanner({ promo, className, style }: PromotionBannerProps): React.ReactElement | null {
+export function PromotionBanner({
+  promo,
+  isShow = false,
+  className,
+  style,
+}: PromotionBannerProps): React.ReactElement | null {
   if (!promo) {
     return null
   }
@@ -174,7 +169,7 @@ export function PromotionBanner({ promo, className, style }: PromotionBannerProp
         </PromoClock>
         <PromoDescription>{requirements}</PromoDescription>
       </WrapPromoContainer>
-      {!buyRingSize && !isGwpPresent() ? (
+      {!buyRingSize && !isShow ? (
         <>
           <PromoMessage>Select a ring size:</PromoMessage>
           <SelectHolderBtn>
@@ -198,7 +193,6 @@ export function PromotionBanner({ promo, className, style }: PromotionBannerProp
                   key={el.id}
                   className="disabled"
                   onClick={() => {
-                    deleteCookie('test')
                     useUnavailableRingSize(true)
                     useBuyRingSize('')
                   }}

@@ -3,6 +3,21 @@ import styled from 'styled-components'
 import cn, { Argument as ClassName } from 'classnames'
 import PromotionBanner from '../promotion-banner'
 import useQuery from '../use-query'
+import getCookies from '../get-cookie'
+
+const isGwpPresent = (): boolean => {
+  const promo = getCookies('c_promo')
+  const exp = getCookies('promo-expiration')
+  if (!promo && !exp) {
+    return false
+  }
+  return Number(exp) - Date.now() > 0
+}
+
+const getPromoCookie = (): string => {
+  const promo = getCookies('c_promo')
+  return promo || ''
+}
 
 export type SitePromotionProps = {
   className?: ClassName
@@ -20,11 +35,12 @@ export function SitePromotion({ style, className }: SitePromotionProps): React.R
     width: 100%;
     vertical-align: top;
   `
+
   return (
     <>
-      {promo ? (
+      {promo || isGwpPresent() ? (
         <PromotionContainer className={cn(className)} style={style}>
-          <PromotionBanner promo={promo}></PromotionBanner>
+          <PromotionBanner promo={promo || getPromoCookie()} isShow={isGwpPresent()}></PromotionBanner>
         </PromotionContainer>
       ) : null}
     </>
