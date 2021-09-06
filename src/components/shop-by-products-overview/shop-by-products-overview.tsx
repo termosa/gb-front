@@ -48,7 +48,8 @@ const SliderWrapper = styled.div`
   * {
     box-sizing: border-box;
   }
-  @media (min-width: 768px) {
+
+  @media (min-width: 992px) {
     display: flex;
     justify-content: center;
     margin: 0 -16px;

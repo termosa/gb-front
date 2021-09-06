@@ -5,7 +5,6 @@ import Button from '../../lib/button'
 
 const SCol = styled.div`
   @media (min-width: 768px) {
-    width: 46%;
     margin: 0 auto 92px;
   }
 `

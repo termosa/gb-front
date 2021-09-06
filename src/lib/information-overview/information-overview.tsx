@@ -41,6 +41,10 @@ const SCardsWrapper = styled.div`
   * {
     box-sizing: border-box;
   }
+
+  @media (min-width: 992px) {
+    display: flex;
+  }
 `
 
 export type InformationOverviewProps = {
