@@ -1,0 +1,26 @@
+export const meta = {
+  type: 'function',
+  name: 'changeCartItem',
+  description: 'Changes the cart item and returns an updated cart',
+  tags: ['function', 'cart'],
+  lists: {
+    arguments: [
+      { name: 'cartItemKey', type: 'string', required: true, description: 'The key of the cart item' },
+      { name: 'newProperties', type: 'Record<string, unknown>', description: 'New properties of the item' },
+      { name: 'newQuantity', type: 'number', description: 'New quantity of the item' },
+    ],
+    returns: [
+      { name: 'cart', type: 'Promise<Cart>', description: 'The updated cart' },
+    ],
+  },
+}
+
+## Usage
+
+```js
+import changeCartItem from './change-cart-item'
+changeCartItem('794864229', { discount: 0.6 }, 5).then(r => {
+  const changedCartItem = r.find(item => item.id === '794864229')
+  console.log(`${changedCartItem.title} quantity now is equal to ${changedCartItem.quantity}`)
+})
+```

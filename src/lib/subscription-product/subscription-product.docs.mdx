@@ -1,0 +1,20 @@
+export const meta = {
+  type: 'variable',
+  name: 'subscriptionProduct',
+  description: 'An object with subscription products ids',
+  tags: ['variable'],
+  lists: {
+    properties: [
+      { name: 'variantsMap', type: '{ variantsMap: Record<5 | 6 | 7 | 8 | 9 | 10, number> }', description: 'An object with subscription products ids' },
+    ],
+  },
+}
+
+## Usage
+
+```ts
+import subscriptionProduct from './subscription-product'
+import { VariantSize } from '../add-cart-item-with-subscription'
+const getSbscriptionProductVariantId = (variant: VariantSize) => subscriptionProduct.variantsMap[variant]
+getSbscriptionProductVariantId(5) // get subscription id for ring with size 5
+```

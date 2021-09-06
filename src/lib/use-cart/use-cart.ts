@@ -1,10 +1,11 @@
-import { useCallback, useEffect, useMemo } from 'react'
+import { useEffect, useMemo } from 'react'
 import useDefer, { Status } from 'use-defer'
 import loadCart, { CartItem } from '../load-cart'
 import createGlobalStateHook from '../create-global-state-hook'
-import addItemToCart from '../add-item-to-cart'
+import addCartItem from '../add-cart-item'
+import addCartItemWithSubscription, { VariantSize } from '../add-cart-item-with-subscription'
 
-export type { Status } from 'use-defer'
+export { Status } from 'use-defer'
 export type { CartItem } from '../load-cart'
 
 type CartState = {
@@ -32,8 +33,14 @@ export type CartHookResult = {
   itemCount: number
   totalPrice: number
   error: undefined | string
+  hasSubscriptionProduct: boolean
   reload: () => Promise<void>
   addItem: (variantId: number, quantity?: number) => Promise<void>
+  addItemWithSubscription: (
+    variantId: number,
+    subscriptionProductSize: VariantSize | undefined,
+    quantity?: number
+  ) => Promise<void>
 }
 
 export function useCart(useData = false): CartHookResult {
@@ -74,15 +81,21 @@ export function useCart(useData = false): CartHookResult {
     }
   }, [cartRequest.status, cartRequest.value, cartRequest.error])
 
-  const reload = useCallback(() => cartRequest.execute().then(() => {}), [cartRequest.execute])
-  const addItem = useCallback((variantId, quantity = 1) => addItemToCart(variantId, quantity).then(reload), [])
-
-  return useMemo(
-    () => ({
+  return useMemo(() => {
+    const reload = () => cartRequest.execute().then(() => /*mute response*/ undefined)
+    const addItem = (variantId: number, quantity = 1) => addCartItem(variantId, quantity).then(reload)
+    const addItemWithSubscription = (
+      variantId: number,
+      subscriptionProductSize: VariantSize | undefined,
+      quantity = 1
+    ) => addCartItemWithSubscription(variantId, subscriptionProductSize, quantity).then(reload)
+    const hasSubscriptionProduct = !!state.items.some((item) => item.properties.subscription_product_id)
+    return {
       ...state,
+      hasSubscriptionProduct,
       reload,
       addItem,
-    }),
-    [state, reload, addItem]
-  )
+      addItemWithSubscription,
+    }
+  }, [state, cartRequest.execute])
 }

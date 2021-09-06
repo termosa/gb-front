@@ -1,0 +1,22 @@
+export const meta = {
+  type: 'function',
+  name: 'clearCart',
+  description: 'Clears the product cart and returns an empty cart object',
+  tags: ['function', 'cart'],
+  lists: {
+    returns: [
+      {
+        name: 'emptyCart',
+        type: '{ token: string, items: [], itemCount: 0, totalPrice: 0 }',
+        description: 'Normalized empty cart object',
+      },
+    ],
+  },
+}
+
+## Usage
+
+```js
+import clearCart from './clear-cart'
+clearCart().then(r => `Cart is cleared, current cart item count is ${r.itemCount}`)
+```

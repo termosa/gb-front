@@ -1,0 +1,67 @@
+import SizeSelector from '.'
+
+export const meta = {
+  type: 'component',
+  name: 'SizeSelector',
+  description: 'Select ring size',
+  tags: ['component'],
+  preview: (
+    <SizeSelector onSelect={(r) => alert(`Selected: ${r}`)} onClose={() => console.log('Size selector closed')} />
+  ),
+  lists: {
+    attributes: [
+      {
+        name: 'onSelect',
+        required: true,
+        type: '(currentRingSize: 5 | 6 | 7 | 8 | 9 | 10) => void',
+        description: 'A callback function that will be called with selected ring size as an argument',
+      },
+      {
+        name: 'onClose',
+        type: '() => void',
+        required: true,
+        description: 'A callback function that will be called when the selector window will be closed',
+      },
+      {
+        name: 'title',
+        type: 'string',
+        description: 'A title of selector',
+      },
+      {
+        name: 'buttonLabel',
+        type: 'string',
+        description: 'A button label of selector',
+      },
+      {
+        name: 'unavailable',
+        type: 'Array<5 | 6 | 7 | 8 | 9 | 10>',
+        description: 'A list of unavailable ring sizes',
+      },
+      {
+        name: 'errorMessage',
+        type: 'string',
+        description: 'A message that will shown if size is not selected',
+      },
+    ],
+  },
+  scope: { SizeSelector },
+}
+
+## Usage
+
+```jsx
+<SizeSelector onSelect={(r) => alert(`Selected: ${r}`)} onClose={() => console.log('Size selector closed')} />
+```
+
+## Playground
+
+```jsx live
+<SizeSelector
+  onSelect={(r) => alert(`Selected: ${r}`)}
+  onClose={() => console.log('Size selector closed')}
+  unavailable={[5, 7]}
+  errorMessage="Custom error message"
+  buttonLabel="Custom button label"
+  title="Custom label"
+/>
+```

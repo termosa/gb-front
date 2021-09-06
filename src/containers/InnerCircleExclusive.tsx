@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import loadProduct, { Product } from '../lib/load-product'
 import InnerCircleExclusive from '../components/inner-circle-exclusive'
-import addItemToCart from '../lib/add-item-to-cart'
+import addCartItem from '../lib/add-cart-item'
 import navigate from '../lib/navigate'
 
 type InnerCircleExclusiveProps = {
@@ -38,7 +38,7 @@ const InnerCircleExclusiveContainer = ({
       subTitle={subTitle}
       topButtonText={topButtonText}
       onReserve={(variant) => {
-        addItemToCart(variant.variant_id).then(() => navigate('/cart'))
+        addCartItem(variant.variant_id).then(() => navigate('/cart'))
       }}
     />
   ) : null

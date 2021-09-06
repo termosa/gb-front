@@ -62,7 +62,7 @@ export const FjWild = ({ title, textFirstPart, textSecondPart }: JFWildProps): R
     <div className="app-h-section app-h-products-section">
       <div className="app-h-container">
         <SFjWildTitle className="app-h-section__title">
-          {screenSize.greaterThenMedium ? (
+          {screenSize.greaterThanMedium ? (
             <SFjWildSectionTitle isMobile={false}>
               <span>{title}</span>
             </SFjWildSectionTitle>

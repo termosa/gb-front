@@ -1,3 +1,5 @@
+export type VariantSize = 5 | 6 | 7 | 8 | 9 | 10
+
 export type ServerProductVariant = {
   variant_id: number
   product: number // product ID
@@ -26,15 +28,23 @@ export type ProductVariant = {
   variant_id: number
   product_id: number
   title: string
+  size: VariantSize | null
   actual_price: number
   compare_at_price?: number
   available: boolean
+}
+
+const parseVariantSize = (variant: ServerProductVariant): VariantSize | null => {
+  const parsedTitle = parseInt(variant.title)
+  if ([5, 6, 7, 8, 9, 10].includes(parsedTitle)) return parsedTitle as VariantSize
+  return null
 }
 
 export const normalizeProductVariant = (variant: ServerProductVariant): ProductVariant => ({
   variant_id: variant.variant_id,
   product_id: variant.product,
   title: variant.title,
+  size: parseVariantSize(variant),
   actual_price: variant.actual_price,
   ...(variant.compare_at_price !== null && { compare_at_price: variant.compare_at_price }),
   available: variant.available,

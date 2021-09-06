@@ -14,7 +14,7 @@ export type ServerCart = {
   total_discount: number
   total_price: number
   total_weight: number
-  attributes: Record<string, unknown>
+  attributes: Record<string, string>
   cart_level_discount_applications: Array<{
     type: string
     key: string
