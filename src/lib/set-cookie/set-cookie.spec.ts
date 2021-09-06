@@ -1,27 +1,15 @@
 import setCookies from '.'
-import log from '../log'
-jest.mock('../log')
+import deleteCookie from '../../lib/delete-cookie'
+import getCookie from '../../lib/get-cookie'
 
 describe('setCookies()', () => {
   beforeEach(() => {
-    log.mockReset()
+    deleteCookie('promo_variant')
   })
 
-  it('should print greeting to the console', () => {
-    setCookies('World')
-    expect(log).toBeCalledWith('Hello World!')
-  })
-
-  it('should print default greeting to the console', () => {
-    setCookies()
-    expect(log).toBeCalledWith('Hello there!')
-  })
-
-  it('should return greeting', () => {
-    expect(setCookies('World')).toBe('Hello World!')
-  })
-
-  it('should return default greeting', () => {
-    expect(setCookies()).toBe('Hello there!')
+  it('should set cookie', () => {
+    setCookies('promo_variant', 39448392761422, 1)
+    const promoVariant = getCookie('promo_variant')
+    expect(Number(promoVariant)).toBe(39448392761422)
   })
 })

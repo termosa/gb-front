@@ -1,14 +1,11 @@
 export const meta = {
   type: 'function',
   name: 'deleteCookie',
-  description: 'Prints greeting to the console',
+  description: 'Delete cookies',
   tags: ['function'],
   lists: {
     arguments: [
-      { name: 'name', type: 'string', description: 'Name that should be in the greeting' },
-    ],
-    returns: [
-      { name: 'message', type: 'string', description: 'Text printed to the console' },
+      { name: 'name', type: 'string', description: 'Name cookie' },
     ],
   },
 }
@@ -18,5 +15,5 @@ export const meta = {
 ```js
 import deleteCookie from './delete-cookies'
 
-deleteCookie('World')
+deleteCookie('promo_variant')
 ```

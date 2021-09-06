@@ -1,14 +1,13 @@
 export const meta = {
   type: 'function',
   name: 'setCookies',
-  description: 'Prints greeting to the console',
+  description: 'Set cookies',
   tags: ['function'],
   lists: {
     arguments: [
-      { name: 'name', type: 'string', description: 'Name that should be in the greeting' },
-    ],
-    returns: [
-      { name: 'message', type: 'string', description: 'Text printed to the console' },
+      { name: 'name', type: 'string', description: 'Name cookie' },
+      { name: 'value', type: 'string | number', description: 'Value cookie' },
+      { name: 'days', type: 'number', description: 'Days cookie' },
     ],
   },
 }
@@ -18,5 +17,6 @@ export const meta = {
 ```js
 import setCookies from './set-cookies'
 
-setCookies('World')
+// setCookies(name, value, days)
+setCookies('promo_variant', 39448392761422, 1)
 ```

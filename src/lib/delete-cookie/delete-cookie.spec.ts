@@ -1,9 +1,20 @@
+import setCookies from '../../lib/set-cookie'
+import getCookie from '../../lib/get-cookie'
 import deleteCookie from '.'
 
-jest.mock('../log')
+describe('setCookies()', () => {
+  beforeEach(() => {
+    deleteCookie('promo_variant')
+  })
 
-describe('deleteCookie()', () => {
-  it('should return greeting', () => {
-    expect(deleteCookie('World')).toBe('Hello World!')
+  it('should get cookie', () => {
+    setCookies('promo_variant', 39448392761422, 1)
+    const promoVariant = getCookie('promo_variant')
+    expect(Number(promoVariant)).toBe(39448392761422)
+  })
+
+  it('should get cookie', () => {
+    const promoVariant = getCookie('promo_variant')
+    expect(promoVariant).toBeFalsy()
   })
 })
