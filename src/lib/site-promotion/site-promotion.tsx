@@ -3,11 +3,11 @@ import styled from 'styled-components'
 import cn, { Argument as ClassName } from 'classnames'
 import PromotionBanner from '../promotion-banner'
 import useQuery from '../use-query'
-import getCookies from '../get-cookie'
+import getCookie from '../get-cookie'
 
 const isGwpPresent = (): boolean => {
-  const promo = getCookies('c_promo')
-  const exp = getCookies('promo-expiration')
+  const promo = getCookie('c_promo')
+  const exp = getCookie('promo-expiration')
   if (!promo && !exp) {
     return false
   }
@@ -15,7 +15,7 @@ const isGwpPresent = (): boolean => {
 }
 
 const getPromoCookie = (): string => {
-  const promo = getCookies('c_promo')
+  const promo = getCookie('c_promo')
   return promo || ''
 }
 
