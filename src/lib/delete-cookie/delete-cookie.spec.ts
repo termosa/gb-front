@@ -1,14 +1,14 @@
-import setCookies from '../../lib/set-cookie'
+import setCookie from '../../lib/set-cookie'
 import getCookie from '../../lib/get-cookie'
 import deleteCookie from '.'
 
-describe('setCookies()', () => {
+describe('setCookie()', () => {
   beforeEach(() => {
     deleteCookie('promo_variant')
   })
 
   it('should get cookie', () => {
-    setCookies('promo_variant', 39448392761422, 1)
+    setCookie('promo_variant', 39448392761422, 1)
     const promoVariant = getCookie('promo_variant')
     expect(Number(promoVariant)).toBe(39448392761422)
   })

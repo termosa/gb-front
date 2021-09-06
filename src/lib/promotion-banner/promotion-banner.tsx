@@ -3,7 +3,7 @@ import cn, { Argument as ClassName } from 'classnames'
 import useDefer from 'use-defer'
 import styled from 'styled-components'
 import loadPromoDetails from '../load-promo-details'
-import setCookies from '../set-cookie'
+import setCookie from '../set-cookie'
 
 const PromoContainer = styled.div`
   position: relative;
@@ -179,9 +179,9 @@ export function PromotionBanner({
                   key={el.id}
                   onClick={() => {
                     const expires = Date.now() + 3600 * 1000
-                    setCookies('promo-expiration', expires, 1)
-                    setCookies('c_promo', promo, 1)
-                    setCookies('promo_variant', el.id, 1)
+                    setCookie('promo-expiration', expires, 1)
+                    setCookie('c_promo', promo, 1)
+                    setCookie('promo_variant', el.id, 1)
                     useUnavailableRingSize(false)
                     useBuyRingSize(el.title)
                   }}
