@@ -30,7 +30,6 @@ export function SitePromotion({ style, className }: SitePromotionProps): React.R
     background-color: #464a4d;
     position: relative;
     text-align: center;
-    padding: 10px 0;
     color: #000;
     width: 100%;
     vertical-align: top;

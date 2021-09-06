@@ -13,7 +13,7 @@ const PromoContainer = styled.div`
   box-shadow: inset 2px 2px 1px #464a4d, inset -2px -2px 1px #464a4d;
   padding: 15px 25px;
   background-color: #fff;
-  margin: 0 auto;
+  margin: 10px auto;
   font-family: 'Montserrat', sans-serif;
   font-size: 14px;
   line-height: 1.6;
