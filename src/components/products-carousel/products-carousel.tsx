@@ -123,7 +123,11 @@ export const ProductsCarousel = ({
         <SectionText>
           <p>{subTitle}</p>
         </SectionText>
-        <Slider responsive={sliderSettings} scrollbarPresent={!!screenSize.greaterThanMedium}>
+        <Slider
+          responsive={sliderSettings}
+          scrollbarPresent={!!screenSize.greaterThanMedium}
+          arrows={!!screenSize.greaterThanMedium}
+        >
           {products
             .filter((product) => product.image)
             .map((product) => {

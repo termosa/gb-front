@@ -59,7 +59,7 @@ export function InformationOverview({ className, style, title, cards }: Informat
         <STitle>{title}</STitle>
       </STitleContainer>
       <SCardsWrapper>
-        {useScreen.greaterThenLarge ? (
+        {useScreen.greaterThanLarge ? (
           cards.map((card) => <InformationCard key={card.image + card.title} card={card} />)
         ) : (
           <Slider infinite arrows>
