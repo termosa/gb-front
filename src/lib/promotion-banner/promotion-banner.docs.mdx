@@ -1,16 +1,13 @@
 import { useEffect, useState } from 'react'
 import PromotionBanner from '.'
-import SitePromotion from '../site-promotion'
 import window from '../window'
 import useQuery from '../use-query'
-import loadPromoDetails from '../load-promo-details'
 
 export const meta = {
   type: 'component',
   name: 'PromotionBanner',
   description: 'Styled block with custom content',
   tags: ['component'],
-  preview: <PromotionBanner>Component content here</PromotionBanner>,
   lists: {
     attributes: [
       { name: 'promo', type: 'string', description: 'query parameter' },
@@ -18,7 +15,7 @@ export const meta = {
       { name: 'style', type: 'React.CSSProperties', description: 'Inline styles for the main container' },
     ],
   },
-  scope: { PromotionBanner, useQuery, useState, useEffect, loadPromoDetails, SitePromotion},
+  scope: { PromotionBanner, useQuery, useState},
 }
 
 ## Usage
@@ -30,43 +27,16 @@ export const meta = {
 ## Playground
 
 ```jsx live render
-const defaultQueryValue = 'promo=blackcat'
-
-const useSearch = (defaultSearch) => {
-  const [search, setSearch] = useState(() => window.location.search.slice(1))
-
-  const changeSearch = newSearch => {
-    history.pushState({}, '', `${window.location.pathname}${newSearch ? `?${newSearch}` : ''}`)
-    setSearch(newSearch)
-  }
-
-  useEffect(() => {
-    if (defaultQueryValue && !window.location.search.slice(1))
-      changeSearch(defaultQueryValue)
-  }, [])
-
-  return [search, changeSearch]
-}
-
-const PromotionBannerExample = () => {
+const PromotionBannerExampleBase = () => {
+const [code, setCode] = useState('blackcat')
   const { promo } = useQuery()
-  const [search, setSearch] = useSearch()
-
   return (
     <div>
-      <p>
-        query = '?' +
-        <input
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          style={{ borderWidth: '0', borderBottomWidth: '1px', width: '300px' }}
-        />
-      </p>
-
-      <PromotionBanner promo={promo}></PromotionBanner>
+      <input value={code} onChange={e => setCode(e.target.value)} />
+      <PromotionBanner promo={code} />
     </div>
   )
 }
 
-render(<PromotionBannerExample />)
+render(<PromotionBannerExampleBase />)
 ```

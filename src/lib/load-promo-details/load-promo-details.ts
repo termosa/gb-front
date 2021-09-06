@@ -1,4 +1,5 @@
 import http from '../../modules/http'
+import setCookie from '../set-cookie'
 
 export interface PromoExpiration {
   seconds: number
@@ -27,6 +28,12 @@ export interface PromoDetails {
   expiration: PromoExpiration
 }
 
+const saveSession = (promo: string) => {
+  const expires = Date.now() + 3600 * 1000
+  setCookie('promo-expiration', expires, 1)
+  setCookie('c_promo', promo, 1)
+}
+
 export function loadPromoDetails(promo: string): Promise<PromoDetails> {
   return http({
     url: `https://fjrecurly.herokuapp.com/get_promo_product/`,
@@ -41,12 +48,13 @@ export function loadPromoDetails(promo: string): Promise<PromoDetails> {
           query: { product_id: promoProduct.id },
         }).then((r) => r.json()),
         http({
-          url: `https://fjrecurly.herokuapp.com/get_promo/?promo=blackcat`,
-          query: { product_id: promoProduct.id },
+          url: `https://fjrecurly.herokuapp.com/get_promo`,
+          query: { product_id: promoProduct.id, promo },
         }).then((r) => r.json()),
       ])
     )
     .then(([promoProduct, detailsVariants, promoJSON]) => {
+      saveSession(promo)
       return {
         id: Number(promoProduct.id),
         name: promoProduct.name,
