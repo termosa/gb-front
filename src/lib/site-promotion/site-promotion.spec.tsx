@@ -4,7 +4,7 @@ import PromotionSite from '.'
 
 describe('<SitePromotion>', () => {
   it('should render with the correct text', () => {
-    const { getByText } = render(<PromotionSite>Component content</PromotionSite>)
+    const { getByText } = render(<PromotionSite></PromotionSite>)
     const rendered = getByText('Component content')
     expect(rendered).toBeTruthy()
   })
