@@ -26,6 +26,7 @@ const Container = styled.div`
   margin: 0 auto;
 
   @media (min-width: 768px) {
+    overflow: hidden;
     padding: 0 30px;
     max-width: 960px;
   }

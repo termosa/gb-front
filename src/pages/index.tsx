@@ -8,6 +8,10 @@ import ProductCarouselContainer from '../containers/ProductCarousel'
 import InnerCircleExclusiveContainer from '../containers/InnerCircleExclusive'
 import InformationOverview from '../lib/information-overview'
 import ShopByProductsOverview from '../components/shop-by-products-overview'
+import { CategoryShopCardsOverview } from '../lib/category-shop-overview'
+import { PromiseBar } from '../components/promise-bar'
+import { InlineSignupForm } from '../components/inline-signup-form'
+import YotpoGallery from '../lib/yotpo-gallery'
 
 export default function HomePage({ activeCustomer }: HomePageProps): React.ReactElement {
   return (
@@ -48,21 +52,39 @@ export default function HomePage({ activeCustomer }: HomePageProps): React.React
             {
               title: 'Guilt Free Ingredients',
               image: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/shop-by-product-img-1.jpg',
-              description: 'https://www.fragrantjewels.com/pages/inner-circle#how-it-works',
+              description:
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. At eget iaculis eget eget neque, posuere quis placerat arcu. Ipsum est felis varius faucibus praesent convallis.',
             },
             {
               title: 'Win $10,000 Ring',
               image: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/shop-by-product-img-2.jpg',
-              description: 'https://www.fragrantjewels.com/pages/inner-circle#how-it-works',
+              description:
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. At eget iaculis eget eget neque, posuere quis placerat arcu. Ipsum est felis varius faucibus praesent convallis.',
             },
             {
               title: 'Collectible Jewelry',
               image: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/shop-by-product-img-3.jpg',
-              description: 'https://www.fragrantjewels.com/pages/inner-circle#how-it-works',
+              description:
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. At eget iaculis eget eget neque, posuere quis placerat arcu. Ipsum est felis varius faucibus praesent convallis.',
             },
           ]}
         />
-        {/* TODO: Unknown section  https://www.figma.com/file/JhBrp3aN9BblsKkMFKyvnk/FJ_Homepage-New-Font-Size-16px?node-id=857%3A3409 */}
+        <CategoryShopCardsOverview
+          leftCard={{
+            image:
+              'https://cdn.shopify.com/s/files/1/0548/5721/products/ScreenShot2021-02-02at12.52.00PMcopy_grande.jpg?v=1629301723',
+            title: 'August Box',
+            subTitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+            link: 'https://www.fragrantjewels.com/pages/inner-circle#how-it-works',
+          }}
+          rightCard={{
+            image:
+              'https://cdn.shopify.com/s/files/1/0548/5721/products/ScreenShot2021-02-02at12.47.24PMcopy_grande.jpg?v=1629301723',
+            title: 'The Jewelry',
+            subTitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+            link: 'https://www.fragrantjewels.com/pages/inner-circle#how-it-works',
+          }}
+        />
         <ReviewsSection
           quote="Lorem ipsum dolor sit amet, consectetur adipiscing elit. At eget iaculis eget eget neque, posuere quis placerat arcu. Ipsum est felis varius faucibus praesent.Lorem ipsum dolor sit amet, consectetur adipiscing elit."
           author="Samanta H."
@@ -87,6 +109,9 @@ export default function HomePage({ activeCustomer }: HomePageProps): React.React
             },
           ]}
         />
+        <PromiseBar />
+        <InlineSignupForm onSignup={() => Promise.resolve()} />
+        <YotpoGallery galleryId="5dd5da2416fa290bf56b2085" />
       </MainPageLayout>
     </CustomerContext.Provider>
   )

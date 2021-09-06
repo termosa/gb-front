@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef } from 'react'
 import { Product as ProductType } from '../modules/normalize-product'
 import ProductContext from '../modules/product-context'
 import window from '../lib/window'
@@ -7,10 +7,19 @@ import styled from 'styled-components'
 import { ProductInfo } from '../lib/product-info'
 
 const SProductBreadcrumbs = styled.div`
+  font-family: Montserrat, sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
   padding: 16px;
 
   @media (min-width: 768px) {
     padding: 28px 16px 20px;
+  }
+
+  & > span {
+    font-weight: 400;
   }
 `
 
@@ -33,9 +42,7 @@ const SPdpRow = styled.div`
 const Product = (): null | React.ReactElement => {
   const product = useContext<ProductType | undefined>(ProductContext)
 
-  const [activeGalleryItem, setActiveGalleryItem] = useState<number | null>(0)
   const addToCartRef = useRef<HTMLButtonElement>(null)
-  const galleryRef = useRef<HTMLDivElement>(null)
 
   const handlePosition = () => {
     const position = addToCartRef.current?.getBoundingClientRect()
@@ -70,11 +77,7 @@ const Product = (): null | React.ReactElement => {
       <SProductContainer>
         <SPdpRowWrapper>
           <SPdpRow>
-            <VerticalGallery
-              activeGalleryItem={activeGalleryItem}
-              setActiveGalleryItem={setActiveGalleryItem}
-              galleryRef={galleryRef}
-            />
+            <VerticalGallery />
             <ProductInfo addToCartRef={addToCartRef} />
           </SPdpRow>
         </SPdpRowWrapper>

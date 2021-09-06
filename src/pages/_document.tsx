@@ -2,7 +2,6 @@ import Document, { Html, Head, Main, NextScript, DocumentContext, DocumentInitia
 import sprite from 'svg-sprite-loader/runtime/sprite.build'
 import { ServerStyleSheet } from 'styled-components'
 import React from 'react'
-import basePath from 'config/base-path'
 
 interface CustomDocumentProps {
   spriteContent: string
@@ -43,12 +42,6 @@ export default class CustomDocument extends Document<CustomDocumentProps> {
           <div dangerouslySetInnerHTML={{ __html: this.props.spriteContent }} />
           <Main />
           <NextScript />
-          <script type="text/javascript" src={`${basePath}/static/jquery-2.2.4.min.js`} />
-          <script type="text/javascript" src={`${basePath}/static/slick.min.js`} />
-          <script type="text/javascript" async src={`${basePath}/static/header.js`} />
-          <script type="text/javascript" async src={`${basePath}/static/home.js`} />
-          <script type="text/javascript" async src={`${basePath}/static/footer.js`} />
-          <script type="text/javascript" async src={`${basePath}/static/product.js`} />
         </body>
       </Html>
     )

@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
 import InformationCard from '../../components/information-card'
 import { Slider } from '../slider'
+import { useScreenSize } from '../use-screen-size'
 
 export type { InformationCard }
 
@@ -16,6 +17,11 @@ const SWrapper = styled.section`
     margin: 76px auto 0;
     padding: 0 30px;
   }
+`
+
+const STitleContainer = styled.div`
+  max-width: 320px;
+  margin: 0 auto;
 `
 
 const STitle = styled.h2`
@@ -32,118 +38,8 @@ const STitle = styled.h2`
 `
 
 const SCardsWrapper = styled.div`
-  padding: 0 0 38px;
-  display: flex;
-  justify-content: space-between;
-
   * {
     box-sizing: border-box;
-  }
-
-  .slick-slider {
-    opacity: 1;
-    margin: 0 auto;
-    max-width: 100%;
-    position: relative;
-    display: block;
-    box-sizing: border-box;
-    user-select: none;
-    touch-action: pan-y;
-
-    @media (min-width: 500px) {
-      max-width: 414px;
-    }
-
-    @media (min-width: 768px) {
-      max-width: 100%;
-    }
-  }
-
-  .slick-slider .slick-list {
-    transform: translate3d(0, 0, 0);
-  }
-
-  .slick-arrow {
-    top: 30vw;
-
-    @media (min-width: 500px) {
-      top: 150px;
-    }
-  }
-
-  .slick-list {
-    position: relative;
-    display: block;
-    overflow: hidden;
-    margin: 0;
-    padding: 0;
-  }
-
-  .slick-slider .slick-track {
-    padding: 0 0 16px;
-    @media (min-width: 768px) {
-      padding: 0 0 28px;
-    }
-  }
-
-  .slick-track {
-    position: relative;
-    top: 0;
-    left: 0;
-    display: flex;
-    justify-content: center;
-    margin-left: auto;
-    margin-right: auto;
-
-    @media (min-width: 768px) {
-      width: 100% !important;
-    }
-  }
-
-  .slick-track:before,
-  .slick-track:after {
-    display: table;
-    content: '';
-  }
-
-  .slick-track:after {
-    clear: both;
-  }
-
-  .slick-slide {
-    outline: none;
-    position: relative;
-    margin: 0 0 50px;
-    height: 100%;
-    min-height: 1px;
-    @media (min-width: 768px) {
-      margin: 0;
-    }
-  }
-
-  .slick-slider .slick-slide {
-    margin: 0 25px;
-    @media (min-width: 768px) {
-      margin: 0 16px;
-    }
-  }
-
-  .slick-initialized .slick-slide {
-    display: flex;
-    justify-content: center;
-  }
-
-  .slick-slide img {
-    display: block;
-    border-style: none;
-  }
-
-  .slick-prev {
-    left: 9px;
-  }
-
-  .slick-next {
-    right: 9px;
   }
 `
 
@@ -155,29 +51,18 @@ export type InformationOverviewProps = {
 }
 
 export function InformationOverview({ className, style, title, cards }: InformationOverviewProps): React.ReactElement {
-  const [isLargeScreen, setLargeScreen] = useState<boolean>()
-
-  useEffect(() => {
-    window.addEventListener('resize', () => {
-      setLargeScreen(window.innerWidth > 992)
-    })
-    return () => {
-      window.removeEventListener('resize', () => {
-        setLargeScreen(window.innerWidth > 992)
-      })
-    }
-  }, [setLargeScreen])
+  const useScreen = useScreenSize()
 
   return (
     <SWrapper className={cn(className)} style={style}>
-      <div style={{ maxWidth: 300, margin: '0 auto' }}>
+      <STitleContainer>
         <STitle>{title}</STitle>
-      </div>
+      </STitleContainer>
       <SCardsWrapper>
-        {isLargeScreen ? (
+        {useScreen.greaterThenLarge ? (
           cards.map((card) => <InformationCard key={card.image + card.title} card={card} />)
         ) : (
-          <Slider partiallyVisible={false} arrows={true}>
+          <Slider infinite arrows>
             {cards.map((card) => (
               <InformationCard key={card.image + card.title} card={card} />
             ))}

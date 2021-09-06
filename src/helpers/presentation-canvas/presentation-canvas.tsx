@@ -2,7 +2,7 @@ import React from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled, { css } from 'styled-components'
 import { ThemeProvider } from '../theme-provider'
-import './fonts.css'
+import '../../pages/fonts.css'
 
 const name = 'PresentationCanvas'
 

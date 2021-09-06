@@ -5,11 +5,11 @@ import throttle from 'lodash/throttle'
 export type ScreenSize = {
   width: number | null
   height: number | null
-  lessThenSmall: boolean | null
-  greaterThenSmall: boolean | null
-  greaterThenMedium: boolean | null
-  greaterThenLarge: boolean | null
-  greaterThenExtraLarge: boolean | null
+  lessThanSmall: boolean | null
+  greaterThanSmall: boolean | null
+  greaterThanMedium: boolean | null
+  greaterThanLarge: boolean | null
+  greaterThanExtraLarge: boolean | null
 }
 
 type windowSizeType = {
@@ -40,10 +40,10 @@ export function useScreenSize(): ScreenSize {
   return {
     width: windowSize?.width ? windowSize?.width : null,
     height: windowSize?.height ? windowSize?.height : null,
-    lessThenSmall: windowSize?.width ? windowSize?.width < 576 : null,
-    greaterThenSmall: windowSize?.width ? windowSize?.width >= 576 : null,
-    greaterThenMedium: windowSize?.width ? windowSize?.width >= 768 : null,
-    greaterThenLarge: windowSize?.width ? windowSize?.width >= 992 : null,
-    greaterThenExtraLarge: windowSize?.width ? windowSize?.width >= 1200 : null,
+    lessThanSmall: windowSize?.width ? windowSize?.width < 576 : null,
+    greaterThanSmall: windowSize?.width ? windowSize?.width >= 576 : null,
+    greaterThanMedium: windowSize?.width ? windowSize?.width >= 768 : null,
+    greaterThanLarge: windowSize?.width ? windowSize?.width >= 992 : null,
+    greaterThanExtraLarge: windowSize?.width ? windowSize?.width >= 1200 : null,
   }
 }

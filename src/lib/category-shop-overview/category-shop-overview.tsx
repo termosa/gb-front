@@ -14,7 +14,18 @@ export type CategoryShopCardsOverviewProps = {
 
 const SWrapper = styled.section`
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
+  text-align: center;
+  max-width: 1020px;
+  padding: 0;
+  margin: 50px auto 0;
+
+  @media (min-width: 768px) {
+    flex-direction: initial;
+    margin: 76px auto 0;
+    padding: 0 30px;
+  }
 `
 
 export function CategoryShopCardsOverview({

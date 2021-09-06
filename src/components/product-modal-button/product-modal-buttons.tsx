@@ -20,6 +20,11 @@ const SModalButtonsWrapper = styled.div`
 `
 
 const SModalButtonsItem = styled.button`
+  font-family: Montserrat, sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: 0.01em;
   margin: 0 2px;
   display: flex;
   align-items: center;

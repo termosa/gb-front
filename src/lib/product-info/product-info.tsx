@@ -361,8 +361,12 @@ const SPdpFragrance = styled.div`
 `
 
 const SPdpFragranceItem = styled.div`
-  max-width: 62px;
+  font-family: Montserrat, sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
   text-align: center;
+  max-width: 62px;
 
   &:last-child {
     margin-right: 0;

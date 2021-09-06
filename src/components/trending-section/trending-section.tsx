@@ -337,37 +337,6 @@ const ProductCardPrice = styled.div`
   display: inline-block;
 `
 
-/*const ProgressWrapper = styled.div`
-  padding: 12px 0;
-  @media (min-width: 500px) {
-    padding: 32px 8px;
-  }
-`
-
-const Progress = styled.div`
-  display: block;
-  width: 100%;
-  height: 4px;
-  border-radius: 10px;
-  overflow: hidden;
-  background-color: #f5f5f5;
-  background-image: linear-gradient(to right, #bdbdbd, #bdbdbd);
-  background-repeat: no-repeat;
-  background-size: ${(props: { progress: number }) => (props?.progress ? `${props?.progress}% 100%` : '0 100%')};
-  transition: background-size 0.4s ease-in-out;
-`
-
-const ProgressLabel = styled.div`
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  border: 0;
-`*/
-
 const ProductCardWrapper = styled.div`
   padding: 5px;
   cursor: pointer;
