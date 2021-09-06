@@ -3,6 +3,9 @@ import cn, { Argument as ClassName } from 'classnames'
 import useDefer from 'use-defer'
 import styled from 'styled-components'
 import loadPromoDetails from '../load-promo-details'
+import deleteCookie from '../delete-cookie'
+import getCookies from '../get-cookie'
+import setCookies from '../set-cookie'
 
 const PromoContainer = styled.div`
   position: relative;
@@ -132,6 +135,15 @@ const Congratulations = styled.div`
   font-weight: bold;
 `
 
+const isGwpPresent = (): boolean => {
+  const promo = getCookies('c_promo')
+  const exp = getCookies('promo-expiration')
+  if (promo == null && !exp) {
+    return false
+  }
+  return Number(exp) - Date.now() > 0
+}
+
 export type PromotionBannerProps = {
   promo: string
   className?: ClassName
@@ -162,7 +174,7 @@ export function PromotionBanner({ promo, className, style }: PromotionBannerProp
         </PromoClock>
         <PromoDescription>{requirements}</PromoDescription>
       </WrapPromoContainer>
-      {!buyRingSize ? (
+      {!buyRingSize && !isGwpPresent() ? (
         <>
           <PromoMessage>Select a ring size:</PromoMessage>
           <SelectHolderBtn>
@@ -171,6 +183,10 @@ export function PromotionBanner({ promo, className, style }: PromotionBannerProp
                 <ButtonRingSize
                   key={el.id}
                   onClick={() => {
+                    const expires = Date.now() + 3600 * 1000
+                    setCookies('promo-expiration', expires, 1)
+                    setCookies('c_promo', promo, 1)
+                    setCookies('promo_variant', el.id, 1)
                     useUnavailableRingSize(false)
                     useBuyRingSize(el.title)
                   }}
@@ -182,6 +198,7 @@ export function PromotionBanner({ promo, className, style }: PromotionBannerProp
                   key={el.id}
                   className="disabled"
                   onClick={() => {
+                    deleteCookie('test')
                     useUnavailableRingSize(true)
                     useBuyRingSize('')
                   }}
