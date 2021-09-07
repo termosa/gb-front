@@ -36,7 +36,7 @@ const saveSession = (promo: string) => {
 
 export function loadPromoDetails(promo: string): Promise<PromoDetails> {
   return http({
-    url: `https://fjrecurly.herokuapp.com/get_promo_product/`,
+    url: `https://fjrecurly.herokuapp.com/get_promo_product`,
     query: { promo },
   })
     .then((r) => r.json())

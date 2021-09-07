@@ -2,15 +2,47 @@ export const meta = {
   type: 'function',
   name: 'loadPromoDetails',
   description: 'Get data for promo details',
-  tags: ['function'],
+  tags: ['function', 'http'],
   lists: {
+      arguments: [
+        { name: 'promo', required: true, type: 'string', description: 'Name promo' },
+      ],
+      returns: [
+        { name: 'promise', type: 'Promise', description: 'Promise<PromoDetails>' }
+      ],
   },
 }
 
+## Type
+```js
+export interface PromoExpiration {
+  seconds: number
+  days: number
+  hours: number
+  sec: number
+  minutes: number
+}
+
+export interface DetailsVariant {
+  available: boolean
+  id: number
+  title: string
+}
+
+export interface PromoDetails {
+  id: number
+  name: string
+  requirements: string
+  src: string
+  title: string
+  detailVariants: DetailsVariant[]
+  expiration: PromoExpiration
+}
+```
 ## Usage
 
 ```js
 import loadPromoDetails from './load-promo-details'
 
-loadPromoDetails('World')
+loadPromoDetails('blackcat').then((res:PromoDetails) => res)
 ```
