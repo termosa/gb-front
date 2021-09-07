@@ -2,7 +2,7 @@ export type ServerCartItem = {
   id: number
   quantity: number
   variant_id: number
-  properties: Record<string, unknown>
+  properties: Record<string, unknown> | null
   key: string
   title: string
   price: number
@@ -83,6 +83,6 @@ export function normalizeCartItem(item: ServerCartItem): CartItem {
     variantId: item.variant_id,
     quantity: item.quantity,
     title: item.title,
-    properties: item.properties,
+    properties: item.properties || {},
   }
 }
