@@ -1,6 +1,10 @@
+import window from '../window'
+
 export function getCookie(cname: string): string | undefined {
+  if (!window) return
+
   const name = `${cname}=`
-  const ca = document.cookie.split('; ')
+  const ca = window.document.cookie.split('; ')
   let cvalue = undefined
 
   ca.forEach((c) => {
