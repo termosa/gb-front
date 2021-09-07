@@ -1,0 +1,28 @@
+export const meta = {
+  type: 'function',
+  name: 'getCookie',
+  description: 'Get cookies',
+  tags: ['function'],
+  lists: {
+    arguments: [
+      { name: 'name', type: 'string', description: 'Name cookie' },
+    ],
+    returns: [
+      { name: 'value', type: 'string', description: 'Value cookie' },
+    ],
+  },
+}
+
+## Usage
+
+```js
+getCookie(name)
+```
+
+## Example
+
+```js
+import getCookie from './get-cookie'
+
+getCookie('promo_variant')
+```

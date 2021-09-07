@@ -1,0 +1,42 @@
+import { useEffect, useState } from 'react'
+import PromotionBanner from '.'
+import window from '../window'
+import useQuery from '../use-query'
+
+export const meta = {
+  type: 'component',
+  name: 'PromotionBanner',
+  description: 'Styled block with custom content',
+  tags: ['component'],
+  lists: {
+    attributes: [
+      { name: 'promo', type: 'string', description: 'query parameter' },
+      { name: 'className', type: 'classnames.Argument', description: 'One or multiple class names that will be added to the main container' },
+      { name: 'style', type: 'React.CSSProperties', description: 'Inline styles for the main container' },
+    ],
+  },
+  scope: { PromotionBanner, useQuery, useState},
+}
+
+## Usage
+
+```jsx
+<PromotionBanner promo={'blackcat'}/>
+```
+
+## Playground
+
+```jsx live render
+const PromotionBannerExampleBase = () => {
+const [code, setCode] = useState('blackcat')
+  const { promo } = useQuery()
+  return (
+    <div>
+      <input value={code} onChange={e => setCode(e.target.value)} />
+      <PromotionBanner promo={code} />
+    </div>
+  )
+}
+
+render(<PromotionBannerExampleBase />)
+```

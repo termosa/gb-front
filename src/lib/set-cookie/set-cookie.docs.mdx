@@ -1,0 +1,26 @@
+export const meta = {
+  type: 'function',
+  name: 'setCookie',
+  description: 'Set cookie',
+  tags: ['function'],
+  lists: {
+    arguments: [
+      { name: 'name', type: 'string', description: 'Name cookie' },
+      { name: 'value', type: 'string | number', description: 'Value cookie' },
+      { name: 'hours', type: 'number', description: 'Expired hours cookie' },
+    ],
+  },
+}
+
+## Usage
+
+```js
+setCookie(name, value, days)
+```
+
+## Example
+
+```js
+import setCookie from './set-cookie'
+setCookie('promo_variant', 39448392761422, 1)
+```

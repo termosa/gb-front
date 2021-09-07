@@ -5,6 +5,7 @@ import useDefer from 'use-defer'
 import SiteFooter from '../site-footer'
 import SiteHeader from '../site-header'
 import FloatingCta from '../../components/floating-cta'
+import SitePromotion from '../site-promotion'
 import loadProductsChunk from '../../modules/load-products-chunk'
 import loadCustomer from '../../modules/load-customer'
 
@@ -16,7 +17,7 @@ const MainPageLayoutWrapper = styled.div`
   padding-top: 155px;
 
   @media (min-width: 768px) {
-    padding-top: 158px;
+    padding-top: 156px;
   }
 
   @media (min-width: 1200px) {
@@ -38,7 +39,7 @@ export type MainPageLayoutProps = {
   style?: React.CSSProperties
 }
 
-export function MainPageLayout({ children, className, style }: MainPageLayoutProps): React.ReactElement {
+export function MainPageLayout({ children, className, style }: MainPageLayoutProps): React.ReactElement | null {
   const searchRequest = useDefer(loadProductsChunk)
   const { value: customer } = useDefer(() => loadCustomer().catch(() => null), [], [])
 
@@ -50,6 +51,9 @@ export function MainPageLayout({ children, className, style }: MainPageLayoutPro
         searchedProducts={searchRequest.value}
         userEmail={customer?.email}
       />
+      <div className="app-promotion-wrapper">
+        <SitePromotion />
+      </div>
       <div className="app-re-wrapper" id="app-wrapper">
         <div className="app-re-content" id="app-content">
           <main className="app-h-main">{children}</main>

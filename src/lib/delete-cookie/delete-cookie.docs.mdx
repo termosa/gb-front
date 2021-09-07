@@ -1,0 +1,25 @@
+export const meta = {
+  type: 'function',
+  name: 'deleteCookie',
+  description: 'Delete cookies',
+  tags: ['function'],
+  lists: {
+    arguments: [
+      { name: 'name', type: 'string', description: 'Name cookie' },
+    ],
+  },
+}
+
+## Usage
+
+```js
+deleteCookie(name)
+```
+
+## Example
+
+```js
+import deleteCookie from './delete-cookie'
+
+deleteCookie('promo_variant')
+```
