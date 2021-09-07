@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import cn, { Argument as ClassName } from 'classnames'
 import PromotionBanner from '../promotion-banner'
@@ -11,7 +11,7 @@ const isGwpPresent = (): boolean => {
   if (!promo && !exp) {
     return false
   }
-  return Number(exp) - Date.now() > 0
+  return true
 }
 
 const getPromoCookie = (): string => {
@@ -24,24 +24,33 @@ export type SitePromotionProps = {
   style?: React.CSSProperties
 }
 
-export function SitePromotion({ style, className }: SitePromotionProps): React.ReactElement {
+export function SitePromotion({ style, className }: SitePromotionProps): React.ReactElement | null {
   const { promo } = useQuery()
-  const PromotionContainer = styled.div`
-    background-color: #464a4d;
-    position: relative;
-    text-align: center;
-    color: #000;
-    width: 100%;
-    vertical-align: top;
-  `
-
+  const [isError, setIsError] = useState(false)
+  if (isError) {
+    return null
+  }
   return (
     <>
       {promo || isGwpPresent() ? (
         <PromotionContainer className={cn(className)} style={style}>
-          <PromotionBanner promo={promo || getPromoCookie()} isShow={isGwpPresent()}></PromotionBanner>
+          <PromotionBanner
+            promo={promo || getPromoCookie()}
+            selectedVariant={isGwpPresent()}
+            errorPromoDetails={() => setIsError(true)}
+          />
         </PromotionContainer>
       ) : null}
     </>
   )
 }
+
+const PromotionContainer = styled.div`
+  background-color: #464a4d;
+  position: relative;
+  text-align: center;
+  padding: 10px 0px;
+  color: #000;
+  width: 100%;
+  vertical-align: top;
+`

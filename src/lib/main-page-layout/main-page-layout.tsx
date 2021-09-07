@@ -51,7 +51,9 @@ export function MainPageLayout({ children, className, style }: MainPageLayoutPro
         searchedProducts={searchRequest.value}
         userEmail={customer?.email}
       />
-      <SitePromotion />
+      <div className="app-promotion-wrapper">
+        <SitePromotion />
+      </div>
       <div className="app-re-wrapper" id="app-wrapper">
         <div className="app-re-content" id="app-content">
           <main className="app-h-main">{children}</main>

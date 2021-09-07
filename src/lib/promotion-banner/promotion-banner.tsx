@@ -13,7 +13,7 @@ const PromoContainer = styled.div`
   box-shadow: inset 2px 2px 1px #464a4d, inset -2px -2px 1px #464a4d;
   padding: 15px 25px;
   background-color: #fff;
-  margin: 10px auto;
+  margin: 0px auto;
   font-family: 'Montserrat', sans-serif;
   font-size: 14px;
   line-height: 1.6;
@@ -132,24 +132,28 @@ const ButtonRingSize = styled.button`
 const Congratulations = styled.div`
   font-weight: bold;
 `
-
 export type PromotionBannerProps = {
   promo: string
-  isShow?: boolean
+  selectedVariant?: boolean
   className?: ClassName
   style?: React.CSSProperties
+  errorPromoDetails?: () => void
 }
 
 export function PromotionBanner({
   promo,
-  isShow = false,
+  selectedVariant,
   className,
   style,
+  errorPromoDetails,
 }: PromotionBannerProps): React.ReactElement | null {
   if (!promo) {
     return null
   }
   const promoDetails = useDefer(() => (promo ? loadPromoDetails(promo) : Promise.resolve(undefined)), [promo], [])
+  if (promoDetails.status === 'error') {
+    errorPromoDetails && errorPromoDetails()
+  }
   const [unavailableRingSize, useUnavailableRingSize] = useState(false)
   const [buyRingSize, useBuyRingSize] = useState('')
   if (!promoDetails.value) {
@@ -157,7 +161,6 @@ export function PromotionBanner({
   }
   const { detailVariants } = promoDetails.value
   const { src, title, requirements } = promoDetails.value
-
   return (
     <PromoContainer className={cn(className)} style={style}>
       <WrapPromoContainer>
@@ -169,7 +172,7 @@ export function PromotionBanner({
         </PromoClock>
         <PromoDescription>{requirements}</PromoDescription>
       </WrapPromoContainer>
-      {!buyRingSize && !isShow ? (
+      {!buyRingSize && !selectedVariant ? (
         <>
           <PromoMessage>Select a ring size:</PromoMessage>
           <SelectHolderBtn>
