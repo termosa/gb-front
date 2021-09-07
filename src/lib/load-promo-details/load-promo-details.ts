@@ -1,11 +1,11 @@
-import http from '../../modules/http'
 import setCookie from '../set-cookie'
+import api from '../../modules/api'
 
 export interface PromoExpiration {
   seconds: number
   days: number
   hours: number
-  total_: number
+  total_sec: number
   sec: number
   minutes: number
 }
@@ -16,7 +16,7 @@ export interface DetailsVariant {
   title: string
 }
 
-export interface PromoDetails {
+export interface Promo {
   id: number
   name: string
   promo?: string
@@ -24,7 +24,14 @@ export interface PromoDetails {
   src: string
   title: string
   type?: string
-  detailVariants: DetailsVariant[]
+}
+
+export interface PromoDetails extends Promo {
+  detailsVariant: Array<DetailsVariant>
+  expiration: PromoExpiration
+}
+
+export interface PromoExpiration {
   expiration: PromoExpiration
 }
 
@@ -35,25 +42,27 @@ const saveSession = (promo: string) => {
 }
 
 export function loadPromoDetails(promo: string): Promise<PromoDetails> {
-  return http({
-    url: `https://fjrecurly.herokuapp.com/get_promo_product`,
+  return api<Promo>({
+    base: `https://fjrecurly.herokuapp.com/get_promo_product`,
+    path: '',
     query: { promo },
   })
-    .then((r) => r.json())
     .then((promoProduct) =>
       Promise.all([
         promoProduct,
-        http({
-          url: `https://fjrecurly.herokuapp.com/shopify_endpoint/get_variants`,
+        api<Array<DetailsVariant>>({
+          base: `https://fjrecurly.herokuapp.com/shopify_endpoint/get_variants`,
+          path: '',
           query: { product_id: promoProduct.id },
-        }).then((r) => r.json()),
-        http({
-          url: `https://fjrecurly.herokuapp.com/get_promo`,
+        }),
+        api<PromoExpiration>({
+          base: `https://fjrecurly.herokuapp.com/get_promo`,
+          path: '',
           query: { product_id: promoProduct.id, promo },
-        }).then((r) => r.json()),
+        }),
       ])
     )
-    .then(([promoProduct, detailsVariants, promoJSON]) => {
+    .then(([promoProduct, detailsVariant, promoJSON]) => {
       saveSession(promo)
       return {
         id: Number(promoProduct.id),
@@ -61,7 +70,7 @@ export function loadPromoDetails(promo: string): Promise<PromoDetails> {
         src: promoProduct.src,
         title: promoProduct.title,
         requirements: promoProduct.requirements,
-        detailVariants: detailsVariants,
+        detailsVariant,
         expiration: promoJSON.expiration,
       }
     })

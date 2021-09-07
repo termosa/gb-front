@@ -159,7 +159,7 @@ export function PromotionBanner({
   if (!promoDetails.value) {
     return null
   }
-  const { detailVariants } = promoDetails.value
+  const { detailsVariant } = promoDetails.value
   const { src, title, requirements } = promoDetails.value
   return (
     <PromoContainer className={cn(className)} style={style}>
@@ -176,7 +176,7 @@ export function PromotionBanner({
         <>
           <PromoMessage>Select a ring size:</PromoMessage>
           <SelectHolderBtn>
-            {detailVariants.map((el) => {
+            {detailsVariant.map((el) => {
               return el.available ? (
                 <ButtonRingSize
                   key={el.id}
