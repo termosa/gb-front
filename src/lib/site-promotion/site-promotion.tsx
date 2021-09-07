@@ -36,7 +36,7 @@ export function SitePromotion({ style, className }: SitePromotionProps): React.R
         <PromotionContainer className={cn(className)} style={style}>
           <PromotionBanner
             promo={promo || getPromoCookie()}
-            selectedVariant={isGwpPresent()}
+            unVisibleBanner={isGwpPresent()}
             errorPromoDetails={() => setIsError(true)}
           />
         </PromotionContainer>

@@ -134,7 +134,7 @@ const Congratulations = styled.div`
 `
 export type PromotionBannerProps = {
   promo: string
-  selectedVariant?: boolean
+  unVisibleBanner?: boolean
   className?: ClassName
   style?: React.CSSProperties
   errorPromoDetails?: () => void
@@ -142,7 +142,7 @@ export type PromotionBannerProps = {
 
 export function PromotionBanner({
   promo,
-  selectedVariant,
+  unVisibleBanner,
   className,
   style,
   errorPromoDetails,
@@ -172,7 +172,7 @@ export function PromotionBanner({
         </PromoClock>
         <PromoDescription>{requirements}</PromoDescription>
       </WrapPromoContainer>
-      {!buyRingSize && !selectedVariant ? (
+      {!buyRingSize && !unVisibleBanner ? (
         <>
           <PromoMessage>Select a ring size:</PromoMessage>
           <SelectHolderBtn>
