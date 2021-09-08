@@ -129,12 +129,17 @@ const ButtonRingSize = styled.button`
   }
 `
 
+const SizeOutOfStock = styled.div`
+  font-size: 18px;
+  font-weight: 600;
+`
+
 const Congratulations = styled.div`
   font-weight: bold;
 `
 export type PromotionBannerProps = {
   promo: string
-  unVisibleBanner?: boolean
+  visibleBanner?: boolean
   className?: ClassName
   style?: React.CSSProperties
   errorPromoDetails?: () => void
@@ -142,7 +147,7 @@ export type PromotionBannerProps = {
 
 export function PromotionBanner({
   promo,
-  unVisibleBanner,
+  visibleBanner,
   className,
   style,
   errorPromoDetails,
@@ -159,8 +164,7 @@ export function PromotionBanner({
   if (!promoDetails.value) {
     return null
   }
-  const { detailsVariant } = promoDetails.value
-  const { src, title, requirements } = promoDetails.value
+  const { detailsVariant, src, title, requirements, sizeOutOfStock } = promoDetails.value
   return (
     <PromoContainer className={cn(className)} style={style}>
       <WrapPromoContainer>
@@ -172,7 +176,7 @@ export function PromotionBanner({
         </PromoClock>
         <PromoDescription>{requirements}</PromoDescription>
       </WrapPromoContainer>
-      {!buyRingSize && !unVisibleBanner ? (
+      {!buyRingSize && visibleBanner && sizeOutOfStock ? (
         <>
           <PromoMessage>Select a ring size:</PromoMessage>
           <SelectHolderBtn>
@@ -215,6 +219,7 @@ export function PromotionBanner({
           (Ring Size: {buyRingSize})
         </Congratulations>
       ) : null}
+      {!sizeOutOfStock && visibleBanner ? <SizeOutOfStock>Sorry, all sizes are out of stock!</SizeOutOfStock> : null}
     </PromoContainer>
   )
 }

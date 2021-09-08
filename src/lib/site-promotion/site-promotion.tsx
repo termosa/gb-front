@@ -8,7 +8,8 @@ import getCookie from '../get-cookie'
 const isGwpPresent = (): boolean => {
   const promo = getCookie('c_promo')
   const exp = getCookie('promo-expiration')
-  if (!promo && !exp) {
+  const variant = getCookie('promo_variant')
+  if (promo && exp && variant) {
     return false
   }
   return true
@@ -36,7 +37,7 @@ export function SitePromotion({ style, className }: SitePromotionProps): React.R
         <PromotionContainer className={cn(className)} style={style}>
           <PromotionBanner
             promo={promo || getPromoCookie()}
-            unVisibleBanner={isGwpPresent()}
+            visibleBanner={isGwpPresent()}
             errorPromoDetails={() => setIsError(true)}
           />
         </PromotionContainer>

@@ -26,13 +26,14 @@ export interface Promo {
   type?: string
 }
 
-export interface PromoDetails extends Promo {
-  detailsVariant: Array<DetailsVariant>
+export interface PromoExpiration {
   expiration: PromoExpiration
 }
 
-export interface PromoExpiration {
+export interface PromoDetails extends Promo {
+  detailsVariant: Array<DetailsVariant>
   expiration: PromoExpiration
+  sizeOutOfStock: boolean
 }
 
 const saveSession = (promo: string) => {
@@ -71,6 +72,7 @@ export function loadPromoDetails(promo: string): Promise<PromoDetails> {
         title: promoProduct.title,
         requirements: promoProduct.requirements,
         detailsVariant,
+        sizeOutOfStock: detailsVariant.some((variant) => variant.available),
         expiration: promoJSON.expiration,
       }
     })
