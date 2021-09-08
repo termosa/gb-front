@@ -152,35 +152,28 @@ export function PromotionBanner({
   style,
   errorPromoDetails,
 }: PromotionBannerProps): React.ReactElement | null {
-  if (!promo) {
-    return null
-  }
   const promoDetails = useDefer(() => (promo ? loadPromoDetails(promo) : Promise.resolve(undefined)), [promo], [])
   if (promoDetails.status === 'error') {
     errorPromoDetails && errorPromoDetails()
   }
   const [unavailableRingSize, useUnavailableRingSize] = useState(false)
   const [buyRingSize, useBuyRingSize] = useState('')
-  if (!promoDetails.value) {
-    return null
-  }
-  const { detailsVariant, src, title, requirements, sizeOutOfStock } = promoDetails.value
   return (
     <PromoContainer className={cn(className)} style={style}>
       <WrapPromoContainer>
         <PromoImageBox>
-          <img src={src} alt="" />
+          <img src={promoDetails?.value?.src} alt="" />
         </PromoImageBox>
         <PromoClock>
-          <h3> {title} </h3>
+          <h3> {promoDetails?.value?.title} </h3>
         </PromoClock>
-        <PromoDescription>{requirements}</PromoDescription>
+        <PromoDescription>{promoDetails?.value?.requirements}</PromoDescription>
       </WrapPromoContainer>
-      {!buyRingSize && visibleBanner && sizeOutOfStock ? (
+      {!buyRingSize && visibleBanner && promoDetails?.value?.sizeOutOfStock ? (
         <>
           <PromoMessage>Select a ring size:</PromoMessage>
           <SelectHolderBtn>
-            {detailsVariant.map((el) => {
+            {promoDetails?.value.detailsVariant.map((el) => {
               return el.available ? (
                 <ButtonRingSize
                   key={el.id}
@@ -219,7 +212,9 @@ export function PromotionBanner({
           (Ring Size: {buyRingSize})
         </Congratulations>
       ) : null}
-      {!sizeOutOfStock && visibleBanner ? <SizeOutOfStock>Sorry, all sizes are out of stock!</SizeOutOfStock> : null}
+      {!promoDetails?.value?.sizeOutOfStock && visibleBanner ? (
+        <SizeOutOfStock>Sorry, all sizes are out of stock!</SizeOutOfStock>
+      ) : null}
     </PromoContainer>
   )
 }

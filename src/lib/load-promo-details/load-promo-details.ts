@@ -72,7 +72,7 @@ export function loadPromoDetails(promo: string): Promise<PromoDetails> {
         title: promoProduct.title,
         requirements: promoProduct.requirements,
         detailsVariant,
-        sizeOutOfStock: detailsVariant.some((variant) => variant.available),
+        sizeOutOfStock: detailsVariant && detailsVariant.some((variant) => variant.available),
         expiration: promoJSON.expiration,
       }
     })
