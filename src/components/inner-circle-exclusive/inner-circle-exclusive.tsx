@@ -15,6 +15,7 @@ export type InnerCircleExclusiveProps = {
   topButtonText: string
   buttonLink: string
   product: Product
+  membershipProductVariants: Array<ProductVariant>
   slideImages: string[]
   onReserve: (variant: ProductVariant) => void
 }
@@ -351,6 +352,7 @@ export function InnerCircleExclusive({
   buttonLink,
   slideImages,
   onReserve,
+  membershipProductVariants,
 }: InnerCircleExclusiveProps): React.ReactElement | null {
   const [selectedVariant, setVariant] = useState<ProductVariant | undefined>()
   const [error, setError] = useState<boolean>(false)
@@ -456,10 +458,14 @@ export function InnerCircleExclusive({
                     backColor={'#000'}
                     style={{ width: '100%', marginBottom: 18 }}
                     onClick={() => {
-                      selectedVariant && onReserve(selectedVariant)
-                      if (!selectedVariant) {
+                      const membershipVariant =
+                        selectedVariant &&
+                        membershipProductVariants.find((variant) => variant.size === selectedVariant.size)
+                      if (!membershipVariant) {
                         setError(true)
+                        return
                       }
+                      onReserve(membershipVariant)
                     }}
                   >
                     RESERVE NOW
