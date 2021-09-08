@@ -360,16 +360,16 @@ export function InnerCircleExclusive({
   const productTitle = product.title.split('-')[0].split(':')[0]
   const actualPrice = (selectedVariant || product.variants[0]).actual_price
   const comparePrice = (selectedVariant || product.variants[0]).compare_at_price
-  const splitedTitle = title.split(' ')
+  const titleParts = title.split(' ')
 
   return (
     <SWrapper className={cn('InnerCircleExclusive', className)}>
       <STitleWrapper>
         <STitle>
           <span>
-            <STitleUnderline>{splitedTitle.slice(0, 2).join(' ')}</STitleUnderline>
+            <STitleUnderline>{titleParts.slice(0, 2).join(' ')}</STitleUnderline>
           </span>
-          <span>{` ${splitedTitle.slice(2).join(' ')}`}</span>
+          <span>{` ${titleParts.slice(2).join(' ')}`}</span>
         </STitle>
         <SSubTitle>{subTitle}</SSubTitle>
         <SButtonWrapper>

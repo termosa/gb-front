@@ -16,6 +16,7 @@ import ProductContext from '../../modules/product-context'
 import window from '../window/window'
 import useCart, { Status } from '../use-cart'
 import addCartItemWithSubscription from '../add-cart-item-with-subscription'
+import SizeSelectorModal from '../size-selector-modal'
 
 const SProductInfo = styled.div`
   width: 100%;
@@ -449,6 +450,7 @@ export function ProductInfo({ className, style, addToCartRef }: ProductInfoProps
   const cart = useCart(true)
   const isDiscountAvailable = !cart.hasSubscriptionProduct && cart.status === Status.SUCCESS
   const product = useContext<ProductType | undefined>(ProductContext)
+  const isOneVariantProduct = product?.variants.length === 1 && product?.variants[0].title === 'One Size'
 
   const [infoDistanceFromTop, setInfoDistanceFromTop] = useState<number>(183)
   const [yPosition, setYPosition] = useState<number>(0)
@@ -460,6 +462,7 @@ export function ProductInfo({ className, style, addToCartRef }: ProductInfoProps
   const [productDescription, setProductDescription] = useState<Array<ProductDescription>>()
   const [isDiscountApplied, setDiscountApplied] = useState<boolean>(true)
   const [isSubscriptionHintOpened, setSubscriptionHintOpened] = useState<boolean>(false)
+  const [isRingSizeModalOpened, setIsRingSizeModalOpened] = useState(false)
 
   const productHeadingRef = useRef<HTMLDivElement>(null)
   const productInfoRef = useRef<HTMLDivElement>(null)
@@ -468,8 +471,13 @@ export function ProductInfo({ className, style, addToCartRef }: ProductInfoProps
     return null
   }
 
-  const addToCartHandler = () => {
+  const addToCartHandler = (selectedVariant: ProductVariant | null) => {
     if (!selectedVariant) {
+      if (isOneVariantProduct && isDiscountApplied) {
+        setIsRingSizeModalOpened(true)
+        return
+      }
+
       executeScroll()
       localStorage.setItem('selectRingError', JSON.stringify(true))
       setSelectRingError(true)
@@ -559,6 +567,13 @@ export function ProductInfo({ className, style, addToCartRef }: ProductInfoProps
 
   return (
     <SProductInfo className={cn(className, 'ProductInfo')} style={style}>
+      {isRingSizeModalOpened && (
+        <SizeSelectorModal
+          onSelect={(selectedSize) => addToCartHandler({ ...product.variants[0], size: selectedSize })}
+          onClose={() => setIsRingSizeModalOpened(false)}
+          title="Select ring size for subscription"
+        />
+      )}
       <SPdpProductInfo top={infoDistanceFromTop + 'px'} ref={productInfoRef}>
         <SPdpProductInfoIcTitle ref={productHeadingRef}>INNER CIRCLE EXCLUSIVE</SPdpProductInfoIcTitle>
         <SPdpProductInfoTitle>{product.title}</SPdpProductInfoTitle>
@@ -586,30 +601,32 @@ export function ProductInfo({ className, style, addToCartRef }: ProductInfoProps
           )}
           {checkForLabel()}
         </SPdpProductDetails>
-        <SPdpPiSelectorWrapper>
-          <SPdpPiRsText>Select a ring size to reserve this box:</SPdpPiRsText>
-          <SPdpPiSelector>
-            {product.variants.slice(0).map((variant: ProductVariant) => (
-              <SPdpPiSelectorBtnHolder key={variant.title}>
-                <SPdpPiSelectorBtn
-                  isActive={variant.variant_id === selectedVariant?.variant_id}
-                  type="button"
-                  value={Number(variant.title)}
-                  onClick={() => {
-                    setSelectRingError(false)
-                    localStorage.setItem('selectRingError', JSON.stringify(false))
-                    localStorage.setItem('currentRingSize', JSON.stringify(variant.variant_id))
-                    setSelectedVariant(variant)
-                    setActualPrice(variant.actual_price)
-                  }}
-                >
-                  {variant.title}
-                </SPdpPiSelectorBtn>
-              </SPdpPiSelectorBtnHolder>
-            ))}
-          </SPdpPiSelector>
-          {isSelectRingError ? <SPdpPiRsSelector>Please select ring size</SPdpPiRsSelector> : null}
-        </SPdpPiSelectorWrapper>
+        {!isOneVariantProduct && (
+          <SPdpPiSelectorWrapper>
+            <SPdpPiRsText>Select a ring size to reserve this box:</SPdpPiRsText>
+            <SPdpPiSelector>
+              {product.variants.slice(0).map((variant: ProductVariant) => (
+                <SPdpPiSelectorBtnHolder key={variant.title}>
+                  <SPdpPiSelectorBtn
+                    isActive={variant.variant_id === selectedVariant?.variant_id}
+                    type="button"
+                    value={Number(variant.title)}
+                    onClick={() => {
+                      setSelectRingError(false)
+                      localStorage.setItem('selectRingError', JSON.stringify(false))
+                      localStorage.setItem('currentRingSize', JSON.stringify(variant.variant_id))
+                      setSelectedVariant(variant)
+                      setActualPrice(variant.actual_price)
+                    }}
+                  >
+                    {variant.title}
+                  </SPdpPiSelectorBtn>
+                </SPdpPiSelectorBtnHolder>
+              ))}
+            </SPdpPiSelector>
+            {isSelectRingError ? <SPdpPiRsSelector>Please select ring size</SPdpPiRsSelector> : null}
+          </SPdpPiSelectorWrapper>
+        )}
         <SPdpChooserContainer>
           {isDiscountAvailable && (
             <SPdpChooser>
@@ -668,7 +685,13 @@ export function ProductInfo({ className, style, addToCartRef }: ProductInfoProps
           )}
         </SPdpChooserContainer>
         <SPdpRingMessage>Please select your ring size</SPdpRingMessage>
-        <SPdpBtn type="button" ref={addToCartRef} onClick={addToCartHandler}>
+        <SPdpBtn
+          type="button"
+          ref={addToCartRef}
+          onClick={() =>
+            addToCartHandler(isOneVariantProduct && !isDiscountApplied ? product.variants[0] : selectedVariant)
+          }
+        >
           Add to Cart
         </SPdpBtn>
         {isDiscountApplied && (

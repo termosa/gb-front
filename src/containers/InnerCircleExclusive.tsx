@@ -1,5 +1,5 @@
 import React from 'react'
-import useDefer, { Status } from 'use-defer'
+import useDefer from 'use-defer'
 import loadProduct from '../lib/load-product'
 import InnerCircleExclusive from '../components/inner-circle-exclusive'
 import addCartItem from '../lib/add-cart-item'
