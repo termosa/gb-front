@@ -30,7 +30,12 @@ export function SigninSignup({ className, userName }: SearchFieldProps): React.R
   return (
     <SWrapper className={cn('SigninSignup', className)}>
       {userName ? (
-        <div>Hi, {userName}</div>
+        <>
+          <div>Hi, {userName}</div>
+          <div>
+            <SLabel href="/">Log out</SLabel>
+          </div>
+        </>
       ) : (
         <span>
           <SLabel href="/account/login?return_url=/">Sign in</SLabel>
