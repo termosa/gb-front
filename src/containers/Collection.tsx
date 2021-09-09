@@ -6,6 +6,7 @@ import SiteSection from '../components/site-section'
 import parseFiltersFromProducts from '../modules/parse-filters-from-products'
 import filterCollectionProducts from '../modules/filter-collection-products'
 import CollectionContext from '../modules/collection-context'
+import navigate from '../lib/navigate'
 
 const SFiltersSection = styled(SiteSection)`
   margin-bottom: 2em;
@@ -41,7 +42,7 @@ const Collection = (): null | React.ReactElement => {
       <SFiltersSection>
         <CollectionFilters onChangeFilter={setFilter} onChangeSorting={setSorting} filters={availableFilters} />
       </SFiltersSection>
-      <ProductsList products={filteredProducts} />
+      <ProductsList products={filteredProducts} onSelectProduct={(handle) => navigate(`/products/${handle}`)} />
     </div>
   )
 }
