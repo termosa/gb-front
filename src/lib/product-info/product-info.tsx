@@ -611,24 +611,27 @@ export function ProductInfo({ className, style, addToCartRef }: ProductInfoProps
                 <React.Fragment>
                   <SPdpPiRsText>Select a ring size to reserve this box:</SPdpPiRsText>
                   <SPdpPiSelector>
-                    {product.variants.slice(0).map((variant: ProductVariant) => (
-                      <SPdpPiSelectorBtnHolder key={variant.title}>
-                        <SPdpPiSelectorBtn
-                          isActive={variant.variant_id === selectedVariant?.variant_id}
-                          type="button"
-                          value={Number(variant.title)}
-                          onClick={() => {
-                            setSelectRingError(false)
-                            localStorage.setItem('selectRingError', JSON.stringify(false))
-                            localStorage.setItem('currentRingSize', JSON.stringify(variant.variant_id))
-                            setSelectedVariant(variant)
-                            setActualPrice(variant.actual_price)
-                          }}
-                        >
-                          {variant.title}
-                        </SPdpPiSelectorBtn>
-                      </SPdpPiSelectorBtnHolder>
-                    ))}
+                    {product.variants.map(
+                      (variant: ProductVariant) =>
+                        variant.size && (
+                          <SPdpPiSelectorBtnHolder key={variant.size}>
+                            <SPdpPiSelectorBtn
+                              isActive={variant.variant_id === selectedVariant?.variant_id}
+                              type="button"
+                              value={variant.size}
+                              onClick={() => {
+                                setSelectRingError(false)
+                                localStorage.setItem('selectRingError', JSON.stringify(false))
+                                localStorage.setItem('currentRingSize', JSON.stringify(variant.variant_id))
+                                setSelectedVariant(variant)
+                                setActualPrice(variant.actual_price)
+                              }}
+                            >
+                              {variant.title}
+                            </SPdpPiSelectorBtn>
+                          </SPdpPiSelectorBtnHolder>
+                        )
+                    )}
                   </SPdpPiSelector>
                   {isSelectRingError ? <SPdpPiRsSelector>Please select ring size</SPdpPiRsSelector> : null}
                 </React.Fragment>
