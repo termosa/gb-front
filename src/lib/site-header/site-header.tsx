@@ -548,7 +548,7 @@ export function SiteHeader({
       <RollingBanner />
       <SInnerWrapper>
         <SContentWrapper>
-          <SSearchWrapper>
+          <SSearchWrapper onMouseEnter={() => setExtendableBlockContent('')}>
             <SSearchContent>
               <SLogoWrapper>
                 <SHamburgerMenu onClick={() => setBurgerMenuOpen(!isBurgerMenuOpen)} />
