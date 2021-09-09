@@ -137,6 +137,12 @@ const SizeOutOfStock = styled.div`
 const Congratulations = styled.div`
   font-weight: bold;
 `
+const Promotion = styled.div`
+  padding: 10px 0;
+  &.error {
+    padding: 0px 0;
+  }
+`
 export type PromotionBannerProps = {
   promo: string
   visibleBanner?: boolean
@@ -150,71 +156,69 @@ export function PromotionBanner({
   visibleBanner,
   className,
   style,
-  errorPromoDetails,
 }: PromotionBannerProps): React.ReactElement | null {
   const promoDetails = useDefer(() => (promo ? loadPromoDetails(promo) : Promise.resolve(undefined)), [promo], [])
-  if (promoDetails.status === 'error') {
-    errorPromoDetails && errorPromoDetails()
-  }
   const [unavailableRingSize, useUnavailableRingSize] = useState(false)
   const [buyRingSize, useBuyRingSize] = useState('')
-  return (
-    <PromoContainer className={cn(className)} style={style}>
-      <WrapPromoContainer>
-        <PromoImageBox>
-          <img src={promoDetails?.value?.src} alt="" />
-        </PromoImageBox>
-        <PromoClock>
-          <h3> {promoDetails?.value?.title} </h3>
-        </PromoClock>
-        <PromoDescription>{promoDetails?.value?.requirements}</PromoDescription>
-      </WrapPromoContainer>
-      {!buyRingSize && visibleBanner && promoDetails?.value?.sizeOutOfStock ? (
-        <>
-          <PromoMessage>Select a ring size:</PromoMessage>
-          <SelectHolderBtn>
-            {promoDetails?.value.detailsVariant.map((el) => {
-              return el.available ? (
-                <ButtonRingSize
-                  key={el.id}
-                  onClick={() => {
-                    const expires = Date.now() + 3600 * 1000
-                    setCookie('promo-expiration', expires, 1)
-                    setCookie('c_promo', promo, 1)
-                    setCookie('promo_variant', el.id, 1)
-                    useUnavailableRingSize(false)
-                    useBuyRingSize(el.title)
-                  }}
-                >
-                  {el.title}
-                </ButtonRingSize>
-              ) : (
-                <ButtonRingSize
-                  key={el.id}
-                  className="disabled"
-                  onClick={() => {
-                    useUnavailableRingSize(true)
-                    useBuyRingSize('')
-                  }}
-                >
-                  {el.title}
-                </ButtonRingSize>
-              )
-            })}
-          </SelectHolderBtn>
-          {unavailableRingSize ? <SizeIsUnavailable>This size is unavailable.</SizeIsUnavailable> : null}
-        </>
-      ) : null}
-      {buyRingSize ? (
-        <Congratulations>
-          Congratulations! Your gift is in your cart!
-          <br />
-          (Ring Size: {buyRingSize})
-        </Congratulations>
-      ) : null}
-      {!promoDetails?.value?.sizeOutOfStock && visibleBanner ? (
-        <SizeOutOfStock>Sorry, all sizes are out of stock!</SizeOutOfStock>
-      ) : null}
-    </PromoContainer>
+  return promoDetails?.status === 'error' ? null : (
+    <Promotion>
+      <PromoContainer className={cn(className)} style={style}>
+        <WrapPromoContainer>
+          <PromoImageBox>
+            <img src={promoDetails?.value?.src} alt="" />
+          </PromoImageBox>
+          <PromoClock>
+            <h3> {promoDetails?.value?.title} </h3>
+          </PromoClock>
+          <PromoDescription>{promoDetails?.value?.requirements}</PromoDescription>
+        </WrapPromoContainer>
+        {!buyRingSize && visibleBanner && promoDetails?.value?.sizeOutOfStock ? (
+          <>
+            <PromoMessage>Select a ring size:</PromoMessage>
+            <SelectHolderBtn>
+              {promoDetails?.value.detailsVariant.map((el) => {
+                return el.available ? (
+                  <ButtonRingSize
+                    key={el.id}
+                    onClick={() => {
+                      const expires = Date.now() + 3600 * 1000
+                      setCookie('promo-expiration', expires, 1)
+                      setCookie('c_promo', promo, 1)
+                      setCookie('promo_variant', el.id, 1)
+                      useUnavailableRingSize(false)
+                      useBuyRingSize(el.title)
+                    }}
+                  >
+                    {el.title}
+                  </ButtonRingSize>
+                ) : (
+                  <ButtonRingSize
+                    key={el.id}
+                    className="disabled"
+                    onClick={() => {
+                      useUnavailableRingSize(true)
+                      useBuyRingSize('')
+                    }}
+                  >
+                    {el.title}
+                  </ButtonRingSize>
+                )
+              })}
+            </SelectHolderBtn>
+            {unavailableRingSize ? <SizeIsUnavailable>This size is unavailable.</SizeIsUnavailable> : null}
+          </>
+        ) : null}
+        {buyRingSize ? (
+          <Congratulations>
+            Congratulations! Your gift is in your cart!
+            <br />
+            (Ring Size: {buyRingSize})
+          </Congratulations>
+        ) : null}
+        {!promoDetails?.value?.sizeOutOfStock && visibleBanner ? (
+          <SizeOutOfStock>Sorry, all sizes are out of stock!</SizeOutOfStock>
+        ) : null}
+      </PromoContainer>
+    </Promotion>
   )
 }

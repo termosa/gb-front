@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import cn, { Argument as ClassName } from 'classnames'
 import PromotionBanner from '../promotion-banner'
@@ -27,19 +27,11 @@ export type SitePromotionProps = {
 
 export function SitePromotion({ style, className }: SitePromotionProps): React.ReactElement | null {
   const { promo } = useQuery()
-  const [isError, setIsError] = useState(false)
-  if (isError) {
-    return null
-  }
   return (
     <>
       {promo || isGwpPresent() ? (
         <PromotionContainer className={cn(className)} style={style}>
-          <PromotionBanner
-            promo={promo || getPromoCookie()}
-            visibleBanner={isGwpPresent()}
-            errorPromoDetails={() => setIsError(true)}
-          />
+          <PromotionBanner promo={promo || getPromoCookie()} visibleBanner={isGwpPresent()} />
         </PromotionContainer>
       ) : null}
     </>
@@ -50,7 +42,6 @@ const PromotionContainer = styled.div`
   background-color: #464a4d;
   position: relative;
   text-align: center;
-  padding: 10px 0px;
   color: #000;
   width: 100%;
   vertical-align: top;
