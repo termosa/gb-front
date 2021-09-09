@@ -8,6 +8,7 @@ import FloatingCta from '../../components/floating-cta'
 import SitePromotion from '../site-promotion'
 import loadProductsChunk from '../../modules/load-products-chunk'
 import loadCustomer from '../../modules/load-customer'
+import PromotionBanner from '../promotion-banner'
 
 const MainPageLayoutWrapper = styled.div`
   display: flex;
