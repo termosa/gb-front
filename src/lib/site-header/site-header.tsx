@@ -598,7 +598,7 @@ export function SiteHeader({
                 </SLogo>
               </SLogoWrapper>
               <SFieldWrapper>
-                <SearchField onSubmit={onSearch} searchedProducts={searchedProducts} />
+                <SearchField onSearch={onSearch} searchedProducts={searchedProducts} />
               </SFieldWrapper>
               <SIconsWrapper>
                 <SSignSignup userName={userName} />

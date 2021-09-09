@@ -47,7 +47,7 @@ export function MainPageLayout({ children, className, style }: MainPageLayoutPro
     <MainPageLayoutWrapper className={cn(className)} style={style}>
       <Header
         userName={customer?.fullName}
-        onSearch={(value) => console.log(value)}
+        onSearch={(search) => (search ? searchRequest.execute({ search }) : searchRequest.reset())}
         searchedProducts={searchRequest.value}
         userEmail={customer?.email}
       />
