@@ -351,6 +351,10 @@ const SPdpPiSelectorBtn = styled.button<{
       border-color: #9059c8;
     }
   }
+
+  &:disabled {
+    opacity: 0.4;
+  }
 `
 
 const SPdpFragrance = styled.div`
@@ -626,6 +630,7 @@ export function ProductInfo({ className, style, addToCartRef }: ProductInfoProps
                                 setSelectedVariant(variant)
                                 setActualPrice(variant.actual_price)
                               }}
+                              disabled={!variant.available}
                             >
                               {variant.title}
                             </SPdpPiSelectorBtn>
