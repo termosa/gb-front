@@ -82,23 +82,20 @@ const SProductCard = styled.div`
 
 const ProductCardImgWrapper = styled.div`
   position: relative;
-  margin-bottom: 10px;
 
   &:after {
     content: '';
     display: block;
-    padding-top: 100%;
   }
 `
 
 const ProductCardImgWrapperInner = styled.div`
   width: 100%;
-  position: absolute;
-  top: 50%;
+  position: relative;
   left: 50%;
   height: 100%;
   display: flex;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, 0);
 
   img {
     width: 100%;
@@ -170,6 +167,10 @@ const ProductCardStars = styled.div`
 
   @media (min-width: 768px) {
     margin: 0 0 8px;
+  }
+
+  .text-m {
+    display: none;
   }
 `
 

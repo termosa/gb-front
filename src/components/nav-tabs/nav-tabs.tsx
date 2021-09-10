@@ -146,19 +146,19 @@ export function NavTabs({ className, setExtendableBlockContent }: NavTabsProps):
   return (
     <SWrapper className={cn('NavTabs', className)}>
       <SDesktopNav>
-        <SSubscribeButton style={{ display: 'list-item' }}>
+        <SSubscribeButton style={{ display: 'list-item' }} onMouseEnter={() => setExtendableBlockContent('')}>
           <a href="/pages/inner-circle">Subscribe</a>
         </SSubscribeButton>
-        <SNavItem>
+        <SNavItem onMouseEnter={() => setExtendableBlockContent('')}>
           <a href="/collections/mystery-bundles">Mystery Bundles</a>
         </SNavItem>
-        <SNavItem>
+        <SNavItem onMouseEnter={() => setExtendableBlockContent('')}>
           <a href="/collections/bath-bombs">Bath bombs</a>
         </SNavItem>
-        <SNavItem>
+        <SNavItem onMouseEnter={() => setExtendableBlockContent('')}>
           <a href="/collections/jewel-candles">Candles</a>
         </SNavItem>
-        <SNavItem>
+        <SNavItem onMouseEnter={() => setExtendableBlockContent('')}>
           <a href="/collections/body-scrubs">Body Scrubs</a>
         </SNavItem>
         <SNavItemExtendable onMouseEnter={() => setExtendableBlockContent('All')}>
@@ -170,7 +170,7 @@ export function NavTabs({ className, setExtendableBlockContent }: NavTabsProps):
         <SNavItemExtendable onMouseEnter={() => setExtendableBlockContent('Rewards')}>
           <a href="/pages/rewards-boutique">Rewards</a>
         </SNavItemExtendable>
-        <SNavItem>
+        <SNavItem onMouseEnter={() => setExtendableBlockContent('')}>
           <a href="/pages/vault-appraise">Vault</a>
         </SNavItem>
       </SDesktopNav>
