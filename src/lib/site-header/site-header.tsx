@@ -15,8 +15,9 @@ import useCustomerOrdersDetails from '../use-customer-orders-details'
 const SWrapper = styled.div`
   text-align: center;
 
-  font: 400 13px 'Montserrat', sans-serif;
+  font: 400 14px 'Montserrat', sans-serif;
   line-height: 1.3;
+  letter-spacing: 0.7px;
 
   & > svg {
     width: 100%;
@@ -39,12 +40,12 @@ const SInnerWrapper = styled.div`
   background: #fff;
 
   @media (min-width: 1200px) {
-    padding-top: 11px;
+    padding-top: 14px;
   }
 `
 
 const SContentWrapper = styled.div`
-  max-width: 1020px;
+  max-width: 960px;
   margin: 0 auto;
   padding: 0;
 `
@@ -53,8 +54,9 @@ const SSearchWrapper = styled.div`
   display: flex;
   box-sizing: border-box;
   position: relative;
-  height: 62px;
+  // height: 62px;
   padding: 11px 16px;
+  flex-direction: column;
 
   @media (min-width: 375px) {
     padding: 15px 16px;
@@ -63,6 +65,7 @@ const SSearchWrapper = styled.div`
   @media (min-width: 1200px) {
     padding: 0;
     margin-bottom: 7px;
+    flex-direction: row;
   }
 `
 
@@ -81,15 +84,16 @@ const SSearchContent = styled.div`
 const SLogoWrapper = styled.div`
   display: flex;
   align-items: center;
+  margin-right: 15px;
 `
 
 const SLogo = styled.a`
   display: block;
-  width: 6.6em;
+  width: 92px;
   cursor: pointer;
 
   @media (min-width: 1200px) {
-    width: 7.5em;
+    width: 120px;
   }
 `
 
@@ -174,8 +178,8 @@ const ExtendableBlock = styled.div`
   }
 
   @media (min-width: 1200px) {
-    padding: 2em 0 0;
-    font-size: 0.75em;
+    padding: 32px 0 0;
+    // font-size: 0.75em;
     box-shadow: 0 4px 9px rgba(0, 0, 0, 0.1);
   }
 `
@@ -200,11 +204,11 @@ const ExtendableBlockWrapper = styled.div<{ opened: string }>`
 
 const ExtendableBlockContainer = styled.div`
   margin: 0 auto;
-  width: 990px;
+  width: 960px;
   display: flex;
   justify-content: space-between;
 
-  @media (max-width: 1200px) {
+  @media (max-width: 1199px) {
     width: 100%;
     flex-direction: column;
 
@@ -212,9 +216,9 @@ const ExtendableBlockContainer = styled.div`
       width: 100%;
     }
 
-    & > div {
-      margin: 0 0 25px 0;
-    }
+    // & > div {
+    //   margin: 0 0 25px 0;
+    // }
   }
 `
 
@@ -223,7 +227,7 @@ const ExtendableBlockListTitle = styled.strong`
   display: block;
   margin: 0 0 8px;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  // letter-spacing: 0.08em;
   text-align: start;
 
   @media (min-width: 1200px) {
@@ -239,18 +243,28 @@ const ExtendableBlockListText = styled.p`
 const ExtendableBlockList = styled.ul`
   list-style: none;
   padding: 0;
-  margin: 0 0 15px;
+  // margin: 0 0 15px;
+  margin: 0;
   text-transform: none;
 
+  & > li:last-child {
+    margin-bottom: 0;
+  }
+
   @media (min-width: 1200px) {
-    margin: 0 0 25px;
+    // margin: 0 0 25px;
+
+    & > li:last-child {
+      margin-bottom: 8px;
+    }
   }
 `
 
 const ExtendableBlockListItem = styled.li`
   margin: 0;
   padding: 0;
-  border-bottom: 1px solid #ccc;
+  margin-bottom: 20px;
+  // border-bottom: 1px solid #ccc;
   @media (min-width: 1200px) {
     margin: 0 0 0.45em;
     border: 0;
@@ -259,12 +273,16 @@ const ExtendableBlockListItem = styled.li`
 
   & > a {
     display: block;
-    padding: 15px 0 15px;
+    // padding: 15px 0 15px;
+    padding-left: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     font: 400 14px/1.5 'Montserrat', sans-serif;
-    letter-spacing: 0.05em;
+    // letter-spacing: 0.05em;
     transition: color linear 0.2s;
     color: #000;
     text-decoration: none;
+    white-space: nowrap;
   }
 
   @media (min-width: 1200px) {
@@ -273,21 +291,71 @@ const ExtendableBlockListItem = styled.li`
       padding: 6px 0 6px 0;
     }
     & > a:hover {
-      font-weight: 600;
+      text-shadow: 0 0 #000;
+      // font-weight: 600;
     }
   }
 `
 
 const AnimatedLink = styled.a`
-  font: 600 14px/1.5 'Montserrat', sans-serif;
+  font: 600 14px/1.5 'Montserrat', sans-serif !important;
   display: inline-block;
   padding-bottom: 5px;
-  border-bottom: 1px solid black;
+  // border-bottom: 1px solid black;
   text-transform: uppercase;
-  font-weight: bold;
+  // font-weight: bold;
   cursor: pointer;
   color: black;
   text-decoration: none;
+
+  text-transform: uppercase;
+  position: relative;
+
+  &:hover {
+    @media (min-width: 1200px) {
+      text-shadow: 0 0 #000;
+
+      span:after {
+        height: 2px;
+        bottom: 0px;
+      }
+    }
+
+  }
+
+  & > span {
+    position: relative;
+    padding: 0 0 5px;
+
+    @media (min-width: 1200px) {
+      &:hover {
+        text-shadow: 0 0 #000;
+      }
+    }
+
+    &:after {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      right: 0;
+      width: 100%;
+      height: 1px;
+      background: #000;
+      transition: bottom linear .2s;
+  }
+    @media (max-width: 1199px) {
+      display: inline-block;
+      margin-bottom: 5px;
+    }
+  }
+`
+
+const ExtendableBlockItems = styled.div`
+  @media (min-width: 1200px) {
+    width: 70%;
+    display: flex;
+  }
 `
 
 const ExtendableBlockItem = styled.div`
@@ -298,90 +366,65 @@ const ExtendableBlockItem = styled.div`
   }
 
   margin: 0 1.5em 25px 1.5em;
-  width: 80%;
+  // width: 80%;
   text-align: start;
-  display: flex;
-  flex-direction: column;
+  
+  @media (max-width: 1199px) {
+    & > div {
+      margin-bottom: 25px;
+    }
+  }
+  &:last-child {
+    margin-bottom: 0;
+  }
+  @media (min-width: 1200px) {
+    &:first-child {
+      margin-left: 0;
+    }
+    & > div:first-child {
+      margin-bottom: 20px;
+    }
+  }
+  &.desktop-nav-product-item {
+    display: none;
+    @media (min-width: 1200px) {
+      width: 30%;
+      display: flex;
+      flex-direction: column;
+      margin-right: 0;
+      a {
+        text-align: center;
+      }
+      img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
 `
 
 const AllContent = () => (
   <ExtendableBlock>
     <ExtendableBlockContainer>
-      <ExtendableBlockItem>
-        <ExtendableBlockListTitle>Shop by product</ExtendableBlockListTitle>
-        <ExtendableBlockList>
-          <ExtendableBlockListItem>
-            <a href="/collections/bath-bombs">Bath Bombs</a>
-          </ExtendableBlockListItem>
-          <ExtendableBlockListItem>
-            <a href="/collections/jewel-candles">Candles</a>
-          </ExtendableBlockListItem>
-          <ExtendableBlockListItem>
-            <a href="/collections/body-scrubs">Body Scrubs</a>
-          </ExtendableBlockListItem>
-          <ExtendableBlockListItem>
-            <a href="/collections/the-jewelry-store">Jewelry</a>
-          </ExtendableBlockListItem>
-          <ExtendableBlockListItem>
-            <a href="/collections/gift-sets">Gift Sets</a>
-          </ExtendableBlockListItem>
-          <ExtendableBlockListItem>
-            <AnimatedLink href="/collections/all-products">
-              <span>Shop all</span>
-            </AnimatedLink>
-          </ExtendableBlockListItem>
-        </ExtendableBlockList>
-      </ExtendableBlockItem>
-      <ExtendableBlockItem>
-        <ExtendableBlockListTitle>Shop by Fragrance</ExtendableBlockListTitle>
-        <ExtendableBlockList>
-          <ExtendableBlockListItem>
-            <a href="/collections/all-products#fragrance=Fragrance:%20Aquatic">Aquatic</a>
-          </ExtendableBlockListItem>
-          <ExtendableBlockListItem>
-            <a href="/collections/all-products#fragrance=Fragrance:%20Citrus">Citrus</a>
-          </ExtendableBlockListItem>
-          <ExtendableBlockListItem>
-            <a href="/collections/all-products#fragrance=Fragrance:%20Floral">Floral</a>
-          </ExtendableBlockListItem>
-          <ExtendableBlockListItem>
-            <a href="/collections/all-products#fragrance=Fragrance:%20Floral%20Woods">Floral Woods</a>
-          </ExtendableBlockListItem>
-          <ExtendableBlockListItem>
-            <a href="/collections/all-products#fragrance=Fragrance:%20Fresh">Fresh</a>
-          </ExtendableBlockListItem>
-          <ExtendableBlockListItem>
-            <a href="/collections/all-products#fragrance=Fragrance:%20Fruity">Fruity</a>
-          </ExtendableBlockListItem>
-          <ExtendableBlockListItem>
-            <a href="/collections/all-products#fragrance=Fragrance:%20Gourmand">Gourmand</a>
-          </ExtendableBlockListItem>
-          <ExtendableBlockListItem>
-            <a href="/collections/all-products#fragrance=Fragrance:%20Green">Green</a>
-          </ExtendableBlockListItem>
-          <ExtendableBlockListItem>
-            <a href="/collections/all-products#fragrance=Fragrance:%20Musky">Musky</a>
-          </ExtendableBlockListItem>
-          <ExtendableBlockListItem>
-            <a href="/collections/all-products#fragrance=Fragrance:%20Spicy/%20Smoky">Spicy/ Smoky</a>
-          </ExtendableBlockListItem>
-          <ExtendableBlockListItem>
-            <AnimatedLink href="/collections/all-products">Shop all</AnimatedLink>
-          </ExtendableBlockListItem>
-        </ExtendableBlockList>
-      </ExtendableBlockItem>
-      <ExtendableBlockItem>
-        <div>
-          <ExtendableBlockListTitle>Shop by Material</ExtendableBlockListTitle>
+      <ExtendableBlockItems>
+        <ExtendableBlockItem>
+          <ExtendableBlockListTitle>Shop by product</ExtendableBlockListTitle>
           <ExtendableBlockList>
             <ExtendableBlockListItem>
-              <a href="/collections/all-products#material=Material:%2018K%20Gold%20Plated">18K Gold Plated</a>
+              <a href="/collections/bath-bombs">Bath Bombs</a>
             </ExtendableBlockListItem>
             <ExtendableBlockListItem>
-              <a href="/collections/all-products#material=Material:%20925%20Sterling%20Silver">925 Sterling Silver</a>
+              <a href="/collections/jewel-candles">Candles</a>
             </ExtendableBlockListItem>
             <ExtendableBlockListItem>
-              <a href="/collections/all-products#material=Material:%20Rhodium%20plated">Rhodium plated</a>
+              <a href="/collections/body-scrubs">Body Scrubs</a>
+            </ExtendableBlockListItem>
+            <ExtendableBlockListItem>
+              <a href="/collections/the-jewelry-store">Jewelry</a>
+            </ExtendableBlockListItem>
+            <ExtendableBlockListItem>
+              <a href="/collections/gift-sets">Gift Sets</a>
             </ExtendableBlockListItem>
             <ExtendableBlockListItem>
               <AnimatedLink href="/collections/all-products">
@@ -389,34 +432,93 @@ const AllContent = () => (
               </AnimatedLink>
             </ExtendableBlockListItem>
           </ExtendableBlockList>
-        </div>
-        <div>
-          <ExtendableBlockListTitle>Shop by Metal Color</ExtendableBlockListTitle>
+        </ExtendableBlockItem>
+        <ExtendableBlockItem>
+          <ExtendableBlockListTitle>Shop by Fragrance</ExtendableBlockListTitle>
           <ExtendableBlockList>
             <ExtendableBlockListItem>
-              <a href="/collections/all-products#color=Metal%20Color:%20Black">Black</a>
+              <a href="/collections/all-products#fragrance=Fragrance:%20Aquatic">Aquatic</a>
             </ExtendableBlockListItem>
             <ExtendableBlockListItem>
-              <a href="/collections/all-products#color=Metal%20Color:%20Gold">Gold</a>
+              <a href="/collections/all-products#fragrance=Fragrance:%20Citrus">Citrus</a>
             </ExtendableBlockListItem>
             <ExtendableBlockListItem>
-              <a href="/collections/all-products#color=Metal%20Color:%20Rose%20Gold">Rose Gold</a>
+              <a href="/collections/all-products#fragrance=Fragrance:%20Floral">Floral</a>
             </ExtendableBlockListItem>
             <ExtendableBlockListItem>
-              <a href="/collections/all-products#color=Metal%20Color:%20Silver">Silver</a>
+              <a href="/collections/all-products#fragrance=Fragrance:%20Floral%20Woods">Floral Woods</a>
             </ExtendableBlockListItem>
             <ExtendableBlockListItem>
-              <AnimatedLink href="/collections/all-products">
-                <span>Shop all</span>
-              </AnimatedLink>
+              <a href="/collections/all-products#fragrance=Fragrance:%20Fresh">Fresh</a>
+            </ExtendableBlockListItem>
+            <ExtendableBlockListItem>
+              <a href="/collections/all-products#fragrance=Fragrance:%20Fruity">Fruity</a>
+            </ExtendableBlockListItem>
+            <ExtendableBlockListItem>
+              <a href="/collections/all-products#fragrance=Fragrance:%20Gourmand">Gourmand</a>
+            </ExtendableBlockListItem>
+            <ExtendableBlockListItem>
+              <a href="/collections/all-products#fragrance=Fragrance:%20Green">Green</a>
+            </ExtendableBlockListItem>
+            <ExtendableBlockListItem>
+              <a href="/collections/all-products#fragrance=Fragrance:%20Musky">Musky</a>
+            </ExtendableBlockListItem>
+            <ExtendableBlockListItem>
+              <a href="/collections/all-products#fragrance=Fragrance:%20Spicy/%20Smoky">Spicy/ Smoky</a>
+            </ExtendableBlockListItem>
+            <ExtendableBlockListItem>
+              <AnimatedLink href="/collections/all-products"><span>Shop all</span></AnimatedLink>
             </ExtendableBlockListItem>
           </ExtendableBlockList>
-        </div>
-      </ExtendableBlockItem>
-      <ExtendableBlockItem>
+        </ExtendableBlockItem>
+        <ExtendableBlockItem>
+          <div>
+            <ExtendableBlockListTitle>Shop by Material</ExtendableBlockListTitle>
+            <ExtendableBlockList>
+              <ExtendableBlockListItem>
+                <a href="/collections/all-products#material=Material:%2018K%20Gold%20Plated">18K Gold Plated</a>
+              </ExtendableBlockListItem>
+              <ExtendableBlockListItem>
+                <a href="/collections/all-products#material=Material:%20925%20Sterling%20Silver">925 Sterling Silver</a>
+              </ExtendableBlockListItem>
+              <ExtendableBlockListItem>
+                <a href="/collections/all-products#material=Material:%20Rhodium%20plated">Rhodium plated</a>
+              </ExtendableBlockListItem>
+              <ExtendableBlockListItem>
+                <AnimatedLink href="/collections/all-products">
+                  <span>Shop all</span>
+                </AnimatedLink>
+              </ExtendableBlockListItem>
+            </ExtendableBlockList>
+          </div>
+          <div>
+            <ExtendableBlockListTitle>Shop by Metal Color</ExtendableBlockListTitle>
+            <ExtendableBlockList>
+              <ExtendableBlockListItem>
+                <a href="/collections/all-products#color=Metal%20Color:%20Black">Black</a>
+              </ExtendableBlockListItem>
+              <ExtendableBlockListItem>
+                <a href="/collections/all-products#color=Metal%20Color:%20Gold">Gold</a>
+              </ExtendableBlockListItem>
+              <ExtendableBlockListItem>
+                <a href="/collections/all-products#color=Metal%20Color:%20Rose%20Gold">Rose Gold</a>
+              </ExtendableBlockListItem>
+              <ExtendableBlockListItem>
+                <a href="/collections/all-products#color=Metal%20Color:%20Silver">Silver</a>
+              </ExtendableBlockListItem>
+              <ExtendableBlockListItem>
+                <AnimatedLink href="/collections/all-products">
+                  <span>Shop all</span>
+                </AnimatedLink>
+              </ExtendableBlockListItem>
+            </ExtendableBlockList>
+          </div>
+        </ExtendableBlockItem>
+      </ExtendableBlockItems>
+      <ExtendableBlockItem className="desktop-nav-product-item">
         <a href="/collections/summer-collection">
           <img src="https://fragrantjewels.s3.amazonaws.com/app/app-nav/watch-me-bloom-nav-all-img-dt.jpg" />
-          <AnimatedLink as="span">New! Candle + Planter in 1</AnimatedLink>
+          <AnimatedLink as="span"><span>New! Candle + Planter in 1</span></AnimatedLink>
         </a>
       </ExtendableBlockItem>
     </ExtendableBlockContainer>
@@ -433,7 +535,7 @@ const SubscriptionContent = () => (
           <ExtendableBlockListText>
             Create a tropical oasis right in your own home with our new, exclusive collection.
           </ExtendableBlockListText>
-          <AnimatedLink as="span">Learn more</AnimatedLink>
+          <AnimatedLink as="span"><span>Learn more</span></AnimatedLink>
         </a>
       </ExtendableBlockItem>
       <ExtendableBlockItem>
@@ -443,7 +545,7 @@ const SubscriptionContent = () => (
           <ExtendableBlockListText>
             Start collecting unique limited edition sets not available for sale! Find out how you can qualify.
           </ExtendableBlockListText>
-          <AnimatedLink as="span">Learn more</AnimatedLink>
+          <AnimatedLink as="span"><span>Learn more</span></AnimatedLink>
         </a>
       </ExtendableBlockItem>
       <ExtendableBlockItem>
@@ -480,7 +582,7 @@ const RewardsContent = () => (
           <ExtendableBlockListText>
             Every dollar you spend earns you reward points you can use to redeem free jewelry, products and more!
           </ExtendableBlockListText>
-          <AnimatedLink as="span">Learn more</AnimatedLink>
+          <AnimatedLink as="span"><span>Learn more</span></AnimatedLink>
         </a>
       </ExtendableBlockItem>
       <ExtendableBlockItem>
@@ -490,7 +592,7 @@ const RewardsContent = () => (
           <ExtendableBlockListText>
             Get exclusive access to VIP offers, 3x points and more when you earn Platinum status!
           </ExtendableBlockListText>
-          <AnimatedLink as="span">Learn more</AnimatedLink>
+          <AnimatedLink as="span"><span>Learn more</span></AnimatedLink>
         </a>
       </ExtendableBlockItem>
       <ExtendableBlockItem>
