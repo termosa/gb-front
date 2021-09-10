@@ -703,7 +703,7 @@ export function ProductInfo({ className, style, addToCartRef }: ProductInfoProps
             >
               Add to Cart
             </SPdpBtn>
-            {isDiscountApplied && (
+            {isDiscountAvailable && isDiscountApplied && (
               <SPdpAdditionalText>
                 Join the Inner Circle today, then automatically receive a monthly set for $32.95 plus tax. No
                 commitment, cancel anytime.{' '}
