@@ -32,6 +32,7 @@ export type CollectionFiltersProps = {
   filters: Filters
   onChangeFilter: (selectedFilters: CollectionProductsFilter) => void
   onChangeSorting: (sorting: SelectedSorting) => void
+  initialSorting: SelectedSorting
 }
 
 export type ColorGradient = Array<{ offset?: number; stopColor: string }>
@@ -361,8 +362,9 @@ export const CollectionFilters = ({
   filters,
   onChangeFilter,
   onChangeSorting,
+  initialSorting,
 }: CollectionFiltersProps): React.ReactElement => {
-  const [selectedSorting, setSelectedSorting] = useState<SelectedSorting>(SelectedSorting.NEW)
+  const [selectedSorting, setSelectedSorting] = useState<SelectedSorting>(initialSorting)
 
   const [referenceElement, setReferenceElement] = useState<HTMLButtonElement | null>(null)
   const [popperElement, setPopperElement] = useState<HTMLDivElement | null>(null)
@@ -403,7 +405,10 @@ export const CollectionFilters = ({
     ...(selectedFilters.materials?.map((filter) => ({ name: filter, filterGroup: 'materials' })) || []),
   ]
 
-  useOnClickOutside({ current: popperElement }, () => setIsSortDropdownOpened(false))
+  useOnClickOutside({ current: popperElement }, ({ target }) => {
+    if (target === referenceElement || target === referenceElement?.firstElementChild) return
+    setIsSortDropdownOpened(false)
+  })
 
   const changeSorting = (sorting: SelectedSorting) => {
     setSelectedSorting(sorting)
