@@ -259,7 +259,7 @@ export function ProductCard({ className, style, product, onClick }: ProductCardP
         </ProductCardImgWrapper>
         {checkForLabel()}
         <ProductCardStars>
-          <YotpoStarRating productId={product.product_id} />
+          11111111<YotpoStarRating productId={product.product_id} />
         </ProductCardStars>
         <ProductCardTitle title={productTitle}>{productTitle}</ProductCardTitle>
         <ProductCardType>{productType}</ProductCardType>

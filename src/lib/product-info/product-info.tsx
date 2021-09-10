@@ -578,7 +578,7 @@ export function ProductInfo({ className, style, addToCartRef }: ProductInfoProps
       <SPdpProductInfo top={infoDistanceFromTop + 'px'} ref={productInfoRef}>
         <SPdpProductInfoIcTitle ref={productHeadingRef}>INNER CIRCLE EXCLUSIVE</SPdpProductInfoIcTitle>
         <SPdpProductInfoTitle>{product.title}</SPdpProductInfoTitle>
-        <YotpoStarRating productId={product.product_id} />
+        222222222<YotpoStarRating productId={product.product_id} />
         <SPdpProductDetails>
           {isDiscountApplied && isDiscountAvailable ? (
             <>
