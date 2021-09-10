@@ -722,7 +722,7 @@ export function ProductInfo({ className, style, addToCartRef }: ProductInfoProps
           </SPdpPiSelectorWrapper>
         )}
         <ProductModalButtons />
-        <SPdpFragrance>
+        {/*<SPdpFragrance>
           <SPdpFragranceItem>
             <SPdpFragranceImg
               src={'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/pdp/fragrances/black-currant.png'}
@@ -751,7 +751,7 @@ export function ProductInfo({ className, style, addToCartRef }: ProductInfoProps
             />
             <span>Spicy Anise</span>
           </SPdpFragranceItem>
-        </SPdpFragrance>
+        </SPdpFragrance>*/}
         <div>
           {productDescription?.map((el: ProductDescription, i: number) => (
             <SPdpAItem key={el.title}>
