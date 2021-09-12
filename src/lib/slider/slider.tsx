@@ -119,6 +119,7 @@ type SliderProps = {
   customRightArrow?: React.ReactElement
   responsive?: ResponsiveType
   scrollbarPresent?: boolean
+  customButtonGroup?: React.ReactElement
   dotsPresent?: boolean
   partiallyVisible?: boolean
   infinite?: boolean
@@ -165,6 +166,7 @@ export const Slider = ({
   customLeftArrow,
   customRightArrow,
   scrollbarPresent,
+  customButtonGroup,
   dotsPresent,
   partiallyVisible,
   responsive,
@@ -218,7 +220,8 @@ export const Slider = ({
         arrows={arrows}
         customLeftArrow={customLeftArrow || <SPrevArrow />}
         customRightArrow={customRightArrow || <SNextArrow />}
-        customButtonGroup={scrollbarPresent ? <CustomSlider /> : null}
+        renderButtonGroupOutside={scrollbarPresent}
+        customButtonGroup={scrollbarPresent ? <CustomSlider /> : customButtonGroup}
         customDot={dotsPresent ? <CustomDot /> : null}
         itemClass={itemClass || 'image-item'}
         infinite={infinite}
