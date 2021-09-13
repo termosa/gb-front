@@ -1,7 +1,7 @@
 import React, { MutableRefObject, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled, { css } from 'styled-components'
-import YotpoStarRating from '../yotpo-star-rating'
+import StarRating from '../../lib/star-rating'
 import formatPrice from '../../modules/format-price'
 import { ProductVariant } from '../../modules/normalize-product-variant'
 import { SubscriptionHint } from '../../components/subscription-hint'
@@ -578,7 +578,11 @@ export function ProductInfo({ className, style, addToCartRef }: ProductInfoProps
       <SPdpProductInfo top={infoDistanceFromTop + 'px'} ref={productInfoRef}>
         <SPdpProductInfoIcTitle ref={productHeadingRef}>INNER CIRCLE EXCLUSIVE</SPdpProductInfoIcTitle>
         <SPdpProductInfoTitle>{product.title}</SPdpProductInfoTitle>
-        222222222<YotpoStarRating productId={product.product_id} />
+        <StarRating
+          productId={product.product_id}
+          reviewAverage={product?.reviewsAverage}
+          reviewCount={product?.reviewsCount}
+        />
         <SPdpProductDetails>
           {isDiscountApplied && isDiscountAvailable ? (
             <>

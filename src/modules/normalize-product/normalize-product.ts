@@ -31,6 +31,8 @@ export type ServerProduct = {
   admin_graphql_api_id: string // Example: 'gid://shopify/Product/4619502977114'
   options: null | Array<ServerProductOption>
   collection: Array<number>
+  reviews_average: number
+  reviews_count: number
 }
 
 export type Product = {
@@ -48,6 +50,8 @@ export type Product = {
   material?: string
   color?: string
   template: string
+  reviewsAverage: number
+  reviewsCount: number
 }
 
 const selectValueFromTags = (tags: Array<string>, prefix: string) =>
@@ -80,6 +84,8 @@ export const normalizeProduct = (product: ServerProduct): Product => {
       .map(normalizeProductVariant),
     product_type: product.product_type,
     published_at_shop: product.published_at_shop,
+    reviewsAverage: +product.reviews_average || 0,
+    reviewsCount: product.reviews_count,
     body_html: product.body_html,
     ...(tags.length && { tags }),
     ...(tagsProperties.fragrance && { fragrance: tagsProperties.fragrance }),

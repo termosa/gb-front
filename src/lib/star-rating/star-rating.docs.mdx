@@ -1,0 +1,45 @@
+import { useEffect, useState } from 'react'
+import StarRating from '.'
+
+export const meta = {
+  type: 'component',
+  name: 'StarRating',
+  description: 'Basic component',
+  tags: ['component'],
+  preview: <StarRating />,
+  lists: {
+    attributes: [
+      { name: 'className', type: 'classnames.Argument', description: 'One or multiple class names that will be added to the main container' },
+      { name: 'style', type: 'React.CSSProperties', description: 'Inline styles for the main container' },
+      { name: 'productId', type: 'number', description: 'Id product' },
+      { name: 'reviewAverage', type: 'number', description: 'Average rating' },
+      { name: 'reviewCount', type: 'number', description: 'Count review' },
+    ],
+  },
+  scope: { StarRating, useState, useEffect },
+}
+
+## Usage
+
+```jsx
+<StarRating  productId='4745890594894' reviewAverage='4.2' reviewCount='32' />
+```
+
+## Playground
+
+```jsx live render
+const StarRatingExample = () => {
+const [reviewAverage, setReviewAverage] = useState(2.4)
+const [reviewCount, setReviewCount] = useState(32)
+
+  return (
+    <div>
+      <input type='number' value={reviewAverage} onChange={e => setReviewAverage(+e.target.value)} />
+      <input value={reviewCount} onChange={e => setReviewCount(+e.target.value)} />
+     <StarRating reviewAverage={reviewAverage} reviewCount={reviewCount} />
+    </div>
+  )
+}
+
+render(<StarRatingExample />)
+```
