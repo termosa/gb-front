@@ -118,7 +118,7 @@ const ProductCardTag = styled.div<{
   background: linear-gradient(269.97deg, white 0.02%, #efefef 13.98%, #efefef 45.51%, #efefef 76.52%, white 99.26%);
 
   @media (min-width: 768px) {
-    margin: 0 0 18px;
+    margin: 0 0 17px;
   }
 `
 
@@ -164,6 +164,7 @@ const ProductCardStars = styled.div`
   justify-content: center;
   align-items: center;
   margin: 0 0 10px;
+  height: 17px;
 
   @media (min-width: 768px) {
     margin: 0 0 8px;

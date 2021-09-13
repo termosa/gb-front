@@ -9,15 +9,18 @@ export type { InformationCard }
 
 const SWrapper = styled.section`
   text-align: center;
-  max-width: 1020px;
-  padding: 0;
-  margin: 50px auto 0;
-  background: #fdfbf9;
+  background: linear-gradient(0deg, #fdfbf9 0%, #fdfbf9 50%, white 50%, white 100%);
 
   @media (min-width: 768px) {
     margin: 76px auto 0;
     padding: 0 30px;
   }
+`
+
+const SInformationOverviewContainer = styled.div`
+  max-width: 1020px;
+  padding: 0;
+  margin: 50px auto 0;
 `
 
 const STitleContainer = styled.div`
@@ -82,26 +85,28 @@ export function InformationOverview({
 
   return (
     <SWrapper className={cn(className)} style={style}>
-      <STitleContainer>
-        <STitle>
-          <span>{titleArr[0]}</span>
-          <span>
-            <STitleUnderline>{titleUnderline}</STitleUnderline>
-          </span>
-          <span>{titleArr[1]}</span>
-        </STitle>
-      </STitleContainer>
-      <SCardsWrapper>
-        {useScreen.greaterThanLarge ? (
-          cards.map((card) => <InformationCard key={card.image + card.title} card={card} />)
-        ) : (
-          <Slider infinite arrows>
-            {cards.map((card) => (
-              <InformationCard key={card.image + card.title} card={card} />
-            ))}
-          </Slider>
-        )}
-      </SCardsWrapper>
+      <SInformationOverviewContainer>
+        <STitleContainer>
+          <STitle>
+            <span>{titleArr[0]}</span>
+            <span>
+              <STitleUnderline>{titleUnderline}</STitleUnderline>
+            </span>
+            <span>{titleArr[1]}</span>
+          </STitle>
+        </STitleContainer>
+        <SCardsWrapper>
+          {useScreen.greaterThanLarge ? (
+            cards.map((card) => <InformationCard key={card.image + card.title} card={card} />)
+          ) : (
+            <Slider infinite arrows>
+              {cards.map((card) => (
+                <InformationCard key={card.image + card.title} card={card} />
+              ))}
+            </Slider>
+          )}
+        </SCardsWrapper>
+      </SInformationOverviewContainer>
     </SWrapper>
   )
 }
