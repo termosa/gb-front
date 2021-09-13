@@ -124,7 +124,7 @@ type SliderProps = {
   partiallyVisible?: boolean
   infinite?: boolean
   itemClass?: string
-  carouselRef: React.RefObject<Carousel>
+  carouselRef?: React.RefObject<Carousel>
 }
 
 interface CarouselState {
@@ -177,10 +177,10 @@ export const Slider = ({
 }: SliderProps): React.ReactElement => {
   const CustomSlider = ({ carouselState }: CarouselState) => {
     let value = 0
-    const carouselItemWidth = carouselRef.current?.state?.itemWidth || 0
-    if (!carouselRef.current) {
+    if (!carouselRef || !carouselRef.current) {
       return null
     }
+    const carouselItemWidth = carouselRef.current?.state?.itemWidth || 0
     const maxTranslateX = Math.round(
       carouselItemWidth * (carouselRef?.current?.state?.totalItems - carouselRef.current.state.slidesToShow) + 150
     )

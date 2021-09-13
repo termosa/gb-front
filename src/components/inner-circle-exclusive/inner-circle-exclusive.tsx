@@ -21,320 +21,354 @@ export type InnerCircleExclusiveProps = {
   slideImages: string[]
   onReserve: (variant: ProductVariant) => void
 }
-const SWrapper = styled.div``,
-  STitleWrapper = styled.div`
-    box-sizing: border-box;
-    padding: 0 15px;
-    margin: 0 auto;
+const SWrapper = styled.div``
 
-    @media (min-width: 768px) {
-      padding: 0 30px;
-      max-width: 100%;
-    }
-  `,
-  STitle = styled.h2`
-    font: 700 40px/1 'Cormorant Garamond', serif;
-    text-align: center;
-    margin: 0 auto 16px;
+const STitleWrapper = styled.div`
+  box-sizing: border-box;
+  padding: 0 15px;
+  margin: 0 auto;
 
-    @media (max-width: 768px) {
-      display: flex;
-      flex-direction: column;
-    }
-  `,
-  STitleUnderline = styled.span`
-    position: relative;
+  @media (min-width: 768px) {
+    padding: 0 30px;
+    max-width: 100%;
+  }
+`
 
-    &:after {
-      content: '';
-      width: 100%;
-      height: 8px;
-      background: rgba(77, 190, 186, 0.3);
-      position: absolute;
-      bottom: 6px;
-      left: 0;
-    }
-  `,
-  SSubTitle = styled.div`
-    box-sizing: border-box;
-    text-align: center;
-    font: 16px/1.5 'Montserrat', sans-serif;
-    white-space: break-spaces;
-    padding-bottom: 22px;
-    max-width: 400px;
-    margin: 0 auto;
-  `,
-  SButtonWrapper = styled.div`
-    margin: 0 auto;
-    width: fit-content;
-  `,
-  SContentWrapper = styled.div`
-    padding: 29px 0 32px;
-    box-sizing: border-box;
-    font: 12px/ 1.3 'Montserrat', sans-serif;
-    background-color: #fdfbf9;
+const STitle = styled.h2`
+  font: 700 40px/1 'Cormorant Garamond', serif;
+  text-align: center;
+  margin: 0 auto 16px;
+
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+  }
+`
+
+const STitleUnderline = styled.span`
+  position: relative;
+
+  &:after {
+    content: '';
+    width: 100%;
+    height: 8px;
+    background: rgba(77, 190, 186, 0.3);
+    position: absolute;
+    bottom: 6px;
+    left: 0;
+  }
+`
+
+const SSubTitle = styled.div`
+  box-sizing: border-box;
+  text-align: center;
+  font: 16px/1.5 'Montserrat', sans-serif;
+  white-space: break-spaces;
+  padding-bottom: 22px;
+  max-width: 400px;
+  margin: 0 auto;
+`
+
+const SButtonWrapper = styled.div`
+  margin: 0 auto;
+  width: fit-content;
+`
+
+const SContentWrapper = styled.div`
+  padding: 29px 0 32px;
+  box-sizing: border-box;
+  font: 12px/ 1.3 'Montserrat', sans-serif;
+  background-color: #fdfbf9;
+  background: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    from(#fdfbf9),
+    color-stop(83%, #fdfbf9),
+    color-stop(83%, white),
+    to(white)
+  );
+  background: linear-gradient(0deg, #fdfbf9 0%, #fdfbf9 92%, white 92%, white 100%);
+
+  @media (min-width: 768px) {
+    background: linear-gradient(0deg, #fdfbf9 0%, #fdfbf9 91%, white 91%, white 100%);
+    padding: 27px 0 32px;
+  }
+
+  @media (min-width: 992px) {
     background: -webkit-gradient(
       linear,
       left bottom,
       left top,
       from(#fdfbf9),
-      color-stop(83%, #fdfbf9),
-      color-stop(83%, white),
+      color-stop(86%, #fdfbf9),
+      color-stop(86%, white),
       to(white)
     );
-    background: linear-gradient(0deg, #fdfbf9 0%, #fdfbf9 83%, white 83%, white 100%);
+    background: linear-gradient(0deg, #fdfbf9 0%, #fdfbf9 86%, white 86%, white 100%);
+  }
+`
 
-    @media (min-width: 768px) {
-      padding: 27px 0 32px;
-    }
+const SContentContainer = styled.div`
+  max-width: 990px;
+  padding: 0 15px;
+  box-sizing: border-box;
+  margin: 0 auto;
 
-    @media (min-width: 992px) {
-      background: -webkit-gradient(
-        linear,
-        left bottom,
-        left top,
-        from(#fdfbf9),
-        color-stop(86%, #fdfbf9),
-        color-stop(86%, white),
-        to(white)
-      );
-      background: linear-gradient(0deg, #fdfbf9 0%, #fdfbf9 86%, white 86%, white 100%);
-    }
-  `,
-  SContentContainer = styled.div`
-    max-width: 990px;
-    padding: 0 15px;
-    box-sizing: border-box;
-    margin: 0 auto;
+  @media (min-width: 768px) {
+    padding: 0 30px;
+    max-width: 1020px;
+  }
+`
 
-    @media (min-width: 768px) {
-      padding: 0 30px;
-      max-width: 1020px;
-    }
-  `,
-  SContent = styled.div`
-    margin: 0 auto;
-    @media (min-width: 992px) {
-      margin: 0 -20px;
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: flex;
-      -webkit-box-align: end;
-      -ms-flex-align: end;
-      align-items: flex-end;
-    }
-  `,
-  SImagesWrapper = styled.div`
-    @media (min-width: 768px) {
-      margin: 0 2% 35px;
-    }
-
-    @media (min-width: 992px) {
-      width: 100%;
-      margin: 0 20px;
-    }
-  `,
-  SImagesContainer = styled.div`
-    position: relative;
-    max-width: 295px;
-    width: 100%;
-    margin: 0 auto 25px;
-
-    @media (min-width: 420px) {
-      max-width: 370px;
-    }
-
-    @media (min-width: 768px) {
-      max-width: 612px;
-    }
-
-    @media (min-width: 992px) {
-      max-width: 100%;
-      margin: 0;
-    }
-  `,
-  SLeftSliderPart = styled.div<{
-    isPresent: boolean
-  }>`
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 248px;
-    z-index: 2;
-
-    @media (min-width: 420px) {
-      margin: ${(props) => (props.isPresent ? '0 0 50px' : '0 0 15px')};
-      width: 158px;
-      height: 158px;
-    }
-
-    @media (min-width: 768px) {
-      margin: ${(props) => (props.isPresent ? '0 0 76px' : '0 0 21px')};
-      width: 248px;
-      height: 248px;
-    }
-  `,
-  SLeftImageContainer = styled.div<{
-    isPresent: boolean
-  }>`
-    margin: ${(props) => (props.isPresent ? '0 0 15px' : '0 0 33px')};
-    box-sizing: border-box;
-    background: #fff;
-    border: 6px solid #ffffff;
+const SContent = styled.div`
+  margin: 0 auto;
+  @media (min-width: 992px) {
+    margin: 0 -20px;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 123px;
-    height: 123px;
+    -webkit-box-align: end;
+    -ms-flex-align: end;
+    align-items: flex-end;
+  }
+`
 
-    @media (min-width: 420px) {
-      margin: ${(props) => (props.isPresent ? '0 0 15px' : '0 0 41px')};
-      width: 158px;
-      height: 158px;
-    }
+const SImagesWrapper = styled.div`
+  @media (min-width: 768px) {
+    margin: 0 2% 35px;
+  }
 
-    @media (min-width: 768px) {
-      margin: ${(props) => (props.isPresent ? '0 0 21px' : '0 0 76px')};
-      width: 248px;
-      height: 248px;
-    }
+  @media (min-width: 992px) {
+    width: 100%;
+    margin: 0 20px;
+  }
+`
 
-    & > img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
+const SImagesContainer = styled.div`
+  position: relative;
+  max-width: 295px;
+  width: 100%;
+  margin: 0 auto 25px;
+
+  @media (min-width: 420px) {
+    max-width: 370px;
+  }
+
+  @media (min-width: 768px) {
+    max-width: 612px;
+  }
+
+  @media (min-width: 992px) {
+    max-width: 100%;
+    margin: 0;
+  }
+`
+
+const SLeftSliderPart = styled.div<{
+  isPresent: boolean
+}>`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 158px;
+  height: 158px;
+  margin: ${(props) => (props.isPresent ? '0 0 15px' : '0 0 15px')};
+  z-index: 2;
+
+  @media (min-width: 420px) {
+    margin: ${(props) => (props.isPresent ? '0 0 50px' : '0 0 15px')};
+    width: 164px;
+    height: 164px;
+  }
+
+  @media (min-width: 768px) {
+    margin: ${(props) => (props.isPresent ? '0 0 76px' : '0 0 21px')};
+    width: 248px;
+    height: 248px;
+  }
+`
+
+const SLeftImageContainer = styled.div<{
+  isPresent: boolean
+}>`
+  margin: ${(props) => (props.isPresent ? '0 0 15px' : '0 0 33px')};
+  box-sizing: border-box;
+  background: #fff;
+  border: 6px solid #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 123px;
+  height: 123px;
+
+  @media (min-width: 420px) {
+    margin: ${(props) => (props.isPresent ? '0 0 15px' : '0 0 41px')};
+    width: 160px;
+    height: 160px;
+  }
+
+  @media (min-width: 768px) {
+    margin: ${(props) => (props.isPresent ? '0 0 21px' : '0 0 76px')};
+    width: 248px;
+    height: 248px;
+  }
+
+  & > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+
+    @media (max-width: 420px) {
+      width: 115px;
+      height: 115px;
     }
-  `,
-  SRightSliderPart = styled.div`
-    background: #fff;
-    width: 189px;
-    height: 189px;
+  }
+`
+
+const SRightSliderPart = styled.div`
+  background: #fff;
+  width: 189px;
+  height: 189px;
+  margin-left: 108px;
+
+  @media (min-width: 420px) {
+    width: 236px;
+    height: 236px;
     margin-left: 130px;
+  }
 
-    @media (min-width: 420px) {
-      width: 236px;
-      height: 236px;
-    }
+  @media (min-width: 768px) {
+    width: 400px;
+    height: 400px;
+    margin-left: 188px;
+  }
 
-    @media (min-width: 768px) {
-      width: 400px;
-      height: 400px;
-      margin-left: 188px;
-    }
-
-    img {
-      margin-right: 0;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      display: block;
-      object-fit: cover;
-    }
-  `,
-  SDetailsWrapper = styled.div`
-    @media (min-width: 992px) {
-      margin: 0 20px;
-    }
-  `,
-  SDetailsContainer = styled.div`
-    text-align: center;
-    max-width: 350px;
-    margin: 0 auto;
-
-    @media (min-width: 992px) {
-      text-align: left;
-      width: 340px;
-    }
-  `,
-  SInnerCircleLabel = styled.strong`
-    font: 600 16px/1.25 'Montserrat', sans-serif;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: #9059c8;
-    margin: 0 0 10px;
+  img {
+    margin-right: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
     display: block;
-  `,
-  SProductTitle = styled.h3`
-    font: 600 32px/1.25 'Cormorant Garamond', serif;
-    letter-spacing: -0.02em;
-    margin: 0 0 16px;
-  `,
-  SPriceShippingInfo = styled.div`
-    font: 400 16px/1.25 'Montserrat', sans-serif;
-    letter-spacing: 0.05em;
-  `,
-  SPriceLabel = styled.span`
-    text-transform: uppercase;
-    margin: 0 0 18px;
-  `,
-  SDiscountPriceLabel = styled(SPriceLabel)`
-    text-decoration: line-through;
-  `,
-  SSelectRingLabel = styled.strong`
-    font: 400 16px/1.3 'Montserrat', sans-serif;
-    margin: 18px 0 16px;
-    display: block;
-  `,
-  SRingSizeWrapper = styled.div``,
-  STaxInfo = styled.div`
-    font: 400 12px/1.25 'Montserrat', sans-serif;
-    letter-spacing: 0.05em;
-    text-align: center;
-    color: #878787;
-  `,
-  SErrorLabel = styled.div`
-    font: 400 16px/1.5 'Montserrat', sans-serif;
-    text-align: center;
-    margin-bottom: 15px;
-    color: #ee67a0;
-  `,
-  SButtonContainer = styled.div`
-    display: block;
-    position: absolute;
+    object-fit: cover;
+  }
+`
+
+const SDetailsWrapper = styled.div`
+  @media (min-width: 992px) {
+    margin: 0 20px;
+  }
+`
+
+const SDetailsContainer = styled.div`
+  text-align: center;
+  max-width: 350px;
+  margin: 0 auto;
+
+  @media (min-width: 992px) {
+    text-align: left;
+    width: 340px;
+  }
+`
+
+const SInnerCircleLabel = styled.strong`
+  font: 600 16px/1.25 'Montserrat', sans-serif;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #9059c8;
+  margin: 0 0 10px;
+  display: block;
+`
+
+const SProductTitle = styled.h3`
+  font: 600 32px/1.25 'Cormorant Garamond', serif;
+  letter-spacing: -0.02em;
+  margin: 0 0 16px;
+`
+
+const SPriceShippingInfo = styled.div`
+  font: 400 16px/1.25 'Montserrat', sans-serif;
+  letter-spacing: 0.05em;
+`
+
+const SPriceLabel = styled.span`
+  text-transform: uppercase;
+  margin: 0 0 18px;
+`
+
+const SDiscountPriceLabel = styled(SPriceLabel)`
+  text-decoration: line-through;
+`
+
+const SSelectRingLabel = styled.strong`
+  font: 400 16px/1.3 'Montserrat', sans-serif;
+  margin: 18px 0 16px;
+  display: block;
+`
+
+const SRingSizeWrapper = styled.div``
+
+const STaxInfo = styled.div`
+  font: 400 12px/1.25 'Montserrat', sans-serif;
+  letter-spacing: 0.05em;
+  text-align: center;
+  color: #878787;
+`
+
+const SErrorLabel = styled.div`
+  font: 400 16px/1.5 'Montserrat', sans-serif;
+  text-align: center;
+  margin-bottom: 15px;
+  color: #ee67a0;
+`
+
+const SButtonContainer = styled.div`
+  display: block;
+  position: absolute;
+  bottom: -15px;
+
+  @media (min-width: 420px) {
     bottom: -50px;
+  }
 
+  @media (min-width: 768px) {
+    bottom: -75px;
+  }
+`
+
+const SSliderButton = styled.button<{
+  transform?: string
+}>`
+  opacity: 0.8;
+  border: 0.5px solid #9059c8;
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  transform: ${(props) => props.transform || 'none'};
+  background: transparent;
+  font-size: 0;
+  line-height: 1;
+  margin: 0 4px;
+  padding: 0;
+  box-sizing: border-box;
+  position: relative;
+  cursor: pointer;
+
+  @media (min-width: 768px) {
+    width: 55px;
+    height: 55px;
+  }
+
+  & > svg {
+    width: 10px;
+    height: 20px;
     @media (min-width: 768px) {
-      bottom: -75px;
+      width: 12px;
+      height: 25px;
     }
-  `,
-  SSliderButton = styled.button<{
-    transform?: string
-  }>`
-    opacity: 0.8;
-    border: 0.5px solid #9059c8;
-    border-radius: 50%;
-    width: 42px;
-    height: 42px;
-    transform: ${(props) => props.transform || 'none'};
-    background: transparent;
-    font-size: 0;
-    line-height: 1;
-    margin: 0 4px;
-    padding: 0;
-    box-sizing: border-box;
-    position: relative;
-    cursor: pointer;
-
-    @media (min-width: 768px) {
-      width: 55px;
-      height: 55px;
-    }
-
-    & > svg {
-      width: 10px;
-      height: 20px;
-      @media (min-width: 768px) {
-        width: 12px;
-        height: 25px;
-      }
-    }
-  `
-
-type CustomButtonsProps = {
-  next: () => void
-  previous: () => void
-}
+  }
+`
 
 export function InnerCircleExclusive({
   className,
@@ -358,11 +392,11 @@ export function InnerCircleExclusive({
   const comparePrice = (selectedVariant || product.variants[0]).compare_at_price
   const titleParts = title.split(' ')
 
-  const handleToggle = (ref: React.RefObject<Carousel>, isNext: boolean) => {
-    if (isNext) {
-      ref.current && ref.current.next(1)
-    } else {
+  const handleToggle = (ref: React.RefObject<Carousel>, isPrevious: boolean) => {
+    if (isPrevious) {
       ref.current && ref.current.previous(1)
+    } else {
+      ref.current && ref.current.next(1)
     }
   }
 
