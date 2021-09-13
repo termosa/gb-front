@@ -136,7 +136,7 @@ const SNavItem = styled.li`
   }
 
   &:hover > a {
-    font-weight: 700;
+    font-weight: 600;
   }
 `
 
@@ -183,7 +183,7 @@ const SNavLink = styled.a`
   text-decoration: none;
   text-align: start;
   transition: color linear 0.2s;
-  padding: 15px 5px;
+  padding: 15px 0;
   display: block;
 `
 
@@ -216,12 +216,13 @@ const SCard = styled.a`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
+  text-align: left;
   & > img {
     display: block;
     width: 100%;
     height: auto;
-    margin: 0 0 10px;
+    margin: 0 0 15px;
   }
 `
 
@@ -239,6 +240,21 @@ const SCardLink = styled.span`
   @media (min-width: 1200px) {
     padding: 8px 0;
   }
+
+  position: relative;
+  padding: 0 0 5px;
+
+  &:after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 1px;
+    background: #000;
+    transition: bottom linear .2s;
+}
 `
 
 const SAccountWrapper = styled.div`

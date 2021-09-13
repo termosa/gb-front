@@ -21,14 +21,20 @@ const Container = styled.div`
 `
 
 const PromoSlider = styled.div`
-  font: 500 9px/1.2 'Montserrat', sans-serif;
+  font: 600 9px/1.2 'Montserrat', sans-serif;
+  letter-spacing: 0.05em;
   color: #fff;
   text-align: center;
   padding: 9px 0;
   position: relative;
 
+  @media (min-width: 375px) {
+    font-size: 10px;
+    letter-spacing: 0.7px;
+  }
+
   @media (min-width: 768px) {
-    font: 500 11px/1.2 'Montserrat', sans-serif;
+    font-size: 14px;
   }
 
   a {
@@ -48,16 +54,16 @@ const PrevArrow = styled.button`
   display: block;
   transform: translateY(-50%) rotate(45deg);
   left: 0;
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
   z-index: 13;
   font-size: 0;
   top: 50%;
   line-height: 1;
   position: absolute;
   border: none;
-  border-bottom: 2px solid #fff;
-  border-left: 2px solid #fff;
+  border-bottom: 1px solid #fff;
+  border-left: 1px solid #fff;
   background-color: transparent;
   cursor: pointer;
   margin: 0;
@@ -73,11 +79,11 @@ const NextArrow = styled.button`
   top: 50%;
   line-height: 1;
   position: absolute;
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
   border: none;
-  border-bottom: 2px solid #fff;
-  border-left: 2px solid #fff;
+  border-bottom: 1px solid #fff;
+  border-left: 1px solid #fff;
   background-color: transparent;
   cursor: pointer;
   margin: 0;

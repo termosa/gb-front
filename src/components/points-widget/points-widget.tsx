@@ -25,7 +25,7 @@ const SValueWrapper = styled.div`
   left: calc(50% + 19px);
   transform: translate(-50%, -50%);
   text-align: center;
-  font-size: 8px;
+  font-size: 9px;
   text-transform: uppercase;
   line-height: 1;
 
@@ -36,11 +36,11 @@ const SValueWrapper = styled.div`
 
 const SValue = styled.div`
   font-weight: 700;
-  font-size: 13px;
+  font-size: 14px;
 
-  @media (min-width: 1200px) {
-    font-size: 14px;
-  }
+  // @media (min-width: 1200px) {
+  //   font-size: 14px;
+  // }
 `
 
 export function PointsWidget({ points, customerLevel }: PointsWidgetProps): React.ReactElement {

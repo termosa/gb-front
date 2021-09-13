@@ -34,6 +34,24 @@ const SField = styled.input`
   color: #000;
   line-height: 19px;
   box-sizing: border-box;
+
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
+
+  ::-webkit-input-placeholder {
+    letter-spacing: 0.7px;
+  }
+  ::-moz-placeholder {
+    letter-spacing: 0.7px;
+  }
+  :-ms-input-placeholder {
+    letter-spacing: 0.7px;
+  }
+  :-moz-placeholder {
+    letter-spacing: 0.7px;
+  }
 `
 
 const SButton = styled.button`
@@ -94,7 +112,7 @@ export function SearchField({ className, onSearch, searchedProducts }: SearchFie
 
   return (
     <SWrapper className={cn('SearchField', className)} ref={setReferenceElement} onSubmit={handleSubmit}>
-      <SField ref={searchInputRef} required onChange={handleChange} onFocus={() => setDropdownVisibility(true)} />
+      <SField placeholder="Search..." ref={searchInputRef} required onChange={handleChange} onFocus={() => setDropdownVisibility(true)} />
       <SButton type="submit">
         <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
