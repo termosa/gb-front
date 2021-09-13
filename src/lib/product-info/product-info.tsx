@@ -351,6 +351,10 @@ const SPdpPiSelectorBtn = styled.button<{
       border-color: #9059c8;
     }
   }
+
+  &:disabled {
+    opacity: 0.4;
+  }
 `
 
 const SPdpFragrance = styled.div`
@@ -626,6 +630,7 @@ export function ProductInfo({ className, style, addToCartRef }: ProductInfoProps
                                 setSelectedVariant(variant)
                                 setActualPrice(variant.actual_price)
                               }}
+                              disabled={!variant.available}
                             >
                               {variant.title}
                             </SPdpPiSelectorBtn>
@@ -703,7 +708,7 @@ export function ProductInfo({ className, style, addToCartRef }: ProductInfoProps
             >
               Add to Cart
             </SPdpBtn>
-            {isDiscountApplied && (
+            {isDiscountAvailable && isDiscountApplied && (
               <SPdpAdditionalText>
                 Join the Inner Circle today, then automatically receive a monthly set for $32.95 plus tax. No
                 commitment, cancel anytime.{' '}
@@ -722,7 +727,7 @@ export function ProductInfo({ className, style, addToCartRef }: ProductInfoProps
           </SPdpPiSelectorWrapper>
         )}
         <ProductModalButtons />
-        <SPdpFragrance>
+        {/*<SPdpFragrance>
           <SPdpFragranceItem>
             <SPdpFragranceImg
               src={'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/pdp/fragrances/black-currant.png'}
@@ -751,7 +756,7 @@ export function ProductInfo({ className, style, addToCartRef }: ProductInfoProps
             />
             <span>Spicy Anise</span>
           </SPdpFragranceItem>
-        </SPdpFragrance>
+        </SPdpFragrance>*/}
         <div>
           {productDescription?.map((el: ProductDescription, i: number) => (
             <SPdpAItem key={el.title}>

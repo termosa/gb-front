@@ -124,12 +124,12 @@ const SCompanyImageContainer = styled.div`
 `
 
 const TEST_IMAGES = [
-  'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/buzzfeed.png',
-  'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/cosmopolitan.png',
-  'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/refinery29.png',
-  'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/allure.png',
-  'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/beauty-insider.png',
-  'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/popsugar.png',
+  'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/buzzfeedlogo.png',
+  'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/cosmopolitanlogo.png',
+  'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/refinery29logo.png',
+  'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/allurelogo.png',
+  'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/beautyinsiderlogo.png',
+  'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/vector.png',
 ]
 
 export function ReviewsSection({ quote, author, className }: ReviewsSectionProps): React.ReactElement {

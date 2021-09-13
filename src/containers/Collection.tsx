@@ -16,7 +16,7 @@ const Collection = (): null | React.ReactElement => {
   const collection = useContext(CollectionContext)
 
   const [filter, setFilter] = useState<CollectionProductsFilter | null>(null)
-  const [sorting, setSorting] = useState<SelectedSorting | null>(null)
+  const [sorting, setSorting] = useState<SelectedSorting>(SelectedSorting.NEW)
 
   const availableFilters = useMemo(() => parseFiltersFromProducts(collection?.products), [collection?.products])
 
@@ -40,7 +40,12 @@ const Collection = (): null | React.ReactElement => {
   return (
     <div style={{ margin: '5em 0' }}>
       <SFiltersSection>
-        <CollectionFilters onChangeFilter={setFilter} onChangeSorting={setSorting} filters={availableFilters} />
+        <CollectionFilters
+          onChangeFilter={setFilter}
+          onChangeSorting={setSorting}
+          filters={availableFilters}
+          initialSorting={sorting}
+        />
       </SFiltersSection>
       <ProductsList products={filteredProducts} onSelectProduct={(handle) => navigate(`/products/${handle}`)} />
     </div>

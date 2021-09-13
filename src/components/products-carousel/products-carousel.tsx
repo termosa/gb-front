@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import styled from 'styled-components'
 import cn, { Argument as ClassName } from 'classnames'
 import { Product } from '../../modules/normalize-product'
@@ -6,6 +6,7 @@ import useScreenSize from '../../lib/use-screen-size'
 import window from '../../lib/window'
 import { Slider } from '../../lib/slider'
 import { ProductCard } from '../product-card'
+import Carousel from 'react-multi-carousel'
 
 const Section = styled.section`
   margin: 0 0 48px;
@@ -24,9 +25,9 @@ const Container = styled.div`
   max-width: 990px;
   padding: 0 0 0 15px;
   margin: 0 auto;
+  overflow: hidden;
 
   @media (min-width: 768px) {
-    overflow: hidden;
     padding: 0 30px;
     max-width: 960px;
   }
@@ -90,6 +91,7 @@ export const ProductsCarousel = ({
   subTitle,
 }: ProductsCarouselProps): React.ReactElement => {
   const screenSize = useScreenSize()
+  const carouselRef = useRef<Carousel>(null)
   const sliderSettings = {
     desktop: {
       breakpoint: { max: 3000, min: 768 },
@@ -127,6 +129,7 @@ export const ProductsCarousel = ({
           responsive={sliderSettings}
           scrollbarPresent={!!screenSize.greaterThanMedium}
           arrows={!!screenSize.greaterThanMedium}
+          carouselRef={carouselRef}
         >
           {products
             .filter((product) => product.image)

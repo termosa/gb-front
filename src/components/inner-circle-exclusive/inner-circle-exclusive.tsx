@@ -1,10 +1,12 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
 import Button from '../../lib/button'
 import RingSize from '../ring-size'
 import formatPrice from '../../modules/format-price'
 import { Product, ProductVariant } from '../../modules/normalize-product'
+import { Slider } from '../../lib/slider'
+import Carousel from 'react-multi-carousel'
 
 export type { Product, ProductVariant, ProductImage } from '../../modules/normalize-product'
 
@@ -19,7 +21,6 @@ export type InnerCircleExclusiveProps = {
   slideImages: string[]
   onReserve: (variant: ProductVariant) => void
 }
-
 const SWrapper = styled.div``
 
 const STitleWrapper = styled.div`
@@ -87,9 +88,10 @@ const SContentWrapper = styled.div`
     color-stop(83%, white),
     to(white)
   );
-  background: linear-gradient(0deg, #fdfbf9 0%, #fdfbf9 83%, white 83%, white 100%);
+  background: linear-gradient(0deg, #fdfbf9 0%, #fdfbf9 92%, white 92%, white 100%);
 
   @media (min-width: 768px) {
+    background: linear-gradient(0deg, #fdfbf9 0%, #fdfbf9 91%, white 91%, white 100%);
     padding: 27px 0 32px;
   }
 
@@ -148,8 +150,6 @@ const SImagesContainer = styled.div`
   max-width: 295px;
   width: 100%;
   margin: 0 auto 25px;
-  display: flex;
-  justify-content: flex-end;
 
   @media (min-width: 420px) {
     max-width: 370px;
@@ -165,14 +165,27 @@ const SImagesContainer = styled.div`
   }
 `
 
-const SLeftSliderPart = styled.div`
+const SLeftSliderPart = styled.div<{
+  isPresent: boolean
+}>`
   position: absolute;
   bottom: 0;
   left: 0;
-  max-width: 43%;
+  width: 158px;
+  height: 158px;
+  margin: ${(props) => (props.isPresent ? '0 0 15px' : '0 0 15px')};
+  z-index: 2;
 
-  @media (min-width: 992px) {
-    max-width: 248px;
+  @media (min-width: 420px) {
+    margin: ${(props) => (props.isPresent ? '0 0 50px' : '0 0 15px')};
+    width: 164px;
+    height: 164px;
+  }
+
+  @media (min-width: 768px) {
+    margin: ${(props) => (props.isPresent ? '0 0 76px' : '0 0 21px')};
+    width: 248px;
+    height: 248px;
   }
 `
 
@@ -191,8 +204,8 @@ const SLeftImageContainer = styled.div<{
 
   @media (min-width: 420px) {
     margin: ${(props) => (props.isPresent ? '0 0 15px' : '0 0 41px')};
-    width: 154px;
-    height: 154px;
+    width: 160px;
+    height: 160px;
   }
 
   @media (min-width: 768px) {
@@ -206,68 +219,35 @@ const SLeftImageContainer = styled.div<{
     height: 100%;
     object-fit: cover;
     display: block;
-  }
-`
 
-const SButtonContainer = styled.div<{
-  isPresent: boolean
-}>`
-  display: ${(props) => (props.isPresent ? 'block' : 'none')};
-`
-
-const SSliderButton = styled.button<{
-  transform?: string
-}>`
-  opacity: 0.8;
-  border: 0.5px solid #9059c8;
-  border-radius: 50%;
-  width: 42px;
-  height: 42px;
-  transform: ${(props) => props.transform || 'none'};
-  background: transparent;
-  font-size: 0;
-  line-height: 1;
-  margin: 0 4px;
-  padding: 0;
-  box-sizing: border-box;
-  position: relative;
-  cursor: pointer;
-
-  @media (min-width: 768px) {
-    width: 55px;
-    height: 55px;
-  }
-
-  & > svg {
-    width: 10px;
-    height: 20px;
-    @media (min-width: 768px) {
-      width: 12px;
-      height: 25px;
+    @media (max-width: 420px) {
+      width: 115px;
+      height: 115px;
     }
   }
 `
 
 const SRightSliderPart = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
   background: #fff;
   width: 189px;
   height: 189px;
+  margin-left: 108px;
 
   @media (min-width: 420px) {
     width: 236px;
     height: 236px;
+    margin-left: 130px;
   }
 
   @media (min-width: 768px) {
     width: 400px;
     height: 400px;
+    margin-left: 188px;
   }
 
-  & > img {
+  img {
     margin-right: 0;
+    width: 100%;
     height: 100%;
     overflow: hidden;
     display: block;
@@ -343,6 +323,53 @@ const SErrorLabel = styled.div`
   color: #ee67a0;
 `
 
+const SButtonContainer = styled.div`
+  display: block;
+  position: absolute;
+  bottom: -15px;
+
+  @media (min-width: 420px) {
+    bottom: -50px;
+  }
+
+  @media (min-width: 768px) {
+    bottom: -75px;
+  }
+`
+
+const SSliderButton = styled.button<{
+  transform?: string
+}>`
+  opacity: 0.8;
+  border: 0.5px solid #9059c8;
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  transform: ${(props) => props.transform || 'none'};
+  background: transparent;
+  font-size: 0;
+  line-height: 1;
+  margin: 0 4px;
+  padding: 0;
+  box-sizing: border-box;
+  position: relative;
+  cursor: pointer;
+
+  @media (min-width: 768px) {
+    width: 55px;
+    height: 55px;
+  }
+
+  & > svg {
+    width: 10px;
+    height: 20px;
+    @media (min-width: 768px) {
+      width: 12px;
+      height: 25px;
+    }
+  }
+`
+
 export function InnerCircleExclusive({
   className,
   product,
@@ -357,10 +384,63 @@ export function InnerCircleExclusive({
   const [selectedVariant, setVariant] = useState<ProductVariant | undefined>()
   const [error, setError] = useState<boolean>(false)
 
+  const smallSliderRef = useRef<Carousel | null>(null)
+  const bigSliderRef = useRef<Carousel | null>(null)
+
   const productTitle = product.title.split('-')[0].split(':')[0]
   const actualPrice = (selectedVariant || product.variants[0]).actual_price
   const comparePrice = (selectedVariant || product.variants[0]).compare_at_price
   const titleParts = title.split(' ')
+
+  const handleToggle = (ref: React.RefObject<Carousel>, isPrevious: boolean) => {
+    if (isPrevious) {
+      ref.current && ref.current.previous(1)
+    } else {
+      ref.current && ref.current.next(1)
+    }
+  }
+
+  const CustomButtons = () => {
+    return (
+      <SButtonContainer>
+        <SSliderButton
+          transform={'rotate(180deg)'}
+          onClick={() => {
+            handleToggle(smallSliderRef, true)
+            handleToggle(bigSliderRef, true)
+          }}
+        >
+          <svg viewBox="0 0 15 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M1.1499 0.799805L13.8501 13.5L1.1499 26.2002"
+              stroke="#9059C8"
+              strokeWidth="0.577281"
+              strokeMiterlimit="10"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </SSliderButton>
+        <SSliderButton
+          onClick={() => {
+            handleToggle(smallSliderRef, false)
+            handleToggle(bigSliderRef, false)
+          }}
+        >
+          <svg viewBox="0 0 15 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M1.1499 0.799805L13.8501 13.5L1.1499 26.2002"
+              stroke="#9059C8"
+              strokeWidth="0.577281"
+              strokeMiterlimit="10"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </SSliderButton>
+      </SButtonContainer>
+    )
+  }
 
   return (
     <SWrapper className={cn('InnerCircleExclusive', className)}>
@@ -385,39 +465,25 @@ export function InnerCircleExclusive({
           <SContent>
             <SImagesWrapper>
               <SImagesContainer>
-                <SLeftSliderPart>
-                  <SLeftImageContainer isPresent={slideImages.length > 2}>
-                    <img src={slideImages[0]} alt={productTitle} />
-                  </SLeftImageContainer>
-                  <SButtonContainer isPresent={slideImages.length > 2}>
-                    <SSliderButton transform={'rotate(180deg)'}>
-                      <svg viewBox="0 0 15 27" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                          d="M1.1499 0.799805L13.8501 13.5L1.1499 26.2002"
-                          stroke="#9059C8"
-                          strokeWidth="0.577281"
-                          strokeMiterlimit="10"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    </SSliderButton>
-                    <SSliderButton>
-                      <svg viewBox="0 0 15 27" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                          d="M1.1499 0.799805L13.8501 13.5L1.1499 26.2002"
-                          stroke="#9059C8"
-                          strokeWidth="0.577281"
-                          strokeMiterlimit="10"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    </SSliderButton>
-                  </SButtonContainer>
+                <SLeftSliderPart isPresent={slideImages.length > 2}>
+                  <Slider infinite arrows={false} carouselRef={smallSliderRef} customButtonGroup={<CustomButtons />}>
+                    <SLeftImageContainer isPresent={slideImages.length > 2}>
+                      <img src={slideImages[0]} alt={productTitle} />
+                    </SLeftImageContainer>
+                    <SLeftImageContainer isPresent={slideImages.length > 2}>
+                      <img src={slideImages[1]} alt={productTitle} />
+                    </SLeftImageContainer>
+                    <SLeftImageContainer isPresent={slideImages.length > 2}>
+                      <img src={slideImages[2]} alt={productTitle} />
+                    </SLeftImageContainer>
+                  </Slider>
                 </SLeftSliderPart>
                 <SRightSliderPart>
-                  <img src={slideImages[1]} alt={productTitle} />
+                  <Slider infinite arrows={false} carouselRef={bigSliderRef}>
+                    <img src={slideImages[1]} alt={productTitle} />
+                    <img src={slideImages[2]} alt={productTitle} />
+                    <img src={slideImages[0]} alt={productTitle} />
+                  </Slider>
                 </SRightSliderPart>
               </SImagesContainer>
             </SImagesWrapper>
