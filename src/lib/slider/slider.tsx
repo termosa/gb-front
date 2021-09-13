@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import Carousel, { ResponsiveType } from 'react-multi-carousel'
 import 'react-multi-carousel/lib/styles.css'
 import styled from 'styled-components'
@@ -124,6 +124,7 @@ type SliderProps = {
   partiallyVisible?: boolean
   infinite?: boolean
   itemClass?: string
+  carouselRef: React.RefObject<Carousel>
 }
 
 interface CarouselState {
@@ -172,9 +173,8 @@ export const Slider = ({
   responsive,
   infinite,
   itemClass,
+  carouselRef,
 }: SliderProps): React.ReactElement => {
-  const carouselRef = useRef<Carousel | null>(null)
-
   const CustomSlider = ({ carouselState }: CarouselState) => {
     let value = 0
     const carouselItemWidth = carouselRef.current?.state?.itemWidth || 0
