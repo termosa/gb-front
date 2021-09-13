@@ -11,9 +11,8 @@ export const meta = {
     attributes: [
       { name: 'className', type: 'classnames.Argument', description: 'One or multiple class names that will be added to the main container' },
       { name: 'style', type: 'React.CSSProperties', description: 'Inline styles for the main container' },
-      { name: 'productId', type: 'number', description: 'Id product' },
-      { name: 'reviewAverage', type: 'number', description: 'Average rating' },
-      { name: 'reviewCount', type: 'number', description: 'Count review' },
+      { name: 'reviewsAverage', type: 'number', description: 'Average score of all reviews (number from 0 to 5)' },
+      { name: 'reviewsCount', type: 'number', description: 'Total amount of reviews' },
     ],
   },
   scope: { StarRating, useState, useEffect },
@@ -22,21 +21,21 @@ export const meta = {
 ## Usage
 
 ```jsx
-<StarRating  productId='4745890594894' reviewAverage='4.2' reviewCount='32' />
+<StarRating reviewsAverage='4.2' reviewsCount='32' />
 ```
 
 ## Playground
 
 ```jsx live render
 const StarRatingExample = () => {
-const [reviewAverage, setReviewAverage] = useState(2.4)
-const [reviewCount, setReviewCount] = useState(32)
+const [reviewsAverage, setReviewsAverage] = useState(2.4)
+const [reviewsCount, setReviewsCount] = useState(32)
 
   return (
     <div>
-      <input type='number' value={reviewAverage} onChange={e => setReviewAverage(+e.target.value)} />
-      <input value={reviewCount} onChange={e => setReviewCount(+e.target.value)} />
-     <StarRating reviewAverage={reviewAverage} reviewCount={reviewCount} />
+      <input type='number' value={reviewsAverage} onChange={e => setReviewsAverage(+e.target.value)} />
+      <input value={reviewsCount} onChange={e => setReviewsCount(+e.target.value)} />
+     <StarRating reviewsAverage={reviewsAverage} reviewsCount={reviewsCount} />
     </div>
   )
 }

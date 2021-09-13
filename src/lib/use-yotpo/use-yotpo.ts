@@ -1,7 +1,5 @@
-import { useEffect } from 'react'
 import loadScript from '../load-script'
-import throttle from 'lodash/throttle'
-import window from '../window'
+import useDefer, { Status } from 'use-defer'
 
 declare global {
   interface Window {
@@ -11,10 +9,12 @@ declare global {
   }
 }
 
-const refreshWidgets = throttle(() => window?.yotpo?.refreshWidgets(), 100)
-
-export function useYotpo(deps: undefined | React.DependencyList = []): void {
+export function useYotpo(deps: undefined | React.DependencyList = []): boolean {
   // Script loading is memoized, so it is okay to call it every time
-  loadScript(`//staticw2.yotpo.com/LDoDRHPmIWai6MD5o41BGukBakwwgtNMncolHubV/widget.js`).catch(() => {})
-  useEffect(refreshWidgets, deps)
+  const { status } = useDefer(
+    () => loadScript(`//staticw2.yotpo.com/LDoDRHPmIWai6MD5o41BGukBakwwgtNMncolHubV/widget.js`),
+    [],
+    []
+  )
+  return Status.SUCCESS === status
 }

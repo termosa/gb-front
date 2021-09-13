@@ -578,11 +578,7 @@ export function ProductInfo({ className, style, addToCartRef }: ProductInfoProps
       <SPdpProductInfo top={infoDistanceFromTop + 'px'} ref={productInfoRef}>
         <SPdpProductInfoIcTitle ref={productHeadingRef}>INNER CIRCLE EXCLUSIVE</SPdpProductInfoIcTitle>
         <SPdpProductInfoTitle>{product.title}</SPdpProductInfoTitle>
-        <StarRating
-          productId={product.product_id}
-          reviewAverage={product?.reviewsAverage}
-          reviewCount={product?.reviewsCount}
-        />
+        <StarRating reviewsAverage={product.reviewsAverage} reviewsCount={product.reviewsCount} />
         <SPdpProductDetails>
           {isDiscountApplied && isDiscountAvailable ? (
             <>
