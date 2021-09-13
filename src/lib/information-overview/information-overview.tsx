@@ -12,6 +12,7 @@ const SWrapper = styled.section`
   max-width: 1020px;
   padding: 0;
   margin: 50px auto 0;
+  background: #fdfbf9;
 
   @media (min-width: 768px) {
     margin: 76px auto 0;
@@ -37,6 +38,20 @@ const STitle = styled.h2`
   }
 `
 
+const STitleUnderline = styled.span`
+  position: relative;
+
+  &:after {
+    content: '';
+    width: 100%;
+    height: 10px;
+    background: rgba(77, 190, 186, 0.3);
+    position: absolute;
+    bottom: 6px;
+    left: 0;
+  }
+`
+
 const SCardsWrapper = styled.div`
   * {
     box-sizing: border-box;
@@ -51,16 +66,30 @@ export type InformationOverviewProps = {
   className?: ClassName
   style?: React.CSSProperties
   title: string
+  titleUnderline: string
   cards: InformationCard[]
 }
 
-export function InformationOverview({ className, style, title, cards }: InformationOverviewProps): React.ReactElement {
+export function InformationOverview({
+  className,
+  style,
+  title,
+  titleUnderline,
+  cards,
+}: InformationOverviewProps): React.ReactElement {
   const useScreen = useScreenSize()
+  const titleArr = title.split(titleUnderline)
 
   return (
     <SWrapper className={cn(className)} style={style}>
       <STitleContainer>
-        <STitle>{title}</STitle>
+        <STitle>
+          <span>{titleArr[0]}</span>
+          <span>
+            <STitleUnderline>{titleUnderline}</STitleUnderline>
+          </span>
+          <span>{titleArr[1]}</span>
+        </STitle>
       </STitleContainer>
       <SCardsWrapper>
         {useScreen.greaterThanLarge ? (

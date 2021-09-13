@@ -49,6 +49,7 @@ export default function HomePage({ activeCustomer }: HomePageProps): React.React
         />
         <InformationOverview
           title="The most fun you've ever had relaxing"
+          titleUnderline="most fun"
           cards={[
             {
               title: 'Guilt Free Ingredients',
