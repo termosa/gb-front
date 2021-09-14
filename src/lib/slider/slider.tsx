@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Dispatch } from 'react'
 import Carousel, { ResponsiveType } from 'react-multi-carousel'
 import 'react-multi-carousel/lib/styles.css'
 import styled from 'styled-components'
@@ -125,6 +125,7 @@ type SliderProps = {
   infinite?: boolean
   itemClass?: string
   carouselRef?: React.RefObject<Carousel>
+  setActiveGalleryItem?: Dispatch<number>
 }
 
 interface CarouselState {
@@ -174,6 +175,7 @@ export const Slider = ({
   infinite,
   itemClass,
   carouselRef,
+  setActiveGalleryItem,
 }: SliderProps): React.ReactElement => {
   const CustomSlider = ({ carouselState }: CarouselState) => {
     let value = 0
@@ -227,6 +229,7 @@ export const Slider = ({
         infinite={infinite}
         responsive={responsive || getResponsive(partiallyVisible)}
         containerClass={scrollbarPresent ? 'carousel-container-with-scrollbar' : 'container-with-dots'}
+        afterChange={(_, { currentSlide }) => (setActiveGalleryItem ? setActiveGalleryItem(currentSlide) : null)}
       >
         {children}
       </Carousel>

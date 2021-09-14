@@ -114,7 +114,7 @@ const SPdpBtn = styled.button<{ disabled: boolean }>`
     p.disabled
       ? css`
           background-color: #333;
-          color: #1d1d1d;
+          color: #ffffff;
           cursor: default;
         `
       : css`

@@ -7,6 +7,7 @@ import { useScreenSize } from '../../lib/use-screen-size'
 import { Product as ProductType } from '../../modules/normalize-product'
 import ProductContext from '../../modules/product-context'
 import { Slider } from '../../lib/slider'
+import Carousel from 'react-multi-carousel'
 
 const Wrapper = styled.div`
   width: 101%;
@@ -62,6 +63,22 @@ const SCarouselIcons = styled.div`
 
 const SCarouselThumbnails = styled.div`
   display: flex;
+  overflow-x: scroll;
+  position: absolute;
+  width: calc(350px + (100vw - 350px) / 2);
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+`
+
+const SCarouselThumbnailItem = styled.a<{
+  isActive?: boolean
+}>`
+  height: 66px;
+  border: ${(props) => (props.isActive ? '1px solid #000000' : '1px solid #ffffff')};
+  margin-left: 4px;
+  cursor: pointer;
 
   img {
     width: 66px;
@@ -82,16 +99,6 @@ const SCarouselIconsList = styled.ul`
   margin: 3px 0 16px;
   list-style: none;
   display: block;
-  @media (max-width: 767px) {
-    display: flex !important;
-    overflow-x: scroll;
-    position: absolute;
-    width: calc(350px + (100vw - 350px) / 2);
-  }
-
-  &::-webkit-scrollbar {
-    display: none;
-  }
 `
 
 const SCarouselIconsItem = styled.li<{
@@ -158,6 +165,7 @@ export function VerticalGallery({ className }: VerticalGalleryProps): React.Reac
   const screenSize = useScreenSize()
 
   const galleryRef = useRef<HTMLDivElement>(null)
+  const carouselRef = useRef<Carousel>(null)
   const [activeGalleryItem, setActiveGalleryItem] = useState<number | null>(0)
   const [galleryImageWidth, setGalleryImageWidth] = useState<number>(465)
   const product = useContext<ProductType | undefined>(ProductContext)
@@ -253,7 +261,12 @@ export function VerticalGallery({ className }: VerticalGalleryProps): React.Reac
             </SPdpRow>
           ) : (
             <>
-              <Slider partiallyVisible={false} arrows={false}>
+              <Slider
+                partiallyVisible={false}
+                arrows={false}
+                carouselRef={carouselRef}
+                setActiveGalleryItem={setActiveGalleryItem}
+              >
                 {product.images?.map((image) => (
                   <SPdpCarouselItemMobile key={image?.src}>
                     <img src={image?.src} alt={image?.alt} />
@@ -261,10 +274,17 @@ export function VerticalGallery({ className }: VerticalGalleryProps): React.Reac
                 ))}
               </Slider>
               <SCarouselThumbnails>
-                {product.images?.map((image) => (
-                  <a key={image?.src}>
+                {product.images?.map((image, i) => (
+                  <SCarouselThumbnailItem
+                    key={image?.src}
+                    isActive={activeGalleryItem === i}
+                    onClick={() => {
+                      setActiveGalleryItem(i)
+                      carouselRef.current && carouselRef.current.goToSlide(i)
+                    }}
+                  >
                     <img src={product.images && image?.src} alt={product.images && image?.alt} />
-                  </a>
+                  </SCarouselThumbnailItem>
                 ))}
               </SCarouselThumbnails>
             </>
