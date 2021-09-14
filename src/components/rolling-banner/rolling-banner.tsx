@@ -100,6 +100,10 @@ const PinkSpan = styled.span`
   color: #ee67a0;
 `
 
+const PurpleSpan = styled.span`
+  color: #9059C8;
+`
+
 export function RollingBanner(): React.ReactElement {
   return (
     <PromoWrapper>
@@ -113,7 +117,7 @@ export function RollingBanner(): React.ReactElement {
             </span>
             <SPromoSlide>
               <span>
-                <PinkSpan>FREE SHIPPING</PinkSpan> ON ORDERS $75+
+                <PurpleSpan>FREE SHIPPING</PurpleSpan> ON ORDERS $75+
               </span>
             </SPromoSlide>
             <SPromoSlide>
