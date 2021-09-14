@@ -8,7 +8,6 @@ import FloatingCta from '../../components/floating-cta'
 import SitePromotion from '../site-promotion'
 import loadProductsChunk from '../../modules/load-products-chunk'
 import loadCustomer from '../../modules/load-customer'
-import PromotionBanner from '../promotion-banner'
 
 const MainPageLayoutWrapper = styled.div`
   display: flex;
@@ -19,11 +18,11 @@ const MainPageLayoutWrapper = styled.div`
   /*overflow: hidden;*/
 
   @media (min-width: 768px) {
-    padding-top: 156px;
+    padding-top: 152px;
   }
 
   @media (min-width: 1200px) {
-    padding-top: 165px;
+    padding-top: 146px;
   }
 `
 
