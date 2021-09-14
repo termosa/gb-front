@@ -38,7 +38,7 @@ const PromoSlider = styled.div`
   }
 
   a {
-    color: #9059C8;
+    color: #9059c8;
     text-decoration: none;
     transition: all linear 0.2s;
   }
@@ -101,7 +101,7 @@ const PinkSpan = styled.span`
 `
 
 const PurpleSpan = styled.span`
-  color: #9059C8;
+  color: #9059c8;
 `
 
 export function RollingBanner(): React.ReactElement {
@@ -117,7 +117,7 @@ export function RollingBanner(): React.ReactElement {
             </span>
             <SPromoSlide>
               <span>
-                <PurpleSpan>FREE SHIPPING</PurpleSpan> ON ORDERS $75+
+                <PurpleSpan>FREE SHIPPING</PurpleSpan> ON ORDERS $65+
               </span>
             </SPromoSlide>
             <SPromoSlide>
