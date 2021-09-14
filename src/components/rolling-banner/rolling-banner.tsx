@@ -113,7 +113,7 @@ export function RollingBanner(): React.ReactElement {
             </span>
             <SPromoSlide>
               <span>
-                <PinkSpan>FREE SHIPPING</PinkSpan> ON ORDERS $75+
+                <PinkSpan>FREE SHIPPING</PinkSpan> ON ORDERS $65+
               </span>
             </SPromoSlide>
             <SPromoSlide>

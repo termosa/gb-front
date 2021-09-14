@@ -18,13 +18,10 @@ const ProductCardWrapper = styled.div`
   cursor: pointer;
   flex-flow: column;
   height: 100%;
-
-  @media (min-width: 500px) {
-    padding: 5px 8px;
-  }
 `
 
 const SProductCard = styled.div`
+  width: auto;
   height: 100%;
   box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.1);
   background: white;
@@ -35,7 +32,6 @@ const SProductCard = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-  width: 100%;
 
   @media (min-width: 768px) {
     box-shadow: 0 0 6px rgba(0, 0, 0, 0.25);
