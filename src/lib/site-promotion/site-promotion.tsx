@@ -32,7 +32,7 @@ export type SitePromotionProps = {
 export function SitePromotion({ style, className }: SitePromotionProps): React.ReactElement {
   const { promo } = useQuery()
   const isGwpPresent = gwpPresent()
-  const [isError, setIsError] = useState(!promo && !!isGwpPresent)
+  const [isError, setIsError] = useState(false)
 
   useEffect(() => {
     if (!promo && !!isGwpPresent) {
