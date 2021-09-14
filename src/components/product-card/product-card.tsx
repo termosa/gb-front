@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { Product } from '../../modules/normalize-product'
 import formatPrice from '../../modules/format-price'
 import getLabel from '../../modules/get-label'
-import YotpoStarRating from '../../lib/yotpo-star-rating'
+import StarRating from '../../lib/star-rating'
 
 export type ProductCardProps = {
   className?: ClassName
@@ -257,7 +257,7 @@ export function ProductCard({ className, style, product, onClick }: ProductCardP
         </ProductCardImgWrapper>
         {checkForLabel()}
         <ProductCardStars>
-          <YotpoStarRating productId={product.product_id} />
+          <StarRating reviewsAverage={product.reviewsAverage} reviewsCount={product.reviewsCount} />
         </ProductCardStars>
         <ProductCardTitle title={productTitle}>{productTitle}</ProductCardTitle>
         <ProductCardType>{productType}</ProductCardType>
