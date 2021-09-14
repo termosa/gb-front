@@ -1,14 +1,19 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import cn, { Argument as ClassName } from 'classnames'
 import PromotionBanner from '../promotion-banner'
 import useQuery from '../use-query'
 import getCookie from '../get-cookie'
 
-const isGwpPresent = (): boolean => {
+interface WrapperProps {
+  error: boolean
+}
+
+const gwpPresent = (): boolean => {
   const promo = getCookie('c_promo')
   const exp = getCookie('promo-expiration')
-  if (!promo && !exp) {
+  const variant = getCookie('promo_variant')
+  if (promo && exp && variant) {
     return false
   }
   return true
@@ -24,32 +29,37 @@ export type SitePromotionProps = {
   style?: React.CSSProperties
 }
 
-export function SitePromotion({ style, className }: SitePromotionProps): React.ReactElement | null {
+export function SitePromotion({ style, className }: SitePromotionProps): React.ReactElement {
   const { promo } = useQuery()
+  const isGwpPresent = gwpPresent()
   const [isError, setIsError] = useState(false)
-  if (isError) {
-    return null
-  }
+
+  useEffect(() => {
+    if (!promo && !!isGwpPresent) {
+      setIsError(true)
+    }
+  }, [promo, isGwpPresent])
+
   return (
     <>
-      {promo || isGwpPresent() ? (
-        <PromotionContainer className={cn(className)} style={style}>
+      {(promo || isGwpPresent) && (
+        <PromotionContainer className={cn(className)} style={style} error={isError}>
           <PromotionBanner
             promo={promo || getPromoCookie()}
-            unVisibleBanner={isGwpPresent()}
+            visibleBanner={isGwpPresent}
             errorPromoDetails={() => setIsError(true)}
           />
         </PromotionContainer>
-      ) : null}
+      )}
     </>
   )
 }
 
-const PromotionContainer = styled.div`
+const PromotionContainer = styled.div<WrapperProps>`
   background-color: #464a4d;
   position: relative;
   text-align: center;
-  padding: 10px 0px;
+  padding: ${(props) => (props.error ? '0' : '10px 0')};
   color: #000;
   width: 100%;
   vertical-align: top;
