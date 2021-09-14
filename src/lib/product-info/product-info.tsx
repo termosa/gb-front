@@ -354,6 +354,7 @@ const SPdpPiSelectorBtn = styled.button<{
 
   &:disabled {
     opacity: 0.4;
+    pointer-events: none;
   }
 `
 
