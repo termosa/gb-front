@@ -1,22 +1,29 @@
 import setCookie from '../set-cookie'
 import api from '../../modules/api'
 
-export interface PromoExpiration {
+export interface ServerPromoExpiration {
   seconds: number
   days: number
   hours: number
   total_sec: number
-  sec: number
   minutes: number
 }
 
-export interface DetailsVariant {
+export interface PromoExpiration {
+  seconds: number
+  days: number
+  hours: number
+  totalSeconds: number
+  minutes: number
+}
+
+export interface ServerDetailsVariant {
   available: boolean
   id: number
   title: string
 }
 
-export interface Promo {
+export interface ServerPromo {
   id: number
   name: string
   promo?: string
@@ -26,8 +33,8 @@ export interface Promo {
   type?: string
 }
 
-export interface PromoDetails extends Promo {
-  detailsVariant: Array<DetailsVariant>
+export interface ServerPromoDetails extends ServerPromo {
+  detailsVariant: Array<ServerDetailsVariant>
   expiration: PromoExpiration
   sizeOutOfStock: boolean
 }
@@ -38,23 +45,32 @@ const saveSession = (promo: string) => {
   setCookie('c_promo', promo, 1)
 }
 
-export function loadPromoDetails(promo: string): Promise<PromoDetails> {
-  return api<Promo>({
-    base: `https://fjrecurly.herokuapp.com/get_promo_product`,
-    path: '',
+export const normalizeExpiration = (expiration: ServerPromoExpiration): PromoExpiration =>
+  expiration && {
+    days: expiration.days,
+    hours: expiration.hours,
+    minutes: expiration.minutes,
+    seconds: expiration.seconds,
+    totalSeconds: expiration.total_sec,
+  }
+
+export function loadPromoDetails(promo: string): Promise<ServerPromoDetails> {
+  return api<ServerPromo>({
+    base: `https://fjrecurly.herokuapp.com`,
+    path: '/get_promo_product',
     query: { promo },
   })
     .then((promoProduct) =>
       Promise.all([
         promoProduct,
-        api<Array<DetailsVariant>>({
-          base: `https://fjrecurly.herokuapp.com/shopify_endpoint/get_variants`,
-          path: '',
+        api<Array<ServerDetailsVariant>>({
+          base: `https://fjrecurly.herokuapp.com`,
+          path: '/shopify_endpoint/get_variants',
           query: { product_id: promoProduct.id },
         }),
-        api<PromoExpiration>({
-          base: `https://fjrecurly.herokuapp.com/get_promo`,
-          path: '',
+        api<ServerPromoExpiration>({
+          base: `https://fjrecurly.herokuapp.com`,
+          path: '/get_promo',
           query: { product_id: promoProduct.id, promo },
         }),
       ])
@@ -67,9 +83,9 @@ export function loadPromoDetails(promo: string): Promise<PromoDetails> {
         src: promoProduct.src,
         title: promoProduct.title,
         requirements: promoProduct.requirements,
-        detailsVariant,
-        sizeOutOfStock: detailsVariant && detailsVariant.some((variant) => variant.available),
-        expiration: promoJSON.expiration,
+        detailsVariant: detailsVariant || [],
+        sizeOutOfStock: detailsVariant ? detailsVariant.some((variant) => variant.available) : false,
+        expiration: normalizeExpiration(promoJSON.expiration),
       }
     })
 }

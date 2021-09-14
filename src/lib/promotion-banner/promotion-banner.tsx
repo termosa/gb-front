@@ -152,29 +152,29 @@ export function PromotionBanner({
   style,
   errorPromoDetails,
 }: PromotionBannerProps): React.ReactElement | null {
-  const promoDetails = useDefer(
+  const promoDetailsRequest = useDefer(
     () => (promo ? loadPromoDetails(promo).catch(() => errorPromoDetails()) : Promise.resolve(undefined)),
     [promo],
     []
   )
   const [unavailableRingSize, useUnavailableRingSize] = useState(false)
   const [buyRingSize, useBuyRingSize] = useState('')
-  return promoDetails.status === 'error' || !promoDetails.value ? null : (
+  return promoDetailsRequest.status === 'error' || !promoDetailsRequest.value ? null : (
     <PromoContainer className={cn(className)} style={style}>
       <WrapPromoContainer>
         <PromoImageBox>
-          <img src={promoDetails.value.src} alt="" />
+          <img src={promoDetailsRequest.value.src} alt="" />
         </PromoImageBox>
         <PromoClock>
-          <h3> {promoDetails.value.title} </h3>
+          <h3> {promoDetailsRequest.value.title} </h3>
         </PromoClock>
-        <PromoDescription>{promoDetails.value.requirements}</PromoDescription>
+        <PromoDescription>{promoDetailsRequest.value.requirements}</PromoDescription>
       </WrapPromoContainer>
-      {!buyRingSize && visibleBanner && promoDetails.value.sizeOutOfStock && (
+      {!buyRingSize && visibleBanner && promoDetailsRequest.value.sizeOutOfStock && (
         <>
           <PromoMessage>Select a ring size:</PromoMessage>
           <SelectHolderBtn>
-            {promoDetails.value.detailsVariant.map((el) => {
+            {promoDetailsRequest.value.detailsVariant.map((el) => {
               return el.available ? (
                 <ButtonRingSize
                   key={el.id}
@@ -213,7 +213,7 @@ export function PromotionBanner({
           (Ring Size: {buyRingSize})
         </Congratulations>
       )}
-      {!promoDetails.value.sizeOutOfStock && visibleBanner && (
+      {!promoDetailsRequest.value.sizeOutOfStock && visibleBanner && (
         <SizeOutOfStock>Sorry, all sizes are out of stock!</SizeOutOfStock>
       )}
     </PromoContainer>
