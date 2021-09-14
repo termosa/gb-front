@@ -18,11 +18,11 @@ const MainPageLayoutWrapper = styled.div`
   /*overflow: hidden;*/
 
   @media (min-width: 768px) {
-    padding-top: 156px;
+    padding-top: 152px;
   }
 
   @media (min-width: 1200px) {
-    padding-top: 165px;
+    padding-top: 146px;
   }
 `
 
@@ -42,7 +42,7 @@ export type MainPageLayoutProps = {
 
 export function MainPageLayout({ children, className, style }: MainPageLayoutProps): React.ReactElement | null {
   const searchRequest = useDefer(loadProductsChunk)
-  const { value: customer } = useDefer(() => loadCustomer().catch(() => null), [], [])
+  const { value: customer } = useDefer(() => loadCustomer({ skipCache: true }).catch(() => null), [], [])
 
   return (
     <MainPageLayoutWrapper className={cn(className)} style={style}>

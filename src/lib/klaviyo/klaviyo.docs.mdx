@@ -1,0 +1,24 @@
+export const meta = {
+  type: 'function',
+  name: 'klaviyo',
+  description: 'Submits analytics data',
+  tags: ['function', 'analytics'],
+  lists: {
+    arguments: [
+      { name: 'command', type: '"account" | "identify" | "track" | "trackViewedItem"', description: 'One of Klaviyo commands' },
+      { name: '...parameters', type: 'any', description: 'Command parameters' },
+    ],
+  },
+}
+
+## Usage
+
+```js
+import klaviyo from './klaviyo'
+
+klaviyo('trackViewedItem', {
+  ItemId: 123,
+  Title: 'Cool Bath Bomb',
+  Url: 'https://fragrantjewels.com/products/123',
+})
+```

@@ -47,6 +47,7 @@ export type Product = {
   fragrance?: string
   material?: string
   color?: string
+  vendor: string
   template: string
 }
 
@@ -85,6 +86,7 @@ export const normalizeProduct = (product: ServerProduct): Product => {
     ...(tagsProperties.fragrance && { fragrance: tagsProperties.fragrance }),
     ...(tagsProperties.material && { material: tagsProperties.material }),
     ...(tagsProperties.color && { color: tagsProperties.color }),
+    vendor: product.vendor,
     template: tagsProperties.template || 'Default',
   }
 }
