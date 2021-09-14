@@ -48,25 +48,6 @@ const CollectionBannerMobileImg = styled.img`
   }
 `
 
-const SProductBreadcrumbs = styled.div`
-  font-family: Montserrat, sans-serif;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 12px;
-  line-height: 15px;
-  padding: 16px;
-  margin: 0 auto;
-  max-width: 990px;
-
-  @media (min-width: 768px) {
-    padding: 28px 16px 20px;
-  }
-
-  & > span {
-    font-weight: 400;
-  }
-`
-
 const CollectionBannerMobileHeading = styled.h1`
   font-family: Cormorant Garamond, serif;
   font-weight: bold;
@@ -91,8 +72,6 @@ const CollectionBannerMobileText = styled.p`
   color: #000000;
   padding: 0 16px 28px;
 `
-
-const SCollectionBreadcrumbs = styled(SProductBreadcrumbs)``
 
 export type CollectionBannerProps = {
   children?: React.ReactNode
@@ -121,9 +100,6 @@ export function CollectionBanner({ className, style }: CollectionBannerProps): R
       <CollectionBannerMobileImg
         src={'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/collectionbanner.png'}
       />
-      <SCollectionBreadcrumbs>
-        Home / All / Bundles / <span>Bath Bombs</span>
-      </SCollectionBreadcrumbs>
       <CollectionBannerMobileHeading>Bath bombs</CollectionBannerMobileHeading>
       <CollectionBannerMobileText>
         It’s more than amazing scents and stunning colors — essential oils and natural minerals will leave your skin

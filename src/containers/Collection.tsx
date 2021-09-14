@@ -8,34 +8,13 @@ import filterCollectionProducts from '../modules/filter-collection-products'
 import CollectionContext from '../modules/collection-context'
 import navigate from '../lib/navigate'
 import { CollectionBanner } from '../lib/collection-banner'
-import { useScreenSize } from '../lib/use-screen-size'
 
 const SFiltersSection = styled(SiteSection)`
   margin-bottom: 2em;
 `
 
-const SCollectionBreadcrumbs = styled.div`
-  font-family: Montserrat, sans-serif;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 12px;
-  line-height: 15px;
-  padding: 16px;
-  margin: 0 auto;
-  max-width: 990px;
-
-  @media (min-width: 768px) {
-    padding: 28px 16px 20px;
-  }
-
-  & > span {
-    font-weight: 400;
-  }
-`
-
 const Collection = (): null | React.ReactElement => {
   const collection = useContext(CollectionContext)
-  const useScreen = useScreenSize()
 
   const [filter, setFilter] = useState<CollectionProductsFilter | null>(null)
   const [sorting, setSorting] = useState<SelectedSorting>(SelectedSorting.NEW)
@@ -62,11 +41,6 @@ const Collection = (): null | React.ReactElement => {
   return (
     <div>
       <CollectionBanner />
-      {useScreen.greaterThanMedium && (
-        <SCollectionBreadcrumbs>
-          Home / All / Bundles / <span>Bath Bombs</span>
-        </SCollectionBreadcrumbs>
-      )}
       <SFiltersSection>
         <CollectionFilters
           onChangeFilter={setFilter}
