@@ -1,8 +1,8 @@
+import { waitFor } from '@testing-library/react'
 import addCartItemWithSubscription from '.'
 import changeCartItem from '../change-cart-item'
 import loadCart from '../load-cart'
 import addCartItems from '../add-cart-items'
-import { waitFor } from '@testing-library/react'
 jest.mock('../change-cart-item')
 jest.mock('../load-cart')
 jest.mock('../add-cart-items')

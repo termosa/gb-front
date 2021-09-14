@@ -1,0 +1,20 @@
+export const meta = {
+  type: 'function',
+  name: 'trackViewedItem',
+  description: 'Track product view to Klaviyo',
+  tags: ['function', 'analytics'],
+  lists: {
+    arguments: [
+      { name: 'product', type: 'normalize-product.Product', description: 'Viewed product' },
+    ],
+  },
+}
+
+## Usage
+
+```js
+import trackViewedItem from './track-viewed-item'
+import loadProduct from '../load-product'
+
+loadProduct().then(product => product && trackViewedItem(product))
+```
