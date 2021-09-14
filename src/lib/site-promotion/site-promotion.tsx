@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import cn, { Argument as ClassName } from 'classnames'
 import PromotionBanner from '../promotion-banner'
@@ -9,7 +9,7 @@ interface WrapperProps {
   error: boolean
 }
 
-const isGwpPresent = (): boolean => {
+const gwpPresent = (): boolean => {
   const promo = getCookie('c_promo')
   const exp = getCookie('promo-expiration')
   const variant = getCookie('promo_variant')
@@ -29,20 +29,28 @@ export type SitePromotionProps = {
   style?: React.CSSProperties
 }
 
-export function SitePromotion({ style, className }: SitePromotionProps): React.ReactElement | null {
+export function SitePromotion({ style, className }: SitePromotionProps): React.ReactElement {
   const { promo } = useQuery()
-  const [isError, setIsError] = useState(false)
+  const isGwpPresent = gwpPresent()
+  const [isError, setIsError] = useState(!promo && !!isGwpPresent)
+
+  useEffect(() => {
+    if (!promo && !!isGwpPresent) {
+      setIsError(true)
+    }
+  }, [promo, isGwpPresent])
+
   return (
     <>
-      {promo || isGwpPresent() ? (
+      {(promo || isGwpPresent) && (
         <PromotionContainer className={cn(className)} style={style} error={isError}>
           <PromotionBanner
             promo={promo || getPromoCookie()}
-            visibleBanner={isGwpPresent()}
+            visibleBanner={isGwpPresent}
             error={() => setIsError(true)}
           />
         </PromotionContainer>
-      ) : null}
+      )}
     </>
   )
 }
