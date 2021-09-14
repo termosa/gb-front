@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react'
 import cn, { Argument as ClassName } from 'classnames'
-import { loadYotpoScript } from '../load-yotpo-script'
+import { useYotpo } from '../use-yotpo'
+import window from '../window'
 
 const AMOUNT_OF_STARS = 5
 
@@ -18,7 +19,7 @@ export function StarRating({
   reviewsAverage,
   reviewsCount,
 }: StarRatingProps): React.ReactElement | null {
-  const stylesReady = loadYotpoScript()
+  const stylesReady = useYotpo()
 
   const stars = useMemo(() => {
     const floor = reviewsAverage ? Math.floor(reviewsAverage) : 0
@@ -40,19 +41,28 @@ export function StarRating({
       })
   }, [reviewsAverage])
 
+  const goToYotpoReviews = () => {
+    const yOffset = -200
+    const element = window?.document.querySelector('.yotpo-nav-wrapper')
+    if (element) {
+      const y = element?.getBoundingClientRect().top + window?.pageYOffset + yOffset
+      window?.scrollTo({ top: y })
+    }
+  }
+
   return (
     <div className={cn(className)} style={style}>
-      <div className="yotpo bottomLine yotpo-small">
+      <div className="yotpo">
         <div className="yotpo-display-wrapper">
           <div className="standalone-bottomline" data-source="default">
-            <div className="yotpo-bottomline pull-left  star-clickable">
+            <div className="yotpo-bottomline star-clickable" onClick={(e) => goToYotpoReviews(e)}>
               <span className="yotpo-stars">
                 {' '}
                 {stars.map((star, i) => (
-                  <span key={i} className={`yotpo-icon yotpo-icon-${star} rating-star pull-left`}></span>
+                  <span key={i} className={`yotpo-icon yotpo-icon-${star}`}></span>
                 ))}
               </span>
-              <a onClick={(e) => e.preventDefault()} className="text-m" aria-label={`${reviewsCount} reviews`}>
+              <a className="text-m" aria-label={`${reviewsCount} reviews`}>
                 {stylesReady ? reviewsCount : null}
               </a>
               <div className="yotpo-clr"></div>

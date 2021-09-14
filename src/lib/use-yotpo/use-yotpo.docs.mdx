@@ -1,8 +1,8 @@
-import loadYotpoScript from '.'
+import useYotpo from '.'
 
 export const meta = {
   type: 'hook',
-  name: 'loadYotpoScript',
+  name: 'useYotpo',
   description: 'Initializes Yotpo script',
   tags: ['hook', 'yotpo'],
 }
@@ -11,7 +11,7 @@ export const meta = {
 
 ```jsx
 const ProductRating = ({ productId }) => {
-  loadYotpoScript([productId])
+  useYotpo([productId])
   return <div class="yotpo bottomLine" data-product-id={productId} />
 }
 ```
