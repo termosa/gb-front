@@ -49,12 +49,16 @@ const SButtons = styled.div`
   justify-content: space-between;
   width: 100%;
   max-width: 284px;
-  padding-bottom: 16px;
+  padding: 0 0 16px;
   margin-left: auto;
+
+  @media (max-width: 990px) {
+    padding: 0 16px 16px;
+  }
 
   @media (max-width: 768px) {
     max-width: 100%;
-    padding-bottom: 0;
+    padding: 0 0 16px;
   }
 `
 

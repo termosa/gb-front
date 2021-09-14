@@ -1,0 +1,39 @@
+import { useEffect, useState } from 'react'
+import StarRating from '.'
+
+export const meta = {
+  type: 'component',
+  name: 'StarRating',
+  description: 'Basic component',
+  tags: ['component'],
+  preview: <StarRating />,
+  lists: {
+    attributes: [
+      { name: 'className', type: 'classnames.Argument', description: 'One or multiple class names that will be added to the main container' },
+      { name: 'style', type: 'React.CSSProperties', description: 'Inline styles for the main container' },
+      { name: 'reviewsAverage', type: 'number', description: 'Average score of all reviews (number from 0 to 5)' },
+      { name: 'reviewsCount', type: 'number', description: 'Total amount of reviews' },
+    ],
+  },
+  scope: { StarRating, useState, useEffect },
+}
+
+## Usage
+
+```jsx
+<StarRating reviewsAverage={4.2} reviewsCount={32} />
+```
+
+## Playground
+
+```jsx live render
+const StarRatingExample = () => {
+  return (
+    <div>
+     <StarRating reviewsAverage={2.4} reviewsCount={42} />
+    </div>
+  )
+}
+
+render(<StarRatingExample />)
+```

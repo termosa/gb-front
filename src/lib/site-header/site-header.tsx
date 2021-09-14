@@ -291,8 +291,8 @@ const ExtendableBlockListItem = styled.li`
       padding: 6px 0 6px 0;
     }
     & > a:hover {
-      text-shadow: 0 0 #000;
-      // font-weight: 600;
+      // text-shadow: 0 0 #000;
+      font-weight: 600;
     }
   }
 `
@@ -313,8 +313,8 @@ const AnimatedLink = styled.a`
 
   &:hover {
     @media (min-width: 1200px) {
-      text-shadow: 0 0 #000;
-
+      // text-shadow: 0 0 #000;
+      font-weight: 600;
       span:after {
         height: 2px;
         bottom: 0px;
@@ -329,7 +329,8 @@ const AnimatedLink = styled.a`
 
     @media (min-width: 1200px) {
       &:hover {
-        text-shadow: 0 0 #000;
+        font-weight: 600;
+        // text-shadow: 0 0 #000;
       }
     }
 
@@ -516,9 +517,9 @@ const AllContent = () => (
         </ExtendableBlockItem>
       </ExtendableBlockItems>
       <ExtendableBlockItem className="desktop-nav-product-item">
-        <a href="/collections/summer-collection">
-          <img src="https://fragrantjewels.s3.amazonaws.com/app/app-nav/watch-me-bloom-nav-all-img-dt.jpg" />
-          <AnimatedLink as="span"><span>New! Candle + Planter in 1</span></AnimatedLink>
+        <a href="/collections/spooky">
+          <img src="https://fragrantjewels.s3.amazonaws.com/app/app-nav/nav-all-img-22-dt.jpg" />
+          <AnimatedLink as="span"><span>New in the Halloween Shop</span></AnimatedLink>
         </a>
       </ExtendableBlockItem>
     </ExtendableBlockContainer>
@@ -530,17 +531,17 @@ const SubscriptionContent = () => (
     <ExtendableBlockContainer>
       <ExtendableBlockItem>
         <a href="/pages/inner-circle">
-          <img src="https://fragrantjewels-assets.s3.amazonaws.com/images/island-time/nav-subscription-july.jpg" />
+          <img src="https://fragrantjewels-assets.s3.amazonaws.com/images/pick-your-poison/nav-pick-your-poison.jpg" />
           <ExtendableBlockListTitle>Exclusive Savings On New Collections Every Month</ExtendableBlockListTitle>
           <ExtendableBlockListText>
-            Create a tropical oasis right in your own home with our new, exclusive collection.
+            A collection so intoxicating, it's to die for...
           </ExtendableBlockListText>
           <AnimatedLink as="span"><span>Learn more</span></AnimatedLink>
         </a>
       </ExtendableBlockItem>
       <ExtendableBlockItem>
         <a href="/pages/rare-ic-page">
-          <img src="https://fragrantjewels.s3.amazonaws.com/app/app-nav/nav-subscription-img-rare-5.jpg" />
+          <img src="https://fragrantjewels.s3.amazonaws.com/app/app-nav/rare-protection-charms.jpg" />
           <ExtendableBlockListTitle>Everything There Is To Know About Rare Collections</ExtendableBlockListTitle>
           <ExtendableBlockListText>
             Start collecting unique limited edition sets not available for sale! Find out how you can qualify.

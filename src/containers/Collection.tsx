@@ -7,6 +7,7 @@ import parseFiltersFromProducts from '../modules/parse-filters-from-products'
 import filterCollectionProducts from '../modules/filter-collection-products'
 import CollectionContext from '../modules/collection-context'
 import navigate from '../lib/navigate'
+import { CollectionBanner } from '../lib/collection-banner'
 
 const SFiltersSection = styled(SiteSection)`
   margin-bottom: 2em;
@@ -38,7 +39,8 @@ const Collection = (): null | React.ReactElement => {
   if (!collection) return null
 
   return (
-    <div style={{ margin: '5em 0' }}>
+    <div>
+      <CollectionBanner />
       <SFiltersSection>
         <CollectionFilters
           onChangeFilter={setFilter}

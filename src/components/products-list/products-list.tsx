@@ -10,21 +10,19 @@ export type ProductsListProps = {
 }
 
 const ProductsListContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+
+  @media (max-width: 990px) {
+    grid-template-columns: repeat(2, 1fr);
+    margin: 0 16px;
+  }
 `
 
 const SProductCard = styled(ProductCard)`
-  width: 30%;
-
-  @media (min-width: 500px) {
-    padding: 0 0 40px 0;
-  }
-
-  @media (max-width: 900px) {
-    width: 48%;
-  }
+  display: flex;
+  padding: 0;
 `
 
 export const ProductsList = ({ products, onSelectProduct }: ProductsListProps): React.ReactElement => (

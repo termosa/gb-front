@@ -23,7 +23,7 @@ const Container = styled.div`
 const PromoSlider = styled.div`
   font: 600 9px/1.2 'Montserrat', sans-serif;
   letter-spacing: 0.05em;
-  color: #fff;
+  color: #4dbeba;
   text-align: center;
   padding: 9px 0;
   position: relative;
@@ -38,7 +38,7 @@ const PromoSlider = styled.div`
   }
 
   a {
-    color: #ee67a0;
+    color: #9059c8;
     text-decoration: none;
     transition: all linear 0.2s;
   }
@@ -100,6 +100,10 @@ const PinkSpan = styled.span`
   color: #ee67a0;
 `
 
+const PurpleSpan = styled.span`
+  color: #9059c8;
+`
+
 export function RollingBanner(): React.ReactElement {
   return (
     <PromoWrapper>
@@ -113,7 +117,7 @@ export function RollingBanner(): React.ReactElement {
             </span>
             <SPromoSlide>
               <span>
-                <PinkSpan>FREE SHIPPING</PinkSpan> ON ORDERS $75+
+                <PurpleSpan>FREE SHIPPING</PurpleSpan> ON ORDERS $65+
               </span>
             </SPromoSlide>
             <SPromoSlide>

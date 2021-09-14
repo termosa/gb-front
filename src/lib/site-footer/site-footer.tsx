@@ -74,7 +74,7 @@ export function SiteFooter({ className, style }: SiteFooterProps): React.ReactEl
             <LinksColumnGroup
               title="Shop"
               links={[
-                { name: 'Mystery Bundles', href: '/collections/mystery-bundles' },
+                { name: 'Halloween', href: '/collections/spooky' },
                 { name: 'Bath Bombs', href: '/collections/bath-bombs' },
                 { name: 'Candles', href: '/collections/jewel-candles' },
                 { name: 'Body Scrubs', href: '/collections/body-scrubs' },

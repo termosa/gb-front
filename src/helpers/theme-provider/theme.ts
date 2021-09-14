@@ -1,6 +1,6 @@
 const theme = {
   layout: {
-    maxContentWidth: '940px',
+    maxContentWidth: '990px',
   },
   fonts: {
     familyMain: 'Montserrat, sans-serif',

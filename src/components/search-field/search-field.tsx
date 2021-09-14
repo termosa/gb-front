@@ -73,6 +73,7 @@ const SSearchedProducts = styled.div`
   background: #fff;
   z-index: 9999;
   box-shadow: 0 3px 6px rgb(0 0 0 / 10%);
+  padding: 20px 0;
 `
 
 const SSearchedProductLink = styled.a<{ underline?: boolean }>`

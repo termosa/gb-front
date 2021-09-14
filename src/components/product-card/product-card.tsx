@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { Product } from '../../modules/normalize-product'
 import formatPrice from '../../modules/format-price'
 import getLabel from '../../modules/get-label'
-import YotpoStarRating from '../../lib/yotpo-star-rating'
+import StarRating from '../../lib/star-rating'
 
 export type ProductCardProps = {
   className?: ClassName
@@ -18,13 +18,10 @@ const ProductCardWrapper = styled.div`
   cursor: pointer;
   flex-flow: column;
   height: 100%;
-
-  @media (min-width: 500px) {
-    padding: 5px 8px;
-  }
 `
 
 const SProductCard = styled.div`
+  width: auto;
   height: 100%;
   box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.1);
   background: white;
@@ -35,7 +32,6 @@ const SProductCard = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-  width: 100%;
 
   @media (min-width: 768px) {
     box-shadow: 0 0 6px rgba(0, 0, 0, 0.25);
@@ -261,7 +257,7 @@ export function ProductCard({ className, style, product, onClick }: ProductCardP
         </ProductCardImgWrapper>
         {checkForLabel()}
         <ProductCardStars>
-          <YotpoStarRating productId={product.product_id} />
+          <StarRating reviewsAverage={product.reviewsAverage} reviewsCount={product.reviewsCount} />
         </ProductCardStars>
         <ProductCardTitle title={productTitle}>{productTitle}</ProductCardTitle>
         <ProductCardType>{productType}</ProductCardType>

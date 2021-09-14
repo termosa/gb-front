@@ -42,7 +42,7 @@ export type MainPageLayoutProps = {
 
 export function MainPageLayout({ children, className, style }: MainPageLayoutProps): React.ReactElement | null {
   const searchRequest = useDefer(loadProductsChunk)
-  const { value: customer } = useDefer(() => loadCustomer().catch(() => null), [], [])
+  const { value: customer } = useDefer(() => loadCustomer({ skipCache: true }).catch(() => null), [], [])
 
   return (
     <MainPageLayoutWrapper className={cn(className)} style={style}>

@@ -14,9 +14,7 @@ const SFloatingCtaClosed = styled.div<{ isVisible?: boolean }>`
   position: sticky;
   z-index: 3;
   bottom: 16px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 0 16px 0;
+  margin: 0 16px;
   opacity: ${(props) => (props.isVisible ? 1 : 0)};
   transition: opacity 0.5s ease-in-out;
 

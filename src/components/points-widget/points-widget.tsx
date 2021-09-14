@@ -21,7 +21,7 @@ const SLinkWrapper = styled.a`
 const SValueWrapper = styled.div`
   font-weight: 600;
   position: absolute;
-  top: 48%;
+  top: 44%;
   left: calc(50% + 19px);
   transform: translate(-50%, -50%);
   text-align: center;
