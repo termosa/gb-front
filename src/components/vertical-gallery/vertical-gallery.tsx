@@ -1,4 +1,4 @@
-import React, { Dispatch, MutableRefObject, SetStateAction, useContext, useEffect, useState } from 'react'
+import React, { Dispatch, MutableRefObject, SetStateAction, useContext, useEffect, useRef, useState } from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
 import { ProductImage } from '../../modules/normalize-product-image'
@@ -152,18 +152,13 @@ const SPdpCarouselItemMobile = styled.div`
 
 export type VerticalGalleryProps = {
   className?: ClassName
-  activeGalleryItem: number | null
-  setActiveGalleryItem: Dispatch<SetStateAction<number | null>>
-  galleryRef: MutableRefObject<HTMLDivElement | null>
 }
 
-export function VerticalGallery({
-  className,
-  activeGalleryItem,
-  setActiveGalleryItem,
-  galleryRef,
-}: VerticalGalleryProps): React.ReactElement | null {
+export function VerticalGallery({ className }: VerticalGalleryProps): React.ReactElement | null {
   const screenSize = useScreenSize()
+
+  const galleryRef = useRef<HTMLDivElement>(null)
+  const [activeGalleryItem, setActiveGalleryItem] = useState<number | null>(0)
   const [galleryImageWidth, setGalleryImageWidth] = useState<number>(465)
   const product = useContext<ProductType | undefined>(ProductContext)
 
@@ -183,7 +178,7 @@ export function VerticalGallery({
   }, [product, screenSize])
 
   useEffect(() => {
-    setGalleryImageWidth(screenSize.greaterThenExtraLarge ? 465 : screenSize.greaterThenLarge ? 400 : 300)
+    setGalleryImageWidth(screenSize.greaterThanExtraLarge ? 465 : screenSize.greaterThanLarge ? 400 : 300)
   }, [screenSize])
 
   const getImageHeight = (image: ProductImage): number => {
@@ -214,7 +209,7 @@ export function VerticalGallery({
     <Wrapper className={cn(className)}>
       <SPdpCarouselContainer>
         <SPdpRowWrapper>
-          {screenSize.greaterThenMedium ? (
+          {screenSize.greaterThanMedium ? (
             <SPdpRow>
               <SCarouselIcons>
                 <SCarouselIconsList>
@@ -267,7 +262,7 @@ export function VerticalGallery({
               </Slider>
               <SCarouselThumbnails>
                 {product.images?.map((image) => (
-                  <a>
+                  <a key={image?.src}>
                     <img src={product.images && image?.src} alt={product.images && image?.alt} />
                   </a>
                 ))}

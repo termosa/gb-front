@@ -29,13 +29,15 @@ const SDesktopNav = styled.ul`
   display: flex;
   margin: 0;
   list-style: none;
-  font-size: 1em;
-  letter-spacing: 0.02em;
+  // font-size: 1em;
+  font-size: 0.9em;
+  // letter-spacing: 0.02em;
   text-transform: uppercase;
   justify-content: space-between;
   align-items: center;
-  padding: 0 15px;
-  margin: 0 -10px;
+  padding: 0;
+  // margin: 0 -10px;
+  letter-spacing: 0.7px;
   @media (max-width: 1199px) {
     padding: 10px 0;
     max-width: 990px;
@@ -50,7 +52,7 @@ const SNavItem = styled.li`
   cursor: pointer;
   @media (max-width: 1199px) {
     order: 2;
-    margin-right: 13px;
+    margin-right: 15px;
   }
 
   @media (min-width: 1200px) {
@@ -66,13 +68,14 @@ const SNavItem = styled.li`
   }
 
   &:hover > a {
-    font-weight: 700;
+    text-shadow: 0 0 #000;
+    // font-weight: 700;
   }
 `
 
 const SNavItemExtendable = styled(SNavItem)`
   position: relative;
-  padding-right: 13px;
+  
 
   & > a {
     display: flex;
@@ -84,12 +87,13 @@ const SNavItemExtendable = styled(SNavItem)`
     right: 0;
     top: 1px;
     font: 400 14px/1.5 'Montserrat', sans-serif;
-    letter-spacing: 0.05em;
+    // letter-spacing: 0.05em;
     display: none;
     transition: all ease-out 0.15s;
   }
 
   @media (min-width: 1200px) {
+    padding-right: 13px;
     & > a:after {
       border: solid #636363;
       display: block;
@@ -100,8 +104,9 @@ const SNavItemExtendable = styled(SNavItem)`
     }
     &:hover > a:after {
       transform: rotate(-135deg);
-      top: 0.42em;
-      border-width: 0 2px 2px 0;
+      top: 6px;
+      border-color: #000;
+      // border-width: 0 2px 2px 0;
     }
   }
 `
@@ -115,11 +120,11 @@ const SSubscribeButton = styled.li`
     order: 2;
   }
   @media (max-width: 1199px) {
-    margin-right: 13px;
+    margin-right: 15px;
   }
   & > a {
-    font: 400 14px/1.5 'Montserrat', sans-serif;
-    letter-spacing: 0.05em;
+    font: 600 14px/1.5 'Montserrat', sans-serif;
+    // letter-spacing: 0.05em;
     display: flex;
     align-items: center;
     text-decoration: none;
@@ -129,7 +134,8 @@ const SSubscribeButton = styled.li`
     color: #fff;
     border-radius: 2em;
     border: 1px solid #9059c8;
-    padding: 0.7em 1.6em;
+    // padding: 0.7em 1.6em;
+    padding: 7px 15px;
     transition: all linear 0.2s;
 
     @media screen and (min-width: 1200px) {
@@ -146,19 +152,19 @@ export function NavTabs({ className, setExtendableBlockContent }: NavTabsProps):
   return (
     <SWrapper className={cn('NavTabs', className)}>
       <SDesktopNav>
-        <SSubscribeButton style={{ display: 'list-item' }}>
+        <SSubscribeButton style={{ display: 'list-item' }} onMouseEnter={() => setExtendableBlockContent('')}>
           <a href="/pages/inner-circle">Subscribe</a>
         </SSubscribeButton>
-        <SNavItem>
+        <SNavItem onMouseEnter={() => setExtendableBlockContent('')}>
           <a href="/collections/mystery-bundles">Mystery Bundles</a>
         </SNavItem>
-        <SNavItem>
+        <SNavItem onMouseEnter={() => setExtendableBlockContent('')}>
           <a href="/collections/bath-bombs">Bath bombs</a>
         </SNavItem>
-        <SNavItem>
+        <SNavItem onMouseEnter={() => setExtendableBlockContent('')}>
           <a href="/collections/jewel-candles">Candles</a>
         </SNavItem>
-        <SNavItem>
+        <SNavItem onMouseEnter={() => setExtendableBlockContent('')}>
           <a href="/collections/body-scrubs">Body Scrubs</a>
         </SNavItem>
         <SNavItemExtendable onMouseEnter={() => setExtendableBlockContent('All')}>
@@ -170,7 +176,7 @@ export function NavTabs({ className, setExtendableBlockContent }: NavTabsProps):
         <SNavItemExtendable onMouseEnter={() => setExtendableBlockContent('Rewards')}>
           <a href="/pages/rewards-boutique">Rewards</a>
         </SNavItemExtendable>
-        <SNavItem>
+        <SNavItem onMouseEnter={() => setExtendableBlockContent('')}>
           <a href="/pages/vault-appraise">Vault</a>
         </SNavItem>
       </SDesktopNav>

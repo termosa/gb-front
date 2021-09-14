@@ -105,6 +105,7 @@ const SliderWrapper = styled.div`
     justify-content: space-between;
     align-items: center;
     margin: 26px auto 0;
+    padding: 0;
     max-width: 100%;
     width: 100%;
   }
@@ -113,7 +114,7 @@ const SliderWrapper = styled.div`
 const SCompanyImageContainer = styled.div`
   display: flex;
   justify-content: center;
-  align-content: center;
+  align-items: center;
   height: 100%;
 
   img {
@@ -123,16 +124,31 @@ const SCompanyImageContainer = styled.div`
 `
 
 const TEST_IMAGES = [
-  'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/buzzfeed.png',
-  'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/cosmopolitan.png',
-  'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/refinery29.png',
-  'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/allure.png',
-  'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/beauty-insider.png',
-  'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/popsugar.png',
+  'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/buzzfeedlogo.png',
+  'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/cosmopolitanlogo.png',
+  'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/refinery29logo.png',
+  'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/allurelogo.png',
+  'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/beautyinsiderlogo.png',
+  'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/vector.png',
 ]
 
 export function ReviewsSection({ quote, author, className }: ReviewsSectionProps): React.ReactElement {
   const useScreen = useScreenSize()
+
+  const sliderSettings = {
+    desktop: {
+      breakpoint: { max: 3000, min: 700 },
+      items: 3,
+    },
+    tablet: {
+      breakpoint: { max: 768, min: 520 },
+      items: 2,
+    },
+    mobile: {
+      breakpoint: { max: 520, min: 0 },
+      items: 1,
+    },
+  }
 
   return (
     <SReviewSection className={cn('ReviewsSection', className)}>
@@ -161,10 +177,10 @@ export function ReviewsSection({ quote, author, className }: ReviewsSectionProps
           <SFigcaption>{`- ${author}`}</SFigcaption>
         </SQuote>
         <SliderWrapper>
-          {useScreen.greaterThenMedium ? (
+          {useScreen.greaterThanLarge ? (
             TEST_IMAGES.map((media, index) => <img src={media} alt="company" key={`revImage${index}`} />)
           ) : (
-            <Slider partiallyVisible={false} arrows infinite>
+            <Slider partiallyVisible={false} arrows infinite responsive={sliderSettings}>
               {/*{images*/}
               {/*  ? images.map((media, index) => <img src={media} alt="company" key={`revImage${index}`} />)*/}
               {/*  : TEST_IMAGES.map((media, index) => <img src={media} alt="company" key={`revImage${index}`} />)}*/}

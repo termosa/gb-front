@@ -16,6 +16,7 @@ const MainPageLayoutWrapper = styled.div`
   min-height: 100vh;
   transition: opacity linear 0.5s;
   padding-top: 155px;
+  /*overflow: hidden;*/
 
   @media (min-width: 768px) {
     padding-top: 156px;
@@ -48,7 +49,7 @@ export function MainPageLayout({ children, className, style }: MainPageLayoutPro
     <MainPageLayoutWrapper className={cn(className)} style={style}>
       <Header
         userName={customer?.fullName}
-        onSearch={(value) => console.log(value)}
+        onSearch={(search) => (search ? searchRequest.execute({ search }) : searchRequest.reset())}
         searchedProducts={searchRequest.value}
         userEmail={customer?.email}
       />

@@ -1,8 +1,5 @@
 import api from '../api'
-import normalizeProductsChunk, {
-  ServerProductsChunk,
-  ProductsChunk,
-} from '../normalize-products-chunk'
+import normalizeProductsChunk, { ServerProductsChunk, ProductsChunk } from '../normalize-products-chunk'
 
 export type { Product } from '../normalize-product'
 

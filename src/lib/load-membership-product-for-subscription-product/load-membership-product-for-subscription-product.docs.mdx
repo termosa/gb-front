@@ -1,0 +1,27 @@
+export const meta = {
+  type: 'function',
+  name: 'loadMembershipProductForSubscriptionProduct',
+  description: 'Loads membership product for subscription product',
+  tags: ['function'],
+  lists: {
+    arguments: [
+      {
+        name: 'subscriptionProductId',
+        type: 'number',
+        required: true,
+        description: 'Id of subscription product',
+      },
+    ],
+    returns: [{ name: 'membershipProduct', type: 'Promise<Product>', description: 'Membership product' }],
+  },
+}
+
+## Usage
+
+```js
+import loadMembershipProductForSubscriptionProduct from './load-membership-product-for-subscription-product'
+
+loadMembershipProductForSubscriptionProduct(1234567).then((membershipProduct) =>
+  console.log('Membership product id: ', membershipProduct.product_id)
+)
+```

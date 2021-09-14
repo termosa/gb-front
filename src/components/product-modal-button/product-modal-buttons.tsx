@@ -20,6 +20,11 @@ const SModalButtonsWrapper = styled.div`
 `
 
 const SModalButtonsItem = styled.button`
+  font-family: Montserrat, sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: 0.01em;
   margin: 0 2px;
   display: flex;
   align-items: center;
@@ -49,8 +54,8 @@ export function ProductModalButtons(): React.ReactElement {
     <SModalButtonsWrapper>
       <SModalButtonsItem>
         <svg
-          width={screenSize.lessThenSmall ? 20 : 27}
-          height={screenSize.lessThenSmall ? 17 : 24}
+          width={screenSize.lessThanSmall ? 20 : 27}
+          height={screenSize.lessThanSmall ? 17 : 24}
           viewBox="0 0 27 24"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -112,8 +117,8 @@ export function ProductModalButtons(): React.ReactElement {
       </SModalButtonsItem>
       <SModalButtonsItem>
         <svg
-          width={screenSize.lessThenSmall ? 26 : 34}
-          height={screenSize.lessThenSmall ? 14 : 20}
+          width={screenSize.lessThanSmall ? 26 : 34}
+          height={screenSize.lessThanSmall ? 14 : 20}
           viewBox="0 0 34 20"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -130,8 +135,8 @@ export function ProductModalButtons(): React.ReactElement {
       </SModalButtonsItem>
       <SModalButtonsItem>
         <svg
-          width={screenSize.lessThenSmall ? 17 : 21}
-          height={screenSize.lessThenSmall ? 20 : 26}
+          width={screenSize.lessThanSmall ? 17 : 21}
+          height={screenSize.lessThanSmall ? 20 : 26}
           viewBox="0 0 21 26"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"

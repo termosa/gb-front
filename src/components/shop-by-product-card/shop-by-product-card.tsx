@@ -26,6 +26,10 @@ const SLayoutImage = styled.img`
   margin-bottom: 0;
   border-style: none;
   object-fit: cover;
+
+  @media (max-width: 350px) {
+    max-width: 245px;
+  }
 `
 
 const SButtonWrapper = styled.div`
@@ -33,7 +37,7 @@ const SButtonWrapper = styled.div`
   min-width: 128px;
   bottom: 0;
   left: 50%;
-  transform: translate(-50%, 29%);
+  transform: translate(-50%, 44%);
   @media (min-width: 768px) {
     transform: translate(-50%, 50%);
   }

@@ -1,10 +1,10 @@
 import useCart from '.'
 import { renderHook } from '@testing-library/react-hooks'
 import loadCart from '../load-cart'
-import addItemToCart from '../add-item-to-cart'
+import addCartItem from '../add-cart-item'
 import { Status } from 'use-defer'
 jest.mock('../load-cart')
-jest.mock('../add-item-to-cart')
+jest.mock('../add-cart-item')
 
 describe('useCart()', () => {
   beforeEach(() => {
@@ -23,8 +23,8 @@ describe('useCart()', () => {
       totalPrice: 16.95,
       error: undefined,
     })
-    ;(addItemToCart as jest.Mock).mockReset()
-    ;(addItemToCart as jest.Mock).mockResolvedValue({})
+    ;(addCartItem as jest.Mock).mockReset()
+    ;(addCartItem as jest.Mock).mockResolvedValue({})
   })
 
   it('should not receive data when useData flag is off', async () => {
@@ -47,7 +47,7 @@ describe('useCart()', () => {
 
     await waitForNextUpdate()
 
-    expect(addItemToCart).toBeCalledWith(39350262104142, 1)
+    expect(addCartItem).toBeCalledWith(39350262104142, 1)
     expect(result.current.status).toBe(Status.IDLE)
   })
 
@@ -110,7 +110,7 @@ describe('useCart()', () => {
 
     await waitForNextUpdate()
 
-    expect(addItemToCart).toBeCalledWith(39350262104142, 1)
+    expect(addCartItem).toBeCalledWith(39350262104142, 1)
     expect(loadCart).toBeCalledTimes(2)
     expect(result.current).toStrictEqual({
       status: Status.SUCCESS,

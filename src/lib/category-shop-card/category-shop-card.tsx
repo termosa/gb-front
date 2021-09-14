@@ -5,7 +5,6 @@ import Button from '../../lib/button'
 
 const SCol = styled.div`
   @media (min-width: 768px) {
-    width: 46%;
     margin: 0 auto 92px;
   }
 `
@@ -21,9 +20,14 @@ const SLayout = styled.div`
 `
 
 const SLayoutImage = styled.img`
-  width: 463px;
-  height: 463px !important;
+  width: 100%;
+  height: 100% !important;
   display: block;
+
+  @media (min-width: 500px) {
+    width: 463px;
+    height: 463px !important;
+  }
 `
 
 const SContent = styled.div`

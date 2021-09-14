@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from 'react'
-import loadProduct, { Product } from '../lib/load-product'
+import React from 'react'
+import useDefer from 'use-defer'
+import loadProduct from '../lib/load-product'
 import InnerCircleExclusive from '../components/inner-circle-exclusive'
-import addItemToCart from '../lib/add-item-to-cart'
+import addCartItem from '../lib/add-cart-item'
 import navigate from '../lib/navigate'
+import loadMembershipProductForSubscriptionProduct from '../lib/load-membership-product-for-subscription-product'
 
 type InnerCircleExclusiveProps = {
   productId: number
@@ -21,27 +23,25 @@ const InnerCircleExclusiveContainer = ({
   topButtonText,
   buttonLink,
 }: InnerCircleExclusiveProps): React.ReactElement | null => {
-  const [product, setProduct] = useState<Product>()
+  const subscriptionProductRequest = useDefer(() => loadProduct(productId), [], [])
+  const membershipProductRequest = useDefer(() => loadMembershipProductForSubscriptionProduct(productId), [], [])
 
-  useEffect(() => {
-    loadProduct(productId)
-      .then((res) => setProduct(res))
-      .catch((e) => console.log(e))
-  }, [])
+  if (!subscriptionProductRequest.value || !membershipProductRequest.value) return null
 
-  return product ? (
+  return (
     <InnerCircleExclusive
-      product={product}
+      membershipProductVariants={membershipProductRequest.value.variants}
+      product={subscriptionProductRequest.value}
       title={title}
       buttonLink={buttonLink}
       slideImages={slideImages.map((s) => s.slide)}
       subTitle={subTitle}
       topButtonText={topButtonText}
       onReserve={(variant) => {
-        addItemToCart(variant.variant_id).then(() => navigate('/cart'))
+        addCartItem(variant.variant_id).then(() => navigate('/cart'))
       }}
     />
-  ) : null
+  )
 }
 
 export default InnerCircleExclusiveContainer

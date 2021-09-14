@@ -1,13 +1,15 @@
-import React, { useRef, useCallback, useState, FormEvent } from 'react'
+import React, { useRef, useState, FormEvent, useMemo } from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
 import usePopper from '../../hooks/use-popper'
 import useOnClickOutside from '../../hooks/use-on-click-outside'
 import { ProductsChunk } from '../../modules/normalize-products-chunk'
+import navigate from '../../lib/navigate'
+import debounce from 'lodash/debounce'
 
 export type SearchFieldProps = {
   className?: ClassName
-  onSubmit: (value: string) => void
+  onSearch: (value: string) => void
   searchedProducts?: ProductsChunk
 }
 
@@ -32,6 +34,24 @@ const SField = styled.input`
   color: #000;
   line-height: 19px;
   box-sizing: border-box;
+
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
+
+  ::-webkit-input-placeholder {
+    letter-spacing: 0.7px;
+  }
+  ::-moz-placeholder {
+    letter-spacing: 0.7px;
+  }
+  :-ms-input-placeholder {
+    letter-spacing: 0.7px;
+  }
+  :-moz-placeholder {
+    letter-spacing: 0.7px;
+  }
 `
 
 const SButton = styled.button`
@@ -64,23 +84,27 @@ const SSearchedProductLink = styled.a<{ underline?: boolean }>`
   color: #000;
 `
 
-export function SearchField({ className, onSubmit, searchedProducts }: SearchFieldProps): React.ReactElement | null {
+export function SearchField({ className, onSearch, searchedProducts }: SearchFieldProps): React.ReactElement | null {
   const searchInputRef = useRef<HTMLInputElement>(null)
+  const [dropdownVisibility, setDropdownVisibility] = useState(true)
 
-  const handleSubmit = useCallback(
-    (event: FormEvent<HTMLFormElement>) => {
-      event.preventDefault()
-      setIsSearchedProductsDropdownVisible(true)
-      if (searchInputRef.current) onSubmit(searchInputRef.current.value)
-    },
-    [onSubmit]
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    navigate(`/search?type=product&q=${searchInputRef.current?.value || ''}`)
+  }
+
+  const handleChange = useMemo(
+    () =>
+      debounce((event: React.ChangeEvent<HTMLInputElement>) => {
+        setDropdownVisibility(true)
+        onSearch(event.target.value)
+      }, 1e3),
+    [onSearch]
   )
-
-  const [isSearchedProductsDropdownVisible, setIsSearchedProductsDropdownVisible] = useState(true)
 
   const [referenceElement, setReferenceElement] = useState<HTMLFormElement | null>(null)
   const [popperElement, setPopperElement] = useState<HTMLDivElement | null>(null)
-  useOnClickOutside({ current: popperElement }, () => setIsSearchedProductsDropdownVisible(false))
+  useOnClickOutside({ current: popperElement }, () => setDropdownVisibility(false))
 
   const { styles, attributes } = usePopper(referenceElement, popperElement, {
     placement: 'bottom-start',
@@ -88,7 +112,7 @@ export function SearchField({ className, onSubmit, searchedProducts }: SearchFie
 
   return (
     <SWrapper className={cn('SearchField', className)} ref={setReferenceElement} onSubmit={handleSubmit}>
-      <SField ref={searchInputRef} required />
+      <SField placeholder="Search..." ref={searchInputRef} required onChange={handleChange} onFocus={() => setDropdownVisibility(true)} />
       <SButton type="submit">
         <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
@@ -101,7 +125,7 @@ export function SearchField({ className, onSubmit, searchedProducts }: SearchFie
           />
         </svg>
       </SButton>
-      {searchedProducts && isSearchedProductsDropdownVisible && (
+      {searchedProducts && dropdownVisibility && (
         <SSearchedProducts
           ref={setPopperElement}
           style={{ ...styles.popper, width: referenceElement?.clientWidth }}

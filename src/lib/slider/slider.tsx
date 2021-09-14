@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import Carousel, { ResponsiveType } from 'react-multi-carousel'
 import 'react-multi-carousel/lib/styles.css'
 import styled from 'styled-components'
@@ -119,10 +119,12 @@ type SliderProps = {
   customRightArrow?: React.ReactElement
   responsive?: ResponsiveType
   scrollbarPresent?: boolean
+  customButtonGroup?: React.ReactElement
   dotsPresent?: boolean
   partiallyVisible?: boolean
   infinite?: boolean
   itemClass?: string
+  carouselRef?: React.RefObject<Carousel>
 }
 
 interface CarouselState {
@@ -165,20 +167,20 @@ export const Slider = ({
   customLeftArrow,
   customRightArrow,
   scrollbarPresent,
+  customButtonGroup,
   dotsPresent,
   partiallyVisible,
   responsive,
   infinite,
   itemClass,
+  carouselRef,
 }: SliderProps): React.ReactElement => {
-  const carouselRef = useRef<Carousel | null>(null)
-
   const CustomSlider = ({ carouselState }: CarouselState) => {
     let value = 0
-    const carouselItemWidth = carouselRef.current?.state?.itemWidth || 0
-    if (!carouselRef.current) {
+    if (!carouselRef || !carouselRef.current) {
       return null
     }
+    const carouselItemWidth = carouselRef.current?.state?.itemWidth || 0
     const maxTranslateX = Math.round(
       carouselItemWidth * (carouselRef?.current?.state?.totalItems - carouselRef.current.state.slidesToShow) + 150
     )
@@ -218,7 +220,8 @@ export const Slider = ({
         arrows={arrows}
         customLeftArrow={customLeftArrow || <SPrevArrow />}
         customRightArrow={customRightArrow || <SNextArrow />}
-        customButtonGroup={scrollbarPresent ? <CustomSlider /> : null}
+        renderButtonGroupOutside={scrollbarPresent}
+        customButtonGroup={scrollbarPresent ? <CustomSlider /> : customButtonGroup}
         customDot={dotsPresent ? <CustomDot /> : null}
         itemClass={itemClass || 'image-item'}
         infinite={infinite}

@@ -6,6 +6,7 @@ import SiteSection from '../components/site-section'
 import parseFiltersFromProducts from '../modules/parse-filters-from-products'
 import filterCollectionProducts from '../modules/filter-collection-products'
 import CollectionContext from '../modules/collection-context'
+import navigate from '../lib/navigate'
 
 const SFiltersSection = styled(SiteSection)`
   margin-bottom: 2em;
@@ -15,7 +16,7 @@ const Collection = (): null | React.ReactElement => {
   const collection = useContext(CollectionContext)
 
   const [filter, setFilter] = useState<CollectionProductsFilter | null>(null)
-  const [sorting, setSorting] = useState<SelectedSorting | null>(null)
+  const [sorting, setSorting] = useState<SelectedSorting>(SelectedSorting.NEW)
 
   const availableFilters = useMemo(() => parseFiltersFromProducts(collection?.products), [collection?.products])
 
@@ -39,9 +40,14 @@ const Collection = (): null | React.ReactElement => {
   return (
     <div style={{ margin: '5em 0' }}>
       <SFiltersSection>
-        <CollectionFilters onChangeFilter={setFilter} onChangeSorting={setSorting} filters={availableFilters} />
+        <CollectionFilters
+          onChangeFilter={setFilter}
+          onChangeSorting={setSorting}
+          filters={availableFilters}
+          initialSorting={sorting}
+        />
       </SFiltersSection>
-      <ProductsList products={filteredProducts} />
+      <ProductsList products={filteredProducts} onSelectProduct={(handle) => navigate(`/products/${handle}`)} />
     </div>
   )
 }

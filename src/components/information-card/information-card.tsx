@@ -14,24 +14,22 @@ export type InformationCard = {
 }
 
 const SCardWrapper = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   max-width: 300px;
   text-align: center;
-  margin: 0 0 40px;
+  margin: 0 auto 40px;
 `
 
 const SCardImage = styled.img`
-  object-fit: cover;
+  object-fit: contain;
   margin: 0 auto 23px;
-  width: 60vw;
-  height: 60vw;
   width: 300px;
   height: 300px !important;
   display: block;
-
-  @media (min-width: 768px) {
-    width: 28vw;
-    height: 28vw;
-  }
 `
 
 const SCardTitle = styled.div`
@@ -41,6 +39,7 @@ const SCardTitle = styled.div`
   text-align: center;
   position: relative;
   font: 700 32px/1 'Cormorant Garamond', serif;
+  letter-spacing: -0.02em;
   font-variant-numeric: lining-nums;
   &:after {
     content: '';

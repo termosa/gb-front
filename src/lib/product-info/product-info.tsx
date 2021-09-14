@@ -1,11 +1,11 @@
-import React, { MutableRefObject, useCallback, useContext, useEffect, useRef, useState } from 'react'
+import React, { MutableRefObject, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react'
 import cn, { Argument as ClassName } from 'classnames'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import YotpoStarRating from '../yotpo-star-rating'
 import formatPrice from '../../modules/format-price'
 import { ProductVariant } from '../../modules/normalize-product-variant'
 import { SubscriptionHint } from '../../components/subscription-hint'
-import addItemToCart from '../add-item-to-cart'
+import addCartItem from '../add-cart-item'
 import navigate from '../navigate'
 import { ProductModalButtons } from '../../components/product-modal-button'
 import { parse } from 'node-html-parser'
@@ -14,6 +14,9 @@ import getLabel from '../../modules/get-label'
 import { Product as ProductType } from '../../modules/normalize-product'
 import ProductContext from '../../modules/product-context'
 import window from '../window/window'
+import useCart, { Status } from '../use-cart'
+import addCartItemWithSubscription from '../add-cart-item-with-subscription'
+import SizeSelectorModal from '../size-selector-modal'
 
 const SProductInfo = styled.div`
   width: 100%;
@@ -31,7 +34,7 @@ const SPdpProductInfo = styled.div<{
   position: sticky;
   top: ${(props) => props.top || '183px'};
   height: fit-content;
-  max-width: 350px;
+  width: 350px;
   margin: 0 auto;
 `
 
@@ -90,15 +93,7 @@ const SPdpChooserContainer = styled.div`
   }
 `
 
-const SPdpRingMessage = styled.div`
-  display: none;
-  color: #fa4b17;
-  text-align: center;
-  font-size: 16px;
-  padding-bottom: 2%;
-`
-
-const SPdpBtn = styled.button`
+const SPdpBtn = styled.button<{ disabled: boolean }>`
   display: block;
   padding: 19px 15px;
   letter-spacing: 1px;
@@ -107,7 +102,6 @@ const SPdpBtn = styled.button`
   border-radius: 0;
   font: 600 16px/1 'Montserrat', sans-serif;
   text-decoration: none;
-  -webkit-transition: all linear 0.2s;
   transition: all linear 0.2s;
   background-color: #000;
   color: #fff;
@@ -116,16 +110,25 @@ const SPdpBtn = styled.button`
   margin: 0;
   height: 55px;
 
-  &:not(.pdp-btn_disabled):hover {
-    @media (min-width: 1200px) {
-      color: #000;
-      background: #fff;
-    }
-  }
+  ${(p) =>
+    p.disabled
+      ? css`
+          background-color: #333;
+          color: #1d1d1d;
+          cursor: default;
+        `
+      : css`
+          &:not(.pdp-btn_disabled):hover {
+            @media (min-width: 1200px) {
+              color: #000;
+              background: #fff;
+            }
+          }
 
-  &:focus {
-    outline: 0;
-  }
+          &:focus {
+            outline: 0;
+          }
+        `}
 `
 
 const SPdpAdditionalText = styled.div`
@@ -348,9 +351,13 @@ const SPdpPiSelectorBtn = styled.button<{
       border-color: #9059c8;
     }
   }
+
+  &:disabled {
+    opacity: 0.4;
+  }
 `
 
-const SPdpFragrance = styled.div`
+/*const SPdpFragrance = styled.div`
   padding: 16px 0;
   display: flex;
   align-items: center;
@@ -361,8 +368,12 @@ const SPdpFragrance = styled.div`
 `
 
 const SPdpFragranceItem = styled.div`
-  max-width: 62px;
+  font-family: Montserrat, sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
   text-align: center;
+  max-width: 62px;
 
   &:last-child {
     margin-right: 0;
@@ -380,7 +391,7 @@ const SPdpFragranceImg = styled.img`
     width: 62px;
     height: 45px;
   }
-`
+`*/
 
 const SPdpAItem = styled.div`
   border-bottom: 1px solid #e5e5e5;
@@ -440,24 +451,50 @@ export type ProductInfoProps = {
 }
 
 export function ProductInfo({ className, style, addToCartRef }: ProductInfoProps): React.ReactElement | null {
+  const cart = useCart(true)
+  const isDiscountAvailable = !cart.hasSubscriptionProduct && cart.status === Status.SUCCESS
   const product = useContext<ProductType | undefined>(ProductContext)
+  const isOneVariantProduct = product && product.variants.length === 1 && !product.variants[0].size
+  const isProductAvailable = useMemo(() => product?.variants.some((v) => v.available), [product])
 
   const [infoDistanceFromTop, setInfoDistanceFromTop] = useState<number>(183)
   const [yPosition, setYPosition] = useState<number>(0)
   const [comparePrice, setComparePrice] = useState<number | null>(0)
   const [activeAccordion, setActiveAccordion] = useState<number | null>(0)
-  const [currentRingSize, setCurrentRingSize] = useState<number | null>(null)
+  const [selectedVariant, setSelectedVariant] = useState<ProductVariant | null>(null)
   const [isSelectRingError, setSelectRingError] = useState<boolean>(false)
   const [actualPrice, setActualPrice] = useState<number>(0)
   const [productDescription, setProductDescription] = useState<Array<ProductDescription>>()
   const [isDiscountApplied, setDiscountApplied] = useState<boolean>(true)
   const [isSubscriptionHintOpened, setSubscriptionHintOpened] = useState<boolean>(false)
+  const [isRingSizeModalOpened, setIsRingSizeModalOpened] = useState(false)
 
   const productHeadingRef = useRef<HTMLDivElement>(null)
   const productInfoRef = useRef<HTMLDivElement>(null)
 
   if (!product) {
     return null
+  }
+
+  const addToCartHandler = (selectedVariant: ProductVariant | null) => {
+    if (!selectedVariant) {
+      if (isOneVariantProduct && isDiscountApplied) {
+        setIsRingSizeModalOpened(true)
+        return
+      }
+
+      executeScroll()
+      localStorage.setItem('selectRingError', JSON.stringify(true))
+      setSelectRingError(true)
+      return
+    }
+
+    ;(isDiscountApplied && !cart.hasSubscriptionProduct
+      ? addCartItemWithSubscription(selectedVariant.variant_id, selectedVariant.size || undefined)
+      : addCartItem(selectedVariant.variant_id)
+    )
+      .then(() => navigate('/cart'))
+      .catch((err) => alert(err))
   }
 
   const executeScroll = () => {
@@ -535,12 +572,19 @@ export function ProductInfo({ className, style, addToCartRef }: ProductInfoProps
 
   return (
     <SProductInfo className={cn(className, 'ProductInfo')} style={style}>
+      {isRingSizeModalOpened && (
+        <SizeSelectorModal
+          onSelect={(selectedSize) => addToCartHandler({ ...product.variants[0], size: selectedSize })}
+          onClose={() => setIsRingSizeModalOpened(false)}
+          title="Select ring size for subscription"
+        />
+      )}
       <SPdpProductInfo top={infoDistanceFromTop + 'px'} ref={productInfoRef}>
         <SPdpProductInfoIcTitle ref={productHeadingRef}>INNER CIRCLE EXCLUSIVE</SPdpProductInfoIcTitle>
         <SPdpProductInfoTitle>{product.title}</SPdpProductInfoTitle>
         <YotpoStarRating productId={product.product_id} />
         <SPdpProductDetails>
-          {isDiscountApplied ? (
+          {isDiscountApplied && isDiscountAvailable ? (
             <>
               <SPdpProductDetailsDiscountPrice>
                 {actualPrice ? (comparePrice ? formatPrice(comparePrice) : formatPrice(actualPrice)) : null}
@@ -562,111 +606,128 @@ export function ProductInfo({ className, style, addToCartRef }: ProductInfoProps
           )}
           {checkForLabel()}
         </SPdpProductDetails>
-        <SPdpPiSelectorWrapper>
-          <SPdpPiRsText>Select a ring size to reserve this box:</SPdpPiRsText>
-          <SPdpPiSelector>
-            {product.variants.slice(0).map((variant: ProductVariant) => (
-              <SPdpPiSelectorBtnHolder key={variant.title}>
-                <SPdpPiSelectorBtn
-                  isActive={variant.variant_id === currentRingSize}
-                  type="button"
-                  value={Number(variant.title)}
-                  onClick={() => {
-                    setSelectRingError(false)
-                    localStorage.setItem('selectRingError', JSON.stringify(false))
-                    localStorage.setItem('currentRingSize', JSON.stringify(variant.variant_id))
-                    setCurrentRingSize(variant.variant_id)
-                    setActualPrice(variant.actual_price)
-                  }}
-                >
-                  {variant.title}
-                </SPdpPiSelectorBtn>
-              </SPdpPiSelectorBtnHolder>
-            ))}
-          </SPdpPiSelector>
-          {isSelectRingError ? <SPdpPiRsSelector>Please select ring size</SPdpPiRsSelector> : null}
-        </SPdpPiSelectorWrapper>
-        <SPdpChooserContainer>
-          <SPdpChooser>
-            <SPdpChooserItem htmlFor="pdp-ic-radio-1" onClick={() => setDiscountApplied(false)}>
-              <SPdpChooserItemPart>
-                <div>
-                  <SPdpRadioGroup type="radio" name="pdp-radio-group" checked={!isDiscountApplied} readOnly />
-                  <span />
-                </div>
-                <SPdpChooserItemPartTopContent>
-                  <SPdpChooserItemContentText isHighlighted={!isDiscountApplied}>
-                    Regular Price
-                  </SPdpChooserItemContentText>
-                  <SPdpChooserItemContentText isHighlighted={!isDiscountApplied}>
-                    ${actualPrice}
-                  </SPdpChooserItemContentText>
-                </SPdpChooserItemPartTopContent>
-              </SPdpChooserItemPart>
-            </SPdpChooserItem>
-            <SPdpChooserItem htmlFor="pdp-ic-radio-2" onClick={() => setDiscountApplied(true)}>
-              <SPdpChooserItemPart>
-                <div>
-                  <SPdpRadioGroup type="radio" name="pdp-radio-group" checked={isDiscountApplied} readOnly />
-                  <span />
-                </div>
-                <SPdpChooserItemPartTopContent>
-                  <SPdpChooserBtnHolder>
-                    <SPdpChooserItemContentText isHighlighted={isDiscountApplied}>
-                      Join &amp; Save 20%
-                    </SPdpChooserItemContentText>
-                    <SPdpChooserBtn type="button" onClick={() => setSubscriptionHintOpened(!isSubscriptionHintOpened)}>
-                      {isSubscriptionHintOpened ? (
-                        <img
-                          src="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/pdp/pdp-close-icon.png"
-                          alt="close-icon"
-                        />
-                      ) : (
-                        <img
-                          src="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/pdp/pdp-info-icon.png"
-                          alt="info-icon"
-                        />
-                      )}
-                    </SPdpChooserBtn>
-                  </SPdpChooserBtnHolder>
-                  <SPdpChooserItemContentText isHighlighted={isDiscountApplied}>
-                    ${(actualPrice - actualPrice * 0.2).toFixed(2)}
-                  </SPdpChooserItemContentText>
-                </SPdpChooserItemPartTopContent>
-              </SPdpChooserItemPart>
-              {isSubscriptionHintOpened && <SubscriptionHint />}
-            </SPdpChooserItem>
-          </SPdpChooser>
-        </SPdpChooserContainer>
-        <SPdpRingMessage>Please select your ring size</SPdpRingMessage>
-        <SPdpBtn
-          type="button"
-          ref={addToCartRef}
-          onClick={() => {
-            if (!currentRingSize) {
-              executeScroll()
-              localStorage.setItem('selectRingError', JSON.stringify(true))
-              setSelectRingError(true)
-            } else {
-              addItemToCart(currentRingSize)
-                .then(() => navigate('/cart'))
-                .catch((err) => alert(err))
-            }
-          }}
-        >
-          Add to Cart
-        </SPdpBtn>
-        {isDiscountApplied && (
-          <SPdpAdditionalText>
-            Join the Inner Circle today, then automatically receive a monthly set for $32.95 plus tax. No commitment,
-            cancel anytime.{' '}
-            <a href="/account/login?return_url=/products/lemon-drop-jewel-candle" id="pdp__already-a-member-link">
-              Already a member?
-            </a>
-          </SPdpAdditionalText>
+        {isProductAvailable ? (
+          <React.Fragment>
+            <SPdpPiSelectorWrapper>
+              {isOneVariantProduct ? (
+                <SPdpPiRsText>Item comes in one size.</SPdpPiRsText>
+              ) : (
+                <React.Fragment>
+                  <SPdpPiRsText>Select a ring size to reserve this box:</SPdpPiRsText>
+                  <SPdpPiSelector>
+                    {product.variants.map(
+                      (variant: ProductVariant) =>
+                        variant.size && (
+                          <SPdpPiSelectorBtnHolder key={variant.size}>
+                            <SPdpPiSelectorBtn
+                              isActive={variant.variant_id === selectedVariant?.variant_id}
+                              type="button"
+                              value={variant.size}
+                              onClick={() => {
+                                setSelectRingError(false)
+                                localStorage.setItem('selectRingError', JSON.stringify(false))
+                                localStorage.setItem('currentRingSize', JSON.stringify(variant.variant_id))
+                                setSelectedVariant(variant)
+                                setActualPrice(variant.actual_price)
+                              }}
+                              disabled={!variant.available}
+                            >
+                              {variant.title}
+                            </SPdpPiSelectorBtn>
+                          </SPdpPiSelectorBtnHolder>
+                        )
+                    )}
+                  </SPdpPiSelector>
+                  {isSelectRingError ? <SPdpPiRsSelector>Please select ring size</SPdpPiRsSelector> : null}
+                </React.Fragment>
+              )}
+            </SPdpPiSelectorWrapper>
+            <SPdpChooserContainer>
+              {isDiscountAvailable && (
+                <SPdpChooser>
+                  <SPdpChooserItem htmlFor="pdp-ic-radio-1" onClick={() => setDiscountApplied(false)}>
+                    <SPdpChooserItemPart>
+                      <div>
+                        <SPdpRadioGroup type="radio" name="pdp-radio-group" checked={!isDiscountApplied} readOnly />
+                        <span />
+                      </div>
+                      <SPdpChooserItemPartTopContent>
+                        <SPdpChooserItemContentText isHighlighted={!isDiscountApplied}>
+                          Regular Price
+                        </SPdpChooserItemContentText>
+                        <SPdpChooserItemContentText isHighlighted={!isDiscountApplied}>
+                          ${actualPrice}
+                        </SPdpChooserItemContentText>
+                      </SPdpChooserItemPartTopContent>
+                    </SPdpChooserItemPart>
+                  </SPdpChooserItem>
+                  <SPdpChooserItem htmlFor="pdp-ic-radio-2" onClick={() => setDiscountApplied(true)}>
+                    <SPdpChooserItemPart>
+                      <div>
+                        <SPdpRadioGroup type="radio" name="pdp-radio-group" checked={isDiscountApplied} readOnly />
+                        <span />
+                      </div>
+                      <SPdpChooserItemPartTopContent>
+                        <SPdpChooserBtnHolder>
+                          <SPdpChooserItemContentText isHighlighted={isDiscountApplied}>
+                            Join &amp; Save 20%
+                          </SPdpChooserItemContentText>
+                          <SPdpChooserBtn
+                            type="button"
+                            onClick={() => setSubscriptionHintOpened(!isSubscriptionHintOpened)}
+                          >
+                            {isSubscriptionHintOpened ? (
+                              <img
+                                src="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/pdp/pdp-close-icon.png"
+                                alt="close-icon"
+                              />
+                            ) : (
+                              <img
+                                src="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/pdp/pdp-info-icon.png"
+                                alt="info-icon"
+                              />
+                            )}
+                          </SPdpChooserBtn>
+                        </SPdpChooserBtnHolder>
+                        <SPdpChooserItemContentText isHighlighted={isDiscountApplied}>
+                          ${(actualPrice - actualPrice * 0.2).toFixed(2)}
+                        </SPdpChooserItemContentText>
+                      </SPdpChooserItemPartTopContent>
+                    </SPdpChooserItemPart>
+                    {isSubscriptionHintOpened && <SubscriptionHint />}
+                  </SPdpChooserItem>
+                </SPdpChooser>
+              )}
+            </SPdpChooserContainer>
+            <SPdpBtn
+              type="button"
+              ref={addToCartRef}
+              onClick={() =>
+                addToCartHandler(isOneVariantProduct && !isDiscountApplied ? product.variants[0] : selectedVariant)
+              }
+            >
+              Add to Cart
+            </SPdpBtn>
+            {isDiscountAvailable && isDiscountApplied && (
+              <SPdpAdditionalText>
+                Join the Inner Circle today, then automatically receive a monthly set for $32.95 plus tax. No
+                commitment, cancel anytime.{' '}
+                <a href="/account/login?return_url=/products/lemon-drop-jewel-candle" id="pdp__already-a-member-link">
+                  Already a member?
+                </a>
+              </SPdpAdditionalText>
+            )}
+          </React.Fragment>
+        ) : (
+          <SPdpPiSelectorWrapper>
+            <SPdpPiRsText>Sorry, that product is currently unavailable.</SPdpPiRsText>
+            <SPdpBtn type="button" disabled>
+              Sold Out
+            </SPdpBtn>
+          </SPdpPiSelectorWrapper>
         )}
         <ProductModalButtons />
-        <SPdpFragrance>
+        {/*<SPdpFragrance>
           <SPdpFragranceItem>
             <SPdpFragranceImg
               src={'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/pdp/fragrances/black-currant.png'}
@@ -695,7 +756,7 @@ export function ProductInfo({ className, style, addToCartRef }: ProductInfoProps
             />
             <span>Spicy Anise</span>
           </SPdpFragranceItem>
-        </SPdpFragrance>
+        </SPdpFragrance>*/}
         <div>
           {productDescription?.map((el: ProductDescription, i: number) => (
             <SPdpAItem key={el.title}>

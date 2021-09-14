@@ -53,7 +53,7 @@ const SProfileButton = styled.a`
 
   @media (min-width: 1200px) {
     width: 1.8em;
-    margin-right: 20px;
+    margin-right: 28px;
   }
 `
 
@@ -79,7 +79,7 @@ const SDropDownWrapper = styled.div`
   }
 `
 const SDropDown = styled.div`
-  padding: 0 0 15px !important;
+  padding: 0 10px 15px;
   left: 0;
   right: 0;
   top: 100%;
@@ -94,8 +94,9 @@ const SDropDown = styled.div`
   margin: 0 auto;
   box-sizing: border-box;
   @media (min-width: 1200px) {
-    font-size: 0.8em;
-    width: 200px;
+    // font-size: 0.8em;
+    padding: 0 20px 20px;
+    width: 255px;
     left: auto;
     box-shadow: 0px 4px 9px rgba(0, 0, 0, 0.1);
   }
@@ -109,17 +110,20 @@ const SDropDownTitle = styled.h3`
   font-size: 1em;
   text-transform: uppercase;
   border-bottom: 1px solid #ccc;
-  margin: 0 0 7px;
-  padding: 17px 0;
+  margin: 0 0 9px;
+  padding: 20px 0;
   @media (min-width: 1200px) {
     text-align: center;
+  }
+  a {
+    cursor: auto;
   }
 `
 
 const SDropDownTitleLink = styled.a`
   text-decoration: none;
   font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
+  font-weight: 600;
   color: #000;
   font-size: 14px;
 `
@@ -128,7 +132,7 @@ const SDropDownCloseBtn = styled.button`
   cursor: pointer;
   position: absolute;
   top: 14px;
-  right: 0;
+  right: 10px;
   background-color: transparent;
   border: 0;
   padding: 0;
@@ -156,13 +160,16 @@ const SLinkWrapper = styled.ul`
   & > li {
     padding: 4px 0;
   }
-  & > li > a {
+  
+  & > li > a, & > li > div {
     display: inline-block;
-    padding: 4px 0;
+    padding: 6px 0;
     color: #000;
+    font-size: 14px;
     text-decoration: none;
     &:hover {
-      font-weight: 600;
+      // font-weight: 600;
+      text-shadow: 0 0 #000;
     }
   }
 `
@@ -170,7 +177,7 @@ const SLinkWrapper = styled.ul`
 const SSignOutLink = styled.a`
   text-decoration: underline;
   color: #bdbdbd;
-  font-size: 13px;
+  font-size: 14px;
 `
 
 const SCartBadge = styled.span`

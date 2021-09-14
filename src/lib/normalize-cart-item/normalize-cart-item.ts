@@ -2,7 +2,7 @@ export type ServerCartItem = {
   id: number
   quantity: number
   variant_id: number
-  properties: Record<string, unknown>
+  properties: Record<string, unknown> | null
   key: string
   title: string
   price: number
@@ -60,16 +60,29 @@ export type ServerCartItem = {
   }>
 }
 
-export type CartItem = {
-  productId: number
-  quantity: number
-  title: string
+export type CartItemProperties = {
+  discount?: number // Range between 0-1
+  shipping_discount?: number // Range between 0-1
+  create_bt_subscription?: boolean
+  subscription_product_id?: number // variantId
 }
 
-export function normalizeCartItem({ id, quantity, title }: ServerCartItem): CartItem {
+export type CartItem = {
+  key: string
+  productId: number
+  variantId: number
+  quantity: number
+  title: string
+  properties: CartItemProperties
+}
+
+export function normalizeCartItem(item: ServerCartItem): CartItem {
   return {
-    productId: id,
-    quantity,
-    title,
+    key: item.key,
+    productId: item.id,
+    variantId: item.variant_id,
+    quantity: item.quantity,
+    title: item.title,
+    properties: item.properties || {},
   }
 }

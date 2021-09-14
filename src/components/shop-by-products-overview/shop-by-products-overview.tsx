@@ -15,9 +15,11 @@ export type ShopByProductsOverviewProps = {
 
 const SSection = styled.section`
   font: 12px/1.3 'Montserrat', sans-serif;
-  padding: 52px 0 66px;
+  padding: 52px 0 0;
+  margin: 0 0 66px;
   @media (min-width: 768px) {
-    padding: 82px 0 60px;
+    padding: 82px 0 28px;
+    margin: 0 0 97px;
   }
 `
 
@@ -31,7 +33,7 @@ const SContainer = styled.div`
   }
 
   .react-multi-carousel-item {
-    margin-bottom: 17px;
+    margin-bottom: 24px;
   }
 `
 
@@ -46,7 +48,8 @@ const SliderWrapper = styled.div`
   * {
     box-sizing: border-box;
   }
-  @media (min-width: 768px) {
+
+  @media (min-width: 992px) {
     display: flex;
     justify-content: center;
     margin: 0 -16px;
@@ -66,7 +69,15 @@ const SPrevArrow = styled.button`
   cursor: pointer;
   z-index: 5;
   transform: rotate(45deg);
-  left: 125px;
+  left: 7px;
+
+  @media (min-width: 481px) {
+    left: 75px;
+  }
+
+  @media (min-width: 600px) {
+    left: 125px;
+  }
 `
 const SNextArrow = styled.button`
   font-size: 0;
@@ -81,7 +92,15 @@ const SNextArrow = styled.button`
   cursor: pointer;
   z-index: 5;
   transform: rotate(-135deg);
-  right: 125px;
+  right: 7px;
+
+  @media (min-width: 481px) {
+    right: 75px;
+  }
+
+  @media (min-width: 600px) {
+    right: 125px;
+  }
 `
 
 export function ShopByProductsOverview({ products, title }: ShopByProductsOverviewProps): React.ReactElement {
@@ -91,7 +110,7 @@ export function ShopByProductsOverview({ products, title }: ShopByProductsOvervi
       <SContainer>
         <SCardsBlockTitle>{title}</SCardsBlockTitle>
         <SliderWrapper>
-          {screenSize.greaterThenMedium ? (
+          {screenSize.greaterThanLarge ? (
             products &&
             products.map((product) => (
               <ShopByProductCard
