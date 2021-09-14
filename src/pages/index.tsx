@@ -1,5 +1,5 @@
 import React from 'react'
-import homePageProps, { HomePageProps } from '../resolvers/homePageProps'
+import homePageProps from '../resolvers/homePageProps'
 import MainPageLayout from '../lib/main-page-layout'
 import HeroGallery from '../lib/hero-gallery'
 import ReviewsSection from '../components/reviews-section'
@@ -11,12 +11,8 @@ import { CategoryShopCardsOverview } from '../lib/category-shop-overview'
 import { PromiseBar } from '../components/promise-bar'
 import { InlineSignupForm } from '../components/inline-signup-form'
 import YotpoGallery from '../lib/yotpo-gallery'
-import klaviyo from '../lib/klaviyo'
 
-export default function HomePage({ activeCustomer }: HomePageProps): React.ReactElement {
-  // Wrong customer, because loaded from SS where no Shopify cookies
-  activeCustomer && klaviyo('identify', { $email: activeCustomer.email })
-
+export default function HomePage(): React.ReactElement {
   return (
     <MainPageLayout>
       <HeroGallery
