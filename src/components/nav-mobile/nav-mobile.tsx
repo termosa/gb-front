@@ -148,7 +148,7 @@ const SNavItemExtendable = styled(SNavItem)`
   & > a:after {
     content: '';
     position: absolute;
-    right: 0.18em;
+    right: 0.2em;
     top: 50%;
     border: solid #636363;
     border-width: 0 1px 1px 0;
@@ -216,7 +216,7 @@ const SCard = styled.a`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
   text-align: left;
   & > img {
     display: block;
@@ -258,6 +258,7 @@ const SCardLink = styled.span`
 `
 
 const SAccountWrapper = styled.div`
+  text-align: left;
   margin: 0 -15px 60px;
   padding: 0 15px 20px;
   background-color: #f5f5f5;
@@ -298,9 +299,9 @@ const SAccountListSubscription = styled.li`
 
 const TABS_LIST = [
   {
-    title: 'Mystery Bundles',
+    title: 'Halloween',
     extendable: false,
-    href: '/collections/mystery-bundles',
+    href: '/collections/spooky',
   },
   {
     title: 'Bath Bombs',
@@ -340,14 +341,14 @@ const TABS_LIST = [
 ]
 const CARDS_LIST = [
   {
-    href: '/collections/summer-collection',
-    imgLink: 'https://fragrantjewels.s3.amazonaws.com/app/app-nav/watch-me-bloom-nav-all-img-dt.jpg',
-    text: 'New! Candle + Planter in 1',
+    href: '/collections/spooky',
+    imgLink: 'https://fragrantjewels.s3.amazonaws.com/app/app-nav/nav-all-img-22-mb.jpg',
+    text: 'New in the Halloween Shop',
   },
   {
-    href: '/products/havana-nights-satin-collection-bath-bomb-and-candle-set',
-    imgLink: 'https://fragrantjewels.s3.amazonaws.com/app/app-time-travel/img/havana-nights/havana-nav-all-img-mb.png',
-    text: 'New! Free Bonus Perfume',
+    href: '/products/stargazing-satin-bath-bomb',
+    imgLink: 'https://fragrantjewels.s3.amazonaws.com/app/app-nav/nav-all-img-21-mb.jpg',
+    text: 'Restock Alert',
   },
 ]
 

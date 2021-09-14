@@ -168,8 +168,8 @@ const SLinkWrapper = styled.ul`
     font-size: 14px;
     text-decoration: none;
     &:hover {
-      // font-weight: 600;
-      text-shadow: 0 0 #000;
+      font-weight: 600;
+      // text-shadow: 0 0 #000;
     }
   }
 `
@@ -187,17 +187,17 @@ const SCartBadge = styled.span`
   right: -8px;
   width: 1em;
   height: 1em;
-  background: #ee67a0;
+  background: #9059C8;
   color: #fff;
-  font-size: 0.8em;
+  font-size: 11px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 9px;
   transition: all linear 0.2s;
-  width: 1.8em;
-  height: 1.8em;
+  width: 19px;
+  height: 19px;
   box-sizing: border-box;
   outline: 0;
 `

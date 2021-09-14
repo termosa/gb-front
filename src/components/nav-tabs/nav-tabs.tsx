@@ -39,6 +39,7 @@ const SDesktopNav = styled.ul`
   // margin: 0 -10px;
   letter-spacing: 0.7px;
   @media (max-width: 1199px) {
+    font-size: 1em;
     padding: 10px 0;
     max-width: 990px;
     min-width: 600px;
@@ -68,8 +69,8 @@ const SNavItem = styled.li`
   }
 
   &:hover > a {
-    text-shadow: 0 0 #000;
-    // font-weight: 700;
+    // text-shadow: 0 0 #000;
+    font-weight: 600;
   }
 `
 
@@ -156,7 +157,7 @@ export function NavTabs({ className, setExtendableBlockContent }: NavTabsProps):
           <a href="/pages/inner-circle">Subscribe</a>
         </SSubscribeButton>
         <SNavItem onMouseEnter={() => setExtendableBlockContent('')}>
-          <a href="/collections/mystery-bundles">Mystery Bundles</a>
+          <a href="/collections/spooky">Halloween</a>
         </SNavItem>
         <SNavItem onMouseEnter={() => setExtendableBlockContent('')}>
           <a href="/collections/bath-bombs">Bath bombs</a>

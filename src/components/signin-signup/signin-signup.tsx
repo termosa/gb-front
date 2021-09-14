@@ -24,8 +24,8 @@ const SLabel = styled.a`
   text-decoration: underline;
   cursor: pointer;
   &:hover {
-    // font-weight: 600;
-    text-shadow: 0 0 #000;
+    font-weight: 600;
+    // text-shadow: 0 0 #000;
   }
 `
 
