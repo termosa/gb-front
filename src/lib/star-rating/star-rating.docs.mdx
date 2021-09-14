@@ -21,21 +21,16 @@ export const meta = {
 ## Usage
 
 ```jsx
-<StarRating reviewsAverage='4.2' reviewsCount='32' />
+<StarRating reviewsAverage={4.2} reviewsCount={32} />
 ```
 
 ## Playground
 
 ```jsx live render
 const StarRatingExample = () => {
-const [reviewsAverage, setReviewsAverage] = useState(2.4)
-const [reviewsCount, setReviewsCount] = useState(32)
-
   return (
     <div>
-      <input type='number' value={reviewsAverage} onChange={e => setReviewsAverage(+e.target.value)} />
-      <input value={reviewsCount} onChange={e => setReviewsCount(+e.target.value)} />
-     <StarRating reviewsAverage={reviewsAverage} reviewsCount={reviewsCount} />
+     <StarRating reviewsAverage={2.4} reviewsCount={42} />
     </div>
   )
 }

@@ -84,7 +84,7 @@ export const normalizeProduct = (product: ServerProduct): Product => {
       .map(normalizeProductVariant),
     product_type: product.product_type,
     published_at_shop: product.published_at_shop,
-    reviewsAverage: product.reviews_average ? +product.reviews_average : 0,
+    reviewsAverage: +product.reviews_average || 0,
     reviewsCount: product.reviews_count,
     body_html: product.body_html,
     ...(tags.length && { tags }),

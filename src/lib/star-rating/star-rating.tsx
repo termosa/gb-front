@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react'
 import cn, { Argument as ClassName } from 'classnames'
-import { useYotpo } from '../use-yotpo'
+import { loadYotpoScript } from '../load-yotpo-script'
 
 const AMOUNT_OF_STARS = 5
 
@@ -18,7 +18,7 @@ export function StarRating({
   reviewsAverage,
   reviewsCount,
 }: StarRatingProps): React.ReactElement | null {
-  const stylesReady = useYotpo()
+  const stylesReady = loadYotpoScript()
 
   const stars = useMemo(() => {
     const floor = reviewsAverage ? Math.floor(reviewsAverage) : 0
@@ -27,17 +27,15 @@ export function StarRating({
       .map((_, index) => {
         if (floor > index) return 'star'
         if (floor < index) return 'empty-star'
-        if (reviewsAverage !== AMOUNT_OF_STARS) {
-          const remainder = Number(reviewsAverage && reviewsAverage.toFixed(1).split('.')[1])
-          if (remainder >= 0 && remainder <= 2) {
-            return 'empty-star'
-          }
-          if (remainder >= 3 && remainder <= 7) {
-            return 'half-star'
-          }
-          if (remainder >= 8) {
-            return 'star'
-          }
+        const remainder = Number(reviewsAverage && reviewsAverage.toFixed(1).split('.')[1])
+        if (remainder >= 0 && remainder <= 2) {
+          return 'empty-star'
+        }
+        if (remainder >= 3 && remainder <= 7) {
+          return 'half-star'
+        }
+        if (remainder >= 8) {
+          return 'star'
         }
       })
   }, [reviewsAverage])
@@ -53,7 +51,6 @@ export function StarRating({
                 {stars.map((star, i) => (
                   <span key={i} className={`yotpo-icon yotpo-icon-${star} rating-star pull-left`}></span>
                 ))}
-                <span className="sr-only"> {stylesReady ? reviewsAverage + ` star rating` : null}</span>
               </span>
               <a onClick={(e) => e.preventDefault()} className="text-m" aria-label={`${reviewsCount} reviews`}>
                 {stylesReady ? reviewsCount : null}
