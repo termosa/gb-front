@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react'
 import cn, { Argument as ClassName } from 'classnames'
-import { useYotpo } from '../use-yotpo'
+import useYotpo from '../use-yotpo'
 import window from '../window'
 
 const AMOUNT_OF_STARS = 5
@@ -13,6 +13,15 @@ export type StarRatingProps = {
   quantityStars?: number
 }
 
+const goToYotpoReviews = () => {
+  const yOffset = -200
+  const element = window?.document.querySelector('.yotpo-nav-wrapper')
+  if (element) {
+    const y = element?.getBoundingClientRect().top + window?.pageYOffset + yOffset
+    window?.scrollTo({ top: y })
+  }
+}
+
 export function StarRating({
   className,
   style,
@@ -20,7 +29,6 @@ export function StarRating({
   reviewsCount,
 }: StarRatingProps): React.ReactElement | null {
   const stylesReady = useYotpo()
-
   const stars = useMemo(() => {
     const floor = reviewsAverage ? Math.floor(reviewsAverage) : 0
     return Array(AMOUNT_OF_STARS)
@@ -29,7 +37,7 @@ export function StarRating({
         if (floor > index) return 'star'
         if (floor < index) return 'empty-star'
         const remainder = Number(reviewsAverage && reviewsAverage.toFixed(1).split('.')[1])
-        if (remainder >= 0 && remainder <= 2) {
+        if (remainder <= 2) {
           return 'empty-star'
         }
         if (remainder >= 3 && remainder <= 7) {
@@ -41,14 +49,7 @@ export function StarRating({
       })
   }, [reviewsAverage])
 
-  const goToYotpoReviews = () => {
-    const yOffset = -200
-    const element = window?.document.querySelector('.yotpo-nav-wrapper')
-    if (element) {
-      const y = element?.getBoundingClientRect().top + window?.pageYOffset + yOffset
-      window?.scrollTo({ top: y })
-    }
-  }
+  if (!stylesReady) return null
 
   return (
     <div className={cn(className)} style={style}>
@@ -63,7 +64,7 @@ export function StarRating({
                 ))}
               </span>
               <a className="text-m" aria-label={`${reviewsCount} reviews`}>
-                {stylesReady ? reviewsCount : null}
+                {reviewsCount}
               </a>
               <div className="yotpo-clr"></div>
             </div>
