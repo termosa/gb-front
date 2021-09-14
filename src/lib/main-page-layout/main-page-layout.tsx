@@ -15,7 +15,7 @@ const MainPageLayoutWrapper = styled.div`
   min-height: 100vh;
   transition: opacity linear 0.5s;
   padding-top: 155px;
-  overflow: hidden;
+  /*overflow: hidden;*/
 
   @media (min-width: 768px) {
     padding-top: 156px;

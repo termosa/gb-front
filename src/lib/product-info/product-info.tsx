@@ -34,7 +34,7 @@ const SPdpProductInfo = styled.div<{
   position: sticky;
   top: ${(props) => props.top || '183px'};
   height: fit-content;
-  max-width: 350px;
+  width: 350px;
   margin: 0 auto;
 `
 
@@ -357,7 +357,7 @@ const SPdpPiSelectorBtn = styled.button<{
   }
 `
 
-const SPdpFragrance = styled.div`
+/*const SPdpFragrance = styled.div`
   padding: 16px 0;
   display: flex;
   align-items: center;
@@ -391,7 +391,7 @@ const SPdpFragranceImg = styled.img`
     width: 62px;
     height: 45px;
   }
-`
+`*/
 
 const SPdpAItem = styled.div`
   border-bottom: 1px solid #e5e5e5;
