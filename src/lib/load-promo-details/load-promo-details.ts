@@ -26,10 +26,6 @@ export interface Promo {
   type?: string
 }
 
-export interface PromoExpiration {
-  expiration: PromoExpiration
-}
-
 export interface PromoDetails extends Promo {
   detailsVariant: Array<DetailsVariant>
   expiration: PromoExpiration
