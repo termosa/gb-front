@@ -142,7 +142,7 @@ export type PromotionBannerProps = {
   visibleBanner?: boolean
   className?: ClassName
   style?: React.CSSProperties
-  error?: () => void
+  errorPromoDetails: () => void
 }
 
 export function PromotionBanner({
@@ -150,31 +150,31 @@ export function PromotionBanner({
   visibleBanner,
   className,
   style,
-  error,
+  errorPromoDetails,
 }: PromotionBannerProps): React.ReactElement | null {
   const promoDetails = useDefer(
-    () => (promo ? loadPromoDetails(promo).catch(() => error && error()) : Promise.resolve(undefined)),
+    () => (promo ? loadPromoDetails(promo).catch(() => errorPromoDetails()) : Promise.resolve(undefined)),
     [promo],
     []
   )
   const [unavailableRingSize, useUnavailableRingSize] = useState(false)
   const [buyRingSize, useBuyRingSize] = useState('')
-  return promoDetails?.status === 'error' || !promoDetails?.value ? null : (
+  return promoDetails.status === 'error' || !promoDetails.value ? null : (
     <PromoContainer className={cn(className)} style={style}>
       <WrapPromoContainer>
         <PromoImageBox>
-          <img src={promoDetails?.value?.src} alt="" />
+          <img src={promoDetails.value.src} alt="" />
         </PromoImageBox>
         <PromoClock>
-          <h3> {promoDetails?.value?.title} </h3>
+          <h3> {promoDetails.value.title} </h3>
         </PromoClock>
-        <PromoDescription>{promoDetails?.value?.requirements}</PromoDescription>
+        <PromoDescription>{promoDetails.value.requirements}</PromoDescription>
       </WrapPromoContainer>
-      {!buyRingSize && visibleBanner && promoDetails?.value?.sizeOutOfStock ? (
+      {!buyRingSize && visibleBanner && promoDetails.value.sizeOutOfStock && (
         <>
           <PromoMessage>Select a ring size:</PromoMessage>
           <SelectHolderBtn>
-            {promoDetails?.value.detailsVariant.map((el) => {
+            {promoDetails.value.detailsVariant.map((el) => {
               return el.available ? (
                 <ButtonRingSize
                   key={el.id}
@@ -203,19 +203,19 @@ export function PromotionBanner({
               )
             })}
           </SelectHolderBtn>
-          {unavailableRingSize ? <SizeIsUnavailable>This size is unavailable.</SizeIsUnavailable> : null}
+          {unavailableRingSize && <SizeIsUnavailable>This size is unavailable.</SizeIsUnavailable>}
         </>
-      ) : null}
-      {buyRingSize ? (
+      )}
+      {buyRingSize && (
         <Congratulations>
           Congratulations! Your gift is in your cart!
           <br />
           (Ring Size: {buyRingSize})
         </Congratulations>
-      ) : null}
-      {!promoDetails?.value?.sizeOutOfStock && visibleBanner ? (
+      )}
+      {!promoDetails.value.sizeOutOfStock && visibleBanner && (
         <SizeOutOfStock>Sorry, all sizes are out of stock!</SizeOutOfStock>
-      ) : null}
+      )}
     </PromoContainer>
   )
 }

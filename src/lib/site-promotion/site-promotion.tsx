@@ -47,7 +47,7 @@ export function SitePromotion({ style, className }: SitePromotionProps): React.R
           <PromotionBanner
             promo={promo || getPromoCookie()}
             visibleBanner={isGwpPresent}
-            error={() => setIsError(true)}
+            errorPromoDetails={() => setIsError(true)}
           />
         </PromotionContainer>
       )}
