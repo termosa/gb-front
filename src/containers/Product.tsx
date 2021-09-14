@@ -6,7 +6,7 @@ import { VerticalGallery } from '../components/vertical-gallery'
 import styled from 'styled-components'
 import { ProductInfo } from '../lib/product-info'
 
-const SProductBreadcrumbs = styled.div`
+/*const SProductBreadcrumbs = styled.div`
   font-family: Montserrat, sans-serif;
   font-style: normal;
   font-weight: 600;
@@ -21,7 +21,7 @@ const SProductBreadcrumbs = styled.div`
   & > span {
     font-weight: 400;
   }
-`
+`*/
 
 const SProductContainer = styled.div`
   max-width: 1020px;
@@ -69,11 +69,11 @@ const Product = (): null | React.ReactElement => {
 
   return (
     <>
-      <SProductContainer>
+      {/*<SProductContainer>
         <SProductBreadcrumbs>
           Home / All / Bundles / <span>{product.title.split('-')[0]}</span>
         </SProductBreadcrumbs>
-      </SProductContainer>
+      </SProductContainer>*/}
       <SProductContainer>
         <SPdpRowWrapper>
           <SPdpRow>

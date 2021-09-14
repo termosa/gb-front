@@ -28,6 +28,7 @@ export type KlaviyoItem = {
 
 // https://apidocs.klaviyo.com/reference/javascript-client-library
 type KlaviyoCommand =
+  | []
   | ['account', string]
   | ['identify', KlaviyoIdentity]
   | ['track', string, Record<string, unknown>]
@@ -66,5 +67,5 @@ export function klaviyo(...command: KlaviyoCommand): void {
       .catch(() => log('Klaviyo could not be initialized'))
   }
 
-  initialRequests.then(() => push(command))
+  if (command.length) initialRequests.then(() => push(command))
 }
