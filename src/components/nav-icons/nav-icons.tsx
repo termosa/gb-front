@@ -53,7 +53,7 @@ const SProfileButton = styled.a`
 
   @media (min-width: 1200px) {
     width: 1.8em;
-    margin-right: 28px;
+    margin-right: 20px;
   }
 `
 
@@ -200,6 +200,12 @@ const SCartBadge = styled.span`
   height: 19px;
   box-sizing: border-box;
   outline: 0;
+
+  & > span {
+    position: relative;
+    top: -.5px;
+    left: .1px;
+  }
 `
 
 export function NavIcons({
@@ -314,7 +320,7 @@ export function NavIcons({
             strokeLinejoin="round"
           ></path>
         </svg>
-        {!!cart.itemCount && <SCartBadge>{cart.itemCount}</SCartBadge>}
+        {!!cart.itemCount && <SCartBadge><span>{cart.itemCount}</span></SCartBadge>}
       </SCartButton>
     </SWrapper>
   )
