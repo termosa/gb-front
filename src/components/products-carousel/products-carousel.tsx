@@ -73,6 +73,47 @@ const SectionText = styled.div`
   }
 `
 
+const SArrow = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  font-size: 0;
+  line-height: 1;
+  position: absolute;
+  cursor: pointer;
+  z-index: 5;
+`
+
+const SPrevArrow = styled(SArrow)`
+  left: -8px;
+  button {
+    transform: translateX(5px) rotate(45deg);
+  }
+`
+
+const SNextArrow = styled(SArrow)`
+  right: -8px;
+  button {
+    transform: translateX(-5px) rotate(-135deg);
+  }
+`
+
+const SArrowButton = styled.button`
+  display: block;
+  width: 17px;
+  height: 17px;
+  border: none;
+  border-bottom: 1px solid #9059c8;
+  border-left: 1px solid #9059c8;
+  background-color: transparent;
+  font-size: 0;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+`
+
 export type ProductsCarouselProps = {
   products: Array<Product>
   className?: ClassName
@@ -129,6 +170,16 @@ export const ProductsCarousel = ({
           responsive={sliderSettings}
           scrollbarPresent={!!screenSize.greaterThanMedium}
           arrows={!!screenSize.greaterThanMedium}
+          customLeftArrow={
+            <SPrevArrow>
+              <SArrowButton />
+            </SPrevArrow>
+          }
+          customRightArrow={
+            <SNextArrow>
+              <SArrowButton />
+            </SNextArrow>
+          }
           carouselRef={carouselRef}
         >
           {products

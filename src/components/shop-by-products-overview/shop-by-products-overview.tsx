@@ -56,19 +56,20 @@ const SliderWrapper = styled.div`
   }
 `
 
-const SPrevArrow = styled.button`
+const SArrow = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
   font-size: 0;
   line-height: 1;
   position: absolute;
-  width: 17px;
-  height: 17px;
-  border: 0;
-  border-bottom: 1px solid #9059c8;
-  border-left: 1px solid #9059c8;
-  background-color: transparent;
   cursor: pointer;
   z-index: 5;
-  transform: rotate(45deg);
+`
+
+const SPrevArrow = styled(SArrow)`
   left: 7px;
 
   @media (min-width: 481px) {
@@ -78,20 +79,13 @@ const SPrevArrow = styled.button`
   @media (min-width: 600px) {
     left: 125px;
   }
+
+  button {
+    transform: translateX(5px) rotate(45deg);
+  }
 `
-const SNextArrow = styled.button`
-  font-size: 0;
-  line-height: 1;
-  position: absolute;
-  width: 17px;
-  height: 17px;
-  border: 0;
-  border-bottom: 1px solid #9059c8;
-  border-left: 1px solid #9059c8;
-  background-color: transparent;
-  cursor: pointer;
-  z-index: 5;
-  transform: rotate(-135deg);
+
+const SNextArrow = styled(SArrow)`
   right: 7px;
 
   @media (min-width: 481px) {
@@ -101,6 +95,24 @@ const SNextArrow = styled.button`
   @media (min-width: 600px) {
     right: 125px;
   }
+
+  button {
+    transform: translateX(-5px) rotate(-135deg);
+  }
+`
+
+const SArrowButton = styled.button`
+  display: block;
+  width: 17px;
+  height: 17px;
+  border: none;
+  border-bottom: 1px solid #9059c8;
+  border-left: 1px solid #9059c8;
+  background-color: transparent;
+  font-size: 0;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
 `
 
 export function ShopByProductsOverview({ products, title }: ShopByProductsOverviewProps): React.ReactElement {
@@ -122,7 +134,20 @@ export function ShopByProductsOverview({ products, title }: ShopByProductsOvervi
               />
             ))
           ) : (
-            <Slider arrows infinite customLeftArrow={<SPrevArrow />} customRightArrow={<SNextArrow />}>
+            <Slider
+              arrows
+              infinite
+              customLeftArrow={
+                <SPrevArrow>
+                  <SArrowButton />
+                </SPrevArrow>
+              }
+              customRightArrow={
+                <SNextArrow>
+                  <SArrowButton />
+                </SNextArrow>
+              }
+            >
               {products &&
                 products.map((product) => (
                   <ShopByProductCard
