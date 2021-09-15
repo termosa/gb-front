@@ -60,18 +60,14 @@ export function SitePromotion({ style, className }: SitePromotionProps): React.R
   if (isPromo === null) {
     return null
   }
-  return (
-    <>
-      {!stateCookie && isPromo ? (
-        <BannerDiscount className={cn(className)} style={style} discountStatus={d || getDiscountCookie()} />
-      ) : (
-        <PromotionBanner
-          className={cn(className)}
-          style={style}
-          promo={promo || getPromoCookie()}
-          visibleBanner={isGwpPresent}
-        />
-      )}{' '}
-    </>
+  return !stateCookie && isPromo ? (
+    <BannerDiscount className={cn(className)} style={style} discountStatus={d || getDiscountCookie()} />
+  ) : (
+    <PromotionBanner
+      className={cn(className)}
+      style={style}
+      promo={promo || getPromoCookie()}
+      visibleBanner={isGwpPresent}
+    />
   )
 }
