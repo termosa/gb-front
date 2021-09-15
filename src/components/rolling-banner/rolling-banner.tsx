@@ -45,7 +45,7 @@ const PromoSlider = styled.div`
 
   a:hover {
     @media (min-width: 1200px) {
-      color: #f53e88;
+      color: #7A3CB9;
     }
   }
 `
