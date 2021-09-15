@@ -81,35 +81,45 @@ const SCustomDot = styled.div<{
   height: 10px;
 `
 
-const SPrevArrow = styled.button`
+const SArrow = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
   font-size: 0;
   line-height: 1;
   position: absolute;
-  width: 17px;
-  height: 17px;
-  border: 0;
-  border-bottom: 1px solid #9059c8;
-  border-left: 1px solid #9059c8;
-  background-color: transparent;
   cursor: pointer;
   z-index: 5;
-  transform: rotate(45deg);
-  left: 8px;
 `
-const SNextArrow = styled.button`
-  font-size: 0;
-  line-height: 1;
-  position: absolute;
+
+const SPrevArrow = styled(SArrow)`
+  left: 8px;
+  button {
+    transform: translateX(5px) rotate(45deg);
+  }
+`
+
+const SNextArrow = styled(SArrow)`
+  right: 8px;
+  button {
+    transform: translateX(-5px) rotate(-135deg);
+  }
+`
+
+const SArrowButton = styled.button`
+  display: block;
   width: 17px;
   height: 17px;
-  border: 0;
+  border: none;
   border-bottom: 1px solid #9059c8;
   border-left: 1px solid #9059c8;
   background-color: transparent;
+  font-size: 0;
+  margin: 0;
+  padding: 0;
   cursor: pointer;
-  z-index: 5;
-  transform: rotate(-135deg);
-  right: 8px;
 `
 
 type SliderProps = {
@@ -222,8 +232,20 @@ export const Slider = ({
       <Carousel
         ref={carouselRef}
         arrows={arrows}
-        customLeftArrow={customLeftArrow || <SPrevArrow />}
-        customRightArrow={customRightArrow || <SNextArrow />}
+        customLeftArrow={
+          customLeftArrow || (
+            <SPrevArrow>
+              <SArrowButton />
+            </SPrevArrow>
+          )
+        }
+        customRightArrow={
+          customRightArrow || (
+            <SNextArrow>
+              <SArrowButton />
+            </SNextArrow>
+          )
+        }
         renderButtonGroupOutside={scrollbarPresent}
         customButtonGroup={scrollbarPresent ? <CustomSlider /> : customButtonGroup}
         customDot={dotsPresent ? <CustomDot /> : null}

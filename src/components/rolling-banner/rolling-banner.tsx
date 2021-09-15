@@ -45,47 +45,46 @@ const PromoSlider = styled.div`
 
   a:hover {
     @media (min-width: 1200px) {
-      color: #7A3CB9;
+      color: #7a3cb9;
     }
   }
 `
 
-const PrevArrow = styled.button`
-  display: block;
-  transform: translateY(-50%) rotate(45deg);
-  left: 0;
-  width: 8px;
-  height: 8px;
-  z-index: 13;
+const SArrow = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
   font-size: 0;
-  top: 50%;
   line-height: 1;
   position: absolute;
-  border: none;
-  border-bottom: 1px solid #fff;
-  border-left: 1px solid #fff;
-  background-color: transparent;
   cursor: pointer;
-  margin: 0;
-  padding: 0;
 `
 
-const NextArrow = styled.button`
+const SPrevArrow = styled(SArrow)`
+  left: 0;
+  button {
+    transform: rotate(45deg);
+  }
+`
+
+const SNextArrow = styled(SArrow)`
+  right: 0;
+  button {
+    transform: rotate(-135deg);
+  }
+`
+
+const SArrowButton = styled.button`
   display: block;
-  transform: translateY(-50%) rotate(-135deg);
-  right: 1px;
-  font-size: 0;
-  z-index: 13;
-  top: 50%;
-  line-height: 1;
-  position: absolute;
   width: 8px;
   height: 8px;
   border: none;
   border-bottom: 1px solid #fff;
   border-left: 1px solid #fff;
   background-color: transparent;
-  cursor: pointer;
+  font-size: 0;
   margin: 0;
   padding: 0;
 `
@@ -96,9 +95,9 @@ const SPromoSlide = styled.div`
   width: 100%;
 `
 
-const PinkSpan = styled.span`
+/*const PinkSpan = styled.span`
   color: #ee67a0;
-`
+`*/
 
 const PurpleSpan = styled.span`
   color: #9059c8;
@@ -109,7 +108,19 @@ export function RollingBanner(): React.ReactElement {
     <PromoWrapper>
       <Container>
         <PromoSlider>
-          <Slider customLeftArrow={<PrevArrow />} customRightArrow={<NextArrow />} infinite>
+          <Slider
+            customLeftArrow={
+              <SPrevArrow>
+                <SArrowButton />
+              </SPrevArrow>
+            }
+            customRightArrow={
+              <SNextArrow>
+                <SArrowButton />
+              </SNextArrow>
+            }
+            infinite
+          >
             <span>
               <SPromoSlide>
                 PARABEN FREE&nbsp;&nbsp;|&nbsp;&nbsp;HANDMADE IN USA&nbsp;&nbsp;|&nbsp;&nbsp;100% VEGAN
