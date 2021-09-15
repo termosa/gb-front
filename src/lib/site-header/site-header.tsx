@@ -436,7 +436,7 @@ const ExtendableBlockItem = styled.div`
     color: black;
     display: block;
     // display: inline-block;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
   }
 
   // & > ul {
@@ -447,7 +447,7 @@ const ExtendableBlockItem = styled.div`
   //   margin-bottom: 25px;
   // }
 
-  margin: 0 1.5em 25px 1.5em;
+  margin: 0 1.5em 10px 1.5em;
   // width: 80%;
   text-align: start;
   

@@ -178,6 +178,13 @@ const SLinkWrapper = styled.ul`
       // text-shadow: 0 0 #000;
     }
   }
+  .user-dropdown-links {
+    color: #bdbdbd;
+    a, & > div {
+      color: #bdbdbd;
+    }
+    
+  }
 `
 
 const SSignOutLink = styled.a`
@@ -306,7 +313,7 @@ export function NavIcons({
               <li>
                 <a href="/account#/birthday">My Birthday Gift</a>
               </li>
-              <li>
+              <li className="user-dropdown-links">
                 <div style={{ margin: '0 auto', maxWidth: 'fit-content' }}>
                   {userName ? <SSignOutLink href="/account/logout">Sign Out</SSignOutLink> : <SigninSignup />}
                 </div>
