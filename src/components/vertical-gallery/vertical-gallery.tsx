@@ -65,10 +65,18 @@ const SCarouselThumbnails = styled.div`
   display: flex;
   overflow-x: scroll;
   position: absolute;
-  width: calc(350px + (100vw - 350px) / 2);
+  width: calc(100vw - 16px);
 
   &::-webkit-scrollbar {
     display: none;
+  }
+
+  @media (min-width: 350px) {
+    width: calc(330px + (100vw - 350px) / 2);
+  }
+
+  @media (min-width: 400px) {
+    width: calc(347px + (100vw - 350px) / 2);
   }
 `
 
@@ -77,7 +85,7 @@ const SCarouselThumbnailItem = styled.a<{
 }>`
   height: 66px;
   border: ${(props) => (props.isActive ? '1px solid #000000' : '1px solid #ffffff')};
-  margin-left: 4px;
+  margin-right: 4px;
   cursor: pointer;
 
   img {

@@ -13,7 +13,7 @@ const SFloatingCtaClosed = styled.div<{ isVisible?: boolean }>`
   flex-direction: column;
   position: sticky;
   z-index: 3;
-  bottom: 16px;
+  bottom: 32px;
   margin: 0 16px;
   opacity: ${(props) => (props.isVisible ? 1 : 0)};
   transition: opacity 0.5s ease-in-out;
@@ -36,12 +36,12 @@ const SFloatingCtaOpened = styled.div<{ isVisible?: boolean }>`
   bottom: 0;
   width: 100%;
   margin: 0 auto;
-  padding: 16px;
   visibility: ${(props) => (props.isVisible ? 'visible' : 'hidden')};
 
   @media (min-width: 768px) {
     bottom: 40px;
     margin: 0 auto 48px;
+    padding: 16px;
   }
 `
 

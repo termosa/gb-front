@@ -123,6 +123,7 @@ type SliderProps = {
   dotsPresent?: boolean
   partiallyVisible?: boolean
   infinite?: boolean
+  swipeable?: boolean
   itemClass?: string
   carouselRef?: React.RefObject<Carousel>
   setActiveGalleryItem?: Dispatch<number>
@@ -173,6 +174,7 @@ export const Slider = ({
   partiallyVisible,
   responsive,
   infinite,
+  swipeable,
   itemClass,
   carouselRef,
   setActiveGalleryItem,
@@ -227,6 +229,7 @@ export const Slider = ({
         customDot={dotsPresent ? <CustomDot /> : null}
         itemClass={itemClass || 'image-item'}
         infinite={infinite}
+        swipeable={swipeable}
         responsive={responsive || getResponsive(partiallyVisible)}
         containerClass={scrollbarPresent ? 'carousel-container-with-scrollbar' : 'container-with-dots'}
         afterChange={(_, { currentSlide }) => (setActiveGalleryItem ? setActiveGalleryItem(currentSlide) : null)}

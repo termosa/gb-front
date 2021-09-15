@@ -7,30 +7,36 @@ const SSizeSelector = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
-  width: 100%;
+  width: auto;
   height: auto;
-  margin: 0 auto 48px;
   padding: 16px;
   background: #fff;
   border: 1px solid #000000;
   box-shadow: 0 0 24px rgba(0, 0, 0, 0.35);
+  margin-bottom: 16px;
 
   @media (min-width: 768px) {
     width: 560px;
+    margin: 0 auto 48px;
   }
 `
 
 const SSizeSelectorTitle = styled.h3`
-  font: 400 16px/1 'Montserrat', sans-serif;
+  font: 400 16px/1.5 'Montserrat', sans-serif;
   text-align: center;
   margin: 0 auto 12px;
+  width: 70%;
 `
 
 const SRingSizeContainer = styled.div`
   font: 400 16px/1 'Montserrat', sans-serif;
   display: flex;
   justify-content: center;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
+
+  @media (min-width: 768px) {
+    margin-bottom: 20px;
+  }
 `
 
 const SBtnHolder = styled.div`

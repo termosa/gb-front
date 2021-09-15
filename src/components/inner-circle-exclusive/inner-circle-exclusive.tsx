@@ -466,7 +466,13 @@ export function InnerCircleExclusive({
             <SImagesWrapper>
               <SImagesContainer>
                 <SLeftSliderPart isPresent={slideImages.length > 2}>
-                  <Slider infinite arrows={false} carouselRef={smallSliderRef} customButtonGroup={<CustomButtons />}>
+                  <Slider
+                    infinite
+                    arrows={false}
+                    carouselRef={smallSliderRef}
+                    customButtonGroup={<CustomButtons />}
+                    swipeable={false}
+                  >
                     <SLeftImageContainer isPresent={slideImages.length > 2}>
                       <img src={slideImages[0]} alt={productTitle} />
                     </SLeftImageContainer>
