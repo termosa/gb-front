@@ -1,13 +1,8 @@
-import React, { useEffect, useState } from 'react'
-import styled from 'styled-components'
+import React from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import PromotionBanner from '../promotion-banner'
 import useQuery from '../use-query'
 import getCookie from '../get-cookie'
-
-interface WrapperProps {
-  error: boolean
-}
 
 const gwpPresent = (): boolean => {
   const promo = getCookie('c_promo')
@@ -29,38 +24,19 @@ export type SitePromotionProps = {
   style?: React.CSSProperties
 }
 
-export function SitePromotion({ style, className }: SitePromotionProps): React.ReactElement {
+export function SitePromotion({ style, className }: SitePromotionProps): React.ReactElement | null {
   const { promo } = useQuery()
   const isGwpPresent = gwpPresent()
-  const [isError, setIsError] = useState(false)
 
-  useEffect(() => {
-    if (!promo && !!isGwpPresent) {
-      setIsError(true)
-    }
-  }, [promo, isGwpPresent])
-
-  return (
-    <>
-      {(promo || !isGwpPresent) && (
-        <PromotionContainer className={cn(className)} style={style} error={isError}>
-          <PromotionBanner
-            promo={promo || getPromoCookie()}
-            visibleBanner={isGwpPresent}
-            errorPromoDetails={() => setIsError(true)}
-          />
-        </PromotionContainer>
-      )}
-    </>
-  )
+  if (promo || !isGwpPresent) {
+    return (
+      <PromotionBanner
+        className={cn(className)}
+        style={style}
+        promo={promo || getPromoCookie()}
+        visibleBanner={isGwpPresent}
+      />
+    )
+  }
+  return null
 }
-
-const PromotionContainer = styled.div<WrapperProps>`
-  background-color: #464a4d;
-  position: relative;
-  text-align: center;
-  padding: ${(props) => (props.error ? '0' : '10px 0')};
-  color: #000;
-  width: 100%;
-  vertical-align: top;
-`
