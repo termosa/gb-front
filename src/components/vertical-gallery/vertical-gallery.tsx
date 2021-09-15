@@ -64,6 +64,7 @@ const SCarouselIcons = styled.div`
 const SCarouselThumbnails = styled.div`
   display: flex;
   overflow-x: scroll;
+  overflow-y: hidden;
   position: absolute;
   width: calc(100vw - 16px);
 

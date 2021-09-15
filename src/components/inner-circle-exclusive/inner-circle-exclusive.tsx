@@ -219,11 +219,6 @@ const SLeftImageContainer = styled.div<{
     height: 100%;
     object-fit: cover;
     display: block;
-
-    @media (max-width: 420px) {
-      width: 115px;
-      height: 115px;
-    }
   }
 `
 

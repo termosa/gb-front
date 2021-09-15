@@ -49,7 +49,10 @@ const Product = (): null | React.ReactElement => {
     if (!position) {
       return
     }
-    localStorage.setItem('isFloatingCtaVisible', JSON.stringify(position.top <= 150))
+    localStorage.setItem(
+      'isFloatingCtaVisible',
+      JSON.stringify(position.top <= 150 && window?.location.pathname.includes('/products/'))
+    )
   }
 
   useEffect(() => {
