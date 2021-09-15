@@ -54,7 +54,6 @@ const SSearchWrapper = styled.div`
   display: flex;
   box-sizing: border-box;
   position: relative;
-  // height: 62px;
   padding: 11px 16px;
   flex-direction: column;
 
@@ -179,7 +178,6 @@ const ExtendableBlock = styled.div`
 
   @media (min-width: 1200px) {
     padding: 32px 0 0;
-    // font-size: 0.75em;
     box-shadow: 0 4px 9px rgba(0, 0, 0, 0.1);
   }
 `
@@ -215,10 +213,6 @@ const ExtendableBlockContainer = styled.div`
     img {
       width: 100%;
     }
-
-    // & > div {
-    //   margin: 0 0 25px 0;
-    // }
   }
 `
 
@@ -227,7 +221,6 @@ const ExtendableBlockListTitle = styled.strong`
   display: block;
   margin: 0 0 8px;
   text-transform: uppercase;
-  // letter-spacing: 0.08em;
   text-align: start;
 
   @media (min-width: 1200px) {
@@ -293,7 +286,6 @@ const ExtendableBlockList = styled.ul`
   }
 
   @media (min-width: 1200px) {
-    // margin: 0 0 25px;
     margin: 0;
 
     & > li:last-child {
@@ -333,12 +325,7 @@ const ExtendableBlockListItem = styled.li`
 
   & > a {
     display: block;
-    // padding: 15px 0 15px;
-    // padding-left: 0;
-    // padding-top: 5px;
-    // padding-bottom: 5px;
     font: 400 14px/1.3 'Montserrat', sans-serif;
-    // letter-spacing: 0.05em;
     transition: color linear 0.2s;
     color: #000;
     text-decoration: none;
@@ -357,7 +344,6 @@ const ExtendableBlockListItem = styled.li`
       padding: 6px 0 6px 0;
     }
     & > a:hover {
-      // text-shadow: 0 0 #000;
       font-weight: 600;
     }
   }
@@ -367,9 +353,7 @@ const AnimatedLink = styled.a`
   font: 600 14px/1.5 'Montserrat', sans-serif !important;
   display: inline-block;
   padding-bottom: 5px;
-  // border-bottom: 1px solid black;
   text-transform: uppercase;
-  // font-weight: bold;
   cursor: pointer;
   color: black;
   text-decoration: none;
@@ -379,7 +363,6 @@ const AnimatedLink = styled.a`
 
   &:hover {
     @media (min-width: 1200px) {
-      // text-shadow: 0 0 #000;
       font-weight: 600;
       span:after {
         height: 2px;
@@ -396,7 +379,6 @@ const AnimatedLink = styled.a`
     @media (min-width: 1200px) {
       &:hover {
         font-weight: 600;
-        // text-shadow: 0 0 #000;
       }
     }
 
@@ -411,10 +393,7 @@ const AnimatedLink = styled.a`
       background: #000;
       transition: bottom linear .2s;
   }
-    @media (max-width: 1199px) {
-      // display: inline-block;
-      // margin-bottom: 5px;
-    }
+    
   }
 `
 
@@ -435,27 +414,14 @@ const ExtendableBlockItem = styled.div`
     text-decoration: none;
     color: black;
     display: block;
-    // display: inline-block;
     margin-bottom: 20px;
   }
 
-  // & > ul {
-  //   text-decoration: none;
-  //   color: black;
-  //   display: block;
-  //   // display: inline-block;
-  //   margin-bottom: 25px;
-  // }
-
   margin: 0 1.5em 10px 1.5em;
-  // width: 80%;
   text-align: start;
   
   @media (max-width: 1199px) {
     margin: 0;
-    // & > div {
-    //   margin-bottom: 25px;
-    // }
   }
   &:last-child {
     margin-bottom: 0;
