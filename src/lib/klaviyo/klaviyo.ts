@@ -64,7 +64,7 @@ export function klaviyo(...command: KlaviyoCommand): void {
         push(['account', KLAVIYO_ACCOUNT])
         if (customer) push(['identify', { $email: customer.email }])
       })
-      .catch(() => log('Klaviyo could not be initialized'))
+      .catch((error) => log('Klaviyo could not be initialized', error))
   }
 
   if (command.length) initialRequests.then(() => push(command))

@@ -8,6 +8,7 @@ export function trackViewedItem(product: Product): void {
     ProductID: product.product_id,
     ...(product.image && { ImageURL: product.image.src }),
     ...(product.variants[0] && { Price: formatPrice(product.variants[0].actual_price) }),
+    ...(product.variants[0]?.compare_at_price && { CompareAtPrice: formatPrice(product.variants[0].compare_at_price) }),
   })
   klaviyo('trackViewedItem', {
     Title: product.title,
