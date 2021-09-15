@@ -233,18 +233,59 @@ const ExtendableBlockListTitle = styled.strong`
   @media (min-width: 1200px) {
     margin: 0 0 0.9em;
   }
+  @media (max-width: 1199px) {
+    &.hidden-title {
+      display: none;
+    }
+    &.nav-mob-accordion__title {
+      padding: 15px 0;
+      margin-bottom: 0;
+      position: relative;
+
+      &:before {
+        content: "";
+        position: absolute;
+        width: 1px;
+        background-color: #636363;
+        height: 16px;
+        top: 50%;
+        right: 7px;
+        transform: translate(-50%,-50%);
+      }
+
+      &:after {
+        content: "";
+        position: absolute;
+        width: 16px;
+        background-color: #636363;
+        height: 1px;
+        top: 50%;
+        right: 0;
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
+      }
+    }
+  }
+  
 `
 
 const ExtendableBlockListText = styled.p`
   font: 400 14px/1.5 'Montserrat', sans-serif;
   letter-spacing: 0.05em;
+  margin: 0 0 8px;
+`
+const ExtendableBlockListAccordionItem = styled.div`
+  @media (max-width: 1199px) {
+    border-bottom: 1px solid #ccc;
+    margin: 0 0 0 !important;
+    overflow: hidden;
+  }
 `
 
 const ExtendableBlockList = styled.ul`
   list-style: none;
   padding: 0;
-  // margin: 0 0 15px;
-  margin: 0;
+  margin: 0 0 15px;
   text-transform: none;
 
   & > li:last-child {
@@ -253,9 +294,27 @@ const ExtendableBlockList = styled.ul`
 
   @media (min-width: 1200px) {
     // margin: 0 0 25px;
+    margin: 0;
 
     & > li:last-child {
       margin-bottom: 8px;
+    }
+  }
+  @media (max-width: 1199px) {
+    &.nav-mob-accordion__content {
+      margin-bottom: 0;
+      max-height: 0;
+      transition: all .35s;
+    }
+    &.nav-mob-accordion__content li {
+      border-bottom: 0;
+      margin-bottom: 20px;
+    }
+    &.nav-mob-accordion__content li a {
+      padding: 0;
+      padding-left: 15px;
+      padding-top: 5px;
+      padding-bottom: 5px;
     }
   }
 `
@@ -263,9 +322,10 @@ const ExtendableBlockList = styled.ul`
 const ExtendableBlockListItem = styled.li`
   margin: 0;
   padding: 0;
-  margin-bottom: 20px;
-  // border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
   @media (min-width: 1200px) {
+    border: 0;
+    margin-bottom: 20px;
     margin: 0 0 0.45em;
     border: 0;
     text-align: start;
@@ -274,15 +334,21 @@ const ExtendableBlockListItem = styled.li`
   & > a {
     display: block;
     // padding: 15px 0 15px;
-    padding-left: 15px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    font: 400 14px/1.5 'Montserrat', sans-serif;
+    // padding-left: 0;
+    // padding-top: 5px;
+    // padding-bottom: 5px;
+    font: 400 14px/1.3 'Montserrat', sans-serif;
     // letter-spacing: 0.05em;
     transition: color linear 0.2s;
     color: #000;
     text-decoration: none;
     white-space: nowrap;
+    padding: 15px 0 15px;
+    @media (min-width: 1200px) {
+      padding-left: 15px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+    }
   }
 
   @media (min-width: 1200px) {
@@ -346,8 +412,8 @@ const AnimatedLink = styled.a`
       transition: bottom linear .2s;
   }
     @media (max-width: 1199px) {
-      display: inline-block;
-      margin-bottom: 5px;
+      // display: inline-block;
+      // margin-bottom: 5px;
     }
   }
 `
@@ -357,26 +423,46 @@ const ExtendableBlockItems = styled.div`
     width: 70%;
     display: flex;
   }
+  @media (max-width: 1199px) {
+    &.accordion-wrapper {
+      margin-bottom: 25px;
+    }
+  }
 `
 
 const ExtendableBlockItem = styled.div`
-  & > * {
+  & > a {
     text-decoration: none;
     color: black;
-    display: inline-block;
+    display: block;
+    // display: inline-block;
+    margin-bottom: 25px;
   }
+
+  // & > ul {
+  //   text-decoration: none;
+  //   color: black;
+  //   display: block;
+  //   // display: inline-block;
+  //   margin-bottom: 25px;
+  // }
 
   margin: 0 1.5em 25px 1.5em;
   // width: 80%;
   text-align: start;
   
   @media (max-width: 1199px) {
-    & > div {
-      margin-bottom: 25px;
-    }
+    margin: 0;
+    // & > div {
+    //   margin-bottom: 25px;
+    // }
   }
   &:last-child {
     margin-bottom: 0;
+
+    @media (max-width: 1199px) {
+      order: -1;
+    }
   }
   @media (min-width: 1200px) {
     &:first-child {
@@ -404,78 +490,110 @@ const ExtendableBlockItem = styled.div`
     }
   }
 `
+const ExtendableBlockListAccordionInput = styled.input`
+  position: absolute;
+  opacity: 0;
+  z-index: -1;
+
+  &:checked {
+    + label {
+      .nav-mob-accordion__title::before {
+        display: none;
+      }
+    }
+    ~ .nav-mob-accordion__content {
+      max-height: 100vh;
+    }
+  }
+`
+
+const ExtendableBlockListAccordionLabel = styled.label``
 
 const AllContent = () => (
   <ExtendableBlock>
     <ExtendableBlockContainer>
-      <ExtendableBlockItems>
+      <ExtendableBlockItems className="accordion-wrapper">
         <ExtendableBlockItem>
-          <ExtendableBlockListTitle>Shop by product</ExtendableBlockListTitle>
-          <ExtendableBlockList>
-            <ExtendableBlockListItem>
-              <a href="/collections/bath-bombs">Bath Bombs</a>
-            </ExtendableBlockListItem>
-            <ExtendableBlockListItem>
-              <a href="/collections/jewel-candles">Candles</a>
-            </ExtendableBlockListItem>
-            <ExtendableBlockListItem>
-              <a href="/collections/body-scrubs">Body Scrubs</a>
-            </ExtendableBlockListItem>
-            <ExtendableBlockListItem>
-              <a href="/collections/the-jewelry-store">Jewelry</a>
-            </ExtendableBlockListItem>
-            <ExtendableBlockListItem>
-              <a href="/collections/gift-sets">Gift Sets</a>
-            </ExtendableBlockListItem>
-            <ExtendableBlockListItem>
-              <AnimatedLink href="/collections/all-products">
-                <span>Shop all</span>
-              </AnimatedLink>
-            </ExtendableBlockListItem>
-          </ExtendableBlockList>
-        </ExtendableBlockItem>
+          <ExtendableBlockListAccordionItem>
+            <ExtendableBlockListAccordionInput type="checkbox" id="rd1" name="rd" defaultChecked />
+            <ExtendableBlockListAccordionLabel htmlFor="rd1" >
+              <ExtendableBlockListTitle className="nav-mob-accordion__title">Shop by product</ExtendableBlockListTitle>
+            </ExtendableBlockListAccordionLabel>
+            <ExtendableBlockList className="nav-mob-accordion__content">
+              <ExtendableBlockListItem>
+                <a href="/collections/bath-bombs">Bath Bombs</a>
+              </ExtendableBlockListItem>
+              <ExtendableBlockListItem>
+                <a href="/collections/jewel-candles">Candles</a>
+              </ExtendableBlockListItem>
+              <ExtendableBlockListItem>
+                <a href="/collections/body-scrubs">Body Scrubs</a>
+              </ExtendableBlockListItem>
+              <ExtendableBlockListItem>
+                <a href="/collections/the-jewelry-store">Jewelry</a>
+              </ExtendableBlockListItem>
+              <ExtendableBlockListItem>
+                <a href="/collections/gift-sets">Gift Sets</a>
+              </ExtendableBlockListItem>
+              <ExtendableBlockListItem>
+                <AnimatedLink href="/collections/all-products">
+                  <span>Shop all</span>
+                </AnimatedLink>
+              </ExtendableBlockListItem>
+            </ExtendableBlockList>
+            </ExtendableBlockListAccordionItem>
+          </ExtendableBlockItem>
         <ExtendableBlockItem>
-          <ExtendableBlockListTitle>Shop by Fragrance</ExtendableBlockListTitle>
-          <ExtendableBlockList>
-            <ExtendableBlockListItem>
-              <a href="/collections/all-products#fragrance=Fragrance:%20Aquatic">Aquatic</a>
-            </ExtendableBlockListItem>
-            <ExtendableBlockListItem>
-              <a href="/collections/all-products#fragrance=Fragrance:%20Citrus">Citrus</a>
-            </ExtendableBlockListItem>
-            <ExtendableBlockListItem>
-              <a href="/collections/all-products#fragrance=Fragrance:%20Floral">Floral</a>
-            </ExtendableBlockListItem>
-            <ExtendableBlockListItem>
-              <a href="/collections/all-products#fragrance=Fragrance:%20Floral%20Woods">Floral Woods</a>
-            </ExtendableBlockListItem>
-            <ExtendableBlockListItem>
-              <a href="/collections/all-products#fragrance=Fragrance:%20Fresh">Fresh</a>
-            </ExtendableBlockListItem>
-            <ExtendableBlockListItem>
-              <a href="/collections/all-products#fragrance=Fragrance:%20Fruity">Fruity</a>
-            </ExtendableBlockListItem>
-            <ExtendableBlockListItem>
-              <a href="/collections/all-products#fragrance=Fragrance:%20Gourmand">Gourmand</a>
-            </ExtendableBlockListItem>
-            <ExtendableBlockListItem>
-              <a href="/collections/all-products#fragrance=Fragrance:%20Green">Green</a>
-            </ExtendableBlockListItem>
-            <ExtendableBlockListItem>
-              <a href="/collections/all-products#fragrance=Fragrance:%20Musky">Musky</a>
-            </ExtendableBlockListItem>
-            <ExtendableBlockListItem>
-              <a href="/collections/all-products#fragrance=Fragrance:%20Spicy/%20Smoky">Spicy/ Smoky</a>
-            </ExtendableBlockListItem>
-            <ExtendableBlockListItem>
-              <AnimatedLink href="/collections/all-products"><span>Shop all</span></AnimatedLink>
-            </ExtendableBlockListItem>
-          </ExtendableBlockList>
-        </ExtendableBlockItem>
+          <ExtendableBlockListAccordionItem>
+            <ExtendableBlockListAccordionInput type="checkbox" id="rd2" name="rd" />
+            <ExtendableBlockListAccordionLabel htmlFor="rd2">
+              <ExtendableBlockListTitle className="nav-mob-accordion__title">Shop by Fragrance</ExtendableBlockListTitle>
+            </ExtendableBlockListAccordionLabel>
+            <ExtendableBlockList className="nav-mob-accordion__content">
+              <ExtendableBlockListItem>
+                <a href="/collections/all-products#fragrance=Fragrance:%20Aquatic">Aquatic</a>
+              </ExtendableBlockListItem>
+              <ExtendableBlockListItem>
+                <a href="/collections/all-products#fragrance=Fragrance:%20Citrus">Citrus</a>
+              </ExtendableBlockListItem>
+              <ExtendableBlockListItem>
+                <a href="/collections/all-products#fragrance=Fragrance:%20Floral">Floral</a>
+              </ExtendableBlockListItem>
+              <ExtendableBlockListItem>
+                <a href="/collections/all-products#fragrance=Fragrance:%20Floral%20Woods">Floral Woods</a>
+              </ExtendableBlockListItem>
+              <ExtendableBlockListItem>
+                <a href="/collections/all-products#fragrance=Fragrance:%20Fresh">Fresh</a>
+              </ExtendableBlockListItem>
+              <ExtendableBlockListItem>
+                <a href="/collections/all-products#fragrance=Fragrance:%20Fruity">Fruity</a>
+              </ExtendableBlockListItem>
+              <ExtendableBlockListItem>
+                <a href="/collections/all-products#fragrance=Fragrance:%20Gourmand">Gourmand</a>
+              </ExtendableBlockListItem>
+              <ExtendableBlockListItem>
+                <a href="/collections/all-products#fragrance=Fragrance:%20Green">Green</a>
+              </ExtendableBlockListItem>
+              <ExtendableBlockListItem>
+                <a href="/collections/all-products#fragrance=Fragrance:%20Musky">Musky</a>
+              </ExtendableBlockListItem>
+              <ExtendableBlockListItem>
+                <a href="/collections/all-products#fragrance=Fragrance:%20Spicy/%20Smoky">Spicy/ Smoky</a>
+              </ExtendableBlockListItem>
+              <ExtendableBlockListItem>
+                <AnimatedLink href="/collections/all-products"><span>Shop all</span></AnimatedLink>
+              </ExtendableBlockListItem>
+            </ExtendableBlockList>
+            </ExtendableBlockListAccordionItem>
+          </ExtendableBlockItem>
         <ExtendableBlockItem>
           <div>
-            <ExtendableBlockListTitle>Shop by Material</ExtendableBlockListTitle>
-            <ExtendableBlockList>
+          <ExtendableBlockListAccordionItem>
+          <ExtendableBlockListAccordionInput type="checkbox" id="rd3" name="rd" />
+            <ExtendableBlockListAccordionLabel htmlFor="rd3">
+              <ExtendableBlockListTitle className="nav-mob-accordion__title">Shop by Material</ExtendableBlockListTitle>
+            </ExtendableBlockListAccordionLabel>
+            <ExtendableBlockList className="nav-mob-accordion__content">
               <ExtendableBlockListItem>
                 <a href="/collections/all-products#material=Material:%2018K%20Gold%20Plated">18K Gold Plated</a>
               </ExtendableBlockListItem>
@@ -491,10 +609,15 @@ const AllContent = () => (
                 </AnimatedLink>
               </ExtendableBlockListItem>
             </ExtendableBlockList>
+            </ExtendableBlockListAccordionItem>
           </div>
           <div>
-            <ExtendableBlockListTitle>Shop by Metal Color</ExtendableBlockListTitle>
-            <ExtendableBlockList>
+          <ExtendableBlockListAccordionItem>
+            <ExtendableBlockListAccordionInput type="checkbox" id="rd4" name="rd" />
+            <ExtendableBlockListAccordionLabel htmlFor="rd4">
+              <ExtendableBlockListTitle className="nav-mob-accordion__title">Shop by Metal Color</ExtendableBlockListTitle>
+            </ExtendableBlockListAccordionLabel>
+            <ExtendableBlockList className="nav-mob-accordion__content">
               <ExtendableBlockListItem>
                 <a href="/collections/all-products#color=Metal%20Color:%20Black">Black</a>
               </ExtendableBlockListItem>
@@ -513,6 +636,7 @@ const AllContent = () => (
                 </AnimatedLink>
               </ExtendableBlockListItem>
             </ExtendableBlockList>
+            </ExtendableBlockListAccordionItem>
           </div>
         </ExtendableBlockItem>
       </ExtendableBlockItems>
@@ -550,7 +674,7 @@ const SubscriptionContent = () => (
         </a>
       </ExtendableBlockItem>
       <ExtendableBlockItem>
-        <ExtendableBlockListTitle>Subscription</ExtendableBlockListTitle>
+        <ExtendableBlockListTitle className="hidden-title">Subscription</ExtendableBlockListTitle>
         <ExtendableBlockList>
           <ExtendableBlockListItem>
             <a href="/pages/inner-circle#how-it-works">How it works</a>
@@ -597,7 +721,7 @@ const RewardsContent = () => (
         </a>
       </ExtendableBlockItem>
       <ExtendableBlockItem>
-        <ExtendableBlockListTitle>Rewards</ExtendableBlockListTitle>
+        <ExtendableBlockListTitle className="hidden-title">Rewards</ExtendableBlockListTitle>
         <ExtendableBlockList>
           <ExtendableBlockListItem>
             <a href="/pages/rewards-boutique">Rewards Boutique</a>

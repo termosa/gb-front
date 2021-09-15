@@ -105,12 +105,12 @@ const StyledSlider = styled.div`
     padding: 22px 0;
 
     button:before {
-      background-color: #4dbeba;
+      background-color: #fff;
       opacity: 0.3;
     }
 
     .slick-active button:before {
-      background-color: #4dbeba;
+      background-color: #fff;
       opacity: 0.6;
     }
   }

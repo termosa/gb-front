@@ -70,6 +70,12 @@ const SCartButton = styled.a`
   @media (min-width: 1200px) {
     width: 1.45em;
     margin-right: 12px;
+    & > span {
+      transition: all linear .2s;
+    }
+    &:hover > span {
+      background-color: #7a3cb9;
+    }
   }
 `
 
