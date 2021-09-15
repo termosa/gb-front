@@ -4,6 +4,7 @@ import useDefer from 'use-defer'
 import styled from 'styled-components'
 import loadPromoDetails from '../load-promo-details'
 import setCookie from '../set-cookie'
+import getCookie from '../get-cookie'
 
 const PromoContainer = styled.div`
   position: relative;
@@ -145,6 +146,12 @@ export type PromotionBannerProps = {
   errorPromoDetails: () => void
 }
 
+const gwpCart = (): boolean => {
+  const cart = getCookie('cart')
+  const variant = getCookie('promo_variant')
+  return !!cart && !!variant
+}
+
 export function PromotionBanner({
   promo,
   visibleBanner,
@@ -168,7 +175,9 @@ export function PromotionBanner({
         <PromoClock>
           <h3> {promoDetailsRequest.value.title} </h3>
         </PromoClock>
-        <PromoDescription>{promoDetailsRequest.value.requirements}</PromoDescription>
+        <PromoDescription>
+          {gwpCart() ? 'Congratulations! Your FREE gift is in your cart!' : promoDetailsRequest.value.requirements}
+        </PromoDescription>
       </WrapPromoContainer>
       {!buyRingSize && visibleBanner && promoDetailsRequest.value.sizeOutOfStock && (
         <>

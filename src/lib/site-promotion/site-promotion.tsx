@@ -42,7 +42,7 @@ export function SitePromotion({ style, className }: SitePromotionProps): React.R
 
   return (
     <>
-      {(promo || isGwpPresent) && (
+      {(promo || !isGwpPresent) && (
         <PromotionContainer className={cn(className)} style={style} error={isError}>
           <PromotionBanner
             promo={promo || getPromoCookie()}

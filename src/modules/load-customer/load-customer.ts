@@ -11,7 +11,6 @@ let cache: null | Customer = null
 let lastRequest: null | Promise<Customer | null> = null
 
 export const loadCustomer = (options: LoadCustomerOptions = {}): Promise<Customer | null> => {
-  console.warn('OPTIONS', options)
   if (!options.skipCache) {
     if (cache) return Promise.resolve(cache)
     if (lastRequest) return lastRequest

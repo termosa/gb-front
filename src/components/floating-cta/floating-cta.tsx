@@ -7,6 +7,7 @@ import window from '../../lib/window'
 import navigate from '../../lib/navigate'
 import SizeSelector from '../../lib/size-selector'
 import { VariantSize } from '../../modules/normalize-product-variant'
+import trackAddedToCart from '../../lib/track-added-to-cart'
 
 const SFloatingCtaClosed = styled.div<{ isVisible?: boolean }>`
   display: flex;
@@ -109,7 +110,10 @@ export const FloatingCta = (): React.ReactElement | null => {
       <SizeSelector
         onSelect={(size) => {
           const sizeId = product?.variants.find((variant) => variant.title === size.toString())?.variant_id
-          sizeId && addCartItem(sizeId).then(() => navigate('/cart'))
+          sizeId &&
+            addCartItem(sizeId)
+              .then(() => trackAddedToCart(product))
+              .then(() => navigate('/cart'))
         }}
         onClose={() => setFloatingCtaClosed(true)}
         title="Select a ring size to reserve this box"
