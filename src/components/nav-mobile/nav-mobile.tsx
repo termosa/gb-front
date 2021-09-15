@@ -245,7 +245,7 @@ const SCardLink = styled.span`
   padding: 0 0 5px;
 
   &:after {
-    content: "";
+    content: '';
     position: absolute;
     bottom: -2px;
     left: 0;
@@ -253,8 +253,8 @@ const SCardLink = styled.span`
     width: 100%;
     height: 1px;
     background: #000;
-    transition: bottom linear .2s;
-}
+    transition: bottom linear 0.2s;
+  }
 `
 
 const SAccountWrapper = styled.div`
@@ -295,6 +295,40 @@ const SAccountList = styled.ul`
 
 const SAccountListSubscription = styled.li`
   display: none;
+`
+
+const SubNavTitle = styled.button`
+  font-weight: 600;
+  padding: 16px 0;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid #ccc;
+  text-align: center;
+  margin: 0;
+  font-size: 1em;
+  position: relative;
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+  display: block;
+  width: 100%;
+
+  &:focus {
+    outline: 0;
+    box-shadow: none;
+  }
+
+  &:before {
+    content: '';
+    left: 0;
+    top: 50%;
+    position: absolute;
+    border: solid #636363;
+    border-width: 0 1px 1px 0;
+    transform: rotate(135deg) translateY(-50%);
+    width: 0.7em;
+    height: 0.7em;
+    transform-origin: top;
+  }
 `
 
 const TABS_LIST = [
@@ -364,10 +398,16 @@ export function NavMobile({
   }, [isBurgerMenuOpen])
 
   const [extendableBlock, setExtendableBlock] = useState('')
+  const [sideNavContent, setSideNavContent] = useState('')
 
   return isBurgerMenuOpen ? (
     <SWrapper id="app-nav-secondary-mobile">
-      <SOverlay />
+      <SOverlay
+        onClick={() => {
+          setBurgerMenuOpen(false)
+          setSideNavContent('')
+        }}
+      />
       <SInner>
         <SNavTop>
           <SNavTopInner>
@@ -379,7 +419,14 @@ export function NavMobile({
               </div>
               <SigninSignup userName={userName} />
             </SNavTopInnerLeft>
-            <SCloseBtn type="button" id="app-nav__mobile__close-btn" onClick={() => setBurgerMenuOpen(false)}>
+            <SCloseBtn
+              type="button"
+              id="app-nav__mobile__close-btn"
+              onClick={() => {
+                setBurgerMenuOpen(false)
+                setSideNavContent('')
+              }}
+            >
               <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
                   d="M21 1L1 21M1 1L21 21"
@@ -393,41 +440,49 @@ export function NavMobile({
           </SNavTopInner>
         </SNavTop>
         <SNavBottom>
-          <div>
-            <SNavList className="app-nav__list">
-              {TABS_LIST.map((item) =>
-                item.extendable ? (
-                  <SNavItemExtendable key={item.title}>
-                    <SNavLink
-                      onClick={(event) => {
-                        event.preventDefault()
-                        extendableBlock === item.title ? setExtendableBlock('') : setExtendableBlock(item.title)
-                      }}
-                    >
-                      {item.title}
-                    </SNavLink>
-                    {extendableBlock === item.title && <ExtendableBlockContent name={item.title} />}
-                  </SNavItemExtendable>
-                ) : (
-                  <SNavItem key={item.title}>
-                    <SNavLink href={item.href}>{item.title}</SNavLink>
-                  </SNavItem>
-                )
-              )}
-            </SNavList>
+          {!sideNavContent ? (
             <div>
-              {CARDS_LIST.map((item) => (
-                <SCard key={item.imgLink} href={item.href} className="app-col app-add-product-col">
-                  <img src={item.imgLink} alt="" />
-                  <div>
-                    <SCardLink className="app-animated-link app-nav__mobile-content__link">
-                      <span>{item.text}</span>
-                    </SCardLink>
-                  </div>
-                </SCard>
-              ))}
+              <SNavList className="app-nav__list">
+                {TABS_LIST.map((item) =>
+                  item.extendable ? (
+                    <SNavItemExtendable key={item.title}>
+                      <SNavLink
+                        onClick={(event) => {
+                          event.preventDefault()
+                          extendableBlock === item.title ? setExtendableBlock('') : setExtendableBlock(item.title)
+                          setSideNavContent(item.title)
+                        }}
+                      >
+                        {item.title}
+                      </SNavLink>
+                      {/* {extendableBlock === item.title && <ExtendableBlockContent name={item.title} />} */}
+                    </SNavItemExtendable>
+                  ) : (
+                    <SNavItem key={item.title}>
+                      <SNavLink href={item.href}>{item.title}</SNavLink>
+                    </SNavItem>
+                  )
+                )}
+              </SNavList>
+              <div>
+                {CARDS_LIST.map((item) => (
+                  <SCard key={item.imgLink} href={item.href} className="app-col app-add-product-col">
+                    <img src={item.imgLink} alt="" />
+                    <div>
+                      <SCardLink className="app-animated-link app-nav__mobile-content__link">
+                        <span>{item.text}</span>
+                      </SCardLink>
+                    </div>
+                  </SCard>
+                ))}
+              </div>
             </div>
-          </div>
+          ) : (
+            <div>
+              <SubNavTitle onClick={() => setSideNavContent('')}>{sideNavContent}</SubNavTitle>
+              <ExtendableBlockContent name={sideNavContent} />
+            </div>
+          )}
           <SAccountWrapper>
             <SAccountTitle>
               <a href="/account">Account</a>

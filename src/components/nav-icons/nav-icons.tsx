@@ -70,6 +70,12 @@ const SCartButton = styled.a`
   @media (min-width: 1200px) {
     width: 1.45em;
     margin-right: 12px;
+    & > span {
+      transition: all linear .2s;
+    }
+    &:hover > span {
+      background-color: #7a3cb9;
+    }
   }
 `
 
@@ -171,6 +177,13 @@ const SLinkWrapper = styled.ul`
       font-weight: 600;
       // text-shadow: 0 0 #000;
     }
+  }
+  .user-dropdown-links {
+    color: #bdbdbd;
+    a, & > div {
+      color: #bdbdbd;
+    }
+    
   }
 `
 
@@ -300,7 +313,7 @@ export function NavIcons({
               <li>
                 <a href="/account#/birthday">My Birthday Gift</a>
               </li>
-              <li>
+              <li className="user-dropdown-links">
                 <div style={{ margin: '0 auto', maxWidth: 'fit-content' }}>
                   {userName ? <SSignOutLink href="/account/logout">Sign Out</SSignOutLink> : <SigninSignup />}
                 </div>
