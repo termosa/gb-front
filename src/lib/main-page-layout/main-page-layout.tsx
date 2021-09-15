@@ -14,7 +14,7 @@ const MainPageLayoutWrapper = styled.div`
   flex-direction: column;
   min-height: 100vh;
   transition: opacity linear 0.5s;
-  padding-top: 155px;
+  padding-top: 149px;
   /*overflow: hidden;*/
 
   @media (min-width: 768px) {

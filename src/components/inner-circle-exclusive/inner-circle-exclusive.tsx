@@ -219,11 +219,6 @@ const SLeftImageContainer = styled.div<{
     height: 100%;
     object-fit: cover;
     display: block;
-
-    @media (max-width: 420px) {
-      width: 115px;
-      height: 115px;
-    }
   }
 `
 
@@ -466,7 +461,13 @@ export function InnerCircleExclusive({
             <SImagesWrapper>
               <SImagesContainer>
                 <SLeftSliderPart isPresent={slideImages.length > 2}>
-                  <Slider infinite arrows={false} carouselRef={smallSliderRef} customButtonGroup={<CustomButtons />}>
+                  <Slider
+                    infinite
+                    arrows={false}
+                    carouselRef={smallSliderRef}
+                    customButtonGroup={<CustomButtons />}
+                    swipeable={false}
+                  >
                     <SLeftImageContainer isPresent={slideImages.length > 2}>
                       <img src={slideImages[0]} alt={productTitle} />
                     </SLeftImageContainer>

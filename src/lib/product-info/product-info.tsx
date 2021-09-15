@@ -17,6 +17,7 @@ import window from '../window/window'
 import useCart, { Status } from '../use-cart'
 import addCartItemWithSubscription from '../add-cart-item-with-subscription'
 import SizeSelectorModal from '../size-selector-modal'
+import trackAddedToCart from '../track-added-to-cart'
 
 const SProductInfo = styled.div`
   width: 100%;
@@ -34,8 +35,12 @@ const SPdpProductInfo = styled.div<{
   position: sticky;
   top: ${(props) => props.top || '183px'};
   height: fit-content;
-  width: 350px;
+  max-width: 350px;
   margin: 0 auto;
+
+  @media (min-width: 385px) {
+    width: 350px;
+  }
 `
 
 const SPdpChooserItemPartTopContent = styled.div`
@@ -354,6 +359,7 @@ const SPdpPiSelectorBtn = styled.button<{
 
   &:disabled {
     opacity: 0.4;
+    pointer-events: none;
   }
 `
 
@@ -493,6 +499,7 @@ export function ProductInfo({ className, style, addToCartRef }: ProductInfoProps
       ? addCartItemWithSubscription(selectedVariant.variant_id, selectedVariant.size || undefined)
       : addCartItem(selectedVariant.variant_id)
     )
+      .then(() => trackAddedToCart(product))
       .then(() => navigate('/cart'))
       .catch((err) => alert(err))
   }

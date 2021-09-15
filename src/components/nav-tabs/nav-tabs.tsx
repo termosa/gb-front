@@ -119,6 +119,7 @@ const SSubscribeButton = styled.li`
   margin-left: 25px;
   @media (min-width: 1200px) {
     order: 2;
+    margin-left: 0;
   }
   @media (max-width: 1199px) {
     margin-right: 15px;
@@ -140,10 +141,11 @@ const SSubscribeButton = styled.li`
     transition: all linear 0.2s;
 
     @media screen and (min-width: 1200px) {
+      padding: 4.5px 19px;
       &:hover {
-        background-color: #f53e88;
+        background-color: #7A3CB9;
         color: #fff;
-        border-color: #f53e88;
+        border-color: #7A3CB9;
       }
     }
   }

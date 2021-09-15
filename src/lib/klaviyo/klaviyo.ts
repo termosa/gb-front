@@ -14,11 +14,11 @@ export type KlaviyoIdentity = {
 } & Record<string, string | number | boolean>
 
 export type KlaviyoItem = {
-  Title: string
   ItemId: number
+  Title: string
   ImageUrl?: string
-  Categories?: Array<string>
-  Url?: string
+  Categories?: Array<string> // collection names
+  Url: string
   Metadata: {
     Price: string // Like "$1.40"
     CompareAtPrice?: string // Like "$1.40"
@@ -26,11 +26,23 @@ export type KlaviyoItem = {
   }
 }
 
+export type TrackViewedItemPayload = {
+  ProductID: string
+  Name: string
+  Categories?: Array<string> // collection names
+  ImageURL?: string
+  URL: string
+  Brand?: string
+  Price: string // Like: "$.140"
+  CompareAtPrice?: string // Like: "$.140"
+}
+
 // https://apidocs.klaviyo.com/reference/javascript-client-library
 type KlaviyoCommand =
   | []
   | ['account', string]
   | ['identify', KlaviyoIdentity]
+  | ['track', 'Viewed Item', TrackViewedItemPayload]
   | ['track', string, Record<string, unknown>]
   | ['trackViewedItem', KlaviyoItem]
 
@@ -64,7 +76,7 @@ export function klaviyo(...command: KlaviyoCommand): void {
         push(['account', KLAVIYO_ACCOUNT])
         if (customer) push(['identify', { $email: customer.email }])
       })
-      .catch(() => log('Klaviyo could not be initialized'))
+      .catch((error) => log('Klaviyo could not be initialized', error))
   }
 
   if (command.length) initialRequests.then(() => push(command))

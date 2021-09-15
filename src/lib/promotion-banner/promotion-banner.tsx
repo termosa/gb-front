@@ -7,6 +7,16 @@ import setCookie from '../set-cookie'
 import getCookie from '../get-cookie'
 
 const PromoContainer = styled.div`
+  background-color: #464a4d;
+  position: relative;
+  text-align: center;
+  color: #000;
+  width: 100%;
+  padding: 10px 0;
+  vertical-align: top;
+`
+
+const PromoContent = styled.div`
   position: relative;
   width: 85%;
   max-width: 870px;
@@ -14,7 +24,7 @@ const PromoContainer = styled.div`
   box-shadow: inset 2px 2px 1px #464a4d, inset -2px -2px 1px #464a4d;
   padding: 15px 25px;
   background-color: #fff;
-  margin: 0px auto;
+  margin: 0 auto;
   font-family: 'Montserrat', sans-serif;
   font-size: 14px;
   line-height: 1.6;
@@ -34,7 +44,7 @@ const PromoContainer = styled.div`
   }
 `
 
-const WrapPromoContainer = styled.div`
+const WrapPromoContent = styled.div`
   display: flex;
   flex-direction: row;
 
@@ -143,7 +153,6 @@ export type PromotionBannerProps = {
   visibleBanner?: boolean
   className?: ClassName
   style?: React.CSSProperties
-  errorPromoDetails: () => void
 }
 
 const gwpCart = (): boolean => {
@@ -157,74 +166,71 @@ export function PromotionBanner({
   visibleBanner,
   className,
   style,
-  errorPromoDetails,
 }: PromotionBannerProps): React.ReactElement | null {
-  const promoDetailsRequest = useDefer(
-    () => (promo ? loadPromoDetails(promo).catch(() => errorPromoDetails()) : Promise.resolve(undefined)),
-    [promo],
-    []
-  )
+  const promoDetailsRequest = useDefer(() => (promo ? loadPromoDetails(promo) : Promise.reject()), [promo], [])
   const [unavailableRingSize, useUnavailableRingSize] = useState(false)
   const [buyRingSize, useBuyRingSize] = useState('')
   return promoDetailsRequest.status === 'error' || !promoDetailsRequest.value ? null : (
     <PromoContainer className={cn(className)} style={style}>
-      <WrapPromoContainer>
-        <PromoImageBox>
-          <img src={promoDetailsRequest.value.src} alt="" />
-        </PromoImageBox>
-        <PromoClock>
-          <h3> {promoDetailsRequest.value.title} </h3>
-        </PromoClock>
-        <PromoDescription>
-          {gwpCart() ? 'Congratulations! Your FREE gift is in your cart!' : promoDetailsRequest.value.requirements}
-        </PromoDescription>
-      </WrapPromoContainer>
-      {!buyRingSize && visibleBanner && promoDetailsRequest.value.sizeOutOfStock && (
-        <>
-          <PromoMessage>Select a ring size:</PromoMessage>
-          <SelectHolderBtn>
-            {promoDetailsRequest.value.detailsVariant.map((el) => {
-              return el.available ? (
-                <ButtonRingSize
-                  key={el.id}
-                  onClick={() => {
-                    const expires = Date.now() + 3600 * 1000
-                    setCookie('promo-expiration', expires, 1)
-                    setCookie('c_promo', promo, 1)
-                    setCookie('promo_variant', el.id, 1)
-                    useUnavailableRingSize(false)
-                    useBuyRingSize(el.title)
-                  }}
-                >
-                  {el.title}
-                </ButtonRingSize>
-              ) : (
-                <ButtonRingSize
-                  key={el.id}
-                  className="disabled"
-                  onClick={() => {
-                    useUnavailableRingSize(true)
-                    useBuyRingSize('')
-                  }}
-                >
-                  {el.title}
-                </ButtonRingSize>
-              )
-            })}
-          </SelectHolderBtn>
-          {unavailableRingSize && <SizeIsUnavailable>This size is unavailable.</SizeIsUnavailable>}
-        </>
-      )}
-      {buyRingSize && (
-        <Congratulations>
-          Congratulations! Your gift is in your cart!
-          <br />
-          (Ring Size: {buyRingSize})
-        </Congratulations>
-      )}
-      {!promoDetailsRequest.value.sizeOutOfStock && visibleBanner && (
-        <SizeOutOfStock>Sorry, all sizes are out of stock!</SizeOutOfStock>
-      )}
+      <PromoContent>
+        <WrapPromoContent>
+          <PromoImageBox>
+            <img src={promoDetailsRequest.value.src} alt="" />
+          </PromoImageBox>
+          <PromoClock>
+            <h3> {promoDetailsRequest.value.title} </h3>
+          </PromoClock>
+          <PromoDescription>
+            {gwpCart() ? 'Congratulations! Your FREE gift is in your cart!' : promoDetailsRequest.value.requirements}
+          </PromoDescription>
+        </WrapPromoContent>
+        {!buyRingSize && visibleBanner && promoDetailsRequest.value.sizeOutOfStock && (
+          <>
+            <PromoMessage>Select a ring size:</PromoMessage>
+            <SelectHolderBtn>
+              {promoDetailsRequest.value.detailsVariant.map((el) => {
+                return el.available ? (
+                  <ButtonRingSize
+                    key={el.id}
+                    onClick={() => {
+                      const expires = Date.now() + 3600 * 1000
+                      setCookie('promo-expiration', expires, 1)
+                      setCookie('c_promo', promo, 1)
+                      setCookie('promo_variant', el.id, 1)
+                      useUnavailableRingSize(false)
+                      useBuyRingSize(el.title)
+                    }}
+                  >
+                    {el.title}
+                  </ButtonRingSize>
+                ) : (
+                  <ButtonRingSize
+                    key={el.id}
+                    className="disabled"
+                    onClick={() => {
+                      useUnavailableRingSize(true)
+                      useBuyRingSize('')
+                    }}
+                  >
+                    {el.title}
+                  </ButtonRingSize>
+                )
+              })}
+            </SelectHolderBtn>
+            {unavailableRingSize && <SizeIsUnavailable>This size is unavailable.</SizeIsUnavailable>}
+          </>
+        )}
+        {buyRingSize && (
+          <Congratulations>
+            Congratulations! Your gift is in your cart!
+            <br />
+            (Ring Size: {buyRingSize})
+          </Congratulations>
+        )}
+        {!promoDetailsRequest.value.sizeOutOfStock && visibleBanner && (
+          <SizeOutOfStock>Sorry, all sizes are out of stock!</SizeOutOfStock>
+        )}
+      </PromoContent>
     </PromoContainer>
   )
 }

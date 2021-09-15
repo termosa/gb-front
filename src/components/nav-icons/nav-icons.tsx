@@ -53,7 +53,7 @@ const SProfileButton = styled.a`
 
   @media (min-width: 1200px) {
     width: 1.8em;
-    margin-right: 28px;
+    margin-right: 20px;
   }
 `
 
@@ -70,6 +70,12 @@ const SCartButton = styled.a`
   @media (min-width: 1200px) {
     width: 1.45em;
     margin-right: 12px;
+    & > span {
+      transition: all linear .2s;
+    }
+    &:hover > span {
+      background-color: #7a3cb9;
+    }
   }
 `
 
@@ -172,6 +178,13 @@ const SLinkWrapper = styled.ul`
       // text-shadow: 0 0 #000;
     }
   }
+  .user-dropdown-links {
+    color: #bdbdbd;
+    a, & > div {
+      color: #bdbdbd;
+    }
+    
+  }
 `
 
 const SSignOutLink = styled.a`
@@ -200,6 +213,12 @@ const SCartBadge = styled.span`
   height: 19px;
   box-sizing: border-box;
   outline: 0;
+
+  & > span {
+    position: relative;
+    top: -.5px;
+    left: .1px;
+  }
 `
 
 export function NavIcons({
@@ -294,7 +313,7 @@ export function NavIcons({
               <li>
                 <a href="/account#/birthday">My Birthday Gift</a>
               </li>
-              <li>
+              <li className="user-dropdown-links">
                 <div style={{ margin: '0 auto', maxWidth: 'fit-content' }}>
                   {userName ? <SSignOutLink href="/account/logout">Sign Out</SSignOutLink> : <SigninSignup />}
                 </div>
@@ -314,7 +333,7 @@ export function NavIcons({
             strokeLinejoin="round"
           ></path>
         </svg>
-        {!!cart.itemCount && <SCartBadge>{cart.itemCount}</SCartBadge>}
+        {!!cart.itemCount && <SCartBadge><span>{cart.itemCount}</span></SCartBadge>}
       </SCartButton>
     </SWrapper>
   )

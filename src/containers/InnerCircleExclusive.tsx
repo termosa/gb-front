@@ -5,6 +5,7 @@ import InnerCircleExclusive from '../components/inner-circle-exclusive'
 import addCartItem from '../lib/add-cart-item'
 import navigate from '../lib/navigate'
 import loadMembershipProductForSubscriptionProduct from '../lib/load-membership-product-for-subscription-product'
+import trackAddedToCart from 'src/lib/track-added-to-cart'
 
 type InnerCircleExclusiveProps = {
   productId: number
@@ -38,7 +39,10 @@ const InnerCircleExclusiveContainer = ({
       subTitle={subTitle}
       topButtonText={topButtonText}
       onReserve={(variant) => {
-        addCartItem(variant.variant_id).then(() => navigate('/cart'))
+        const product = subscriptionProductRequest.value
+        addCartItem(variant.variant_id)
+          .then(() => product && trackAddedToCart(product))
+          .then(() => navigate('/cart'))
       }}
     />
   )

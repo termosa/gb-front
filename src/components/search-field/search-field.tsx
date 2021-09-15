@@ -73,7 +73,7 @@ const SSearchedProducts = styled.div`
   background: #fff;
   z-index: 9999;
   box-shadow: 0 3px 6px rgb(0 0 0 / 10%);
-  padding: 20px 0;
+  padding: 12px 0;
 `
 
 const SSearchedProductLink = styled.a<{ underline?: boolean }>`
@@ -113,7 +113,13 @@ export function SearchField({ className, onSearch, searchedProducts }: SearchFie
 
   return (
     <SWrapper className={cn('SearchField', className)} ref={setReferenceElement} onSubmit={handleSubmit}>
-      <SField placeholder="Search..." ref={searchInputRef} required onChange={handleChange} onFocus={() => setDropdownVisibility(true)} />
+      <SField
+        placeholder="Search..."
+        ref={searchInputRef}
+        required
+        onChange={handleChange}
+        onFocus={() => setDropdownVisibility(true)}
+      />
       <SButton type="submit">
         <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
@@ -137,9 +143,11 @@ export function SearchField({ className, onSearch, searchedProducts }: SearchFie
               {product.title}
             </SSearchedProductLink>
           ))}
-          <SSearchedProductLink href={`/search?type=product&q=${searchInputRef.current?.value || ''}`} underline>
-            See all results ({searchedProducts?.totalAmount})
-          </SSearchedProductLink>
+          {searchedProducts.totalAmount > searchedProducts.products.length ? (
+            <SSearchedProductLink href={`/search?type=product&q=${searchInputRef.current?.value || ''}`} underline>
+              See all results ({searchedProducts.totalAmount})
+            </SSearchedProductLink>
+          ) : null}
         </SSearchedProducts>
       )}
     </SWrapper>

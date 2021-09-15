@@ -23,7 +23,7 @@ const Container = styled.div`
 const PromoSlider = styled.div`
   font: 600 9px/1.2 'Montserrat', sans-serif;
   letter-spacing: 0.05em;
-  color: #4dbeba;
+  color: #fff;
   text-align: center;
   padding: 9px 0;
   position: relative;
@@ -45,7 +45,7 @@ const PromoSlider = styled.div`
 
   a:hover {
     @media (min-width: 1200px) {
-      color: #f53e88;
+      color: #7A3CB9;
     }
   }
 `

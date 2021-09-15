@@ -47,58 +47,96 @@ export type SitePromotionProps = {
   style?: React.CSSProperties
 }
 
-export function SitePromotion({ style, className }: SitePromotionProps): React.ReactElement {
-  const { promo, d } = useQuery()
-  const [isPromo, setPromo] = useState<boolean | null>(null)
-
-  useEffect(() => {
-    if (promo || d) {
-      setPromo(!promo)
-      return
-    }
-    if (getCookie('discount-expiration') && getCookie('promo-expiration')) {
-      setPromo(getIsLatestCookie())
-      return
-    }
-    if (getCookie('discount-expiration')) {
-      setPromo(true)
-      return
-    }
-    if (getCookie('promo-expiration')) {
-      setPromo(false)
-      return
-    }
-  }, [promo, d])
+export function SitePromotion({ style, className }: SitePromotionProps): React.ReactElement | null {
+  const { promo } = useQuery()
   const isGwpPresent = gwpPresent()
-  const stateError = [promo, getPromoCookie(), d, getDiscountCookie()]
-  const [isError, setIsError] = useState(stateError.every((el) => !el))
-  return (
-    <>
-      {isPromo === null
-        ? null
-        : !isError && (
-            <PromotionContainer className={cn(className)} style={style} error={isError}>
-              {isPromo ? (
-                <BannerDiscount discountStatus={d || getDiscountCookie()} errorDiscount={() => setIsError(true)} />
-              ) : (
-                <PromotionBanner
-                  promo={promo || getPromoCookie()}
-                  visibleBanner={isGwpPresent}
-                  errorPromoDetails={() => setIsError(true)}
-                />
-              )}
-            </PromotionContainer>
-          )}
-    </>
-  )
+
+  if (promo || !isGwpPresent) {
+    return (
+      <PromotionBanner
+        className={cn(className)}
+        style={style}
+        promo={promo || getPromoCookie()}
+        visibleBanner={isGwpPresent}
+      />
+    )
+  }
+  return null
 }
 
-const PromotionContainer = styled.div<WrapperProps>`
-  background-color: #464a4d;
-  position: relative;
-  text-align: center;
-  padding: ${(props) => (props.error ? '0' : '10px 0')};
-  color: #000;
-  width: 100%;
-  vertical-align: top;
-`
+
+//
+// export function SitePromotion({ style, className }: SitePromotionProps): React.ReactElement {
+//   const { promo, d } = useQuery()
+//   const [isPromo, setPromo] = useState<boolean | null>(null)
+//
+//   useEffect(() => {
+//     if (promo || d) {
+//       setPromo(!promo)
+//       return
+//     }
+//     if (getCookie('discount-expiration') && getCookie('promo-expiration')) {
+//       setPromo(getIsLatestCookie())
+//       return
+//     }
+//     if (getCookie('discount-expiration')) {
+//       setPromo(true)
+//       return
+//     }
+//     if (getCookie('promo-expiration')) {
+//       setPromo(false)
+//       return
+//     }
+//   }, [promo, d])
+//   const isGwpPresent = gwpPresent()
+//   const stateError = [promo, getPromoCookie(), d, getDiscountCookie()]
+//   const [isError, setIsError] = useState(stateError.every((el) => !el))
+//   return (
+//     <>
+//       {isPromo === null
+//         ? null
+//         : !isError && (
+//         <PromotionContainer className={cn(className)} style={style} error={isError}>
+//           {isPromo ? (
+//             <BannerDiscount discountStatus={d || getDiscountCookie()} errorDiscount={() => setIsError(true)} />
+//           ) : (
+//             <PromotionBanner
+//               promo={promo || getPromoCookie()}
+//               visibleBanner={isGwpPresent}
+//               errorPromoDetails={() => setIsError(true)}
+//             />
+//           )}
+//         </PromotionContainer>
+//       )}
+//     </>
+//   )
+// }
+//
+
+
+
+// export function SitePromotion({ style, className }: SitePromotionProps): React.ReactElement {
+//   const { promo } = useQuery()
+//   const isGwpPresent = gwpPresent()
+//   const [isError, setIsError] = useState(false)
+//
+//   useEffect(() => {
+//     if (!promo && !!isGwpPresent) {
+//       setIsError(true)
+//     }
+//   }, [promo, isGwpPresent])
+//
+//   return (
+//     <>
+//       {(promo || !isGwpPresent) && (
+//         <PromotionContainer className={cn(className)} style={style} error={isError}>
+//           <PromotionBanner
+//             promo={promo || getPromoCookie()}
+//             visibleBanner={isGwpPresent}
+//             errorPromoDetails={() => setIsError(true)}
+//           />
+//         </PromotionContainer>
+//       )}
+//     </>
+//   )
+// }
