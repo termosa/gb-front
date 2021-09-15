@@ -8,15 +8,9 @@ export type BannerDiscountProps = {
   className?: ClassName
   style?: React.CSSProperties
   discountStatus: string
-  errorDiscount: () => void
 }
 
-export function BannerDiscount({
-  discountStatus,
-  errorDiscount,
-  className,
-  style,
-}: BannerDiscountProps): React.ReactElement | null {
+export function BannerDiscount({ discountStatus, className, style }: BannerDiscountProps): React.ReactElement | null {
   const discountRequest = useDefer(
     () => (discountStatus ? loadDiscount(discountStatus) : Promise.resolve(undefined)),
     [],
@@ -26,23 +20,33 @@ export function BannerDiscount({
     return null
   }
   const { discount, success } = discountRequest.value
-  if (!success) {
-    errorDiscount()
-  }
+
   return success ? (
-    <Wrapper className={cn(className)} style={style}>
-      <WrapDiscountContainer>
-        <ImageBox>
-          <img src={discount.image.mobile} alt="" />
-        </ImageBox>
-        <Title>
-          <h3> {discount.title} </h3>
-        </Title>
-        <Description>{discount.requirements_copy}</Description>
-      </WrapDiscountContainer>
-    </Wrapper>
+    <DiscountContainer>
+      <Wrapper className={cn(className)} style={style}>
+        <WrapDiscountContainer>
+          <ImageBox>
+            <img src={discount.image.mobile} alt="" />
+          </ImageBox>
+          <Title>
+            <h3> {discount.title} </h3>
+          </Title>
+          <Description>{discount.requirements_copy}</Description>
+        </WrapDiscountContainer>
+      </Wrapper>
+    </DiscountContainer>
   ) : null
 }
+
+const DiscountContainer = styled.div`
+  background-color: #464a4d;
+  position: relative;
+  text-align: center;
+  color: #000;
+  width: 100%;
+  padding: 10px 0;
+  vertical-align: top;
+`
 
 const Wrapper = styled.div`
   position: relative;
