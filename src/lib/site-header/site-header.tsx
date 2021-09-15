@@ -236,18 +236,18 @@ const ExtendableBlockListTitle = styled.strong`
       position: relative;
 
       &:before {
-        content: "";
+        content: '';
         position: absolute;
         width: 1px;
         background-color: #636363;
         height: 16px;
         top: 50%;
         right: 7px;
-        transform: translate(-50%,-50%);
+        transform: translate(-50%, -50%);
       }
 
       &:after {
-        content: "";
+        content: '';
         position: absolute;
         width: 16px;
         background-color: #636363;
@@ -259,7 +259,6 @@ const ExtendableBlockListTitle = styled.strong`
       }
     }
   }
-  
 `
 
 const ExtendableBlockListText = styled.p`
@@ -296,7 +295,7 @@ const ExtendableBlockList = styled.ul`
     &.nav-mob-accordion__content {
       margin-bottom: 0;
       max-height: 0;
-      transition: all .35s;
+      transition: all 0.35s;
     }
     &.nav-mob-accordion__content li {
       border-bottom: 0;
@@ -369,7 +368,6 @@ const AnimatedLink = styled.a`
         bottom: 0px;
       }
     }
-
   }
 
   & > span {
@@ -383,7 +381,7 @@ const AnimatedLink = styled.a`
     }
 
     &:after {
-      content: "";
+      content: '';
       position: absolute;
       bottom: -2px;
       left: 0;
@@ -391,9 +389,8 @@ const AnimatedLink = styled.a`
       width: 100%;
       height: 1px;
       background: #000;
-      transition: bottom linear .2s;
-  }
-    
+      transition: bottom linear 0.2s;
+    }
   }
 `
 
@@ -419,7 +416,7 @@ const ExtendableBlockItem = styled.div`
 
   margin: 0 1.5em 10px 1.5em;
   text-align: start;
-  
+
   @media (max-width: 1199px) {
     margin: 0;
   }
@@ -482,7 +479,7 @@ const AllContent = () => (
         <ExtendableBlockItem>
           <ExtendableBlockListAccordionItem>
             <ExtendableBlockListAccordionInput type="checkbox" id="rd1" name="rd" defaultChecked />
-            <ExtendableBlockListAccordionLabel htmlFor="rd1" >
+            <ExtendableBlockListAccordionLabel htmlFor="rd1">
               <ExtendableBlockListTitle className="nav-mob-accordion__title">Shop by product</ExtendableBlockListTitle>
             </ExtendableBlockListAccordionLabel>
             <ExtendableBlockList className="nav-mob-accordion__content">
@@ -507,13 +504,15 @@ const AllContent = () => (
                 </AnimatedLink>
               </ExtendableBlockListItem>
             </ExtendableBlockList>
-            </ExtendableBlockListAccordionItem>
-          </ExtendableBlockItem>
+          </ExtendableBlockListAccordionItem>
+        </ExtendableBlockItem>
         <ExtendableBlockItem>
           <ExtendableBlockListAccordionItem>
             <ExtendableBlockListAccordionInput type="checkbox" id="rd2" name="rd" />
             <ExtendableBlockListAccordionLabel htmlFor="rd2">
-              <ExtendableBlockListTitle className="nav-mob-accordion__title">Shop by Fragrance</ExtendableBlockListTitle>
+              <ExtendableBlockListTitle className="nav-mob-accordion__title">
+                Shop by Fragrance
+              </ExtendableBlockListTitle>
             </ExtendableBlockListAccordionLabel>
             <ExtendableBlockList className="nav-mob-accordion__content">
               <ExtendableBlockListItem>
@@ -547,61 +546,69 @@ const AllContent = () => (
                 <a href="/collections/all-products#fragrance=Fragrance:%20Spicy/%20Smoky">Spicy/ Smoky</a>
               </ExtendableBlockListItem>
               <ExtendableBlockListItem>
-                <AnimatedLink href="/collections/all-products"><span>Shop all</span></AnimatedLink>
-              </ExtendableBlockListItem>
-            </ExtendableBlockList>
-            </ExtendableBlockListAccordionItem>
-          </ExtendableBlockItem>
-        <ExtendableBlockItem>
-          <div>
-          <ExtendableBlockListAccordionItem>
-          <ExtendableBlockListAccordionInput type="checkbox" id="rd3" name="rd" />
-            <ExtendableBlockListAccordionLabel htmlFor="rd3">
-              <ExtendableBlockListTitle className="nav-mob-accordion__title">Shop by Material</ExtendableBlockListTitle>
-            </ExtendableBlockListAccordionLabel>
-            <ExtendableBlockList className="nav-mob-accordion__content">
-              <ExtendableBlockListItem>
-                <a href="/collections/all-products#material=Material:%2018K%20Gold%20Plated">18K Gold Plated</a>
-              </ExtendableBlockListItem>
-              <ExtendableBlockListItem>
-                <a href="/collections/all-products#material=Material:%20925%20Sterling%20Silver">925 Sterling Silver</a>
-              </ExtendableBlockListItem>
-              <ExtendableBlockListItem>
-                <a href="/collections/all-products#material=Material:%20Rhodium%20plated">Rhodium plated</a>
-              </ExtendableBlockListItem>
-              <ExtendableBlockListItem>
                 <AnimatedLink href="/collections/all-products">
                   <span>Shop all</span>
                 </AnimatedLink>
               </ExtendableBlockListItem>
             </ExtendableBlockList>
+          </ExtendableBlockListAccordionItem>
+        </ExtendableBlockItem>
+        <ExtendableBlockItem>
+          <div>
+            <ExtendableBlockListAccordionItem>
+              <ExtendableBlockListAccordionInput type="checkbox" id="rd3" name="rd" />
+              <ExtendableBlockListAccordionLabel htmlFor="rd3">
+                <ExtendableBlockListTitle className="nav-mob-accordion__title">
+                  Shop by Material
+                </ExtendableBlockListTitle>
+              </ExtendableBlockListAccordionLabel>
+              <ExtendableBlockList className="nav-mob-accordion__content">
+                <ExtendableBlockListItem>
+                  <a href="/collections/all-products#material=Material:%2018K%20Gold%20Plated">18K Gold Plated</a>
+                </ExtendableBlockListItem>
+                <ExtendableBlockListItem>
+                  <a href="/collections/all-products#material=Material:%20925%20Sterling%20Silver">
+                    925 Sterling Silver
+                  </a>
+                </ExtendableBlockListItem>
+                <ExtendableBlockListItem>
+                  <a href="/collections/all-products#material=Material:%20Rhodium%20plated">Rhodium plated</a>
+                </ExtendableBlockListItem>
+                <ExtendableBlockListItem>
+                  <AnimatedLink href="/collections/all-products">
+                    <span>Shop all</span>
+                  </AnimatedLink>
+                </ExtendableBlockListItem>
+              </ExtendableBlockList>
             </ExtendableBlockListAccordionItem>
           </div>
           <div>
-          <ExtendableBlockListAccordionItem>
-            <ExtendableBlockListAccordionInput type="checkbox" id="rd4" name="rd" />
-            <ExtendableBlockListAccordionLabel htmlFor="rd4">
-              <ExtendableBlockListTitle className="nav-mob-accordion__title">Shop by Metal Color</ExtendableBlockListTitle>
-            </ExtendableBlockListAccordionLabel>
-            <ExtendableBlockList className="nav-mob-accordion__content">
-              <ExtendableBlockListItem>
-                <a href="/collections/all-products#color=Metal%20Color:%20Black">Black</a>
-              </ExtendableBlockListItem>
-              <ExtendableBlockListItem>
-                <a href="/collections/all-products#color=Metal%20Color:%20Gold">Gold</a>
-              </ExtendableBlockListItem>
-              <ExtendableBlockListItem>
-                <a href="/collections/all-products#color=Metal%20Color:%20Rose%20Gold">Rose Gold</a>
-              </ExtendableBlockListItem>
-              <ExtendableBlockListItem>
-                <a href="/collections/all-products#color=Metal%20Color:%20Silver">Silver</a>
-              </ExtendableBlockListItem>
-              <ExtendableBlockListItem>
-                <AnimatedLink href="/collections/all-products">
-                  <span>Shop all</span>
-                </AnimatedLink>
-              </ExtendableBlockListItem>
-            </ExtendableBlockList>
+            <ExtendableBlockListAccordionItem>
+              <ExtendableBlockListAccordionInput type="checkbox" id="rd4" name="rd" />
+              <ExtendableBlockListAccordionLabel htmlFor="rd4">
+                <ExtendableBlockListTitle className="nav-mob-accordion__title">
+                  Shop by Metal Color
+                </ExtendableBlockListTitle>
+              </ExtendableBlockListAccordionLabel>
+              <ExtendableBlockList className="nav-mob-accordion__content">
+                <ExtendableBlockListItem>
+                  <a href="/collections/all-products#color=Metal%20Color:%20Black">Black</a>
+                </ExtendableBlockListItem>
+                <ExtendableBlockListItem>
+                  <a href="/collections/all-products#color=Metal%20Color:%20Gold">Gold</a>
+                </ExtendableBlockListItem>
+                <ExtendableBlockListItem>
+                  <a href="/collections/all-products#color=Metal%20Color:%20Rose%20Gold">Rose Gold</a>
+                </ExtendableBlockListItem>
+                <ExtendableBlockListItem>
+                  <a href="/collections/all-products#color=Metal%20Color:%20Silver">Silver</a>
+                </ExtendableBlockListItem>
+                <ExtendableBlockListItem>
+                  <AnimatedLink href="/collections/all-products">
+                    <span>Shop all</span>
+                  </AnimatedLink>
+                </ExtendableBlockListItem>
+              </ExtendableBlockList>
             </ExtendableBlockListAccordionItem>
           </div>
         </ExtendableBlockItem>
@@ -609,7 +616,9 @@ const AllContent = () => (
       <ExtendableBlockItem className="desktop-nav-product-item">
         <a href="/collections/spooky">
           <img src="https://fragrantjewels.s3.amazonaws.com/app/app-nav/nav-all-img-22-dt.jpg" />
-          <AnimatedLink as="span"><span>New in the Halloween Shop</span></AnimatedLink>
+          <AnimatedLink as="span">
+            <span>New in the Halloween Shop</span>
+          </AnimatedLink>
         </a>
       </ExtendableBlockItem>
     </ExtendableBlockContainer>
@@ -623,10 +632,10 @@ const SubscriptionContent = () => (
         <a href="/pages/inner-circle">
           <img src="https://fragrantjewels-assets.s3.amazonaws.com/images/pick-your-poison/nav-pick-your-poison.jpg" />
           <ExtendableBlockListTitle>Exclusive Savings On New Collections Every Month</ExtendableBlockListTitle>
-          <ExtendableBlockListText>
-            A collection so intoxicating, it's to die for...
-          </ExtendableBlockListText>
-          <AnimatedLink as="span"><span>Learn more</span></AnimatedLink>
+          <ExtendableBlockListText>A collection so intoxicating, it's to die for...</ExtendableBlockListText>
+          <AnimatedLink as="span">
+            <span>Learn more</span>
+          </AnimatedLink>
         </a>
       </ExtendableBlockItem>
       <ExtendableBlockItem>
@@ -636,7 +645,9 @@ const SubscriptionContent = () => (
           <ExtendableBlockListText>
             Start collecting unique limited edition sets not available for sale! Find out how you can qualify.
           </ExtendableBlockListText>
-          <AnimatedLink as="span"><span>Learn more</span></AnimatedLink>
+          <AnimatedLink as="span">
+            <span>Learn more</span>
+          </AnimatedLink>
         </a>
       </ExtendableBlockItem>
       <ExtendableBlockItem>
@@ -673,7 +684,9 @@ const RewardsContent = () => (
           <ExtendableBlockListText>
             Every dollar you spend earns you reward points you can use to redeem free jewelry, products and more!
           </ExtendableBlockListText>
-          <AnimatedLink as="span"><span>Learn more</span></AnimatedLink>
+          <AnimatedLink as="span">
+            <span>Learn more</span>
+          </AnimatedLink>
         </a>
       </ExtendableBlockItem>
       <ExtendableBlockItem>
@@ -683,7 +696,9 @@ const RewardsContent = () => (
           <ExtendableBlockListText>
             Get exclusive access to VIP offers, 3x points and more when you earn Platinum status!
           </ExtendableBlockListText>
-          <AnimatedLink as="span"><span>Learn more</span></AnimatedLink>
+          <AnimatedLink as="span">
+            <span>Learn more</span>
+          </AnimatedLink>
         </a>
       </ExtendableBlockItem>
       <ExtendableBlockItem>
