@@ -1,6 +1,7 @@
+import window from '../window'
 import klaviyo from '../klaviyo'
-import { Product } from '../../modules/normalize-product'
 import formatPrice from '../../modules/format-price'
+import { Product } from '../../modules/normalize-product'
 
 export function trackViewedItem(product: Product): void {
   const variant = product.variants[0]
