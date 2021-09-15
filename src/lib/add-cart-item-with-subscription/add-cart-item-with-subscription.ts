@@ -57,5 +57,3 @@ export function addCartItemWithSubscription(
     })
   })
 }
-
-if (typeof window !== 'undefined') Object.assign(window, { addCartItemWithSubscription })

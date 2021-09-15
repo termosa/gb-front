@@ -1,0 +1,30 @@
+import trackAddedToCart from '.'
+import klaviyo from '../klaviyo'
+import { Product } from '../../modules/normalize-product'
+jest.mock('../klaviyo')
+
+describe('trackAddedToCart()', () => {
+  beforeEach(() => {
+    ;(klaviyo as jest.Mock).mockReset()
+  })
+
+  it('should call to klaviyo', () => {
+    const product_id = 123
+    const title = 'Bath Bomb'
+    const handle = 'bath-bomb'
+    const actual_price = 14.99
+    const compare_at_price = 13
+    const vendor = 'FJ'
+
+    trackAddedToCart({ product_id, title, handle, vendor, variants: [{ actual_price, compare_at_price }] } as Product)
+
+    expect(klaviyo).toBeCalledWith('track', 'Added to Cart', {
+      Name: title,
+      ProductID: product_id,
+      URL: `http://localhost/products/${handle}`,
+      Price: '$14.99',
+      CompareAtPrice: '$13.00',
+      Brand: vendor,
+    })
+  })
+})

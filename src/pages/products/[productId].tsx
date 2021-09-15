@@ -7,12 +7,12 @@ import ProductContext from '../../modules/product-context'
 import MainPageLayout from '../../lib/main-page-layout'
 import YotpoReviews from '../../lib/yotpo-reviews'
 import SiteSection from '../../components/site-section'
-import trackViewedItem from 'src/lib/track-viewed-item'
+import trackViewedProduct from 'src/lib/track-viewed-product'
 
 export default function ProductPage({ product }: ProductPageProps): React.ReactElement {
   if (!product) throw new Error('Product not found')
 
-  trackViewedItem(product)
+  trackViewedProduct(product)
 
   return (
     <ProductContext.Provider value={product}>

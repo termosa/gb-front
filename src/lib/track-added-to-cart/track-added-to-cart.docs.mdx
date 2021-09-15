@@ -1,0 +1,20 @@
+export const meta = {
+  type: 'function',
+  name: 'trackAddedToCart',
+  description: 'Track cart change to Klaviyo',
+  tags: ['function', 'analytics'],
+  lists: {
+    arguments: [
+      { name: 'product', type: 'normalize-product.Product', description: 'Added product' },
+    ],
+  },
+}
+
+## Usage
+
+```js
+import trackViewedProduct from './track-added-to-cart'
+import loadProduct from '../load-product'
+
+loadProduct().then(product => product && trackAddedToCart(product))
+```
