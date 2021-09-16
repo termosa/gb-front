@@ -22,7 +22,7 @@ const MainPageLayoutWrapper = styled.div`
   }
 
   @media (min-width: 1200px) {
-    padding-top: 146px;
+    padding-top: 142px;
   }
 `
 

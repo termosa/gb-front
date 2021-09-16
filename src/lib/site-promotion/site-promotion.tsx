@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import PromotionBanner from '../promotion-banner'
 import useQuery from '../use-query'
 import getCookie from '../get-cookie'
+import BannerDiscount from '../banner-discount'
 
 const gwpPresent = (): boolean => {
   const promo = getCookie('c_promo')
@@ -14,9 +15,16 @@ const gwpPresent = (): boolean => {
   return true
 }
 
+const getDiscountCookie = (): string => {
+  return getCookie('promo-discount') || ''
+}
+
 const getPromoCookie = (): string => {
-  const promo = getCookie('c_promo')
-  return promo || ''
+  return getCookie('c_promo') || ''
+}
+
+const getIsLatestCookie = (): boolean => {
+  return Number(getCookie('promo-expiration')) - Number(getCookie('discount-expiration')) < 0
 }
 
 export type SitePromotionProps = {
@@ -25,18 +33,41 @@ export type SitePromotionProps = {
 }
 
 export function SitePromotion({ style, className }: SitePromotionProps): React.ReactElement | null {
-  const { promo } = useQuery()
+  const { promo, d } = useQuery()
   const isGwpPresent = gwpPresent()
+  const stateCookie = promo || getPromoCookie() || d || getDiscountCookie()
+  const [queryBanner, setQueryBanner] = useState<boolean | null>(null)
 
-  if (promo || !isGwpPresent) {
-    return (
-      <PromotionBanner
-        className={cn(className)}
-        style={style}
-        promo={promo || getPromoCookie()}
-        visibleBanner={isGwpPresent}
-      />
-    )
+  useEffect(() => {
+    if (promo || d) {
+      setQueryBanner(!promo)
+      return
+    }
+    if (getCookie('discount-expiration') && getCookie('promo-expiration')) {
+      setQueryBanner(getIsLatestCookie())
+      return
+    }
+    if (getCookie('discount-expiration')) {
+      setQueryBanner(true)
+      return
+    }
+    if (getCookie('promo-expiration')) {
+      setQueryBanner(false)
+      return
+    }
+  }, [promo, d])
+
+  if (queryBanner === null) {
+    return null
   }
-  return null
+  return stateCookie && queryBanner ? (
+    <BannerDiscount className={cn(className)} style={style} discountCode={d || getDiscountCookie()} />
+  ) : (
+    <PromotionBanner
+      className={cn(className)}
+      style={style}
+      promo={promo || getPromoCookie()}
+      visibleBanner={isGwpPresent}
+    />
+  )
 }
