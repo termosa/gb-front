@@ -1,5 +1,3 @@
-import { PromoExpiration, ServerPromoExpiration } from '../load-promo-details'
-
 export interface ServerDiscountImg {
   desktop: string
   mobile: string
