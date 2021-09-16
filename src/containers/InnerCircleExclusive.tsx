@@ -5,7 +5,7 @@ import InnerCircleExclusive from '../components/inner-circle-exclusive'
 import addCartItem from '../lib/add-cart-item'
 import navigate from '../lib/navigate'
 import loadMembershipProductForSubscriptionProduct from '../lib/load-membership-product-for-subscription-product'
-import trackAddedToCart from 'src/lib/track-added-to-cart'
+import trackAddedToCart from '../lib/track-added-to-cart'
 
 type InnerCircleExclusiveProps = {
   productId: number

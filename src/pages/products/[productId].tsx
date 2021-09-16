@@ -7,10 +7,11 @@ import ProductContext from '../../modules/product-context'
 import MainPageLayout from '../../lib/main-page-layout'
 import YotpoReviews from '../../lib/yotpo-reviews'
 import SiteSection from '../../components/site-section'
-import trackViewedProduct from 'src/lib/track-viewed-product'
+import trackViewedProduct from '../../lib/track-viewed-product'
+import RemotePage from '../../lib/remote-page'
 
-export default function ProductPage({ product }: ProductPageProps): React.ReactElement {
-  if (!product) throw new Error('Product not found')
+export default function ProductPage({ product, productId }: ProductPageProps): React.ReactElement {
+  if (!product) return <RemotePage url={`//fragrantjewels.com/products/${productId}`} />
 
   trackViewedProduct(product)
 

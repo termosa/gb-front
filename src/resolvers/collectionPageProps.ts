@@ -3,6 +3,7 @@ import resolvePageProps from '../modules/resolve-page-props'
 import loadCollection, { Collection } from '../lib/load-collection'
 
 export type CollectionPageProps = {
+  collectionId: string
   collection: null | Collection
 }
 
@@ -19,6 +20,7 @@ export default function collectionPageProps<PropsType>(): (
     const collectionPromise = loadCollection(collectionId)
 
     return {
+      collectionId: Promise.resolve(collectionId),
       collection: collectionPromise.catch(() => null),
     }
   })

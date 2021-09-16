@@ -1,0 +1,19 @@
+import RemotePage from '.'
+
+export const meta = {
+  type: 'component',
+  name: 'RemotePage',
+  description: 'Loads page content from given url and insert it instead of current page',
+  tags: ['component'],
+  lists: {
+    attributes: [
+      { name: 'url', required: true, type: 'string', description: 'Link to the page that should be loaded' },
+    ],
+  },
+}
+
+## Usage
+
+```jsx
+<RemotePage url="https://me.st" />
+```

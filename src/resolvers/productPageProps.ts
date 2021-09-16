@@ -13,6 +13,7 @@ export type ProductDescription = {
 }
 
 export type ProductPageProps = {
+  productId: string
   product: Product
   recommendedProducts: Array<Product>
   potentialProducts: Array<Product>
@@ -49,6 +50,7 @@ function productPageProps<PropsType>(): (context: GetServerSidePropsContext) => 
 
     const productPromise = loadProduct(productId)
     return {
+      productId: Promise.resolve(productId),
       product: productPromise.catch(() => null),
       recommendedProducts: loadCollectionProducts(RECOMMENDED_PRODUCTS_COLLECTION_ID),
       potentialProducts: loadCollectionProducts(POTENTIAL_PRODUCTS_COLLECTION_ID),
