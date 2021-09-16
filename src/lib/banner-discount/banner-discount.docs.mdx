@@ -1,0 +1,23 @@
+import BannerDiscount from '.'
+
+export const meta = {
+  type: 'component',
+  name: 'BannerDiscount',
+  description: 'banner for discount',
+  tags: ['component'],
+  preview: <BannerDiscount discountCode="happyday20" />,
+  lists: {
+    attributes: [
+      { name: 'discountCode', required: true, type: 'string' },
+      { name: 'className', type: 'classnames.Argument', description: 'One or multiple class names that will be added to the main container' },
+      { name: 'style', type: 'React.CSSProperties', description: 'Inline styles for the main container' },
+    ],
+  },
+  scope: { BannerDiscount },
+}
+
+## Usage
+
+```jsx
+<BannerDiscount discountCode="happyday20"/>
+```

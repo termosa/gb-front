@@ -1,0 +1,48 @@
+export const meta = {
+  type: 'function',
+  name: 'loadDiscount',
+  description: 'Get data for discount banner',
+  tags: ['function', 'http'],
+  lists: {
+    arguments: [
+      { name: 'discount', type: 'string', description: 'query discount' },
+    ],
+    returns: [
+      { name: 'promise', type: 'Promise', description: 'Promise<ServerDiscount>' }
+    ],
+  },
+}
+
+## Type
+```js
+export interface ServerDiscountImg {
+  desktop: string
+  mobile: string
+}
+
+export interface ServerDiscountData {
+  available: true
+  code: string
+  countDownEnabled: boolean
+  description: string
+  duration: number
+  enabled: boolean
+  image: ServerDiscountImg
+  requirements_copy: string
+  title: string
+}
+
+export interface ServerDiscount {
+  discount: ServerDiscountData
+  msg: string
+  success: boolean
+}
+```
+
+## Usage
+
+```js
+import loadDiscount from './load-discount'
+
+loadDiscount('happyday20').then((res:PromoDetails) => res)
+```
