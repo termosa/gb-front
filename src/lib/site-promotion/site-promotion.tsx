@@ -35,32 +35,32 @@ export type SitePromotionProps = {
 export function SitePromotion({ style, className }: SitePromotionProps): React.ReactElement | null {
   const { promo, d } = useQuery()
   const isGwpPresent = gwpPresent()
-  const stateCookie = [promo, getPromoCookie(), d, getDiscountCookie()].every((el) => !el)
-  const [isPromo, setPromo] = useState<boolean | null>(null)
+  const stateCookie = promo || getPromoCookie() || d || getDiscountCookie()
+  const [queryBanner, setQueryBanner] = useState<boolean | null>(null)
 
   useEffect(() => {
     if (promo || d) {
-      setPromo(!promo)
+      setQueryBanner(!promo)
       return
     }
     if (getCookie('discount-expiration') && getCookie('promo-expiration')) {
-      setPromo(getIsLatestCookie())
+      setQueryBanner(getIsLatestCookie())
       return
     }
     if (getCookie('discount-expiration')) {
-      setPromo(true)
+      setQueryBanner(true)
       return
     }
     if (getCookie('promo-expiration')) {
-      setPromo(false)
+      setQueryBanner(false)
       return
     }
   }, [promo, d])
 
-  if (isPromo === null) {
+  if (queryBanner === null) {
     return null
   }
-  return !stateCookie && isPromo ? (
+  return stateCookie && queryBanner ? (
     <BannerDiscount className={cn(className)} style={style} discountStatus={d || getDiscountCookie()} />
   ) : (
     <PromotionBanner
