@@ -88,6 +88,7 @@ const SSearchedProductLink = styled.a<{ underline?: boolean }>`
 export function SearchField({ className, onSearch, searchedProducts }: SearchFieldProps): React.ReactElement | null {
   const searchInputRef = useRef<HTMLInputElement>(null)
   const [dropdownVisibility, setDropdownVisibility] = useState(true)
+  console.log('L91', onSearch)
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -98,6 +99,7 @@ export function SearchField({ className, onSearch, searchedProducts }: SearchFie
     () =>
       debounce((event: React.ChangeEvent<HTMLInputElement>) => {
         setDropdownVisibility(true)
+        console.log('L102', event)
         onSearch(event.target.value)
       }, 1e3),
     [onSearch]
@@ -138,7 +140,7 @@ export function SearchField({ className, onSearch, searchedProducts }: SearchFie
           style={{ ...styles.popper, width: referenceElement?.clientWidth }}
           {...attributes.popper}
         >
-          {searchedProducts.products.map((product) => (
+          {searchedProducts.products?.map((product) => (
             <SSearchedProductLink key={product.product_id} href={`/products/${product.product_id}`}>
               {product.title}
             </SSearchedProductLink>

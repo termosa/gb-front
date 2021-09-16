@@ -11,6 +11,7 @@ import NavMobile from '../../components/nav-mobile'
 
 import { ProductsChunk } from '../../modules/normalize-products-chunk'
 import useCustomerOrdersDetails from '../use-customer-orders-details'
+import { useScreenSize } from '../use-screen-size'
 
 const SWrapper = styled.div`
   text-align: center;
@@ -746,6 +747,7 @@ export function SiteHeader({
   searchedProducts,
   userEmail,
 }: SiteHeaderProps): React.ReactElement | null {
+  const useScreen = useScreenSize()
   const [isSearchDropdownVisible, setIsSearchDropdownVisible] = useState(false)
   const [extendableBlockContent, setExtendableBlockContent] = useState('')
   const [isBurgerMenuOpen, setBurgerMenuOpen] = useState(false)
@@ -832,7 +834,9 @@ export function SiteHeader({
                 />
               </SIconsWrapper>
             </SSearchContent>
-            {isSearchDropdownVisible && <SearchField onSubmit={onSearch} searchedProducts={searchedProducts} />}
+            {isSearchDropdownVisible && !useScreen.greaterThanExtraLarge && (
+              <SearchField onSearch={onSearch} searchedProducts={searchedProducts} />
+            )}
           </SSearchWrapper>
           <NavTabs setExtendableBlockContent={setExtendableBlockContent} />
         </SContentWrapper>

@@ -21,5 +21,5 @@ export type ProductsChunk = {
 export const normalizeProductsChunk = (productsChunk: ServerProductsChunk): ProductsChunk => ({
   totalAmount: productsChunk.total_count,
   amountPerPage: productsChunk.total_count_per_page,
-  products: productsChunk.results.map(normalizeProduct),
+  products: productsChunk.results?.map(normalizeProduct),
 })
