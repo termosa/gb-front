@@ -24,7 +24,7 @@ export interface ServerDiscount {
 export interface Discount {
   image: string
   code: string
-  requirementsCopy: string
+  description: string
   title: string
 }
 
@@ -34,7 +34,7 @@ export const normalizeDiscount = (data: ServerDiscount): Discount => {
     discount && {
       image: discount.image.mobile,
       code: discount.code,
-      requirementsCopy: discount.requirements_copy,
+      description: discount.requirements_copy,
       title: discount.title,
     }
   )

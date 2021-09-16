@@ -5,10 +5,10 @@ export const meta = {
   name: 'BannerDiscount',
   description: 'banner for discount',
   tags: ['component'],
-  preview: <BannerDiscount discountStatus="happyday20"/>,
+  preview: <BannerDiscount discount="happyday20"/>,
   lists: {
     attributes: [
-      { name: 'discountStatus', required: true, type: 'string', description: 'query parameter' },
+      { name: 'discount', required: true, type: 'string', description: 'query parameter' },
       { name: 'className', type: 'classnames.Argument', description: 'One or multiple class names that will be added to the main container' },
       { name: 'style', type: 'React.CSSProperties', description: 'Inline styles for the main container' },
     ],
@@ -19,5 +19,5 @@ export const meta = {
 ## Usage
 
 ```jsx
-<BannerDiscount discountStatus="happyday20"/>
+<BannerDiscount discount="happyday20"/>
 ```

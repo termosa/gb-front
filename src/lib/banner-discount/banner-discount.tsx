@@ -12,7 +12,7 @@ export type BannerDiscountProps = {
 }
 
 export function BannerDiscount({ discount, className, style }: BannerDiscountProps): React.ReactElement | null {
-  const discountRequest = useDefer(() => loadDiscount(discount), [], [])
+  const discountRequest = useDefer(() => loadDiscount(discount), [discount], [])
 
   useEffect(() => {
     if (discountRequest.value) {
@@ -27,7 +27,7 @@ export function BannerDiscount({ discount, className, style }: BannerDiscountPro
   if (!discountRequest.value) {
     return null
   }
-  const { code, image, requirementsCopy, title } = discountRequest.value
+  const { code, image, description, title } = discountRequest.value
 
   return (
     <DiscountContainer>
@@ -39,7 +39,7 @@ export function BannerDiscount({ discount, className, style }: BannerDiscountPro
           <Title>
             <h3> {title} </h3>
           </Title>
-          <Description>{requirementsCopy}</Description>
+          <Description>{description}</Description>
         </WrapDiscountContainer>
       </Wrapper>
     </DiscountContainer>

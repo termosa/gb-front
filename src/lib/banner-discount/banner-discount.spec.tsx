@@ -4,7 +4,7 @@ import BannerDiscount from '.'
 
 describe('<BannerDiscount>', () => {
   it('should render with the correct text', async () => {
-    const { getByText } = render(<BannerDiscount discountStatus={'happyday20'} />)
+    const { getByText } = render(<BannerDiscount discount={'happyday20'} />)
     const title = waitFor(() => getByText('Our Gift to You: 20% Off'))
     const requirements = waitFor(() =>
       getByText('We hope your birthday is as fabulous as you are! Treat yourself with 20% off your purchase.')
