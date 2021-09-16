@@ -16,11 +16,10 @@ export function BannerDiscount({ discount, className, style }: BannerDiscountPro
 
   useEffect(() => {
     if (discountRequest.value) {
-      const expireTime = new Date(new Date().getTime() + 3600 * 1000)
-      const timeNow = new Date()
-      setCookie('discount-expiration', expireTime.getTime(), 1)
+      const now = Date.now()
+      setCookie('discount-expiration', String(now + 3600 * 1000), 1)
       setCookie('promo-discount', code, 1)
-      setCookie('d_age', timeNow.getTime(), 1)
+      setCookie('d_age', String(now), 1)
     }
   }, [discountRequest.value])
 
@@ -34,10 +33,10 @@ export function BannerDiscount({ discount, className, style }: BannerDiscountPro
       <Wrapper className={cn(className)} style={style}>
         <WrapDiscountContainer>
           <ImageBox>
-            <img src={image} alt="" />
+            <img src={image} alt={image} />
           </ImageBox>
           <Title>
-            <h3> {title} </h3>
+            <h3>{title}</h3>
           </Title>
           <Description>{description}</Description>
         </WrapDiscountContainer>
