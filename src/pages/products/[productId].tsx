@@ -11,7 +11,7 @@ import trackViewedProduct from '../../lib/track-viewed-product'
 import RemotePage from '../../lib/remote-page'
 
 export default function ProductPage({ product, productId }: ProductPageProps): React.ReactElement {
-  if (!product) return <RemotePage url={`//fragrantjewels.com/products/${productId}`} />
+  if (!product) return <RemotePage url={`//www.fragrantjewels.com/products/${productId}`} />
 
   trackViewedProduct(product)
 

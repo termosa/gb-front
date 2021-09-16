@@ -6,7 +6,7 @@ import collectionPageProps, { CollectionPageProps } from '../../resolvers/collec
 import RemotePage from '../../lib/remote-page'
 
 export default function CollectionPage({ collection, collectionId }: CollectionPageProps): React.ReactElement {
-  if (!collection) return <RemotePage url={`//fragrantjewels.com/collections/${collectionId}`} />
+  if (!collection) return <RemotePage url={`//www.fragrantjewels.com/collections/${collectionId}`} />
 
   return (
     <CollectionContext.Provider value={collection}>
