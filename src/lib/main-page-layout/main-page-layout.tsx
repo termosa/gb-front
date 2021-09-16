@@ -22,7 +22,7 @@ const MainPageLayoutWrapper = styled.div`
   }
 
   @media (min-width: 1200px) {
-    padding-top: 146px;
+    padding-top: 142px;
   }
 `
 
@@ -47,7 +47,7 @@ export function MainPageLayout({ children, className, style }: MainPageLayoutPro
   return (
     <MainPageLayoutWrapper className={cn(className)} style={style}>
       <Header
-        userName={customer?.fullName}
+        userName={customer?.firstName}
         onSearch={(search) => (search ? searchRequest.execute({ search }) : searchRequest.reset())}
         searchedProducts={searchRequest.value}
         userEmail={customer?.email}

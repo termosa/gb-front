@@ -29,14 +29,11 @@ const SDesktopNav = styled.ul`
   display: flex;
   margin: 0;
   list-style: none;
-  // font-size: 1em;
   font-size: 0.9em;
-  // letter-spacing: 0.02em;
   text-transform: uppercase;
   justify-content: space-between;
   align-items: center;
   padding: 0;
-  // margin: 0 -10px;
   letter-spacing: 0.7px;
   @media (max-width: 1199px) {
     font-size: 1em;
@@ -69,14 +66,12 @@ const SNavItem = styled.li`
   }
 
   &:hover > a {
-    // text-shadow: 0 0 #000;
     font-weight: 600;
   }
 `
 
 const SNavItemExtendable = styled(SNavItem)`
   position: relative;
-  
 
   & > a {
     display: flex;
@@ -88,7 +83,6 @@ const SNavItemExtendable = styled(SNavItem)`
     right: 0;
     top: 1px;
     font: 400 14px/1.5 'Montserrat', sans-serif;
-    // letter-spacing: 0.05em;
     display: none;
     transition: all ease-out 0.15s;
   }
@@ -107,7 +101,6 @@ const SNavItemExtendable = styled(SNavItem)`
       transform: rotate(-135deg);
       top: 6px;
       border-color: #000;
-      // border-width: 0 2px 2px 0;
     }
   }
 `
@@ -126,7 +119,6 @@ const SSubscribeButton = styled.li`
   }
   & > a {
     font: 600 14px/1.5 'Montserrat', sans-serif;
-    // letter-spacing: 0.05em;
     display: flex;
     align-items: center;
     text-decoration: none;
@@ -136,16 +128,16 @@ const SSubscribeButton = styled.li`
     color: #fff;
     border-radius: 2em;
     border: 1px solid #9059c8;
-    // padding: 0.7em 1.6em;
     padding: 7px 15px;
     transition: all linear 0.2s;
 
     @media screen and (min-width: 1200px) {
-      padding: 4.5px 19px;
+      padding: 4.5px 15px;
       &:hover {
-        background-color: #7A3CB9;
+        background-color: #000;
         color: #fff;
-        border-color: #7A3CB9;
+        border-color: #000;
+        //#7a3cb9
       }
     }
   }

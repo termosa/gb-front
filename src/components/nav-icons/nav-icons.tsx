@@ -14,7 +14,7 @@ export type NavIconsProps = {
 
 const SWrapper = styled.div`
   height: 32px;
-  max-width: 113px;
+  max-width: 130px;
   display: flex;
   align-items: stretch;
   box-sizing: border-box;
@@ -28,7 +28,7 @@ const SSearchButton = styled.button`
   cursor: pointer;
   background-color: transparent;
   border: 0;
-  margin-right: 12px;
+  margin-right: 20px;
   width: 2.2em;
   padding: 0;
 
@@ -44,7 +44,7 @@ const SSearchButton = styled.button`
 
 const SProfileButton = styled.a`
   cursor: pointer;
-  margin-right: 12px;
+  margin-right: 20px;
   width: 2.1em;
   background: transparent;
   border: 0;
@@ -71,10 +71,11 @@ const SCartButton = styled.a`
     width: 1.45em;
     margin-right: 12px;
     & > span {
-      transition: all linear .2s;
+      transition: all linear 0.2s;
     }
     &:hover > span {
-      background-color: #7a3cb9;
+      background-color: #000;
+      //#7a3cb9;
     }
   }
 `
@@ -100,7 +101,6 @@ const SDropDown = styled.div`
   margin: 0 auto;
   box-sizing: border-box;
   @media (min-width: 1200px) {
-    // font-size: 0.8em;
     padding: 0 20px 20px;
     width: 255px;
     left: auto;
@@ -166,8 +166,9 @@ const SLinkWrapper = styled.ul`
   & > li {
     padding: 4px 0;
   }
-  
-  & > li > a, & > li > div {
+
+  & > li > a,
+  & > li > div {
     display: inline-block;
     padding: 6px 0;
     color: #000;
@@ -175,15 +176,14 @@ const SLinkWrapper = styled.ul`
     text-decoration: none;
     &:hover {
       font-weight: 600;
-      // text-shadow: 0 0 #000;
     }
   }
   .user-dropdown-links {
     color: #bdbdbd;
-    a, & > div {
+    a,
+    & > div {
       color: #bdbdbd;
     }
-    
   }
 `
 
@@ -200,7 +200,7 @@ const SCartBadge = styled.span`
   right: -8px;
   width: 1em;
   height: 1em;
-  background: #9059C8;
+  background: #9059c8;
   color: #fff;
   font-size: 11px;
   border-radius: 50%;
@@ -216,8 +216,8 @@ const SCartBadge = styled.span`
 
   & > span {
     position: relative;
-    top: -.5px;
-    left: .1px;
+    top: -0.5px;
+    left: 0.1px;
   }
 `
 
@@ -333,7 +333,11 @@ export function NavIcons({
             strokeLinejoin="round"
           ></path>
         </svg>
-        {!!cart.itemCount && <SCartBadge><span>{cart.itemCount}</span></SCartBadge>}
+        {!!cart.itemCount && (
+          <SCartBadge>
+            <span>{cart.itemCount}</span>
+          </SCartBadge>
+        )}
       </SCartButton>
     </SWrapper>
   )

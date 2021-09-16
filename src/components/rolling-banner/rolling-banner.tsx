@@ -45,7 +45,8 @@ const PromoSlider = styled.div`
 
   a:hover {
     @media (min-width: 1200px) {
-      color: #7a3cb9;
+      color: #000;
+      //#7a3cb9
     }
   }
 `
@@ -63,14 +64,14 @@ const SArrow = styled.div`
 `
 
 const SPrevArrow = styled(SArrow)`
-  left: 0;
+  left: -7px;
   button {
     transform: rotate(45deg);
   }
 `
 
 const SNextArrow = styled(SArrow)`
-  right: 0;
+  right: -7px;
   button {
     transform: rotate(-135deg);
   }

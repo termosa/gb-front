@@ -222,7 +222,11 @@ const SCard = styled.a`
     display: block;
     width: 100%;
     height: auto;
-    margin: 0 0 15px;
+    margin: 0 0 7px;
+
+    @media (min-width: 1200px) {
+      margin: 0 0 15px;
+    }
   }
 `
 
@@ -236,9 +240,17 @@ const SCardLink = styled.span`
   color: #000;
   text-decoration: none;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.7px;
+
   @media (min-width: 1200px) {
     padding: 8px 0;
+  }
+
+  @media (max-width: 1199px) {
+    padding: 0;
+    text-decoration: underline;
+    text-underline-offset: 7px;
+    line-height: 2;
   }
 
   position: relative;
@@ -246,6 +258,7 @@ const SCardLink = styled.span`
 
   &:after {
     content: '';
+    display: none;
     position: absolute;
     bottom: -2px;
     left: 0;
@@ -254,13 +267,17 @@ const SCardLink = styled.span`
     height: 1px;
     background: #000;
     transition: bottom linear 0.2s;
+
+    @media (min-width: 1200px) {
+      display: block;
+    }
   }
 `
 
 const SAccountWrapper = styled.div`
   text-align: left;
   margin: 0 -15px 60px;
-  padding: 0 15px 20px;
+  padding: 0 15px 40px;
   background-color: #f5f5f5;
 `
 
