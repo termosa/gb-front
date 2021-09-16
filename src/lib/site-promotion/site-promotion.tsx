@@ -61,7 +61,7 @@ export function SitePromotion({ style, className }: SitePromotionProps): React.R
     return null
   }
   return stateCookie && queryBanner ? (
-    <BannerDiscount className={cn(className)} style={style} discountStatus={d || getDiscountCookie()} />
+    <BannerDiscount className={cn(className)} style={style} discount={d || getDiscountCookie()} />
   ) : (
     <PromotionBanner
       className={cn(className)}

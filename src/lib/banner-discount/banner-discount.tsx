@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
 import useDefer from 'use-defer'
@@ -8,28 +8,33 @@ import setCookie from '../set-cookie'
 export type BannerDiscountProps = {
   className?: ClassName
   style?: React.CSSProperties
-  discountStatus: string
+  discount: string
 }
 
-export function BannerDiscount({ discountStatus, className, style }: BannerDiscountProps): React.ReactElement | null {
-  const discountRequest = useDefer(() => loadDiscount(discountStatus), [], [])
+export function BannerDiscount({ discount, className, style }: BannerDiscountProps): React.ReactElement | null {
+  const discountRequest = useDefer(() => loadDiscount(discount), [], [])
+
+  useEffect(() => {
+    if (discountRequest.value) {
+      const expireTime = new Date(new Date().getTime() + 3600 * 1000)
+      const timeNow = new Date()
+      setCookie('discount-expiration', expireTime.getTime(), 1)
+      setCookie('promo-discount', code, 1)
+      setCookie('d_age', timeNow.getTime(), 1)
+    }
+  }, [discountRequest.value])
+
   if (!discountRequest.value) {
     return null
   }
-  const { code, imageMobile, requirementsCopy, title } = discountRequest.value
-
-  const expire_time = new Date(new Date().getTime() + 3600 * 1000)
-  const t_now = new Date()
-  setCookie('discount-expiration', String(expire_time.getTime()), 1)
-  setCookie('promo-discount', code, 1)
-  setCookie('d_age', String(t_now.getTime()), 1)
+  const { code, image, requirementsCopy, title } = discountRequest.value
 
   return (
     <DiscountContainer>
       <Wrapper className={cn(className)} style={style}>
         <WrapDiscountContainer>
           <ImageBox>
-            <img src={imageMobile} alt="" />
+            <img src={image} alt="" />
           </ImageBox>
           <Title>
             <h3> {title} </h3>
