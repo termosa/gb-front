@@ -66,7 +66,7 @@ const SCarouselThumbnails = styled.div`
   overflow-x: scroll;
   overflow-y: hidden;
   position: absolute;
-  width: calc(100vw - 16px);
+  width: calc(100vw - 35px);
 
   &::-webkit-scrollbar {
     display: none;
@@ -77,7 +77,7 @@ const SCarouselThumbnails = styled.div`
   }
 
   @media (min-width: 400px) {
-    width: calc(347px + (100vw - 350px) / 2);
+    width: calc(335px + (100vw - 350px) / 2);
   }
 `
 
