@@ -12,25 +12,19 @@ export type BannerDiscountProps = {
 }
 
 export function BannerDiscount({ discountStatus, className, style }: BannerDiscountProps): React.ReactElement | null {
-  const discountRequest = useDefer(
-    () => (discountStatus ? loadDiscount(discountStatus) : Promise.resolve(undefined)),
-    [],
-    []
-  )
+  const discountRequest = useDefer(() => loadDiscount(discountStatus), [], [])
   if (!discountRequest.value) {
     return null
   }
-  const { success, code, imageMobile, requirementsCopy, title } = discountRequest.value
+  const { code, imageMobile, requirementsCopy, title } = discountRequest.value
 
-  if (success) {
-    const expire_time = new Date(new Date().getTime() + 3600 * 1000)
-    const t_now = new Date()
-    setCookie('discount-expiration', String(expire_time.getTime()), 1)
-    setCookie('promo-discount', code, 1)
-    setCookie('d_age', String(t_now.getTime()), 1)
-  }
+  const expire_time = new Date(new Date().getTime() + 3600 * 1000)
+  const t_now = new Date()
+  setCookie('discount-expiration', String(expire_time.getTime()), 1)
+  setCookie('promo-discount', code, 1)
+  setCookie('d_age', String(t_now.getTime()), 1)
 
-  return success ? (
+  return (
     <DiscountContainer>
       <Wrapper className={cn(className)} style={style}>
         <WrapDiscountContainer>
@@ -44,7 +38,7 @@ export function BannerDiscount({ discountStatus, className, style }: BannerDisco
         </WrapDiscountContainer>
       </Wrapper>
     </DiscountContainer>
-  ) : null
+  )
 }
 
 const DiscountContainer = styled.div`
