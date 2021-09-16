@@ -79,6 +79,7 @@ const Wrapper = styled.div`
 const WrapDiscountContainer = styled.div`
   display: flex;
   flex-direction: row;
+  padding: 10px 0;
 
   @media (max-width: 768px) {
     align-items: center;
@@ -122,5 +123,5 @@ const Description = styled.div`
   text-align: left;
 
   color: #333;
-  padding: 0px 10px;
+  padding: 0 0 0 60px;
 `
