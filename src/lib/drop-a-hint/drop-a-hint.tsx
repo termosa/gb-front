@@ -230,7 +230,53 @@ const ModalDahFormItem = styled.div`
       border: 0;
       border-bottom: 1px solid #000;
     }
+
+    &::-webkit-input-placeholder {
+      color: #7d7d7d;
+    }
+    &::-moz-placeholder {
+      color: #7d7d7d;
+    }
+    &:-ms-input-placeholder {
+      color: #7d7d7d;
+    }
+    &:-moz-placeholder {
+      color: #7d7d7d;
+    }
   }
+
+  select {
+    margin: 0;
+    border: 0;
+    border-bottom: 1px solid #000;
+    border-radius: 0;
+    padding: 0;
+    font-size: 16px;
+    color: #7d7d7d;
+    appearance: none;
+    background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNy4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB3aWR0aD0iNy43cHgiIGhlaWdodD0iNC4zcHgiIHZpZXdCb3g9IjAgMCA3LjcgNC4zIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA3LjcgNC4zIiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxwYXRoIGZpbGw9IiM5OTk5OTkiIGQ9Ik03LjEsMC4xQzYuNywwLjUsMy45LDMuMiwzLjksMy4yUzEsMC41LDAuNiwwLjFTMCwwLjcsMCwwLjdsMy45LDMuNmwzLjgtMy42QzcuNywwLjcsNy41LTAuMyw3LjEsMC4xeiIvPg0KPC9zdmc+DQo=);
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-color: #fff;
+    padding-right: 28px;
+    text-indent: 0.01px;
+    width: 100%;
+
+    &:active,
+    &:focus {
+      outline: 0;
+      border: 0;
+      border-bottom: 1px solid #000;
+    }
+  }
+`
+
+const ModalDahFormSelectWrapper = styled.div`
+  display: flex;
+  flex-wrap: nowrap;
+  max-width: 350px;
+  margin: 0 0 6px;
+  justify-content: flex-start;
 `
 
 const ModalDahFormItemError = styled.div`
@@ -312,6 +358,22 @@ const DropAHintModal = ({ product, onClose }: { product: Product; onClose: () =>
                     </ModalDahFormItem>
                     <ModalDahFormItem>
                       <input type="text" name="name" placeholder="Your Name" />
+                      <ModalDahFormItemError></ModalDahFormItemError>
+                    </ModalDahFormItem>
+                    <ModalDahFormItem>
+                      <ModalDahFormSelectWrapper>
+                        <select>
+                          <option value="" disabled selected>
+                            Your Ring Size
+                          </option>
+                          <option value="5">5</option>
+                          <option value="6">6</option>
+                          <option value="7">7</option>
+                          <option value="8">8</option>
+                          <option value="9">9</option>
+                          <option value="10">10</option>
+                        </select>
+                      </ModalDahFormSelectWrapper>
                       <ModalDahFormItemError></ModalDahFormItemError>
                     </ModalDahFormItem>
                     <ModalDahFormItem>
