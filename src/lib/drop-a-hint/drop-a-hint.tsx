@@ -6,16 +6,236 @@ import useScreenSize from '../use-screen-size'
 import { Product } from '../../modules/normalize-product'
 
 const Modal = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 150;
-  background: #ffffffb2;
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 1060;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  outline: 0;
+  font-size: 1rem;
+  font: 400 1rem/1.3 Montserrat, sans-serif;
+`
+
+const ModalDialog = styled.div`
+  position: relative;
+  width: auto;
+  margin: 0.5rem;
+  pointer-events: none;
+
+  @media (min-width: 992px) {
+    margin: 1.75rem auto;
+    max-width: 900px;
+  }
+`
+
+const ModalContent = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  pointer-events: auto;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 0;
+  outline: 0;
+  padding: 15px;
+  box-shadow: 0 0 7px rgba(0, 0, 0, 0.3);
+`
+
+const ModalBackdrop = styled.div`
+  opacity: 0.8;
+  position: fixed;
+  top: 0;
   right: 0;
   bottom: 0;
+  left: 0;
+  z-index: 1040;
+  background-color: #fff;
+`
+
+const ModalCloseBtn = styled.button`
+  position: absolute;
+  top: 0;
+  right: 2px;
+  z-index: 1200;
+  font-size: 34px;
+  font-weight: 400;
+  line-height: 1;
+  color: #000;
+  text-shadow: 0 1px 0 #fff;
+  opacity: 0.6;
+  background: none;
+  border: 0;
+  cursor: pointer;
+
+  &:after {
+    content: '×';
+    font: 200 42px/1 Montserrat, sans-serif;
+  }
+`
+
+const ModalDahContent = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
+
+  h4 {
+    margin: 0;
+    line-height: 1.3;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    font-size: 22px;
+    text-align: center;
+  }
+
+  img {
+    max-width: 260px;
+    margin: 0 auto 10px;
+    display: block;
+    max-height: 300px;
+    width: auto;
+    height: auto;
+
+    @media (min-width: 768px) {
+      max-width: 300px;
+    }
+  }
+`
+
+const ModalDahContentCol = styled.div`
+  @media (min-width: 768px) {
+    width: 50%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  @media (max-width: 767px) {
+    &:first-child {
+      order: 2;
+    }
+  }
+`
+const ModalDahPreview = styled.div`
+  font-size: 1rem;
+  line-height: 1.8;
+  max-width: 280px;
+  margin: 0 auto;
+
+  @media (min-width: 768px) {
+    margin: 0 auto;
+    font-size: 1.2rem;
+  }
+
+  p {
+    margin-bottom: 15px;
+  }
+`
+
+const ModalDahPreviewField = styled.span`
+  display: inline-block;
+  border-bottom: ${(props) => (props.dirty ? 'none' : '1px solid #000')};
+  padding-left: 2px;
+  min-width: ${(props) => (props.dirty ? '0' : props.md ? '180px' : '50px')};
+
+  @media (min-width: 768px) {
+    min-width: ${(props) => (props.dirty ? '0' : props.md ? '130px' : '50px')};
+  }
+`
+
+const MobileOnlyBlock = styled.div`
+  display: block;
+
+  @media (min-width: 768px) {
+    display: none;
+  }
+`
+
+const DesktopOnlyBlock = styled.div`
+  display: none;
+
+  @media (min-width: 768px) {
+    display: block;
+  }
+`
+
+const ModalErrorMessage = styled.div`
+  display: none;
+  color: red;
+  margin-bottom: 32px;
+`
+
+const ModalBtn = styled.button`
+  width: 150px;
+  background: #fff;
+  color: #9059c8;
+  border: 1px solid #9059c8;
+  padding: 11px 10px;
+  margin: 0 auto 15px;
+  display: block;
+  transition: all linear 0.3s;
+  cursor: pointer;
+
+  &:hover {
+    @media (min-width: 768px) {
+      background: #9059c8;
+      color: #fff;
+    }
+  }
+`
+const ModalLoader = styled.div`
+  padding: 30px 0;
+  text-align: center;
+  font-size: 18px;
+  display: none;
+`
+
+const ModalDahResult = styled.div`
+  display: none;
+`
+
+const ModalDahResultText = styled.div`
+  text-align: center;
+`
+const ModalDahForm = styled.form`
+  max-width: 350px;
+  width: 100%;
+  margin: 0 auto;
+  display: block;
+  padding: 10px 0;
+`
+
+const ModalDahFormItem = styled.div`
+  margin-bottom: 35px;
+
+  input {
+    width: 100%;
+    max-width: 100%;
+    display: block;
+    border: 0;
+    border-bottom: 1px solid #000;
+    border-radius: 0;
+    padding: 0;
+    margin: 0;
+    font-size: 16px;
+
+    &:focus {
+      outline: 0;
+      border: 0;
+      border-bottom: 1px solid #000;
+    }
+  }
+`
+
+const ModalDahFormItemError = styled.div`
+  display: none;
+  color: red;
 `
 
 export type DropAHintProps = {
@@ -27,10 +247,105 @@ export type DropAHintProps = {
 const DropAHintModal = ({ product, onClose }: { product: Product; onClose: () => void }) => {
   if (typeof document === 'undefined') return null
   return ReactDOM.createPortal(
-    <Modal>
-      <h1>{product.title}</h1>
-      <input type="button" value="close" onClick={onClose} />
-    </Modal>,
+    <div>
+      <Modal>
+        <ModalDialog>
+          <ModalContent>
+            <ModalCloseBtn type="button" onClick={onClose} />
+            <ModalDahContent>
+              <ModalDahContentCol>
+                <img src={product.image?.src} alt={product.image?.alt} draggable={false} />
+                <ModalDahPreview>
+                  <p>
+                    Hey{' '}
+                    <ModalDahPreviewField dirty md>
+                      NameHere
+                    </ModalDahPreviewField>
+                    {','}
+                    <br /> Why don't you surprise
+                    <ModalDahPreviewField md></ModalDahPreviewField> with this? A little birdie told us they would
+                    really love it.
+                  </p>
+                  <p>
+                    XOXO, <br />
+                    Your FJ Fam <br />
+                    P.S. Their ring size is <ModalDahPreviewField></ModalDahPreviewField>
+                    {'!'}
+                  </p>
+                </ModalDahPreview>
+                <MobileOnlyBlock>
+                  <ModalErrorMessage
+                    style={{
+                      marginBottom: '25px',
+                    }}
+                  ></ModalErrorMessage>
+                  <ModalBtn type="button">Send</ModalBtn>
+                  {/* This mobile ModalBtn should submit form onclick. Or you may use ModalDahContent as form (ModalDahForm) and type submit on this button */}
+                  <ModalLoader
+                    style={{
+                      marginBottom: '10px',
+                    }}
+                  >
+                    Loading...
+                  </ModalLoader>
+                  <ModalDahResult>
+                    <ModalDahResultText>
+                      <h4>...</h4>
+                    </ModalDahResultText>
+                    <ModalBtn type="button" onClick={onClose}>
+                      Close
+                    </ModalBtn>
+                  </ModalDahResult>
+                </MobileOnlyBlock>
+              </ModalDahContentCol>
+              <ModalDahContentCol>
+                <ModalDahForm>
+                  <h4>Drop a Hint</h4>
+                  <div>
+                    <ModalDahFormItem>
+                      <input type="text" name="r_name" placeholder="Recipient's Name" />
+                      <ModalDahFormItemError></ModalDahFormItemError>
+                    </ModalDahFormItem>
+                    <ModalDahFormItem>
+                      <input type="email" name="r_email" placeholder="Recipient's Email" />
+                      <ModalDahFormItemError></ModalDahFormItemError>
+                    </ModalDahFormItem>
+                    <ModalDahFormItem>
+                      <input type="text" name="name" placeholder="Your Name" />
+                      <ModalDahFormItemError></ModalDahFormItemError>
+                    </ModalDahFormItem>
+                    <ModalDahFormItem>
+                      <input type="email" name="email" placeholder="Your Email" />
+                      <ModalDahFormItemError></ModalDahFormItemError>
+                    </ModalDahFormItem>
+                  </div>
+                  <DesktopOnlyBlock
+                    style={{
+                      marginBottom: '15px',
+                    }}
+                  >
+                    <ModalErrorMessage></ModalErrorMessage>
+                    <ModalBtn type="button">Send</ModalBtn>
+                  </DesktopOnlyBlock>
+                </ModalDahForm>
+                <DesktopOnlyBlock>
+                  <ModalLoader>Loading...</ModalLoader>
+                  <ModalDahResult>
+                    <ModalDahResultText>
+                      <h4>...</h4>
+                    </ModalDahResultText>
+                    <ModalBtn type="button" onClick={onClose}>
+                      Close
+                    </ModalBtn>
+                  </ModalDahResult>
+                </DesktopOnlyBlock>
+              </ModalDahContentCol>
+            </ModalDahContent>
+          </ModalContent>
+        </ModalDialog>
+      </Modal>
+      <ModalBackdrop />
+    </div>,
     document.body
   )
 }
