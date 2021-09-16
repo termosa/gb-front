@@ -28,19 +28,17 @@ export interface Discount {
   title: string
 }
 
-export const normalizeDiscount = (data: ServerDiscount): Discount => {
-  const { discount } = data
-  return (
-    discount && {
-      image: discount.image.mobile,
-      code: discount.code,
-      description: discount.requirements_copy,
-      title: discount.title,
-    }
-  )
+export const normalizeDiscount = ({ discount }: ServerDiscount): null | Discount => {
+  if (!discount) return null
+  return {
+    image: discount.image.mobile,
+    code: discount.code,
+    description: discount.requirements_copy,
+    title: discount.title,
+  }
 }
 
-export function loadDiscount(discount: string): Promise<Discount> {
+export function loadDiscount(discount: string): Promise<null | Discount> {
   const formData = new FormData()
   formData.append('discount_code', discount)
   return fetch('https://fjrecurly.herokuapp.com/discount_status/', {

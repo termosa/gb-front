@@ -8,37 +8,33 @@ import setCookie from '../set-cookie'
 export type BannerDiscountProps = {
   className?: ClassName
   style?: React.CSSProperties
-  discount: string
+  discountCode: string
 }
 
-export function BannerDiscount({ discount, className, style }: BannerDiscountProps): React.ReactElement | null {
-  const discountRequest = useDefer(() => loadDiscount(discount), [discount], [])
+export function BannerDiscount({ discountCode, className, style }: BannerDiscountProps): React.ReactElement | null {
+  const { value: discount } = useDefer(() => loadDiscount(discountCode), [discountCode], [])
 
   useEffect(() => {
-    if (discountRequest.value) {
-      const now = Date.now()
-      setCookie('discount-expiration', String(now + 3600 * 1000), 1)
-      setCookie('promo-discount', code, 1)
-      setCookie('d_age', String(now), 1)
-    }
-  }, [discountRequest.value])
+    if (!discount) return
+    const now = Date.now()
+    setCookie('discount-expiration', String(now + 3600 * 1000), 1)
+    setCookie('promo-discount', discount.code, 1)
+    setCookie('d_age', String(now), 1)
+  }, [discount])
 
-  if (!discountRequest.value) {
-    return null
-  }
-  const { code, image, description, title } = discountRequest.value
+  if (!discount) return null
 
   return (
     <DiscountContainer>
       <Wrapper className={cn(className)} style={style}>
         <WrapDiscountContainer>
           <ImageBox>
-            <img src={image} alt={image} />
+            <img src={discount.image} alt={discount.title} />
           </ImageBox>
           <Title>
-            <h3>{title}</h3>
+            <h3>{discount.title}</h3>
           </Title>
-          <Description>{description}</Description>
+          <Description>{discount.description}</Description>
         </WrapDiscountContainer>
       </Wrapper>
     </DiscountContainer>
