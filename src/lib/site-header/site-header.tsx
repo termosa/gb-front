@@ -84,7 +84,11 @@ const SSearchContent = styled.div`
 const SLogoWrapper = styled.div`
   display: flex;
   align-items: center;
-  margin-right: 15px;
+  margin-right: 10px;
+
+  @media (min-width: 1200px) {
+    margin-right: 15px;
+  }
 `
 
 const SLogo = styled.a`
@@ -294,6 +298,7 @@ const ExtendableBlockList = styled.ul`
   }
   @media (max-width: 1199px) {
     &.nav-mob-accordion__content {
+      overflow: hidden;
       margin-bottom: 0;
       max-height: 0;
       transition: all 0.35s;
@@ -381,6 +386,13 @@ const AnimatedLink = styled.a`
       }
     }
 
+    @media (max-width: 1199px) {
+      padding: 0;
+      text-decoration: underline;
+      text-underline-offset: 7px;
+      line-height: 2;
+    }
+
     &:after {
       content: '';
       position: absolute;
@@ -391,6 +403,11 @@ const AnimatedLink = styled.a`
       height: 1px;
       background: #000;
       transition: bottom linear 0.2s;
+      display: none;
+
+      @media (min-width: 1200px) {
+        display: block;
+      }
     }
   }
 `
