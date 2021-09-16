@@ -2,7 +2,7 @@ import React from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
 import useDefer from 'use-defer'
-import loadDiscount, { Discount } from '../load-discount'
+import loadDiscount from '../load-discount'
 import setCookie from '../set-cookie'
 
 export type BannerDiscountProps = {
