@@ -733,7 +733,7 @@ export function ProductInfo({ className, style, addToCartRef }: ProductInfoProps
             </SPdpBtn>
           </SPdpPiSelectorWrapper>
         )}
-        <ProductModalButtons />
+        <ProductModalButtons product={product} />
         {/*<SPdpFragrance>
           <SPdpFragranceItem>
             <SPdpFragranceImg
