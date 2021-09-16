@@ -1,4 +1,4 @@
-import setCookie from '../set-cookie'
+import { PromoExpiration, ServerPromoExpiration } from '../load-promo-details'
 
 export interface ServerDiscountImg {
   desktop: string
@@ -23,7 +23,28 @@ export interface ServerDiscount {
   success: boolean
 }
 
-export function loadDiscount(discount: string): Promise<ServerDiscount> {
+export interface Discount {
+  imageMobile: string
+  success: boolean
+  code: string
+  requirementsCopy: string
+  title: string
+}
+
+export const normalizeDiscount = (data: ServerDiscount): Discount => {
+  const { discount } = data
+  return (
+    discount && {
+      success: data.success,
+      imageMobile: discount.image.mobile,
+      code: discount.code,
+      requirementsCopy: discount.requirements_copy,
+      title: discount.title,
+    }
+  )
+}
+
+export function loadDiscount(discount: string): Promise<Discount> {
   const formData = new FormData()
   formData.append('discount_code', discount)
   return fetch('https://fjrecurly.herokuapp.com/discount_status/', {
@@ -31,14 +52,5 @@ export function loadDiscount(discount: string): Promise<ServerDiscount> {
     body: formData,
   })
     .then((r) => r.json())
-    .then((data: ServerDiscount) => {
-      if (data.success) {
-        const expire_time = new Date(new Date().getTime() + 3600 * 1000)
-        const t_now = new Date()
-        setCookie('discount-expiration', String(expire_time.getTime()), 1)
-        setCookie('promo-discount', data.discount.code, 1)
-        setCookie('d_age', String(t_now.getTime()), 1)
-      }
-      return data
-    })
+    .then((data: ServerDiscount) => normalizeDiscount(data))
 }

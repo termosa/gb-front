@@ -2,7 +2,8 @@ import React from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
 import useDefer from 'use-defer'
-import loadDiscount from '../load-discount'
+import loadDiscount, { Discount } from '../load-discount'
+import setCookie from '../set-cookie'
 
 export type BannerDiscountProps = {
   className?: ClassName
@@ -19,19 +20,27 @@ export function BannerDiscount({ discountStatus, className, style }: BannerDisco
   if (!discountRequest.value) {
     return null
   }
-  const { discount, success } = discountRequest.value
+  const { success, code, imageMobile, requirementsCopy, title } = discountRequest.value
+
+  if (success) {
+    const expire_time = new Date(new Date().getTime() + 3600 * 1000)
+    const t_now = new Date()
+    setCookie('discount-expiration', String(expire_time.getTime()), 1)
+    setCookie('promo-discount', code, 1)
+    setCookie('d_age', String(t_now.getTime()), 1)
+  }
 
   return success ? (
     <DiscountContainer>
       <Wrapper className={cn(className)} style={style}>
         <WrapDiscountContainer>
           <ImageBox>
-            <img src={discount.image.mobile} alt="" />
+            <img src={imageMobile} alt="" />
           </ImageBox>
           <Title>
-            <h3> {discount.title} </h3>
+            <h3> {title} </h3>
           </Title>
-          <Description>{discount.requirements_copy}</Description>
+          <Description>{requirementsCopy}</Description>
         </WrapDiscountContainer>
       </Wrapper>
     </DiscountContainer>
