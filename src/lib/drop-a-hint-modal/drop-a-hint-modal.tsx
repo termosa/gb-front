@@ -166,7 +166,6 @@ const DesktopOnlyBlock = styled.div`
 `
 
 const ModalErrorMessage = styled.div`
-  display: none;
   color: red;
   margin-bottom: 32px;
 `
@@ -193,11 +192,6 @@ const ModalLoader = styled.div`
   padding: 30px 0;
   text-align: center;
   font-size: 18px;
-  /* display: none; */
-`
-
-const ModalDahResult = styled.div`
-  display: none;
 `
 
 const ModalDahResultText = styled.div`
@@ -291,6 +285,17 @@ export type DropAHintModalProps = {
   onClose: () => void
 }
 
+const Result = ({ onClose }: { onClose: () => void }) => (
+  <div>
+    <ModalDahResultText>
+      <h4>Your message has been sent!</h4>
+    </ModalDahResultText>
+    <ModalBtn type="button" onClick={onClose}>
+      Close
+    </ModalBtn>
+  </div>
+)
+
 export function DropAHintModal({ className, style, product, onClose }: DropAHintModalProps): React.ReactElement {
   const [state, setState] = useState({
     sender: { name: '', email: '' },
@@ -336,20 +341,17 @@ export function DropAHintModal({ className, style, product, onClose }: DropAHint
                   </p>
                 </ModalDahPreview>
                 <MobileOnlyBlock>
-                  <ModalErrorMessage style={{ marginBottom: '25px' }} />
+                  {submitHintRequest.status === Status.ERROR ? (
+                    <ModalErrorMessage style={{ marginBottom: '25px' }}>
+                      Oops. Something went wrong. Please try again later.
+                    </ModalErrorMessage>
+                  ) : null}
                   {submitHintRequest.status === Status.IDLE ? <ModalBtn type="submit">Send</ModalBtn> : null}
                   {/* This mobile ModalBtn should submit form onclick. Or you may use ModalDahContent as form (ModalDahForm) and type submit on this button */}
                   {submitHintRequest.status === Status.PENDING ? (
                     <ModalLoader style={{ marginBottom: '10px' }}>Loading...</ModalLoader>
                   ) : null}
-                  <ModalDahResult>
-                    <ModalDahResultText>
-                      <h4>...</h4>
-                    </ModalDahResultText>
-                    <ModalBtn type="button" onClick={onClose}>
-                      Close
-                    </ModalBtn>
-                  </ModalDahResult>
+                  {submitHintRequest.status === Status.SUCCESS ? <Result onClose={onClose} /> : null}
                 </MobileOnlyBlock>
               </ModalDahContentCol>
               <ModalDahContentCol>
@@ -423,21 +425,16 @@ export function DropAHintModal({ className, style, product, onClose }: DropAHint
                       </ModalDahFormItem>
                     </div>
                     <DesktopOnlyBlock style={{ marginBottom: '15px' }}>
-                      <ModalErrorMessage />
+                      {submitHintRequest.status === Status.ERROR ? (
+                        <ModalErrorMessage>Oops. Something went wrong. Please try again later.</ModalErrorMessage>
+                      ) : null}
                       <ModalBtn type="submit">Send</ModalBtn>
                     </DesktopOnlyBlock>
                   </ModalDahForm>
                 ) : null}
                 <DesktopOnlyBlock>
                   {submitHintRequest.status === Status.PENDING ? <ModalLoader>Loading...</ModalLoader> : null}
-                  <ModalDahResult>
-                    <ModalDahResultText>
-                      <h4>...</h4>
-                    </ModalDahResultText>
-                    <ModalBtn type="button" onClick={onClose}>
-                      Close
-                    </ModalBtn>
-                  </ModalDahResult>
+                  {submitHintRequest.status === Status.SUCCESS ? <Result onClose={onClose} /> : null}
                 </DesktopOnlyBlock>
               </ModalDahContentCol>
             </ModalDahContent>
