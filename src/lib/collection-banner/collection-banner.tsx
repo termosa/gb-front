@@ -3,6 +3,52 @@ import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
 import { useScreenSize } from '../use-screen-size'
 
+const bannerCollections = [
+  {
+    handle: 'spooky',
+    imageMobile: 'https://fragrantjewels-assets.s3.amazonaws.com/images/banners-2/col-halloween-mb.jpg',
+    imageDesktop: 'https://fragrantjewels-assets.s3.amazonaws.com/images/banners-2/col-halloween-2-dt.jpg',
+    text: 'Bath bombs',
+    description: `It’s more than amazing scents and stunning colors — essential oils and natural minerals will leave your skin
+          feeling so soft, you’ll be feel like silk.`,
+  },
+  {
+    handle: 'all-products',
+    imageMobile: 'https://fragrantjewels-assets.s3.amazonaws.com/images/banners-2/all-banner-2-1-mb.jpg',
+    imageDesktop: 'https://fragrantjewels-assets.s3.amazonaws.com/images/banners-2/all-banner-2-dt.jpg',
+    text: 'Shop Everything',
+    description: `Add a little calm to the chaos of life with our scented candles, bath bombs and sugar scrubs-discover limited-edition jewelry in each product!`,
+  },
+]
+
+export type CollectionBannerProps = {
+  children?: React.ReactNode
+  className?: ClassName
+  style?: React.CSSProperties
+  handle: string
+}
+export function CollectionBanner({ handle, className, style }: CollectionBannerProps): React.ReactElement | null {
+  const useScreen = useScreenSize()
+  const bannerCollection = bannerCollections.find((item) => item.handle === handle)
+  if (!bannerCollection) {
+    return null
+  }
+  return useScreen.greaterThanMedium ? (
+    <Wrapper className={cn(className)} style={style} backgroundImg={bannerCollection.imageDesktop}>
+      <CollectionBannerWrapper>
+        <CollectionBannerHeading>{bannerCollection.text}</CollectionBannerHeading>
+        <CollectionBannerText> {bannerCollection.description} </CollectionBannerText>
+      </CollectionBannerWrapper>
+    </Wrapper>
+  ) : (
+    <Wrapper className={cn(className)} style={style}>
+      <CollectionBannerMobileImg src={bannerCollection.imageMobile} />
+      <CollectionBannerMobileHeading>{bannerCollection.text}</CollectionBannerMobileHeading>
+      <CollectionBannerMobileText>{bannerCollection.description}</CollectionBannerMobileText>
+    </Wrapper>
+  )
+}
+
 const Wrapper = styled.div<{ backgroundImg?: string }>`
   background: ${(props) => (props.backgroundImg ? `url(${props.backgroundImg}) center center no-repeat` : '')};
   background-size: cover;
@@ -72,39 +118,3 @@ const CollectionBannerMobileText = styled.p`
   color: #000000;
   padding: 0 16px 28px;
 `
-
-export type CollectionBannerProps = {
-  children?: React.ReactNode
-  className?: ClassName
-  style?: React.CSSProperties
-}
-
-export function CollectionBanner({ className, style }: CollectionBannerProps): React.ReactElement {
-  const useScreen = useScreenSize()
-  return useScreen.greaterThanMedium ? (
-    <Wrapper
-      className={cn(className)}
-      style={style}
-      backgroundImg={'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/collectionbanner.png'}
-    >
-      <CollectionBannerWrapper>
-        <CollectionBannerHeading>Bath bombs</CollectionBannerHeading>
-        <CollectionBannerText>
-          It’s more than amazing scents and stunning colors — essential oils and natural minerals will leave your skin
-          feeling so soft, you’ll be feel like silk.
-        </CollectionBannerText>
-      </CollectionBannerWrapper>
-    </Wrapper>
-  ) : (
-    <Wrapper className={cn(className)} style={style}>
-      <CollectionBannerMobileImg
-        src={'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/collectionbanner.png'}
-      />
-      <CollectionBannerMobileHeading>Bath bombs</CollectionBannerMobileHeading>
-      <CollectionBannerMobileText>
-        It’s more than amazing scents and stunning colors — essential oils and natural minerals will leave your skin
-        feeling so soft, you’ll be feel like silk.
-      </CollectionBannerMobileText>
-    </Wrapper>
-  )
-}
