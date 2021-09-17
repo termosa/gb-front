@@ -29,15 +29,13 @@ export interface Discount {
 }
 
 export const normalizeDiscount = ({ discount }: ServerDiscount): null | Discount => {
-  if (!discount) return null
-  return (
-    discount.available && {
-      image: discount.image.mobile,
-      code: discount.code,
-      description: discount.requirements_copy,
-      title: discount.title,
-    }
-  )
+  if (!discount?.available) return null
+  return {
+    image: discount.image.mobile,
+    code: discount.code,
+    description: discount.requirements_copy,
+    title: discount.title,
+  }
 }
 
 export function loadDiscount(discount: string): Promise<null | Discount> {
