@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
 import { Product } from '../../modules/normalize-product'
+import submitHint from '../submit-hint'
+import useDefer, { Status } from 'use-defer'
 
 const Modal = styled.div`
   position: fixed;
@@ -75,7 +77,7 @@ const ModalCloseBtn = styled.button`
   }
 `
 
-const ModalDahContent = styled.form`
+const ModalDahContent = styled.div`
   display: flex;
   flex-direction: column;
 
@@ -191,7 +193,7 @@ const ModalLoader = styled.div`
   padding: 30px 0;
   text-align: center;
   font-size: 18px;
-  display: none;
+  /* display: none; */
 `
 
 const ModalDahResult = styled.div`
@@ -291,15 +293,16 @@ export type DropAHintModalProps = {
 
 export function DropAHintModal({ className, style, product, onClose }: DropAHintModalProps): React.ReactElement {
   const [state, setState] = useState({
-    name: '',
-    email: '',
-    recipientName: '',
-    recipientEmail: '',
+    sender: { name: '', email: '' },
+    recipient: { name: '', email: '' },
     ringSize: '',
   })
 
+  const submitHintRequest = useDefer(submitHint)
+
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault()
+    submitHintRequest.execute(state.sender, state.recipient, product, state.ringSize)
   }
 
   return (
@@ -308,19 +311,19 @@ export function DropAHintModal({ className, style, product, onClose }: DropAHint
         <ModalDialog>
           <ModalContent className={cn('DropAHintModal', className)} style={style}>
             <ModalCloseBtn type="button" onClick={onClose} />
-            <ModalDahContent onSubmit={handleSubmit}>
+            <ModalDahContent>
               <ModalDahContentCol>
                 <img src={product.image?.src} alt={product.image?.alt} draggable={false} />
                 <ModalDahPreview>
                   <p>
                     Hey{' '}
-                    <ModalDahPreviewField dirty={!!state.recipientName} md>
-                      {state.recipientName}
+                    <ModalDahPreviewField dirty={!!state.recipient.name} md>
+                      {state.recipient.name}
                     </ModalDahPreviewField>
                     {','}
                     <br /> Why don't you surprise{' '}
-                    <ModalDahPreviewField dirty={!!state.name} md>
-                      {state.name}
+                    <ModalDahPreviewField dirty={!!state.sender.name} md>
+                      {state.sender.name}
                     </ModalDahPreviewField>{' '}
                     with this? A little birdie told us they would really love it.
                   </p>
@@ -333,20 +336,12 @@ export function DropAHintModal({ className, style, product, onClose }: DropAHint
                   </p>
                 </ModalDahPreview>
                 <MobileOnlyBlock>
-                  <ModalErrorMessage
-                    style={{
-                      marginBottom: '25px',
-                    }}
-                  ></ModalErrorMessage>
+                  <ModalErrorMessage style={{ marginBottom: '25px' }} />
                   <ModalBtn type="button">Send</ModalBtn>
                   {/* This mobile ModalBtn should submit form onclick. Or you may use ModalDahContent as form (ModalDahForm) and type submit on this button */}
-                  <ModalLoader
-                    style={{
-                      marginBottom: '10px',
-                    }}
-                  >
-                    Loading...
-                  </ModalLoader>
+                  {submitHintRequest.status === Status.PENDING ? (
+                    <ModalLoader style={{ marginBottom: '10px' }}>Loading...</ModalLoader>
+                  ) : null}
                   <ModalDahResult>
                     <ModalDahResultText>
                       <h4>...</h4>
@@ -358,15 +353,17 @@ export function DropAHintModal({ className, style, product, onClose }: DropAHint
                 </MobileOnlyBlock>
               </ModalDahContentCol>
               <ModalDahContentCol>
-                <ModalDahForm>
+                <ModalDahForm onSubmit={handleSubmit}>
                   <h4>Drop a Hint</h4>
                   <div>
                     <ModalDahFormItem>
                       <input
                         type="text"
                         placeholder="Recipient's Name"
-                        value={state.recipientName}
-                        onChange={(e) => setState((s) => ({ ...s, recipientName: e.target.value }))}
+                        value={state.recipient.name}
+                        onChange={(e) =>
+                          setState((s) => ({ ...s, recipient: { ...s.recipient, name: e.target.value } }))
+                        }
                         required
                       />
                       <ModalDahFormItemError />
@@ -375,8 +372,10 @@ export function DropAHintModal({ className, style, product, onClose }: DropAHint
                       <input
                         type="email"
                         placeholder="Recipient's Email"
-                        value={state.recipientEmail}
-                        onChange={(e) => setState((s) => ({ ...s, recipientEmail: e.target.value }))}
+                        value={state.recipient.email}
+                        onChange={(e) =>
+                          setState((s) => ({ ...s, recipient: { ...s.recipient, email: e.target.value } }))
+                        }
                         required
                       />
                       <ModalDahFormItemError />
@@ -385,8 +384,8 @@ export function DropAHintModal({ className, style, product, onClose }: DropAHint
                       <input
                         type="text"
                         placeholder="Your Name"
-                        value={state.name}
-                        onChange={(e) => setState((s) => ({ ...s, name: e.target.value }))}
+                        value={state.sender.name}
+                        onChange={(e) => setState((s) => ({ ...s, sender: { ...s.sender, name: e.target.value } }))}
                         required
                       />
                       <ModalDahFormItemError />
@@ -415,8 +414,8 @@ export function DropAHintModal({ className, style, product, onClose }: DropAHint
                       <input
                         type="email"
                         placeholder="Your Email"
-                        value={state.email}
-                        onChange={(e) => setState((s) => ({ ...s, email: e.target.value }))}
+                        value={state.sender.email}
+                        onChange={(e) => setState((s) => ({ ...s, sender: { ...s.sender, email: e.target.value } }))}
                         required
                       />
                       <ModalDahFormItemError />
@@ -428,7 +427,7 @@ export function DropAHintModal({ className, style, product, onClose }: DropAHint
                   </DesktopOnlyBlock>
                 </ModalDahForm>
                 <DesktopOnlyBlock>
-                  <ModalLoader>Loading...</ModalLoader>
+                  {submitHintRequest.status === Status.PENDING ? <ModalLoader>Loading...</ModalLoader> : null}
                   <ModalDahResult>
                     <ModalDahResultText>
                       <h4>...</h4>
