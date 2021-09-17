@@ -77,7 +77,7 @@ const ModalCloseBtn = styled.button`
   }
 `
 
-const ModalDahContent = styled.div`
+const ModalDahContent = styled.form`
   display: flex;
   flex-direction: column;
 
@@ -203,7 +203,7 @@ const ModalDahResult = styled.div`
 const ModalDahResultText = styled.div`
   text-align: center;
 `
-const ModalDahForm = styled.form`
+const ModalDahForm = styled.div`
   max-width: 350px;
   width: 100%;
   margin: 0 auto;
@@ -311,7 +311,7 @@ export function DropAHintModal({ className, style, product, onClose }: DropAHint
         <ModalDialog>
           <ModalContent className={cn('DropAHintModal', className)} style={style}>
             <ModalCloseBtn type="button" onClick={onClose} />
-            <ModalDahContent>
+            <ModalDahContent onSubmit={handleSubmit}>
               <ModalDahContentCol>
                 <img src={product.image?.src} alt={product.image?.alt} draggable={false} />
                 <ModalDahPreview>
@@ -337,7 +337,7 @@ export function DropAHintModal({ className, style, product, onClose }: DropAHint
                 </ModalDahPreview>
                 <MobileOnlyBlock>
                   <ModalErrorMessage style={{ marginBottom: '25px' }} />
-                  <ModalBtn type="button">Send</ModalBtn>
+                  {submitHintRequest.status === Status.IDLE ? <ModalBtn type="submit">Send</ModalBtn> : null}
                   {/* This mobile ModalBtn should submit form onclick. Or you may use ModalDahContent as form (ModalDahForm) and type submit on this button */}
                   {submitHintRequest.status === Status.PENDING ? (
                     <ModalLoader style={{ marginBottom: '10px' }}>Loading...</ModalLoader>
@@ -353,79 +353,81 @@ export function DropAHintModal({ className, style, product, onClose }: DropAHint
                 </MobileOnlyBlock>
               </ModalDahContentCol>
               <ModalDahContentCol>
-                <ModalDahForm onSubmit={handleSubmit}>
-                  <h4>Drop a Hint</h4>
-                  <div>
-                    <ModalDahFormItem>
-                      <input
-                        type="text"
-                        placeholder="Recipient's Name"
-                        value={state.recipient.name}
-                        onChange={(e) =>
-                          setState((s) => ({ ...s, recipient: { ...s.recipient, name: e.target.value } }))
-                        }
-                        required
-                      />
-                      <ModalDahFormItemError />
-                    </ModalDahFormItem>
-                    <ModalDahFormItem>
-                      <input
-                        type="email"
-                        placeholder="Recipient's Email"
-                        value={state.recipient.email}
-                        onChange={(e) =>
-                          setState((s) => ({ ...s, recipient: { ...s.recipient, email: e.target.value } }))
-                        }
-                        required
-                      />
-                      <ModalDahFormItemError />
-                    </ModalDahFormItem>
-                    <ModalDahFormItem>
-                      <input
-                        type="text"
-                        placeholder="Your Name"
-                        value={state.sender.name}
-                        onChange={(e) => setState((s) => ({ ...s, sender: { ...s.sender, name: e.target.value } }))}
-                        required
-                      />
-                      <ModalDahFormItemError />
-                    </ModalDahFormItem>
-                    <ModalDahFormItem>
-                      <ModalDahFormSelectWrapper>
-                        <select
-                          value={state.ringSize}
-                          onChange={(e) => setState((s) => ({ ...s, ringSize: e.target.value }))}
+                {submitHintRequest.status !== Status.SUCCESS ? (
+                  <ModalDahForm>
+                    <h4>Drop a Hint</h4>
+                    <div>
+                      <ModalDahFormItem>
+                        <input
+                          type="text"
+                          placeholder="Recipient's Name"
+                          value={state.recipient.name}
+                          onChange={(e) =>
+                            setState((s) => ({ ...s, recipient: { ...s.recipient, name: e.target.value } }))
+                          }
                           required
-                        >
-                          <option value="" disabled>
-                            Your Ring Size
-                          </option>
-                          <option value="5">5</option>
-                          <option value="6">6</option>
-                          <option value="7">7</option>
-                          <option value="8">8</option>
-                          <option value="9">9</option>
-                          <option value="10">10</option>
-                        </select>
-                      </ModalDahFormSelectWrapper>
-                      <ModalDahFormItemError />
-                    </ModalDahFormItem>
-                    <ModalDahFormItem>
-                      <input
-                        type="email"
-                        placeholder="Your Email"
-                        value={state.sender.email}
-                        onChange={(e) => setState((s) => ({ ...s, sender: { ...s.sender, email: e.target.value } }))}
-                        required
-                      />
-                      <ModalDahFormItemError />
-                    </ModalDahFormItem>
-                  </div>
-                  <DesktopOnlyBlock style={{ marginBottom: '15px' }}>
-                    <ModalErrorMessage />
-                    <ModalBtn type="submit">Send</ModalBtn>
-                  </DesktopOnlyBlock>
-                </ModalDahForm>
+                        />
+                        <ModalDahFormItemError />
+                      </ModalDahFormItem>
+                      <ModalDahFormItem>
+                        <input
+                          type="email"
+                          placeholder="Recipient's Email"
+                          value={state.recipient.email}
+                          onChange={(e) =>
+                            setState((s) => ({ ...s, recipient: { ...s.recipient, email: e.target.value } }))
+                          }
+                          required
+                        />
+                        <ModalDahFormItemError />
+                      </ModalDahFormItem>
+                      <ModalDahFormItem>
+                        <input
+                          type="text"
+                          placeholder="Your Name"
+                          value={state.sender.name}
+                          onChange={(e) => setState((s) => ({ ...s, sender: { ...s.sender, name: e.target.value } }))}
+                          required
+                        />
+                        <ModalDahFormItemError />
+                      </ModalDahFormItem>
+                      <ModalDahFormItem>
+                        <ModalDahFormSelectWrapper>
+                          <select
+                            value={state.ringSize}
+                            onChange={(e) => setState((s) => ({ ...s, ringSize: e.target.value }))}
+                            required
+                          >
+                            <option value="" disabled>
+                              Your Ring Size
+                            </option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                          </select>
+                        </ModalDahFormSelectWrapper>
+                        <ModalDahFormItemError />
+                      </ModalDahFormItem>
+                      <ModalDahFormItem>
+                        <input
+                          type="email"
+                          placeholder="Your Email"
+                          value={state.sender.email}
+                          onChange={(e) => setState((s) => ({ ...s, sender: { ...s.sender, email: e.target.value } }))}
+                          required
+                        />
+                        <ModalDahFormItemError />
+                      </ModalDahFormItem>
+                    </div>
+                    <DesktopOnlyBlock style={{ marginBottom: '15px' }}>
+                      <ModalErrorMessage />
+                      <ModalBtn type="submit">Send</ModalBtn>
+                    </DesktopOnlyBlock>
+                  </ModalDahForm>
+                ) : null}
                 <DesktopOnlyBlock>
                   {submitHintRequest.status === Status.PENDING ? <ModalLoader>Loading...</ModalLoader> : null}
                   <ModalDahResult>
