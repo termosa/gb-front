@@ -42,7 +42,7 @@ type KlaviyoCommand =
   | []
   | ['account', string]
   | ['identify', KlaviyoIdentity]
-  | ['track', 'Viewed Item', TrackViewedItemPayload]
+  | ['track', 'Viewed Product', TrackViewedItemPayload]
   | ['track', string, Record<string, unknown>]
   | ['trackViewedItem', KlaviyoItem]
 
