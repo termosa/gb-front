@@ -3,6 +3,7 @@ import loadScript from '../load-script'
 import throttle from 'lodash/throttle'
 import window from '../window'
 import useDefer, { Status } from 'use-defer'
+import log from '../log'
 
 declare global {
   interface Window {
@@ -14,7 +15,13 @@ declare global {
 
 const YOTPO_SCRIPT_URL = '//staticw2.yotpo.com/LDoDRHPmIWai6MD5o41BGukBakwwgtNMncolHubV/widget.js'
 
-const refreshWidgets = throttle(() => window?.yotpo?.refreshWidgets(), 100)
+const refreshWidgets = throttle(() => {
+  try {
+    window?.yotpo?.refreshWidgets()
+  } catch (error) {
+    log('Yotpo failed to refresh widgets', error)
+  }
+}, 100)
 
 export function useYotpo(deps: undefined | React.DependencyList = []): boolean {
   // Script loading is memoized, so it is okay to call it every time
