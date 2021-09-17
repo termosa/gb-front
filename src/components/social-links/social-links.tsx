@@ -49,15 +49,19 @@ const SocialLinksList = styled.div`
   }
 
   li {
-    margin: 0 3px 20px;
+    margin: 0 10px 27px;
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
   }
 
   @media (min-width: 375px) {
     margin: 0 -5px;
-
-    li {
-      margin: 0 10px 20px;
-    }
   }
 
   @media (min-width: 992px) {

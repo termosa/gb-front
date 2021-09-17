@@ -37,7 +37,7 @@ const Group = styled.div<{ mobile?: boolean }>`
 `
 
 const Title = styled.div<{ mobile?: boolean }>`
-  font: 600 14px/1.5 'Montserrat', sans-serif;
+  font: 500 14px/1.5 'Montserrat', sans-serif;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   padding: 0 0 17px;
@@ -48,7 +48,7 @@ const Title = styled.div<{ mobile?: boolean }>`
   ${(props) =>
     props.mobile
       ? css`
-          padding: 16px 0;
+          padding: 15px 0;
           margin: 0;
           border: 0;
           cursor: pointer;
