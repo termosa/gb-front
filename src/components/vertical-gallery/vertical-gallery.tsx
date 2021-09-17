@@ -185,11 +185,17 @@ export function VerticalGallery({ className }: VerticalGalleryProps): React.Reac
 
   useEffect(() => {
     window?.addEventListener('scroll', () => {
-      product && product.images && handleGalleryScrolling(galleryRef, product.images, setActiveGalleryItem)
+      product &&
+        product.images &&
+        screenSize.greaterThanMedium &&
+        handleGalleryScrolling(galleryRef, product.images, setActiveGalleryItem)
     })
     return () => {
       window?.removeEventListener('scroll', () => {
-        product && product.images && handleGalleryScrolling(galleryRef, product.images, setActiveGalleryItem)
+        product &&
+          product.images &&
+          screenSize.greaterThanMedium &&
+          handleGalleryScrolling(galleryRef, product.images, setActiveGalleryItem)
       })
     }
   }, [product, screenSize])

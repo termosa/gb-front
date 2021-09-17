@@ -2,7 +2,9 @@ const { PHASE_DEVELOPMENT_SERVER, PHASE_PRODUCTION_BUILD, PHASE_PRODUCTION_SERVE
 const basePath = require('./config/base-path')
 
 module.exports = (phase) => {
-  const shouldAddBuildConfig = [PHASE_DEVELOPMENT_SERVER, PHASE_PRODUCTION_BUILD, PHASE_PRODUCTION_SERVER].includes(phase)
+  const shouldAddBuildConfig = [PHASE_DEVELOPMENT_SERVER, PHASE_PRODUCTION_BUILD, PHASE_PRODUCTION_SERVER].includes(
+    phase
+  )
   if (!shouldAddBuildConfig) return {}
 
   const path = require('path')

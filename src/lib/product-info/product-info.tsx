@@ -98,7 +98,7 @@ const SPdpChooserContainer = styled.div`
   }
 `
 
-const SPdpBtn = styled.button<{ disabled: boolean }>`
+const SPdpBtn = styled.button<{ disabled?: boolean }>`
   display: block;
   padding: 19px 15px;
   letter-spacing: 1px;
@@ -501,7 +501,7 @@ export function ProductInfo({ className, style, addToCartRef }: ProductInfoProps
     )
       .then(() => trackAddedToCart(product))
       .then(() => navigate('/cart'))
-      .catch((err) => alert(err))
+      .catch((err: unknown) => alert(err))
   }
 
   const executeScroll = () => {
