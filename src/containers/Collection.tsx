@@ -15,8 +15,6 @@ const SFiltersSection = styled(SiteSection)`
 
 const Collection = (): null | React.ReactElement => {
   const collection = useContext(CollectionContext)
-  console.log(111111, collection)
-
   const [filter, setFilter] = useState<CollectionProductsFilter | null>(null)
   const [sorting, setSorting] = useState<SelectedSorting>(SelectedSorting.NEW)
 
