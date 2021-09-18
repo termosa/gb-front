@@ -49,22 +49,23 @@ type KlaviyoCommand =
 declare global {
   interface Window {
     _learnq?: {
-      push(command: KlaviyoCommand): void
+      push(command: KlaviyoCommand): unknown
+      identify(
+        identity: KlaviyoIdentity,
+        doNotKnowWhatIsIt: undefined,
+        doNotKnowWhatIsIt2: undefined,
+        callback: () => void
+      ): unknown
     }
   }
 }
 
 let initialRequests: undefined | Promise<unknown>
 
-const push = (command: KlaviyoCommand) => {
-  log(`klaviyo(${command.map((arg) => JSON.stringify(arg)).join(', ')})`)
-  window?._learnq?.push(command)
-}
-
-export function klaviyo(...command: KlaviyoCommand): void {
+export function klaviyo(...command: KlaviyoCommand): Promise<unknown> {
   if (!window) {
     log('Klaviyo cannot be executed on server side')
-    return
+    return Promise.reject()
   }
 
   if (!initialRequests) {
@@ -73,11 +74,17 @@ export function klaviyo(...command: KlaviyoCommand): void {
       loadScript(`//static.klaviyo.com/onsite/js/klaviyo.js?company_id=${KLAVIYO_API_KEY}&shop=${KLAVIYO_SHOP}`),
     ])
       .then(([customer]) => {
-        push(['account', KLAVIYO_ACCOUNT])
-        if (customer) push(['identify', { $email: customer.email }])
+        window?._learnq?.push(['account', KLAVIYO_ACCOUNT])
+        if (customer) {
+          return new Promise((resolve) => {
+            window?._learnq?.identify({ $email: customer.email }, undefined, undefined, () => resolve(undefined))
+          })
+        }
       })
       .catch((error) => log('Klaviyo could not be initialized', error))
   }
 
-  if (command.length) initialRequests.then(() => push(command))
+  if (!command.length) return initialRequests
+  log(`klaviyo(${command.map((arg) => JSON.stringify(arg)).join(', ')})`)
+  return initialRequests.then(() => window?._learnq?.push(command))
 }
