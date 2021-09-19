@@ -13,7 +13,6 @@
     "export": "npm run build && next export",
     "prettier": "prettier  --write **/*.{ts,tsx,js}",
     "lint:ts": "npm run prettier && eslint --fix 'src/**/*.{ts,tsx}'",
-    "lint:scss": "stylelint --fix 'src/**/*.scss'",
     "lint:types": "tsc -p . --noEmit",
     "proxy": "lcp --proxyUrl http://k8s-default-djangolb-f355e68fee-da67faa0143d6707.elb.us-west-1.amazonaws.com --proxyPartial \"\" --port 3033",
     "proxy:prod": "lcp --proxyUrl http://k8s-default-djangolb-766aaf61e8-14636e29744cd427.elb.us-west-2.amazonaws.com --proxyPartial \"\" --port 3033",

@@ -109,6 +109,7 @@ export const FloatingCta = (): React.ReactElement | null => {
     <SFloatingCtaOpened isVisible={isFloatingCtaVisible}>
       <SizeSelector
         onSelect={(size) => {
+          if (!product) return
           const sizeId = product?.variants.find((variant) => variant.title === size.toString())?.variant_id
           sizeId &&
             addCartItem(sizeId)

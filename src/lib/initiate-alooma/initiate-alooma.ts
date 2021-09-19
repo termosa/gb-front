@@ -164,16 +164,16 @@ export function initiateAlooma(): Promise<Alooma> {
         function f(b: Alooma, h: string) {
           const a = h.split('.')
           if (a.length === 2) {
-            b = b[a[0]]
+            b = (b[(a[0] as unknown) as number] as unknown) as Alooma
             h = a[1]
           }
-          b[h] = (...args: Array<unknown>) => {
+          b[(h as unknown) as number] = (...args: Array<unknown>) => {
             b.push([h, ...args])
           }
         }
         let c = alooma
         if ('undefined' !== typeof customProperty) {
-          c = alooma[customProperty] = ([] as unknown) as Alooma
+          c = alooma[(customProperty as unknown) as number] = ([] as unknown) as Alooma
         } else {
           customProperty = 'alooma'
         }

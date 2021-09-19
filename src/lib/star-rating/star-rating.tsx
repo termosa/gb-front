@@ -17,7 +17,7 @@ const goToYotpoReviews = () => {
   const yOffset = -200
   const element = window?.document.querySelector('.yotpo-nav-wrapper')
   if (element) {
-    const y = element?.getBoundingClientRect().top + window?.pageYOffset + yOffset
+    const y = element?.getBoundingClientRect().top + (window?.pageYOffset || 0) + yOffset
     window?.scrollTo({ top: y })
   }
 }
@@ -56,7 +56,7 @@ export function StarRating({
       <div className="yotpo">
         <div className="yotpo-display-wrapper">
           <div className="standalone-bottomline" data-source="default">
-            <div className="yotpo-bottomline star-clickable" onClick={(e) => goToYotpoReviews(e)}>
+            <div className="yotpo-bottomline star-clickable" onClick={goToYotpoReviews}>
               <span className="yotpo-stars">
                 {' '}
                 {stars.map((star, i) => (
