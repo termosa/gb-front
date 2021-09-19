@@ -39,9 +39,10 @@ const STitle = styled.h2`
   text-align: center;
   margin: 0 auto 16px;
 
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     display: flex;
     flex-direction: column;
+    font-size: 32px;
   }
 `
 

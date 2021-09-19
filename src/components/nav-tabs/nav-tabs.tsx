@@ -136,7 +136,7 @@ const SSubscribeButton = styled.li`
       &:hover {
         background-color: #000;
         color: #fff;
-        border-color: #000;
+        border-color: #4dbeba;
         //#7a3cb9
       }
     }

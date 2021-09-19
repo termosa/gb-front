@@ -74,7 +74,7 @@ const SCartButton = styled.a`
       transition: all linear 0.2s;
     }
     &:hover > span {
-      background-color: #000;
+      background-color: #4dbeba;
       //#7a3cb9;
     }
   }

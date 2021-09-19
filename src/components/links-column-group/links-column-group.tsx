@@ -77,6 +77,15 @@ const Link = styled.a`
   text-decoration: none;
   padding: 5px 0 13px 0;
 
+  @media (max-width: 991px) {
+    &:first-child {
+      padding: 13px 0 13px 0;
+    }
+    &:last-child {
+      padding: 5px 0 20px 0;
+    }
+  }
+
   &:hover {
     text-shadow: -0.06ex 0 #fff, 0.06ex 0 #fff;
   }
