@@ -14,7 +14,7 @@ const name = 'InlineSignupForm'
 const Container = styled.div`
   max-width: 1020px;
   text-align: center;
-  margin: 0 16px;
+  margin: 0 15px;
   padding: 52px 0 0;
 
   @media (min-width: 768px) {

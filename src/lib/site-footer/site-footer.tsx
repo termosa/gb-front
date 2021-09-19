@@ -20,7 +20,7 @@ const FooterContainer = styled.div`
 
 const FooterOuter = styled.div`
   max-width: 990px;
-  padding: 0 16px;
+  padding: 0 15px;
   margin: 0 auto;
 `
 
@@ -50,7 +50,7 @@ const FooterAccordion = styled.div`
 
 const FooterCopyright = styled.div`
   font: 400 12px/1.25 'Montserrat', sans-serif;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.7px;
   color: white;
   text-align: center;
 

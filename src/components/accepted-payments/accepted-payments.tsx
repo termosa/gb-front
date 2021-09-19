@@ -11,7 +11,7 @@ const AcceptedPaymentsContainer = styled.div`
   color: #fff;
   font: 12px/1.3 'Montserrat', sans-serif;
 
-  @media (min-width: 375px) {
+  @media (min-width: 992px) {
     padding: 0 10px;
   }
 
@@ -22,7 +22,7 @@ const AcceptedPaymentsContainer = styled.div`
 
 const Title = styled.div`
   font: 600 14px/1.5 'Montserrat', sans-serif;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.7px;
   text-transform: uppercase;
   padding: 16px 0;
   position: relative;
@@ -35,8 +35,7 @@ const Title = styled.div`
 `
 
 const AcceptedPaymentsList = styled.div`
-  margin: 0 -3px;
-  padding: 2px 0 5px;
+  padding: 2px 0 10px;
   list-style: none;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -52,15 +51,26 @@ const AcceptedPaymentsList = styled.div`
 
   li {
     margin: 0 3px 20px;
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
   }
 
   @media (min-width: 375px) {
-    margin: 0 -5px;
     justify-content: initial;
 
     li {
       margin: 0 5px 20px;
     }
+  }
+
+  @media (min-width: 992px) {
+    padding: 5px 0;
   }
 `
 
