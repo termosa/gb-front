@@ -1,12 +1,15 @@
 export const meta = {
   type: 'function',
   name: 'klaviyo',
-  description: 'Submits analytics data',
+  description: 'Submits analytics data to Klaviyo',
   tags: ['function', 'analytics'],
   lists: {
     arguments: [
       { name: 'command', type: '"account" | "identify" | "track" | "trackViewedItem"', description: 'One of Klaviyo commands' },
       { name: '...parameters', type: 'any', description: 'Command parameters' },
+    ],
+    returns: [
+      { name: 'promise', type: 'Promise<void>' },
     ],
   },
 }

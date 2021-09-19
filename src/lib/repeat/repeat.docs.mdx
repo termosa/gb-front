@@ -1,0 +1,29 @@
+export const meta = {
+  type: 'function',
+  name: 'repeat',
+  description: 'Repeatedly calls the function given number of times or untill it return the value',
+  tags: ['function'],
+  lists: {
+    arguments: [
+      { name: 'fn', type: '(index: number) => ResultType', required: true, description: 'Function that have to be repeatedly called' },
+      { name: 'timeout', type: 'number', description: 'Delay between repertions', default: '0' },
+      { name: 'limit', type: 'number', description: 'Maximum amount of calls', default: 'Infinity' },
+    ],
+    returns: [
+      { name: 'promise', type: 'Promise<ResultType | undefined>', description: 'Promise with the first function return value or with undefined if function did not return anything' },
+    ],
+  },
+}
+
+## Usage
+
+```js
+import repeat from './repeat'
+
+const image = Object.assign(document.createElement('img'), { src: 'https://via.placeholder.com/100' })
+repeat(
+  () => image.complete || undefined, // Check if image loaded, and if not return undefined, to keep repeatition
+  50, // The first call will be imeediate and each next call will be delayed by 50ms from the previous one
+  20, // The function will be called maximumm 20 times, and then will be resolved without value
+)
+```
