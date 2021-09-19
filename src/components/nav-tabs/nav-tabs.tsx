@@ -134,7 +134,7 @@ const SSubscribeButton = styled.li`
     @media screen and (min-width: 1200px) {
       padding: 4.5px 15px;
       &:hover {
-        background-color: #000;
+        background-color: #4dbeba;
         color: #fff;
         border-color: #4dbeba;
         //#7a3cb9

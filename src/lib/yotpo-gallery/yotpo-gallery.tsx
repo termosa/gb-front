@@ -4,12 +4,12 @@ import useYotpo from '../use-yotpo'
 import styled from 'styled-components'
 
 const Container = styled.div`
-  max-width: 972px;
+  max-width: 970px;
   text-align: center;
   margin: 0 auto;
   padding: 0 15px;
 
-  @media (min-width: 992px) {
+  @media (min-width: 768px) {
     margin-bottom: 80px;
   }
 
