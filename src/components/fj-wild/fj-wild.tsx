@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import { useScreenSize } from '../../lib/use-screen-size'
+import SiteSection from '../site-section'
+import useScreenSize from '../../lib/use-screen-size'
 
 const SFjWildSectionTitle = styled.div<{
   isMobile: boolean
@@ -59,24 +60,22 @@ export const FjWild = ({ title, textFirstPart, textSecondPart }: JFWildProps): R
   const screenSize = useScreenSize()
 
   return (
-    <div className="app-h-section app-h-products-section">
-      <div className="app-h-container">
-        <SFjWildTitle className="app-h-section__title">
-          {screenSize.greaterThanMedium ? (
-            <SFjWildSectionTitle isMobile={false}>
-              <span>{title}</span>
-            </SFjWildSectionTitle>
-          ) : (
-            <SFjWildSectionTitle isMobile={true}>
-              <span>{title}</span>
-            </SFjWildSectionTitle>
-          )}
-        </SFjWildTitle>
-        <SFjWildText>
-          <span>{textFirstPart}</span>
-          <span>{textSecondPart}</span>
-        </SFjWildText>
-      </div>
-    </div>
+    <SiteSection>
+      <SFjWildTitle>
+        {screenSize.greaterThanMedium ? (
+          <SFjWildSectionTitle isMobile={false}>
+            <span>{title}</span>
+          </SFjWildSectionTitle>
+        ) : (
+          <SFjWildSectionTitle isMobile={true}>
+            <span>{title}</span>
+          </SFjWildSectionTitle>
+        )}
+      </SFjWildTitle>
+      <SFjWildText>
+        <span>{textFirstPart}</span>
+        <span>{textSecondPart}</span>
+      </SFjWildText>
+    </SiteSection>
   )
 }

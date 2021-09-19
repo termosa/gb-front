@@ -6,8 +6,8 @@ import baseApiUrl from '../modules/base-api-url'
 import { ThemeProvider } from '../helpers/theme-provider'
 import '../_require-env'
 import './fonts.css'
-import initiateKlaviyo from 'src/lib/initiate-klaviyo'
-import initiateAlooma from 'src/lib/initiate-alooma'
+import initiateKlaviyo from '../lib/initiate-klaviyo'
+import initiateAlooma from '../lib/initiate-alooma'
 
 baseApiUrl(typeof window === 'undefined' ? process.env.BASE_API_URL : process.env.CLIENT_API_URL)
 

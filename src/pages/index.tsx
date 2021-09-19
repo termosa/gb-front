@@ -1,18 +1,25 @@
 import React from 'react'
-import homePageProps from '../resolvers/homePageProps'
+import homePageProps, { HomePageProps } from '../resolvers/homePageProps'
 import MainPageLayout from '../lib/main-page-layout'
 import HeroGallery from '../lib/hero-gallery'
+import ProductsCarousel from '../components/products-carousel'
 import ReviewsSection from '../components/reviews-section'
-import ProductCarouselContainer from '../containers/ProductCarousel'
-import InnerCircleExclusiveContainer from '../containers/InnerCircleExclusive'
+import InnerCircleExclusive from '../components/inner-circle-exclusive'
 import InformationOverview from '../lib/information-overview'
 import ShopByProductsOverview from '../components/shop-by-products-overview'
 import { CategoryShopCardsOverview } from '../lib/category-shop-overview'
 import { PromiseBar } from '../components/promise-bar'
 import { InlineSignupForm } from '../components/inline-signup-form'
 import YotpoGallery from '../lib/yotpo-gallery'
+import navigate from '../lib/navigate'
+import addCartItem from '../lib/add-cart-item'
+import trackAddedToCart from '../lib/track-added-to-cart'
 
-export default function HomePage(): React.ReactElement {
+export default function HomePage({
+  trendingProducts,
+  innerCircleSubscriptionProduct,
+  innerCircleMembershipProduct,
+}: HomePageProps): React.ReactElement {
   return (
     <MainPageLayout>
       <HeroGallery
@@ -28,23 +35,34 @@ export default function HomePage(): React.ReactElement {
           },
         ]}
       />
-      <ProductCarouselContainer
-        collectionId={261358780494}
-        title="Today's Top Picks"
-        subTitle="Indulge in luxurious new and best selling collections."
-      />
-      <InnerCircleExclusiveContainer
-        productId={6542141194318}
-        slideImages={[
-          { slide: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/home-banner-img-1-dt.jpg' },
-          { slide: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/shop-by-product-img-2.jpg' },
-          { slide: 'https://i.ebayimg.com/images/g/XOYAAOSwpjxgy3-1/s-l500.jpg' },
-        ]}
-        title="Get addicted to me-time"
-        subTitle="Join the Inner Circle for exciting new collections every month, available exclusively to members."
-        topButtonText="Get Started"
-        buttonLink="/products/6542141194318"
-      />
+      {trendingProducts && (
+        <ProductsCarousel
+          products={trendingProducts}
+          title="Today's Top Picks"
+          subTitle="Indulge in luxurious new and best selling collections."
+          onSelectProduct={(product) => navigate(`/products/${product.handle}`)}
+        />
+      )}
+      {innerCircleSubscriptionProduct && innerCircleMembershipProduct && (
+        <InnerCircleExclusive
+          product={innerCircleSubscriptionProduct}
+          membershipProductVariants={innerCircleMembershipProduct.variants}
+          slideImages={[
+            'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/home-banner-img-1-dt.jpg',
+            'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/shop-by-product-img-2.jpg',
+            'https://i.ebayimg.com/images/g/XOYAAOSwpjxgy3-1/s-l500.jpg',
+          ]}
+          title="Get addicted to me-time"
+          subTitle="Join the Inner Circle for exciting new collections every month, available exclusively to members."
+          topButtonText="Get Started"
+          buttonLink={`/products/${innerCircleSubscriptionProduct.handle}`}
+          onReserve={(variant) => {
+            addCartItem(variant.variant_id)
+              .then(() => trackAddedToCart(innerCircleSubscriptionProduct))
+              .then(() => navigate('/cart'))
+          }}
+        />
+      )}
       <InformationOverview
         title="The most fun you've ever had relaxing"
         titleUnderline="most fun"

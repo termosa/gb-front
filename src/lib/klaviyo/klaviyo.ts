@@ -3,10 +3,7 @@ import window from '../window'
 import initiateKlaviyo, { KlaviyoCommand } from '../initiate-klaviyo'
 
 export function klaviyo(...command: KlaviyoCommand): Promise<void> {
-  if (!window) {
-    log('Klaviyo cannot be executed on server side')
-    return Promise.reject()
-  }
+  if (!window) return Promise.resolve()
 
   return initiateKlaviyo()
     .then((klaviyo) => {

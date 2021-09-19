@@ -1,7 +1,7 @@
 import React from 'react'
-import DropAHint from 'src/lib/drop-a-hint'
+import DropAHint from '../../lib/drop-a-hint'
 import styled, { css } from 'styled-components'
-import { useScreenSize } from '../../lib/use-screen-size'
+import useScreenSize from '../../lib/use-screen-size'
 import { Product } from '../../modules/normalize-product'
 
 const SModalButtonsWrapper = styled.div`

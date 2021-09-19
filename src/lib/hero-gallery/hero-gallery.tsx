@@ -4,6 +4,8 @@ import styled from 'styled-components'
 import Button from '../../lib/button'
 import { Slider } from '../slider'
 
+const DEFAULT_BACKGROUND_IMAGE = 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/home-banner-img-1-dt.jpg'
+
 const SliderWrapper = styled.div`
   * {
     box-sizing: border-box;
@@ -204,9 +206,7 @@ export function HeroGallery({ className, style, slides }: HeroGalleryProps): Rea
         {slides.map((slide: GalleryItem) => (
           <Slide
             key={`${slide.buttonLink}${slide.backgroundImg}${slide.buttonText}`}
-            backgroundImg={
-              slide.backgroundImg || 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/home-banner-img-1-dt.jpg'
-            }
+            backgroundImg={slide.backgroundImg || DEFAULT_BACKGROUND_IMAGE}
           >
             <SlideContent>
               <SlidePreTitle>{slide.topText}</SlidePreTitle>

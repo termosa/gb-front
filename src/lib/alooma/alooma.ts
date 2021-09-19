@@ -3,10 +3,7 @@ import window from '../window'
 import initiateAlooma from '../initiate-alooma'
 
 export function alooma(eventName: string, eventProperties: Record<string, unknown> = {}): Promise<void> {
-  if (!window) {
-    log('Alooma cannot be executed on server side')
-    return Promise.reject()
-  }
+  if (!window) return Promise.resolve()
 
   return initiateAlooma()
     .then((alooma) => {
