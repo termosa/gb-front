@@ -3,10 +3,10 @@ import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
 import { ProductImage } from '../../modules/normalize-product-image'
 import window from '../../lib/window/window'
-import { useScreenSize } from '../../lib/use-screen-size'
+import useScreenSize from '../../lib/use-screen-size'
 import { Product as ProductType } from '../../modules/normalize-product'
 import ProductContext from '../../modules/product-context'
-import { Slider } from '../../lib/slider'
+import Slider from '../../lib/slider'
 import Carousel from 'react-multi-carousel'
 import Image from '../../lib/image'
 
@@ -238,9 +238,7 @@ export function VerticalGallery({ className }: VerticalGalleryProps): React.Reac
                       key={image.src}
                       isActive={activeGalleryItem === i}
                       onClick={() => {
-                        if (!product.images) {
-                          return
-                        }
+                        if (!product.images) return
                         const heightOfImages = product.images.reduce(
                           (prev: number, curr: ProductImage, index: number) => {
                             return index < i ? prev + getImageHeight(curr) : prev
@@ -256,7 +254,7 @@ export function VerticalGallery({ className }: VerticalGalleryProps): React.Reac
                     >
                       <Image
                         src={image?.src}
-                        alt={image?.alt || ''}
+                        alt={image?.alt}
                         shopifySize={screenSize.greaterThanMedium ? 'medium' : 'compact'}
                       />
                     </SCarouselIconsItem>
@@ -272,7 +270,7 @@ export function VerticalGallery({ className }: VerticalGalleryProps): React.Reac
                   >
                     <Image
                       src={image?.src}
-                      alt={image?.alt || ''}
+                      alt={image?.alt}
                       width={`${galleryImageWidth}px`}
                       height={`${getImageHeight(image)}px`}
                     />

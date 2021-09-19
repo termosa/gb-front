@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
 import { useMediaPredicate } from 'react-media-hook'
-import { SigninSignup } from '../signin-signup'
+import SigninSignup from '../signin-signup'
 import useCart from '../../lib/use-cart'
 
 export type NavIconsProps = {

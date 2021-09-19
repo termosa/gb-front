@@ -2,8 +2,8 @@ import React from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
 import InformationCard from '../../components/information-card'
-import { Slider } from '../slider'
-import { useScreenSize } from '../use-screen-size'
+import Slider from '../slider'
+import useScreenSize from '../use-screen-size'
 
 export type { InformationCard }
 

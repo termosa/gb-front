@@ -2,7 +2,7 @@ import React from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
 import Button from '../../lib/button'
-import { Slider } from '../slider'
+import Slider from '../slider'
 
 const DEFAULT_BACKGROUND_IMAGE = 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/home-banner-img-1-dt.jpg'
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Slider } from '../../lib/slider'
+import Slider from '../../lib/slider'
 
 const PromoWrapper = styled.div`
   * {

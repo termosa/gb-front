@@ -6,7 +6,7 @@ import formatPrice from '../../modules/format-price'
 import getLabel from '../../modules/get-label'
 import StarRating from '../../lib/star-rating'
 import Image from '../../lib/image'
-import { useScreenSize } from '../../lib/use-screen-size'
+import useScreenSize from '../../lib/use-screen-size'
 
 export type ProductCardProps = {
   className?: ClassName
@@ -258,7 +258,7 @@ export function ProductCard({ className, style, product, onClick }: ProductCardP
             {product.image && (
               <Image
                 src={product.image.src}
-                alt={product.image?.alt || ''}
+                alt={product.image?.alt}
                 draggable={false}
                 shopifySize={screenSize.greaterThanMedium ? 'medium' : 'compact'}
               />

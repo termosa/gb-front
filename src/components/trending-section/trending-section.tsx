@@ -3,9 +3,9 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 import cn, { Argument as ClassName } from 'classnames'
 import { Product } from '../../modules/normalize-product'
-import { Slider } from '../../lib/slider'
+import Slider from '../../lib/slider'
 import Image from '../../lib/image'
-import { useScreenSize } from '../../lib/use-screen-size'
+import useScreenSize from '../../lib/use-screen-size'
 
 export type { Product } from '../../modules/normalize-product'
 
@@ -349,7 +349,8 @@ const ProductCardWrapper = styled.div`
 
 const ProductCard = ({ product, onClick }: { product: Product; onClick: () => void }) => {
   const screenSize = useScreenSize()
-  return product.image ? (
+  if (!product.image) return null
+  return (
     <ProductCardWrapper onClick={onClick}>
       <SProductCard>
         <div>
@@ -358,7 +359,7 @@ const ProductCard = ({ product, onClick }: { product: Product; onClick: () => vo
               {product.image && (
                 <Image
                   src={product.image.src}
-                  alt={product.image?.alt || ''}
+                  alt={product.image.alt}
                   draggable={false}
                   shopifySize={screenSize.greaterThanMedium ? 'medium' : 'compact'}
                 />
@@ -433,7 +434,7 @@ const ProductCard = ({ product, onClick }: { product: Product; onClick: () => vo
         </div>
       </SProductCard>
     </ProductCardWrapper>
-  ) : null
+  )
 }
 
 export const TrendingSection = ({ products, className, onSelectProduct }: TrendingSectionProps): React.ReactElement => {

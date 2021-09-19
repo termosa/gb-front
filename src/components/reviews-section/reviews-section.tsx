@@ -2,8 +2,8 @@ import React from 'react'
 
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
-import { Slider } from '../../lib/slider'
-import { useScreenSize } from '../../lib/use-screen-size'
+import Slider from '../../lib/slider'
+import useScreenSize from '../../lib/use-screen-size'
 
 export interface ReviewsSectionProps extends Omit<React.HTMLProps<HTMLDivElement>, 'className'> {
   className?: ClassName

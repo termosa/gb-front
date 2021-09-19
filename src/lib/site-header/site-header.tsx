@@ -8,10 +8,9 @@ import SigninSignup from '../../components/signin-signup'
 import PointsWidget from '../../components/points-widget'
 import NavIcons from '../../components/nav-icons'
 import NavMobile from '../../components/nav-mobile'
-
 import { ProductsChunk } from '../../modules/normalize-products-chunk'
 import useCustomerOrdersDetails from '../use-customer-orders-details'
-import { useScreenSize } from '../use-screen-size'
+import useScreenSize from '../use-screen-size'
 
 const SWrapper = styled.div`
   text-align: center;

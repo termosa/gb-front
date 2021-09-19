@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import { ShopByProductCard, ShopByProductCardProps } from '../shop-by-product-card'
-import { Slider } from '../../lib/slider'
-import { useScreenSize } from '../../lib/use-screen-size'
+import ShopByProductCard, { ShopByProductCardProps } from '../shop-by-product-card'
+import Slider from '../../lib/slider'
+import useScreenSize from '../../lib/use-screen-size'
 
 export type ProductDetails = ShopByProductCardProps
 export type ShopByProductsOverviewProps = {

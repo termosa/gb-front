@@ -1,7 +1,7 @@
 import React from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
-import { useScreenSize } from '../use-screen-size'
+import useScreenSize from '../use-screen-size'
 
 const Wrapper = styled.div<{ backgroundImg?: string }>`
   background: ${(props) => (props.backgroundImg ? `url(${props.backgroundImg}) center center no-repeat` : '')};

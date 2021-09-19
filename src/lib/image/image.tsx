@@ -1,14 +1,14 @@
 import NextImage from 'next/image'
 import styled from 'styled-components'
-import React from 'react'
+import React, { useMemo } from 'react'
 
 type ImageProps = {
   src: string
-  alt: string
+  alt?: string
   size?: string
   width?: string
   height?: string
-  shopifySize?: string
+  shopifySize?: 'pico' | 'icon' | 'thumb' | 'small' | 'compact' | 'medium' | 'large' | 'grande'
   draggable?: boolean
 }
 
@@ -22,13 +22,23 @@ const SImageContainer = styled.figure<{
 `
 
 export const Image = ({ src, alt, size, width, height, shopifySize, draggable }: ImageProps): React.ReactElement => {
-  const arr = src.split('.')
-  const lastVal = arr.pop()
-  const firstVal = arr.join('.')
+  const imagePatchedSrc = useMemo<string>(() => {
+    if (!shopifySize) return src
+    try {
+      const url = new URL(src)
+      if (!~url.pathname.indexOf('.')) return src
+      const pathParts = url.pathname.split('.')
+      pathParts[pathParts.length - 2] += `_${shopifySize}`
+      url.pathname = pathParts.join('.')
+      return url.toString()
+    } catch (error) {
+      return src
+    }
+  }, [src, shopifySize])
   return (
     <SImageContainer size={size} width={width} height={height}>
       <NextImage
-        src={shopifySize ? `${firstVal}_${shopifySize}.${lastVal}` : src}
+        src={imagePatchedSrc}
         alt={alt}
         draggable={draggable}
         width="100%"
