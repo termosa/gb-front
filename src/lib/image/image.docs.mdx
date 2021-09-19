@@ -1,0 +1,42 @@
+import Image from '.'
+
+export const meta = {
+  type: 'component',
+  name: 'Image',
+  description: 'Wrapper for image lazy loading',
+  tags: ['component'],
+  preview: <Image>Component content here</Image>,
+  lists: {
+    attributes: [
+      { name: 'src', required: true, type: 'string', description: 'Image path' },
+      { name: 'alt', required: true, type: 'string', description: 'Image description' },
+      { name: 'size', type: 'string', description: 'Parameter for rectangle images' },
+      { name: 'width', type: 'string', description: 'Image width' },
+      { name: 'height', type: 'string', description: 'Image height' },
+      { name: 'shopifySize', type: 'string', description: 'Label that we use in img url to get suitable resolution' },
+      { name: 'draggable', type: 'boolean', description: 'Is image draggable' },
+    ],
+  },
+  scope: { Image },
+}
+
+## Usage
+
+```jsx
+<p>Resize the screen to see prefixes in action</p>
+<Image src={'https://cdn.shopify.com/s/files/1/0548/5721/products/under_the_sea_scrub_comp.png?v=1618003149'}
+       alt={''}
+       draggable={false}
+       shopifySize={screenSize.greaterThanMedium ? 'medium' : 'compact'}
+/>
+```
+
+## Playground
+
+```jsx live
+<Image src={'https://cdn.shopify.com/s/files/1/0548/5721/products/under_the_sea_scrub_comp.png?v=1618003149'}
+       alt={''}
+       draggable={false}
+       shopifySize={screenSize.greaterThanMedium ? 'medium' : 'compact'}
+/>
+```

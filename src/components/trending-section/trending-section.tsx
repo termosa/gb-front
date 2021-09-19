@@ -4,6 +4,8 @@ import styled, { css } from 'styled-components'
 import cn, { Argument as ClassName } from 'classnames'
 import { Product } from '../../modules/normalize-product'
 import { Slider } from '../../lib/slider'
+import Image from '../../lib/image'
+import { useScreenSize } from '../../lib/use-screen-size'
 
 export type { Product } from '../../modules/normalize-product'
 
@@ -345,14 +347,22 @@ const ProductCardWrapper = styled.div`
   }
 `
 
-const ProductCard = ({ product, onClick }: { product: Product; onClick: () => void }) =>
-  product.image ? (
+const ProductCard = ({ product, onClick }: { product: Product; onClick: () => void }) => {
+  const screenSize = useScreenSize()
+  return product.image ? (
     <ProductCardWrapper onClick={onClick}>
       <SProductCard>
         <div>
           <ProductCardImgWrapper>
             <ProductCardImgWrapperInner>
-              <img src={product.image.src} alt={product.image?.alt} />
+              {product.image && (
+                <Image
+                  src={product.image.src}
+                  alt={product.image?.alt || ''}
+                  draggable={false}
+                  shopifySize={screenSize.greaterThanMedium ? 'medium' : 'compact'}
+                />
+              )}
             </ProductCardImgWrapperInner>
           </ProductCardImgWrapper>
           <ProductCardTag>925 Sterling Silver</ProductCardTag>
@@ -424,6 +434,7 @@ const ProductCard = ({ product, onClick }: { product: Product; onClick: () => vo
       </SProductCard>
     </ProductCardWrapper>
   ) : null
+}
 
 export const TrendingSection = ({ products, className, onSelectProduct }: TrendingSectionProps): React.ReactElement => {
   return (

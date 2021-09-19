@@ -34,6 +34,9 @@ module.exports = (phase) => {
       BASE_API_URL: process.env.BASE_API_URL,
       CLIENT_API_URL: process.env.CLIENT_API_URL,
     },
+    images: {
+      domains: ['cdn.shopify.com'],
+    },
     webpack(config) {
       config.module.rules.push({
         test: /\.svg$/,
