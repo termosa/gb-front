@@ -185,8 +185,8 @@ export function ReviewsSection({ quote, author, className }: ReviewsSectionProps
               {/*  ? images.map((media, index) => <img src={media} alt="company" key={`revImage${index}`} />)*/}
               {/*  : TEST_IMAGES.map((media, index) => <img src={media} alt="company" key={`revImage${index}`} />)}*/}
               {TEST_IMAGES.map((media, index) => (
-                <SCompanyImageContainer>
-                  <img src={media} alt="company" key={`revImage${index}`} />
+                <SCompanyImageContainer key={`${media}${index}`}>
+                  <img src={media} alt="company" />
                 </SCompanyImageContainer>
               ))}
             </Slider>
