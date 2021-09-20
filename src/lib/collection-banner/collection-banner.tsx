@@ -95,7 +95,7 @@ const collectionsBanner: CollectionBanner[] = [
     backgroundImage: 'https://fragrantjewels-assets.s3.amazonaws.com/images/banners-2/bb-banner-2-dt.jpg',
     title: 'Bath bombs',
     description: `Love your skin and it’ll love you back. Each bath bomb is packed with soothing shea butter and (surprise!) a stunning limited-edition ring.`,
-    styleDescriptionDesktop: { color: '#000', fontWeight: 100 },
+    styleDescriptionDesktop: { color: '#000', fontWeight: 400 },
   },
   {
     handle: 'all-products',
@@ -103,7 +103,7 @@ const collectionsBanner: CollectionBanner[] = [
     backgroundImage: 'https://fragrantjewels-assets.s3.amazonaws.com/images/banners-2/all-banner-2-dt.jpg',
     title: 'Shop Everything',
     description: `Add a little calm to the chaos of life with our scented candles, bath bombs and sugar scrubs-discover limited-edition jewelry in each product!`,
-    styleDescriptionDesktop: { color: '#fff', fontWeight: 100 },
+    styleDescriptionDesktop: { color: '#fff', fontWeight: 400 },
     styleTitleDesktop: { color: '#fff' },
   },
   {
@@ -113,7 +113,7 @@ const collectionsBanner: CollectionBanner[] = [
     title: 'Body Scrubs',
     description: `Exfoliate your dry skin with our scented sugar scrubs. You'll step out of the shower with an added glow, soft skin and a stunning new ring.`,
     styleTitleDesktop: { color: '#000' },
-    styleDescriptionDesktop: { color: '#000', fontWeight: 100 },
+    styleDescriptionDesktop: { color: '#000', fontWeight: 400 },
   },
   {
     handle: 'discover-your-birthstone',
@@ -123,7 +123,7 @@ const collectionsBanner: CollectionBanner[] = [
     title: 'Birthstone',
     description: `These candles and bath bombs make for the perfect gift — It’s two surprises in one!`,
     styleTitleDesktop: { color: '#000' },
-    styleDescriptionDesktop: { color: '#000', fontWeight: 100 },
+    styleDescriptionDesktop: { color: '#000', fontWeight: 400 },
   },
   {
     handle: 'fantasy',
@@ -133,7 +133,7 @@ const collectionsBanner: CollectionBanner[] = [
     title: 'Fantasy Faves',
     description: `Escape to another world with our best selling fantasy collections.`,
     styleTitleDesktop: { color: '#fff' },
-    styleDescriptionDesktop: { fontWeight: 100 },
+    styleDescriptionDesktop: { fontWeight: 400 },
   },
   {
     handle: 'gift-sets',
@@ -142,7 +142,7 @@ const collectionsBanner: CollectionBanner[] = [
     backgroundImage: 'https://fragrantjewels-assets.s3.amazonaws.com/images/banners-2/bundle-and-save-banner-dt.jpg',
     title: 'Bundle & Save',
     description: `Get the full experience and best value when you shop bundles. You’re guaranteed to get a unique ring design inside each product!`,
-    styleDescriptionDesktop: { color: '#000', fontWeight: 100 },
+    styleDescriptionDesktop: { color: '#000', fontWeight: 400 },
   },
   {
     handle: 'jewel-candles',
@@ -150,7 +150,7 @@ const collectionsBanner: CollectionBanner[] = [
     backgroundImage: 'https://fragrantjewels-assets.s3.amazonaws.com/images/banners-2/candles-banner-dt.jpg',
     title: 'Jewel Candles',
     description: `Each scented candle burns clean and will transport you to a different world with rich aromas—strong enough to fill any room!`,
-    styleDescriptionDesktop: { color: '#000', fontWeight: 100 },
+    styleDescriptionDesktop: { color: '#000', fontWeight: 400 },
   },
   {
     handle: 'satin',
@@ -160,7 +160,7 @@ const collectionsBanner: CollectionBanner[] = [
     description: `Inside each candle, you'll discover 1 of 10 beautifully designed rings featuring a Swarovski®️ crystal birthstone. Collect all 10 for yourself or save them for the perfect decadent birthday gift.`,
     styleTitleDesktop: { color: '#ee67a0' },
     onlyDesktop: true,
-    styleDescriptionDesktop: { color: '#000', fontWeight: 100 },
+    styleDescriptionDesktop: { color: '#000', fontWeight: 400 },
   },
   {
     handle: 'spooky',
@@ -168,7 +168,7 @@ const collectionsBanner: CollectionBanner[] = [
     backgroundImage: 'https://fragrantjewels-assets.s3.amazonaws.com/images/banners-2/col-halloween-2-dt.jpg',
     title: '',
     description: `Feast your eyes on some of the most spook-tacular collections we've created. Stock up on these fall and wicked products before they disappear...`,
-    styleDescriptionDesktop: { color: '#fff', fontWeight: 100 },
+    styleDescriptionDesktop: { color: '#fff', fontWeight: 400 },
   },
   {
     handle: 'summer-collection',
@@ -177,7 +177,7 @@ const collectionsBanner: CollectionBanner[] = [
     backgroundImage: 'https://fragrantjewels-assets.s3.amazonaws.com/images/banners-2/top-summer-picks-banner-2-dt.jpg',
     title: 'Top Summer Picks',
     description: `Get your skin and home summertime ready with these refreshing summer scents, plus must-have ring styles.`,
-    styleDescriptionDesktop: { color: '#000', fontWeight: 100 },
+    styleDescriptionDesktop: { color: '#000', fontWeight: 400 },
   },
   {
     handle: 'the-jewelry-store',
@@ -186,7 +186,7 @@ const collectionsBanner: CollectionBanner[] = [
     title: 'Jewelry',
     description: `Surprises are great, but sometimes you simply need that one jewel. Find that perfect design in our jewelry shop.`,
     styleTitleDesktop: { color: '#ffffff' },
-    styleDescriptionDesktop: { color: '#ffffff', fontWeight: 100 },
+    styleDescriptionDesktop: { color: '#ffffff', fontWeight: 400 },
   },
   {
     handle: 'zodiac-collection-1',
@@ -234,7 +234,7 @@ export function CollectionBanner({ handle, className, style }: CollectionBannerP
         </CollectionMobileDescription>
       </>
     ) : (
-      <Wrapper className={cn(className)} style={style} backgroundImg={bannerCollection.compactBackgroundImage}>
+      <Wrapper className={cn(className)} style={style} backgroundImg={bannerCollection.backgroundImage}>
         <CollectionBannerWrapper>
           <CollectionTitle style={bannerCollection.styleTitleDesktop}>{bannerCollection.title}</CollectionTitle>
           <CollectionDescription style={bannerCollection.styleDescriptionDesktop}>
