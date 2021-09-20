@@ -35,7 +35,7 @@ module.exports = (phase) => {
       CLIENT_API_URL: process.env.CLIENT_API_URL,
     },
     images: {
-      domains: ['cdn.shopify.com'],
+      domains: ['cdn.shopify.com', '//www.fragrantjewels.com', 'fragrantjewels.com', 'www.fragrantjewels.com'],
     },
     webpack(config) {
       config.module.rules.push({
