@@ -261,7 +261,6 @@ export function ProductCard({ className, style, product, onClick }: ProductCardP
                 alt={product.image?.alt}
                 draggable={false}
                 shopifySize={screenSize.greaterThanMedium ? 'medium' : 'compact'}
-                layout={'responsive'}
               />
             )}
           </ProductCardImgWrapperInner>

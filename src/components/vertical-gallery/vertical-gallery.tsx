@@ -317,8 +317,6 @@ export function VerticalGallery({ className }: VerticalGalleryProps): React.Reac
                         src={product.images && image?.src}
                         alt={(product.images && image?.alt) || ''}
                         shopifySize={'small'}
-                        layout={'responsive'}
-                        objectFit={'contain'}
                       />
                     )}
                   </SCarouselThumbnailItem>

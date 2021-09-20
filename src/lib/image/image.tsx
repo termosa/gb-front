@@ -1,4 +1,3 @@
-import NextImage from 'next/image'
 import styled from 'styled-components'
 import React, { useMemo } from 'react'
 import cn, { Argument as ClassName } from 'classnames'
@@ -12,8 +11,6 @@ type ImageProps = {
   height?: string
   shopifySize?: 'pico' | 'icon' | 'thumb' | 'small' | 'compact' | 'medium' | 'large' | 'grande'
   draggable?: boolean
-  layout?: 'fill' | 'fixed' | 'intrinsic' | 'responsive' | undefined
-  objectFit?: 'fill' | 'initial' | 'revert' | 'unset' | 'contain' | 'cover' | 'scale-down' | undefined
 }
 
 const SImageContainer = styled.figure`
@@ -31,8 +28,6 @@ export function Image({
   height,
   shopifySize,
   draggable,
-  layout,
-  objectFit,
 }: ImageProps): React.ReactElement {
   const imagePatchedSrc = useMemo<string>(() => {
     if (!shopifySize) return src
@@ -49,15 +44,7 @@ export function Image({
   }, [src, shopifySize])
   return (
     <SImageContainer className={cn(className)} style={style}>
-      <NextImage
-        src={imagePatchedSrc}
-        alt={alt}
-        draggable={draggable}
-        width={width || '100%'}
-        height={height || '100%'}
-        layout={layout ? layout : undefined}
-        objectFit={objectFit ? 'cover' : 'contain'}
-      />
+      <img src={imagePatchedSrc} alt={alt} draggable={draggable} width={width || '100%'} height={height || '100%'} />
     </SImageContainer>
   )
 }
