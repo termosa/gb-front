@@ -160,7 +160,7 @@ export function SearchField({ className, onSearch, searchedProducts }: SearchFie
               {product.title}
             </SSearchedProductLink>
           ))}
-          {searchedProducts.totalAmount > searchedProducts.products.length ? (
+          {searchedProducts.products && searchedProducts.totalAmount > searchedProducts.products.length ? ( // TODO: Maybe no need to check presence searchedProducts.products
             <SSearchedProductLink
               href={`/search?type=product&q=${searchInputRef.current?.value || ''}`}
               underline
