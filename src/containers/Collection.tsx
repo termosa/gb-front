@@ -15,7 +15,6 @@ const SFiltersSection = styled(SiteSection)`
 
 const Collection = (): null | React.ReactElement => {
   const collection = useContext(CollectionContext)
-
   const [filter, setFilter] = useState<CollectionProductsFilter | null>(null)
   const [sorting, setSorting] = useState<SelectedSorting>(SelectedSorting.NEW)
 
@@ -40,7 +39,7 @@ const Collection = (): null | React.ReactElement => {
 
   return (
     <div>
-      <CollectionBanner />
+      <CollectionBanner handle={collection.handle} />
       <SFiltersSection>
         <CollectionFilters
           onChangeFilter={setFilter}
