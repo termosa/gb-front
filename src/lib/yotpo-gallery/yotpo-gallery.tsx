@@ -1,8 +1,8 @@
 import React from 'react'
 import cn, { Argument as ClassName } from 'classnames'
-import useYotpo from '../use-yotpo'
 import styled from 'styled-components'
-import SiteSection from 'src/components/site-section'
+import useYotpo from '../use-yotpo'
+import SiteSection from '../../components/site-section'
 
 const Container = styled(SiteSection)`
   max-width: 970px;

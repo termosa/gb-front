@@ -20,7 +20,7 @@ export function YotpoReviews({
   productTitle,
   productUrl,
   productImageUrl,
-}: YotpoReviewsProps): React.ReactElement {
+}: YotpoReviewsProps): null | React.ReactElement {
   // TODO: check if it still needed to hide reviews when they are empty
   // const [visible, setVisibility] = useState(false)
   // useEffect(() => {
@@ -39,13 +39,14 @@ export function YotpoReviews({
 
   const product = useContext(ProductContext)
   useYotpo([product, productId, productTitle, productUrl, productImageUrl])
+  if (!productId && !product) return null
   return (
     <div
       className={cn(className, 'yotpo', 'yotpo-main-widget')}
       style={style}
       data-product-id={productId || product?.product_id}
       data-name={productTitle || product?.title}
-      data-url={productUrl || `${window?.location.origin || ''}/products/${product?.handle}`}
+      data-url={productUrl || `${window?.location.origin || ''}/products/${product?.handle || productId}`}
       data-image-url={productImageUrl || product?.image?.src}
     />
   )

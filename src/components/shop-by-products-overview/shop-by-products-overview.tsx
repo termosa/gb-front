@@ -24,24 +24,35 @@ const SSection = styled.section`
 `
 
 const SContainer = styled.div`
-  max-width: 990px;
   padding: 0 15px;
   margin: 0 auto;
-  @media (min-width: 768px) {
-    padding: 0 30px;
-    max-width: 1020px;
-  }
+  overflow: inherit;
 
-  .react-multi-carousel-item {
-    margin-bottom: 24px;
+  .react-multi-carousel-list {
+    max-width: 334px;
+    margin: 0 auto;
+    padding-bottom: 24px;
+    position: relative;
+
+    @media (min-width: 375px) {
+      max-width: 346px;
+    }
+
+    @media (min-width: 768px) {
+      max-width: 990px;
+    }
   }
 `
 
 const SCardsBlockTitle = styled.h2`
-  font: 700 40px/1.2 'Cormorant Garamond', serif;
+  font: 700 32px/1.2 'Cormorant Garamond', serif;
   letter-spacing: -0.02em;
   text-align: center;
   margin: 0 auto 20px;
+
+  @media (min-width: 768px) {
+    font-size: 40px;
+  }
 `
 
 const SliderWrapper = styled.div`
@@ -49,10 +60,9 @@ const SliderWrapper = styled.div`
     box-sizing: border-box;
   }
 
-  @media (min-width: 992px) {
+  @media (min-width: 768px) {
     display: flex;
     justify-content: center;
-    margin: 0 -16px;
   }
 `
 
@@ -70,15 +80,7 @@ const SArrow = styled.div`
 `
 
 const SPrevArrow = styled(SArrow)`
-  left: 7px;
-
-  @media (min-width: 481px) {
-    left: 75px;
-  }
-
-  @media (min-width: 600px) {
-    left: 125px;
-  }
+  left: -15px;
 
   button {
     transform: translateX(5px) rotate(45deg);
@@ -86,15 +88,7 @@ const SPrevArrow = styled(SArrow)`
 `
 
 const SNextArrow = styled(SArrow)`
-  right: 7px;
-
-  @media (min-width: 481px) {
-    right: 75px;
-  }
-
-  @media (min-width: 600px) {
-    right: 125px;
-  }
+  right: -15px;
 
   button {
     transform: translateX(-5px) rotate(-135deg);
@@ -122,7 +116,7 @@ export function ShopByProductsOverview({ products, title }: ShopByProductsOvervi
       <SContainer>
         <SCardsBlockTitle>{title}</SCardsBlockTitle>
         <SliderWrapper>
-          {screenSize.greaterThanLarge ? (
+          {screenSize.greaterThanMedium ? (
             products &&
             products.map((product) => (
               <ShopByProductCard

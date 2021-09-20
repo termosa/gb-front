@@ -8,7 +8,7 @@ const SImageContainer = styled.div`
   user-select: none;
 
   input[type='range'] {
-    -webkit-appearance: none;
+    appearance: none;
   }
 
   .react-multi-carousel-list {
@@ -24,7 +24,7 @@ const SImageContainer = styled.div`
   }
 
   input[type='range']::-webkit-slider-thumb {
-    -webkit-appearance: none;
+    appearance: none;
     border: none;
     height: 5px;
     width: 15%;

@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import usePopper from '../../hooks/use-popper'
 import useOnClickOutside from '../../hooks/use-on-click-outside'
 import { CollectionProductsFilter } from '../../modules/filter-collection-products'
+import alooma from '../../lib/alooma'
 
 export { filterCollectionProducts } from '../../modules/filter-collection-products'
 export type { CollectionProductsFilter } from '../../modules/filter-collection-products'
@@ -384,7 +385,12 @@ export const CollectionFilters = ({
   })
 
   const [isSortDropdownOpened, setIsSortDropdownOpened] = useState(false)
-  const [isFiltersDropdownOpened, setIsFiltersDropdownOpened] = useState(false)
+  const [isFiltersDropdownOpened, setIsFiltersDropdownOpened] = useState<boolean>()
+
+  useEffect(() => {
+    if (typeof isFiltersDropdownOpened !== 'undefined')
+      alooma(isFiltersDropdownOpened ? 'dropdown opened' : 'dropdown closed')
+  }, [isFiltersDropdownOpened])
 
   const [selectedFilters, setSelectedFilters] = useState<CollectionProductsFilter>(createEmptyFilter)
 
@@ -392,6 +398,7 @@ export const CollectionFilters = ({
     const selectedFilterName = filters[filterGroup].find((filter) => filter.name === filterName)?.name
     if (!selectedFilterName) return
 
+    alooma(`${filterGroup.slice(0, -1)} ${enabled ? 'selected' : 'unselected'}`, { details: `choice: ${filterName}` }) // TODO: Stop slicing
     setSelectedFilters({
       ...selectedFilters,
       [filterGroup]: enabled
@@ -418,6 +425,11 @@ export const CollectionFilters = ({
     setSelectedSorting(sorting)
     onChangeSorting(sorting)
     setIsSortDropdownOpened(false)
+  }
+
+  const handleClearing = () => {
+    alooma('clear filters')
+    setSelectedFilters(createEmptyFilter())
   }
 
   return (
@@ -564,7 +576,7 @@ export const CollectionFilters = ({
             </SFilterGroup>
           )}
           <SFilterMobileControlButtonsGroup>
-            <SClearFiltersButton mobile onClick={() => setSelectedFilters(createEmptyFilter())}>
+            <SClearFiltersButton mobile onClick={handleClearing}>
               Clear All
             </SClearFiltersButton>
             <SFilterControlButtonsGroupLabel>Refine</SFilterControlButtonsGroupLabel>
@@ -583,7 +595,7 @@ export const CollectionFilters = ({
               </SSelectedFilter>
             ))}
           </SSelectedFilters>
-          <SClearFiltersButton onClick={() => setSelectedFilters(createEmptyFilter())}>Clear All</SClearFiltersButton>
+          <SClearFiltersButton onClick={handleClearing}>Clear All</SClearFiltersButton>
         </SFilterDesktopControlButtonsGroup>
       )}
     </SCollectionFiltersContainer>

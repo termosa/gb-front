@@ -5,15 +5,15 @@ import Button from '../../lib/button'
 
 const SCol = styled.div`
   @media (min-width: 768px) {
-    margin: 0 auto 92px;
+    margin: 0 auto 26px;
   }
 `
 
 const SLayout = styled.div`
   position: relative;
   max-width: 463px;
-  margin: 0 auto;
-  padding: 16px 0;
+  margin: 0 auto 50px;
+  // padding: 16px 0;
   @media (min-width: 768px) {
     padding: 0;
   }
@@ -34,7 +34,7 @@ const SContent = styled.div`
   box-sizing: border-box;
   width: 86%;
   position: absolute;
-  bottom: 24px;
+  bottom: 40px;
   margin: 7%;
   left: 0;
   font: 16px/24px 'Montserrat', sans-serif;
@@ -45,10 +45,7 @@ const SContent = styled.div`
 
 const STitle = styled.span`
   display: block;
-  margin: 0 0 10px;
-  @media (min-width: 768px) {
-    margin: 0 0 13px;
-  }
+  margin: 0 0 15px;
   position: relative;
   font: 700 32px/1 'Cormorant Garamond', serif;
   letter-spacing: -0.02em;
