@@ -20,9 +20,9 @@ const Group = styled.div<{ mobile?: boolean }>`
   padding: 0;
   color: #fff;
   font: 400 14px/1.5 'Montserrat', sans-serif;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.7px;
 
-  @media (min-width: 375px) {
+  @media (min-width: 992px) {
     padding: 0 10px;
   }
   ${(props) =>
@@ -38,12 +38,16 @@ const Group = styled.div<{ mobile?: boolean }>`
 
 const Title = styled.div<{ mobile?: boolean }>`
   font: 500 14px/1.5 'Montserrat', sans-serif;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.7px;
   text-transform: uppercase;
-  padding: 0 0 17px;
-  margin: 0 0 13px;
+  padding: 14px 0;
   border-bottom: 1px solid #949494;
   position: relative;
+
+  @media (min-width: 992px) {
+    padding: 0 0 17px;
+    margin: 0 0 13px;
+  }
 
   ${(props) =>
     props.mobile
@@ -72,6 +76,15 @@ const Link = styled.a`
   color: #fff;
   text-decoration: none;
   padding: 5px 0 13px 0;
+
+  @media (max-width: 991px) {
+    &:first-child {
+      padding: 13px 0 13px 0;
+    }
+    &:last-child {
+      padding: 5px 0 20px 0;
+    }
+  }
 
   &:hover {
     text-shadow: -0.06ex 0 #fff, 0.06ex 0 #fff;

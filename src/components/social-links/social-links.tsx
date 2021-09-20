@@ -18,7 +18,7 @@ const SocialLinksContainer = styled.main`
 
 const Title = styled.div`
   font: 600 14px/1.5 'Montserrat', sans-serif;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.7px;
   display: none;
   text-transform: uppercase;
   padding: 16px 0;
@@ -33,7 +33,6 @@ const Title = styled.div`
 `
 
 const SocialLinksList = styled.div`
-  margin: 0 -3px;
   padding: 2px 0 5px;
   list-style: none;
   display: -webkit-box;
@@ -49,7 +48,11 @@ const SocialLinksList = styled.div`
   }
 
   li {
-    margin: 0 10px 27px;
+    margin: 0 14px 27px;
+
+    @media (min-width: 992px) {
+      margin: 0 10px 27px;
+    }
 
     &:first-child {
       margin-left: 0;
@@ -60,13 +63,9 @@ const SocialLinksList = styled.div`
     }
   }
 
-  @media (min-width: 375px) {
-    margin: 0 -5px;
-  }
-
   @media (min-width: 992px) {
     justify-content: flex-start;
-    padding: 10px 0;
+    padding: 5px 0;
   }
 `
 
