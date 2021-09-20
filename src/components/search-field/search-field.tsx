@@ -1,11 +1,12 @@
 import React, { useRef, useState, FormEvent, useMemo } from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
+import debounce from 'lodash/debounce'
 import usePopper from '../../hooks/use-popper'
 import useOnClickOutside from '../../hooks/use-on-click-outside'
 import { ProductsChunk } from '../../modules/normalize-products-chunk'
 import navigate from '../../lib/navigate'
-import debounce from 'lodash/debounce'
+import alooma from '../../lib/alooma'
 
 export type SearchFieldProps = {
   className?: ClassName
@@ -95,7 +96,9 @@ export function SearchField({ className, onSearch, searchedProducts }: SearchFie
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    navigate(`/search?type=product&q=${searchInputRef.current?.value || ''}`)
+    const value = searchInputRef.current?.value || ''
+    alooma('search_form_submitted', { value })
+    navigate(`/search?type=product&q=${value}`)
   }
 
   const handleChange = useMemo(
@@ -143,12 +146,26 @@ export function SearchField({ className, onSearch, searchedProducts }: SearchFie
           {...attributes.popper}
         >
           {searchedProducts.products?.map((product) => (
-            <SSearchedProductLink key={product.product_id} href={`/products/${product.product_id}`}>
+            <SSearchedProductLink
+              key={product.product_id}
+              href={`/products/${product.product_id}`}
+              onClick={() =>
+                alooma('search_form_link', {
+                  value: searchInputRef.current?.value || '',
+                  title: product.title,
+                  link: `https://www.fragrantjewels.com/products/${product.handle}`,
+                })
+              }
+            >
               {product.title}
             </SSearchedProductLink>
           ))}
           {searchedProducts.totalAmount > searchedProducts.products.length ? (
-            <SSearchedProductLink href={`/search?type=product&q=${searchInputRef.current?.value || ''}`} underline>
+            <SSearchedProductLink
+              href={`/search?type=product&q=${searchInputRef.current?.value || ''}`}
+              underline
+              onClick={() => alooma('search_form_submitted', { value: searchInputRef.current?.value || '' })}
+            >
               See all results ({searchedProducts.totalAmount})
             </SSearchedProductLink>
           ) : null}
