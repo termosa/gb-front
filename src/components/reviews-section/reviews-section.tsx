@@ -62,7 +62,7 @@ const SReviewAmount = styled.strong`
 
 const STitle = styled.h3`
   text-align: center;
-  font: 700 40px/1 'Cormorant Garamond', serif;
+  font: 700 32px/1 'Cormorant Garamond', serif;
   letter-spacing: -0.02em;
   margin: 0 0 32px;
   display: flex;
@@ -70,6 +70,7 @@ const STitle = styled.h3`
 
   @media (min-width: 768px) {
     display: inline-block;
+    font-size: 32px;
   }
 `
 
