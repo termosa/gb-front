@@ -68,8 +68,6 @@ const Input = styled.input`
   box-sizing: border-box;
   text-align: center;
   box-shadow: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
   background: transparent;
   outline: none;

@@ -35,8 +35,6 @@ const SField = styled.input`
   line-height: 19px;
   box-sizing: border-box;
   box-shadow: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
   background: transparent;
   outline: none;
