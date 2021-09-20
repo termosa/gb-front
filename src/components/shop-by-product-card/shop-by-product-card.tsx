@@ -17,7 +17,7 @@ const SLayout = styled.div`
   outline: none;
   margin: 0 auto;
   @media (min-width: 768px) {
-    margin: 0 16px;
+    margin: 0 15px;
   }
 `
 
