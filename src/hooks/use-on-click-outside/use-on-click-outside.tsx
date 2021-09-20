@@ -2,12 +2,12 @@ import React, { useEffect } from 'react'
 
 export type Ref = React.MutableRefObject<HTMLElement | Array<HTMLElement | null> | null>
 
-export const useOnClickOutside = (ref: Ref, handler: (ev: Event) => any) => {
+export const useOnClickOutside = (ref: Ref, handler: (ev: Event) => unknown): void => {
   useEffect(
     () => {
       const listener: EventListener = (event: Event) => {
         const elements = (ref.current && (ref.current instanceof Array ? ref.current : [ref.current])) || []
-        const clickedOnRef = elements.filter(Boolean).some((element) => element.contains(event.target as Node))
+        const clickedOnRef = elements.some((element) => element?.contains(event.target as Node))
 
         // Do nothing if clicking ref's element or descendent elements
         if (clickedOnRef) return

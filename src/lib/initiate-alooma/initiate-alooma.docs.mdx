@@ -1,0 +1,19 @@
+export const meta = {
+  type: 'function',
+  name: 'initiateAlooma',
+  description: 'Loads Alooma script and register current user (only once)',
+  tags: ['function', 'analytics'],
+  lists: {
+    returns: [
+      { name: 'promise', type: 'Promise<Alooma>' },
+    ],
+  },
+}
+
+## Usage
+
+```js
+import initiateAlooma from './initiate-alooma'
+
+initiateAlooma().then(alooma => alooma.track('view product', { productId: 123 }))
+```

@@ -2,7 +2,7 @@ import React from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
 import InformationCard from '../../components/information-card'
-import { CategoryShopCard, CategoryShopCardProps } from '../category-shop-card'
+import CategoryShopCard, { CategoryShopCardProps } from '../category-shop-card'
 
 export type { InformationCard }
 

@@ -2,7 +2,9 @@ const { PHASE_DEVELOPMENT_SERVER, PHASE_PRODUCTION_BUILD, PHASE_PRODUCTION_SERVE
 const basePath = require('./config/base-path')
 
 module.exports = (phase) => {
-  const shouldAddBuildConfig = [PHASE_DEVELOPMENT_SERVER, PHASE_PRODUCTION_BUILD, PHASE_PRODUCTION_SERVER].includes(phase)
+  const shouldAddBuildConfig = [PHASE_DEVELOPMENT_SERVER, PHASE_PRODUCTION_BUILD, PHASE_PRODUCTION_SERVER].includes(
+    phase
+  )
   if (!shouldAddBuildConfig) return {}
 
   const path = require('path')
@@ -31,6 +33,9 @@ module.exports = (phase) => {
     env: {
       BASE_API_URL: process.env.BASE_API_URL,
       CLIENT_API_URL: process.env.CLIENT_API_URL,
+    },
+    images: {
+      domains: ['cdn.shopify.com'],
     },
     webpack(config) {
       config.module.rules.push({

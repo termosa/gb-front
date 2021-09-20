@@ -29,7 +29,7 @@ export interface Discount {
 }
 
 export const normalizeDiscount = ({ discount }: ServerDiscount): null | Discount => {
-  if (!discount) return null
+  if (!discount?.available) return null
   return {
     image: discount.image.mobile,
     code: discount.code,

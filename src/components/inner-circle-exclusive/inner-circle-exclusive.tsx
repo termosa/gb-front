@@ -5,7 +5,7 @@ import Button from '../../lib/button'
 import RingSize from '../ring-size'
 import formatPrice from '../../modules/format-price'
 import { Product, ProductVariant } from '../../modules/normalize-product'
-import { Slider } from '../../lib/slider'
+import Slider from '../../lib/slider'
 import Carousel from 'react-multi-carousel'
 
 export type { Product, ProductVariant, ProductImage } from '../../modules/normalize-product'

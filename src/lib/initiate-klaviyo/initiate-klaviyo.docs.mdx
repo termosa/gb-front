@@ -1,0 +1,19 @@
+export const meta = {
+  type: 'function',
+  name: 'initiateKlaviyo',
+  description: 'Loads Klaviyo script and register current user (only once)',
+  tags: ['function', 'analytics'],
+  lists: {
+    returns: [
+      { name: 'promise', type: 'Promise<Klaviyo>' },
+    ],
+  },
+}
+
+## Usage
+
+```js
+import initiateKlaviyo from './initiate-klaviyo'
+
+initiateKlaviyo().then(klaviyo => klaviyo.push(['trackViewedItem', { ItemId: 123 }]))
+```

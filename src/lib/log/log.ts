@@ -17,8 +17,14 @@ const isLogDetailed = () => (typeof window?.logIsDetailed !== 'undefined' ? wind
 
 export function log(...values: unknown[]): void {
   if (!isLogEnabled()) return
-  if (isLogDetailed()) console?.log(` >>> ${new Date().toISOString()}\n`, ...values)
-  else console?.log(...values)
+  const now = new Date()
+  if (isLogDetailed()) console?.log(` >>> ${now.toISOString()}\n`, ...values)
+  else
+    console?.log(
+      `%c${now.getMinutes().toString().padStart(2, '0')}:${now.getSeconds().toString().padStart(2, '0')}`,
+      'padding: .2em .5em; background: pink',
+      ...values
+    )
 }
 
 log.enable = () => {

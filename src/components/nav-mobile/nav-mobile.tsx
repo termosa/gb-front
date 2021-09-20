@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import { PointsWidget } from '../points-widget'
-import { SigninSignup } from '../signin-signup'
+import PointsWidget from '../points-widget'
+import SigninSignup from '../signin-signup'
 import { ExtendableBlockContent } from '../../lib/site-header'
 import { CustomerLevel } from '../../lib/use-customer-orders-details'
 

@@ -1,5 +1,6 @@
-import { act } from '@testing-library/react'
-import klaviyo, { KLAVIYO_ACCOUNT } from '.'
+// TOOD: Release is in few days
+import klaviyo from '.'
+import { KLAVIYO_ACCOUNT } from '../initiate-klaviyo'
 import log from '../log'
 import window from '../window'
 import loadScript from '../load-script'

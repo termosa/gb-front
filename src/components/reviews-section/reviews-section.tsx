@@ -2,8 +2,8 @@ import React from 'react'
 
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
-import { Slider } from '../../lib/slider'
-import { useScreenSize } from '../../lib/use-screen-size'
+import Slider from '../../lib/slider'
+import useScreenSize from '../../lib/use-screen-size'
 
 export interface ReviewsSectionProps extends Omit<React.HTMLProps<HTMLDivElement>, 'className'> {
   className?: ClassName
@@ -185,8 +185,8 @@ export function ReviewsSection({ quote, author, className }: ReviewsSectionProps
               {/*  ? images.map((media, index) => <img src={media} alt="company" key={`revImage${index}`} />)*/}
               {/*  : TEST_IMAGES.map((media, index) => <img src={media} alt="company" key={`revImage${index}`} />)}*/}
               {TEST_IMAGES.map((media, index) => (
-                <SCompanyImageContainer>
-                  <img src={media} alt="company" key={`revImage${index}`} />
+                <SCompanyImageContainer key={`${media}${index}`}>
+                  <img src={media} alt="company" />
                 </SCompanyImageContainer>
               ))}
             </Slider>

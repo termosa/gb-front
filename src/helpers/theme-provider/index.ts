@@ -1,2 +1,2 @@
-export { ThemeProvider } from './theme-provider'
-export type { ThemeProviderProps } from './theme-provider'
+export * from './theme-provider'
+export { ThemeProvider as default } from './theme-provider'

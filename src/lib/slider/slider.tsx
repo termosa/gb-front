@@ -4,6 +4,9 @@ import 'react-multi-carousel/lib/styles.css'
 import styled from 'styled-components'
 
 const SImageContainer = styled.div`
+  touch-action: pan-y;
+  user-select: none;
+
   input[type='range'] {
     -webkit-appearance: none;
   }

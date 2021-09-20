@@ -2,9 +2,9 @@ import React, { useContext, useEffect, useRef } from 'react'
 import { Product as ProductType } from '../modules/normalize-product'
 import ProductContext from '../modules/product-context'
 import window from '../lib/window'
-import { VerticalGallery } from '../components/vertical-gallery'
+import VerticalGallery from '../components/vertical-gallery'
 import styled from 'styled-components'
-import { ProductInfo } from '../lib/product-info'
+import ProductInfo from '../lib/product-info'
 
 /*const SProductBreadcrumbs = styled.div`
   font-family: Montserrat, sans-serif;

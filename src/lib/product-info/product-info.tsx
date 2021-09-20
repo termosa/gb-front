@@ -4,10 +4,10 @@ import styled, { css } from 'styled-components'
 import StarRating from '../../lib/star-rating'
 import formatPrice from '../../modules/format-price'
 import { ProductVariant } from '../../modules/normalize-product-variant'
-import { SubscriptionHint } from '../../components/subscription-hint'
+import SubscriptionHint from '../../components/subscription-hint'
 import addCartItem from '../add-cart-item'
 import navigate from '../navigate'
-import { ProductModalButtons } from '../../components/product-modal-button'
+import ProductModalButtons from '../../components/product-modal-button'
 import { parse } from 'node-html-parser'
 import removeNewLineCharacters from '../../modules/remove-new-line-characters'
 import getLabel from '../../modules/get-label'
@@ -98,7 +98,7 @@ const SPdpChooserContainer = styled.div`
   }
 `
 
-const SPdpBtn = styled.button<{ disabled: boolean }>`
+const SPdpBtn = styled.button<{ disabled?: boolean }>`
   display: block;
   padding: 19px 15px;
   letter-spacing: 1px;
@@ -495,13 +495,15 @@ export function ProductInfo({ className, style, addToCartRef }: ProductInfoProps
       return
     }
 
-    ;(isDiscountApplied && !cart.hasSubscriptionProduct
-      ? addCartItemWithSubscription(selectedVariant.variant_id, selectedVariant.size || undefined)
-      : addCartItem(selectedVariant.variant_id)
-    )
+    const addingRequest: Promise<unknown> =
+      isDiscountApplied && !cart.hasSubscriptionProduct
+        ? addCartItemWithSubscription(selectedVariant.variant_id, selectedVariant.size || undefined)
+        : addCartItem(selectedVariant.variant_id)
+
+    addingRequest
       .then(() => trackAddedToCart(product))
       .then(() => navigate('/cart'))
-      .catch((err) => alert(err))
+      .catch((err: unknown) => alert(err))
   }
 
   const executeScroll = () => {
@@ -733,7 +735,7 @@ export function ProductInfo({ className, style, addToCartRef }: ProductInfoProps
             </SPdpBtn>
           </SPdpPiSelectorWrapper>
         )}
-        <ProductModalButtons />
+        <ProductModalButtons product={product} />
         {/*<SPdpFragrance>
           <SPdpFragranceItem>
             <SPdpFragranceImg

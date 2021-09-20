@@ -4,8 +4,8 @@ import cn, { Argument as ClassName } from 'classnames'
 import { Product } from '../../modules/normalize-product'
 import useScreenSize from '../../lib/use-screen-size'
 import window from '../../lib/window'
-import { Slider } from '../../lib/slider'
-import { ProductCard } from '../product-card'
+import Slider from '../../lib/slider'
+import ProductCard from '../product-card'
 import Carousel from 'react-multi-carousel'
 
 const Section = styled.section`

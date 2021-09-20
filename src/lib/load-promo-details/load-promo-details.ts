@@ -35,7 +35,7 @@ export interface ServerPromo {
 
 export interface ServerPromoDetails extends ServerPromo {
   detailsVariant: Array<ServerDetailsVariant>
-  expiration: PromoExpiration
+  expiration?: PromoExpiration
   sizeOutOfStock: boolean
 }
 
@@ -45,14 +45,13 @@ const saveSession = (promo: string) => {
   setCookie('c_promo', promo, 1)
 }
 
-export const normalizeExpiration = (expiration: ServerPromoExpiration): PromoExpiration =>
-  expiration && {
-    days: expiration.days,
-    hours: expiration.hours,
-    minutes: expiration.minutes,
-    seconds: expiration.seconds,
-    totalSeconds: expiration.total_sec,
-  }
+export const normalizeExpiration = (expiration: ServerPromoExpiration): PromoExpiration => ({
+  days: expiration.days,
+  hours: expiration.hours,
+  minutes: expiration.minutes,
+  seconds: expiration.seconds,
+  totalSeconds: expiration.total_sec,
+})
 
 export function loadPromoDetails(promo: string): Promise<ServerPromoDetails> {
   return api<ServerPromo>({
@@ -68,7 +67,7 @@ export function loadPromoDetails(promo: string): Promise<ServerPromoDetails> {
           path: '/shopify_endpoint/get_variants',
           query: { product_id: promoProduct.id },
         }),
-        api<ServerPromoExpiration>({
+        api<{ expiration?: ServerPromoExpiration }>({
           base: `https://fjrecurly.herokuapp.com`,
           path: '/get_promo',
           query: { product_id: promoProduct.id, promo },
@@ -85,7 +84,7 @@ export function loadPromoDetails(promo: string): Promise<ServerPromoDetails> {
         requirements: promoProduct.requirements,
         detailsVariant: detailsVariant || [],
         sizeOutOfStock: detailsVariant ? detailsVariant.some((variant) => variant.available) : false,
-        expiration: normalizeExpiration(promoJSON.expiration),
+        ...(promoJSON.expiration && { expiration: normalizeExpiration(promoJSON.expiration) }),
       }
     })
 }

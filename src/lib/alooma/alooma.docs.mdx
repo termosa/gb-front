@@ -1,0 +1,23 @@
+export const meta = {
+  type: 'function',
+  name: 'alooma',
+  description: 'Submit analytics data to Alooma',
+  tags: ['function', 'analytics'],
+  lists: {
+    arguments: [
+      { name: 'eventName', type: 'string', required: true },
+      { name: 'eventProperties', type: 'Record<string, unknown>', description: 'Data that will be tracked together with the event' },
+    ],
+    returns: [
+      { name: 'promise', type: 'Promise<void>' },
+    ],
+  },
+}
+
+## Usage
+
+```js
+import alooma from './alooma'
+
+alooma('viewed product', { productId: 123 })
+```

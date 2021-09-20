@@ -3,11 +3,12 @@ import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
 import { ProductImage } from '../../modules/normalize-product-image'
 import window from '../../lib/window/window'
-import { useScreenSize } from '../../lib/use-screen-size'
+import useScreenSize from '../../lib/use-screen-size'
 import { Product as ProductType } from '../../modules/normalize-product'
 import ProductContext from '../../modules/product-context'
-import { Slider } from '../../lib/slider'
+import Slider from '../../lib/slider'
 import Carousel from 'react-multi-carousel'
+import Image from '../../lib/image'
 
 const Wrapper = styled.div`
   width: 101%;
@@ -179,17 +180,19 @@ export function VerticalGallery({ className }: VerticalGalleryProps): React.Reac
   const [galleryImageWidth, setGalleryImageWidth] = useState<number>(465)
   const product = useContext<ProductType | undefined>(ProductContext)
 
-  if (!product) {
-    return null
-  }
-
   useEffect(() => {
     window?.addEventListener('scroll', () => {
-      product && product.images && handleGalleryScrolling(galleryRef, product.images, setActiveGalleryItem)
+      product &&
+        product.images &&
+        screenSize.greaterThanMedium &&
+        handleGalleryScrolling(galleryRef, product.images, setActiveGalleryItem)
     })
     return () => {
       window?.removeEventListener('scroll', () => {
-        product && product.images && handleGalleryScrolling(galleryRef, product.images, setActiveGalleryItem)
+        product &&
+          product.images &&
+          screenSize.greaterThanMedium &&
+          handleGalleryScrolling(galleryRef, product.images, setActiveGalleryItem)
       })
     }
   }, [product, screenSize])
@@ -230,14 +233,12 @@ export function VerticalGallery({ className }: VerticalGalleryProps): React.Reac
             <SPdpRow>
               <SCarouselIcons>
                 <SCarouselIconsList>
-                  {product.images?.map((image: ProductImage, i: number) => (
+                  {product?.images?.map((image: ProductImage, i: number) => (
                     <SCarouselIconsItem
                       key={image.src}
                       isActive={activeGalleryItem === i}
                       onClick={() => {
-                        if (!product.images) {
-                          return
-                        }
+                        if (!product.images) return
                         const heightOfImages = product.images.reduce(
                           (prev: number, curr: ProductImage, index: number) => {
                             return index < i ? prev + getImageHeight(curr) : prev
@@ -251,19 +252,28 @@ export function VerticalGallery({ className }: VerticalGalleryProps): React.Reac
                           })
                       }}
                     >
-                      <img src={image.src} alt={image.alt} />
+                      <Image
+                        src={image?.src}
+                        alt={image?.alt}
+                        shopifySize={screenSize.greaterThanMedium ? 'medium' : 'compact'}
+                      />
                     </SCarouselIconsItem>
                   ))}
                 </SCarouselIconsList>
               </SCarouselIcons>
               <SVerticalImagesColumn ref={galleryRef}>
-                {product.images?.map((image: ProductImage) => (
+                {product?.images?.map((image: ProductImage) => (
                   <SPdpCarouselItem
                     width={`${galleryImageWidth}px`}
                     height={`${getImageHeight(image)}px`}
                     key={image?.src}
                   >
-                    <img src={image?.src} alt={image?.alt} />
+                    <Image
+                      src={image?.src}
+                      alt={image?.alt}
+                      width={`${galleryImageWidth}px`}
+                      height={`${getImageHeight(image)}px`}
+                    />
                   </SPdpCarouselItem>
                 ))}
               </SVerticalImagesColumn>
@@ -276,14 +286,21 @@ export function VerticalGallery({ className }: VerticalGalleryProps): React.Reac
                 carouselRef={carouselRef}
                 setActiveGalleryItem={setActiveGalleryItem}
               >
-                {product.images?.map((image) => (
+                {product?.images?.map((image) => (
                   <SPdpCarouselItemMobile key={image?.src}>
-                    <img src={image?.src} alt={image?.alt} />
+                    {product?.images && (
+                      <Image
+                        src={product.images && image?.src}
+                        alt={(product.images && image?.alt) || ''}
+                        width={`${galleryImageWidth}px`}
+                        height={`${getImageHeight(image)}px`}
+                      />
+                    )}
                   </SPdpCarouselItemMobile>
                 ))}
               </Slider>
               <SCarouselThumbnails>
-                {product.images?.map((image, i) => (
+                {product?.images?.map((image, i) => (
                   <SCarouselThumbnailItem
                     key={image?.src}
                     isActive={activeGalleryItem === i}
@@ -292,7 +309,14 @@ export function VerticalGallery({ className }: VerticalGalleryProps): React.Reac
                       carouselRef.current && carouselRef.current.goToSlide(i)
                     }}
                   >
-                    <img src={product.images && image?.src} alt={product.images && image?.alt} />
+                    {product?.images && (
+                      <Image
+                        src={product.images && image?.src}
+                        alt={(product.images && image?.alt) || ''}
+                        width={`${galleryImageWidth}px`}
+                        height={`${getImageHeight(image)}px`}
+                      />
+                    )}
                   </SCarouselThumbnailItem>
                 ))}
               </SCarouselThumbnails>

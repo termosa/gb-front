@@ -5,6 +5,8 @@ import { Product } from '../../modules/normalize-product'
 import formatPrice from '../../modules/format-price'
 import getLabel from '../../modules/get-label'
 import StarRating from '../../lib/star-rating'
+import Image from '../../lib/image'
+import useScreenSize from '../../lib/use-screen-size'
 
 export type ProductCardProps = {
   className?: ClassName
@@ -220,6 +222,7 @@ const ProductCardPrice = styled.div`
 `
 
 export function ProductCard({ className, style, product, onClick }: ProductCardProps): React.ReactElement {
+  const screenSize = useScreenSize()
   const productTitle = product.title.split('-')[0].split(':')[0]
   const productType = product.product_type.split('(')[0]
 
@@ -252,7 +255,14 @@ export function ProductCard({ className, style, product, onClick }: ProductCardP
         </SCircle>*/}
         <ProductCardImgWrapper>
           <ProductCardImgWrapperInner>
-            <img src={product.image?.src} alt={product.image?.alt} draggable={false} />
+            {product.image && (
+              <Image
+                src={product.image.src}
+                alt={product.image?.alt}
+                draggable={false}
+                shopifySize={screenSize.greaterThanMedium ? 'medium' : 'compact'}
+              />
+            )}
           </ProductCardImgWrapperInner>
         </ProductCardImgWrapper>
         {checkForLabel()}

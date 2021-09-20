@@ -9,9 +9,13 @@ import LinksColumnGroup from '../../components/links-column-group'
 const FooterContainer = styled.div`
   font: 12px/1.3 'Montserrat', sans-serif;
   color: #fff;
-  padding: 28px 0;
+  padding: 37px 0 50px;
   margin-top: 16px;
   background: black;
+
+  @media (min-width: 992px) {
+    padding: 28px 0;
+  }
 `
 
 const FooterOuter = styled.div`
@@ -63,7 +67,7 @@ export type SiteFooterProps = {
 }
 
 export function SiteFooter({ className, style }: SiteFooterProps): React.ReactElement {
-  const isMobileScreen = useMediaPredicate('(max-width: 992px)')
+  const isMobileScreen = useMediaPredicate('(max-width: 991px)')
 
   return (
     <FooterContainer className={cn(className)} style={style}>

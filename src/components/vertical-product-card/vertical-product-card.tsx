@@ -192,7 +192,7 @@ const SProductPriceLabel = styled.span`
 export function VerticalProductCard({ className, ...props }: VerticalProductCardProps): React.ReactElement | null {
   const stars = useMemo<Array<{ id: number; star: Star }>>(
     () =>
-      Array.from({ length: 5 }, (value: undefined, index: number) => {
+      Array.from({ length: 5 }, (_value: undefined, index: number) => {
         if (props.productAverageScore >= index + 1) return { id: index, star: 'full' }
         if (props.productAverageScore > index) return { id: index, star: 'half' }
         return { id: index, star: 'empty' }
