@@ -32,16 +32,6 @@ const SWrapper = styled.div`
   }
 `
 
-const SContentWrapper = styled.div`
-  max-width: 990px;
-  padding: 0 15px;
-  margin: 0 auto;
-  @media (min-width: 768px) {
-    padding: 0 30px;
-    max-width: 1020px;
-  }
-`
-
 const STitle = styled.div`
   font: 700 32px/1 'Cormorant Garamond', serif;
   text-align: center;
