@@ -93,6 +93,7 @@ const ProductCardImgWrapperInner = styled.div`
   left: 50%;
   height: 100%;
   display: flex;
+  justify-content: center;
   transform: translate(-50%, 0);
 
   img {

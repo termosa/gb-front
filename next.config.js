@@ -1,6 +1,5 @@
 const { PHASE_DEVELOPMENT_SERVER, PHASE_PRODUCTION_BUILD, PHASE_PRODUCTION_SERVER } = require('next/constants')
 const basePath = require('./config/base-path')
-const withOptimizedImages = require('next-optimized-images')
 
 module.exports = (phase) => {
   const shouldAddBuildConfig = [PHASE_DEVELOPMENT_SERVER, PHASE_PRODUCTION_BUILD, PHASE_PRODUCTION_SERVER].includes(
@@ -26,13 +25,13 @@ module.exports = (phase) => {
     },
   }
 
-  const optimizedImages = withOptimizedImages({
+  /* const optimizedImages = withOptimizedImages({
     handleImages: ['jpeg', 'png', 'svg'],
-  })
+  })*/
 
   return {
     ...cssOptions,
-    ...optimizedImages,
+    /*...optimizedImages,*/
     basePath: basePath,
     // ...(phase !== PHASE_DEVELOPMENT_SERVER && { basePath: basePath }),
     typescript: { ignoreBuildErrors: true },
@@ -40,11 +39,11 @@ module.exports = (phase) => {
       BASE_API_URL: process.env.BASE_API_URL,
       CLIENT_API_URL: process.env.CLIENT_API_URL,
     },
-    images: {
+    /*    images: {
       domains: ['cdn.shopify.com', '//www.fragrantjewels.com', 'fragrantjewels.com', 'www.fragrantjewels.com'],
       loader: 'custom',
       path: '/',
-    },
+    },*/
     webpack(config) {
       config.module.rules.push({
         test: /\.svg$/,
