@@ -234,7 +234,7 @@ export function CollectionBanner({ handle, className, style }: CollectionBannerP
         </CollectionMobileDescription>
       </>
     ) : (
-      <Wrapper className={cn(className)} style={style} backgroundImg={bannerCollection.compactBackgroundImage}>
+      <Wrapper className={cn(className)} style={style} backgroundImg={bannerCollection.backgroundImage}>
         <CollectionBannerWrapper>
           <CollectionTitle style={bannerCollection.styleTitleDesktop}>{bannerCollection.title}</CollectionTitle>
           <CollectionDescription style={bannerCollection.styleDescriptionDesktop}>
