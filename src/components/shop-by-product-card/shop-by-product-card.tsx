@@ -17,7 +17,7 @@ const SLayout = styled.div`
   outline: none;
   margin: 0 auto;
   @media (min-width: 768px) {
-    margin: 0 16px;
+    margin: 0 15px;
   }
 `
 
@@ -26,9 +26,10 @@ const SLayoutImage = styled.img`
   margin-bottom: 0;
   border-style: none;
   object-fit: cover;
+  max-width: 234px;
 
-  @media (max-width: 350px) {
-    max-width: 245px;
+  @media (min-width: 375px) {
+    max-width: 100%;
   }
 `
 
@@ -44,8 +45,36 @@ const SButtonWrapper = styled.div`
 `
 
 const SButtonLink = styled.a`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-decoration: none;
-  color: inherit;
+  color: #fff;
+  width: 155px;
+  height: 48px;
+  margin: 0 auto;
+  text-transform: uppercase;
+  border: 0.5px solid #000;
+  border-radius: 0;
+  font: 700 13px/1.25 'Montserrat', sans-serif;
+  letter-spacing: 0.7px;
+  text-decoration: none;
+  transition: all linear 0.2s;
+  background-color: #000;
+  cursor: pointer;
+  white-space: nowrap;
+
+  @media (min-width: 992px) {
+    font-size: 16px;
+    width: 185px;
+    height: 55px;
+  }
+
+  &:hover {
+    font-weight: 700;
+    background-color: #fff;
+    color: #000;
+  }
 `
 
 export function ShopByProductCard({
@@ -58,9 +87,7 @@ export function ShopByProductCard({
     <SLayout className={cn('ShopByProductCard', className)}>
       <SLayoutImage src={image} />
       <SButtonWrapper>
-        <Button backColor={'#000'} frontColor={'#fff'}>
-          <SButtonLink href={buttonLink}>{buttonText}</SButtonLink>
-        </Button>
+        <SButtonLink href={buttonLink}>{buttonText}</SButtonLink>
       </SButtonWrapper>
     </SLayout>
   )
