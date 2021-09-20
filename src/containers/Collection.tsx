@@ -57,7 +57,7 @@ const Collection = (): null | React.ReactElement => {
             product_title: product.title,
             filters: Object.entries(filter || {}).reduce(
               (filters, [group, value]) =>
-                value.length ? Object.assign(filters, { [group.slice(0, -1)]: value }) : filters, // TODO: Stop slicing
+                value && value.length ? Object.assign(filters, { [group.slice(0, -1)]: value }) : filters, // TODO: Stop slicing
               {}
             ),
           })
