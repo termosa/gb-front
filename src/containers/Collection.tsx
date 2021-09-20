@@ -39,7 +39,7 @@ const Collection = (): null | React.ReactElement => {
 
   return (
     <div>
-      <CollectionBanner id={collection?.handle} />
+      <CollectionBanner handle={collection.handle} />
       <SFiltersSection>
         <CollectionFilters
           onChangeFilter={setFilter}

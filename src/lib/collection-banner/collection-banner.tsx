@@ -1,47 +1,39 @@
 import React from 'react'
 import cn, { Argument as ClassName } from 'classnames'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import useScreenSize from '../use-screen-size'
 
-export interface StyleDesktop {
-  color?: string
-  fontWeight?: number
-}
-
-export interface BannerCollections {
+interface BannerCollection {
   handle: string
   imageMobile: string
   imageDesktop: string
   title: string
   description: string
-  styleTitleDesktop?: StyleDesktop
-  styleDescriptionDesktop?: StyleDesktop
+  styleTitleDesktop?: React.CSSProperties
+  styleDescriptionDesktop?: React.CSSProperties
   onlyDesktop?: boolean
 }
 
-export type CollectionBannerProps = {
+type CollectionBannerProps = {
   className?: ClassName
   style?: React.CSSProperties
-  id: string
+  handle: string
 }
 
-export function CollectionBanner({ id, className, style }: CollectionBannerProps): React.ReactElement | null {
+export function CollectionBanner({ handle, className, style }: CollectionBannerProps): React.ReactElement | null {
   const useScreen = useScreenSize()
-  const bannerCollection = bannerCollections.find((item) => item.handle === id)
+  const bannerCollection = bannerCollections.find((item) => item.handle === handle)
   if (!bannerCollection) {
     return null
   }
   return useScreen.greaterThanMedium ? (
     bannerCollection.onlyDesktop ? (
       <>
-        <CollectionMobileImg
-          className={bannerCollection.onlyDesktop ? 'only-desktop' : ''}
-          src={bannerCollection.imageDesktop}
-        />
+        <CollectionMobileImg desktop={bannerCollection.onlyDesktop} src={bannerCollection.imageDesktop} />
         <CollectionMobileTitle style={bannerCollection.onlyDesktop ? bannerCollection.styleTitleDesktop : {}}>
           {bannerCollection.title}
         </CollectionMobileTitle>
-        <CollectionMobileDescription className={bannerCollection.onlyDesktop ? 'only-desktop' : ''}>
+        <CollectionMobileDescription desktop={bannerCollection.onlyDesktop}>
           {bannerCollection.description}
         </CollectionMobileDescription>
       </>
@@ -57,10 +49,7 @@ export function CollectionBanner({ id, className, style }: CollectionBannerProps
     )
   ) : (
     <Wrapper className={cn(className)} style={style}>
-      <CollectionMobileImg
-        className={bannerCollection.onlyDesktop ? 'only-desktop' : ''}
-        src={bannerCollection.imageMobile}
-      />
+      <CollectionMobileImg desktop={bannerCollection.onlyDesktop} src={bannerCollection.imageMobile} />
       <CollectionMobileTitle style={bannerCollection.onlyDesktop ? bannerCollection.styleTitleDesktop : {}}>
         {bannerCollection.title}
       </CollectionMobileTitle>
@@ -69,7 +58,7 @@ export function CollectionBanner({ id, className, style }: CollectionBannerProps
   )
 }
 
-const bannerCollections: BannerCollections[] = [
+const bannerCollections: BannerCollection[] = [
   {
     handle: 'bath-bombs',
     imageMobile: 'https://fragrantjewels-assets.s3.amazonaws.com/images/banners-2/bb-banner-2-mb.jpg',
@@ -210,19 +199,20 @@ const CollectionDescription = styled.p`
   max-width: 372px;
 `
 
-const CollectionMobileImg = styled.img`
+const CollectionMobileImg = styled.img<{ desktop?: boolean }>`
   width: 100%;
   height: 200px;
   object-fit: cover;
   object-position: 82% 50%;
-
-  &.only-desktop {
-    height: auto;
-    width: 100%;
-    display: block;
-    margin: 0 auto;
-    max-width: 1170px;
-  }
+  ${(p) =>
+    p.desktop &&
+    css`
+      height: auto;
+      width: 100%;
+      display: block;
+      margin: 0 auto;
+      max-width: 1170px;
+    `}
 
   @media (min-width: 481px) {
     object-position: 72% 50%;
@@ -242,7 +232,7 @@ const CollectionMobileTitle = styled.h1`
   padding: 20px 16px 10px;
 `
 
-const CollectionMobileDescription = styled.p`
+const CollectionMobileDescription = styled.p<{ desktop?: boolean }>`
   font-family: Montserrat, sans-serif;
   font-style: normal;
   font-weight: normal;
@@ -252,8 +242,10 @@ const CollectionMobileDescription = styled.p`
   letter-spacing: 0.05em;
   color: #000000;
   padding: 0 16px 28px;
-  &.only-desktop {
-    max-width: 600px;
-    margin: 10px auto 30px;
-  }
+  ${(p) =>
+    p.desktop &&
+    css`
+      max-width: 600px;
+      margin: 10px auto 30px;
+    `}
 `

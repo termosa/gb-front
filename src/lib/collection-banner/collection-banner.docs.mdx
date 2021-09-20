@@ -5,12 +5,12 @@ export const meta = {
   name: 'CollectionBanner',
   description: 'Banner for collection page',
   tags: ['component'],
-  preview: <CollectionBanner id="body-scrubs" />,
+  preview: <CollectionBanner handle="body-scrubs" />,
   lists: {
     attributes: [
       { name: 'className', type: 'classnames.Argument', description: 'One or multiple class names that will be added to the main container' },
       { name: 'style', type: 'React.CSSProperties', description: 'Inline styles for the main container' },
-      { name: 'id', required: true, type: 'string', description: 'Collection Id' },
+      { name: 'handle', required: true, type: 'string', description: 'Collection handle' },
     ],
   },
   scope: { CollectionBanner },
@@ -19,11 +19,11 @@ export const meta = {
 ## Usage
 
 ```jsx
-<CollectionBanner id="satin" />
+<CollectionBanner handle="satin" />
 ```
 
 ## Playground
 
 ```jsx live
-<CollectionBanner id="satin" />
+<CollectionBanner handle="satin" />
 ```
