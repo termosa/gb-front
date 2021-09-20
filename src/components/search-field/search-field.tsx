@@ -148,7 +148,7 @@ export function SearchField({ className, onSearch, searchedProducts }: SearchFie
           {searchedProducts.products?.map((product) => (
             <SSearchedProductLink
               key={product.product_id}
-              href={`/products/${product.product_id}`}
+              href={`/products/${product.handle}`}
               onClick={() =>
                 alooma('search_form_link', {
                   value: searchInputRef.current?.value || '',
