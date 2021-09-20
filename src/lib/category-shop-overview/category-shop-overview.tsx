@@ -23,7 +23,7 @@ const SWrapper = styled.section`
 
   @media (min-width: 1200px) {
     flex-direction: initial;
-    margin: 76px auto 0;
+    margin: 75px auto 0;
     padding: 0 30px;
   }
 `
