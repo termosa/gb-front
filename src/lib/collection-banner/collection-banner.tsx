@@ -3,60 +3,90 @@ import cn, { Argument as ClassName } from 'classnames'
 import styled, { css } from 'styled-components'
 import useScreenSize from '../use-screen-size'
 
-interface CollectionBanner {
-  handle: string
-  compactBackgroundImage: string
-  backgroundImage: string
-  title: string
-  description: string
-  styleTitleDesktop?: React.CSSProperties
-  styleDescriptionDesktop?: React.CSSProperties
-  onlyDesktop?: boolean
-}
+const Wrapper = styled.div<{ backgroundImg?: string }>`
+  background: ${(props) => (props.backgroundImg ? `url(${props.backgroundImg}) center center no-repeat` : '')};
+  background-size: cover;
+`
 
-type CollectionBannerProps = {
-  className?: ClassName
-  style?: React.CSSProperties
-  handle: string
-}
+const CollectionBannerWrapper = styled.div`
+  max-width: 990px;
+  margin: 0 auto;
+  padding: 0 16px;
+`
 
-export function CollectionBanner({ handle, className, style }: CollectionBannerProps): React.ReactElement | null {
-  const useScreen = useScreenSize()
-  const bannerCollection = collectionsBanner.find((item) => item.handle === handle)
-  if (!bannerCollection) {
-    return null
+const CollectionTitle = styled.h1`
+  font-family: Cormorant Garamond, serif;
+  font-weight: bold;
+  font-size: 40px;
+  line-height: 100%;
+  letter-spacing: -0.02em;
+  font-feature-settings: 'pnum' on, 'lnum' on;
+  color: '#ffffff';
+  margin: 0;
+  padding: 82px 0 16px;
+`
+
+const CollectionDescription = styled.p`
+  font-family: Montserrat, sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 150%;
+  letter-spacing: 0.05em;
+  color: '#ffffff';
+  padding: 0 0 82px;
+  max-width: 372px;
+`
+
+const CollectionMobileImg = styled.img<{ desktop?: boolean }>`
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  object-position: 82% 50%;
+  ${(p) =>
+    p.desktop &&
+    css`
+      height: auto;
+      width: 100%;
+      display: block;
+      margin: 0 auto;
+      max-width: 1170px;
+    `}
+
+  @media (min-width: 481px) {
+    object-position: 72% 50%;
   }
-  return useScreen.greaterThanMedium ? (
-    bannerCollection.onlyDesktop ? (
-      <>
-        <CollectionMobileImg desktop={bannerCollection.onlyDesktop} src={bannerCollection.backgroundImage} />
-        <CollectionMobileTitle style={bannerCollection.onlyDesktop ? bannerCollection.styleTitleDesktop : {}}>
-          {bannerCollection.title}
-        </CollectionMobileTitle>
-        <CollectionMobileDescription desktop={bannerCollection.onlyDesktop}>
-          {bannerCollection.description}
-        </CollectionMobileDescription>
-      </>
-    ) : (
-      <Wrapper className={cn(className)} style={style} backgroundImg={bannerCollection.compactBackgroundImage}>
-        <CollectionBannerWrapper>
-          <CollectionTitle style={bannerCollection.styleTitleDesktop}>{bannerCollection.title}</CollectionTitle>
-          <CollectionDescription style={bannerCollection.styleDescriptionDesktop}>
-            {bannerCollection.description}
-          </CollectionDescription>
-        </CollectionBannerWrapper>
-      </Wrapper>
-    )
-  ) : (
-    <Wrapper className={cn(className)} style={style}>
-      <CollectionMobileImg desktop={bannerCollection.onlyDesktop} src={bannerCollection.compactBackgroundImage} />
-      <CollectionMobileTitle style={bannerCollection.onlyDesktop ? bannerCollection.styleTitleDesktop : {}}>
-        {bannerCollection.title}
-      </CollectionMobileTitle>
-      <CollectionMobileDescription>{bannerCollection.description}</CollectionMobileDescription>
-    </Wrapper>
-  )
-}
+`
+
+const CollectionMobileTitle = styled.h1`
+  font-family: Cormorant Garamond, serif;
+  font-weight: bold;
+  font-size: 40px;
+  line-height: 100%;
+  text-align: center;
+  letter-spacing: -0.02em;
+  font-feature-settings: 'pnum' on, 'lnum' on;
+  color: #000000;
+  margin: 0;
+  padding: 20px 16px 10px;
+`
+
+const CollectionMobileDescription = styled.p<{ desktop?: boolean }>`
+  font-family: Montserrat, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 150%;
+  text-align: center;
+  letter-spacing: 0.05em;
+  color: #000000;
+  padding: 0 16px 28px;
+  ${(p) =>
+    p.desktop &&
+    css`
+      max-width: 600px;
+      margin: 10px auto 30px;
+    `}
+`
 
 const collectionsBanner: CollectionBanner[] = [
   {
@@ -169,87 +199,57 @@ const collectionsBanner: CollectionBanner[] = [
   },
 ]
 
-const Wrapper = styled.div<{ backgroundImg?: string }>`
-  background: ${(props) => (props.backgroundImg ? `url(${props.backgroundImg}) center center no-repeat` : '')};
-  background-size: cover;
-`
+interface CollectionBanner {
+  handle: string
+  compactBackgroundImage: string
+  backgroundImage: string
+  title: string
+  description: string
+  styleTitleDesktop?: React.CSSProperties
+  styleDescriptionDesktop?: React.CSSProperties
+  onlyDesktop?: boolean
+}
 
-const CollectionBannerWrapper = styled.div`
-  max-width: 990px;
-  margin: 0 auto;
-  padding: 0 16px;
-`
+type CollectionBannerProps = {
+  className?: ClassName
+  style?: React.CSSProperties
+  handle: string
+}
 
-const CollectionTitle = styled.h1`
-  font-family: Cormorant Garamond, serif;
-  font-weight: bold;
-  font-size: 40px;
-  line-height: 100%;
-  letter-spacing: -0.02em;
-  font-feature-settings: 'pnum' on, 'lnum' on;
-  color: '#ffffff';
-  margin: 0;
-  padding: 82px 0 16px;
-`
-
-const CollectionDescription = styled.p`
-  font-family: Montserrat, sans-serif;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 150%;
-  letter-spacing: 0.05em;
-  color: '#ffffff';
-  padding: 0 0 82px;
-  max-width: 372px;
-`
-
-const CollectionMobileImg = styled.img<{ desktop?: boolean }>`
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  object-position: 82% 50%;
-  ${(p) =>
-    p.desktop &&
-    css`
-      height: auto;
-      width: 100%;
-      display: block;
-      margin: 0 auto;
-      max-width: 1170px;
-    `}
-
-  @media (min-width: 481px) {
-    object-position: 72% 50%;
+export function CollectionBanner({ handle, className, style }: CollectionBannerProps): React.ReactElement | null {
+  const useScreen = useScreenSize()
+  const bannerCollection = collectionsBanner.find((item) => item.handle === handle)
+  if (!bannerCollection) {
+    return null
   }
-`
-
-const CollectionMobileTitle = styled.h1`
-  font-family: Cormorant Garamond, serif;
-  font-weight: bold;
-  font-size: 40px;
-  line-height: 100%;
-  text-align: center;
-  letter-spacing: -0.02em;
-  font-feature-settings: 'pnum' on, 'lnum' on;
-  color: #000000;
-  margin: 0;
-  padding: 20px 16px 10px;
-`
-
-const CollectionMobileDescription = styled.p<{ desktop?: boolean }>`
-  font-family: Montserrat, sans-serif;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 16px;
-  line-height: 150%;
-  text-align: center;
-  letter-spacing: 0.05em;
-  color: #000000;
-  padding: 0 16px 28px;
-  ${(p) =>
-    p.desktop &&
-    css`
-      max-width: 600px;
-      margin: 10px auto 30px;
-    `}
-`
+  return useScreen.greaterThanMedium ? (
+    bannerCollection.onlyDesktop ? (
+      <>
+        <CollectionMobileImg desktop={bannerCollection.onlyDesktop} src={bannerCollection.backgroundImage} />
+        <CollectionMobileTitle style={bannerCollection.onlyDesktop ? bannerCollection.styleTitleDesktop : {}}>
+          {bannerCollection.title}
+        </CollectionMobileTitle>
+        <CollectionMobileDescription desktop={bannerCollection.onlyDesktop}>
+          {bannerCollection.description}
+        </CollectionMobileDescription>
+      </>
+    ) : (
+      <Wrapper className={cn(className)} style={style} backgroundImg={bannerCollection.compactBackgroundImage}>
+        <CollectionBannerWrapper>
+          <CollectionTitle style={bannerCollection.styleTitleDesktop}>{bannerCollection.title}</CollectionTitle>
+          <CollectionDescription style={bannerCollection.styleDescriptionDesktop}>
+            {bannerCollection.description}
+          </CollectionDescription>
+        </CollectionBannerWrapper>
+      </Wrapper>
+    )
+  ) : (
+    <Wrapper className={cn(className)} style={style}>
+      <CollectionMobileImg desktop={bannerCollection.onlyDesktop} src={bannerCollection.compactBackgroundImage} />
+      <CollectionMobileTitle style={bannerCollection.onlyDesktop ? bannerCollection.styleTitleDesktop : {}}>
+        {bannerCollection.title}
+      </CollectionMobileTitle>
+      <CollectionMobileDescription>{bannerCollection.description}</CollectionMobileDescription>
+    </Wrapper>
+  )
+}
