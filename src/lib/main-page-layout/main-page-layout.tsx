@@ -1,13 +1,18 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
+import { Normalize } from 'styled-normalize'
 import useDefer from 'use-defer'
+import Head from 'next/head'
+import ThemeProvider from '../../helpers/theme-provider'
 import SiteFooter from '../site-footer'
 import SiteHeader from '../site-header'
 import FloatingCta from '../../components/floating-cta'
 import SitePromotion from '../site-promotion'
 import loadProductsChunk from '../../modules/load-products-chunk'
 import loadCustomer from '../../modules/load-customer'
+import initiateKlaviyo from '../initiate-klaviyo'
+import initiateAlooma from '../initiate-alooma'
 
 const MainPageLayoutWrapper = styled.div`
   display: flex;
@@ -41,27 +46,47 @@ export type MainPageLayoutProps = {
 }
 
 export function MainPageLayout({ children, className, style }: MainPageLayoutProps): React.ReactElement | null {
+  useEffect(() => {
+    initiateKlaviyo()
+    initiateAlooma()
+  })
+
   const searchRequest = useDefer(loadProductsChunk)
   const { value: customer } = useDefer(() => loadCustomer({ skipCache: true }).catch(() => null), [], [])
 
   return (
-    <MainPageLayoutWrapper className={cn(className)} style={style}>
-      <Header
-        userName={customer?.firstName}
-        onSearch={(search) => (search ? searchRequest.execute({ search }) : searchRequest.reset())}
-        searchedProducts={searchRequest.value}
-        userEmail={customer?.email}
-      />
-      <div className="app-promotion-wrapper">
-        <SitePromotion />
-      </div>
-      <div className="app-re-wrapper" id="app-wrapper">
-        <div className="app-re-content" id="app-content">
-          <main className="app-h-main">{children}</main>
+    <ThemeProvider>
+      <Head>
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,700;1,700&display=swap"
+          rel="stylesheet"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;500;600;700&display=swap"
+          rel="stylesheet"
+        />
+      </Head>
+      <Normalize />
+      <MainPageLayoutWrapper className={cn(className)} style={style}>
+        <Header
+          userName={customer?.firstName}
+          onSearch={(search) => (search ? searchRequest.execute({ search }) : searchRequest.reset())}
+          searchedProducts={searchRequest.value}
+          userEmail={customer?.email}
+        />
+        <div className="app-promotion-wrapper">
+          <SitePromotion />
         </div>
-      </div>
-      <FloatingCta />
-      <SiteFooter className="Footer-Colored" />
-    </MainPageLayoutWrapper>
+        <div className="app-re-wrapper" id="app-wrapper">
+          <div className="app-re-content" id="app-content">
+            <main className="app-h-main">{children}</main>
+          </div>
+        </div>
+        <FloatingCta />
+        <SiteFooter className="Footer-Colored" />
+      </MainPageLayoutWrapper>
+    </ThemeProvider>
   )
 }
