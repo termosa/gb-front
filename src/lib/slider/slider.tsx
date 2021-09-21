@@ -1,7 +1,9 @@
-import React, { Dispatch } from 'react'
+import React, { Dispatch, useState } from 'react'
 import Carousel, { ResponsiveType } from 'react-multi-carousel'
 import 'react-multi-carousel/lib/styles.css'
 import styled from 'styled-components'
+
+const MAX_VISIBLE_ITEMS = 3
 
 const SImageContainer = styled.div`
   touch-action: pan-y;
@@ -163,7 +165,7 @@ const getResponsive = (partiallyVisible: boolean | undefined): ResponsiveType =>
   return {
     desktop: {
       breakpoint: { max: 3000, min: 768 },
-      items: partiallyVisible ? 3 : 1,
+      items: partiallyVisible ? MAX_VISIBLE_ITEMS : 1,
     },
     tablet: {
       breakpoint: { max: 768, min: 464 },
@@ -192,6 +194,8 @@ export const Slider = ({
   carouselRef,
   setActiveGalleryItem,
 }: SliderProps): React.ReactElement => {
+  const [firstVisibleIndex, setFirstVisibleIndex] = useState(0)
+
   const CustomSlider = ({ carouselState }: CarouselState) => {
     let value = 0
     if (!carouselRef || !carouselRef.current) {
@@ -257,9 +261,18 @@ export const Slider = ({
         swipeable={swipeable}
         responsive={responsive || getResponsive(partiallyVisible)}
         containerClass={scrollbarPresent ? 'carousel-container-with-scrollbar' : 'container-with-dots'}
+        beforeChange={setFirstVisibleIndex}
         afterChange={(_, { currentSlide }) => (setActiveGalleryItem ? setActiveGalleryItem(currentSlide) : null)}
       >
-        {children}
+        {Array.isArray(children)
+          ? children.map((slide, index) =>
+              index < firstVisibleIndex - MAX_VISIBLE_ITEMS || index >= firstVisibleIndex + MAX_VISIBLE_ITEMS * 2 ? (
+                <i />
+              ) : (
+                slide
+              )
+            )
+          : children}
       </Carousel>
     </SImageContainer>
   )

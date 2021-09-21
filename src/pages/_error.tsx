@@ -5,9 +5,11 @@ function ErrorPage({ statusCode, title }: { statusCode: number; title?: string }
 }
 
 ErrorPage.getInitialProps = ({
+  req,
   res,
   err,
 }: {
+  req?: { url: string }
   res?: { statusCode: number }
   err?: { statusCode: number; message?: string; stack?: string }
 }) => {
@@ -16,7 +18,7 @@ ErrorPage.getInitialProps = ({
   const message = err
     ? (err.message && `${err.message}${err.stack ? `\n${err.stack}` : ''}`) || err
     : 'Unknown problem this time'
-  console.error({ status: statusCode, message })
+  console.error({ url: req?.url, status: statusCode, message })
   return { statusCode, title }
 }
 

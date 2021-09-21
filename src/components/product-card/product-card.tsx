@@ -268,7 +268,7 @@ export function ProductCard({ className, style, product, onClick }: ProductCardP
         </ProductCardImgWrapper>
         {checkForLabel()}
         <ProductCardStars>
-          <StarRating reviewsAverage={product.reviewsAverage} reviewsCount={product.reviewsCount} />
+          <StarRating reviewsAverage={product.reviewsAverage} />
         </ProductCardStars>
         <ProductCardTitle title={productTitle}>{productTitle}</ProductCardTitle>
         <ProductCardType>{productType}</ProductCardType>
