@@ -2,7 +2,7 @@ import React from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
 import Slider from '../../lib/slider'
-import { Image } from '../../lib/image'
+import Image from '../../lib/image'
 
 export interface MostFunOverviewProps extends Omit<React.HTMLProps<HTMLDivElement>, 'className'> {
   className?: ClassName

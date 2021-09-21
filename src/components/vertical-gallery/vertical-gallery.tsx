@@ -8,7 +8,7 @@ import { Product as ProductType } from '../../modules/normalize-product'
 import ProductContext from '../../modules/product-context'
 import Slider from '../../lib/slider'
 import Carousel from 'react-multi-carousel'
-import { Image } from '../../lib/image'
+import Image from '../../lib/image'
 
 const Wrapper = styled.div`
   width: 101%;

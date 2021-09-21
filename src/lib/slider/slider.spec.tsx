@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 import CarouselSlider from '.'
-import { Image } from '../image'
+import Image from '../image'
 
 describe('<Slider>', () => {
   it('should render with the correct image', async () => {

@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import useDefer from 'use-defer'
 import loadDiscount from '../load-discount'
 import setCookie from '../set-cookie'
-import { Image } from '../image'
+import Image from '../image'
 
 export type BannerDiscountProps = {
   className?: ClassName

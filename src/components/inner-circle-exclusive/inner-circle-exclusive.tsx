@@ -11,17 +11,6 @@ import Image from '../../lib/image'
 
 export type { Product, ProductVariant, ProductImage } from '../../modules/normalize-product'
 
-export type InnerCircleExclusiveProps = {
-  className?: ClassName
-  title: string
-  subTitle: string
-  topButtonText: string
-  buttonLink: string
-  product: Product
-  membershipProductVariants: Array<ProductVariant>
-  slideImages: string[]
-  onReserve: (variant: ProductVariant) => void
-}
 const SWrapper = styled.div``
 
 const STitleWrapper = styled.div`
@@ -378,6 +367,17 @@ const SImage = styled(Image)`
   }
 `
 
+export type InnerCircleExclusiveProps = {
+  className?: ClassName
+  title: string
+  subTitle: string
+  topButtonText: string
+  buttonLink: string
+  product: Product
+  membershipProductVariants: Array<ProductVariant>
+  onReserve: (variant: ProductVariant) => void
+}
+
 export function InnerCircleExclusive({
   className,
   product,
@@ -385,7 +385,6 @@ export function InnerCircleExclusive({
   subTitle,
   topButtonText,
   buttonLink,
-  slideImages,
   onReserve,
   membershipProductVariants,
 }: InnerCircleExclusiveProps): React.ReactElement | null {
@@ -477,22 +476,23 @@ export function InnerCircleExclusive({
           <SContent>
             <SImagesWrapper>
               <SImagesContainer>
-                <SLeftSliderPart isPresent={slideImages.length > 2}>
-                  <Slider
-                    infinite
-                    arrows={false}
-                    carouselRef={smallSliderRef}
-                    customButtonGroup={<CustomButtons />}
-                    swipeable={false}
-                  >
-                    {product.images &&
-                      product.images.map((el, i) => (
-                        <SLeftImageContainer isPresent={slideImages.length > 2} key={el.src + i}>
+                {product.images && (
+                  <SLeftSliderPart isPresent={product.images.length > 2}>
+                    <Slider
+                      infinite
+                      arrows={false}
+                      carouselRef={smallSliderRef}
+                      customButtonGroup={<CustomButtons />}
+                      swipeable={false}
+                    >
+                      {product.images.map((el, i) => (
+                        <SLeftImageContainer isPresent={!!product.images && product.images.length > 2} key={el.src + i}>
                           <SImage src={el.src} alt={productTitle} shopifySize={'large'} />
                         </SLeftImageContainer>
                       ))}
-                  </Slider>
-                </SLeftSliderPart>
+                    </Slider>
+                  </SLeftSliderPart>
+                )}
                 <SRightSliderPart>
                   <Slider infinite arrows={false} carouselRef={bigSliderRef}>
                     {shiftedProductsArray &&

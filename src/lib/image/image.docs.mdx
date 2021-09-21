@@ -8,13 +8,15 @@ export const meta = {
   preview: <Image>Component content here</Image>,
   lists: {
     attributes: [
-      { name: 'src', required: true, type: 'string', description: 'Image path' },
-      { name: 'alt', required: true, type: 'string', description: 'Image description' },
-      { name: 'size', type: 'string', description: 'Parameter for rectangle images' },
+      { name: 'className', type: 'classnames.Argument', description: 'One or multiple class names that will be added to the main container' },
+      { name: 'style', type: 'React.CSSProperties', description: 'Inline styles for the main container' },
+      { name: 'src', type: 'string', description: 'Image path' },
+      { name: 'alt', type: 'string', description: 'Image description' },
       { name: 'width', type: 'string', description: 'Image width' },
       { name: 'height', type: 'string', description: 'Image height' },
       { name: 'shopifySize', type: 'string', description: 'Label that we use in img url to get suitable resolution' },
       { name: 'draggable', type: 'boolean', description: 'Is image draggable' },
+      { name: 'scrollPosition', type: 'ScrollPosition', description: 'Property from HOC component' },
     ],
   },
   scope: { Image },

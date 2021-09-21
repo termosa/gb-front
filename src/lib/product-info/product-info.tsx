@@ -18,7 +18,7 @@ import useCart, { Status } from '../use-cart'
 import addCartItemWithSubscription from '../add-cart-item-with-subscription'
 import SizeSelectorModal from '../size-selector-modal'
 import trackAddedToCart from '../track-added-to-cart'
-import { Image } from '../image'
+import Image from '../image'
 
 const goToYotpoReviews = () => {
   const yOffset = -200

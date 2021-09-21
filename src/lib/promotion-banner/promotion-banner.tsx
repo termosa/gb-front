@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import loadPromoDetails from '../load-promo-details'
 import setCookie from '../set-cookie'
 import getCookie from '../get-cookie'
-import { Image } from '../image'
+import Image from '../image'
 
 const PromoContainer = styled.div`
   background-color: #464a4d;

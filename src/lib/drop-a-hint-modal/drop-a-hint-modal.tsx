@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { Product } from '../../modules/normalize-product'
 import submitHint from '../submit-hint'
 import useDefer, { Status } from 'use-defer'
-import { Image } from '../image'
+import Image from '../image'
 
 const Modal = styled.div`
   position: fixed;
