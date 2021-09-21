@@ -82,7 +82,7 @@ export function initiateKlaviyo(): Promise<Klaviyo> {
     }
 
     Promise.all([
-      loadCustomer(),
+      loadCustomer().catch(() => null),
       loadScript(`//static.klaviyo.com/onsite/js/klaviyo.js?company_id=${KLAVIYO_ACCOUNT}&shop=${KLAVIYO_SHOP}`),
     ])
       .then(([customer]) => {

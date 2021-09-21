@@ -49,6 +49,7 @@ const SectionTitle = styled.div`
       position: absolute;
       bottom: 6px;
       left: 0;
+      z-index: -1;
     }
   }
 `

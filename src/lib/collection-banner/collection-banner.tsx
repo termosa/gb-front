@@ -9,39 +9,57 @@ const Wrapper = styled.div<{ backgroundImg?: string }>`
 `
 
 const CollectionBannerWrapper = styled.div`
-  max-width: 990px;
+  max-width: 960px;
   margin: 0 auto;
-  padding: 0 16px;
+  position: relative;
+
+  margin-bottom: 2.5em;
+  min-height: 315px;
+
+  @media (min-width: 1920px) {
+    min-height: 420px;
+  }
+`
+
+const CollectionBannerWrapperInner = styled.div`
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 15px;
+
+  @media (min-width: 1200px) {
+    left: 0;
+  }
 `
 
 const CollectionTitle = styled.h1`
   font-family: Cormorant Garamond, serif;
   font-weight: bold;
   font-size: 40px;
-  line-height: 100%;
+  line-height: 1.2;
   letter-spacing: -0.02em;
   font-feature-settings: 'pnum' on, 'lnum' on;
-  color: '#ffffff';
-  margin: 0;
-  padding: 82px 0 16px;
+  color: #ffffff;
+  margin: 0 0 15px;
+  padding: 0;
 `
 
 const CollectionDescription = styled.p`
   font-family: Montserrat, sans-serif;
   font-weight: 600;
   font-size: 16px;
-  line-height: 150%;
+  line-height: 1.5;
   letter-spacing: 0.05em;
-  color: '#ffffff';
-  padding: 0 0 82px;
+  color: #ffffff;
+  padding: 0;
+  margin: 0;
   max-width: 372px;
 `
 
 const CollectionMobileImg = styled.img<{ desktop?: boolean }>`
   width: 100%;
-  height: 200px;
+  height: 186px;
   object-fit: cover;
-  object-position: 82% 50%;
   ${(p) =>
     p.desktop &&
     css`
@@ -51,10 +69,6 @@ const CollectionMobileImg = styled.img<{ desktop?: boolean }>`
       margin: 0 auto;
       max-width: 1170px;
     `}
-
-  @media (min-width: 481px) {
-    object-position: 72% 50%;
-  }
 `
 
 const CollectionMobileTitle = styled.h1`
@@ -92,14 +106,17 @@ const collectionsBanner: CollectionBanner[] = [
   {
     handle: 'bath-bombs',
     compactBackgroundImage: 'https://fragrantjewels-assets.s3.amazonaws.com/images/banners-2/bb-banner-2-mb.jpg',
+    compactBackgroundStyle: { objectPosition: '100% 50%' },
     backgroundImage: 'https://fragrantjewels-assets.s3.amazonaws.com/images/banners-2/bb-banner-2-dt.jpg',
     title: 'Bath bombs',
     description: `Love your skin and it’ll love you back. Each bath bomb is packed with soothing shea butter and (surprise!) a stunning limited-edition ring.`,
+    styleTitleDesktop: { color: '#000' },
     styleDescriptionDesktop: { color: '#000', fontWeight: 400 },
   },
   {
     handle: 'all-products',
     compactBackgroundImage: 'https://fragrantjewels-assets.s3.amazonaws.com/images/banners-2/all-banner-2-1-mb.jpg',
+    compactBackgroundStyle: { objectPosition: '100% 50%' },
     backgroundImage: 'https://fragrantjewels-assets.s3.amazonaws.com/images/banners-2/all-banner-2-dt.jpg',
     title: 'Shop Everything',
     description: `Add a little calm to the chaos of life with our scented candles, bath bombs and sugar scrubs-discover limited-edition jewelry in each product!`,
@@ -142,6 +159,7 @@ const collectionsBanner: CollectionBanner[] = [
     backgroundImage: 'https://fragrantjewels-assets.s3.amazonaws.com/images/banners-2/bundle-and-save-banner-dt.jpg',
     title: 'Bundle & Save',
     description: `Get the full experience and best value when you shop bundles. You’re guaranteed to get a unique ring design inside each product!`,
+    styleTitleDesktop: { color: '#000' },
     styleDescriptionDesktop: { color: '#000', fontWeight: 400 },
   },
   {
@@ -150,6 +168,7 @@ const collectionsBanner: CollectionBanner[] = [
     backgroundImage: 'https://fragrantjewels-assets.s3.amazonaws.com/images/banners-2/candles-banner-dt.jpg',
     title: 'Jewel Candles',
     description: `Each scented candle burns clean and will transport you to a different world with rich aromas—strong enough to fill any room!`,
+    styleTitleDesktop: { color: '#000' },
     styleDescriptionDesktop: { color: '#000', fontWeight: 400 },
   },
   {
@@ -158,7 +177,7 @@ const collectionsBanner: CollectionBanner[] = [
     backgroundImage: 'https://fragrantjewels-assets.s3.amazonaws.com/images/banners/collection-satin-2-dt.jpg',
     title: 'New Birthstone Satin Collection',
     description: `Inside each candle, you'll discover 1 of 10 beautifully designed rings featuring a Swarovski®️ crystal birthstone. Collect all 10 for yourself or save them for the perfect decadent birthday gift.`,
-    styleTitleDesktop: { color: '#ee67a0' },
+    styleTitleDesktop: { color: '#9059c8' },
     onlyDesktop: true,
     styleDescriptionDesktop: { color: '#000', fontWeight: 400 },
   },
@@ -177,6 +196,7 @@ const collectionsBanner: CollectionBanner[] = [
     backgroundImage: 'https://fragrantjewels-assets.s3.amazonaws.com/images/banners-2/top-summer-picks-banner-2-dt.jpg',
     title: 'Top Summer Picks',
     description: `Get your skin and home summertime ready with these refreshing summer scents, plus must-have ring styles.`,
+    styleTitleDesktop: { color: '#000' },
     styleDescriptionDesktop: { color: '#000', fontWeight: 400 },
   },
   {
@@ -186,7 +206,7 @@ const collectionsBanner: CollectionBanner[] = [
     title: 'Jewelry',
     description: `Surprises are great, but sometimes you simply need that one jewel. Find that perfect design in our jewelry shop.`,
     styleTitleDesktop: { color: '#ffffff' },
-    styleDescriptionDesktop: { color: '#ffffff', fontWeight: 400 },
+    styleDescriptionDesktop: { color: '#ffffff', fontWeight: 500 },
   },
   {
     handle: 'zodiac-collection-1',
@@ -202,6 +222,7 @@ const collectionsBanner: CollectionBanner[] = [
 interface CollectionBanner {
   handle: string
   compactBackgroundImage: string
+  compactBackgroundStyle?: React.CSSProperties
   backgroundImage: string
   title: string
   description: string
@@ -236,16 +257,22 @@ export function CollectionBanner({ handle, className, style }: CollectionBannerP
     ) : (
       <Wrapper className={cn(className)} style={style} backgroundImg={bannerCollection.backgroundImage}>
         <CollectionBannerWrapper>
-          <CollectionTitle style={bannerCollection.styleTitleDesktop}>{bannerCollection.title}</CollectionTitle>
-          <CollectionDescription style={bannerCollection.styleDescriptionDesktop}>
-            {bannerCollection.description}
-          </CollectionDescription>
+          <CollectionBannerWrapperInner>
+            <CollectionTitle style={bannerCollection.styleTitleDesktop}>{bannerCollection.title}</CollectionTitle>
+            <CollectionDescription style={bannerCollection.styleDescriptionDesktop}>
+              {bannerCollection.description}
+            </CollectionDescription>
+          </CollectionBannerWrapperInner>
         </CollectionBannerWrapper>
       </Wrapper>
     )
   ) : (
     <Wrapper className={cn(className)} style={style}>
-      <CollectionMobileImg desktop={bannerCollection.onlyDesktop} src={bannerCollection.compactBackgroundImage} />
+      <CollectionMobileImg
+        desktop={bannerCollection.onlyDesktop}
+        src={bannerCollection.compactBackgroundImage}
+        style={bannerCollection.compactBackgroundStyle}
+      />
       <CollectionMobileTitle style={bannerCollection.onlyDesktop ? bannerCollection.styleTitleDesktop : {}}>
         {bannerCollection.title}
       </CollectionMobileTitle>
