@@ -4,7 +4,7 @@ WORKDIR /app
 
 ENV PATH /app/node_modules/.bin:$PATH
 
-RUN apk update && apk add yarn python3 g++ make
+RUN apk update && apk add --update yarn python3 g++ make curl 
 
 ARG BASE_API_URL
 ARG SITE_URL
