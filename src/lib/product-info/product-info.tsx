@@ -45,9 +45,6 @@ const SPdpProductInfo = styled.div<{
   height: fit-content;
   max-width: 350px;
   margin: 0 auto;
-  @media (min-width: 768px) {
-    padding-top: 33px;
-  }
 `
 
 const SPdpChooserItemPartTopContent = styled.div`
