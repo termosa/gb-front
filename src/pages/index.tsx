@@ -47,6 +47,11 @@ export default function HomePage({
         <InnerCircleExclusive
           product={innerCircleSubscriptionProduct}
           membershipProductVariants={innerCircleMembershipProduct.variants}
+          slideImages={[
+            'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/home-banner-img-1-dt.jpg',
+            'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/shop-by-product-img-2.jpg',
+            'https://i.ebayimg.com/images/g/XOYAAOSwpjxgy3-1/s-l500.jpg',
+          ]}
           title="Get addicted to me-time"
           subTitle="Join the Inner Circle for exciting new collections every month, available exclusively to members."
           topButtonText="Get Started"

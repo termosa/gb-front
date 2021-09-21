@@ -67,7 +67,7 @@ export function ProductModalButtons({ product }: ProductModalButtonsProps): Reac
   return (
     <SModalButtonsWrapper>
       <SDropAHint product={product} />
-      <SModalButtonsItem>
+      {/*<SModalButtonsItem>
         <svg
           width={screenSize.lessThanSmall ? 26 : 34}
           height={screenSize.lessThanSmall ? 14 : 20}
@@ -103,7 +103,7 @@ export function ProductModalButtons({ product }: ProductModalButtonsProps): Reac
           />
         </svg>
         <span>Care Guide</span>
-      </SModalButtonsItem>
+      </SModalButtonsItem>*/}
     </SModalButtonsWrapper>
   )
 }

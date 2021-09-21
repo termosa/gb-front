@@ -4,10 +4,11 @@ import styled from 'styled-components'
 import Button from '../../lib/button'
 import RingSize from '../ring-size'
 import formatPrice from '../../modules/format-price'
-import { Product, ProductImage, ProductVariant } from '../../modules/normalize-product'
+import { Product, ProductVariant } from '../../modules/normalize-product'
 import Slider from '../../lib/slider'
 import Carousel from 'react-multi-carousel'
 import Image from '../../lib/image'
+import useScreenSize from '../../lib/use-screen-size'
 
 export type { Product, ProductVariant, ProductImage } from '../../modules/normalize-product'
 
@@ -361,10 +362,6 @@ const SImage = styled(Image)`
   width: 100%;
   height: 100%;
   margin: 0;
-
-  img {
-    object-fit: contain;
-  }
 `
 
 export type InnerCircleExclusiveProps = {
@@ -374,6 +371,7 @@ export type InnerCircleExclusiveProps = {
   topButtonText: string
   buttonLink: string
   product: Product
+  slideImages: Array<string>
   membershipProductVariants: Array<ProductVariant>
   onReserve: (variant: ProductVariant) => void
 }
@@ -385,9 +383,11 @@ export function InnerCircleExclusive({
   subTitle,
   topButtonText,
   buttonLink,
+  slideImages,
   onReserve,
   membershipProductVariants,
 }: InnerCircleExclusiveProps): React.ReactElement | null {
+  const screenSize = useScreenSize()
   const [selectedVariant, setVariant] = useState<ProductVariant | undefined>()
   const [error, setError] = useState<boolean>(false)
 
@@ -398,10 +398,7 @@ export function InnerCircleExclusive({
   const actualPrice = (selectedVariant || product.variants[0]).actual_price
   const comparePrice = (selectedVariant || product.variants[0]).compare_at_price
   const titleParts = title.split(' ')
-  let shiftedProductsArray: Array<ProductImage> = []
-  if (product.images) {
-    shiftedProductsArray = [...product.images.slice(1), product.images[0]]
-  }
+  const shiftedProductsArray: Array<string> = [...slideImages.slice(1), slideImages[0]]
 
   const handleToggle = (ref: React.RefObject<Carousel>, isPrevious: boolean) => {
     if (isPrevious) {
@@ -476,29 +473,32 @@ export function InnerCircleExclusive({
           <SContent>
             <SImagesWrapper>
               <SImagesContainer>
-                {product.images && (
-                  <SLeftSliderPart isPresent={product.images.length > 2}>
-                    <Slider
-                      infinite
-                      arrows={false}
-                      carouselRef={smallSliderRef}
-                      customButtonGroup={<CustomButtons />}
-                      swipeable={false}
-                    >
-                      {product.images.map((el, i) => (
-                        <SLeftImageContainer isPresent={!!product.images && product.images.length > 2} key={el.src + i}>
-                          <SImage src={el.src} alt={productTitle} shopifySize={'large'} />
-                        </SLeftImageContainer>
-                      ))}
-                    </Slider>
-                  </SLeftSliderPart>
-                )}
+                <SLeftSliderPart isPresent={slideImages.length > 2}>
+                  <Slider
+                    infinite
+                    arrows={false}
+                    carouselRef={smallSliderRef}
+                    customButtonGroup={<CustomButtons />}
+                    swipeable={false}
+                  >
+                    {slideImages.map((src, i) => (
+                      <SLeftImageContainer isPresent={slideImages.length > 2} key={src + i}>
+                        <SImage src={src} alt={productTitle} />
+                      </SLeftImageContainer>
+                    ))}
+                  </Slider>
+                </SLeftSliderPart>
                 <SRightSliderPart>
                   <Slider infinite arrows={false} carouselRef={bigSliderRef}>
-                    {shiftedProductsArray &&
-                      shiftedProductsArray.map((el, i) => (
-                        <SImage src={el.src} alt={productTitle} key={el.src + i} shopifySize={'large'} />
-                      ))}
+                    {shiftedProductsArray.map((src, i) => (
+                      <SImage
+                        src={src}
+                        alt={productTitle}
+                        key={src + i}
+                        width={screenSize.greaterThanMedium ? '400px' : '236px'}
+                        height={screenSize.greaterThanMedium ? '400px' : '236px'}
+                      />
+                    ))}
                   </Slider>
                 </SRightSliderPart>
               </SImagesContainer>
