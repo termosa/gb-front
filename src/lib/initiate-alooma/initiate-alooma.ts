@@ -186,7 +186,7 @@ export function initiateAlooma(): Promise<Alooma> {
       }
       alooma.__SV = ALOOMA_VERSION
       Promise.all([
-        loadCustomer(),
+        loadCustomer().catch(() => null),
         loadScript(ALOOMA_SCRIPT_SRC), // Maybe it need script tag with the given url (as in original script), but I didn't notice it until now
       ])
         .then(([customer]) => {
