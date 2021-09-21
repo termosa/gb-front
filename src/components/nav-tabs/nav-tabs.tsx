@@ -5,6 +5,7 @@ import styled from 'styled-components'
 export type NavTabsProps = {
   className?: ClassName
   setExtendableBlockContent: Dispatch<SetStateAction<string>>
+  isSubscriptionLinkShown: boolean
 }
 
 const SWrapper = styled.div`
@@ -35,11 +36,12 @@ const SDesktopNav = styled.ul`
   align-items: center;
   padding: 0;
   letter-spacing: 0.7px;
+  min-height: 32px;
   @media (max-width: 1199px) {
     font-size: 1em;
-    padding: 10px 0;
     max-width: 990px;
     min-width: 600px;
+    padding: 10px 22.5px;
     & > li:last-child {
       padding-right: 30px;
     }
@@ -109,7 +111,6 @@ const SSubscribeButton = styled.li`
   margin-top: 0;
   margin-bottom: 0;
   display: none;
-  margin-left: 25px;
   @media (min-width: 1200px) {
     order: 2;
     margin-left: 0;
@@ -143,13 +144,19 @@ const SSubscribeButton = styled.li`
   }
 `
 
-export function NavTabs({ className, setExtendableBlockContent }: NavTabsProps): React.ReactElement | null {
+export function NavTabs({
+  className,
+  setExtendableBlockContent,
+  isSubscriptionLinkShown,
+}: NavTabsProps): React.ReactElement | null {
   return (
     <SWrapper className={cn('NavTabs', className)}>
       <SDesktopNav>
-        <SSubscribeButton style={{ display: 'list-item' }} onMouseEnter={() => setExtendableBlockContent('')}>
-          <a href="/pages/inner-circle">Subscribe</a>
-        </SSubscribeButton>
+        {isSubscriptionLinkShown && (
+          <SSubscribeButton style={{ display: 'list-item' }} onMouseEnter={() => setExtendableBlockContent('')}>
+            <a href="/pages/inner-circle">Subscribe</a>
+          </SSubscribeButton>
+        )}
         <SNavItem onMouseEnter={() => setExtendableBlockContent('')}>
           <a href="/collections/spooky">Halloween</a>
         </SNavItem>
