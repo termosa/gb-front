@@ -52,6 +52,7 @@ const STitleUnderline = styled.span`
     position: absolute;
     bottom: 6px;
     left: 0;
+    z-index: -1;
   }
 `
 
