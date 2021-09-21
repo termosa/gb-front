@@ -4,13 +4,8 @@ import styled from 'styled-components'
 import useDefer, { Status } from 'use-defer'
 import Button from '../../lib/button'
 import Image from '../../lib/image'
-
-export type InlineSignupFormProps = {
-  className?: ClassName
-  onSignup: (email: string) => Promise<unknown>
-}
-
-const name = 'InlineSignupForm'
+import http from '../../modules/http'
+import klaviyo from '../../lib/klaviyo'
 
 const Container = styled.div`
   max-width: 1020px;
@@ -114,18 +109,30 @@ const ErrorMessage = styled.div`
   color: #a83232;
 `
 
-export function InlineSignupForm({ className, onSignup }: InlineSignupFormProps): React.ReactElement {
+export type InlineSignupFormProps = {
+  className?: ClassName
+}
+
+export function InlineSignupForm({ className }: InlineSignupFormProps): React.ReactElement {
   const [email, setEmail] = useState('')
-  const signupRequest = useDefer<unknown, string>(onSignup, [onSignup])
+  const signUpRequest = useDefer<unknown, string>(
+    (email: string) =>
+      http({
+        url: `https://www.fragrantjewels.com/klsubscribe?email=${email}&l=PXeq2D&s=Footer-form`,
+      }).then(() => {
+        klaviyo('identify', { $email: email })
+      }),
+    []
+  )
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault()
-    signupRequest.execute(email)
+    signUpRequest.execute(email)
   }
 
   return (
-    <Container className={cn(name, className)}>
+    <Container className={cn('InlineSignupForm', className)}>
       <SImage src="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/email-img.svg" alt="" />
-      {signupRequest.status === Status.SUCCESS ? (
+      {signUpRequest.status === Status.SUCCESS ? (
         <SuccessMessage>Congratulations! You have successfully signed up!</SuccessMessage>
       ) : (
         <>
@@ -137,16 +144,16 @@ export function InlineSignupForm({ className, onSignup }: InlineSignupFormProps)
               required
               placeholder="Enter your email..."
               autoCorrect="off"
-              disabled={signupRequest.status === Status.PENDING}
+              disabled={signUpRequest.status === Status.PENDING}
               autoCapitalize="off"
               value={email}
               onChange={(event) => setEmail(event.target.value)}
             />
-            <FormButton disabled={signupRequest.status === Status.PENDING} type="submit">
+            <FormButton disabled={signUpRequest.status === Status.PENDING} type="submit">
               Submit
             </FormButton>
           </Form>
-          {signupRequest.status === Status.ERROR && <ErrorMessage>{signupRequest.error}</ErrorMessage>}
+          {signUpRequest.status === Status.ERROR && <ErrorMessage>{signUpRequest.error}</ErrorMessage>}
         </>
       )}
     </Container>
