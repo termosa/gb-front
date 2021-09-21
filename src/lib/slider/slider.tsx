@@ -267,7 +267,7 @@ export const Slider = ({
         {Array.isArray(children)
           ? children.map((slide, index) =>
               index < firstVisibleIndex - MAX_VISIBLE_ITEMS || index >= firstVisibleIndex + MAX_VISIBLE_ITEMS * 2 ? (
-                <i />
+                <i key={index} />
               ) : (
                 slide
               )
