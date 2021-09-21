@@ -4,6 +4,7 @@ import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
 import Slider from '../../lib/slider'
 import useScreenSize from '../../lib/use-screen-size'
+import Image from '../../lib/image'
 
 export interface ReviewsSectionProps extends Omit<React.HTMLProps<HTMLDivElement>, 'className'> {
   className?: ClassName
@@ -271,7 +272,7 @@ export function ReviewsSection({ quote, author, className }: ReviewsSectionProps
         </SQuote>
         <SliderWrapper>
           {useScreen.greaterThanLarge ? (
-            TEST_IMAGES.map((media, index) => <img src={media} alt="company" key={`revImage${index}`} />)
+            TEST_IMAGES.map((media, index) => <Image src={media} alt="company" key={`revImage${index}`} />)
           ) : (
             <Slider
               partiallyVisible={false}

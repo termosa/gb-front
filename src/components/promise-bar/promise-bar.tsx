@@ -1,6 +1,7 @@
 import React from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
+import Image from '../../lib/image'
 
 export type PromiseBarProps = {
   className?: ClassName
@@ -95,7 +96,7 @@ const SPromiseItem = styled.div`
   }
 `
 
-const SPromiseItemImg = styled.img`
+const SPromiseItemImg = styled(Image)`
   width: 100%;
   height: auto;
   margin: 0 auto 10px;

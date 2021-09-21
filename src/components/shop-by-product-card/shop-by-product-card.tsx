@@ -1,6 +1,7 @@
 import React from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
+import Image from '../../lib/image'
 
 export interface ShopByProductCardProps extends Omit<React.HTMLProps<HTMLDivElement>, 'className'> {
   className?: ClassName
@@ -20,7 +21,7 @@ const SLayout = styled.div`
   }
 `
 
-const SLayoutImage = styled.img`
+const SLayoutImage = styled(Image)`
   display: block;
   margin-bottom: 0;
   border-style: none;

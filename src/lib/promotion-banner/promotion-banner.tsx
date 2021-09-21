@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import loadPromoDetails from '../load-promo-details'
 import setCookie from '../set-cookie'
 import getCookie from '../get-cookie'
+import { Image } from '../image'
 
 const PromoContainer = styled.div`
   background-color: #464a4d;
@@ -175,7 +176,7 @@ export function PromotionBanner({
       <PromoContent>
         <WrapPromoContent>
           <PromoImageBox>
-            <img src={promoDetailsRequest.value.src} alt="" />
+            <Image src={promoDetailsRequest.value.src} alt="" />
           </PromoImageBox>
           <PromoClock>
             <h3> {promoDetailsRequest.value.title} </h3>

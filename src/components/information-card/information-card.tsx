@@ -1,6 +1,7 @@
 import React from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
+import { Image } from '../../lib/image'
 
 export type InformationCardProps = {
   className?: ClassName
@@ -24,9 +25,9 @@ const SCardWrapper = styled.div`
   margin: 0 auto 40px;
 `
 
-const SCardImage = styled.img`
+const SCardImage = styled(Image)`
   object-fit: contain;
-  margin: 0 auto 23px;
+  padding-bottom: 23px;
   width: 300px;
   height: 300px !important;
   display: block;

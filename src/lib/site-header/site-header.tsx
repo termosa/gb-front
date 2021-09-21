@@ -11,6 +11,7 @@ import NavMobile from '../../components/nav-mobile'
 import { ProductsChunk } from '../../modules/normalize-products-chunk'
 import useCustomerOrdersDetails from '../use-customer-orders-details'
 import useScreenSize from '../use-screen-size'
+import { Image } from '../image'
 
 const SWrapper = styled.div`
   text-align: center;
@@ -632,7 +633,7 @@ const AllContent = () => (
       </ExtendableBlockItems>
       <ExtendableBlockItem className="desktop-nav-product-item">
         <a href="/collections/spooky">
-          <img src="https://fragrantjewels.s3.amazonaws.com/app/app-nav/nav-all-img-22-dt.jpg" />
+          <Image src="https://fragrantjewels.s3.amazonaws.com/app/app-nav/nav-all-img-22-dt.jpg" />
           <AnimatedLink as="span">
             <span>New in the Halloween Shop</span>
           </AnimatedLink>
@@ -647,7 +648,7 @@ const SubscriptionContent = () => (
     <ExtendableBlockContainer>
       <ExtendableBlockItem>
         <a href="/pages/inner-circle">
-          <img src="https://fragrantjewels-assets.s3.amazonaws.com/images/pick-your-poison/nav-pick-your-poison.jpg" />
+          <Image src="https://fragrantjewels-assets.s3.amazonaws.com/images/pick-your-poison/nav-pick-your-poison.jpg" />
           <ExtendableBlockListTitle>Exclusive Savings On New Collections Every Month</ExtendableBlockListTitle>
           <ExtendableBlockListText>A collection so intoxicating, it's to die for...</ExtendableBlockListText>
           <AnimatedLink as="span">
@@ -657,7 +658,7 @@ const SubscriptionContent = () => (
       </ExtendableBlockItem>
       <ExtendableBlockItem>
         <a href="/pages/rare-ic-page">
-          <img src="https://fragrantjewels.s3.amazonaws.com/app/app-nav/rare-protection-charms.jpg" />
+          <Image src="https://fragrantjewels.s3.amazonaws.com/app/app-nav/rare-protection-charms.jpg" />
           <ExtendableBlockListTitle>Everything There Is To Know About Rare Collections</ExtendableBlockListTitle>
           <ExtendableBlockListText>
             Start collecting unique limited edition sets not available for sale! Find out how you can qualify.
@@ -696,7 +697,7 @@ const RewardsContent = () => (
     <ExtendableBlockContainer>
       <ExtendableBlockItem>
         <a href="/pages/rewards-boutique">
-          <img src="https://fragrantjewels.s3.amazonaws.com/app/app-nav/nav-rewards-img-1.jpg" />
+          <Image src="https://fragrantjewels.s3.amazonaws.com/app/app-nav/nav-rewards-img-1.jpg" />
           <ExtendableBlockListTitle>New Rewards Every Week</ExtendableBlockListTitle>
           <ExtendableBlockListText>
             Every dollar you spend earns you reward points you can use to redeem free jewelry, products and more!
@@ -708,7 +709,7 @@ const RewardsContent = () => (
       </ExtendableBlockItem>
       <ExtendableBlockItem>
         <a href="/pages/rewards-explainer">
-          <img src="https://fragrantjewels.s3.amazonaws.com/app/app-nav/nav-rewards-img-2.jpg" />
+          <Image src="https://fragrantjewels.s3.amazonaws.com/app/app-nav/nav-rewards-img-2.jpg" />
           <ExtendableBlockListTitle>Earn Platinum Reward Status</ExtendableBlockListTitle>
           <ExtendableBlockListText>
             Get exclusive access to VIP offers, 3x points and more when you earn Platinum status!

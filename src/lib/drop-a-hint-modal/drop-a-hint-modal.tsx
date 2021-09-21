@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { Product } from '../../modules/normalize-product'
 import submitHint from '../submit-hint'
 import useDefer, { Status } from 'use-defer'
+import { Image } from '../image'
 
 const Modal = styled.div`
   position: fixed;
@@ -318,7 +319,7 @@ export function DropAHintModal({ className, style, product, onClose }: DropAHint
             <ModalCloseBtn type="button" onClick={onClose} />
             <ModalDahContent onSubmit={handleSubmit}>
               <ModalDahContentCol>
-                <img src={product.image?.src} alt={product.image?.alt} draggable={false} />
+                <Image src={product.image?.src} alt={product.image?.alt} draggable={false} shopifySize={'large'} />
                 <ModalDahPreview>
                   <p>
                     Hey{' '}

@@ -50,7 +50,7 @@ const CarouselPreview = () => {
     dotsPresent={isDotsPresent}
   >
      {[...new Array(5).fill()].map((_, i) => {
-        return <img src={"https://source.unsplash.com/random/800x800/?img=" + i} alt="" style={{width: "300px"}}/>
+        return <Image src={"https://source.unsplash.com/random/800x800/?img=" + i} alt="" style={{width: "300px"}}/>
      })}
   </Slider>
   )

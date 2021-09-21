@@ -8,7 +8,7 @@ import { Product as ProductType } from '../../modules/normalize-product'
 import ProductContext from '../../modules/product-context'
 import Slider from '../../lib/slider'
 import Carousel from 'react-multi-carousel'
-import Image from '../../lib/image'
+import { Image } from '../../lib/image'
 
 const Wrapper = styled.div`
   width: 101%;
@@ -92,6 +92,12 @@ const SCarouselThumbnailItem = styled.a<{
   cursor: pointer;
 `
 
+const SImage = styled(Image)<{
+  margin?: string
+}>`
+  margin: ${(props) => props.margin || '0'};
+`
+
 const SPdpRowWrapper = styled.div`
   height: 355px;
 
@@ -161,12 +167,6 @@ const SPdpCarouselItemMobile = styled.div`
       width: 100%;
     }
   }
-`
-
-const SImage = styled(Image)<{
-  margin?: string
-}>`
-  margin: ${(props) => props.margin || '5px'};
 `
 
 export type VerticalGalleryProps = {
@@ -275,7 +275,7 @@ export function VerticalGallery({ className }: VerticalGalleryProps): React.Reac
                       alt={image?.alt}
                       width={`${galleryImageWidth}px`}
                       height={`${getImageHeight(image)}px`}
-                      margin={`0`}
+                      shopifySize={screenSize.greaterThanMedium ? 'large' : 'medium'}
                     />
                   </SPdpCarouselItem>
                 ))}
@@ -293,10 +293,9 @@ export function VerticalGallery({ className }: VerticalGalleryProps): React.Reac
                   <SPdpCarouselItemMobile key={image?.src}>
                     {product?.images && (
                       <SImage
-                        width={`${galleryImageWidth}px`}
-                        height={`${getImageHeight(image)}px`}
                         src={product.images && image?.src}
                         alt={(product.images && image?.alt) || ''}
+                        shopifySize={'large'}
                       />
                     )}
                   </SPdpCarouselItemMobile>
@@ -313,10 +312,13 @@ export function VerticalGallery({ className }: VerticalGalleryProps): React.Reac
                     }}
                   >
                     {product?.images && (
-                      <Image
+                      <SImage
                         src={product.images && image?.src}
                         alt={(product.images && image?.alt) || ''}
                         shopifySize={'small'}
+                        width={'60px'}
+                        height={'60px'}
+                        margin={'3px'}
                       />
                     )}
                   </SCarouselThumbnailItem>

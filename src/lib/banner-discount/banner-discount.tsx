@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import useDefer from 'use-defer'
 import loadDiscount from '../load-discount'
 import setCookie from '../set-cookie'
+import { Image } from '../image'
 
 export type BannerDiscountProps = {
   className?: ClassName
@@ -29,7 +30,7 @@ export function BannerDiscount({ discountCode, className, style }: BannerDiscoun
       <Wrapper className={cn(className)} style={style}>
         <WrapDiscountContainer>
           <ImageBox>
-            <img src={discount.image} alt={discount.title} />
+            <Image src={discount.image} alt={discount.title} />
           </ImageBox>
           <Title>
             <h3>{discount.title}</h3>

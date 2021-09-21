@@ -1,6 +1,7 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 import CarouselSlider from '.'
+import { Image } from '../image'
 
 describe('<Slider>', () => {
   it('should render with the correct image', async () => {
@@ -8,7 +9,7 @@ describe('<Slider>', () => {
     const { container } = render(
       <CarouselSlider scrollbarPresent dotsPresent>
         {[...new Array(5).fill(1)].map((_, i) => {
-          return <img src={imgSrc + i} alt="" style={{ width: '300px' }} key={imgSrc + i} />
+          return <Image src={imgSrc + i} alt="" style={{ width: '300px' }} key={imgSrc + i} />
         })}
       </CarouselSlider>
     )

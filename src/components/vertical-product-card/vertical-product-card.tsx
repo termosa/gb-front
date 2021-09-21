@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
+import Image from '../../lib/image'
 
 export interface VerticalProductCardProps extends Omit<React.HTMLProps<HTMLDivElement>, 'className'> {
   className?: ClassName
@@ -88,7 +89,7 @@ const SImageWrapperInner = styled.div`
   transform: translate(-50%, -50%);
 `
 
-const SProductImage = styled.img``
+const SProductImage = styled(Image)``
 
 const SProductMaterialType = styled.div`
   text-transform: uppercase;

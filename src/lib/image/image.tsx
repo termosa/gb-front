@@ -1,22 +1,25 @@
 import styled from 'styled-components'
 import React, { useMemo } from 'react'
 import cn, { Argument as ClassName } from 'classnames'
+import { LazyLoadImage, ScrollPosition, trackWindowScroll } from 'react-lazy-load-image-component'
 
 type ImageProps = {
   className?: ClassName
   style?: React.CSSProperties
-  src: string
+  src?: string
   alt?: string
   width?: string
   height?: string
   shopifySize?: 'pico' | 'icon' | 'thumb' | 'small' | 'compact' | 'medium' | 'large' | 'grande'
   draggable?: boolean
+  scrollPosition?: ScrollPosition
 }
 
 const SImageContainer = styled.figure`
-  width: initial;
-  height: initial;
-  margin: 5px;
+  margin: 0;
+  img {
+    object-fit: cover;
+  }
 `
 
 export function Image({
@@ -28,8 +31,10 @@ export function Image({
   height,
   shopifySize,
   draggable,
+  scrollPosition,
 }: ImageProps): React.ReactElement {
   const imagePatchedSrc = useMemo<string>(() => {
+    if (!src) return ''
     if (!shopifySize) return src
     try {
       const url = new URL(src)
@@ -44,7 +49,16 @@ export function Image({
   }, [src, shopifySize])
   return (
     <SImageContainer className={cn(className)} style={style}>
-      <img src={imagePatchedSrc} alt={alt} draggable={draggable} width={width || '100%'} height={height || '100%'} />
+      <LazyLoadImage
+        src={imagePatchedSrc}
+        alt={alt}
+        scrollPosition={scrollPosition}
+        width={width || '100%'}
+        height={height || '100%'}
+        draggable={draggable}
+      />
     </SImageContainer>
   )
 }
+
+export default trackWindowScroll(Image)

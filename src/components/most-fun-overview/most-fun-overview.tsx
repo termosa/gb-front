@@ -2,6 +2,7 @@ import React from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
 import Slider from '../../lib/slider'
+import { Image } from '../../lib/image'
 
 export interface MostFunOverviewProps extends Omit<React.HTMLProps<HTMLDivElement>, 'className'> {
   className?: ClassName
@@ -210,7 +211,7 @@ export function MostFunOverview({ className }: MostFunOverviewProps): React.Reac
         <StyledSlider>
           <Slider arrows={true}>
             <div>
-              <img src="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/most-fun-img-1.jpg" alt="" />
+              <Image src="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/most-fun-img-1.jpg" alt="" />
               <SSlideTitle>Guilt Free Ingredients</SSlideTitle>
               <SSlideText>
                 <p>
@@ -221,7 +222,7 @@ export function MostFunOverview({ className }: MostFunOverviewProps): React.Reac
             </div>
 
             <div>
-              <img src="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/most-fun-img-2.jpg" alt="" />
+              <Image src="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/most-fun-img-2.jpg" alt="" />
               <SSlideTitle>Win $10,000 Ring</SSlideTitle>
               <SSlideText>
                 <p>
@@ -232,7 +233,7 @@ export function MostFunOverview({ className }: MostFunOverviewProps): React.Reac
             </div>
 
             <div>
-              <img src="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/most-fun-img-3.jpg" alt="" />
+              <Image src="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/most-fun-img-3.jpg" alt="" />
               <SSlideTitle>Collectible Jewelry</SSlideTitle>
               <SSlideText>
                 <p>

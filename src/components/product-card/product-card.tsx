@@ -27,17 +27,19 @@ const SProductCard = styled.div`
   height: 100%;
   box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.1);
   background: white;
-  padding: 13px 10px;
+  padding: 4px;
   text-align: center;
   font: 400 12px/1.3 'Montserrat', sans-serif;
   letter-spacing: 0.08em;
   position: relative;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 
   @media (min-width: 768px) {
     box-shadow: 0 0 6px rgba(0, 0, 0, 0.25);
     padding: 12px 10px 0;
+    height: 100%;
   }
 
   img {
@@ -142,6 +144,7 @@ const ProductCardTitle = styled.h4`
   font: 400 16px/1.3 'Montserrat', sans-serif;
   margin: 0 0 8px;
   padding: 0 5px;
+  height: 40px;
   text-overflow: ellipsis;
   overflow: hidden;
 `
@@ -261,29 +264,31 @@ export function ProductCard({ className, style, product, onClick }: ProductCardP
                 src={product.image.src}
                 alt={product.image?.alt}
                 draggable={false}
-                shopifySize={screenSize.greaterThanMedium ? 'medium' : 'compact'}
+                shopifySize={screenSize.greaterThanSmall ? 'medium' : 'compact'}
               />
             )}
           </ProductCardImgWrapperInner>
         </ProductCardImgWrapper>
-        {checkForLabel()}
-        <ProductCardStars>
-          <StarRating reviewsAverage={product.reviewsAverage} reviewsCount={product.reviewsCount} />
-        </ProductCardStars>
-        <ProductCardTitle title={productTitle}>{productTitle}</ProductCardTitle>
-        <ProductCardType>{productType}</ProductCardType>
-        <ProductCardPrices>
-          <ProductCardPrice>
-            {comparePrice ? (
-              <>
-                <SDiscountPriceLabel>{formatPrice(comparePrice)}</SDiscountPriceLabel>{' '}
+        <div>
+          {checkForLabel()}
+          <ProductCardStars>
+            <StarRating reviewsAverage={product.reviewsAverage} reviewsCount={product.reviewsCount} />
+          </ProductCardStars>
+          <ProductCardTitle title={productTitle}>{productTitle}</ProductCardTitle>
+          <ProductCardType>{productType}</ProductCardType>
+          <ProductCardPrices>
+            <ProductCardPrice>
+              {comparePrice ? (
+                <>
+                  <SDiscountPriceLabel>{formatPrice(comparePrice)}</SDiscountPriceLabel>{' '}
+                  <SPriceLabel>{formatPrice(actualPrice)}</SPriceLabel>
+                </>
+              ) : (
                 <SPriceLabel>{formatPrice(actualPrice)}</SPriceLabel>
-              </>
-            ) : (
-              <SPriceLabel>{formatPrice(actualPrice)}</SPriceLabel>
-            )}
-          </ProductCardPrice>
-        </ProductCardPrices>
+              )}
+            </ProductCardPrice>
+          </ProductCardPrices>
+        </div>
       </SProductCard>
     </ProductCardWrapper>
   )

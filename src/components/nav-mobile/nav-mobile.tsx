@@ -4,6 +4,7 @@ import PointsWidget from '../points-widget'
 import SigninSignup from '../signin-signup'
 import { ExtendableBlockContent } from '../../lib/site-header'
 import { CustomerLevel } from '../../lib/use-customer-orders-details'
+import Image from '../../lib/image'
 
 export type SearchFieldProps = {
   isBurgerMenuOpen: boolean
@@ -484,7 +485,7 @@ export function NavMobile({
               <div>
                 {CARDS_LIST.map((item) => (
                   <SCard key={item.imgLink} href={item.href} className="app-col app-add-product-col">
-                    <img src={item.imgLink} alt="" />
+                    <Image src={item.imgLink} alt="" />
                     <div>
                       <SCardLink className="app-animated-link app-nav__mobile-content__link">
                         <span>{item.text}</span>

@@ -3,6 +3,7 @@ import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
 import useDefer, { Status } from 'use-defer'
 import Button from '../../lib/button'
+import Image from '../../lib/image'
 
 export type InlineSignupFormProps = {
   className?: ClassName
@@ -23,8 +24,9 @@ const Container = styled.div`
   }
 `
 
-const Img = styled.img`
+const SImage = styled(Image)`
   max-width: 110px;
+  margin: 0 auto;
 `
 
 const Title = styled.h2`
@@ -63,7 +65,6 @@ const Input = styled.input`
   padding: 10px 15px;
   font: 400 16px/1.3 'Montserrat', sans-serif;
   border: 0.5px solid #000000;
-  background: #fff;
   border-radius: 0;
   box-sizing: border-box;
   text-align: center;
@@ -123,7 +124,7 @@ export function InlineSignupForm({ className, onSignup }: InlineSignupFormProps)
 
   return (
     <Container className={cn(name, className)}>
-      <Img src="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/email-img.svg" alt="" />
+      <SImage src="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/email-img.svg" alt="" />
       {signupRequest.status === Status.SUCCESS ? (
         <SuccessMessage>Congratulations! You have successfully signed up!</SuccessMessage>
       ) : (

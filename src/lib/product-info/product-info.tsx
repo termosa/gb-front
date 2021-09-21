@@ -18,14 +18,12 @@ import useCart, { Status } from '../use-cart'
 import addCartItemWithSubscription from '../add-cart-item-with-subscription'
 import SizeSelectorModal from '../size-selector-modal'
 import trackAddedToCart from '../track-added-to-cart'
+import { Image } from '../image'
 
 const SProductInfo = styled.div`
   width: 100%;
   @media (min-width: 768px) {
     width: 48%;
-  }
-  @media (min-width: 992px) {
-    width: 35%;
   }
 `
 
@@ -686,12 +684,12 @@ export function ProductInfo({ className, style, addToCartRef }: ProductInfoProps
                             onClick={() => setSubscriptionHintOpened(!isSubscriptionHintOpened)}
                           >
                             {isSubscriptionHintOpened ? (
-                              <img
+                              <Image
                                 src="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/pdp/pdp-close-icon.png"
                                 alt="close-icon"
                               />
                             ) : (
-                              <img
+                              <Image
                                 src="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/pdp/pdp-info-icon.png"
                                 alt="info-icon"
                               />

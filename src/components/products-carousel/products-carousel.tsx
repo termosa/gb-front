@@ -140,11 +140,11 @@ export const ProductsCarousel = ({
     },
     tablet: {
       breakpoint: { max: 768, min: 464 },
-      items: 2.5,
+      items: 2.6,
     },
     mobile: {
       breakpoint: { max: 464, min: 0 },
-      items: 1.5,
+      items: 1.6,
     },
   }
 

@@ -2,6 +2,7 @@ import React from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
 import Button from '../../lib/button'
+import Image from '../../lib/image'
 
 const SCol = styled.div`
   @media (min-width: 768px) {
@@ -19,7 +20,7 @@ const SLayout = styled.div`
   }
 `
 
-const SLayoutImage = styled.img`
+const SLayoutImage = styled(Image)`
   width: 100%;
   height: 100% !important;
   display: block;
