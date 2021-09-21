@@ -50,7 +50,7 @@ const FooterAccordion = styled.div`
 
 const FooterCopyright = styled.div`
   font: 400 12px/1.25 'Montserrat', sans-serif;
-  letter-spacing: 0.7px;
+  letter-spacing: 0.05em;
   color: white;
   text-align: center;
 

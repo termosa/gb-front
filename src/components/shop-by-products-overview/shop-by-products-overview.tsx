@@ -45,14 +45,10 @@ const SContainer = styled.div`
 `
 
 const SCardsBlockTitle = styled.h2`
-  font: 700 32px/1.2 'Cormorant Garamond', serif;
+  font: 700 40px/1.2 'Cormorant Garamond', serif;
   letter-spacing: -0.02em;
   text-align: center;
   margin: 0 auto 20px;
-
-  @media (min-width: 768px) {
-    font-size: 40px;
-  }
 `
 
 const SliderWrapper = styled.div`

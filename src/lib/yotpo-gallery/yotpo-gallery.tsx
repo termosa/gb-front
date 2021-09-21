@@ -28,7 +28,7 @@ const SPreTitle = styled.strong`
   display: block;
   font: 500 14px/1.3 'Montserrat', sans-serif;
   margin: 0 0 10px;
-  letter-spacing: 0.7px;
+  letter-spacing: 0.05em;
 
   @media (min-width: 768px) {
     margin: 0 0 15px;
@@ -37,7 +37,6 @@ const SPreTitle = styled.strong`
 
 const STitleWrapper = styled.div`
   box-sizing: border-box;
-  padding: 0 15px;
   margin: 0 auto;
 
   @media (min-width: 768px) {
@@ -54,7 +53,6 @@ const STitle = styled.h2`
   @media (max-width: 767px) {
     display: flex;
     flex-direction: column;
-    font-size: 32px;
   }
 `
 
