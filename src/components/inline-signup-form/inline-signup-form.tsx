@@ -25,14 +25,10 @@ const SImage = styled(Image)`
 `
 
 const Title = styled.h2`
-  font: 700 30px/1 'Cormorant Garamond', serif;
+  font: 700 40px/1 'Cormorant Garamond', serif;
   margin: 0 auto 18px;
-  @media (min-width: 375px) {
-    font-size: 32px;
-  }
   @media (min-width: 768px) {
     margin: 0 auto 22px;
-    font-size: 40px;
   }
 `
 
@@ -136,7 +132,7 @@ export function InlineSignupForm({ className }: InlineSignupFormProps): React.Re
         <SuccessMessage>Congratulations! You have successfully signed up!</SuccessMessage>
       ) : (
         <>
-          <Title>Surprised to your inbox</Title>
+          <Title>Surprises to your inbox</Title>
           <Text>Even our emails are fun. Sign up to receive special offers, games, prizes and more.</Text>
           <Form onSubmit={handleSubmit}>
             <Input

@@ -20,7 +20,7 @@ const Group = styled.div<{ mobile?: boolean }>`
   padding: 0;
   color: #fff;
   font: 400 14px/1.5 'Montserrat', sans-serif;
-  letter-spacing: 0.7px;
+  letter-spacing: 0.05em;
 
   @media (min-width: 992px) {
     padding: 0 10px;
@@ -37,8 +37,8 @@ const Group = styled.div<{ mobile?: boolean }>`
 `
 
 const Title = styled.div<{ mobile?: boolean }>`
-  font: 500 14px/1.5 'Montserrat', sans-serif;
-  letter-spacing: 0.7px;
+  font: 600 14px/1.5 'Montserrat', sans-serif;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   padding: 14px 0;
   border-bottom: 1px solid #949494;
