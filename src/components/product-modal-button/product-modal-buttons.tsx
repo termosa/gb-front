@@ -1,7 +1,6 @@
 import React from 'react'
 import DropAHint from '../../lib/drop-a-hint'
 import styled, { css } from 'styled-components'
-import useScreenSize from '../../lib/use-screen-size'
 import { Product } from '../../modules/normalize-product'
 
 const SModalButtonsWrapper = styled.div`
@@ -48,11 +47,6 @@ const modalButtonStyle = () => css`
     margin-right: 0;
   }
 `
-
-const SModalButtonsItem = styled.button`
-  ${modalButtonStyle}
-`
-
 const SDropAHint = styled(DropAHint)`
   ${modalButtonStyle}
 `
@@ -62,8 +56,6 @@ export type ProductModalButtonsProps = {
 }
 
 export function ProductModalButtons({ product }: ProductModalButtonsProps): React.ReactElement {
-  const screenSize = useScreenSize()
-
   return (
     <SModalButtonsWrapper>
       <SDropAHint product={product} />
