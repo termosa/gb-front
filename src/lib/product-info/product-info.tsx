@@ -33,14 +33,11 @@ const SPdpProductInfo = styled.div<{
   top: string
 }>`
   position: sticky;
+  transition: top linear 0.4s;
   top: ${(props) => props.top || '183px'};
   height: fit-content;
   max-width: 350px;
   margin: 0 auto;
-
-  @media (min-width: 385px) {
-    width: 350px;
-  }
 `
 
 const SPdpChooserItemPartTopContent = styled.div`
