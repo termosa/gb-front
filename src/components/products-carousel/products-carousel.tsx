@@ -151,7 +151,9 @@ export const ProductsCarousel = ({
   return (
     <Section className={cn('ProductsCarousel', className)}>
       <Container>
-        {!screenSize.greaterThanMedium && window?.location.pathname.search('products') !== -1 ? (
+        {!screenSize.greaterThanMedium &&
+        window?.location.pathname &&
+        window?.location.pathname.search('products') !== -1 ? (
           <SectionTitle isMobile={true}>
             <span>
               {title} {titleHighlighted}

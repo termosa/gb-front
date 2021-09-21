@@ -6,7 +6,7 @@ import { Product } from '../../modules/normalize-product'
 
 export type ProductsListProps = {
   products: Array<Product>
-  onSelectProduct?: (handle: string) => void
+  onSelectProduct?: (product: Product) => void
 }
 
 const ProductsListContainer = styled.div`
@@ -32,7 +32,7 @@ export const ProductsList = ({ products, onSelectProduct }: ProductsListProps): 
         <SProductCard
           key={product.product_id}
           product={product}
-          onClick={() => onSelectProduct && onSelectProduct(product.handle)}
+          onClick={() => onSelectProduct && onSelectProduct(product)}
         />
       ))}
     </ProductsListContainer>

@@ -8,6 +8,7 @@ import filterCollectionProducts from '../modules/filter-collection-products'
 import CollectionContext from '../modules/collection-context'
 import navigate from '../lib/navigate'
 import CollectionBanner from '../lib/collection-banner'
+import alooma from '../lib/alooma'
 
 const SFiltersSection = styled(SiteSection)`
   margin-bottom: 2em;
@@ -15,7 +16,6 @@ const SFiltersSection = styled(SiteSection)`
 
 const Collection = (): null | React.ReactElement => {
   const collection = useContext(CollectionContext)
-
   const [filter, setFilter] = useState<CollectionProductsFilter | null>(null)
   const [sorting, setSorting] = useState<SelectedSorting>(SelectedSorting.NEW)
 
@@ -40,7 +40,7 @@ const Collection = (): null | React.ReactElement => {
 
   return (
     <div>
-      <CollectionBanner />
+      <CollectionBanner handle={collection.handle} />
       <SFiltersSection>
         <CollectionFilters
           onChangeFilter={setFilter}
@@ -49,7 +49,21 @@ const Collection = (): null | React.ReactElement => {
           initialSorting={sorting}
         />
       </SFiltersSection>
-      <ProductsList products={filteredProducts} onSelectProduct={(handle) => navigate(`/products/${handle}`)} />
+      <ProductsList
+        products={filteredProducts}
+        onSelectProduct={(product) => {
+          alooma('filters_state', {
+            product_page_clicked: `https://www.fragrantjewels.com/products/${product.handle}`,
+            product_title: product.title,
+            filters: Object.entries(filter || {}).reduce(
+              (filters, [group, value]) =>
+                value && value.length ? Object.assign(filters, { [group.slice(0, -1)]: value }) : filters, // TODO: Stop slicing
+              {}
+            ),
+          })
+          navigate(`/products/${product.handle}`)
+        }}
+      />
     </div>
   )
 }

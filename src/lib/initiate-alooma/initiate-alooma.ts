@@ -3,30 +3,11 @@ import window from '../window'
 import loadScript from '../load-script'
 import loadCustomer from '../../modules/load-customer'
 
-const DEFAULT_FUNCTION_NAMES = [
-  'alias',
-  'disable',
-  'identify',
-  'name_tag',
-  'people.append',
-  'people.clear_charges',
-  'people.delete_user',
-  'people.increment',
-  'people.set_once',
-  'people.set',
-  'people.track_charge',
-  'people.union',
-  'register_once',
-  'register',
-  'set_config',
-  'time_event',
-  'track_custom_event',
-  'track_forms',
-  'track_links',
-  'track_pageview',
-  'track',
-  'unregister',
-]
+const ALOOMA_VERSION = 1.2
+const ALOOMA_KEY =
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnROYW1lIjoiZ3Jhdml0eWJyYW5kcyIsImlucHV0TGFiZWwiOiJmcmFncmFudC1qZXdlbHMiLCJpbnB1dFR5cGUiOiJKU1NESyJ9.gxcH9rYsDJ0gHWCiPUURFhfH9NvnRlNCkXSsm0fkYOk'
+const ALOOMA_SCRIPT_SRC = '//s3.amazonaws.com/fj-landing-pages/global-js/custom.alooma.min.js' // //cdn.alooma.com/libs/alooma-latest.min.js
+const ALOOMA_HOST_URL = 'https://6fmfsgcm1h.execute-api.us-east-1.amazonaws.com/production' // https://inputs.alooma.com
 
 export type AloomaEventProperties<EventProperties extends Record<string, unknown>> = {
   $browser_version: number
@@ -134,11 +115,30 @@ declare global {
   }
 }
 
-const ALOOMA_VERSION = 1.2
-const ALOOMA_KEY =
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnROYW1lIjoiZ3Jhdml0eWJyYW5kcyIsImlucHV0TGFiZWwiOiJmcmFncmFudC1qZXdlbHMiLCJpbnB1dFR5cGUiOiJKU1NESyJ9.gxcH9rYsDJ0gHWCiPUURFhfH9NvnRlNCkXSsm0fkYOk'
-const ALOOMA_SCRIPT_SRC = '//s3.amazonaws.com/fj-landing-pages/global-js/custom.alooma.min.js' // //cdn.alooma.com/libs/alooma-latest.min.js
-const ALOOMA_HOST_URL = 'https://6fmfsgcm1h.execute-api.us-east-1.amazonaws.com/production' // https://inputs.alooma.com
+const DEFAULT_FUNCTION_NAMES = [
+  'alias',
+  'disable',
+  'identify',
+  'name_tag',
+  'people.append',
+  'people.clear_charges',
+  'people.delete_user',
+  'people.increment',
+  'people.set_once',
+  'people.set',
+  'people.track_charge',
+  'people.union',
+  'register_once',
+  'register',
+  'set_config',
+  'time_event',
+  'track_custom_event',
+  'track_forms',
+  'track_links',
+  'track_pageview',
+  'track',
+  'unregister',
+]
 
 let initialRequest: undefined | Promise<Alooma>
 

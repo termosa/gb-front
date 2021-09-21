@@ -14,6 +14,6 @@ export function klaviyo(...command: KlaviyoCommand): Promise<void> {
     })
     .catch((error) => {
       log('Klaviyo failed to track', command)
-      log(error)
+      if (error) log('Klaviyo failed due to', error)
     })
 }
