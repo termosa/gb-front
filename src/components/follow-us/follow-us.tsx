@@ -33,6 +33,7 @@ const SInstTitle = styled.h2`
     position: absolute;
     bottom: 6px;
     left: 0;
+    z-index: -1;
   }
 `
 

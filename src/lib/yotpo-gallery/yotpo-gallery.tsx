@@ -17,6 +17,11 @@ const Container = styled(SiteSection)`
   .yotpo .yotpo-pictures-collage-wrapper.yotpo-image-spacing-5 .y-image-wrapper {
     margin: 0;
   }
+
+  .yotpo-hover-enable .yotpo-single-image-container .y-image-wrapper:hover .yotpo-hover-cta,
+  .yotpo-hover-enable .yotpo-single-image-container .hover-preview .yotpo-hover-cta {
+    background-color: rgb(144, 89, 200);
+  }
 `
 
 const SPreTitle = styled.strong`
@@ -64,6 +69,7 @@ const STitleUnderline = styled.span`
     position: absolute;
     bottom: 6px;
     left: 0;
+    z-index: -1;
   }
 `
 
