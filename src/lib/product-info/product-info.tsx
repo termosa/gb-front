@@ -34,7 +34,7 @@ const SPdpProductInfo = styled.div<{
 }>`
   position: sticky;
   transition: top linear 0.4s;
-  top: ${(props) => props.top || 0};
+  top: ${(props) => props.top || 183};
   height: fit-content;
   max-width: 350px;
   margin: 0 auto;
@@ -463,7 +463,7 @@ export function ProductInfo({ className, style, addToCartRef }: ProductInfoProps
   const isOneVariantProduct = product && product.variants.length === 1 && !product.variants[0].size
   const isProductAvailable = useMemo(() => product?.variants.some((v) => v.available), [product])
 
-  const [infoDistanceFromTop, setInfoDistanceFromTop] = useState<number>(0)
+  const [infoDistanceFromTop, setInfoDistanceFromTop] = useState<number>(183)
   const [yPosition, setYPosition] = useState<number>(0)
   const [comparePrice, setComparePrice] = useState<number | null>(0)
   const [activeAccordion, setActiveAccordion] = useState<number | null>(0)
@@ -534,7 +534,7 @@ export function ProductInfo({ className, style, addToCartRef }: ProductInfoProps
       if (!element) {
         return
       }
-      const initialTopOffset = 0
+      const initialTopOffset = 183
       const productPosition = element?.getBoundingClientRect()
 
       const maxTop = productPosition.top + window.scrollY - element?.offsetTop + initialTopOffset
