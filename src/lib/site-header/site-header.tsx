@@ -841,7 +841,7 @@ export function SiteHeader({
                   points={customerOrdersDetails.totalPoints}
                   customerLevel={customerOrdersDetails.level}
                   isSubscriptionLinkShown={
-                    customerOrdersDetails.isICMember && customerOrdersDetails.isICMembershipActive
+                    !(customerOrdersDetails.isICMember && customerOrdersDetails.isICMembershipActive)
                   }
                 />
                 <NavIcons
@@ -859,7 +859,7 @@ export function SiteHeader({
           </SSearchWrapper>
           <NavTabs
             setExtendableBlockContent={setExtendableBlockContent}
-            isSubscriptionLinkShown={customerOrdersDetails.isICMember && customerOrdersDetails.isICMembershipActive}
+            isSubscriptionLinkShown={!(customerOrdersDetails.isICMember && customerOrdersDetails.isICMembershipActive)}
           />
         </SContentWrapper>
       </SInnerWrapper>
