@@ -28,7 +28,7 @@ const Title = styled.div`
   position: relative;
 
   @media (min-width: 992px) {
-    padding: 0 0 17px;
+    padding: 0 0 13px;
     margin: 0 0 13px;
     border-bottom: 1px solid #949494;
   }

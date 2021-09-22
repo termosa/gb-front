@@ -9,17 +9,16 @@ import LinksColumnGroup from '../../components/links-column-group'
 const FooterContainer = styled.div`
   font: 12px/1.3 'Montserrat', sans-serif;
   color: #fff;
-  padding: 37px 0 50px;
-  margin-top: 10px;
+  padding: 45px 0 50px;
   background: black;
 
   @media (min-width: 992px) {
-    padding: 28px 0;
+    padding: 28px 0 15px;
   }
 `
 
 const FooterOuter = styled.div`
-  max-width: 990px;
+  max-width: 980px;
   padding: 0 15px;
   margin: 0 auto;
 `

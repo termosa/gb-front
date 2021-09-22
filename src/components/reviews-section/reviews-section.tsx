@@ -36,17 +36,17 @@ const SStars = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0 0 12px;
+  margin: 0 0 15px;
   height: 14px;
 `
 
 const SStar = styled.span`
-  margin: 0 2px;
+  margin: 0 1px;
   width: 14px;
   height: 14px;
   @media (min-width: 767px) {
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
   }
 `
 
@@ -58,6 +58,9 @@ const SReviewAmount = styled.strong`
   margin: 0 0 32px;
   @media (min-width: 768px) {
     margin: 0 0 25px;
+  }
+  @media (min-width: 992px) {
+    margin: 0 0 32px;
   }
 `
 
@@ -101,7 +104,7 @@ const SliderWrapper = styled.div`
   margin: 32px auto 0;
   // padding: 0 15px;
 
-  @media (min-width: 992px) {
+  @media (min-width: 768px) {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -230,12 +233,8 @@ export function ReviewsSection({ quote, author, className }: ReviewsSectionProps
 
   const sliderSettings = {
     desktop: {
-      breakpoint: { max: 3000, min: 992 },
+      breakpoint: { max: 3000, min: 768 },
       items: 3,
-    },
-    tablet: {
-      breakpoint: { max: 991, min: 768 },
-      items: 4,
     },
     mobile: {
       breakpoint: { max: 767, min: 0 },
@@ -270,7 +269,7 @@ export function ReviewsSection({ quote, author, className }: ReviewsSectionProps
           <SFigcaption>{`- ${author}`}</SFigcaption>
         </SQuote>
         <SliderWrapper>
-          {useScreen.greaterThanLarge ? (
+          {useScreen.greaterThanMedium ? (
             TEST_IMAGES.map((media, index) => <Image src={media} alt="company" key={`revImage${index}`} />)
           ) : (
             <Slider

@@ -11,10 +11,14 @@ const Container = styled.div`
   max-width: 1020px;
   text-align: center;
   margin: 0 15px;
-  padding: 52px 0;
+  padding: 53px 0 77px;
 
   @media (min-width: 768px) {
     margin: 0 auto;
+    padding: 65px 0;
+  }
+
+  @media (min-width: 992px) {
     padding: 88px 0;
   }
 `

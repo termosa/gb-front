@@ -50,24 +50,23 @@ const SButtonLink = styled.a`
   align-items: center;
   text-decoration: none;
   color: #fff;
-  width: 155px;
-  height: 48px;
+  min-width: 155px;
+  height: 55px;
   margin: 0 auto;
   text-transform: uppercase;
-  border: 0.5px solid #000;
+  border: 1px solid #000;
   border-radius: 0;
-  font: 700 13px/1.25 'Montserrat', sans-serif;
-  letter-spacing: 0.7px;
+  font: 700 16px/1.25 'Montserrat', sans-serif;
+  letter-spacing: 0.05em;
   text-decoration: none;
   transition: all linear 0.2s;
   background-color: #000;
   cursor: pointer;
   white-space: nowrap;
+  padding: 0 32px;
 
   @media (min-width: 992px) {
-    font-size: 16px;
-    width: 185px;
-    height: 55px;
+    min-width: 200px;
   }
 
   &:hover {

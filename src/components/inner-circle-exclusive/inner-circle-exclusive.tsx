@@ -216,8 +216,8 @@ const SLeftImageContainer = styled.div<{
 
 const SRightSliderPart = styled.div`
   background: #fff;
-  width: 189px;
-  height: 189px;
+  width: 183px;
+  height: 183px;
   margin-left: 108px;
 
   @media (min-width: 420px) {
@@ -235,7 +235,7 @@ const SRightSliderPart = styled.div`
   img {
     margin-right: 0;
     width: 100%;
-    height: 100%;
+    height: auto;
     overflow: hidden;
     display: block;
     object-fit: cover;
