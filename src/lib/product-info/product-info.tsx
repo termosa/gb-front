@@ -247,18 +247,6 @@ const SPdpRadioGroup = styled.input`
   }
 `
 
-const SPdpProductInfoIcTitle = styled.h3`
-  font-family: Montserrat, sans-serif;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 20px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: #9059c8;
-  margin: 0 0 12px;
-`
-
 const SPdpProductInfoTitle = styled.h2`
   font: 700 32px/1 'Cormorant Garamond', serif;
   letter-spacing: -0.02em;
@@ -593,7 +581,6 @@ export function ProductInfo({ className, style, addToCartRef }: ProductInfoProps
         />
       )}
       <SPdpProductInfo top={infoDistanceFromTop + 'px'} ref={productInfoRef}>
-        <SPdpProductInfoIcTitle ref={productHeadingRef}>INNER CIRCLE EXCLUSIVE</SPdpProductInfoIcTitle>
         <SPdpProductInfoTitle>{product.title}</SPdpProductInfoTitle>
         <StarRating
           reviewsAverage={product.reviewsAverage}
