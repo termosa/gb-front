@@ -20,8 +20,8 @@ export type ProductPageProps = {
   productDescription: ProductDescription
 }
 
-const loadCollectionProducts = (collectionId: number): Promise<Product[] | null> =>
-  loadCollection(collectionId).then(
+const loadCollectionProducts = (collectionId: number, productType: string): Promise<Product[] | null> =>
+  loadCollection(collectionId, { limit: 6, product_type: productType, ordering: 'published_at_shop' }).then(
     (collection) => (collection.products.length ? collection.products : null),
     () => null
   )
@@ -53,7 +53,9 @@ function productPageProps<PropsType>(): (context: GetServerSidePropsContext) => 
       productId: Promise.resolve(productId),
       product: productPromise.catch(() => null),
       // recommendedProducts: loadCollectionProducts(RECOMMENDED_PRODUCTS_COLLECTION_ID),
-      potentialProducts: loadCollectionProducts(POTENTIAL_PRODUCTS_COLLECTION_ID),
+      potentialProducts: productPromise.then((product) =>
+        loadCollectionProducts(POTENTIAL_PRODUCTS_COLLECTION_ID, product.product_type)
+      ),
       // productDescription: productPromise.then((product) => getProductDescription(product)).catch(() => null),
     }
   })
