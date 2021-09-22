@@ -241,8 +241,6 @@ const SProductCard = styled.div`
     width: 100%;
     height: auto;
     display: block;
-    -o-object-fit: contain;
-    object-fit: contain;
   }
 `
 
@@ -361,6 +359,7 @@ const ProductCard = ({ product, onClick }: { product: Product; onClick: () => vo
                 <Image
                   src={product.image.src}
                   alt={product.image.alt}
+                  fit={'contain'}
                   draggable={false}
                   shopifySize={screenSize.greaterThanMedium ? 'medium' : 'compact'}
                 />

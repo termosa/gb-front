@@ -103,6 +103,7 @@ const SPromiseItemLabel = styled.span`
   letter-spacing: 0.05em;
   text-align: center;
   text-transform: uppercase;
+  margin-top: 10px;
 
   @media (min-width: 375px) {
     font-size: 14px;
