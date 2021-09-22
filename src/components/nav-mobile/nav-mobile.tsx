@@ -12,6 +12,7 @@ export type SearchFieldProps = {
   userName?: string
   points: number
   customerLevel: CustomerLevel
+  isSubscriptionLinkShown: boolean
 }
 
 const SWrapper = styled.div`
@@ -349,6 +350,24 @@ const SubNavTitle = styled.button`
   }
 `
 
+const SMemberButton = styled.a`
+  width: 100%;
+  border-radius: 2em;
+  border: 1px solid #9059c8;
+  color: #fff;
+  background: #9059c8;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  text-align: center;
+  margin: 0 auto;
+  display: block;
+  margin-top: 11px;
+  position: relative;
+  padding: 17px 0;
+  text-decoration: none;
+`
+
 const TABS_LIST = [
   {
     title: 'Halloween',
@@ -410,6 +429,7 @@ export function NavMobile({
   userName,
   points,
   customerLevel,
+  isSubscriptionLinkShown,
 }: SearchFieldProps): React.ReactElement | null {
   useEffect(() => {
     document.body.style.overflow = isBurgerMenuOpen ? 'hidden' : 'auto'
@@ -456,6 +476,7 @@ export function NavMobile({
               </svg>
             </SCloseBtn>
           </SNavTopInner>
+          {isSubscriptionLinkShown && <SMemberButton href="/pages/inner-circle">Become a member</SMemberButton>}
         </SNavTop>
         <SNavBottom>
           {!sideNavContent ? (

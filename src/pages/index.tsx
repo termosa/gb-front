@@ -128,7 +128,7 @@ export default function HomePage({
         ]}
       />
       <PromiseBar />
-      <InlineSignupForm onSignup={() => Promise.resolve()} />
+      <InlineSignupForm />
       <YotpoGallery galleryId="5dd5da2416fa290bf56b2085" />
     </MainPageLayout>
   )

@@ -23,7 +23,7 @@ export type KlaviyoItem = {
   Categories?: Array<string> // collection names
   Url: string
   Metadata: {
-    Price: string // Like "$1.40"
+    Price?: string // Like "$1.40"
     CompareAtPrice?: string // Like "$1.40"
     Brand?: string
   }

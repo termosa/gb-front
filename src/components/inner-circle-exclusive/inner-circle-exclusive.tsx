@@ -33,7 +33,6 @@ const STitle = styled.h2`
   @media (max-width: 767px) {
     display: flex;
     flex-direction: column;
-    font-size: 32px;
   }
 `
 

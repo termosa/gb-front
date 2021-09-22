@@ -34,13 +34,9 @@ const SWrapper = styled.div`
 `
 
 const STitle = styled.div`
-  font: 700 32px/1 'Cormorant Garamond', serif;
+  font: 700 40px/1 'Cormorant Garamond', serif;
   text-align: center;
   margin: 0 auto 10px;
-
-  @media (min-width: 768px) {
-    font-size: 40px;
-  }
 `
 
 const SPicsWrapper = styled.div`
@@ -62,17 +58,13 @@ const SRow24 = styled.div`
   max-width: 350px;
 
   @media (min-width: 768px) {
-    max-width: 400px;
-  }
-
-  @media (min-width: 992px) {
     max-width: 100%;
   }
 `
 
 const SPromiseItem = styled.div`
-  margin: 0 4% 16px;
-  width: 42%;
+  margin: 0 0 16px;
+  width: 50%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -87,8 +79,8 @@ const SPromiseItem = styled.div`
   -ms-flex-align: center;
   align-items: center;
   @media (min-width: 768px) {
-    margin: 0 2% 10px;
-    width: 46%;
+    margin: 0 0 10px;
+    width: 25%;
   }
   @media (min-width: 992px) {
     margin: 0 1% 10px;
@@ -104,18 +96,18 @@ const SPromiseItemImg = styled(Image)`
 `
 
 const SPromiseItemLabel = styled.span`
-  font: 400 11px/1.25 'Montserrat', sans-serif;
+  font: 400 13px/1.25 'Montserrat', sans-serif;
   letter-spacing: 0.05em;
   text-align: center;
   text-transform: uppercase;
   margin-top: 10px;
 
   @media (min-width: 375px) {
-    font-size: 13px;
+    font-size: 14px;
   }
 
-  @media (min-width: 768px) {
-    font: 400 16px/1.25 'Montserrat', sans-serif;
+  @media (min-width: 992px) {
+    font-size: 16px;
   }
 `
 

@@ -4,13 +4,8 @@ import styled from 'styled-components'
 import useDefer, { Status } from 'use-defer'
 import Button from '../../lib/button'
 import Image from '../../lib/image'
-
-export type InlineSignupFormProps = {
-  className?: ClassName
-  onSignup: (email: string) => Promise<unknown>
-}
-
-const name = 'InlineSignupForm'
+import http from '../../modules/http'
+import klaviyo from '../../lib/klaviyo'
 
 const Container = styled.div`
   max-width: 1020px;
@@ -30,14 +25,10 @@ const SImage = styled(Image)`
 `
 
 const Title = styled.h2`
-  font: 700 30px/1 'Cormorant Garamond', serif;
+  font: 700 40px/1 'Cormorant Garamond', serif;
   margin: 0 auto 18px;
-  @media (min-width: 375px) {
-    font-size: 32px;
-  }
   @media (min-width: 768px) {
     margin: 0 auto 22px;
-    font-size: 40px;
   }
 `
 
@@ -114,22 +105,34 @@ const ErrorMessage = styled.div`
   color: #a83232;
 `
 
-export function InlineSignupForm({ className, onSignup }: InlineSignupFormProps): React.ReactElement {
+export type InlineSignupFormProps = {
+  className?: ClassName
+}
+
+export function InlineSignupForm({ className }: InlineSignupFormProps): React.ReactElement {
   const [email, setEmail] = useState('')
-  const signupRequest = useDefer<unknown, string>(onSignup, [onSignup])
+  const signUpRequest = useDefer<unknown, string>(
+    (email: string) =>
+      http({
+        url: `https://www.fragrantjewels.com/klsubscribe?email=${email}&l=PXeq2D&s=Footer-form`,
+      }).then(() => {
+        klaviyo('identify', { $email: email })
+      }),
+    []
+  )
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault()
-    signupRequest.execute(email)
+    signUpRequest.execute(email)
   }
 
   return (
-    <Container className={cn(name, className)}>
+    <Container className={cn('InlineSignupForm', className)}>
       <SImage src="https://new-fragrantjewels.s3.us-west-2.amazonaws.com/app/img/email-img.png" alt="" />
-      {signupRequest.status === Status.SUCCESS ? (
+      {signUpRequest.status === Status.SUCCESS ? (
         <SuccessMessage>Congratulations! You have successfully signed up!</SuccessMessage>
       ) : (
         <>
-          <Title>Surprised to your inbox</Title>
+          <Title>Surprises to your inbox</Title>
           <Text>Even our emails are fun. Sign up to receive special offers, games, prizes and more.</Text>
           <Form onSubmit={handleSubmit}>
             <Input
@@ -137,16 +140,16 @@ export function InlineSignupForm({ className, onSignup }: InlineSignupFormProps)
               required
               placeholder="Enter your email..."
               autoCorrect="off"
-              disabled={signupRequest.status === Status.PENDING}
+              disabled={signUpRequest.status === Status.PENDING}
               autoCapitalize="off"
               value={email}
               onChange={(event) => setEmail(event.target.value)}
             />
-            <FormButton disabled={signupRequest.status === Status.PENDING} type="submit">
+            <FormButton disabled={signUpRequest.status === Status.PENDING} type="submit">
               Submit
             </FormButton>
           </Form>
-          {signupRequest.status === Status.ERROR && <ErrorMessage>{signupRequest.error}</ErrorMessage>}
+          {signUpRequest.status === Status.ERROR && <ErrorMessage>{signUpRequest.error}</ErrorMessage>}
         </>
       )}
     </Container>

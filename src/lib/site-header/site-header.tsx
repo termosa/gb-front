@@ -841,6 +841,9 @@ export function SiteHeader({
                   userName={userName}
                   points={customerOrdersDetails.totalPoints}
                   customerLevel={customerOrdersDetails.level}
+                  isSubscriptionLinkShown={
+                    !(customerOrdersDetails.isICMember && customerOrdersDetails.isICMembershipActive)
+                  }
                 />
                 <NavIcons
                   onSearchClick={() => setIsSearchDropdownVisible(!isSearchDropdownVisible)}
@@ -855,7 +858,10 @@ export function SiteHeader({
               <SearchField onSearch={onSearch} searchedProducts={searchedProducts} />
             )}
           </SSearchWrapper>
-          <NavTabs setExtendableBlockContent={setExtendableBlockContent} />
+          <NavTabs
+            setExtendableBlockContent={setExtendableBlockContent}
+            isSubscriptionLinkShown={!(customerOrdersDetails.isICMember && customerOrdersDetails.isICMembershipActive)}
+          />
         </SContentWrapper>
       </SInnerWrapper>
       <ExtendableBlockWrapper opened={extendableBlockContent}>
