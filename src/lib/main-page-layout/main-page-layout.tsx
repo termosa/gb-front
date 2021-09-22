@@ -13,6 +13,7 @@ import loadProductsChunk from '../../modules/load-products-chunk'
 import loadCustomer from '../../modules/load-customer'
 import initiateKlaviyo from '../initiate-klaviyo'
 import initiateAlooma from '../initiate-alooma'
+import initiateGtm from '../initiate-gtm'
 
 const MainPageLayoutWrapper = styled.div`
   display: flex;
@@ -49,6 +50,7 @@ export function MainPageLayout({ children, className, style }: MainPageLayoutPro
   useEffect(() => {
     initiateKlaviyo()
     initiateAlooma()
+    initiateGtm()
   })
 
   const searchRequest = useDefer(loadProductsChunk)

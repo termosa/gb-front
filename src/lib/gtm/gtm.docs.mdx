@@ -1,0 +1,23 @@
+export const meta = {
+  type: 'function',
+  name: 'gtm',
+  description: 'Submit analytics data to Google',
+  tags: ['function', 'analytics'],
+  lists: {
+    arguments: [
+      { name: 'eventName', type: 'string', required: true },
+      { name: 'eventProperties', type: 'Record<string, unknown>', description: 'Data that will be tracked together with the event' },
+    ],
+    returns: [
+      { name: 'promise', type: 'Promise<void>' },
+    ],
+  },
+}
+
+## Usage
+
+```js
+import gtm from './gtm'
+
+gtm('pageview', { url: window.location.href })
+```
