@@ -26,7 +26,7 @@ const Container = styled.div`
 
 const SImage = styled(Image)`
   max-width: 110px;
-  margin: 0 auto;
+  margin: 0 auto !important;
 `
 
 const Title = styled.h2`
@@ -124,7 +124,7 @@ export function InlineSignupForm({ className, onSignup }: InlineSignupFormProps)
 
   return (
     <Container className={cn(name, className)}>
-      <SImage src="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/email-img.svg" alt="" />
+      <SImage src="https://new-fragrantjewels.s3.us-west-2.amazonaws.com/app/img/email-img.png" alt="" />
       {signupRequest.status === Status.SUCCESS ? (
         <SuccessMessage>Congratulations! You have successfully signed up!</SuccessMessage>
       ) : (

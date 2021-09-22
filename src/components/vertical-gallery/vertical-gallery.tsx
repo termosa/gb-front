@@ -90,16 +90,14 @@ const SCarouselThumbnailItem = styled.a<{
   border: ${(props) => (props.isActive ? '1px solid #000000' : '1px solid #ffffff')};
   margin-right: 4px;
   cursor: pointer;
-`
 
-const SImage = styled(Image)<{
-  margin?: string
-}>`
-  margin: ${(props) => props.margin || '0'};
+  img {
+    margin: 3px;
+  }
 `
 
 const SPdpRowWrapper = styled.div`
-  height: 355px;
+  height: 372px;
 
   @media (min-width: 768px) {
     height: auto;
@@ -160,8 +158,8 @@ const SPdpCarouselItemMobile = styled.div`
   display: flex !important;
   justify-content: center;
   img {
-    width: 279px;
-    height: 279px;
+    width: 350px;
+    height: 300px;
     object-fit: contain;
     @media (min-width: 768px) {
       width: 100%;
@@ -254,7 +252,7 @@ export function VerticalGallery({ className }: VerticalGalleryProps): React.Reac
                           })
                       }}
                     >
-                      <SImage
+                      <Image
                         src={image?.src}
                         alt={image?.alt}
                         shopifySize={screenSize.greaterThanMedium ? 'medium' : 'compact'}
@@ -270,7 +268,7 @@ export function VerticalGallery({ className }: VerticalGalleryProps): React.Reac
                     height={`${getImageHeight(image)}px`}
                     key={image?.src}
                   >
-                    <SImage
+                    <Image
                       src={image?.src}
                       alt={image?.alt}
                       width={`${galleryImageWidth}px`}
@@ -292,7 +290,7 @@ export function VerticalGallery({ className }: VerticalGalleryProps): React.Reac
                 {product?.images?.map((image) => (
                   <SPdpCarouselItemMobile key={image?.src}>
                     {product?.images && (
-                      <SImage
+                      <Image
                         src={product.images && image?.src}
                         alt={(product.images && image?.alt) || ''}
                         shopifySize={'large'}
@@ -312,13 +310,13 @@ export function VerticalGallery({ className }: VerticalGalleryProps): React.Reac
                     }}
                   >
                     {product?.images && (
-                      <SImage
+                      <Image
                         src={product.images && image?.src}
                         alt={(product.images && image?.alt) || ''}
                         shopifySize={'small'}
+                        fit={'contain'}
                         width={'60px'}
                         height={'60px'}
-                        margin={'3px'}
                       />
                     )}
                   </SCarouselThumbnailItem>
