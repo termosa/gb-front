@@ -1,7 +1,6 @@
 import React from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
-import Button from '../../lib/button'
 import Image from '../../lib/image'
 
 const SCol = styled.div`
@@ -16,6 +15,7 @@ const SLayout = styled.div`
   margin: 0 auto 30px;
   @media (min-width: 768px) {
     padding: 0;
+    margin-bottom: 0;
   }
 `
 
@@ -77,6 +77,36 @@ const SButtonWrapper = styled.div`
 const SLink = styled.a`
   text-decoration: none;
   color: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 53px;
+  margin: 0 auto;
+  text-transform: uppercase;
+  border: 1px solid #000;
+  border-radius: 0;
+  font: 700 16px/1.25 'Montserrat', sans-serif;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  transition: all linear 0.2s;
+  background-color: ${(props) => props.backColor || '#fff'};
+  color: ${(props) => props.frontColor || '#000'};
+  cursor: pointer;
+  min-width: 142px;
+  padding: 0 14px;
+
+  &:hover {
+    font-weight: 700;
+    background-color: ${(props) => props.frontColor || '#000'};
+    color: ${(props) => props.backColor || '#fff'};
+    border-color: #000;
+  }
+
+  &[disabled] {
+    cursor: auto;
+    background-color: ${(props) => props.disabledColor || '#e4e4e4'};
+    color: ${(props) => props.frontColor || '#000'};
+  }
 `
 
 export type CategoryShopCardProps = {
@@ -104,9 +134,9 @@ export function CategoryShopCard({
           <STitle>{title}</STitle>
           <SSubTitle>{subTitle}</SSubTitle>
           <SButtonWrapper>
-            <Button backColor={'#000'} frontColor={'#fff'} width={'171px'}>
-              <SLink href={link}>SHOP NOW</SLink>
-            </Button>
+            <SLink href={link} backColor={'#000'} frontColor={'#fff'} width={'171px'}>
+              SHOP NOW
+            </SLink>
           </SButtonWrapper>
         </SContent>
       </SLayout>

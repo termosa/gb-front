@@ -17,20 +17,21 @@ const SWrapper = styled.section`
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  max-width: 1020px;
+  max-width: 960px;
   padding: 0;
   margin: 0 auto 19px;
 
   @media (min-width: 768px) {
     flex-direction: row;
-    margin: 30px auto 0;
+    margin: 30px auto;
     padding: 0 20px;
     gap: 20px;
   }
 
   @media (min-width: 992px) {
     gap: 30px;
-    margin: 92px auto 57px;
+    margin: 92px auto;
+    padding: 0 15px;
   }
 `
 
