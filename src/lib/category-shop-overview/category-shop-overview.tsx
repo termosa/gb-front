@@ -15,16 +15,22 @@ export type CategoryShopCardsOverviewProps = {
 const SWrapper = styled.section`
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
   text-align: center;
   max-width: 1020px;
   padding: 0;
-  margin: 65px auto 15px;
+  margin: 0 auto 19px;
 
-  @media (min-width: 1200px) {
-    flex-direction: initial;
-    margin: 75px auto 0;
-    padding: 0 30px;
+  @media (min-width: 768px) {
+    flex-direction: row;
+    margin: 30px auto 0;
+    padding: 0 20px;
+    gap: 20px;
+  }
+
+  @media (min-width: 992px) {
+    gap: 30px;
+    margin: 92px auto 57px;
   }
 `
 

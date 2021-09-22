@@ -6,15 +6,14 @@ import Image from '../../lib/image'
 
 const SCol = styled.div`
   @media (min-width: 768px) {
-    margin: 0 auto 26px;
+    margin: 0;
   }
 `
 
 const SLayout = styled.div`
   position: relative;
   max-width: 463px;
-  margin: 0 auto 50px;
-  // padding: 16px 0;
+  margin: 0 auto 30px;
   @media (min-width: 768px) {
     padding: 0;
   }
@@ -22,35 +21,45 @@ const SLayout = styled.div`
 
 const SLayoutImage = styled(Image)`
   width: 100%;
-  height: 100% !important;
+  height: 100%;
   display: block;
-
-  @media (min-width: 500px) {
-    width: 463px;
-    height: 463px !important;
-  }
+  max-width: 463px;
+  margin: 0 auto;
 `
 
 const SContent = styled.div`
   box-sizing: border-box;
-  width: 86%;
   position: absolute;
   bottom: 40px;
-  margin: 7%;
+  margin: 15px;
   left: 0;
+  right: 0;
   font: 16px/24px 'Montserrat', sans-serif;
   text-align: center;
   background: rgba(255, 255, 255, 0.75);
-  padding: 15px 15px 30px;
+  padding: 26px 15px 30px;
+
+  @media (min-width: 768px) {
+    bottom: 36px;
+  }
+
+  @media (min-width: 992px) {
+    margin: 15px 32px;
+    padding: 25px 15px 30px;
+  }
 `
 
 const STitle = styled.span`
   display: block;
-  margin: 0 0 15px;
+  margin: 0 0 13px;
   position: relative;
   font: 700 32px/1 'Cormorant Garamond', serif;
   letter-spacing: -0.02em;
   text-align: center;
+
+  @media (min-width: 992px) {
+    margin: 0 0 17px;
+  }
 `
 
 const SSubTitle = styled.div`
@@ -59,7 +68,7 @@ const SSubTitle = styled.div`
 
 const SButtonWrapper = styled.div`
   position: absolute;
-  bottom: 0;
+  bottom: 2.5%;
   left: 50%;
   -webkit-transform: translate(-50%, 50%);
   transform: translate(-50%, 50%);
