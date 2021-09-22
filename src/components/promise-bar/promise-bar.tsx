@@ -25,7 +25,7 @@ const SPromiseContainer = styled.div`
 `
 
 const SWrapper = styled.div`
-  padding: 22px 0 24px;
+  padding: 24px 0 10px;
   background-color: #fdfbf9;
 
   @media (min-width: 768px) {
@@ -78,10 +78,12 @@ const SPromiseItem = styled.div`
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+
   @media (min-width: 768px) {
     margin: 0 0 10px;
     width: 25%;
   }
+
   @media (min-width: 992px) {
     margin: 0 1% 10px;
     width: 23%;
@@ -91,7 +93,7 @@ const SPromiseItem = styled.div`
 const SPromiseItemImg = styled(Image)`
   width: 100%;
   height: auto;
-  margin: 0 auto 10px;
+  margin: 0 auto;
   max-width: 110px;
   border-style: none;
 `
@@ -112,10 +114,10 @@ const SPromiseItemLabel = styled.span`
 `
 
 const PROMISE_ITEMS = [
-  { title: 'Cruelty free', img: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/cruelty-free-icon.svg' },
-  { title: 'Handmade in USA', img: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/made-in-usa-icon.svg' },
-  { title: 'Paraben free', img: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/paraben-free-icon.svg' },
-  { title: 'Phthalate free', img: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/phthalate-free-icon.svg' },
+  { title: 'Cruelty free', img: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/cruelty-free-icon.png' },
+  { title: 'Handmade in USA', img: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/made-in-usa-icon.png' },
+  { title: 'Paraben free', img: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/paraben-free-icon.png' },
+  { title: 'Phthalate free', img: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/phthalate-free-icon.png' },
 ]
 
 export function PromiseBar({ className }: PromiseBarProps): React.ReactElement | null {

@@ -16,10 +16,14 @@ const Container = styled.div`
   max-width: 1020px;
   text-align: center;
   margin: 0 15px;
-  padding: 52px 0;
+  padding: 53px 0 77px;
 
   @media (min-width: 768px) {
     margin: 0 auto;
+    padding: 65px 0;
+  }
+
+  @media (min-width: 992px) {
     padding: 88px 0;
   }
 `
@@ -120,7 +124,7 @@ export function InlineSignupForm({ className, onSignup }: InlineSignupFormProps)
 
   return (
     <Container className={cn(name, className)}>
-      <SImage src="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/email-img.svg" alt="" />
+      <SImage src="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/email-img.png" alt="" />
       {signupRequest.status === Status.SUCCESS ? (
         <SuccessMessage>Congratulations! You have successfully signed up!</SuccessMessage>
       ) : (

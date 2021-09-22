@@ -17,6 +17,12 @@ type ImageProps = {
 
 const SImageContainer = styled.figure`
   margin: 0;
+  @media (min-width: 768px) {
+    margin: 0 12px;
+  }
+  @media (min-width: 992px) {
+    margin: 0;
+  }
   img {
     object-fit: cover;
   }
