@@ -48,6 +48,8 @@ export default function HomePage({
           product={innerCircleSubscriptionProduct}
           membershipProductVariants={innerCircleMembershipProduct.variants}
           slideImages={[
+            'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/ic-img-jewelry.jpg',
+            'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/ic-img.jpg',
             'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/home-banner-img-1-dt.jpg',
             'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/shop-by-product-img-2.jpg',
             'https://i.ebayimg.com/images/g/XOYAAOSwpjxgy3-1/s-l500.jpg',
@@ -69,19 +71,19 @@ export default function HomePage({
         cards={[
           {
             title: 'Guilt Free Ingredients',
-            image: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/shop-by-product-img-1.jpg',
+            image: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/mf-img-1.jpg',
             description:
               'Lorem ipsum dolor sit amet, consectetur adipiscing elit. At eget iaculis eget eget neque, posuere quis placerat arcu. Ipsum est felis varius faucibus praesent convallis.',
           },
           {
             title: 'Win $10,000 Ring',
-            image: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/shop-by-product-img-2.jpg',
+            image: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/mf-img-2.jpg',
             description:
               'Lorem ipsum dolor sit amet, consectetur adipiscing elit. At eget iaculis eget eget neque, posuere quis placerat arcu. Ipsum est felis varius faucibus praesent convallis.',
           },
           {
             title: 'Collectible Jewelry',
-            image: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/shop-by-product-img-3.jpg',
+            image: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/mf-img-3.jpg',
             description:
               'Lorem ipsum dolor sit amet, consectetur adipiscing elit. At eget iaculis eget eget neque, posuere quis placerat arcu. Ipsum est felis varius faucibus praesent convallis.',
           },
@@ -111,17 +113,17 @@ export default function HomePage({
         title="Shop by Product"
         products={[
           {
-            image: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/shop-by-product-img-1.jpg',
+            image: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/prod-candles.jpg',
             buttonLink: 'https://www.fragrantjewels.com/pages/inner-circle#how-it-works',
             buttonText: 'CANDLES',
           },
           {
-            image: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/shop-by-product-img-2.jpg',
+            image: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/prod-body-scrubs.jpg',
             buttonLink: 'https://www.fragrantjewels.com/pages/inner-circle#how-it-works',
             buttonText: 'BODY SCRUBS',
           },
           {
-            image: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/shop-by-product-img-2.jpg?v=2',
+            image: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/prod-bundles.jpg',
             buttonLink: 'https://www.fragrantjewels.com/pages/inner-circle#how-it-works',
             buttonText: 'BUNDLES',
           },

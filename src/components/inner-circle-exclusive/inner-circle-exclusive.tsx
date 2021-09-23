@@ -21,7 +21,12 @@ const STitleWrapper = styled.div`
 
   @media (min-width: 768px) {
     padding: 0 30px;
+    margin-bottom: 30px;
     max-width: 100%;
+  }
+
+  @media (min-width: 992px) {
+    margin-bottom: 0;
   }
 `
 
@@ -80,10 +85,10 @@ const SContentWrapper = styled.div`
     color-stop(83%, white),
     to(white)
   );
-  background: linear-gradient(0deg, #fdfbf9 0%, #fdfbf9 92%, white 92%, white 100%);
+  background: linear-gradient(0deg, #fdfbf9 0%, #fdfbf9 85%, white 85%, white 100%);
 
   @media (min-width: 768px) {
-    background: linear-gradient(0deg, #fdfbf9 0%, #fdfbf9 91%, white 91%, white 100%);
+    background: #fdfbf9;
     padding: 27px 0 32px;
   }
 
@@ -106,17 +111,12 @@ const SContentContainer = styled.div`
   padding: 0 15px;
   box-sizing: border-box;
   margin: 0 auto;
-
-  @media (min-width: 768px) {
-    padding: 0 30px;
-    max-width: 1020px;
-  }
 `
 
 const SContent = styled.div`
   margin: 0 auto;
-  @media (min-width: 992px) {
-    margin: 0 -20px;
+  @media (min-width: 768px) {
+    // margin: 0 -20px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -128,27 +128,27 @@ const SContent = styled.div`
 
 const SImagesWrapper = styled.div`
   @media (min-width: 768px) {
-    margin: 0 2% 35px;
+    margin: 0 20px 35px 0;
+    width: 67%;
   }
 
   @media (min-width: 992px) {
     width: 100%;
-    margin: 0 20px;
+    margin: 0 32px 0 0;
   }
 `
 
 const SImagesContainer = styled.div`
   position: relative;
-  max-width: 295px;
+  // max-width: 295px;
   width: 100%;
   margin: 0 auto 25px;
-
-  @media (min-width: 420px) {
-    max-width: 370px;
-  }
+  max-width: 385px;
 
   @media (min-width: 768px) {
     max-width: 612px;
+    margin: 0 0 25px auto;
+    max-width: 430px;
   }
 
   @media (min-width: 992px) {
@@ -160,50 +160,80 @@ const SImagesContainer = styled.div`
 const SLeftSliderPart = styled.div<{
   isPresent: boolean
 }>`
+  border: 4px solid #ffffff;
   position: absolute;
-  bottom: 0;
+  bottom: 50px;
   left: 0;
-  width: 158px;
-  height: 158px;
-  margin: ${(props) => (props.isPresent ? '0 0 15px' : '0 0 15px')};
+  width: 115px;
+  height: 115px;
+  // margin: ${(props) => (props.isPresent ? '0 0 15px' : '0 0 15px')};
+  margin: 0;
   z-index: 2;
 
-  @media (min-width: 420px) {
-    margin: ${(props) => (props.isPresent ? '0 0 50px' : '0 0 15px')};
-    width: 164px;
-    height: 164px;
+  figure {
+    height: 100%;
+  }
+
+  @media (min-width: 375px) {
+    // margin: ${(props) => (props.isPresent ? '0 0 50px' : '0 0 15px')};
+    width: 135px;
+    height: 135px;
+  }
+
+  @media (min-width: 414px) {
+    // margin: ${(props) => (props.isPresent ? '0 0 50px' : '0 0 15px')};
+    width: 142px;
+    height: 142px;
   }
 
   @media (min-width: 768px) {
-    margin: ${(props) => (props.isPresent ? '0 0 76px' : '0 0 21px')};
-    width: 248px;
-    height: 248px;
+    // margin: ${(props) => (props.isPresent ? '0 0 76px' : '0 0 21px')};
+    width: 169px;
+    height: 169px;
+    bottom: 65px;
+  }
+
+  @media (min-width: 992px) {
+    width: 240px;
+    height: 240px;
+    bottom: 80px;
   }
 `
 
 const SLeftImageContainer = styled.div<{
   isPresent: boolean
 }>`
-  margin: ${(props) => (props.isPresent ? '0 0 15px' : '0 0 33px')};
+  // margin: ${(props) => (props.isPresent ? '0 0 15px' : '0 0 33px')};
   box-sizing: border-box;
   background: #fff;
-  border: 6px solid #ffffff;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 123px;
-  height: 123px;
+  width: 115px;
+  height: 115px;
+  margin: 0;
 
-  @media (min-width: 420px) {
-    margin: ${(props) => (props.isPresent ? '0 0 15px' : '0 0 41px')};
-    width: 160px;
-    height: 160px;
+  @media (min-width: 375px) {
+    // margin: ${(props) => (props.isPresent ? '0 0 15px' : '0 0 41px')};
+    width: 135px;
+    height: 135px;
+  }
+
+  @media (min-width: 414px) {
+    // margin: ${(props) => (props.isPresent ? '0 0 15px' : '0 0 41px')};
+    width: 142px;
+    height: 142px;
   }
 
   @media (min-width: 768px) {
-    margin: ${(props) => (props.isPresent ? '0 0 21px' : '0 0 76px')};
-    width: 248px;
-    height: 248px;
+    // margin: ${(props) => (props.isPresent ? '0 0 21px' : '0 0 76px')};
+    width: 169px;
+    height: 169px;
+  }
+
+  @media (min-width: 992px) {
+    width: 240px;
+    height: 240px;
   }
 
   & > img {
@@ -216,41 +246,71 @@ const SLeftImageContainer = styled.div<{
 
 const SRightSliderPart = styled.div`
   background: #fff;
-  width: 183px;
-  height: 183px;
-  margin-left: 108px;
+  width: 189px;
+  height: 189px;
+  margin-left: auto;
+  margin-right: 0;
+  overflow: hidden;
 
-  @media (min-width: 420px) {
-    width: 236px;
-    height: 236px;
-    margin-left: 130px;
+  img {
+    width: 189px;
+    height: 189px;
+  }
+
+  @media (min-width: 375px) {
+    width: 225px;
+    height: 225px;
+
+    img {
+      width: 225px;
+      height: 225px;
+    }
+  }
+
+  @media (min-width: 414px) {
+    width: 258px;
+    height: 258px;
+
+    img {
+      width: 258px;
+      height: 258px;
+    }
   }
 
   @media (min-width: 768px) {
+    width: 286px;
+    height: 286px;
+
+    img {
+      width: 286px;
+      height: 286px;
+    }
+  }
+
+  @media (min-width: 992px) {
     width: 400px;
     height: 400px;
-    margin-left: 188px;
+
+    img {
+      width: 400px;
+      height: 400px;
+    }
   }
 
   img {
-    margin-right: 0;
-    width: 100%;
-    height: auto;
-    overflow: hidden;
-    display: block;
     object-fit: cover;
   }
 `
 
 const SDetailsWrapper = styled.div`
   @media (min-width: 992px) {
-    margin: 0 20px;
+    // margin: 0 20px;
   }
 `
 
 const SDetailsContainer = styled.div`
   text-align: center;
-  max-width: 350px;
+  max-width: 356px;
   margin: 0 auto;
 
   @media (min-width: 992px) {
@@ -269,7 +329,7 @@ const SInnerCircleLabel = styled.strong`
 `
 
 const SProductTitle = styled.h3`
-  font: 600 32px/1.25 'Cormorant Garamond', serif;
+  font: 600 40px/1.25 'Cormorant Garamond', serif;
   letter-spacing: -0.02em;
   margin: 0 0 16px;
 `
@@ -313,14 +373,15 @@ const SErrorLabel = styled.div`
 const SButtonContainer = styled.div`
   display: block;
   position: absolute;
-  bottom: -15px;
-
-  @media (min-width: 420px) {
-    bottom: -50px;
-  }
+  bottom: -54px;
+  left: -8px;
 
   @media (min-width: 768px) {
-    bottom: -75px;
+    bottom: -69px;
+  }
+
+  @media (min-width: 992px) {
+    bottom: -84px;
   }
 `
 
@@ -358,8 +419,6 @@ const SSliderButton = styled.button<{
 `
 
 const SImage = styled(Image)`
-  width: 100%;
-  height: 100%;
   margin: 0;
 `
 
@@ -461,9 +520,7 @@ export function InnerCircleExclusive({
         <SSubTitle>{subTitle}</SSubTitle>
         <SButtonWrapper>
           <a href={buttonLink} style={{ textDecoration: 'none' }}>
-            <Button style={{ fontStyle: "500 16px/19px 'Montserrat', sans-serif" }} width={'189px'}>
-              {topButtonText}
-            </Button>
+            <Button width={'189px'}>{topButtonText}</Button>
           </a>
         </SButtonWrapper>
       </STitleWrapper>
@@ -488,7 +545,7 @@ export function InnerCircleExclusive({
                   </Slider>
                 </SLeftSliderPart>
                 <SRightSliderPart>
-                  <Slider infinite arrows={false} carouselRef={bigSliderRef}>
+                  <Slider infinite arrows={false} carouselRef={bigSliderRef} swipeable={false}>
                     {shiftedProductsArray.map((src, i) => (
                       <SImage
                         src={src}

@@ -24,7 +24,7 @@ const SWrapper = styled.section`
   @media (min-width: 768px) {
     flex-direction: row;
     margin: 30px auto;
-    padding: 0 20px;
+    padding: 0 15px;
     gap: 20px;
   }
 

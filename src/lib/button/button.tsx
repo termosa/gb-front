@@ -33,7 +33,7 @@ const SButton = styled.button<{
   height: 55px;
   margin: 0 auto;
   text-transform: uppercase;
-  border: 0.5px solid ${(props) => props.borderColor || '#000'};
+  border: 1px solid ${(props) => props.borderColor || '#000'};
   border-radius: 0;
   font: ${(props) => props.font || `700 16px/1.25 'Montserrat', sans-serif`};
   letter-spacing: 0.08em;
@@ -43,9 +43,10 @@ const SButton = styled.button<{
   color: ${(props) => props.frontColor || '#000'};
   cursor: pointer;
   min-width: ${(props) => (props.compact ? '35px' : '142px')};
+  font-weight: ${(props) => (props.backColor === '#000' ? '700' : '500')};
 
   &:hover {
-    font-weight: 700;
+    font-weight: ${(props) => (props.backColor === '#000' ? '500' : '700')};
     background-color: ${(props) => props.frontColor || '#000'};
     color: ${(props) => props.backColor || '#fff'};
   }
