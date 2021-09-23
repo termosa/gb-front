@@ -237,6 +237,7 @@ const SliderHolder = styled.div`
   padding: 0 12px;
   max-width: 386px;
   margin: 0 auto;
+  overflow: hidden;
 
   @media (min-width: 768px) {
     max-width: 100%;

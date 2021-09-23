@@ -69,19 +69,19 @@ export default function HomePage({
         cards={[
           {
             title: 'Guilt Free Ingredients',
-            image: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/shop-by-product-img-1.jpg',
+            image: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/mf-img-1.jpg',
             description:
               'Lorem ipsum dolor sit amet, consectetur adipiscing elit. At eget iaculis eget eget neque, posuere quis placerat arcu. Ipsum est felis varius faucibus praesent convallis.',
           },
           {
             title: 'Win $10,000 Ring',
-            image: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/shop-by-product-img-2.jpg',
+            image: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/mf-img-2.jpg',
             description:
               'Lorem ipsum dolor sit amet, consectetur adipiscing elit. At eget iaculis eget eget neque, posuere quis placerat arcu. Ipsum est felis varius faucibus praesent convallis.',
           },
           {
             title: 'Collectible Jewelry',
-            image: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/shop-by-product-img-3.jpg',
+            image: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/mf-img-3.jpg',
             description:
               'Lorem ipsum dolor sit amet, consectetur adipiscing elit. At eget iaculis eget eget neque, posuere quis placerat arcu. Ipsum est felis varius faucibus praesent convallis.',
           },
