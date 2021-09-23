@@ -1,9 +1,7 @@
 import { GetServerSidePropsContext } from 'next'
-// import { parse } from 'node-html-parser'
 import resolvePageProps from '../modules/resolve-page-props'
 import loadProduct from '../lib/load-product'
 import loadCollection from '../lib/load-collection'
-// import removeNewLineCharacters from '../modules/remove-new-line-characters'
 import { Product, ProductType } from '../modules/normalize-product'
 
 export type ProductDescription = {
@@ -14,7 +12,6 @@ export type ProductDescription = {
 export type ProductPageProps = {
   productId: string
   product: Product
-  // recommendedProducts: null | Array<Product>
   potentialProducts: null | Array<Product>
   productDescription: ProductDescription
 }
@@ -33,20 +30,6 @@ const loadPotentialProducts = (productType: ProductType): Promise<Product[] | nu
   return Promise.resolve(null)
 }
 
-// const getProductDescription = async (product: Product): Promise<ProductDescription[] | null> => {
-//   if (!product || !product.body_html) {
-//     return null
-//   }
-
-//   const trArr = Array.prototype.slice.call(parse(product.body_html).querySelectorAll('tr'))
-//   return trArr
-//     .filter((el: HTMLElement) => el.querySelectorAll('td').length === 2)
-//     .map((el: HTMLElement) => ({
-//       title: el.querySelectorAll('td')[0].innerText.trim(),
-//       content: removeNewLineCharacters(el.querySelectorAll('td')[1].innerText).replace('&amp;', ''),
-//     }))
-// }
-
 function productPageProps<PropsType>(): (context: GetServerSidePropsContext) => Promise<{ props: PropsType }> {
   return resolvePageProps((context) => {
     const productId =
@@ -59,9 +42,7 @@ function productPageProps<PropsType>(): (context: GetServerSidePropsContext) => 
     return {
       productId: Promise.resolve(productId),
       product: productPromise.catch(() => null),
-      // recommendedProducts: loadCollectionProducts(RECOMMENDED_PRODUCTS_COLLECTION_ID),
       potentialProducts: productPromise.then((product) => loadPotentialProducts(product.type)),
-      // productDescription: productPromise.then((product) => getProductDescription(product)).catch(() => null),
     }
   })
 }
