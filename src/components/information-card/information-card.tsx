@@ -2,6 +2,7 @@ import React from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
 import Image from '../../lib/image'
+import { useScreenSize } from '../../lib/use-screen-size'
 
 export type InformationCardProps = {
   className?: ClassName
@@ -87,9 +88,10 @@ const SCardDescription = styled.div`
 `
 
 export function InformationCard({ className, card }: InformationCardProps): React.ReactElement | null {
+  const screenSize = useScreenSize()
   return (
     <SCardWrapper className={cn('InformationCard', className)}>
-      <SCardImage src={card.image} />
+      <SCardImage src={card.image} visibleByDefault={!screenSize.greaterThanMedium} />
       <SCardTitle>{card.title}</SCardTitle>
       <SCardDescription>{card.description}</SCardDescription>
     </SCardWrapper>

@@ -111,6 +111,10 @@ const SContentContainer = styled.div`
   padding: 0 15px;
   box-sizing: border-box;
   margin: 0 auto;
+
+  @media (max-width: 991px) {
+    display: flex;
+  }
 `
 
 const SContent = styled.div`
@@ -128,8 +132,8 @@ const SContent = styled.div`
 
 const SImagesWrapper = styled.div`
   @media (min-width: 768px) {
+    width: 450px;
     margin: 0 20px 35px 0;
-    width: 67%;
   }
 
   @media (min-width: 992px) {

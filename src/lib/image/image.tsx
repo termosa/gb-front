@@ -13,6 +13,7 @@ type ImageProps = {
   height?: string
   shopifySize?: 'pico' | 'icon' | 'thumb' | 'small' | 'compact' | 'medium' | 'large' | 'grande'
   draggable?: boolean
+  visibleByDefault?: boolean
   scrollPosition?: ScrollPosition
 }
 
@@ -39,6 +40,7 @@ export function Image({
   height,
   shopifySize,
   draggable,
+  visibleByDefault,
   scrollPosition,
 }: ImageProps): React.ReactElement {
   const imagePatchedSrc = useMemo<string>(() => {
@@ -66,6 +68,7 @@ export function Image({
         width={width || '100%'}
         height={height || '100%'}
         draggable={draggable}
+        visibleByDefault={!!visibleByDefault}
       />
     </SImageContainer>
   )
