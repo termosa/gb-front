@@ -48,6 +48,8 @@ export default function HomePage({
           product={innerCircleSubscriptionProduct}
           membershipProductVariants={innerCircleMembershipProduct.variants}
           slideImages={[
+            'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/ic-img-jewelry.jpg',
+            'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/ic-img.jpg',
             'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/home-banner-img-1-dt.jpg',
             'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/shop-by-product-img-2.jpg',
             'https://i.ebayimg.com/images/g/XOYAAOSwpjxgy3-1/s-l500.jpg',

@@ -39,6 +39,8 @@ const SButton = styled.button<{ selected?: boolean }>`
 
   @media (min-width: 768px) {
     font-size: 16px;
+    width: 44px;
+    height: 44px;
   }
 
   :last-child {
