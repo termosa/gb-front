@@ -45,7 +45,7 @@ const Title = styled.div<{ mobile?: boolean }>`
   position: relative;
 
   @media (min-width: 992px) {
-    padding: 0 0 17px;
+    padding: 0 0 13px;
     margin: 0 0 13px;
   }
 

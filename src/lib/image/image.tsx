@@ -23,7 +23,12 @@ const SImageContainer = styled.figure<{ fit?: string }>`
   justify-content: center;
   align-content: center;
   margin: 0;
-
+  @media (min-width: 768px) {
+    margin: 0 12px;
+  }
+  @media (min-width: 992px) {
+    margin: 0;
+  }
   img {
     -o-object-fit: ${(props) => props.fit || 'cover'};
     object-fit: ${(props) => props.fit || 'cover'};

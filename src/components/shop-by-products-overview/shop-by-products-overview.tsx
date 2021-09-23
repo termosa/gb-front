@@ -18,6 +18,10 @@ const SSection = styled.section`
   padding: 52px 0 0;
   margin: 0 0 66px;
   @media (min-width: 768px) {
+    padding: 40px 0 0px;
+    margin: 0 0 92px;
+  }
+  @media (min-width: 992px) {
     padding: 82px 0 28px;
     margin: 0 0 97px;
   }
@@ -48,7 +52,11 @@ const SCardsBlockTitle = styled.h2`
   font: 700 40px/1.2 'Cormorant Garamond', serif;
   letter-spacing: -0.02em;
   text-align: center;
-  margin: 0 auto 20px;
+  margin: 0 auto 15px;
+
+  @media (min-width: 992px) {
+    margin: 0 auto 25px;
+  }
 `
 
 const SliderWrapper = styled.div`

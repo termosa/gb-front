@@ -5,13 +5,17 @@ import useYotpo from '../use-yotpo'
 import SiteSection from '../../components/site-section'
 
 const Container = styled(SiteSection)`
-  max-width: 970px;
+  max-width: 960px;
   text-align: center;
-  margin: 0 auto;
+  margin: 0 auto 36px;
   padding: 0 15px;
 
   @media (min-width: 768px) {
-    margin-bottom: 80px;
+    margin-bottom: 36px;
+  }
+
+  @media (min-width: 992px) {
+    margin-bottom: 95px;
   }
 
   .yotpo .yotpo-pictures-collage-wrapper.yotpo-image-spacing-5 .y-image-wrapper {
@@ -26,12 +30,12 @@ const Container = styled(SiteSection)`
 
 const SPreTitle = styled.strong`
   display: block;
-  font: 500 14px/1.3 'Montserrat', sans-serif;
-  margin: 0 0 10px;
+  font: 500 16px/1.3 'Montserrat', sans-serif;
+  margin: 0 0 8px;
   letter-spacing: 0.05em;
 
-  @media (min-width: 768px) {
-    margin: 0 0 15px;
+  @media (min-width: 992px) {
+    margin: 0 0 16px;
   }
 `
 

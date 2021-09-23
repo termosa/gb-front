@@ -11,10 +11,14 @@ const Container = styled.div`
   max-width: 1020px;
   text-align: center;
   margin: 0 15px;
-  padding: 52px 0;
+  padding: 53px 0 77px;
 
   @media (min-width: 768px) {
     margin: 0 auto;
+    padding: 65px 0;
+  }
+
+  @media (min-width: 992px) {
     padding: 88px 0;
   }
 `
@@ -114,7 +118,7 @@ export function InlineSignupForm({ className }: InlineSignupFormProps): React.Re
   const signUpRequest = useDefer<unknown, string>(
     (email: string) =>
       http({
-        url: `https://www.fragrantjewels.com/klsubscribe?email=${email}&l=PXeq2D&s=Footer-form`,
+        url: `https://www.fragrantjewels.com/klsubscribe?email=${email}&l=KjMzdu&s=Homepage%20-%20Footer`,
       }).then(() => {
         klaviyo('identify', { $email: email })
       }),

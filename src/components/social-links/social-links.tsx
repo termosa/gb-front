@@ -12,7 +12,7 @@ const SocialLinksContainer = styled.main`
   font: 12px/1.3 'Montserrat', sans-serif;
 
   @media (min-width: 992px) {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
 `
 
@@ -26,7 +26,7 @@ const Title = styled.div`
 
   @media (min-width: 992px) {
     display: block;
-    padding: 0 0 17px;
+    padding: 0 0 13px;
     margin: 0 0 13px;
     border-bottom: 1px solid #949494;
   }
