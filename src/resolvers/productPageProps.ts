@@ -17,7 +17,7 @@ export type ProductPageProps = {
 }
 
 const loadCollectionProducts = (collectionId: number): Promise<Product[] | null> =>
-  loadCollection(collectionId, { limit: 6, ordering: 'published_at_shop' }).then(
+  loadCollection(collectionId, { limit: 6, ordering: 'created_at_shop' }).then(
     (collection) => (collection.products.length ? collection.products : null),
     () => null
   )
