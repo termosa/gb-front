@@ -114,9 +114,7 @@ export function SearchField({ className, onSearch, searchedProducts }: SearchFie
   const [popperElement, setPopperElement] = useState<HTMLDivElement | null>(null)
   useOnClickOutside({ current: popperElement }, () => setDropdownVisibility(false))
 
-  const { styles, attributes } = usePopper(referenceElement, popperElement, {
-    placement: 'bottom-start',
-  })
+  const { styles, attributes } = usePopper(referenceElement, popperElement, { placement: 'bottom-start' })
 
   return (
     <SWrapper className={cn('SearchField', className)} ref={setReferenceElement} onSubmit={handleSubmit}>
@@ -145,6 +143,7 @@ export function SearchField({ className, onSearch, searchedProducts }: SearchFie
           style={{ ...styles.popper, width: referenceElement?.clientWidth }}
           {...attributes.popper}
         >
+          {!searchedProducts.products?.length ? 'Sorry, no matches were found for your query.' : null}
           {searchedProducts.products?.map((product) => (
             <SSearchedProductLink
               key={product.product_id}
