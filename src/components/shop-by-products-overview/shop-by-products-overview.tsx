@@ -32,6 +32,7 @@ const SContainer = styled.div`
   padding: 0 15px;
   margin: 0 auto;
   overflow: inherit;
+  max-width: 960px;
 
   .react-multi-carousel-list {
     margin: 0 auto;
@@ -64,6 +65,11 @@ const SliderWrapper = styled.div`
   @media (min-width: 768px) {
     display: flex;
     justify-content: center;
+    gap: 16px;
+  }
+
+  @media (min-width: 992px) {
+    gap: 32px;
   }
 `
 

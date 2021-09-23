@@ -16,6 +16,7 @@ const SLayout = styled.div`
   @media (min-width: 768px) {
     padding: 0;
     margin-bottom: 0;
+    max-width: 100%;
   }
 `
 
@@ -25,6 +26,10 @@ const SLayoutImage = styled(Image)`
   display: block;
   max-width: 463px;
   margin: 0 auto;
+
+  @media (min-width: 768px) {
+    max-width: 100%;
+  }
 `
 
 const SContent = styled.div`

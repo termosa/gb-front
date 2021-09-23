@@ -16,12 +16,6 @@ const SLayout = styled.div`
   justify-content: center;
   outline: none;
   margin: 0 auto;
-  @media (min-width: 768px) {
-    margin: 0 13px;
-  }
-  @media (min-width: 992px) {
-    margin: 0 16px;
-  }
 `
 
 const SLayoutImage = styled(Image)`
@@ -29,11 +23,6 @@ const SLayoutImage = styled(Image)`
   margin-bottom: 0;
   border-style: none;
   object-fit: cover;
-  // max-width: 232px;
-
-  // @media (min-width: 375px) {
-  //   max-width: 232px;
-  // }
 
   @media (min-width: 768px) {
     max-width: 100%;
