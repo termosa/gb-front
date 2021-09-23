@@ -50,11 +50,10 @@ const SButtons = styled.div`
   justify-content: space-between;
   width: 100%;
   max-width: 284px;
-  padding: 0 0 16px;
   margin-left: auto;
 
-  @media (max-width: 990px) {
-    padding: 0 16px 16px;
+  @media (max-width: 1060px) {
+    padding-right: 20px;
   }
 
   @media (max-width: 768px) {
@@ -87,10 +86,11 @@ const SButton = styled.button`
 `
 
 const SButtonLabel = styled.div`
-  width: 96px;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  letter-spacing: 0.05em;
 `
 
 const SSortDropdown = styled.div`
@@ -137,22 +137,34 @@ const SFilters = styled.div`
     border-left: none;
     border-top: none;
   }
+
+  @media (max-width: 1060px) {
+    margin: 0 20px;
+  }
 `
 
 const SFilterGroup = styled.div`
   display: flex;
   flex-direction: column;
-  padding-bottom: 16px;
+
+  @media (max-width: 768px) {
+    padding-bottom: 16px;
+  }
 `
 
 const SFilter = styled.label<{ noProduct?: boolean }>`
-  padding: 0 0 16px 30px;
+  padding: 3px 0 13px 30px;
   color: ${({ noProduct }) => noProduct && '#dadada'};
   cursor: pointer;
   position: relative;
+  letter-spacing: 0.05em;
 
   @media (max-width: 768px) {
     margin: 0 24px;
+  }
+
+  &:last-child {
+    padding: 3px 0 0 30px;
   }
 `
 

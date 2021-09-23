@@ -11,7 +11,15 @@ import CollectionBanner from '../lib/collection-banner'
 import alooma from '../lib/alooma'
 
 const SFiltersSection = styled(SiteSection)`
-  margin-bottom: 2em;
+  margin-bottom: 32px;
+
+  @media (max-width: 1060px) {
+    margin-bottom: 20px;
+  }
+
+  @media (max-width: 768px) {
+    margin-bottom: 24px;
+  }
 `
 
 const Collection = (): null | React.ReactElement => {

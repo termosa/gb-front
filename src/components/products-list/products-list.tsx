@@ -12,17 +12,25 @@ export type ProductsListProps = {
 const ProductsListContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: 20px;
+  grid-gap: 40px 16px;
+  margin: 0 0 80px;
 
-  @media (max-width: 990px) {
+  @media (max-width: 1060px) {
+    grid-gap: 32px 20px;
+    margin: 0 20px 48px;
+  }
+
+  @media (max-width: 768px) {
+    grid-gap: 32px 8px;
+    margin: 0 16px 40px;
     grid-template-columns: repeat(2, 1fr);
-    margin: 0 16px;
   }
 `
 
 const SProductCard = styled(ProductCard)`
   display: flex;
   padding: 0;
+  min-width: 100px;
 `
 
 export const ProductsList = ({ products, onSelectProduct }: ProductsListProps): React.ReactElement => (
