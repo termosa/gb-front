@@ -47,7 +47,7 @@ const SReviews = styled.a`
 export type StarRatingProps = {
   className?: ClassName
   style?: React.CSSProperties
-  reviewsAverage?: number | null
+  reviewsAverage: number
   reviewsCount?: number
   onClick?: () => unknown
 }
@@ -60,16 +60,12 @@ export function StarRating({
   onClick,
 }: StarRatingProps): React.ReactElement | null {
   const stars = useMemo(() => {
-    const floor = reviewsAverage ? Math.floor(reviewsAverage) : 0
     return Array(AMOUNT_OF_STARS)
       .fill(null)
       .map((_, index) => {
-        if (floor > index) return 'full'
-        if (floor < index) return 'empty'
-        const remainder = Number(reviewsAverage && reviewsAverage.toFixed(1).split('.')[1]) || 0
-        if (remainder <= 2) return 'empty'
-        if (remainder >= 8) return 'full'
-        return 'half'
+        if (reviewsAverage < index + 0.25) return 'empty'
+        if (reviewsAverage < index + 0.75) return 'half'
+        return 'full'
       })
   }, [reviewsAverage])
 

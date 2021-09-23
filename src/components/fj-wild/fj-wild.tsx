@@ -34,10 +34,10 @@ const SFjWildTitle = styled.h2`
   text-transform: none;
   letter-spacing: -0.02em;
   text-align: center;
-  margin: 0 auto 16px;
+  margin: 48px auto 16px;
 
   @media (min-width: 768px) {
-    margin: 0 auto 20px;
+    margin: 88px auto 20px;
   }
 `
 

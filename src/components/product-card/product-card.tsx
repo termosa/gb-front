@@ -228,7 +228,7 @@ const ProductCardPrice = styled.div`
 export function ProductCard({ className, style, product, onClick }: ProductCardProps): React.ReactElement {
   const screenSize = useScreenSize()
   const productTitle = product.title.split('-')[0].split(':')[0]
-  const productType = product.product_type.split('(')[0]
+  const productType = product.type.split('(')[0]
 
   const label = getLabel(product)
 
@@ -264,7 +264,7 @@ export function ProductCard({ className, style, product, onClick }: ProductCardP
                 src={product.image.src}
                 alt={product.image?.alt}
                 draggable={false}
-                shopifySize={screenSize.greaterThanSmall ? 'medium' : 'compact'}
+                shopifySize={screenSize.greaterThanSmall ? 'large' : 'medium'}
               />
             )}
           </ProductCardImgWrapperInner>

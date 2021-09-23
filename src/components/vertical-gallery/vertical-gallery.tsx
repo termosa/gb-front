@@ -273,7 +273,7 @@ export function VerticalGallery({ className }: VerticalGalleryProps): React.Reac
                       alt={image?.alt}
                       width={`${galleryImageWidth}px`}
                       height={`${getImageHeight(image)}px`}
-                      shopifySize={screenSize.greaterThanMedium ? 'large' : 'medium'}
+                      shopifySize={'grande'}
                     />
                   </SPdpCarouselItem>
                 ))}
@@ -293,7 +293,7 @@ export function VerticalGallery({ className }: VerticalGalleryProps): React.Reac
                       <Image
                         src={product.images && image?.src}
                         alt={(product.images && image?.alt) || ''}
-                        shopifySize={'large'}
+                        shopifySize={'grande'}
                       />
                     )}
                   </SPdpCarouselItemMobile>

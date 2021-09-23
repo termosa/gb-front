@@ -133,7 +133,7 @@ export function InlineSignupForm({ className }: InlineSignupFormProps): React.Re
     <Container className={cn('InlineSignupForm', className)}>
       <SImage src="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/email-img.png" alt="" />
       {signUpRequest.status === Status.SUCCESS ? (
-        <SuccessMessage>Congratulations! You have successfully signed up!</SuccessMessage>
+        <SuccessMessage>Thanks for signing up!</SuccessMessage>
       ) : (
         <>
           <Title>Surprises to your inbox</Title>
