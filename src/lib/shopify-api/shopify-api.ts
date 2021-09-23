@@ -10,7 +10,9 @@ export type ApiProps = {
 
 export function shopifyApi<Response = unknown>({ path, method, query, body }: ApiProps): Promise<Response> {
   return http({
-    url: `${baseSiteUrl}${path.startsWith('/') ? path : `/${path}`}`,
+    url: `${baseSiteUrl}${process.env.NODE_ENV === 'development' ? '/ws30/api/shopify' : ''}${
+      path.startsWith('/') ? path : `/${path}`
+    }`,
     query,
     method,
     headers: { 'Content-Type': 'application/json' },

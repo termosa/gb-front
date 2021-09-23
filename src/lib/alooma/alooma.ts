@@ -15,6 +15,7 @@ export function alooma(eventName: string, eventProperties: Record<string, unknow
   return initiateAlooma()
     .then((alooma) => {
       log(`alooma.track("${eventName}", ${JSON.stringify(patchedProperties)})`)
+      console.warn(alooma)
       alooma.track(eventName, patchedProperties)
     })
     .catch((error) => {
@@ -22,3 +23,5 @@ export function alooma(eventName: string, eventProperties: Record<string, unknow
       if (error) log('Alooma failed due to', error)
     })
 }
+
+if (window) Object.assign(window, { track: alooma })

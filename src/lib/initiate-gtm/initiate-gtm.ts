@@ -43,7 +43,11 @@ export function initiateGtm(): Promise<GoogleTagManager> {
       GTM_CHECK_TIMEOUT,
       GTM_MAX_TRIES
     )
-      .then((gtm) => (gtm ? resolve(gtm) : Promise.reject('timeout')))
+      .then((gtm) => {
+        if (!gtm) return Promise.reject('timeout')
+        log('Alooma successfully initialized')
+        resolve(gtm)
+      })
       .catch((error) => {
         log('GTM failed to initialize', error)
         reject()

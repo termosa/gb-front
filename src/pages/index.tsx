@@ -121,7 +121,7 @@ export default function HomePage({
             buttonText: 'BODY SCRUBS',
           },
           {
-            image: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/shop-by-product-img-2.jpg',
+            image: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/shop-by-product-img-2.jpg?v=2',
             buttonLink: 'https://www.fragrantjewels.com/pages/inner-circle#how-it-works',
             buttonText: 'BUNDLES',
           },
