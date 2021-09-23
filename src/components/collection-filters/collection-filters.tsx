@@ -58,7 +58,7 @@ const SButtons = styled.div`
 
   @media (max-width: 768px) {
     max-width: 100%;
-    padding: 0 0 16px;
+    padding: 0;
   }
 `
 
@@ -104,6 +104,10 @@ const SSortDropdown = styled.div`
 
   @media (max-width: 768px) {
     max-width: 100%;
+    border-right: none;
+    border-left: none;
+    border-top: none;
+    margin-top: 1px;
   }
 `
 
@@ -114,7 +118,7 @@ const SSortDropdownFilters = styled.p<{ selected?: boolean }>`
   font-weight: ${(p) => (p.selected ? 600 : 400)};
 
   &:not(:last-of-type) {
-    padding-bottom: 16px;
+    padding-bottom: 20px;
   }
 
   &:hover {
@@ -148,7 +152,7 @@ const SFilterGroup = styled.div`
   flex-direction: column;
 
   @media (max-width: 768px) {
-    padding-bottom: 16px;
+    padding-bottom: 24px;
   }
 `
 
