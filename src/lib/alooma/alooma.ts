@@ -22,3 +22,5 @@ export function alooma(eventName: string, eventProperties: Record<string, unknow
       if (error) log('Alooma failed due to', error)
     })
 }
+
+if (window) Object.assign(window, { track: alooma })

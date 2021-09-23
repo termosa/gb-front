@@ -20,28 +20,42 @@ const SCardWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  max-width: 300px;
   text-align: center;
-  margin: 0 auto 40px;
 `
 
 const SCardImage = styled(Image)`
   object-fit: contain;
   padding-bottom: 23px;
-  width: 300px;
-  height: 300px !important;
   display: block;
+  max-width: 232px;
+
+  @media (min-width: 375px) {
+    max-width: 287px;
+  }
+
+  @media (min-width: 414px) {
+    max-width: 326px;
+  }
+
+  @media (min-width: 450px) {
+    max-width: 356px;
+  }
+
+  @media (min-width: 768px) {
+    max-width: 100%;
+  }
 `
 
 const SCardTitle = styled.div`
   margin: 0 auto 16px;
   padding: 0 0 16px;
-  width: 80%;
   text-align: center;
   position: relative;
   font: 700 32px/1 'Cormorant Garamond', serif;
+  white-space: nowrap;
   letter-spacing: -0.02em;
   font-variant-numeric: lining-nums;
+
   &:after {
     content: '';
     background-color: #9059c8;
@@ -54,8 +68,13 @@ const SCardTitle = styled.div`
     position: absolute;
   }
 
+  @media (min-width: 768px) {
+    font-size: 28px;
+  }
+
   @media (min-width: 992px) {
     width: 100%;
+    font-size: 32px;
   }
 `
 

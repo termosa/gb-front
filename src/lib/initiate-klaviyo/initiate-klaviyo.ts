@@ -101,18 +101,19 @@ export function initiateKlaviyo(): Promise<Klaviyo> {
 
         repeat(
           (index) => {
-            if (!klaviyo.identify && !(index % KLAVIYO_CHECK_LOG_INDEX)) {
-              if (index) {
-                log(
-                  `Klaviyo can not initialize during ${
-                    ((index / KLAVIYO_CHECK_LOG_INDEX) * KLAVIYO_CHECK_TIMEOUT * index) / 1e3
-                  }s`
-                )
-              }
-              return
+            if (index && !(index % KLAVIYO_CHECK_LOG_INDEX)) {
+              log(
+                `Klaviyo can not initialize during ${
+                  ((index / KLAVIYO_CHECK_LOG_INDEX) * KLAVIYO_CHECK_TIMEOUT * index) / 1e3
+                }s`
+              )
             }
+            if (!klaviyo.identify) return
             log(`klaviyo.identify({ $email: ${JSON.stringify(customer.email)} })`)
-            klaviyo.identify({ $email: customer.email }, undefined, undefined, () => resolve(klaviyo)) // TODO: handle reject
+            klaviyo.identify({ $email: customer.email }, undefined, undefined, () => {
+              log('Klaviyo successfully initialized')
+              resolve(klaviyo)
+            }) // TODO: handle reject
             return true
           },
           KLAVIYO_CHECK_TIMEOUT,

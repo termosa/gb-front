@@ -2,12 +2,17 @@ import log from '../log'
 import window from '../window'
 import loadScript from '../load-script'
 import loadCustomer from '../../modules/load-customer'
+import repeat from '../repeat'
 
 const ALOOMA_VERSION = 1.2
 const ALOOMA_KEY =
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnROYW1lIjoiZ3Jhdml0eWJyYW5kcyIsImlucHV0TGFiZWwiOiJmcmFncmFudC1qZXdlbHMiLCJpbnB1dFR5cGUiOiJKU1NESyJ9.gxcH9rYsDJ0gHWCiPUURFhfH9NvnRlNCkXSsm0fkYOk'
 const ALOOMA_SCRIPT_SRC = '//s3.amazonaws.com/fj-landing-pages/global-js/custom.alooma.min.js' // //cdn.alooma.com/libs/alooma-latest.min.js
 const ALOOMA_HOST_URL = 'https://6fmfsgcm1h.execute-api.us-east-1.amazonaws.com/production' // https://inputs.alooma.com
+
+const ALOOMA_CHECK_TIMEOUT = 100
+const ALOOMA_CHECK_LOG_INDEX = 100
+const ALOOMA_MAX_TRIES = ALOOMA_CHECK_LOG_INDEX * 10
 
 export type AloomaEventProperties<EventProperties extends Record<string, unknown>> = {
   $browser_version: number
@@ -194,11 +199,34 @@ export function initiateAlooma(): Promise<Alooma> {
             log('Alooma did not initialize')
             return reject()
           }
-          if (customer) {
-            log(`alooma.register({ email: "${customer.email}" })`)
-            alooma.register({ email: customer.email })
-          }
-          resolve(alooma)
+
+          return repeat(
+            (index) => {
+              if (index && !(index % ALOOMA_CHECK_LOG_INDEX)) {
+                log(
+                  `Alooma can not initialize during ${
+                    ((index / ALOOMA_CHECK_LOG_INDEX) * ALOOMA_CHECK_TIMEOUT * index) / 1e3
+                  }s`
+                )
+              }
+              if (!window?.alooma?.config) return
+              return true
+            },
+            ALOOMA_CHECK_TIMEOUT,
+            ALOOMA_MAX_TRIES
+          ).then(() => {
+            if (!window?.alooma) {
+              log('Alooma did not initialize')
+              return reject()
+            }
+
+            if (customer) {
+              log(`alooma.register({ email: "${customer.email}" })`)
+              window.alooma.register({ email: customer.email })
+            }
+            log('Alooma successfully initialized')
+            resolve(window.alooma)
+          })
         })
         .catch((error) => {
           log('Alooma failed to initialize', error)

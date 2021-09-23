@@ -17,7 +17,7 @@ describe('loadMembershipProductForSubscriptionProduct()', () => {
     ])
     ;(loadProduct as jest.Mock).mockReset()
     ;(loadProduct as jest.Mock).mockResolvedValue({
-      product_type: 'membership',
+      type: 'membership',
     })
   })
 
@@ -37,7 +37,7 @@ describe('loadMembershipProductForSubscriptionProduct()', () => {
 
   it('should return membership product', () => {
     expect(loadMembershipProductForSubscriptionProduct(12345)).resolves.toStrictEqual({
-      product_type: 'membership',
+      type: 'membership',
     })
   })
 })

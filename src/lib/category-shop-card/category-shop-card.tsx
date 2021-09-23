@@ -16,6 +16,7 @@ const SLayout = styled.div`
   @media (min-width: 768px) {
     padding: 0;
     margin-bottom: 0;
+    max-width: 100%;
   }
 `
 
@@ -25,6 +26,10 @@ const SLayoutImage = styled(Image)`
   display: block;
   max-width: 463px;
   margin: 0 auto;
+
+  @media (min-width: 768px) {
+    max-width: 100%;
+  }
 `
 
 const SContent = styled.div`
@@ -51,14 +56,14 @@ const SContent = styled.div`
 
 const STitle = styled.span`
   display: block;
-  margin: 0 0 13px;
+  margin: 0 0 6px;
   position: relative;
   font: 700 32px/1 'Cormorant Garamond', serif;
   letter-spacing: -0.02em;
   text-align: center;
 
   @media (min-width: 992px) {
-    margin: 0 0 17px;
+    margin: 0 0 8px;
   }
 `
 

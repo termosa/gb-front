@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import styled from 'styled-components'
 import ShopByProductCard, { ShopByProductCardProps } from '../shop-by-product-card'
 import Slider from '../../lib/slider'
 import useScreenSize from '../../lib/use-screen-size'
+import Carousel from 'react-multi-carousel'
 
 export type ProductDetails = ShopByProductCardProps
 export type ShopByProductsOverviewProps = {
@@ -31,16 +32,13 @@ const SContainer = styled.div`
   padding: 0 15px;
   margin: 0 auto;
   overflow: inherit;
+  max-width: 960px;
 
   .react-multi-carousel-list {
-    max-width: 334px;
     margin: 0 auto;
     padding-bottom: 24px;
+    padding-top: 24px;
     position: relative;
-
-    @media (min-width: 375px) {
-      max-width: 346px;
-    }
 
     @media (min-width: 768px) {
       max-width: 990px;
@@ -67,6 +65,23 @@ const SliderWrapper = styled.div`
   @media (min-width: 768px) {
     display: flex;
     justify-content: center;
+    gap: 16px;
+  }
+
+  @media (min-width: 992px) {
+    gap: 32px;
+  }
+`
+
+const SliderHolder = styled.div`
+  position: relative;
+  padding: 0 29px;
+  max-width: 414px;
+  margin: -24px auto 0;
+  overflow: hidden;
+
+  @media (min-width: 768px) {
+    max-width: 100%;
   }
 `
 
@@ -81,6 +96,8 @@ const SArrow = styled.div`
   position: absolute;
   cursor: pointer;
   z-index: 5;
+  top: 50%;
+  transform: translateY(-50%);
 `
 
 const SPrevArrow = styled(SArrow)`
@@ -115,6 +132,7 @@ const SArrowButton = styled.button`
 
 export function ShopByProductsOverview({ products, title }: ShopByProductsOverviewProps): React.ReactElement {
   const screenSize = useScreenSize()
+  const productSliderRef = useRef<Carousel | null>(null)
   return (
     <SSection>
       <SContainer>
@@ -132,31 +150,48 @@ export function ShopByProductsOverview({ products, title }: ShopByProductsOvervi
               />
             ))
           ) : (
-            <Slider
-              arrows
-              infinite
-              customLeftArrow={
-                <SPrevArrow>
-                  <SArrowButton />
-                </SPrevArrow>
-              }
-              customRightArrow={
-                <SNextArrow>
-                  <SArrowButton />
-                </SNextArrow>
-              }
-            >
-              {products &&
-                products.map((product) => (
-                  <ShopByProductCard
-                    key={product.image + product.id}
-                    image={product.image}
-                    buttonLink={product.buttonLink}
-                    buttonText={product.buttonText}
-                    title={product.title}
-                  />
-                ))}
-            </Slider>
+            <SliderHolder>
+              <SPrevArrow>
+                <SArrowButton
+                  onClick={() => {
+                    productSliderRef.current && productSliderRef.current.previous(1)
+                  }}
+                />
+              </SPrevArrow>
+              <SNextArrow>
+                <SArrowButton
+                  onClick={() => {
+                    productSliderRef.current && productSliderRef.current.next(1)
+                  }}
+                />
+              </SNextArrow>
+              <Slider
+                arrows={false}
+                carouselRef={productSliderRef}
+                infinite
+                customLeftArrow={
+                  <SPrevArrow>
+                    <SArrowButton />
+                  </SPrevArrow>
+                }
+                customRightArrow={
+                  <SNextArrow>
+                    <SArrowButton />
+                  </SNextArrow>
+                }
+              >
+                {products &&
+                  products.map((product) => (
+                    <ShopByProductCard
+                      key={product.image + product.id}
+                      image={product.image}
+                      buttonLink={product.buttonLink}
+                      buttonText={product.buttonText}
+                      title={product.title}
+                    />
+                  ))}
+              </Slider>
+            </SliderHolder>
           )}
         </SliderWrapper>
       </SContainer>

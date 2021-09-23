@@ -12,13 +12,23 @@ export type ServerProductOption = {
   values: Array<string>
 }
 
+export type ProductType =
+  | string
+  | 'Bath Bomb'
+  | 'Jewel Candle'
+  | 'Sugar Scrub'
+  | 'Bundle (2 Bath Bombs)'
+  | 'Bundle (Candle + Bath Bomb)'
+  | 'Bundle (3 Bath Bombs)'
+  | 'Bundle (Bath Bomb + Body Scrub + Body Spray)'
+
 export type ServerProduct = {
   product_id: number
   title: string
   body_html: string
   vendor: string
   handle: string // like-a-slug
-  product_type: 'Bundle (Candle + Bath Bomb)' | 'Jewel Candle' | string
+  product_type: ProductType
   front_image: null | ServerProductImage
   side_images: null | Array<ServerProductImage>
   variants: Array<ServerProductVariant>
@@ -42,7 +52,7 @@ export type Product = {
   image?: ProductImage
   images?: Array<ProductImage>
   variants: Array<ProductVariant>
-  product_type: string
+  type: ProductType
   published_at_shop: string
   body_html?: string
   tags?: Array<string>
@@ -83,7 +93,7 @@ export const normalizeProduct = (product: ServerProduct): Product => {
     variants: product.variants
       .sort((variantA, variantB) => variantA.position - variantB.position)
       .map(normalizeProductVariant),
-    product_type: product.product_type,
+    type: product.product_type,
     published_at_shop: product.published_at_shop,
     reviewsAverage: Number(product.reviews_average),
     reviewsCount: product.reviews_count,

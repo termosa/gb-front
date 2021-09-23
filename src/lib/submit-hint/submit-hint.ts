@@ -26,7 +26,7 @@ export function submitHint(
         // SKU: variant.sku,
         Size: size,
         ProductName: product.title,
-        ProductType: product.product_type,
+        ProductType: product.type,
         // ProductTag: product.tags,
         // Quantity: 1,
         // ItemPrice: variant.actual_price,
