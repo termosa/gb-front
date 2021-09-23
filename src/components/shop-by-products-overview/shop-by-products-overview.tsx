@@ -34,15 +34,10 @@ const SContainer = styled.div`
   overflow: inherit;
 
   .react-multi-carousel-list {
-    // max-width: 334px;
     margin: 0 auto;
     padding-bottom: 24px;
     padding-top: 24px;
     position: relative;
-
-    // @media (min-width: 375px) {
-    //   max-width: 346px;
-    // }
 
     @media (min-width: 768px) {
       max-width: 990px;
@@ -75,7 +70,7 @@ const SliderWrapper = styled.div`
 const SliderHolder = styled.div`
   position: relative;
   padding: 0 29px;
-  max-width: 342px;
+  max-width: 414px;
   margin: -24px auto 0;
 
   @media (min-width: 768px) {

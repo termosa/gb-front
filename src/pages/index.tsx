@@ -111,17 +111,17 @@ export default function HomePage({
         title="Shop by Product"
         products={[
           {
-            image: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/shop-by-product-img-1.jpg',
+            image: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/prod-candles.jpg',
             buttonLink: 'https://www.fragrantjewels.com/pages/inner-circle#how-it-works',
             buttonText: 'CANDLES',
           },
           {
-            image: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/shop-by-product-img-2.jpg',
+            image: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/prod-body-scrubs.jpg',
             buttonLink: 'https://www.fragrantjewels.com/pages/inner-circle#how-it-works',
             buttonText: 'BODY SCRUBS',
           },
           {
-            image: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/shop-by-product-img-2.jpg',
+            image: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/prod-bundles.jpg',
             buttonLink: 'https://www.fragrantjewels.com/pages/inner-circle#how-it-works',
             buttonText: 'BUNDLES',
           },
