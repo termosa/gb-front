@@ -4,8 +4,7 @@ import resolvePageProps from '../modules/resolve-page-props'
 import loadProduct from '../lib/load-product'
 import loadCollection from '../lib/load-collection'
 // import removeNewLineCharacters from '../modules/remove-new-line-characters'
-import { Product } from '../modules/normalize-product'
-import { POTENTIAL_PRODUCTS_COLLECTION_ID } from '../settings/ids'
+import { Product, ProductType } from '../modules/normalize-product'
 
 export type ProductDescription = {
   title: string
@@ -20,11 +19,19 @@ export type ProductPageProps = {
   productDescription: ProductDescription
 }
 
-const loadCollectionProducts = (collectionId: number, productType: string): Promise<Product[] | null> =>
-  loadCollection(collectionId, { limit: 6, product_type: productType, ordering: 'published_at_shop' }).then(
+const loadCollectionProducts = (collectionId: number): Promise<Product[] | null> =>
+  loadCollection(collectionId, { limit: 6, ordering: 'published_at_shop' }).then(
     (collection) => (collection.products.length ? collection.products : null),
     () => null
   )
+
+const loadPotentialProducts = (productType: ProductType): Promise<Product[] | null> => {
+  if (productType === 'Bath Bomb') return loadCollectionProducts(262384648270)
+  if (productType === 'Jewel Candle') return loadCollectionProducts(262384681038)
+  if (productType === 'Sugar Scrub') return loadCollectionProducts(262384746574)
+  if (productType.startsWith('Bundle')) return loadCollectionProducts(262384713806)
+  return Promise.resolve(null)
+}
 
 // const getProductDescription = async (product: Product): Promise<ProductDescription[] | null> => {
 //   if (!product || !product.body_html) {
@@ -53,9 +60,7 @@ function productPageProps<PropsType>(): (context: GetServerSidePropsContext) => 
       productId: Promise.resolve(productId),
       product: productPromise.catch(() => null),
       // recommendedProducts: loadCollectionProducts(RECOMMENDED_PRODUCTS_COLLECTION_ID),
-      potentialProducts: productPromise.then((product) =>
-        loadCollectionProducts(POTENTIAL_PRODUCTS_COLLECTION_ID, product.product_type)
-      ),
+      potentialProducts: productPromise.then((product) => loadPotentialProducts(product.type)),
       // productDescription: productPromise.then((product) => getProductDescription(product)).catch(() => null),
     }
   })
