@@ -60,7 +60,6 @@ export function StarRating({
   onClick,
 }: StarRatingProps): React.ReactElement | null {
   const stars = useMemo(() => {
-    console.warn(reviewsAverage)
     return Array(AMOUNT_OF_STARS)
       .fill(null)
       .map((_, index) => {
