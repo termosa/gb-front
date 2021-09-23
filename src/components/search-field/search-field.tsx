@@ -106,7 +106,7 @@ export function SearchField({ className, onSearch, searchedProducts }: SearchFie
       debounce((event: React.ChangeEvent<HTMLInputElement>) => {
         setDropdownVisibility(true)
         onSearch(event.target.value)
-      }, 1e3),
+      }, 200),
     [onSearch]
   )
 
