@@ -276,7 +276,7 @@ export function ProductCard({ className, style, product, onClick }: ProductCardP
         <div>
           {checkForLabel()}
           <ProductCardStars>
-            <StarRating reviewsAverage={product.reviewsAverage} />
+            <StarRating reviewsAverage={product.reviewsAverage} reviewsCount={product.reviewsCount} />
           </ProductCardStars>
           <ProductCardTitle title={productTitle}>{productTitle}</ProductCardTitle>
           <ProductCardType>{productType}</ProductCardType>

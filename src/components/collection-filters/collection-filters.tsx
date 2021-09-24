@@ -175,6 +175,7 @@ const SFilter = styled.label<{ noProduct?: boolean }>`
 const SFilterGroupName = styled.span`
   text-transform: uppercase;
   padding-bottom: 16px;
+  letter-spacing: 0.05em;
 
   @media (max-width: 768px) {
     border-bottom: 0.5px solid #000;

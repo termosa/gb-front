@@ -9,7 +9,7 @@ const SContainer = styled.div<{ onClick?: () => unknown }>`
 `
 
 const SStars = styled.span`
-  line-height: 20px;
+  /*line-height: 20px;*/
 `
 
 const SSvg = styled.svg`
@@ -43,9 +43,13 @@ const EmptyStar = () => (
 )
 
 const SReviews = styled.a`
+  font-family: Montserrat, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 12px;
   padding-left: 4px;
-  text-decoration: underline;
-  color: #9059c8;
+  color: #000000;
   vertical-align: bottom;
 `
 
