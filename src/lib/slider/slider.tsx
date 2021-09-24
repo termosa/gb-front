@@ -74,12 +74,12 @@ const SCustomSlider = styled.div`
   padding: 0 15px;
 
   @media (min-width: 768px) {
-    padding: 0 30px;
+    padding: 0 6px;
     bottom: -40px;
   }
 
   @media (min-width: 992px) {
-    padding: 0 21px;
+    padding: 0 7px;
     bottom: -44px;
   }
 

@@ -84,27 +84,35 @@ const SectionText = styled.div`
 `
 
 const SArrow = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 45px;
-  height: 45px;
-  font-size: 0;
-  line-height: 1;
-  position: absolute;
-  cursor: pointer;
-  z-index: 5;
+  display: none;
+
+  @media (min-width: 768px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    font-size: 0;
+    line-height: 1;
+    position: absolute;
+    cursor: pointer;
+    z-index: 5;
+    top: 50%;
+    transform: translateY(-50%);
+  }
 `
 
 const SPrevArrow = styled(SArrow)`
-  left: -8px;
+  left: -30px;
+
   button {
     transform: translateX(5px) rotate(45deg);
   }
 `
 
 const SNextArrow = styled(SArrow)`
-  right: -8px;
+  right: -30px;
+
   button {
     transform: translateX(-5px) rotate(-135deg);
   }
@@ -122,12 +130,18 @@ const SArrowButton = styled.button`
   margin: 0;
   padding: 0;
   cursor: pointer;
+
+  &:focus {
+    outline: 0;
+    box-shadow: none;
+  }
 `
 
 const SliderHolder = styled.div`
   margin: 0 -15px;
   padding: 0 12px;
   margin: 0 auto;
+  position: relative;
 
   @media (min-width: 450px) {
     max-width: 440px;
@@ -138,6 +152,7 @@ const SliderHolder = styled.div`
     max-width: 100%;
     margin: 0;
     padding: 0;
+    overflow: inherit;
   }
 
   .react-multi-carousel-list {
@@ -200,10 +215,24 @@ export const ProductsCarousel = ({
           <p>{subTitle}</p>
         </SectionText>
         <SliderHolder>
+          <SPrevArrow>
+            <SArrowButton
+              onClick={() => {
+                carouselRef.current && carouselRef.current.previous(1)
+              }}
+            />
+          </SPrevArrow>
+          <SNextArrow>
+            <SArrowButton
+              onClick={() => {
+                carouselRef.current && carouselRef.current.next(1)
+              }}
+            />
+          </SNextArrow>
           <Slider
             responsive={sliderSettings}
             scrollbarPresent={true}
-            arrows={!!screenSize.greaterThanMedium}
+            arrows={false}
             customLeftArrow={
               <SPrevArrow>
                 <SArrowButton />

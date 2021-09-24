@@ -338,7 +338,7 @@ const SInnerCircleLabel = styled.strong`
 `
 
 const SProductTitle = styled.h3`
-  font: 600 40px/1.25 'Cormorant Garamond', serif;
+  font: 600 40px/1.1 'Cormorant Garamond', serif;
   letter-spacing: -0.02em;
   margin: 0 0 16px;
 `
