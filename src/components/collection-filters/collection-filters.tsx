@@ -62,11 +62,14 @@ const SButtons = styled.div`
   }
 `
 
-const SButton = styled.button`
+const SButton = styled.button<{
+  isOpen?: boolean
+}>`
   padding: 16px;
   font-size: 16px;
   text-transform: uppercase;
-  background-color: #fff;
+  background-color: ${(props) => (props.isOpen ? '#9952bd' : '#fff')};
+  color: ${(props) => (props.isOpen ? '#fff' : '#000')};
   border: 0.5px solid #000;
   width: 100%;
   max-width: 138px;
@@ -82,6 +85,10 @@ const SButton = styled.button`
     &:not(:last-of-type) {
       border-right: 0.5px solid #000;
     }
+  }
+
+  path {
+    stroke: ${(props) => (props.isOpen ? '#fff' : '#000')};
   }
 `
 
@@ -133,17 +140,19 @@ const SFilters = styled.div`
   border: 0.5px solid #000;
   width: 100%;
   box-sizing: border-box;
+  margin: 10px 0 0;
 
   @media (max-width: 768px) {
     flex-direction: column;
     padding: 24px 0;
+    margin: 0;
     border-right: none;
     border-left: none;
     border-top: none;
   }
 
   @media (max-width: 1060px) {
-    margin: 0 20px;
+    margin: 10px 20px 0;
   }
 `
 
@@ -226,7 +235,7 @@ const SShowResultsButton = styled.button`
   border: none;
   padding: 17px 60px;
   background-color: #9952bd;
-  font-weight: 700;
+  font-weight: 600;
   color: #fff;
   display: none;
 
@@ -453,7 +462,7 @@ export const CollectionFilters = ({
     <SCollectionFiltersContainer className={cn(name, className)}>
       {children}
       <SButtons>
-        <SButton onClick={() => setIsFiltersDropdownOpened(!isFiltersDropdownOpened)}>
+        <SButton onClick={() => setIsFiltersDropdownOpened(!isFiltersDropdownOpened)} isOpen={isFiltersDropdownOpened}>
           <SButtonLabel>
             <svg xmlns="http://www.w3.org/2000/svg" width={18} height={10} viewBox="0 0 18 10" fill="none">
               <path
@@ -467,7 +476,11 @@ export const CollectionFilters = ({
             Filter
           </SButtonLabel>
         </SButton>
-        <SButton ref={setReferenceElement} onClick={() => setIsSortDropdownOpened(!isSortDropdownOpened)}>
+        <SButton
+          ref={setReferenceElement}
+          onClick={() => setIsSortDropdownOpened(!isSortDropdownOpened)}
+          isOpen={isSortDropdownOpened}
+        >
           <SButtonLabel>
             Sort by
             <svg xmlns="http://www.w3.org/2000/svg" width={18} height={10} viewBox="0 0 18 10" fill="none">
