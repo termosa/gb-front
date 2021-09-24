@@ -132,7 +132,7 @@ const SContent = styled.div`
 
 const SImagesWrapper = styled.div`
   @media (min-width: 768px) {
-    width: 450px;
+    width: 420px;
     margin: 0 20px 35px 0;
   }
 
@@ -317,8 +317,13 @@ const SDetailsContainer = styled.div`
   max-width: 356px;
   margin: 0 auto;
 
-  @media (min-width: 992px) {
+  @media (min-width: 768px) {
     text-align: left;
+    max-width: 290px;
+  }
+
+  @media (min-width: 992px) {
+    max-width: 100%;
     width: 340px;
   }
 `
@@ -333,7 +338,7 @@ const SInnerCircleLabel = styled.strong`
 `
 
 const SProductTitle = styled.h3`
-  font: 600 40px/1.25 'Cormorant Garamond', serif;
+  font: 600 40px/1.1 'Cormorant Garamond', serif;
   letter-spacing: -0.02em;
   margin: 0 0 16px;
 `
@@ -410,6 +415,11 @@ const SSliderButton = styled.button<{
   @media (min-width: 768px) {
     width: 55px;
     height: 55px;
+  }
+
+  &:focus {
+    outline: 0;
+    box-shadow: none;
   }
 
   & > svg {
@@ -540,6 +550,7 @@ export function InnerCircleExclusive({
                     carouselRef={smallSliderRef}
                     customButtonGroup={<CustomButtons />}
                     swipeable={false}
+                    autoPlay={false}
                   >
                     {slideImages.map((src, i) => (
                       <SLeftImageContainer isPresent={slideImages.length > 2} key={src + i}>
@@ -549,7 +560,7 @@ export function InnerCircleExclusive({
                   </Slider>
                 </SLeftSliderPart>
                 <SRightSliderPart>
-                  <Slider infinite arrows={false} carouselRef={bigSliderRef} swipeable={false}>
+                  <Slider infinite arrows={false} carouselRef={bigSliderRef} swipeable={false} autoPlay={false}>
                     {shiftedProductsArray.map((src, i) => (
                       <SImage
                         src={src}

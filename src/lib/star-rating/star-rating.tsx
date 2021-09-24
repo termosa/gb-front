@@ -13,10 +13,15 @@ const SStars = styled.span`
 `
 
 const SSvg = styled.svg`
-  width: 15px;
-  margin: 0 2px;
+  width: 12px;
+  margin: 0 1.5px;
   fill: #9059c8;
   vertical-align: middle;
+
+  @media (min-width: 768px) {
+    width: 15px;
+    margin: 0 2px;
+  }
 `
 
 const FullStar = () => (

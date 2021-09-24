@@ -9,10 +9,14 @@ import ProductCard from '../product-card'
 import Carousel from 'react-multi-carousel'
 
 const Section = styled.section`
-  margin: 0 0 48px;
+  margin: 0 0 80px;
 
   @media (min-width: 768px) {
-    margin: 30px 0 92px;
+    margin: 30px 0 100px;
+  }
+
+  @media (min-width: 992px) {
+    margin: 30px 0 131px;
   }
 
   * {
@@ -22,14 +26,17 @@ const Section = styled.section`
 
 const Container = styled.div`
   position: relative;
-  max-width: 990px;
-  padding: 0 0 0 15px;
+  max-width: 970px;
+  // padding: 0 15px 0 15px;
   margin: 0 auto;
-  overflow: hidden;
+  // overflow: hidden;
 
   @media (min-width: 768px) {
     padding: 0 30px;
-    max-width: 960px;
+  }
+
+  @media (min-width: 992px) {
+    padding: 0 15px;
   }
 `
 
@@ -39,7 +46,7 @@ const SectionTitle = styled.div<{
   font: ${(props) => (props.isMobile ? `600 16px/1.5 'Montserrat', serif` : `700 40px/1 'Cormorant Garamond', serif`)};
   text-transform: ${(props) => (props.isMobile ? `uppercase` : `initial`)};
   text-align: center;
-  margin: 0 0 12px -15px;
+  margin: 0 0 12px;
 
   & > span {
     position: relative;
@@ -63,7 +70,10 @@ const SectionText = styled.div`
   p {
     margin: 0 0 24px;
     @media (min-width: 768px) {
-      margin: 0 0 28px;
+      margin: 0 0 30px;
+    }
+    @media (min-width: 992px) {
+      margin: 0 0 22px;
     }
   }
 
@@ -74,27 +84,35 @@ const SectionText = styled.div`
 `
 
 const SArrow = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 45px;
-  height: 45px;
-  font-size: 0;
-  line-height: 1;
-  position: absolute;
-  cursor: pointer;
-  z-index: 5;
+  display: none;
+
+  @media (min-width: 768px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    font-size: 0;
+    line-height: 1;
+    position: absolute;
+    cursor: pointer;
+    z-index: 5;
+    top: 50%;
+    transform: translateY(-50%);
+  }
 `
 
 const SPrevArrow = styled(SArrow)`
-  left: -8px;
+  left: -30px;
+
   button {
     transform: translateX(5px) rotate(45deg);
   }
 `
 
 const SNextArrow = styled(SArrow)`
-  right: -8px;
+  right: -30px;
+
   button {
     transform: translateX(-5px) rotate(-135deg);
   }
@@ -112,6 +130,34 @@ const SArrowButton = styled.button`
   margin: 0;
   padding: 0;
   cursor: pointer;
+
+  &:focus {
+    outline: 0;
+    box-shadow: none;
+  }
+`
+
+const SliderHolder = styled.div`
+  margin: 0 -15px;
+  padding: 0 12px;
+  margin: 0 auto;
+  position: relative;
+
+  @media (min-width: 450px) {
+    max-width: 440px;
+    overflow: hidden;
+  }
+
+  @media (min-width: 768px) {
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: inherit;
+  }
+
+  .react-multi-carousel-list {
+    position: relative;
+  }
 `
 
 export type ProductsCarouselProps = {
@@ -135,16 +181,16 @@ export const ProductsCarousel = ({
   const carouselRef = useRef<Carousel>(null)
   const sliderSettings = {
     desktop: {
-      breakpoint: { max: 3000, min: 768 },
+      breakpoint: { max: 3000, min: 992 },
       items: 3,
     },
     tablet: {
-      breakpoint: { max: 768, min: 464 },
-      items: 2.6,
+      breakpoint: { max: 991, min: 768 },
+      items: 3,
     },
     mobile: {
-      breakpoint: { max: 464, min: 0 },
-      items: 1.6,
+      breakpoint: { max: 767, min: 0 },
+      items: 2,
     },
   }
 
@@ -168,29 +214,48 @@ export const ProductsCarousel = ({
         <SectionText>
           <p>{subTitle}</p>
         </SectionText>
-        <Slider
-          responsive={sliderSettings}
-          scrollbarPresent={!!screenSize.greaterThanMedium}
-          arrows={!!screenSize.greaterThanMedium}
-          customLeftArrow={
-            <SPrevArrow>
-              <SArrowButton />
-            </SPrevArrow>
-          }
-          customRightArrow={
-            <SNextArrow>
-              <SArrowButton />
-            </SNextArrow>
-          }
-          carouselRef={carouselRef}
-          partiallyVisible={true}
-        >
-          {products
-            .filter((product) => product.image)
-            .map((product) => {
-              return <ProductCard key={product.product_id} product={product} onClick={() => onSelectProduct(product)} />
-            })}
-        </Slider>
+        <SliderHolder>
+          <SPrevArrow>
+            <SArrowButton
+              onClick={() => {
+                carouselRef.current && carouselRef.current.previous(1)
+              }}
+            />
+          </SPrevArrow>
+          <SNextArrow>
+            <SArrowButton
+              onClick={() => {
+                carouselRef.current && carouselRef.current.next(1)
+              }}
+            />
+          </SNextArrow>
+          <Slider
+            responsive={sliderSettings}
+            scrollbarPresent={true}
+            arrows={false}
+            customLeftArrow={
+              <SPrevArrow>
+                <SArrowButton />
+              </SPrevArrow>
+            }
+            customRightArrow={
+              <SNextArrow>
+                <SArrowButton />
+              </SNextArrow>
+            }
+            carouselRef={carouselRef}
+            partiallyVisible={true}
+            infinite={true}
+          >
+            {products
+              .filter((product) => product.image)
+              .map((product) => {
+                return (
+                  <ProductCard key={product.product_id} product={product} onClick={() => onSelectProduct(product)} />
+                )
+              })}
+          </Slider>
+        </SliderHolder>
       </Container>
       {/* <ProgressWrapper>
         <Progress progress={progress}>

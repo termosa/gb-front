@@ -15,6 +15,7 @@ import navigate from '../lib/navigate'
 import addCartItem from '../lib/add-cart-item'
 import trackAddedToCart from '../lib/track-added-to-cart'
 import Head from 'next/head'
+import LazyLoad from '../lib/lazy-load'
 
 export default function HomePage({
   trendingProducts,
@@ -55,9 +56,6 @@ export default function HomePage({
             slideImages={[
               'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/ic-img-jewelry.jpg',
               'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/ic-img.jpg',
-              'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/home-banner-img-1-dt.jpg',
-              'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/shop-by-product-img-2.jpg',
-              'https://i.ebayimg.com/images/g/XOYAAOSwpjxgy3-1/s-l500.jpg',
             ]}
             title="Get addicted to me-time"
             subTitle="Join the Inner Circle for exciting new collections every month, available exclusively to members."
@@ -136,7 +134,9 @@ export default function HomePage({
         />
         <PromiseBar />
         <InlineSignupForm />
-        <YotpoGallery galleryId="5dd5da2416fa290bf56b2085" />
+        <LazyLoad threshold={1000}>
+          <YotpoGallery galleryId="5dd5da2416fa290bf56b2085" />
+        </LazyLoad>
       </MainPageLayout>
     </>
   )

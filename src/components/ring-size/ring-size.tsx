@@ -37,6 +37,15 @@ const SButton = styled.button<{ selected?: boolean }>`
   font-family: 'Montserrat', sans-serif;
   cursor: pointer;
 
+  & > span {
+    margin-top: 0.05em;
+    display: inline-block;
+
+    @media (min-width: 768px) {
+      margin-top: 0.1em;
+    }
+  }
+
   @media (min-width: 768px) {
     font-size: 16px;
     width: 44px;
@@ -77,7 +86,7 @@ export function RingSize({ className, variants, onChange }: RingSizeProps): Reac
           onClick={() => change(variant)}
           disabled={!variant.available}
         >
-          {variant.title}
+          <span>{variant.title}</span>
         </SButton>
       ))}
     </SWrapper>

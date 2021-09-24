@@ -26,24 +26,29 @@ const SCardWrapper = styled.div`
 
 const SCardImage = styled(Image)`
   object-fit: contain;
-  padding-bottom: 23px;
+  margin-bottom: 23px;
   display: block;
-  max-width: 232px;
+  width: 232px;
+  height: 232px;
 
   @media (min-width: 375px) {
-    max-width: 287px;
+    width: 287px;
+    height: 287px;
   }
 
   @media (min-width: 414px) {
-    max-width: 326px;
+    width: 326px;
+    height: 326px;
   }
 
   @media (min-width: 450px) {
-    max-width: 356px;
+    width: 356px;
+    height: 356px;
   }
 
   @media (min-width: 768px) {
-    max-width: 100%;
+    width: 100%;
+    height: auto;
   }
 `
 

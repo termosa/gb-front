@@ -148,13 +148,15 @@ export function SearchField({ className, onSearch, searchedProducts }: SearchFie
             <SSearchedProductLink
               key={product.product_id}
               href={`/products/${product.handle}`}
-              onClick={() =>
+              onClick={(event) => {
+                event.preventDefault()
+                navigate(`/products/${product.handle}`)
                 alooma('search_form_link', {
                   value: searchInputRef.current?.value || '',
                   title: product.title,
                   link: `https://www.fragrantjewels.com/products/${product.handle}`,
                 })
-              }
+              }}
             >
               {product.title}
             </SSearchedProductLink>

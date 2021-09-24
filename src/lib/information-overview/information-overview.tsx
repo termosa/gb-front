@@ -11,11 +11,12 @@ export type { InformationCard }
 const SWrapper = styled.section`
   text-align: center;
   background: linear-gradient(0deg, #fdfbf9 0%, #fdfbf9 50%, white 50%, white 100%);
-  margin: 0 auto;
-  padding: 50px 0 77px;
+  margin: 0 auto 32px;
+  padding: 50px 0 30px;
 
   @media (min-width: 768px) {
     padding: 46px 0 0;
+    margin: 0 auto;
   }
   @media (min-width: 992px) {
     padding: 76px 0 0;
@@ -89,6 +90,10 @@ const SliderHolder = styled.div`
   @media (min-width: 768px) {
     max-width: 100%;
   }
+
+  .react-multi-carousel-list {
+    padding-bottom: 23px;
+  }
 `
 
 const SArrow = styled.div`
@@ -102,14 +107,14 @@ const SArrow = styled.div`
   position: absolute;
   cursor: pointer;
   z-index: 5;
-  top: 95px;
+  top: 94px;
 
   @media (min-width: 375px) {
-    top: 117px;
+    top: 121px;
   }
 
   @media (min-width: 414px) {
-    top: 143px;
+    top: 141px;
   }
 `
 
@@ -193,7 +198,7 @@ export function InformationOverview({
                   }}
                 />
               </SNextArrow>
-              <Slider infinite arrows={false} carouselRef={infoSliderRef}>
+              <Slider infinite showDots={true} dotsPresent={true} arrows={false} carouselRef={infoSliderRef}>
                 {cards.map((card) => (
                   <InformationCard key={card.image + card.title} card={card} />
                 ))}

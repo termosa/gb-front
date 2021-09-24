@@ -16,10 +16,14 @@ export type ProductCardProps = {
 }
 
 const ProductCardWrapper = styled.div`
-  padding: 5px;
+  padding: 4px;
   cursor: pointer;
   flex-flow: column;
   height: 100%;
+
+  @media (min-width: 768px) {
+    padding: 4px 8px;
+  }
 `
 
 const SProductCard = styled.div`

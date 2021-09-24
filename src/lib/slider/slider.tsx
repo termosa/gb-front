@@ -46,7 +46,7 @@ const SImageContainer = styled.div`
     background: #efefef;
   }
   .carousel-container-with-scrollbar {
-    padding-bottom: 20px;
+    // padding-bottom: 20px;
     overflow: visible !important;
     @media (min-width: 768px) {
       overflow: hidden !important;
@@ -68,22 +68,63 @@ const SImageContainer = styled.div`
 
 const SCustomSlider = styled.div`
   position: absolute;
-  bottom: 0;
+  bottom: -35px;
+  left: 0;
   width: 100%;
-  padding: 0 64px 0 6px;
+  padding: 0 15px;
+
+  @media (min-width: 768px) {
+    padding: 0 6px;
+    bottom: -40px;
+  }
+
+  @media (min-width: 992px) {
+    padding: 0 7px;
+    bottom: -44px;
+  }
 
   & > input {
     width: 100%;
+  }
+
+  input[type='range'] {
+    border: 1px solid white;
+  }
+
+  input[type='range']::-moz-range-track {
+    height: 5px;
+    background: #ddd;
+    border: none;
+    border-radius: 3px;
+  }
+
+  input[type='range']::-moz-range-thumb {
+    border: none;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background: goldenrod;
+  }
+
+  input[type='range']:-moz-focusring {
+    outline: 1px solid white;
+    outline-offset: -1px;
+  }
+
+  input[type='range']:focus::-moz-range-track {
+    background: #ccc;
   }
 `
 
 const SCustomDot = styled.div<{
   isActive: boolean
 }>`
-  background-color: #ffffff;
+  background: #4dbeba;
   opacity: ${(props) => (props.isActive ? 0.95 : 0.6)};
   width: 10px;
   height: 10px;
+  margin: 0 7px;
+  border-radius: 50%;
 `
 
 const SArrow = styled.div`
@@ -140,6 +181,9 @@ type SliderProps = {
   infinite?: boolean
   swipeable?: boolean
   itemClass?: string
+  autoPlay?: boolean
+  centerMode?: boolean
+  showDots?: boolean
   carouselRef?: React.RefObject<Carousel>
   setActiveGalleryItem?: Dispatch<number>
 }
@@ -192,6 +236,9 @@ export const Slider = ({
   swipeable,
   itemClass,
   carouselRef,
+  autoPlay,
+  centerMode,
+  showDots,
   setActiveGalleryItem,
 }: SliderProps): React.ReactElement => {
   const CustomSlider = ({ carouselState }: CarouselState) => {
@@ -257,6 +304,9 @@ export const Slider = ({
         itemClass={itemClass || 'image-item'}
         infinite={infinite}
         swipeable={swipeable}
+        autoPlay={!!autoPlay}
+        centerMode={!!centerMode}
+        showDots={!!showDots}
         responsive={responsive || getResponsive(partiallyVisible)}
         containerClass={scrollbarPresent ? 'carousel-container-with-scrollbar' : 'container-with-dots'}
         afterChange={(_, { currentSlide }) => (setActiveGalleryItem ? setActiveGalleryItem(currentSlide) : null)}
