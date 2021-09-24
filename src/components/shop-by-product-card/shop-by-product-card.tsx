@@ -16,6 +16,7 @@ const SLayout = styled.div`
   justify-content: center;
   outline: none;
   margin: 0 auto;
+  height: 100%;
 `
 
 const SLayoutImage = styled(Image)`

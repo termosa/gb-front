@@ -110,7 +110,10 @@ const SliderWrapper = styled.div`
   }
   margin-bottom: 48px;
   @media (min-width: 768px) {
-    margin-bottom: 72px;
+    margin-bottom: 60px;
+  }
+  @media (min-width: 992px) {
+    margin-bottom: 76px;
   }
 `
 
