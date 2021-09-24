@@ -256,6 +256,10 @@ const SRightSliderPart = styled.div`
   margin-right: 0;
   overflow: hidden;
 
+  figure {
+    height: 100%;
+  }
+
   img {
     width: 189px;
     height: 189px;
@@ -540,6 +544,7 @@ export function InnerCircleExclusive({
                     carouselRef={smallSliderRef}
                     customButtonGroup={<CustomButtons />}
                     swipeable={false}
+                    autoPlay={false}
                   >
                     {slideImages.map((src, i) => (
                       <SLeftImageContainer isPresent={slideImages.length > 2} key={src + i}>
@@ -549,7 +554,7 @@ export function InnerCircleExclusive({
                   </Slider>
                 </SLeftSliderPart>
                 <SRightSliderPart>
-                  <Slider infinite arrows={false} carouselRef={bigSliderRef} swipeable={false}>
+                  <Slider infinite arrows={false} carouselRef={bigSliderRef} swipeable={false} autoPlay={false}>
                     {shiftedProductsArray.map((src, i) => (
                       <SImage
                         src={src}
