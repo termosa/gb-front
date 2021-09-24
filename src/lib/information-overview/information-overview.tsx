@@ -102,14 +102,14 @@ const SArrow = styled.div`
   position: absolute;
   cursor: pointer;
   z-index: 5;
-  top: 95px;
+  top: 94px;
 
   @media (min-width: 375px) {
-    top: 117px;
+    top: 121px;
   }
 
   @media (min-width: 414px) {
-    top: 143px;
+    top: 141px;
   }
 `
 
