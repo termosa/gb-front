@@ -7,7 +7,7 @@ export type GetCollectionQuery = {
   limit?: number
   product_type?: string
   search?: string
-  ordering?:
+  order_by?:
     | 'product_id'
     | 'title'
     | 'vendor'
