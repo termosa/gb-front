@@ -17,9 +17,8 @@ export type ProductPageProps = {
 }
 
 const loadCollectionProducts = (collectionId: number): Promise<Product[] | null> =>
-  loadCollection(collectionId, { limit: 6, ordering: 'created_at_shop' }).then(
-    (collection) => (collection.products.length ? collection.products : null),
-    () => null
+  loadCollection(collectionId, { limit: 6, order_by: '-created_at_shop' }).then((collection) =>
+    collection.products.length ? collection.products : null
   )
 
 const loadPotentialProducts = (productType: ProductType): Promise<Product[] | null> => {
@@ -42,7 +41,7 @@ function productPageProps<PropsType>(): (context: GetServerSidePropsContext) => 
     return {
       productId: Promise.resolve(productId),
       product: productPromise.catch(() => null),
-      potentialProducts: productPromise.then((product) => loadPotentialProducts(product.type)),
+      potentialProducts: productPromise.then((product) => loadPotentialProducts(product.type)).catch(() => null),
     }
   })
 }

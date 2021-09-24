@@ -4,12 +4,11 @@
 
 ```sh
 $ docker build \
-  --build-arg APP_ENV=production \
   --build-arg BASE_API_URL=http://endpoint-for-nextjs.com \
   --build-arg CLIENT_API_URL=http://endpoint-for-browser.com \
   . -t fj-front
 
-$ docker run -it --rm -p 3000:3000 -e APP_ENV=production fj-front
+$ docker run -it --rm -p 3000:3000 fj-front
 ```
 
 

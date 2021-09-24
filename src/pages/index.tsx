@@ -14,6 +14,7 @@ import YotpoGallery from '../lib/yotpo-gallery'
 import navigate from '../lib/navigate'
 import addCartItem from '../lib/add-cart-item'
 import trackAddedToCart from '../lib/track-added-to-cart'
+import LazyLoad from '../lib/lazy-load'
 
 export default function HomePage({
   trendingProducts,
@@ -128,7 +129,9 @@ export default function HomePage({
       />
       <PromiseBar />
       <InlineSignupForm />
-      <YotpoGallery galleryId="5dd5da2416fa290bf56b2085" />
+      <LazyLoad threshold={1000}>
+        <YotpoGallery galleryId="5dd5da2416fa290bf56b2085" />
+      </LazyLoad>
     </MainPageLayout>
   )
 }
