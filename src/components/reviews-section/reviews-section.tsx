@@ -328,6 +328,7 @@ export function ReviewsSection({ quote, author, className }: ReviewsSectionProps
                 arrows={false}
                 carouselRef={reviewsSliderRef}
                 infinite
+                autoPlay={true}
                 responsive={sliderSettings}
                 customLeftArrow={
                   <SPrevArrow>
