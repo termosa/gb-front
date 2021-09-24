@@ -188,19 +188,6 @@ type SliderProps = {
   setActiveGalleryItem?: Dispatch<number>
 }
 
-interface CarouselState {
-  carouselState?: {
-    containerWidth: number
-    currentSlide: number
-    deviceType: string
-    domLoaded: boolean
-    itemWidth: number
-    slidesToShow: number
-    totalItems: number
-    transform: number
-  }
-}
-
 type CustomDotProps = {
   active?: boolean
 }
@@ -241,34 +228,30 @@ export const Slider = ({
   showDots,
   setActiveGalleryItem,
 }: SliderProps): React.ReactElement => {
-  const CustomSlider = ({ carouselState }: CarouselState) => {
-    let value = 0
+  const CustomSlider = () => {
     if (!carouselRef || !carouselRef.current) {
       return null
     }
-    const carouselItemWidth = carouselRef.current?.state?.itemWidth || 0
-    const maxTranslateX = Math.round(
-      carouselItemWidth * (carouselRef?.current?.state?.totalItems - carouselRef.current.state.slidesToShow) + 150
-    )
-    value = maxTranslateX / 100
+
+    const startSlideCount = carouselRef?.current?.state?.slidesToShow * 2
+    const realProductsCount = carouselRef?.current?.state?.totalItems - startSlideCount * 2
+    let currentSlide = carouselRef?.current?.state?.currentSlide - startSlideCount
+    if (currentSlide < 0) {
+      currentSlide = realProductsCount + currentSlide
+    }
+
     return (
       <SCustomSlider>
         <input
           type="range"
-          value={Math.round(Math.abs(carouselState ? carouselState.transform : 0) / value) || 0}
-          max={
-            (carouselItemWidth *
-              ((carouselState ? carouselState.totalItems : 0) - (carouselState ? carouselState.slidesToShow : 0))) /
-            value
-          }
+          value={Math.round((currentSlide * 100) / realProductsCount)}
+          step={realProductsCount}
           onChange={(e) => {
-            const nextTransform = +e.target.value * value
-            const nextSlide = Math.round(nextTransform / carouselItemWidth)
-            carouselRef.current &&
-              carouselRef.current.setState({
-                transform: -nextTransform,
-                currentSlide: nextSlide,
-              })
+            if (Math.round((currentSlide * 100) / realProductsCount) < +e.target.value) {
+              carouselRef?.current?.next(1)
+            } else {
+              carouselRef?.current?.previous(1)
+            }
           }}
         />
       </SCustomSlider>
