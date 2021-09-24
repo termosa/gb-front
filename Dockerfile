@@ -7,9 +7,8 @@ ENV PATH /app/node_modules/.bin:$PATH
 RUN apk update && apk add --update yarn python3 g++ make curl 
 
 ARG BASE_API_URL
-ARG SITE_URL
 ARG CLIENT_API_URL
-ARG APP_ENV
+ARG SITE_URL
 
 COPY /package.json /yarn.lock ./
 
