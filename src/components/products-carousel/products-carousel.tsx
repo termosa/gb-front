@@ -216,7 +216,7 @@ export const ProductsCarousel = ({
             }
             carouselRef={carouselRef}
             partiallyVisible={true}
-            centerMode={false}
+            infinite={true}
           >
             {products
               .filter((product) => product.image)

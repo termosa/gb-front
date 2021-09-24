@@ -119,10 +119,12 @@ const SCustomSlider = styled.div`
 const SCustomDot = styled.div<{
   isActive: boolean
 }>`
-  background-color: #ffffff;
+  background: #4dbeba;
   opacity: ${(props) => (props.isActive ? 0.95 : 0.6)};
   width: 10px;
   height: 10px;
+  margin: 0 7px;
+  border-radius: 50%;
 `
 
 const SArrow = styled.div`
@@ -181,6 +183,7 @@ type SliderProps = {
   itemClass?: string
   autoPlay?: boolean
   centerMode?: boolean
+  showDots?: boolean
   carouselRef?: React.RefObject<Carousel>
   setActiveGalleryItem?: Dispatch<number>
 }
@@ -235,6 +238,7 @@ export const Slider = ({
   carouselRef,
   autoPlay,
   centerMode,
+  showDots,
   setActiveGalleryItem,
 }: SliderProps): React.ReactElement => {
   const CustomSlider = ({ carouselState }: CarouselState) => {
@@ -302,6 +306,7 @@ export const Slider = ({
         swipeable={swipeable}
         autoPlay={!!autoPlay}
         centerMode={!!centerMode}
+        showDots={!!showDots}
         responsive={responsive || getResponsive(partiallyVisible)}
         containerClass={scrollbarPresent ? 'carousel-container-with-scrollbar' : 'container-with-dots'}
         afterChange={(_, { currentSlide }) => (setActiveGalleryItem ? setActiveGalleryItem(currentSlide) : null)}
