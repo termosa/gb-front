@@ -188,19 +188,6 @@ type SliderProps = {
   setActiveGalleryItem?: Dispatch<number>
 }
 
-interface CarouselState {
-  carouselState?: {
-    containerWidth: number
-    currentSlide: number
-    deviceType: string
-    domLoaded: boolean
-    itemWidth: number
-    slidesToShow: number
-    totalItems: number
-    transform: number
-  }
-}
-
 type CustomDotProps = {
   active?: boolean
 }
