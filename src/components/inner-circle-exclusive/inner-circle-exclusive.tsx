@@ -132,7 +132,7 @@ const SContent = styled.div`
 
 const SImagesWrapper = styled.div`
   @media (min-width: 768px) {
-    width: 450px;
+    width: 420px;
     margin: 0 20px 35px 0;
   }
 
@@ -256,10 +256,6 @@ const SRightSliderPart = styled.div`
   margin-right: 0;
   overflow: hidden;
 
-  figure {
-    height: 100%;
-  }
-
   img {
     width: 189px;
     height: 189px;
@@ -321,8 +317,13 @@ const SDetailsContainer = styled.div`
   max-width: 356px;
   margin: 0 auto;
 
-  @media (min-width: 992px) {
+  @media (min-width: 768px) {
     text-align: left;
+    max-width: 290px;
+  }
+
+  @media (min-width: 992px) {
+    max-width: 100%;
     width: 340px;
   }
 `
@@ -414,6 +415,11 @@ const SSliderButton = styled.button<{
   @media (min-width: 768px) {
     width: 55px;
     height: 55px;
+  }
+
+  &:focus {
+    outline: 0;
+    box-shadow: none;
   }
 
   & > svg {
