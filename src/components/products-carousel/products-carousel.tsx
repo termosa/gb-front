@@ -251,7 +251,13 @@ export const ProductsCarousel = ({
               .filter((product) => product.image)
               .map((product) => {
                 return (
-                  <ProductCard key={product.product_id} product={product} onClick={() => onSelectProduct(product)} />
+                  <ProductCard
+                    key={product.product_id}
+                    product={product}
+                    onClick={() => {
+                      onSelectProduct(product)
+                    }}
+                  />
                 )
               })}
           </Slider>

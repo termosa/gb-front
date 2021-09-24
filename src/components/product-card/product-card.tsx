@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
 import { Product } from '../../modules/normalize-product'
@@ -231,6 +231,8 @@ const ProductCardPrice = styled.div`
 
 export function ProductCard({ className, style, product, onClick }: ProductCardProps): React.ReactElement {
   const screenSize = useScreenSize()
+  const [isMouseMoved, setMouseMoved] = useState<boolean>(false)
+
   const productTitle = product.title.split('-')[0].split(':')[0]
   const productType = product.type.split('(')[0]
 
@@ -256,7 +258,14 @@ export function ProductCard({ className, style, product, onClick }: ProductCardP
   const comparePrice = product.variants[0].compare_at_price
 
   return (
-    <ProductCardWrapper className={cn('ProductCard', className)} style={style} onClick={onClick}>
+    <ProductCardWrapper
+      className={cn('ProductCard', className)}
+      style={style}
+      onMouseMove={() => {
+        setMouseMoved(true)
+      }}
+      onMouseUp={() => (isMouseMoved ? onClick() : null)}
+    >
       <SProductCard>
         {/*<SCircle backgroundColor={'#9059c8'}>
           <span>New</span>
