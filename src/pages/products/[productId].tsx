@@ -10,6 +10,7 @@ import SiteSection from '../../components/site-section'
 import trackViewedProduct from '../../lib/track-viewed-product'
 import RemotePage from '../../lib/remote-page'
 import navigate from '../../lib/navigate'
+import LazyLoad from '../../lib/lazy-load'
 
 export default function ProductPage({ product, productId, potentialProducts }: ProductPageProps): React.ReactElement {
   if (!product) return <RemotePage url={`//www.fragrantjewels.com/products/${productId}`} />
@@ -34,9 +35,11 @@ export default function ProductPage({ product, productId, potentialProducts }: P
             />
           </SiteSection>
         )}
-        <SiteSection>
-          <YotpoReviews />
-        </SiteSection>
+        <LazyLoad threshold={1000}>
+          <SiteSection>
+            <YotpoReviews />
+          </SiteSection>
+        </LazyLoad>
       </MainPageLayout>
     </ProductContext.Provider>
   )

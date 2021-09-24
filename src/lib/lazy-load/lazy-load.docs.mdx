@@ -1,0 +1,30 @@
+import LazyLoad from '.'
+
+export const meta = {
+  type: 'component',
+  name: 'LazyLoad',
+  description: 'Delays rendering of children elements',
+  tags: ['component', 'performance'],
+  lists: {
+    attributes: [
+      { name: 'children', required: true, type: 'React.ReactNode', description: 'Content that will be rendered inside of the block' },
+      { name: 'afterLoad', type: '() => unknown', description: 'Callback after component is rendered' },
+      { name: 'beforeLoad', type: '() => unknown', description: 'Callback before component is rendered' },
+      { name: 'delayMethod', type: '"throttle" | "debounce"' },
+      { name: 'delayTime', type: 'number' },
+      { name: 'placeholder', type: 'ReactElement', description: 'Component that will be shown while the main component is loading' },
+      { name: 'threshold', type: 'number', description: 'Threshold in pixels, so the component starts loading before it appears in the viewport' },
+      { name: 'useIntersectionObserver', type: 'boolean', description: 'Whether to use browser\'s IntersectionObserver when available' },
+      { name: 'visibleByDefault', type: 'boolean', description: 'Whether the component must be visible from the beginning' },
+    ],
+  },
+  scope: { LazyLoad },
+}
+
+## Usage
+
+```jsx
+<LazyLoad>
+  <HeavyComponent id={123} />
+</LazyLoad>
+```
