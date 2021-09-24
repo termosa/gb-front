@@ -261,10 +261,9 @@ export function ProductCard({ className, style, product, onClick }: ProductCardP
     <ProductCardWrapper
       className={cn('ProductCard', className)}
       style={style}
-      onMouseMove={() => {
-        setMouseMoved(true)
-      }}
-      onMouseUp={() => (isMouseMoved ? onClick() : null)}
+      onMouseDown={() => setMouseMoved(false)}
+      onMouseMove={() => setMouseMoved(true)}
+      onMouseUp={() => (!isMouseMoved ? onClick() : null)}
     >
       <SProductCard>
         {/*<SCircle backgroundColor={'#9059c8'}>
