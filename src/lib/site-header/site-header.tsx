@@ -59,7 +59,11 @@ const SSearchWrapper = styled.div`
   flex-direction: column;
 
   @media (min-width: 375px) {
-    padding: 15px 16px;
+    padding: 15px 20px;
+  }
+
+  @media (min-width: 991px) {
+    padding: 15px 20px;
   }
 
   @media (min-width: 1200px) {

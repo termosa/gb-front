@@ -253,6 +253,10 @@ const SPdpProductInfoTitle = styled.h2`
   margin: 0 0 12px;
 `
 
+const SStarRating = styled(StarRating)`
+  text-decoration: underline;
+`
+
 const SPdpProductDetails = styled.div`
   font: 400 16px/1.5 'Montserrat', sans-serif;
   letter-spacing: 0.05em;
@@ -350,7 +354,7 @@ const SPdpPiSelectorBtn = styled.button<{
   }
 
   &:disabled {
-    opacity: 0.4;
+    opacity: 0.2;
     pointer-events: none;
   }
 `
@@ -582,7 +586,7 @@ export function ProductInfo({ className, style, addToCartRef }: ProductInfoProps
       )}
       <SPdpProductInfo top={infoDistanceFromTop + 'px'} ref={productInfoRef}>
         <SPdpProductInfoTitle>{product.title}</SPdpProductInfoTitle>
-        <StarRating
+        <SStarRating
           reviewsAverage={product.reviewsAverage}
           reviewsCount={product.reviewsCount}
           onClick={goToYotpoReviews}
