@@ -12,6 +12,7 @@ import { ProductsChunk } from '../../modules/normalize-products-chunk'
 import useCustomerOrdersDetails from '../use-customer-orders-details'
 import useScreenSize from '../use-screen-size'
 import Image from '../image'
+import SiteSection from '../../components/site-section'
 
 const SWrapper = styled.div`
   text-align: center;
@@ -45,12 +46,6 @@ const SInnerWrapper = styled.div`
   }
 `
 
-const SContentWrapper = styled.div`
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 0;
-`
-
 const SSearchWrapper = styled.div`
   display: flex;
   box-sizing: border-box;
@@ -62,8 +57,8 @@ const SSearchWrapper = styled.div`
     padding: 15px 20px;
   }
 
-  @media (min-width: 991px) {
-    padding: 15px 20px;
+  @media (min-width: 1033px) {
+    padding: 15px 0;
   }
 
   @media (min-width: 1200px) {
@@ -778,7 +773,7 @@ export function SiteHeader({
     <SWrapper className={cn(className)} style={style} onMouseLeave={() => setExtendableBlockContent('')}>
       <RollingBanner />
       <SInnerWrapper>
-        <SContentWrapper>
+        <SiteSection>
           <SSearchWrapper onMouseEnter={() => setExtendableBlockContent('')}>
             <SSearchContent>
               <SLogoWrapper>
@@ -866,7 +861,7 @@ export function SiteHeader({
             setExtendableBlockContent={setExtendableBlockContent}
             isSubscriptionLinkShown={!(customerOrdersDetails.isICMember && customerOrdersDetails.isICMembershipActive)}
           />
-        </SContentWrapper>
+        </SiteSection>
       </SInnerWrapper>
       <ExtendableBlockWrapper opened={extendableBlockContent}>
         <ExtendableBlockContent name={extendableBlockContent} />

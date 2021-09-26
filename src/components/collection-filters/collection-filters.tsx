@@ -5,6 +5,7 @@ import usePopper from '../../hooks/use-popper'
 import useOnClickOutside from '../../hooks/use-on-click-outside'
 import { CollectionProductsFilter } from '../../modules/filter-collection-products'
 import alooma from '../../lib/alooma'
+import { useScreenSize } from '../../lib/use-screen-size'
 
 export { filterCollectionProducts } from '../../modules/filter-collection-products'
 export type { CollectionProductsFilter } from '../../modules/filter-collection-products'
@@ -52,7 +53,7 @@ const SButtons = styled.div`
   max-width: 284px;
   margin-left: auto;
 
-  @media (max-width: 1060px) {
+  @media (max-width: 1033px) {
     padding-right: 20px;
   }
 
@@ -151,7 +152,7 @@ const SFilters = styled.div`
     border-top: none;
   }
 
-  @media (max-width: 1060px) {
+  @media (max-width: 1033px) {
     margin: 10px 20px 0;
   }
 `
@@ -181,7 +182,9 @@ const SFilter = styled.label<{ noProduct?: boolean }>`
   }
 `
 
-const SFilterGroupName = styled.span`
+const SFilterGroupName = styled.div`
+  display: flex;
+  justify-content: space-between;
   text-transform: uppercase;
   padding-bottom: 16px;
   letter-spacing: 0.05em;
@@ -191,6 +194,13 @@ const SFilterGroupName = styled.span`
     margin-bottom: 16px;
     padding: 0 24px 16px;
   }
+`
+
+const SCollapseButton = styled.span<{
+  isOpen?: boolean
+}>`
+  cursor: pointer;
+  transform: ${(props) => (props.isOpen ? 'rotate(180deg)' : '')};
 `
 
 const SProductsQuantity = styled.span`
@@ -387,6 +397,21 @@ const createEmptyFilter = () => ({
 
 const name = 'CollectionFilters'
 
+const CollapseButton = () => (
+  <SCollapseButton>
+    <svg xmlns="http://www.w3.org/2000/svg" width={18} height={10} viewBox="0 0 18 10" fill="none">
+      <path
+        d="M17 1L9 9 1 1"
+        stroke="#000"
+        strokeWidth={0.5}
+        strokeMiterlimit={10}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  </SCollapseButton>
+)
+
 export const CollectionFilters = ({
   className,
   children,
@@ -395,6 +420,7 @@ export const CollectionFilters = ({
   onChangeSorting,
   initialSorting,
 }: CollectionFiltersProps): React.ReactElement => {
+  const screenSize = useScreenSize()
   const [selectedSorting, setSelectedSorting] = useState<SelectedSorting>(initialSorting)
 
   const [referenceElement, setReferenceElement] = useState<HTMLButtonElement | null>(null)
@@ -513,7 +539,10 @@ export const CollectionFilters = ({
         <SFilters>
           {!!filters.fragrances.length && (
             <SFilterGroup>
-              <SFilterGroupName>Fragrance</SFilterGroupName>
+              <SFilterGroupName>
+                <span>Fragrance</span>
+                {!screenSize.greaterThanMedium && <CollapseButton />}
+              </SFilterGroupName>
               {filters.fragrances.map(({ name, amount }) => (
                 <SFilter key={name}>
                   {name}

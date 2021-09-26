@@ -17,7 +17,11 @@ const PromoWrapper = styled.div`
 const Container = styled.div`
   max-width: 990px;
   margin: 0 auto;
-  padding: 0 15px;
+  padding: 0 20px;
+
+  @media (min-width: 1033px) {
+    padding: 0;
+  }
 `
 
 const PromoSlider = styled.div`

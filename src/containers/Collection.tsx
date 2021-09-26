@@ -13,7 +13,7 @@ import alooma from '../lib/alooma'
 const SFiltersSection = styled(SiteSection)`
   margin-bottom: 32px;
 
-  @media (max-width: 1060px) {
+  @media (max-width: 1033px) {
     margin-bottom: 20px;
   }
 

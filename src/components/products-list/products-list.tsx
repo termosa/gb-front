@@ -15,7 +15,7 @@ const ProductsListContainer = styled.div`
   grid-gap: 40px 16px;
   margin: 0 0 80px;
 
-  @media (max-width: 1060px) {
+  @media (max-width: 1033px) {
     grid-gap: 32px 20px;
     margin: 0 20px 48px;
   }

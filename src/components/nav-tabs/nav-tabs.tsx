@@ -41,10 +41,14 @@ const SDesktopNav = styled.ul`
     font-size: 1em;
     max-width: 990px;
     min-width: 600px;
-    padding: 10px 22.5px;
+    padding: 10px 0;
     & > li:last-child {
       padding-right: 30px;
     }
+  }
+
+  @media (max-width: 1059px) {
+    padding: 10px 22.5px;
   }
 `
 
