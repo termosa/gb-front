@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import cn, { Argument as ClassName } from 'classnames'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import usePopper from '../../hooks/use-popper'
 import useOnClickOutside from '../../hooks/use-on-click-outside'
 import { CollectionProductsFilter } from '../../modules/filter-collection-products'
@@ -35,6 +35,7 @@ export type CollectionFiltersProps = {
   onChangeFilter: (selectedFilters: CollectionProductsFilter) => void
   onChangeSorting: (sorting: SelectedSorting) => void
   initialSorting: SelectedSorting
+  initialFilter: CollectionProductsFilter
 }
 
 export type ColorGradient = Array<{ offset?: number; stopColor: string }>
@@ -234,10 +235,20 @@ const SCheckbox = styled.input.attrs({ type: 'checkbox' })`
   }
 `
 
-const SMetalColorIcon = styled.svg`
+const SMetalColorIcon = styled.svg<{ checked: boolean }>`
   position: absolute;
   top: 0;
   left: 0;
+  border: 1px solid transparent;
+  border-radius: 100%;
+
+  ${(p) =>
+    p.checked
+      ? css`
+          border-color: #9059c8;
+          box-shadow: inset 0 0 2px #fff;
+        `
+      : ''}
 `
 
 const SShowResultsButton = styled.button`
@@ -349,7 +360,13 @@ const isEmptyFilter = (filters: CollectionProductsFilter) =>
   })
 
 const gradients: Record<string, ColorGradient> = {
-  Black: [],
+  Black: [
+    { stopColor: '#1A1B1A' },
+    { offset: 0.2, stopColor: '#DFE0DF' },
+    { offset: 0.4, stopColor: '#585756' },
+    { offset: 0.6, stopColor: '#3C3938' },
+    { offset: 0.8, stopColor: '#3C3938' },
+  ],
   Gold: [
     { stopColor: '#D08E17' },
     { offset: 0.02, stopColor: '#D89C29' },
@@ -419,6 +436,7 @@ export const CollectionFilters = ({
   onChangeFilter,
   onChangeSorting,
   initialSorting,
+  initialFilter,
 }: CollectionFiltersProps): React.ReactElement => {
   const screenSize = useScreenSize()
   const [selectedSorting, setSelectedSorting] = useState<SelectedSorting>(initialSorting)
@@ -444,13 +462,19 @@ export const CollectionFilters = ({
       alooma(isFiltersDropdownOpened ? 'dropdown opened' : 'dropdown closed')
   }, [isFiltersDropdownOpened])
 
-  const [selectedFilters, setSelectedFilters] = useState<CollectionProductsFilter>(createEmptyFilter)
+  const [selectedFilters, setSelectedFilters] = useState<CollectionProductsFilter>(initialFilter)
 
   const handleFilterChange = (filterGroup: FilterGroup, filterName: string, enabled: boolean) => {
     const selectedFilterName = filters[filterGroup].find((filter) => filter.name === filterName)?.name
     if (!selectedFilterName) return
 
     alooma(`${filterGroup.slice(0, -1)} ${enabled ? 'selected' : 'unselected'}`, { details: `choice: ${filterName}` }) // TODO: Stop slicing
+    onChangeFilter({
+      ...selectedFilters,
+      [filterGroup]: enabled
+        ? (selectedFilters[filterGroup] || []).concat(selectedFilterName)
+        : selectedFilters[filterGroup]?.filter((name) => name !== filterName) || [],
+    })
     setSelectedFilters({
       ...selectedFilters,
       [filterGroup]: enabled
@@ -458,8 +482,6 @@ export const CollectionFilters = ({
         : selectedFilters[filterGroup]?.filter((name) => name !== filterName) || [],
     })
   }
-
-  useEffect(() => onChangeFilter(selectedFilters), [selectedFilters])
 
   const getListOfSelectedFilters = (selectedFilters: CollectionProductsFilter) => [
     ...(selectedFilters.sizes?.map((filter) => ({ name: filter, filterGroup: 'sizes' })) || []),
@@ -481,6 +503,7 @@ export const CollectionFilters = ({
 
   const handleClearing = () => {
     alooma('clear filters')
+    onChangeFilter(createEmptyFilter())
     setSelectedFilters(createEmptyFilter())
   }
 
@@ -596,6 +619,7 @@ export const CollectionFilters = ({
                     viewBox="0 0 20 20"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
+                    checked={!!selectedFilters.colors?.includes(name)}
                   >
                     <rect
                       x={0.25}
