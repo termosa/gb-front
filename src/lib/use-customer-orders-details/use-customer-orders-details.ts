@@ -1,13 +1,9 @@
 import { useEffect, useMemo } from 'react'
 import useDefer, { Status } from 'use-defer'
 import createGlobalStateHook from '../create-global-state-hook'
-import loadCustomerOrdersDetails, { CustomerOrdersDetails } from '../load-customer-orders-details'
+import loadCustomerOrdersDetails, { CustomerOrdersDetails, CustomerLevel } from '../load-customer-orders-details'
 
-export enum CustomerLevel {
-  NOIR = 0,
-  GOLD = 1,
-  PLATINUM = 2,
-}
+export { CustomerLevel } from '../load-customer-orders-details'
 
 type CustomerOrdersDetailsState = CustomerOrdersDetails & {
   status: Status

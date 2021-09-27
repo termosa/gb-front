@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react'
-import { CustomerLevel } from '../use-customer-orders-details'
+import { CustomerLevel } from '../normalize-customer-orders-details'
 
 export function DiamondIcon({ customerLevel }: { customerLevel: CustomerLevel }): React.ReactElement {
   const gradientId = useMemo(() => `diamondIcon${customerLevel}${Math.random()}`, [customerLevel])

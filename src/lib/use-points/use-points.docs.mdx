@@ -1,0 +1,45 @@
+import usePoints from '.' // TODO: after release
+
+export const meta = {
+  type: 'hook',
+  name: 'usePoints',
+  description: 'Simple value counter',
+  tags: ['hook'],
+  lists: {
+    arguments: [
+      { name: 'initialValue', type: 'number | () => number', description: 'Starting value' },
+    ],
+    returns: [
+      { name: 'counter', type: 'object' },
+      { name: 'counter.count', type: 'number', description: 'Current value' },
+      { name: 'counter.increment', type: '() => void', description: 'Increasing value by one' },
+    ],
+  },
+  scope: { usePoints },
+}
+
+## Usage
+
+```jsx
+const Component = () => {
+  const { count, increment } = usePoints()
+  return <input type="button" onClick={increment} value={`Clicked ${count} time(s)`} />
+}
+```
+
+## Playground
+
+```jsx live render
+const ClickCounter = ({ initialValue }) => {
+  const { count, increment } = usePoints(initialValue)
+  return (
+    <input
+      type="button"
+      onClick={increment}
+      value={`Clicked ${count} time(s)`}
+    />
+  )
+}
+
+render(<ClickCounter initialValue={-1} />)
+```

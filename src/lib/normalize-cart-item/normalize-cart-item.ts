@@ -74,6 +74,8 @@ export type CartItem = {
   quantity: number
   title: string
   properties: CartItemProperties
+  price: number
+  totalPrice: number
 }
 
 export function normalizeCartItem(item: ServerCartItem): CartItem {
@@ -84,5 +86,7 @@ export function normalizeCartItem(item: ServerCartItem): CartItem {
     quantity: item.quantity,
     title: item.title,
     properties: item.properties || {},
+    price: item.price / 100,
+    totalPrice: item.line_price / 100,
   }
 }

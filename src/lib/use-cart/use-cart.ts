@@ -6,7 +6,7 @@ import addCartItem from '../add-cart-item'
 import addCartItemWithSubscription, { VariantSize } from '../add-cart-item-with-subscription'
 
 export { Status } from 'use-defer'
-export type { CartItem } from '../load-cart'
+export type { Cart, CartItem } from '../load-cart'
 
 type CartState = {
   status: Status

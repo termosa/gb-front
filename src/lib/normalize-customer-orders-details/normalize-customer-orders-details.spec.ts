@@ -1,6 +1,5 @@
 import normalizeCustomerOrdersDetails from '.'
-import { CustomerLevel } from '../use-customer-orders-details'
-import { ServerCustomerLevel, ServerCustomerOrdersDetails } from './normalize-customer-orders-details'
+import { ServerCustomerLevel, ServerCustomerOrdersDetails, CustomerLevel } from './normalize-customer-orders-details'
 
 describe('normalizeCustomerOrdersDetails()', () => {
   it('normalizes a server customer orders details data', () => {
