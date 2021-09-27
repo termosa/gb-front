@@ -13,7 +13,6 @@ const CollectionBannerWrapper = styled.div`
   margin: 0 auto;
   position: relative;
 
-  margin-bottom: 2.5em;
   min-height: 315px;
 
   @media (min-width: 1920px) {
@@ -93,7 +92,8 @@ const CollectionMobileDescription = styled.p<{ desktop?: boolean }>`
   text-align: center;
   letter-spacing: 0.05em;
   color: #000000;
-  padding: 0 16px 28px;
+  padding: 0 16px 0;
+  margin-bottom: 0;
   ${(p) =>
     p.desktop &&
     css`

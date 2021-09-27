@@ -51,6 +51,7 @@ const SButtons = styled.div`
   width: 100%;
   max-width: 284px;
   margin-left: auto;
+  margin-top: 2.5em;
 
   @media (max-width: 1033px) {
     padding-right: 20px;
