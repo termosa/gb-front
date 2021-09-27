@@ -19,7 +19,6 @@ const SCardWrapper = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   text-align: center;
 `
@@ -47,7 +46,12 @@ const SCardImage = styled(Image)`
   }
 
   @media (min-width: 768px) {
-    width: 100%;
+    width: 230px;
+    height: auto;
+  }
+
+  @media (min-width: 991px) {
+    min-width: 312px;
     height: auto;
   }
 `
