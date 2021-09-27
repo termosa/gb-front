@@ -11,7 +11,7 @@ import Carousel from 'react-multi-carousel'
 import Image from '../../lib/image'
 
 const Wrapper = styled.div`
-  width: 101%;
+  width: 100%;
 
   @media (min-width: 768px) {
     width: 100%;
@@ -31,7 +31,7 @@ const SPdpCarouselItem = styled.div<{
 }>`
   display: flex;
   align-items: center;
-  margin: 0 auto;
+  margin: 0 auto 20px;
   width: ${(props) => props.width || '465px'};
   height: ${(props) => props.height || '465px'};
 
@@ -80,6 +80,13 @@ const SCarouselThumbnails = styled.div`
   @media (min-width: 400px) {
     width: calc(335px + (100vw - 350px) / 2);
   }
+
+  @media (max-width: 767px) {
+    flex-wrap: wrap;
+    position: static;
+    width: 100%;
+    gap: 2px;
+  }
 `
 
 const SCarouselThumbnailItem = styled.a<{
@@ -90,14 +97,24 @@ const SCarouselThumbnailItem = styled.a<{
   border: ${(props) => (props.isActive ? '1px solid #000000' : '1px solid #ffffff')};
   margin-right: 4px;
   cursor: pointer;
+  display: flex;
 
   img {
-    margin: 3px;
+    margin: 0;
+
+    @media (min-width: 768px) {
+      margin: 3px;
+    }
+  }
+
+  @media (max-width: 767px) {
+    margin-right: 0;
+    margin-left: 0;
   }
 `
 
 const SPdpRowWrapper = styled.div`
-  height: 372px;
+  // height: 372px;
 
   @media (min-width: 768px) {
     height: auto;
@@ -158,11 +175,13 @@ const SPdpCarouselItemMobile = styled.div`
   display: flex !important;
   justify-content: center;
   img {
-    width: 350px;
-    height: 300px;
+    width: 100%;
+    max-width: 414px;
+    height: auto;
     object-fit: contain;
     @media (min-width: 768px) {
       width: 100%;
+      height: 300px;
     }
   }
 `

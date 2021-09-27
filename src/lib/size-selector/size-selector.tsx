@@ -77,7 +77,7 @@ const SRingSizeBtn = styled.button<{ isActive: boolean }>`
 
 const SRingSizeError = styled.div`
   text-align: center;
-  color: #ee67a0;
+  color: #9059c8;
   margin-bottom: 12px;
 `
 

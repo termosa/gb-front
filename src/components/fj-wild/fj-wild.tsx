@@ -26,6 +26,7 @@ const SFjWildSectionTitle = styled.div<{
       position: absolute;
       bottom: ${(props) => (props.isMobile ? `0` : `6px`)};
       left: 0;
+      z-index: -1;
     }
   }
 `
