@@ -232,6 +232,7 @@ const ProductCardPrice = styled.div`
 export function ProductCard({ className, style, product, onClick }: ProductCardProps): React.ReactElement {
   const screenSize = useScreenSize()
   const [isMouseMoved, setMouseMoved] = useState<boolean>(false)
+  const [clientXClick, setClientXClick] = useState<number>()
 
   const productTitle = product.title.split('-')[0].split(':')[0]
   const productType = product.type.split('(')[0]
@@ -261,8 +262,16 @@ export function ProductCard({ className, style, product, onClick }: ProductCardP
     <ProductCardWrapper
       className={cn('ProductCard', className)}
       style={style}
-      onMouseDown={() => setMouseMoved(false)}
-      onMouseMove={() => setMouseMoved(true)}
+      onMouseDown={(e) => {
+        setClientXClick(e.clientX)
+        setMouseMoved(false)
+      }}
+      onMouseUp={(e) => {
+        const movedDistance = clientXClick ? clientXClick - e.clientX : 0
+        if (movedDistance < -15 || movedDistance > 15) {
+          setMouseMoved(true)
+        }
+      }}
       onClick={(e) => (!isMouseMoved && e.type === 'click' ? onClick() : null)}
     >
       <SProductCard>
