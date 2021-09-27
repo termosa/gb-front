@@ -6,6 +6,7 @@ import useOnClickOutside from '../../hooks/use-on-click-outside'
 import { CollectionProductsFilter } from '../../modules/filter-collection-products'
 import alooma from '../../lib/alooma'
 import FilterPart from '../../lib/filter-part'
+import useScreenSize from '../../lib/use-screen-size'
 
 export { filterCollectionProducts } from '../../modules/filter-collection-products'
 export type { CollectionProductsFilter } from '../../modules/filter-collection-products'
@@ -99,6 +100,16 @@ const SButtonLabel = styled.div`
   align-items: center;
   justify-content: space-between;
   letter-spacing: 0.05em;
+
+  @media (max-width: 768px) {
+    justify-content: center;
+  }
+`
+
+const SButtonLabelText = styled.span`
+  @media (max-width: 768px) {
+    margin: 0 12px;
+  }
 `
 
 const SSortDropdown = styled.div`
@@ -145,11 +156,9 @@ const SFilters = styled.div`
 
   @media (max-width: 768px) {
     flex-direction: column;
-    padding: 24px 0;
+    padding: 16px 0;
     margin: 0;
-    border-right: none;
-    border-left: none;
-    border-top: none;
+    border: 0;
   }
 
   @media (max-width: 1033px) {
@@ -166,11 +175,13 @@ const SFilterGroup = styled.div`
   }
 `
 
-const SShowResultsButton = styled.button`
+const SShowResultsButton = styled.button<{
+  isActive?: boolean
+}>`
   text-transform: uppercase;
   border: none;
   padding: 17px 60px;
-  background-color: #9952bd;
+  background-color: ${(props) => (props.isActive ? '#9952bd' : '#808080')};
   font-weight: 600;
   color: #fff;
   display: none;
@@ -185,7 +196,7 @@ const SFilterMobileControlButtonsGroup = styled(SFilterGroup)`
     flex-direction: row;
     justify-content: space-between;
     order: -1;
-    padding: 0 24px 16px 24px;
+    padding: 0 16px 16px;
     margin-bottom: 16px;
     border-bottom: 0.5px solid #000;
     flex: 1 1 0;
@@ -197,7 +208,7 @@ const SCloseIcon = styled.svg`
 `
 
 const SFilterControlButtonsGroupLabel = styled.div`
-  font-weight: 600;
+  font-weight: 500;
   text-transform: uppercase;
   display: none;
 
@@ -206,17 +217,22 @@ const SFilterControlButtonsGroupLabel = styled.div`
   }
 `
 
+const SCloseButtonWrapper = styled.div`
+  width: 73px;
+  display: flex;
+  justify-content: flex-end;
+`
+
 const SClearFiltersButton = styled.span<{ mobile?: boolean }>`
+  width: 73px;
+  border-bottom: 1px solid #000;
+  letter-spacing: 0.05em;
   cursor: pointer;
-  text-decoration: underline;
   font-size: 16px;
   font-weight: 400;
-  display: ${({ mobile }) => (mobile ? 'none' : 'block')};
+  line-height: 1.5;
+  display: block;
   white-space: nowrap;
-
-  @media (max-width: 768px) {
-    display: ${({ mobile }) => (mobile ? 'block' : 'none')};
-  }
 `
 
 const SFilterDesktopControlButtonsGroup = styled.div`
@@ -226,8 +242,13 @@ const SFilterDesktopControlButtonsGroup = styled.div`
   padding: 16px 0;
   width: 100%;
 
-  @media (max-width: 768px) {
-    display: none;
+  @media (max-width: 767px) {
+    padding: 0 0 16px;
+    border: 0;
+  }
+
+  @media (max-width: 1033px) {
+    margin: 0 20px;
   }
 `
 
@@ -239,8 +260,7 @@ const SSelectedFilters = styled.div`
 const SSelectedFilter = styled.div`
   display: flex;
   align-items: center;
-  padding-right: 20px;
-  padding-bottom: 4px;
+  padding: 4px 20px;
 `
 
 const SSelectedFilterInfo = styled.div`
@@ -292,6 +312,7 @@ export const CollectionFilters = ({
   initialSorting,
   initialFilter,
 }: CollectionFiltersProps): React.ReactElement => {
+  const screenSize = useScreenSize()
   const [selectedSorting, setSelectedSorting] = useState<SelectedSorting>(initialSorting)
 
   const [referenceElement, setReferenceElement] = useState<HTMLButtonElement | null>(null)
@@ -375,7 +396,7 @@ export const CollectionFilters = ({
                 strokeLinejoin="round"
               />
             </svg>
-            Filter
+            <SButtonLabelText>Filter</SButtonLabelText>
           </SButtonLabel>
         </SButton>
         <SButton
@@ -384,7 +405,7 @@ export const CollectionFilters = ({
           isOpen={isSortDropdownOpened}
         >
           <SButtonLabel>
-            Sort by
+            <SButtonLabelText>Sort by</SButtonLabelText>
             <svg xmlns="http://www.w3.org/2000/svg" width={18} height={10} viewBox="0 0 18 10" fill="none">
               <path
                 d="M17 1L9 9 1 1"
@@ -455,16 +476,40 @@ export const CollectionFilters = ({
             </FilterPart>
           )}
           <SFilterMobileControlButtonsGroup>
-            <SClearFiltersButton mobile onClick={handleClearing}>
-              Clear All
-            </SClearFiltersButton>
+            {!screenSize.greaterThanMedium && (
+              <SClearFiltersButton mobile onClick={handleClearing}>
+                Clear All
+              </SClearFiltersButton>
+            )}
             <SFilterControlButtonsGroupLabel>Refine</SFilterControlButtonsGroupLabel>
-            <CloseButton onClick={() => setIsFiltersDropdownOpened(false)} />
+            <SCloseButtonWrapper>
+              <CloseButton onClick={() => setIsFiltersDropdownOpened(false)} />
+            </SCloseButtonWrapper>
           </SFilterMobileControlButtonsGroup>
-          <SShowResultsButton onClick={() => setIsFiltersDropdownOpened(false)}>Show Results</SShowResultsButton>
+          {!isEmptyFilter(selectedFilters) && !screenSize.greaterThanMedium && (
+            <SFilterDesktopControlButtonsGroup>
+              <SSelectedFilters>
+                {getListOfSelectedFilters(selectedFilters).map(({ name, filterGroup }) => (
+                  <SSelectedFilter>
+                    <SSelectedFilterInfo>{name}</SSelectedFilterInfo>
+                    <CloseButton onClick={() => handleFilterChange(filterGroup as FilterGroup, name, false)} small />
+                  </SSelectedFilter>
+                ))}
+              </SSelectedFilters>
+              {(!isFiltersDropdownOpened || screenSize.greaterThanMedium) && (
+                <SClearFiltersButton onClick={handleClearing}>Clear All</SClearFiltersButton>
+              )}
+            </SFilterDesktopControlButtonsGroup>
+          )}
+          <SShowResultsButton
+            onClick={() => setIsFiltersDropdownOpened(false)}
+            isActive={!isEmptyFilter(selectedFilters)}
+          >
+            Show Results
+          </SShowResultsButton>
         </SFilters>
       )}
-      {!isEmptyFilter(selectedFilters) && !isFiltersDropdownOpened && (
+      {!isEmptyFilter(selectedFilters) && screenSize.greaterThanMedium && (
         <SFilterDesktopControlButtonsGroup>
           <SSelectedFilters>
             {getListOfSelectedFilters(selectedFilters).map(({ name, filterGroup }) => (
@@ -474,7 +519,9 @@ export const CollectionFilters = ({
               </SSelectedFilter>
             ))}
           </SSelectedFilters>
-          <SClearFiltersButton onClick={handleClearing}>Clear All</SClearFiltersButton>
+          {(!isFiltersDropdownOpened || screenSize.greaterThanMedium) && (
+            <SClearFiltersButton onClick={handleClearing}>Clear All</SClearFiltersButton>
+          )}
         </SFilterDesktopControlButtonsGroup>
       )}
     </SCollectionFiltersContainer>
