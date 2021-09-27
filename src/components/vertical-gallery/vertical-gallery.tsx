@@ -86,6 +86,7 @@ const SCarouselThumbnails = styled.div`
     position: static;
     width: 100%;
     gap: 2px;
+    margin: 2px 0;
   }
 `
 
