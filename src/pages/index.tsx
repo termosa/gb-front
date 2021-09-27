@@ -124,17 +124,17 @@ export default function HomePage({
           products={[
             {
               image: 'https://new-fragrantjewels.s3.us-west-2.amazonaws.com/app/img/prod-bath-bombs.png',
-              buttonLink: 'https://www.fragrantjewels.com/collections/bath-bombs',
+              buttonLink: 'https://www.fragrantjewels.com/ws30/collections/bath-bombs',
               buttonText: 'BATH BOMBS',
             },
             {
               image: 'https://new-fragrantjewels.s3.us-west-2.amazonaws.com/app/img/prod-candles.png',
-              buttonLink: 'https://www.fragrantjewels.com/collections/jewel-candles',
+              buttonLink: 'https://www.fragrantjewels.com/ws30/collections/jewel-candles',
               buttonText: 'CANDLES',
             },
             {
               image: 'https://new-fragrantjewels.s3.us-west-2.amazonaws.com/app/img/prod-bundles.png',
-              buttonLink: 'https://www.fragrantjewels.com/collections/gift-sets',
+              buttonLink: 'https://www.fragrantjewels.com/ws30/collections/gift-sets',
               buttonText: 'BUNDLES',
             },
           ]}
