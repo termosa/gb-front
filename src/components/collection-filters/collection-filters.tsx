@@ -5,7 +5,7 @@ import usePopper from '../../hooks/use-popper'
 import useOnClickOutside from '../../hooks/use-on-click-outside'
 import { CollectionProductsFilter } from '../../modules/filter-collection-products'
 import alooma from '../../lib/alooma'
-import { useScreenSize } from '../../lib/use-screen-size'
+import FilterPart from '../../lib/filter-part'
 
 export { filterCollectionProducts } from '../../modules/filter-collection-products'
 export type { CollectionProductsFilter } from '../../modules/filter-collection-products'
@@ -36,8 +36,6 @@ export type CollectionFiltersProps = {
   onChangeSorting: (sorting: SelectedSorting) => void
   initialSorting: SelectedSorting
 }
-
-export type ColorGradient = Array<{ offset?: number; stopColor: string }>
 
 const SCollectionFiltersContainer = styled.div`
   font-family: ${({ theme }) => theme.fonts.familyMain};
@@ -166,80 +164,6 @@ const SFilterGroup = styled.div`
   }
 `
 
-const SFilter = styled.label<{ noProduct?: boolean }>`
-  padding: 3px 0 13px 30px;
-  color: ${({ noProduct }) => noProduct && '#dadada'};
-  cursor: pointer;
-  position: relative;
-  letter-spacing: 0.05em;
-
-  @media (max-width: 768px) {
-    margin: 0 24px;
-  }
-
-  &:last-child {
-    padding: 3px 0 0 30px;
-  }
-`
-
-const SFilterGroupName = styled.div`
-  display: flex;
-  justify-content: space-between;
-  text-transform: uppercase;
-  padding-bottom: 16px;
-  letter-spacing: 0.05em;
-
-  @media (max-width: 768px) {
-    border-bottom: 0.5px solid #000;
-    margin-bottom: 16px;
-    padding: 0 24px 16px;
-  }
-`
-
-const SCollapseButton = styled.span<{
-  isOpen?: boolean
-}>`
-  cursor: pointer;
-  transform: ${(props) => (props.isOpen ? 'rotate(180deg)' : '')};
-`
-
-const SProductsQuantity = styled.span`
-  font-size: 12px;
-  color: #c2c2c2;
-  font-weight: 500;
-`
-
-const SCheckbox = styled.input.attrs({ type: 'checkbox' })`
-  width: 0;
-  height: 0;
-  user-select: none;
-
-  &::before {
-    content: '';
-    top: 0;
-    left: 0;
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    border: 0.5px solid #000;
-    cursor: pointer;
-  }
-
-  &:disabled::before {
-    opacity: 0.2;
-  }
-
-  &:checked::before {
-    background-color: #9952bd;
-  }
-`
-
-const SMetalColorIcon = styled.svg`
-  position: absolute;
-  top: 0;
-  left: 0;
-`
-
 const SShowResultsButton = styled.button`
   text-transform: uppercase;
   border: none;
@@ -348,46 +272,6 @@ const isEmptyFilter = (filters: CollectionProductsFilter) =>
     return values && !values.length
   })
 
-const gradients: Record<string, ColorGradient> = {
-  Black: [],
-  Gold: [
-    { stopColor: '#D08E17' },
-    { offset: 0.02, stopColor: '#D89C29' },
-    { offset: 0.06, stopColor: '#E6B248' },
-    { offset: 0.101, stopColor: '#F1C460' },
-    { offset: 0.145, stopColor: '#F9D072' },
-    { offset: 0.193, stopColor: '#FED87C' },
-    { offset: 0.251, stopColor: '#FFDE8D' },
-    { offset: 0.362, stopColor: '#FFDE93' },
-    { offset: 0.54, stopColor: '#F1C875' },
-    { offset: 0.744, stopColor: '#D8A549' },
-    { offset: 0.808, stopColor: '#BE9030' },
-    { offset: 0.898, stopColor: '#99740F' },
-  ],
-  'Rose Gold': [
-    { offset: 0.02, stopColor: '#D3A29D' },
-    { offset: 0.276, stopColor: '#E1B5AC' },
-    { offset: 0.448, stopColor: '#EAC2B8' },
-    { offset: 0.661, stopColor: '#BF8A7F' },
-    { offset: 0.729, stopColor: '#D7A8A0' },
-    { offset: 0.898, stopColor: '#BF9388' },
-  ],
-  Silver: [
-    { stopColor: '#A8AEB6' },
-    { offset: 0.02, stopColor: '#BCC1C7' },
-    { offset: 0.06, stopColor: '#C3C7CC' },
-    { offset: 0.101, stopColor: '#D3D6DA' },
-    { offset: 0.145, stopColor: '#EEEFF0' },
-    { offset: 0.193, stopColor: '#F8F8F9' },
-    { offset: 0.251, stopColor: '#F8F8F9' },
-    { offset: 0.362, stopColor: '#F8F8F8' },
-    { offset: 0.54, stopColor: '#E4E5E8' },
-    { offset: 0.744, stopColor: '#D3D6DA' },
-    { offset: 0.808, stopColor: '#C3C7CC' },
-    { offset: 0.898, stopColor: '#A8AEB6' },
-  ],
-}
-
 const createEmptyFilter = () => ({
   fragrances: [],
   materials: [],
@@ -397,21 +281,6 @@ const createEmptyFilter = () => ({
 
 const name = 'CollectionFilters'
 
-const CollapseButton = () => (
-  <SCollapseButton>
-    <svg xmlns="http://www.w3.org/2000/svg" width={18} height={10} viewBox="0 0 18 10" fill="none">
-      <path
-        d="M17 1L9 9 1 1"
-        stroke="#000"
-        strokeWidth={0.5}
-        strokeMiterlimit={10}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  </SCollapseButton>
-)
-
 export const CollectionFilters = ({
   className,
   children,
@@ -420,7 +289,6 @@ export const CollectionFilters = ({
   onChangeSorting,
   initialSorting,
 }: CollectionFiltersProps): React.ReactElement => {
-  const screenSize = useScreenSize()
   const [selectedSorting, setSelectedSorting] = useState<SelectedSorting>(initialSorting)
 
   const [referenceElement, setReferenceElement] = useState<HTMLButtonElement | null>(null)
@@ -538,54 +406,47 @@ export const CollectionFilters = ({
       {isFiltersDropdownOpened && (
         <SFilters>
           {!!filters.fragrances.length && (
-            <SFilterGroup>
-              <SFilterGroupName>
-                <span>Fragrance</span>
-                {!screenSize.greaterThanMedium && <CollapseButton />}
-              </SFilterGroupName>
-              {filters.fragrances.map(({ name, amount }) => (
-                <SFilter key={name}>
-                  {name}
-                  <SProductsQuantity> ({amount})</SProductsQuantity>
-                  <SCheckbox
-                    onChange={(event) => handleFilterChange('fragrances', name, event.target.checked)}
-                    checked={!!selectedFilters.fragrances?.includes(name)}
-                  />
-                </SFilter>
-              ))}
-            </SFilterGroup>
+            <FilterPart
+              itemsArray={filters.fragrances}
+              filterGroup={'fragrances'}
+              handleFilterChange={handleFilterChange}
+              selectedFilters={selectedFilters}
+              visibleByDefault
+            >
+              Fragrance
+            </FilterPart>
           )}
           {!!filters.sizes.length && (
-            <SFilterGroup>
-              <SFilterGroupName>Size</SFilterGroupName>
-              {filters.sizes.map(({ name, amount }) => (
-                <SFilter key={name}>
-                  {name}
-                  <SProductsQuantity> ({amount})</SProductsQuantity>
-                  <SCheckbox
-                    onChange={(event) => handleFilterChange('sizes', name, event.target.checked)}
-                    checked={!!selectedFilters.sizes?.includes(name)}
-                  />
-                </SFilter>
-              ))}
-            </SFilterGroup>
+            <FilterPart
+              itemsArray={filters.sizes}
+              filterGroup={'sizes'}
+              handleFilterChange={handleFilterChange}
+              selectedFilters={selectedFilters}
+            >
+              Size
+            </FilterPart>
           )}
           {!!filters.materials.length && (
-            <SFilterGroup>
-              <SFilterGroupName>Material</SFilterGroupName>
-              {filters.materials.map(({ name, amount }) => (
-                <SFilter key={name}>
-                  {name}
-                  <SProductsQuantity> ({amount})</SProductsQuantity>
-                  <SCheckbox
-                    onChange={(event) => handleFilterChange('materials', name, event.target.checked)}
-                    checked={!!selectedFilters.materials?.includes(name)}
-                  />
-                </SFilter>
-              ))}
-            </SFilterGroup>
+            <FilterPart
+              itemsArray={filters.materials}
+              filterGroup={'materials'}
+              handleFilterChange={handleFilterChange}
+              selectedFilters={selectedFilters}
+            >
+              Material
+            </FilterPart>
           )}
           {!!filters.colors.length && (
+            <FilterPart
+              itemsArray={filters.colors}
+              filterGroup={'colors'}
+              handleFilterChange={handleFilterChange}
+              selectedFilters={selectedFilters}
+            >
+              Metal color
+            </FilterPart>
+          )}
+          {/*{!!filters.colors.length && (
             <SFilterGroup>
               <SFilterGroupName>Metal color</SFilterGroupName>
               {filters.colors.map(({ name, amount }, index) => (
@@ -633,7 +494,7 @@ export const CollectionFilters = ({
                 </SFilter>
               ))}
             </SFilterGroup>
-          )}
+          )}*/}
           <SFilterMobileControlButtonsGroup>
             <SClearFiltersButton mobile onClick={handleClearing}>
               Clear All

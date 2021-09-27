@@ -1,0 +1,46 @@
+import FilterPart from '.'
+
+export const meta = {
+  type: 'component',
+  name: 'FilterPart',
+  description: 'Styled filter block',
+  tags: ['component'],
+  preview: <FilterPart
+    itemsArray={[{name: "Floral Woods", amount: 16},{name: "Woodsy", amount: 3},{name: "Spicy/ Smoky", amount: 9}]}
+    filterGroup="fragrance"
+    selectedFilters={{fragrances: [], materials: [], sizes: [], colors: [],}}
+  >Fragrance</FilterPart>,
+  lists: {
+    attributes: [
+      { name: 'children', required: true, type: 'React.ReactNode', description: 'Content that will be rendered inside of the block' },
+      { name: 'className', type: 'classnames.Argument', description: 'One or multiple class names that will be added to the main container' },
+      { name: 'style', type: 'React.CSSProperties', description: 'Inline styles for the main container' },
+      { name: 'itemsArray', type: 'Array<Filter>', description: 'Filter items' },
+      { name: 'filterGroup', type: 'FilterGroup', description: 'Type of filter' },
+      { name: 'handleFilterChange', type: '(filterGroup: FilterGroup, filterName: string, enabled: boolean) => void', description: 'Function, that executes on filter click' },
+      { name: 'selectedFilters', type: 'CollectionProductsFilter', description: 'Filters that already selected' },
+      { name: 'visibleByDefault', type: 'boolean', description: 'Is this filter block visible on page load' },
+    ],
+  },
+  scope: { FilterPart },
+}
+
+## Usage
+
+```jsx
+<FilterPart
+    itemsArray={[{name: "Floral Woods", amount: 16},{name: "Woodsy", amount: 3},{name: "Spicy/ Smoky", amount: 9}]}
+    filterGroup="fragrance"
+     selectedFilters={{fragrances: [], materials: [], sizes: [], colors: [],}}
+  >Fragrance</FilterPart>
+```
+
+## Playground
+
+```jsx live
+<FilterPart
+    itemsArray={[{name: "Floral Woods", amount: 16},{name: "Woodsy", amount: 3},{name: "Spicy/ Smoky", amount: 9}]}
+    filterGroup="fragrances"
+     selectedFilters={{fragrances: [], materials: [], sizes: [], colors: [],}}
+  >Fragrance</FilterPart>
+```
