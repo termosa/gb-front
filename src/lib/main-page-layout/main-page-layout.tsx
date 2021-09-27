@@ -17,6 +17,7 @@ import initiateGtm from '../initiate-gtm'
 import CustomerContext from '../../modules/customer-context'
 import CustomerOrdersDetailsContext from '../../modules/customer-orders-details-context'
 import useCustomerOrdersDetails from '../use-customer-orders-details'
+import { getProperty } from '../alooma'
 
 const MainPageLayoutWrapper = styled.div`
   display: flex;
@@ -57,7 +58,14 @@ export function MainPageLayout({ children, className, style }: MainPageLayoutPro
 
   const searchRequest = useDefer(loadProductsChunk)
   const { value: customer } = useDefer(() => loadCustomer().catch(() => null), [], [])
-  const customerOrdersDetails = useCustomerOrdersDetails(customer?.email)
+  const aloomaCustomerEmailRequest = useDefer(
+    () => initiateAlooma().then((alooma) => alooma.get_property?.('email')),
+    [],
+    []
+  )
+  const customerOrdersDetails = useCustomerOrdersDetails(
+    customer?.email || (aloomaCustomerEmailRequest.value as string)
+  )
 
   return (
     <ThemeProvider>

@@ -35,7 +35,7 @@ export type CollectionFiltersProps = {
   onChangeFilter: (selectedFilters: CollectionProductsFilter) => void
   onChangeSorting: (sorting: SelectedSorting) => void
   initialSorting: SelectedSorting
-  initialFilter: CollectionProductsFilter
+  initialFilter?: CollectionProductsFilter
 }
 
 const SCollectionFiltersContainer = styled.div`
@@ -290,7 +290,7 @@ export const CollectionFilters = ({
   onChangeFilter,
   onChangeSorting,
   initialSorting,
-  initialFilter,
+  initialFilter = createEmptyFilter,
 }: CollectionFiltersProps): React.ReactElement => {
   const [selectedSorting, setSelectedSorting] = useState<SelectedSorting>(initialSorting)
 

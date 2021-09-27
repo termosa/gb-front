@@ -16,6 +16,7 @@ const useGlobalState = createGlobalStateHook<CustomerOrdersDetailsState>({
   totalPoints: 0,
   isICMember: false,
   level: CustomerLevel.NOIR,
+  levelName: null,
   isICMembershipActive: false,
 })
 
@@ -47,6 +48,7 @@ export function useCustomerOrdersDetails(email?: string): CustomerOrdersDetailsH
         totalPoints: 0,
         isICMember: false,
         level: CustomerLevel.NOIR,
+        levelName: null,
         isICMembershipActive: false,
       })
     } else {
@@ -56,6 +58,7 @@ export function useCustomerOrdersDetails(email?: string): CustomerOrdersDetailsH
         totalPoints: 0,
         isICMember: false,
         level: CustomerLevel.NOIR,
+        levelName: null,
         isICMembershipActive: false,
       }))
     }
