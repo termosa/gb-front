@@ -45,10 +45,10 @@ const SButton = styled.button<{
   cursor: pointer;
   min-width: ${(props) => (props.compact ? '35px' : '142px')};
   font-weight: ${(props) => (props.backColor === '#000' ? '700' : '500')};
-  padding: ${(props) => props.padding || '0'};
 
   @media (min-width: 768px) {
     width: ${(props) => props.width || '155px'};
+    padding: ${(props) => props.padding || '0'};
   }
 
   &:hover {

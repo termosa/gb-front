@@ -145,8 +145,12 @@ const SlideContent = styled.div`
   left: 50%;
   transform: translateX(-50%);
   margin: 0;
-  padding: 25px;
+  padding: 15px;
   text-align: center;
+
+  @media (min-width: 375px) {
+    padding: 25px;
+  }
 
   @media (min-width: 768px) {
     bottom: -102px;
