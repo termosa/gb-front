@@ -14,6 +14,10 @@ import loadCustomer from '../../modules/load-customer'
 import initiateKlaviyo from '../initiate-klaviyo'
 import initiateAlooma from '../initiate-alooma'
 import initiateGtm from '../initiate-gtm'
+import CustomerContext from '../../modules/customer-context'
+import CustomerOrdersDetailsContext from '../../modules/customer-orders-details-context'
+import useCustomerOrdersDetails from '../use-customer-orders-details'
+import { getProperty } from '../alooma'
 
 const MainPageLayoutWrapper = styled.div`
   display: flex;
@@ -53,7 +57,15 @@ export function MainPageLayout({ children, className, style }: MainPageLayoutPro
   })
 
   const searchRequest = useDefer(loadProductsChunk)
-  const { value: customer } = useDefer(() => loadCustomer({ skipCache: true }).catch(() => null), [], [])
+  const { value: customer } = useDefer(() => loadCustomer().catch(() => null), [], [])
+  const aloomaCustomerEmailRequest = useDefer(
+    () => initiateAlooma().then((alooma) => alooma.get_property?.('email')),
+    [],
+    []
+  )
+  const customerOrdersDetails = useCustomerOrdersDetails(
+    customer?.email || (aloomaCustomerEmailRequest.value as string)
+  )
 
   return (
     <ThemeProvider>
@@ -70,24 +82,26 @@ export function MainPageLayout({ children, className, style }: MainPageLayoutPro
         />
       </Head>
       <Normalize />
-      <MainPageLayoutWrapper className={cn(className)} style={style}>
-        <Header
-          userName={customer?.firstName}
-          onSearch={(search) => (search ? searchRequest.execute({ search_in: search }) : searchRequest.reset())}
-          searchedProducts={searchRequest.value}
-          userEmail={customer?.email}
-        />
-        <div className="app-promotion-wrapper">
-          <SitePromotion />
-        </div>
-        <div className="app-re-wrapper" id="app-wrapper">
-          <div className="app-re-content" id="app-content">
-            <main className="app-h-main">{children}</main>
-          </div>
-        </div>
-        <FloatingCta />
-        <SiteFooter className="Footer-Colored" />
-      </MainPageLayoutWrapper>
+      <CustomerContext.Provider value={customer || undefined}>
+        <CustomerOrdersDetailsContext.Provider value={customerOrdersDetails}>
+          <MainPageLayoutWrapper className={cn(className)} style={style}>
+            <Header
+              onSearch={(search) => (search ? searchRequest.execute({ search_in: search }) : searchRequest.reset())}
+              searchedProducts={searchRequest.value}
+            />
+            <div className="app-promotion-wrapper">
+              <SitePromotion />
+            </div>
+            <div className="app-re-wrapper" id="app-wrapper">
+              <div className="app-re-content" id="app-content">
+                <main className="app-h-main">{children}</main>
+              </div>
+            </div>
+            <FloatingCta />
+            <SiteFooter className="Footer-Colored" />
+          </MainPageLayoutWrapper>
+        </CustomerOrdersDetailsContext.Provider>
+      </CustomerContext.Provider>
     </ThemeProvider>
   )
 }

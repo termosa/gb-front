@@ -4,6 +4,7 @@ import normalizeCustomerOrdersDetails, {
   ServerCustomerOrdersDetails,
 } from '../normalize-customer-orders-details'
 
+export { CustomerLevel } from '../normalize-customer-orders-details'
 export type { CustomerOrdersDetails } from '../normalize-customer-orders-details'
 
 export function loadCustomerOrdersDetails(email: string): Promise<CustomerOrdersDetails> {

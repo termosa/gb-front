@@ -112,7 +112,7 @@ const SizeIsUnavailable = styled.div`
 const ButtonRingSize = styled.button`
   background: #fff;
   font: 500 14px/1.25 'Montserrat', sans-serif;
-  border: 1px solid #ee67a0;
+  border: 1px solid #9059c8;
   color: #000;
   width: 42px;
   height: 42px;
@@ -120,7 +120,7 @@ const ButtonRingSize = styled.button`
   margin: 10px 10px;
   min-width: 42px;
   &:hover {
-    background: #ee67a0;
+    background: #9059c8;
     color: #fff;
     cursor: pointer;
   }

@@ -1,6 +1,6 @@
 import loadCustomerOrdersDetails from '.'
 import api from '../../modules/api'
-import { CustomerLevel } from '../use-customer-orders-details'
+import { CustomerLevel } from '../normalize-customer-orders-details'
 jest.mock('../../modules/api')
 
 describe('loadCustomerOrdersDetails()', () => {

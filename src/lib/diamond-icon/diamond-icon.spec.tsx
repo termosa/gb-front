@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 import DiamondIcon from '.'
-import { CustomerLevel } from '../use-customer-orders-details'
+import { CustomerLevel } from '../normalize-customer-orders-details'
 
 describe('<DiamondIcon>', () => {
   it('should render with correct icon color', () => {

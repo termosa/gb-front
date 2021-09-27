@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
 import RollingBanner from '../../components/rolling-banner'
@@ -9,10 +9,11 @@ import PointsWidget from '../../components/points-widget'
 import NavIcons from '../../components/nav-icons'
 import NavMobile from '../../components/nav-mobile'
 import { ProductsChunk } from '../../modules/normalize-products-chunk'
-import useCustomerOrdersDetails from '../use-customer-orders-details'
 import useScreenSize from '../use-screen-size'
 import Image from '../image'
 import SiteSection from '../../components/site-section'
+import CustomerContext from '../../modules/customer-context'
+import CustomerOrdersDetailsContext from '../../modules/customer-orders-details-context'
 
 const SWrapper = styled.div`
   text-align: center;
@@ -764,24 +765,21 @@ export type SiteHeaderProps = {
   className?: ClassName
   style?: React.CSSProperties
   onSearch: (value: string) => void
-  userName?: string
   searchedProducts?: ProductsChunk
-  userEmail?: string
 }
 
 export function SiteHeader({
   className,
   style,
   onSearch,
-  userName,
   searchedProducts,
-  userEmail,
 }: SiteHeaderProps): React.ReactElement | null {
   const useScreen = useScreenSize()
   const [isSearchDropdownVisible, setIsSearchDropdownVisible] = useState(false)
   const [extendableBlockContent, setExtendableBlockContent] = useState('')
   const [isBurgerMenuOpen, setBurgerMenuOpen] = useState(false)
-  const customerOrdersDetails = useCustomerOrdersDetails(userEmail)
+  const customer = useContext(CustomerContext)
+  const customerOrdersDetails = useContext(CustomerOrdersDetailsContext)
 
   return (
     <SWrapper className={cn(className)} style={style} onMouseLeave={() => setExtendableBlockContent('')}>
@@ -841,26 +839,21 @@ export function SiteHeader({
                 <SearchField onSearch={onSearch} searchedProducts={searchedProducts} />
               </SFieldWrapper>
               <SIconsWrapper>
-                <SSignSignup userName={userName} />
+                <SSignSignup userName={customer?.firstName} />
                 <SPointsWidget>
-                  <PointsWidget
-                    points={customerOrdersDetails.totalPoints}
-                    customerLevel={customerOrdersDetails.level}
-                  />
+                  <PointsWidget />
                 </SPointsWidget>
                 <NavMobile
                   isBurgerMenuOpen={isBurgerMenuOpen}
                   setBurgerMenuOpen={setBurgerMenuOpen}
-                  userName={userName}
-                  points={customerOrdersDetails.totalPoints}
-                  customerLevel={customerOrdersDetails.level}
+                  userName={customer?.firstName}
                   isSubscriptionLinkShown={
                     !(customerOrdersDetails.isICMember && customerOrdersDetails.isICMembershipActive)
                   }
                 />
                 <NavIcons
                   onSearchClick={() => setIsSearchDropdownVisible(!isSearchDropdownVisible)}
-                  userName={userName}
+                  userName={customer?.firstName}
                   isSubscriptionLinkShown={
                     customerOrdersDetails.isICMember && customerOrdersDetails.isICMembershipActive
                   }

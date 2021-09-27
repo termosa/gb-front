@@ -22,7 +22,7 @@
     ],
     "lib": [
       "dom",
-      "es2017"
+      "es2020"
     ],
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,

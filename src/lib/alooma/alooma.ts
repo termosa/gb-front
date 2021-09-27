@@ -23,4 +23,4 @@ export function alooma(eventName: string, eventProperties: Record<string, unknow
     })
 }
 
-if (window) Object.assign(window, { track: alooma })
+export const getProperty = (name: string): undefined | unknown => window?.alooma?.get_property?.(name)

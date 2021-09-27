@@ -3,15 +3,12 @@ import styled from 'styled-components'
 import PointsWidget from '../points-widget'
 import SigninSignup from '../signin-signup'
 import { ExtendableBlockContent } from '../../lib/site-header'
-import { CustomerLevel } from '../../lib/use-customer-orders-details'
 import Image from '../../lib/image'
 
 export type SearchFieldProps = {
   isBurgerMenuOpen: boolean
   setBurgerMenuOpen: (isBurgerMenuOpen: boolean) => void
   userName?: string
-  points: number
-  customerLevel: CustomerLevel
   isSubscriptionLinkShown: boolean
 }
 
@@ -427,8 +424,6 @@ export function NavMobile({
   isBurgerMenuOpen,
   setBurgerMenuOpen,
   userName,
-  points,
-  customerLevel,
   isSubscriptionLinkShown,
 }: SearchFieldProps): React.ReactElement | null {
   useEffect(() => {
@@ -452,7 +447,7 @@ export function NavMobile({
             <SNavTopInnerLeft>
               <div>
                 <SPointsWidget>
-                  <PointsWidget points={points} customerLevel={customerLevel} />
+                  <PointsWidget />
                 </SPointsWidget>
               </div>
               <SigninSignup userName={userName} />

@@ -5,7 +5,7 @@ export const meta = {
   name: 'SiteHeader',
   description: 'Styled block with custom content',
   tags: ['component', 'layout'],
-  preview: <SiteHeader onSearch={query => alert(`Searching for ${query}...`)} userName="Kelya Torres" />,
+  preview: <SiteHeader onSearch={query => alert(`Searching for ${query}...`)} />,
   lists: {
     attributes: [
       { name: 'className', type: 'classnames.Argument', description: 'One or multiple class names that will be added to the main container' },
@@ -58,7 +58,6 @@ render(() => {
   return (
     <SiteHeader
       onSearch={search}
-      userName="Keyla Torres"
       searchedProducts={results}
     />
   )
