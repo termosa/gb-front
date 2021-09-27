@@ -28,6 +28,18 @@ const SLayoutImage = styled(Image)`
   @media (min-width: 768px) {
     max-width: 100%;
   }
+
+  img {
+    width: 284px;
+
+    @media (min-width: 768px) {
+      width: 220px;
+    }
+
+    @media (min-width: 1050px) {
+      width: 284px;
+    }
+  }
 `
 
 const SButtonWrapper = styled.div`

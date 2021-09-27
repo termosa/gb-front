@@ -36,7 +36,7 @@ export default function HomePage({
               centerSecondText: '',
               bottomText: 'Relax your weary bones with a collection to die for...',
               buttonText: 'SHOP HALLOWEEN',
-              buttonLink: 'https://www.fragrantjewels.com/collections/spooky',
+              buttonLink: 'https://www.fragrantjewels.com/ws30/collections/spooky',
               backgroundImg: 'https://new-fragrantjewels.s3.us-west-2.amazonaws.com/app/img/home-banner.jpg',
               backgroundImgMobile:
                 'https://new-fragrantjewels.s3.us-west-2.amazonaws.com/app/img/home-banner-mobile.jpg',
@@ -57,12 +57,12 @@ export default function HomePage({
             product={innerCircleSubscriptionProduct}
             membershipProductVariants={innerCircleMembershipProduct.variants}
             slideImages={[
+              'https://new-fragrantjewels.s3.us-west-2.amazonaws.com/app/img/skull-ring.jpg',
+              'https://new-fragrantjewels.s3.us-west-2.amazonaws.com/app/img/monthly-subscription.jpg',
               'https://new-fragrantjewels.s3.us-west-2.amazonaws.com/app/img/bones-ring.jpg',
               'https://new-fragrantjewels.s3.us-west-2.amazonaws.com/app/img/bone-band.jpg',
-              'https://new-fragrantjewels.s3.us-west-2.amazonaws.com/app/img/monthly-subscription.jpg',
               'https://new-fragrantjewels.s3.us-west-2.amazonaws.com/app/img/jewel-candle.jpg',
               'https://new-fragrantjewels.s3.us-west-2.amazonaws.com/app/img/epsom-salt.jpg',
-              'https://new-fragrantjewels.s3.us-west-2.amazonaws.com/app/img/skull-ring.jpg',
             ]}
             title="Get addicted to me-time"
             subTitle="Join the Inner Circle for exclusive savings on exciting new collections every month. It's happiness, delivered. "
@@ -101,18 +101,18 @@ export default function HomePage({
         />
         <CategoryShopCardsOverview
           leftCard={{
-            image:
-              'https://cdn.shopify.com/s/files/1/0548/5721/products/ScreenShot2021-02-02at12.52.00PMcopy_grande.jpg?v=1629301723',
-            title: 'August Box',
-            subTitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-            link: 'https://www.fragrantjewels.com/pages/inner-circle#how-it-works',
+            image: 'https://new-fragrantjewels.s3.us-west-2.amazonaws.com/app/img/time-travel.png',
+            title: 'Time Travel Series',
+            subTitle:
+              'Transport your mind to peculiar moments in history with signature scents and unique 925 sterling silver rings.',
+            link: 'https://www.fragrantjewels.com/pages/time-travel-series',
           }}
           rightCard={{
-            image:
-              'https://cdn.shopify.com/s/files/1/0548/5721/products/ScreenShot2021-02-02at12.47.24PMcopy_grande.jpg?v=1629301723',
-            title: 'The Jewelry',
-            subTitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-            link: 'https://www.fragrantjewels.com/pages/inner-circle#how-it-works',
+            image: 'https://new-fragrantjewels.s3.us-west-2.amazonaws.com/app/img/selfless-care.png',
+            title: 'Self (less) Care',
+            subTitle:
+              'Self care is anything but selfish! We’ve partnered with amazing charities to bring you collections that give back. ',
+            link: 'https://www.fragrantjewels.com/pages/charity-collections',
           }}
         />
         <ReviewsSection
@@ -123,18 +123,18 @@ export default function HomePage({
           title="Shop by Product"
           products={[
             {
-              image: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/prod-body-scrubs.jpg',
-              buttonLink: 'https://www.fragrantjewels.com/pages/inner-circle#how-it-works',
+              image: 'https://new-fragrantjewels.s3.us-west-2.amazonaws.com/app/img/prod-bath-bombs.png',
+              buttonLink: 'https://www.fragrantjewels.com/collections/bath-bombs',
               buttonText: 'BATH BOMBS',
             },
             {
-              image: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/prod-candles.jpg',
-              buttonLink: 'https://www.fragrantjewels.com/pages/inner-circle#how-it-works',
+              image: 'https://new-fragrantjewels.s3.us-west-2.amazonaws.com/app/img/prod-candles.png',
+              buttonLink: 'https://www.fragrantjewels.com/collections/jewel-candles',
               buttonText: 'CANDLES',
             },
             {
-              image: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/prod-bundles.jpg',
-              buttonLink: 'https://www.fragrantjewels.com/pages/inner-circle#how-it-works',
+              image: 'https://new-fragrantjewels.s3.us-west-2.amazonaws.com/app/img/prod-bundles.png',
+              buttonLink: 'https://www.fragrantjewels.com/collections/gift-sets',
               buttonText: 'BUNDLES',
             },
           ]}
