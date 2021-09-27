@@ -249,7 +249,7 @@ const SCardLink = styled.span`
   }
 
   @media (max-width: 1199px) {
-    padding: 0;
+    padding: 7px 0 0;
     text-decoration: underline;
     text-underline-offset: 7px;
     line-height: 2;
@@ -412,13 +412,13 @@ const TABS_LIST = [
 ]
 const CARDS_LIST = [
   {
-    href: '/collections/spooky',
-    imgLink: 'https://fragrantjewels.s3.amazonaws.com/app/app-nav/nav-all-img-22-mb.jpg',
-    text: 'New in the Halloween Shop',
+    href: '/collections/fall-favs',
+    imgLink: 'https://fragrantjewels.s3.amazonaws.com/app/app-nav/nav-all-img-23-mb.jpg',
+    text: 'Fall Favorites',
   },
   {
-    href: '/products/stargazing-satin-bath-bomb',
-    imgLink: 'https://fragrantjewels.s3.amazonaws.com/app/app-nav/nav-all-img-21-mb.jpg',
+    href: '/products/wicked-kitty-bath-bomb',
+    imgLink: 'https://fragrantjewels.s3.amazonaws.com/app/app-nav/nav-wickedly-p-mb.jpg',
     text: 'Restock Alert',
   },
 ]

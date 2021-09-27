@@ -488,10 +488,12 @@ const ExtendableBlockListAccordionInput = styled.input`
 `
 
 const ExtendableBlockRowItems = styled.div`
-  display: flex;
+  @media (min-width: 1200px) {
+    display: flex;
 
-  & > div {
-    width: 50%;
+    & > div {
+      width: 50%;
+    }
   }
 `
 
@@ -639,10 +641,10 @@ const AllContent = () => (
         </ExtendableBlockItem>
       </ExtendableBlockItems>
       <ExtendableBlockItem className="desktop-nav-product-item">
-        <a href="/collections/spooky">
-          <Image src="https://fragrantjewels.s3.amazonaws.com/app/app-nav/nav-all-img-22-dt.jpg" />
+        <a href="/collections/fall-favs">
+          <Image src="https://fragrantjewels.s3.amazonaws.com/app/app-nav/nav-all-img-23-dt.jpg" />
           <AnimatedLink as="span">
-            <span>New in the Halloween Shop</span>
+            <span>Fall Favorites</span>
           </AnimatedLink>
         </a>
       </ExtendableBlockItem>
@@ -666,7 +668,7 @@ const SubscriptionContent = () => (
         </ExtendableBlockItem>
         <ExtendableBlockItem>
           <a href="/pages/rare-ic-page">
-            <Image src="https://fragrantjewels.s3.amazonaws.com/app/app-nav/rare-protection-charms.jpg" />
+            <Image src="https://fragrantjewels.s3.amazonaws.com/app/app-nav/nav-rare-raven.jpg" />
             <ExtendableBlockListTitle>Everything There Is To Know About Rare Collections</ExtendableBlockListTitle>
             <ExtendableBlockListText>
               Start collecting unique limited edition sets not available for sale! Find out how you can qualify.

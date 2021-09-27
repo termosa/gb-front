@@ -94,11 +94,9 @@ const FormButton = styled(Button)`
 `
 
 const SuccessMessage = styled.div`
-  display: flex;
-  justify-content: center;
-  color: #4ca832;
-  padding: 18px 0;
-  font-size: 20px;
+  font: 700 40px/1 'Cormorant Garamond', serif;
+  text-align: center;
+  margin: 0;
 `
 
 const ErrorMessage = styled.div`
