@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import cn, { Argument as ClassName } from 'classnames'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import usePopper from '../../hooks/use-popper'
 import useOnClickOutside from '../../hooks/use-on-click-outside'
 import { CollectionProductsFilter } from '../../modules/filter-collection-products'

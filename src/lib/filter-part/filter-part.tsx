@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import cn, { Argument as ClassName } from 'classnames'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import useScreenSize from '../use-screen-size'
 import { CollectionProductsFilter, Filter, FilterGroup } from '../../components/collection-filters'
 
@@ -26,10 +26,20 @@ const SFilter = styled.label<{
   }
 `
 
-const SMetalColorIcon = styled.svg`
+const SMetalColorIcon = styled.svg<{ checked: boolean }>`
   position: absolute;
-  top: 1px;
-  left: 1px;
+  top: 0;
+  left: 0;
+  border: 1px solid transparent;
+  border-radius: 100%;
+
+  ${(p) =>
+    p.checked
+      ? css`
+          border-color: #9059c8;
+          box-shadow: inset 0 0 2px #fff;
+        `
+      : ''}
 `
 
 const SFilterGroup = styled.div<{
@@ -99,7 +109,13 @@ const SCollapseButton = styled.span<{
 export type ColorGradient = Array<{ offset?: number; stopColor: string }>
 
 const gradients: Record<string, ColorGradient> = {
-  Black: [],
+  Black: [
+    { stopColor: '#1A1B1A' },
+    { offset: 0.2, stopColor: '#DFE0DF' },
+    { offset: 0.4, stopColor: '#585756' },
+    { offset: 0.6, stopColor: '#3C3938' },
+    { offset: 0.8, stopColor: '#3C3938' },
+  ],
   Gold: [
     { stopColor: '#D08E17' },
     { offset: 0.02, stopColor: '#D89C29' },
@@ -192,6 +208,7 @@ export function FilterPart({
                 viewBox="0 0 20 20"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
+                checked={!!selectedFilters.colors?.includes(name)}
               >
                 <rect
                   x={0.25}
