@@ -202,7 +202,7 @@ export function InformationOverview({
                   }}
                 />
               </SNextArrow>
-              <Slider infinite showDots={true} dotsPresent={true} arrows={false} carouselRef={infoSliderRef}>
+              <Slider infinite showDots={true} arrows={false} carouselRef={infoSliderRef}>
                 {cards.map((card) => (
                   <InformationCard key={card.image + card.title} card={card} />
                 ))}

@@ -64,6 +64,29 @@ const SImageContainer = styled.div`
   .slider-full-width-item {
     padding: 0;
   }
+
+  .react-multi-carousel-dot {
+    button {
+      background: #4dbeba;
+      opacity: 0.6;
+      width: 10px;
+      height: 10px;
+      margin: 0 7px;
+      border-radius: 50%;
+      border: 0;
+
+      &:focus {
+        outline: 0;
+        box-shadow: none;
+      }
+    }
+
+    &--active {
+      button {
+        opacity: 0.95;
+      }
+    }
+  }
 `
 
 const SCustomSlider = styled.div`
