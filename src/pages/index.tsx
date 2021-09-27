@@ -31,13 +31,16 @@ export default function HomePage({
         <HeroGallery
           slides={[
             {
-              topText: 'MINISUBLINER',
-              centerFirstText: 'SAVOR the',
-              centerSecondText: 'MOMENTS',
-              bottomText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. At eget iaculis eget eget neque.',
-              buttonText: 'SHOP NOW',
-              buttonLink: 'https://www.fragrantjewels.com/pages/inner-circle#how-it-works',
-              backgroundImg: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/home-banner-img-1-dt.jpg',
+              topText: 'NEW',
+              centerFirstText: 'DEEP SLEEP',
+              centerSecondText: '',
+              bottomText: 'Relax your weary bones with a collection to die for...',
+              buttonText: 'SHOP HALLOWEEN',
+              buttonLink: 'https://www.fragrantjewels.com/collections/spooky',
+              backgroundImg: 'https://new-fragrantjewels.s3.us-west-2.amazonaws.com/app/img/home-banner.jpg',
+              backgroundImgMobile:
+                'https://new-fragrantjewels.s3.us-west-2.amazonaws.com/app/img/home-banner-mobile.jpg',
+              transparentPlaceholder: true,
             },
           ]}
         />
@@ -54,13 +57,17 @@ export default function HomePage({
             product={innerCircleSubscriptionProduct}
             membershipProductVariants={innerCircleMembershipProduct.variants}
             slideImages={[
-              'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/ic-img-jewelry.jpg',
-              'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/ic-img.jpg',
+              'https://new-fragrantjewels.s3.us-west-2.amazonaws.com/app/img/bones-ring.jpg',
+              'https://new-fragrantjewels.s3.us-west-2.amazonaws.com/app/img/bone-band.jpg',
+              'https://new-fragrantjewels.s3.us-west-2.amazonaws.com/app/img/monthly-subscription.jpg',
+              'https://new-fragrantjewels.s3.us-west-2.amazonaws.com/app/img/jewel-candle.jpg',
+              'https://new-fragrantjewels.s3.us-west-2.amazonaws.com/app/img/epsom-salt.jpg',
+              'https://new-fragrantjewels.s3.us-west-2.amazonaws.com/app/img/skull-ring.jpg',
             ]}
             title="Get addicted to me-time"
-            subTitle="Join the Inner Circle for exciting new collections every month, available exclusively to members."
+            subTitle="Join the Inner Circle for exclusive savings on exciting new collections every month. It's happiness, delivered. "
             topButtonText="Get Started"
-            buttonLink={`/products/${innerCircleSubscriptionProduct.handle}`}
+            buttonLink={`https://www.fragrantjewels.com/pages/inner-circle`}
             onReserve={(variant) => {
               addCartItem(variant.variant_id)
                 .then(() => trackAddedToCart(innerCircleSubscriptionProduct))
@@ -73,22 +80,22 @@ export default function HomePage({
           titleUnderline="most fun"
           cards={[
             {
-              title: 'Guilt Free Ingredients',
-              image: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/mf-img-1.jpg',
+              title: 'Collectable Jewelry',
+              image: 'https://new-fragrantjewels.s3.us-west-2.amazonaws.com/app/img/collectable-jewerly.png',
               description:
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. At eget iaculis eget eget neque, posuere quis placerat arcu. Ipsum est felis varius faucibus praesent convallis.',
+                "Choose a collection that speaks to your personality and discover surprise jewelry hidden in each product! Collect all the unique designs and join our 500,000+ customers who can't get enough!",
             },
             {
-              title: 'Win $10,000 Ring',
-              image: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/mf-img-2.jpg',
+              title: 'Win a $10,000 Ring',
+              image: 'https://new-fragrantjewels.s3.us-west-2.amazonaws.com/app/img/win-a-ring.png',
               description:
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. At eget iaculis eget eget neque, posuere quis placerat arcu. Ipsum est felis varius faucibus praesent convallis.',
+                'When did self-care become so freakin’ exciting? Each product includes a secret code you can enter into our Vault for your chance to win a ring worth $100, $1,000, or $10,000! That’s a lot of zeros.',
             },
             {
-              title: 'Collectible Jewelry',
-              image: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/mf-img-3.jpg',
+              title: 'Feel Good Ingredients',
+              image: 'https://new-fragrantjewels.s3.us-west-2.amazonaws.com/app/img/clean-ingredients.png',
               description:
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. At eget iaculis eget eget neque, posuere quis placerat arcu. Ipsum est felis varius faucibus praesent convallis.',
+                "Call us crazy, but harmful chemicals and self-care don't really go hand-in-hand. We only use clean ingredients, so you (and your lady parts) can enjoy worry-free relaxation.",
             },
           ]}
         />
@@ -116,14 +123,14 @@ export default function HomePage({
           title="Shop by Product"
           products={[
             {
+              image: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/prod-body-scrubs.jpg',
+              buttonLink: 'https://www.fragrantjewels.com/pages/inner-circle#how-it-works',
+              buttonText: 'BATH BOMBS',
+            },
+            {
               image: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/prod-candles.jpg',
               buttonLink: 'https://www.fragrantjewels.com/pages/inner-circle#how-it-works',
               buttonText: 'CANDLES',
-            },
-            {
-              image: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/prod-body-scrubs.jpg',
-              buttonLink: 'https://www.fragrantjewels.com/pages/inner-circle#how-it-works',
-              buttonText: 'BODY SCRUBS',
             },
             {
               image: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/prod-bundles.jpg',

@@ -13,6 +13,7 @@ export interface ButtonProps extends Omit<React.HTMLProps<HTMLButtonElement>, 'c
   backColor?: string
   borderColor?: string
   disabledColor?: string
+  padding?: string
 }
 
 const SButton = styled.button<{

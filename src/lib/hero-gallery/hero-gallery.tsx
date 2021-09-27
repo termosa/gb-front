@@ -3,6 +3,7 @@ import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
 import Button from '../../lib/button'
 import Slider from '../slider'
+import { useScreenSize } from '../use-screen-size'
 
 const DEFAULT_BACKGROUND_IMAGE = 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/home-banner-img-1-dt.jpg'
 
@@ -136,6 +137,33 @@ const Slide = styled.div<{ backgroundImg: string }>`
   }
 `
 
+const SlideTransparentContent = styled.div`
+  max-width: 960px;
+  margin: 0 auto;
+  color: #fff;
+`
+
+const SliderTransparentWrapper = styled.div`
+  position: absolute;
+
+  @media (min-width: 1200px) {
+    top: 50%;
+    transform: translateY(-50%);
+
+    button {
+      margin: 0;
+    }
+  }
+
+  @media (max-width: 1199px) {
+    width: 90%;
+    bottom: 46px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+  }
+`
+
 const SlideContent = styled.div`
   background: rgba(255, 255, 255, 0.85);
   max-width: 480px;
@@ -198,6 +226,8 @@ export type GalleryItem = {
   buttonText: string
   buttonLink: string
   backgroundImg: string
+  backgroundImgMobile: string
+  transparentPlaceholder: boolean
 }
 
 export type HeroGalleryProps = {
@@ -207,28 +237,52 @@ export type HeroGalleryProps = {
 }
 
 export function HeroGallery({ className, style, slides }: HeroGalleryProps): React.ReactElement {
+  const screenSize = useScreenSize()
   return (
     <SliderWrapper className={cn(className)} style={style}>
       <Slider partiallyVisible={false} dotsPresent arrows={false} itemClass={'slider-full-width-item'}>
         {slides.map((slide: GalleryItem) => (
           <Slide
             key={`${slide.buttonLink}${slide.backgroundImg}${slide.buttonText}`}
-            backgroundImg={slide.backgroundImg || DEFAULT_BACKGROUND_IMAGE}
+            backgroundImg={
+              screenSize.greaterThanExtraLarge
+                ? slide.backgroundImg
+                : slide.backgroundImgMobile || DEFAULT_BACKGROUND_IMAGE
+            }
           >
-            <SlideContent>
-              <SlidePreTitle>{slide.topText}</SlidePreTitle>
-              <SlideTitle>
-                {slide.centerFirstText}
-                <br />
-                {slide.centerSecondText}
-              </SlideTitle>
-              <SlideText>
-                <p>{slide.bottomText}</p>
-              </SlideText>
-              <Button backColor={'#000'} frontColor={'#fff'} padding={'0 25px'} width={'auto'}>
-                <SlideLinkInner href={slide.buttonLink}>{slide.buttonText}</SlideLinkInner>
-              </Button>
-            </SlideContent>
+            {slide.transparentPlaceholder ? (
+              <SlideTransparentContent>
+                <SliderTransparentWrapper>
+                  <SlidePreTitle>{slide.topText}</SlidePreTitle>
+                  <SlideTitle>
+                    {slide.centerFirstText}
+                    <br />
+                    {slide.centerSecondText}
+                  </SlideTitle>
+                  <SlideText>
+                    <p>{slide.bottomText}</p>
+                  </SlideText>
+                  <Button backColor={'#000'} frontColor={'#fff'} padding={'0 25px'} width={'250px'}>
+                    <SlideLinkInner href={slide.buttonLink}>{slide.buttonText}</SlideLinkInner>
+                  </Button>
+                </SliderTransparentWrapper>
+              </SlideTransparentContent>
+            ) : (
+              <SlideContent>
+                <SlidePreTitle>{slide.topText}</SlidePreTitle>
+                <SlideTitle>
+                  {slide.centerFirstText}
+                  <br />
+                  {slide.centerSecondText}
+                </SlideTitle>
+                <SlideText>
+                  <p>{slide.bottomText}</p>
+                </SlideText>
+                <Button backColor={'#000'} frontColor={'#fff'} padding={'0 25px'} width={'auto'}>
+                  <SlideLinkInner href={slide.buttonLink}>{slide.buttonText}</SlideLinkInner>
+                </Button>
+              </SlideContent>
+            )}
           </Slide>
         ))}
       </Slider>

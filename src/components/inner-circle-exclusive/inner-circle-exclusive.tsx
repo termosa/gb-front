@@ -625,7 +625,8 @@ export function InnerCircleExclusive({
                   </Button>
                 </div>
                 <STaxInfo>
-                  *Monthly membership price does not include tax. Shipping is always free. Cancel anytime.
+                  *Join the Inner Circle today, then automatically receive a monthly set for $32.95 plus tax. No
+                  commitment, cancel anytime.
                 </STaxInfo>
               </SDetailsContainer>
             </SDetailsWrapper>
