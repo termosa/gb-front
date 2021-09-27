@@ -259,8 +259,8 @@ const TEST_IMAGES = [
   'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/cosmopolitanlogo.png',
   'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/refinery29logo.png',
   'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/allurelogo.png',
-  'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/beautyinsiderlogo-1.png',
   'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/vector.png',
+  'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/beautyinsiderlogo-1.png',
 ]
 
 export function ReviewsSection({ quote, author, className }: ReviewsSectionProps): React.ReactElement {

@@ -25,11 +25,12 @@ const SButton = styled.button<{
   backColor?: string
   borderColor?: string
   disabledColor?: string
+  padding?: string
 }>`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: ${(props) => props.width || '155px'};
+  width: ${(props) => (props.width === 'auto' ? '100%' : props.width || '155px')};
   height: 55px;
   margin: 0 auto;
   text-transform: uppercase;
@@ -44,6 +45,11 @@ const SButton = styled.button<{
   cursor: pointer;
   min-width: ${(props) => (props.compact ? '35px' : '142px')};
   font-weight: ${(props) => (props.backColor === '#000' ? '700' : '500')};
+
+  @media (min-width: 768px) {
+    width: ${(props) => props.width || '155px'};
+    padding: ${(props) => props.padding || '0'};
+  }
 
   &:hover {
     font-weight: ${(props) => (props.backColor === '#000' ? '500' : '700')};

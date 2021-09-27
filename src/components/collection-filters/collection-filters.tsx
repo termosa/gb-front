@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import cn, { Argument as ClassName } from 'classnames'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import usePopper from '../../hooks/use-popper'
 import useOnClickOutside from '../../hooks/use-on-click-outside'
 import { CollectionProductsFilter } from '../../modules/filter-collection-products'
@@ -35,6 +35,7 @@ export type CollectionFiltersProps = {
   onChangeFilter: (selectedFilters: CollectionProductsFilter) => void
   onChangeSorting: (sorting: SelectedSorting) => void
   initialSorting: SelectedSorting
+  initialFilter: CollectionProductsFilter
 }
 
 const SCollectionFiltersContainer = styled.div`
@@ -288,6 +289,7 @@ export const CollectionFilters = ({
   onChangeFilter,
   onChangeSorting,
   initialSorting,
+  initialFilter,
 }: CollectionFiltersProps): React.ReactElement => {
   const [selectedSorting, setSelectedSorting] = useState<SelectedSorting>(initialSorting)
 
@@ -312,13 +314,19 @@ export const CollectionFilters = ({
       alooma(isFiltersDropdownOpened ? 'dropdown opened' : 'dropdown closed')
   }, [isFiltersDropdownOpened])
 
-  const [selectedFilters, setSelectedFilters] = useState<CollectionProductsFilter>(createEmptyFilter)
+  const [selectedFilters, setSelectedFilters] = useState<CollectionProductsFilter>(initialFilter)
 
   const handleFilterChange = (filterGroup: FilterGroup, filterName: string, enabled: boolean) => {
     const selectedFilterName = filters[filterGroup].find((filter) => filter.name === filterName)?.name
     if (!selectedFilterName) return
 
     alooma(`${filterGroup.slice(0, -1)} ${enabled ? 'selected' : 'unselected'}`, { details: `choice: ${filterName}` }) // TODO: Stop slicing
+    onChangeFilter({
+      ...selectedFilters,
+      [filterGroup]: enabled
+        ? (selectedFilters[filterGroup] || []).concat(selectedFilterName)
+        : selectedFilters[filterGroup]?.filter((name) => name !== filterName) || [],
+    })
     setSelectedFilters({
       ...selectedFilters,
       [filterGroup]: enabled
@@ -326,8 +334,6 @@ export const CollectionFilters = ({
         : selectedFilters[filterGroup]?.filter((name) => name !== filterName) || [],
     })
   }
-
-  useEffect(() => onChangeFilter(selectedFilters), [selectedFilters])
 
   const getListOfSelectedFilters = (selectedFilters: CollectionProductsFilter) => [
     ...(selectedFilters.sizes?.map((filter) => ({ name: filter, filterGroup: 'sizes' })) || []),
@@ -349,6 +355,7 @@ export const CollectionFilters = ({
 
   const handleClearing = () => {
     alooma('clear filters')
+    onChangeFilter(createEmptyFilter())
     setSelectedFilters(createEmptyFilter())
   }
 
@@ -446,55 +453,6 @@ export const CollectionFilters = ({
               Metal color
             </FilterPart>
           )}
-          {/*{!!filters.colors.length && (
-            <SFilterGroup>
-              <SFilterGroupName>Metal color</SFilterGroupName>
-              {filters.colors.map(({ name, amount }, index) => (
-                <SFilter key={name}>
-                  <SMetalColorIcon
-                    width={20}
-                    height={20}
-                    viewBox="0 0 20 20"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <rect
-                      x={0.25}
-                      y={0.25}
-                      width={19.5}
-                      height={19.5}
-                      rx={9.75}
-                      fill={`url(#${index}-color)`}
-                      stroke="#000"
-                      strokeWidth={0.5}
-                    />
-                    <defs>
-                      <linearGradient
-                        id={`${index}-color`}
-                        x1={1.706}
-                        y1={2.368}
-                        x2={21.507}
-                        y2={10.765}
-                        gradientUnits="userSpaceOnUse"
-                      >
-                        {gradients[name]?.map(({ stopColor, offset }) => (
-                          <stop stopColor={stopColor} offset={offset} key={stopColor + Math.random()} />
-                        ))}
-                      </linearGradient>
-                    </defs>
-                  </SMetalColorIcon>
-                  {name}
-                  <SProductsQuantity> ({amount})</SProductsQuantity>
-                  <input
-                    type="checkbox"
-                    hidden
-                    onChange={(event) => handleFilterChange('colors', name, event.target.checked)}
-                    checked={!!selectedFilters.colors?.includes(name)}
-                  />
-                </SFilter>
-              ))}
-            </SFilterGroup>
-          )}*/}
           <SFilterMobileControlButtonsGroup>
             <SClearFiltersButton mobile onClick={handleClearing}>
               Clear All

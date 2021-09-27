@@ -9,14 +9,15 @@ import ProductCard from '../product-card'
 import Carousel from 'react-multi-carousel'
 
 const Section = styled.section`
-  margin: 0 0 80px;
+  margin: 0 0 43px;
+  overflow: hidden;
 
   @media (min-width: 768px) {
-    margin: 30px 0 100px;
+    margin: 30px 0 60px;
   }
 
   @media (min-width: 992px) {
-    margin: 30px 0 131px;
+    margin: 30px 0 85px;
   }
 
   * {
@@ -120,39 +121,55 @@ const SNextArrow = styled(SArrow)`
 
 const SArrowButton = styled.button`
   display: block;
-  width: 17px;
-  height: 17px;
-  border: none;
-  border-bottom: 1px solid #9059c8;
-  border-left: 1px solid #9059c8;
+  border: 0;
   background-color: transparent;
   font-size: 0;
   margin: 0;
   padding: 0;
   cursor: pointer;
+  padding: 25px;
 
   &:focus {
     outline: 0;
     box-shadow: none;
   }
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 17px;
+    height: 17px;
+    border-bottom: 1px solid #9059c8;
+    border-left: 1px solid #9059c8;
+    background-color: transparent;
+  }
 `
 
 const SliderHolder = styled.div`
   margin: 0 -15px;
-  padding: 0 12px;
+  padding: 0 12px 37px;
   margin: 0 auto;
   position: relative;
+  overflow: hidden;
 
   @media (min-width: 450px) {
     max-width: 440px;
-    overflow: hidden;
   }
 
   @media (min-width: 768px) {
     max-width: 100%;
     margin: 0;
-    padding: 0;
+    padding: 40px 0 40px;
+    margin-top: -40px;
     overflow: inherit;
+  }
+
+  @media (min-width: 992px) {
+    padding: 45px 0 45px;
+    margin-top: -45px;
   }
 
   .react-multi-carousel-list {

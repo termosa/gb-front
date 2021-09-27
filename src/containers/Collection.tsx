@@ -1,4 +1,4 @@
-import React, { useContext, useMemo, useState } from 'react'
+import React, { useContext, useEffect, useMemo, useState } from 'react'
 import styled from 'styled-components'
 import CollectionFilters, { CollectionProductsFilter, SelectedSorting } from '../components/collection-filters'
 import ProductsList from '../components/products-list'
@@ -9,6 +9,8 @@ import CollectionContext from '../modules/collection-context'
 import navigate from '../lib/navigate'
 import CollectionBanner from '../lib/collection-banner'
 import alooma from '../lib/alooma'
+import window from '../lib/window'
+import { Product } from '../modules/normalize-product'
 
 const SFiltersSection = styled(SiteSection)`
   margin-bottom: 32px;
@@ -22,15 +24,55 @@ const SFiltersSection = styled(SiteSection)`
   }
 `
 
+interface HashObject {
+  sizes?: string
+  fragrances?: string
+  materials?: string
+  colors?: string
+  sortF?: string
+}
+
 const Collection = (): null | React.ReactElement => {
   const collection = useContext(CollectionContext)
-  const [filter, setFilter] = useState<CollectionProductsFilter | null>(null)
-  const [sorting, setSorting] = useState<SelectedSorting>(SelectedSorting.NEW)
+
+  const hashObject: HashObject | undefined = window?.location.hash
+    .slice(1)
+    .split('&')
+    .reduce((res, item) => {
+      const parts = item.split('=')
+      res[parts[0]] = parts[1]
+      return res
+    }, {})
+
+  const [filter, setFilter] = useState<CollectionProductsFilter>({
+    fragrances: hashObject?.fragrances?.replaceAll('%20', ' ').split(',') || [],
+    colors: hashObject?.colors?.replaceAll('%20', ' ').split(',') || [],
+    materials: hashObject?.materials?.replaceAll('%20', ' ').split(',') || [],
+    sizes: hashObject?.sizes?.replaceAll('%20', ' ').split(',') || [],
+  })
+  const [sorting, setSorting] = useState<SelectedSorting>((hashObject?.sortF as SelectedSorting) || SelectedSorting.NEW)
+
+  const updateHash = (filter: CollectionProductsFilter, sorting: SelectedSorting) => {
+    if (!window) return
+    const sortingHash = 'sortF=' + sorting
+    let filtersHash = ''
+
+    for (const filterType in filter) {
+      if (!filter[filterType].length) continue
+      filtersHash = filtersHash + filterType + '=' + filter[filterType].join(',') + '&'
+    }
+
+    window.location.hash = filtersHash + sortingHash
+  }
 
   const availableFilters = useMemo(() => parseFiltersFromProducts(collection?.products), [collection?.products])
 
-  const filteredProducts = useMemo(() => {
-    if (!collection?.products) return []
+  const [filteredProducts, setFilteredProducts] = useState<Array<Product>>([])
+  useEffect(() => {
+    if (!collection?.products) {
+      setFilteredProducts([])
+      return
+    }
 
     const sortedProducts = collection.products.sort((a, b) => {
       if (sorting === SelectedSorting.LOW_TO_HIGH) return a.variants[0].actual_price - b.variants[0].actual_price
@@ -39,9 +81,12 @@ const Collection = (): null | React.ReactElement => {
       return 0
     })
 
-    if (!filter) return sortedProducts
+    if (!filter) {
+      setFilteredProducts(sortedProducts)
+      return
+    }
 
-    return filterCollectionProducts(sortedProducts, filter)
+    setFilteredProducts(filterCollectionProducts(sortedProducts, filter))
   }, [collection, filter, sorting])
 
   if (!collection) return null
@@ -51,10 +96,17 @@ const Collection = (): null | React.ReactElement => {
       <CollectionBanner handle={collection.handle} />
       <SFiltersSection>
         <CollectionFilters
-          onChangeFilter={setFilter}
-          onChangeSorting={setSorting}
+          onChangeFilter={(newFilter) => {
+            updateHash(newFilter, sorting)
+            setFilter(newFilter)
+          }}
+          onChangeSorting={(newSorting) => {
+            updateHash(filter, newSorting)
+            setSorting(newSorting)
+          }}
           filters={availableFilters}
           initialSorting={sorting}
+          initialFilter={filter}
         />
       </SFiltersSection>
       <ProductsList
