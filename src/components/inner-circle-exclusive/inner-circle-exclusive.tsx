@@ -376,7 +376,7 @@ const SErrorLabel = styled.div`
   font: 400 16px/1.5 'Montserrat', sans-serif;
   text-align: center;
   margin-bottom: 15px;
-  color: #ee67a0;
+  color: #9059c8;
 `
 
 const SButtonContainer = styled.div`

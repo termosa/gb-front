@@ -143,7 +143,7 @@ const SPdpBtn = styled.button<{ disabled?: boolean }>`
 const SPdpAdditionalText = styled.div`
   font: 12px/1.4 'Montserrat', sans-serif;
   max-width: 370px;
-  padding: 16px 0;
+  margin: 16px 0;
   text-align: center;
 
   @media (min-width: 768px) {
@@ -290,7 +290,7 @@ const SPdpPiSelector = styled.div`
 
 const SPdpPiRsSelector = styled.div`
   text-align: center;
-  color: #ee67a0;
+  color: #9059c8;
   margin: 0 0 12px;
 `
 
