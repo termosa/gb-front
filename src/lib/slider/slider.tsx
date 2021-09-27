@@ -68,19 +68,17 @@ const SImageContainer = styled.div`
 
 const SCustomSlider = styled.div`
   position: absolute;
-  bottom: -35px;
+  bottom: 0;
   left: 0;
   width: 100%;
-  padding: 0 15px;
+  padding: 0 13px;
 
   @media (min-width: 768px) {
     padding: 0 6px;
-    bottom: -40px;
   }
 
   @media (min-width: 992px) {
     padding: 0 7px;
-    bottom: -44px;
   }
 
   & > input {
@@ -89,6 +87,7 @@ const SCustomSlider = styled.div`
 
   input[type='range'] {
     border: 1px solid white;
+    appearance: none;
   }
 
   input[type='range']::-moz-range-track {
@@ -245,7 +244,8 @@ export const Slider = ({
         <input
           type="range"
           value={Math.round((currentSlide * 100) / realProductsCount)}
-          step={realProductsCount}
+          min={0}
+          max={Math.round(((realProductsCount - 1) * 100) / realProductsCount)}
           onChange={(e) => {
             if (Math.round((currentSlide * 100) / realProductsCount) < +e.target.value) {
               carouselRef?.current?.next(1)

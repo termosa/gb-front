@@ -221,7 +221,7 @@ export function HeroGallery({ className, style, slides }: HeroGalleryProps): Rea
               <SlideText>
                 <p>{slide.bottomText}</p>
               </SlideText>
-              <Button backColor={'#000'} frontColor={'#fff'} width={'210px'}>
+              <Button backColor={'#000'} frontColor={'#fff'} padding={'0 25px'} width={'auto'}>
                 <SlideLinkInner href={slide.buttonLink}>{slide.buttonText}</SlideLinkInner>
               </Button>
             </SlideContent>
