@@ -101,7 +101,7 @@ const SArrow = styled.div`
 `
 
 const SPrevArrow = styled(SArrow)`
-  left: -15px;
+  left: -14px;
 
   button {
     transform: translateX(5px) rotate(45deg);
@@ -109,7 +109,7 @@ const SPrevArrow = styled(SArrow)`
 `
 
 const SNextArrow = styled(SArrow)`
-  right: -15px;
+  right: -14px;
 
   button {
     transform: translateX(-5px) rotate(-135deg);
@@ -118,16 +118,31 @@ const SNextArrow = styled(SArrow)`
 
 const SArrowButton = styled.button`
   display: block;
-  width: 17px;
-  height: 17px;
   border: none;
-  border-bottom: 1px solid #9059c8;
-  border-left: 1px solid #9059c8;
   background-color: transparent;
   font-size: 0;
   margin: 0;
   padding: 0;
   cursor: pointer;
+  padding: 25px;
+
+  &:focus {
+    outline: 0;
+    box-shadow: none;
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 17px;
+    height: 17px;
+    border-bottom: 1px solid #9059c8;
+    border-left: 1px solid #9059c8;
+    background-color: transparent;
+  }
 `
 
 export function ShopByProductsOverview({ products, title }: ShopByProductsOverviewProps): React.ReactElement {

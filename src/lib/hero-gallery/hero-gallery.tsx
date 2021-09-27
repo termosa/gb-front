@@ -145,8 +145,12 @@ const SlideContent = styled.div`
   left: 50%;
   transform: translateX(-50%);
   margin: 0;
-  padding: 25px;
+  padding: 15px;
   text-align: center;
+
+  @media (min-width: 375px) {
+    padding: 25px;
+  }
 
   @media (min-width: 768px) {
     bottom: -102px;
@@ -221,7 +225,7 @@ export function HeroGallery({ className, style, slides }: HeroGalleryProps): Rea
               <SlideText>
                 <p>{slide.bottomText}</p>
               </SlideText>
-              <Button backColor={'#000'} frontColor={'#fff'} width={'210px'}>
+              <Button backColor={'#000'} frontColor={'#fff'} padding={'0 25px'} width={'auto'}>
                 <SlideLinkInner href={slide.buttonLink}>{slide.buttonText}</SlideLinkInner>
               </Button>
             </SlideContent>

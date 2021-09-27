@@ -206,7 +206,7 @@ const ExtendableBlockWrapper = styled.div<{ opened: string }>`
 
 const ExtendableBlockContainer = styled.div`
   margin: 0 auto;
-  width: 960px;
+  width: 990px;
   display: flex;
   justify-content: space-between;
 
@@ -487,6 +487,14 @@ const ExtendableBlockListAccordionInput = styled.input`
   }
 `
 
+const ExtendableBlockRowItems = styled.div`
+  display: flex;
+
+  & > div {
+    width: 50%;
+  }
+`
+
 const ExtendableBlockListAccordionLabel = styled.label``
 
 const AllContent = () => (
@@ -645,28 +653,30 @@ const AllContent = () => (
 const SubscriptionContent = () => (
   <ExtendableBlock>
     <ExtendableBlockContainer>
-      <ExtendableBlockItem>
-        <a href="/pages/inner-circle">
-          <Image src="https://fragrantjewels-assets.s3.amazonaws.com/images/pick-your-poison/nav-pick-your-poison.jpg" />
-          <ExtendableBlockListTitle>Exclusive Savings On New Collections Every Month</ExtendableBlockListTitle>
-          <ExtendableBlockListText>A collection so intoxicating, it's to die for...</ExtendableBlockListText>
-          <AnimatedLink as="span">
-            <span>Learn more</span>
-          </AnimatedLink>
-        </a>
-      </ExtendableBlockItem>
-      <ExtendableBlockItem>
-        <a href="/pages/rare-ic-page">
-          <Image src="https://fragrantjewels.s3.amazonaws.com/app/app-nav/rare-protection-charms.jpg" />
-          <ExtendableBlockListTitle>Everything There Is To Know About Rare Collections</ExtendableBlockListTitle>
-          <ExtendableBlockListText>
-            Start collecting unique limited edition sets not available for sale! Find out how you can qualify.
-          </ExtendableBlockListText>
-          <AnimatedLink as="span">
-            <span>Learn more</span>
-          </AnimatedLink>
-        </a>
-      </ExtendableBlockItem>
+      <ExtendableBlockRowItems>
+        <ExtendableBlockItem>
+          <a href="/pages/inner-circle">
+            <Image src="https://fragrantjewels-assets.s3.amazonaws.com/images/pick-your-poison/nav-pick-your-poison.jpg" />
+            <ExtendableBlockListTitle>Exclusive Savings On New Collections Every Month</ExtendableBlockListTitle>
+            <ExtendableBlockListText>A collection so intoxicating, it's to die for...</ExtendableBlockListText>
+            <AnimatedLink as="span">
+              <span>Learn more</span>
+            </AnimatedLink>
+          </a>
+        </ExtendableBlockItem>
+        <ExtendableBlockItem>
+          <a href="/pages/rare-ic-page">
+            <Image src="https://fragrantjewels.s3.amazonaws.com/app/app-nav/rare-protection-charms.jpg" />
+            <ExtendableBlockListTitle>Everything There Is To Know About Rare Collections</ExtendableBlockListTitle>
+            <ExtendableBlockListText>
+              Start collecting unique limited edition sets not available for sale! Find out how you can qualify.
+            </ExtendableBlockListText>
+            <AnimatedLink as="span">
+              <span>Learn more</span>
+            </AnimatedLink>
+          </a>
+        </ExtendableBlockItem>
+      </ExtendableBlockRowItems>
       <ExtendableBlockItem>
         <ExtendableBlockListTitle className="hidden-title">Subscription</ExtendableBlockListTitle>
         <ExtendableBlockList>
@@ -694,30 +704,32 @@ const SubscriptionContent = () => (
 const RewardsContent = () => (
   <ExtendableBlock>
     <ExtendableBlockContainer>
-      <ExtendableBlockItem>
-        <a href="/pages/rewards-boutique">
-          <Image src="https://fragrantjewels.s3.amazonaws.com/app/app-nav/nav-rewards-img-1.jpg" />
-          <ExtendableBlockListTitle>New Rewards Every Week</ExtendableBlockListTitle>
-          <ExtendableBlockListText>
-            Every dollar you spend earns you reward points you can use to redeem free jewelry, products and more!
-          </ExtendableBlockListText>
-          <AnimatedLink as="span">
-            <span>Learn more</span>
-          </AnimatedLink>
-        </a>
-      </ExtendableBlockItem>
-      <ExtendableBlockItem>
-        <a href="/pages/rewards-explainer">
-          <Image src="https://fragrantjewels.s3.amazonaws.com/app/app-nav/nav-rewards-img-2.jpg" />
-          <ExtendableBlockListTitle>Earn Platinum Reward Status</ExtendableBlockListTitle>
-          <ExtendableBlockListText>
-            Get exclusive access to VIP offers, 3x points and more when you earn Platinum status!
-          </ExtendableBlockListText>
-          <AnimatedLink as="span">
-            <span>Learn more</span>
-          </AnimatedLink>
-        </a>
-      </ExtendableBlockItem>
+      <ExtendableBlockRowItems>
+        <ExtendableBlockItem>
+          <a href="/pages/rewards-boutique">
+            <Image src="https://fragrantjewels.s3.amazonaws.com/app/app-nav/nav-rewards-img-1.jpg" />
+            <ExtendableBlockListTitle>New Rewards Every Week</ExtendableBlockListTitle>
+            <ExtendableBlockListText>
+              Every dollar you spend earns you reward points you can use to redeem free jewelry, products and more!
+            </ExtendableBlockListText>
+            <AnimatedLink as="span">
+              <span>Learn more</span>
+            </AnimatedLink>
+          </a>
+        </ExtendableBlockItem>
+        <ExtendableBlockItem>
+          <a href="/pages/rewards-explainer">
+            <Image src="https://fragrantjewels.s3.amazonaws.com/app/app-nav/nav-rewards-img-2.jpg" />
+            <ExtendableBlockListTitle>Earn Platinum Reward Status</ExtendableBlockListTitle>
+            <ExtendableBlockListText>
+              Get exclusive access to VIP offers, 3x points and more when you earn Platinum status!
+            </ExtendableBlockListText>
+            <AnimatedLink as="span">
+              <span>Learn more</span>
+            </AnimatedLink>
+          </a>
+        </ExtendableBlockItem>
+      </ExtendableBlockRowItems>
       <ExtendableBlockItem>
         <ExtendableBlockListTitle className="hidden-title">Rewards</ExtendableBlockListTitle>
         <ExtendableBlockList>

@@ -12,7 +12,7 @@ const SWrapper = styled.section`
   text-align: center;
   background: linear-gradient(0deg, #fdfbf9 0%, #fdfbf9 50%, white 50%, white 100%);
   margin: 0 auto 32px;
-  padding: 50px 0 30px;
+  padding: 50px 0 36px;
 
   @media (min-width: 768px) {
     padding: 46px 0 0;
@@ -116,6 +116,10 @@ const SArrow = styled.div`
   @media (min-width: 414px) {
     top: 141px;
   }
+
+  @media (min-width: 450px) {
+    top: 155px;
+  }
 `
 
 const SPrevArrow = styled(SArrow)`
@@ -198,7 +202,7 @@ export function InformationOverview({
                   }}
                 />
               </SNextArrow>
-              <Slider infinite showDots={true} dotsPresent={true} arrows={false} carouselRef={infoSliderRef}>
+              <Slider infinite showDots={true} arrows={false} carouselRef={infoSliderRef}>
                 {cards.map((card) => (
                   <InformationCard key={card.image + card.title} card={card} />
                 ))}
