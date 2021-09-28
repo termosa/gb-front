@@ -1,7 +1,7 @@
 export const meta = {
   type: 'function',
-  name: 'initiateGtm',
-  description: 'Loads GTM script (only once)',
+  name: 'initiateFacebookPixel',
+  description: 'Loads Facebook script (only once)',
   tags: ['function', 'analytics'],
   lists: {
     returns: [
@@ -13,7 +13,7 @@ export const meta = {
 ## Usage
 
 ```js
-import initiateGtm from './initiate-gtm'
+import initiateFacebookPixel from './initiate-facebook-pixel'
 
-initiateGtm().then(gtm => gtm.push({ event: 'pageview', url: window.location.href }))
+initiateFacebookPixel().then(fbq => fbq('track', 'PageView'))
 ```

@@ -1,0 +1,19 @@
+export const meta = {
+  type: 'function',
+  name: 'initiatePinterestPixel',
+  description: 'Loads Pinterest script (only once)',
+  tags: ['function', 'analytics'],
+  lists: {
+    returns: [
+      { name: 'promise', type: 'Promise<Alooma>' },
+    ],
+  },
+}
+
+## Usage
+
+```js
+import initiatePinterestPixel from './initiate-pinterest-pixel'
+
+initiatePinterestPixel().then(gtm => gtm.push({ event: 'pageview', url: window.location.href }))
+```
