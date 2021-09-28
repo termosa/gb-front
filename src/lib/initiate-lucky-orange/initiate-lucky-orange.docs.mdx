@@ -1,0 +1,19 @@
+export const meta = {
+  type: 'function',
+  name: 'initiateLuckyOrange',
+  description: 'Loads Lucky Orange script (only once)',
+  tags: ['function', 'analytics'],
+  lists: {
+    returns: [
+      { name: 'promise', type: 'Promise<void>' },
+    ],
+  },
+}
+
+## Usage
+
+```js
+import initiateLuckyOrange from './initiate-lucky-orange'
+
+initiateLuckyOrange()
+```

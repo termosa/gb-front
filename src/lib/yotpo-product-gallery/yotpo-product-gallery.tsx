@@ -32,7 +32,7 @@ export type YotpoGalleryProps = {
   className?: ClassName
   style?: React.CSSProperties
   galleryId: string
-  productId: string
+  productId: number
 }
 
 export function YotpoProductGallery({ className, style, galleryId, productId }: YotpoGalleryProps): React.ReactElement {

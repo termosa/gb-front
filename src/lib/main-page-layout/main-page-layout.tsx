@@ -19,6 +19,8 @@ import CustomerOrdersDetailsContext from '../../modules/customer-orders-details-
 import useCustomerOrdersDetails from '../use-customer-orders-details'
 import initiateFacebookPixel from '../initiate-facebook-pixel'
 import initiatePinterestPixel from '../initiate-pinterest-pixel'
+import initiateLuckyOrange from '../initiate-lucky-orange'
+import initiateExitIntelligence from '../initiate-exit-intelligence'
 
 const MainPageLayoutWrapper = styled.div`
   display: flex;
@@ -57,6 +59,8 @@ export function MainPageLayout({ children, className, style }: MainPageLayoutPro
     initiateGtm()
     initiateFacebookPixel()
     initiatePinterestPixel()
+    initiateLuckyOrange()
+    initiateExitIntelligence()
   })
 
   const searchRequest = useDefer(loadProductsChunk)
