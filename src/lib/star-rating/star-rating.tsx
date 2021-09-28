@@ -12,10 +12,10 @@ const SStars = styled.span`
   /*line-height: 20px;*/
 `
 
-const SSvg = styled.svg`
+const SSvg = styled.svg<{ emptyStarColor?: string }>`
   width: 12px;
   margin: 0 1.5px;
-  fill: ${(props) => props.emptyStarClr || '#9059c8'};
+  fill: ${(props) => props.emptyStarColor || '#9059c8'};
   vertical-align: middle;
 
   @media (min-width: 768px) {
@@ -47,7 +47,12 @@ const HalfStar = () => (
 )
 
 const EmptyStar = () => (
-  <SSvg viewBox="0 0 37 35" emptyStarClr="#dadada" enable-background="new 0 0 37 35" xmlns="http://www.w3.org/2000/svg">
+  <SSvg
+    viewBox="0 0 37 35"
+    emptyStarColor="#dadada"
+    enable-background="new 0 0 37 35"
+    xmlns="http://www.w3.org/2000/svg"
+  >
     <polygon points="19,0.791 24.646,12.229 37.27,14.064 28.135,22.968 30.291,35.541 19,29.604 7.709,35.541 9.865,22.968 0.73,14.064 13.354,12.229" />
   </SSvg>
 )

@@ -12,7 +12,7 @@ export type YotpoStarRatingProps = {
 
 export function YotpoStarRating({ className, style, productId, onClick }: YotpoStarRatingProps): React.ReactElement {
   const product = useContext(ProductContext)
-  useYotpo([product, productId])
+  useYotpo([productId || product?.product_id])
   return (
     <div
       className={cn(className, 'yotpo', 'bottomLine', 'yotpo-small')}
