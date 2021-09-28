@@ -1,7 +1,6 @@
 import React from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
-import Button from '../../lib/button'
 import Slider from '../slider'
 import { useScreenSize } from '../use-screen-size'
 
