@@ -49,6 +49,10 @@ const SectionTitle = styled.div<{
   text-align: center;
   margin: 0 0 12px;
 
+  @media (min-width: 768px) {
+    margin: 0 0 35px;
+  }
+
   & > span {
     position: relative;
 
@@ -223,9 +227,10 @@ export const ProductsCarousel = ({
             </span>
           </SectionTitle>
         ) : (
-          <SectionTitle isMobile={false}>
-            {title + ' '}
-            <span>{titleHighlighted}</span>
+          <SectionTitle>
+            <span>
+              {title} {titleHighlighted}
+            </span>
           </SectionTitle>
         )}
         <SectionText>
