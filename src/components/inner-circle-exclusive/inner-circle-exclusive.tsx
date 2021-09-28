@@ -432,6 +432,36 @@ const SSliderButton = styled.button<{
   }
 `
 
+const LinkInner = styled.a`
+  text-decoration: none;
+  color: inherit;
+  display: inline-block;
+  min-width: 157px;
+  margin: 0 auto;
+  text-transform: uppercase;
+  border: 1px solid #000;
+  border-radius: 0;
+  font: 500 16px/1.25 'Montserrat', sans-serif;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  transition: all linear 0.2s;
+  background-color: #fff;
+  color: #000;
+  cursor: pointer;
+  padding: 16.5px;
+  text-align: center;
+
+  @media (min-width: 1200px) {
+    margin: 0;
+    &:hover {
+      font-weight: 700;
+      background: #000;
+      color: #fff;
+    }
+  }
+}
+`
+
 const SImage = styled(Image)`
   margin: 0;
 `
@@ -533,9 +563,7 @@ export function InnerCircleExclusive({
         </STitle>
         <SSubTitle>{subTitle}</SSubTitle>
         <SButtonWrapper>
-          <a href={buttonLink} style={{ textDecoration: 'none' }}>
-            <Button width={'189px'}>{topButtonText}</Button>
-          </a>
+          <LinkInner href={buttonLink}>{topButtonText}</LinkInner>
         </SButtonWrapper>
       </STitleWrapper>
       <SContentWrapper>

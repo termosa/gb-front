@@ -1,0 +1,19 @@
+export const meta = {
+  type: 'function',
+  name: 'initiateFacebookPixel',
+  description: 'Loads Facebook script (only once)',
+  tags: ['function', 'analytics'],
+  lists: {
+    returns: [
+      { name: 'promise', type: 'Promise<Alooma>' },
+    ],
+  },
+}
+
+## Usage
+
+```js
+import initiateFacebookPixel from './initiate-facebook-pixel'
+
+initiateFacebookPixel().then(fbq => fbq('track', 'PageView'))
+```

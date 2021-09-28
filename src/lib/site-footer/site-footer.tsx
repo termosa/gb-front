@@ -75,7 +75,7 @@ export function SiteFooter({ className, style }: SiteFooterProps): React.ReactEl
           <FooterAccordion>
             {isMobileScreen && <SocialLinks />}
             <LinksColumnGroup
-              title="Shop"
+              title="QUICK LINKS"
               links={[
                 { name: 'Halloween', href: '/collections/spooky' },
                 { name: 'Bath Bombs', href: '/collections/bath-bombs' },
@@ -89,7 +89,7 @@ export function SiteFooter({ className, style }: SiteFooterProps): React.ReactEl
               mobile={isMobileScreen}
             />
             <LinksColumnGroup
-              title="Customer Support"
+              title="CUSTOMER CARE"
               links={[
                 { name: 'Help Center', href: 'https://helpcenter.fragrantjewels.com/hc/en-us' },
                 { name: 'Order Status', href: '/pages/order-status-check' },
@@ -97,8 +97,13 @@ export function SiteFooter({ className, style }: SiteFooterProps): React.ReactEl
               mobile={isMobileScreen}
             />
             <LinksColumnGroup
-              title="FAQ"
-              links={[{ name: 'Terms and Conditions', href: '/pages/terms-and-conditions' }]}
+              title="ABOUT"
+              links={[
+                { name: 'Terms and Conditions', href: '/pages/terms-and-conditions' },
+                { name: 'Enter the Vault 2021-2022 Sweepstakes', href: '/pages/enter-the-vault-2021-2022-giveaway' },
+                { name: 'Tell us your ideas!', href: 'https://www.surveygizmo.com/s3/5354856/Product-inspiration' },
+                { name: 'Privacy Policy', href: '/pages/privacy' },
+              ]}
               mobile={isMobileScreen}
             />
             <div>

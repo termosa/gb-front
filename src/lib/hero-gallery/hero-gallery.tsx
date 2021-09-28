@@ -1,7 +1,6 @@
 import React from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
-import Button from '../../lib/button'
 import Slider from '../slider'
 import { useScreenSize } from '../use-screen-size'
 
@@ -216,6 +215,31 @@ const SlideText = styled.div`
 const SlideLinkInner = styled.a`
   text-decoration: none;
   color: inherit;
+  display: inline-block;
+  min-width: 250px;
+  margin: 0 auto;
+  text-transform: uppercase;
+  border: 1px solid #000;
+  border-radius: 0;
+  font: 700 16px/1.25 'Montserrat', sans-serif;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  transition: all linear 0.2s;
+  background-color: #000;
+  color: #fff;
+  cursor: pointer;
+  padding: 16.5px;
+  text-align: center;
+
+  @media (min-width: 1200px) {
+    margin: 0;
+    &:hover {
+      font-weight: 500;
+      background: #fff;
+      color: #000;
+    }
+  }
+}
 `
 
 export type GalleryItem = {
@@ -262,9 +286,7 @@ export function HeroGallery({ className, style, slides }: HeroGalleryProps): Rea
                   <SlideText>
                     <p>{slide.bottomText}</p>
                   </SlideText>
-                  <Button backColor={'#000'} frontColor={'#fff'} padding={'0 25px'} width={'250px'}>
-                    <SlideLinkInner href={slide.buttonLink}>{slide.buttonText}</SlideLinkInner>
-                  </Button>
+                  <SlideLinkInner href={slide.buttonLink}>{slide.buttonText}</SlideLinkInner>
                 </SliderTransparentWrapper>
               </SlideTransparentContent>
             ) : (
@@ -278,9 +300,7 @@ export function HeroGallery({ className, style, slides }: HeroGalleryProps): Rea
                 <SlideText>
                   <p>{slide.bottomText}</p>
                 </SlideText>
-                <Button backColor={'#000'} frontColor={'#fff'} padding={'0 25px'} width={'auto'}>
-                  <SlideLinkInner href={slide.buttonLink}>{slide.buttonText}</SlideLinkInner>
-                </Button>
+                <SlideLinkInner href={slide.buttonLink}>{slide.buttonText}</SlideLinkInner>
               </SlideContent>
             )}
           </Slide>

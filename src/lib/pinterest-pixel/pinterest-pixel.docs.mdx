@@ -1,0 +1,22 @@
+export const meta = {
+  type: 'function',
+  name: 'pinterestPixel',
+  description: 'Submits analytics data to Pinterest',
+  tags: ['function', 'analytics'],
+  lists: {
+    arguments: [
+      { name: 'eventName', type: 'string', required: true },
+    ],
+    returns: [
+      { name: 'promise', type: 'Promise<void>' },
+    ],
+  },
+}
+
+## Usage
+
+```js
+import pinterestPixel from './pinterest-pixel'
+
+pinterestPixel('page')
+```

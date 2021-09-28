@@ -17,6 +17,10 @@ import initiateGtm from '../initiate-gtm'
 import CustomerContext from '../../modules/customer-context'
 import CustomerOrdersDetailsContext from '../../modules/customer-orders-details-context'
 import useCustomerOrdersDetails from '../use-customer-orders-details'
+import initiateFacebookPixel from '../initiate-facebook-pixel'
+import initiatePinterestPixel from '../initiate-pinterest-pixel'
+import initiateLuckyOrange from '../initiate-lucky-orange'
+import initiateExitIntelligence from '../initiate-exit-intelligence'
 
 const MainPageLayoutWrapper = styled.div`
   display: flex;
@@ -53,6 +57,10 @@ export function MainPageLayout({ children, className, style }: MainPageLayoutPro
     initiateKlaviyo()
     initiateAlooma()
     initiateGtm()
+    initiateFacebookPixel()
+    initiatePinterestPixel()
+    initiateLuckyOrange()
+    initiateExitIntelligence()
   })
 
   const searchRequest = useDefer(loadProductsChunk)
@@ -71,6 +79,10 @@ export function MainPageLayout({ children, className, style }: MainPageLayoutPro
       <Head>
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+        <meta
+          name="description"
+          content="A hidden ring in each product and a chance to win a $10,000 ring! New products now available for a limited time."
+        />
         <link
           href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,700;1,700&display=swap"
           rel="stylesheet"

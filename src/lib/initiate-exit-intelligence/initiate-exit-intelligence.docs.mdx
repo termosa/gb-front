@@ -1,0 +1,19 @@
+export const meta = {
+  type: 'function',
+  name: 'initiateExitIntelligence',
+  description: 'Loads Exit Intelligence script (only once)',
+  tags: ['function', 'analytics'],
+  lists: {
+    returns: [
+      { name: 'promise', type: 'Promise<void>' },
+    ],
+  },
+}
+
+## Usage
+
+```js
+import initiateExitIntelligence from './initiate-exit-intelligence'
+
+initiateExitIntelligence()
+```

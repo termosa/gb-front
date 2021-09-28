@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components'
 import { Product } from '../../modules/normalize-product'
 
 const SModalButtonsWrapper = styled.div`
-  margin: 16px 0;
+  margin: 16px 0 0;
   padding: 0 0 16px 0;
   display: flex;
   align-items: center;
