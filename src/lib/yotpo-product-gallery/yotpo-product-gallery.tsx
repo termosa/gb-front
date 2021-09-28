@@ -7,15 +7,15 @@ import SiteSection from '../../components/site-section'
 const Container = styled(SiteSection)`
   max-width: 960px;
   text-align: center;
-  margin: 0 auto 36px;
+  margin: 0 auto;
   padding: 0 15px;
 
-  @media (min-width: 768px) {
-    margin-bottom: 36px;
-  }
+  .yotpo-slider-wrapper {
+    margin-bottom: 36px !important;
 
-  @media (min-width: 992px) {
-    margin-bottom: 95px;
+    @media (min-width: 992px) {
+      margin-bottom: 60px !important;
+    }
   }
 
   .yotpo .yotpo-pictures-collage-wrapper.yotpo-image-spacing-5 .y-image-wrapper {

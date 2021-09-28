@@ -106,6 +106,10 @@ const ProductCardImgWrapperInner = styled.div`
     width: 100%;
     max-height: 178px;
     cursor: pointer;
+
+    @media (min-width: 768px) {
+      max-height: 222px;
+    }
   }
 `
 
@@ -146,11 +150,11 @@ const ProductCardTag = styled.div<{
 
 const ProductCardTitle = styled.h4`
   font: 400 16px/1.3 'Montserrat', sans-serif;
-  margin: 0 0 8px;
+  margin: 0 0 10px;
   padding: 0 5px;
-  height: 40px;
   text-overflow: ellipsis;
   overflow: hidden;
+  white-space: nowrap;
 `
 
 const ProductCardType = styled.div`
@@ -161,7 +165,7 @@ const ProductCardType = styled.div`
   margin: auto 0 14px;
 
   @media (min-width: 768px) {
-    margin: auto 0 11px;
+    margin: auto 0 13px;
   }
 `
 
