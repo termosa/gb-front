@@ -3,6 +3,7 @@ import { AppProps } from 'next/app'
 import Router from 'next/router'
 import baseApiUrl from '../modules/base-api-url'
 import gtm from '../lib/gtm'
+import facebookPixel from '../lib/facebook-pixel'
 import '../_require-env'
 import Head from 'next/head'
 
@@ -10,7 +11,10 @@ baseApiUrl(typeof window === 'undefined' ? process.env.BASE_API_URL : process.en
 
 const Application = ({ Component, pageProps }: AppProps): React.ReactElement => {
   useEffect(() => {
-    const handleRouteChange = (url: string) => gtm('pageview', { url })
+    const handleRouteChange = (url: string) => {
+      gtm('pageview', { url })
+      facebookPixel('PageView')
+    }
     Router.events.on('routeChangeComplete', handleRouteChange)
     return () => {
       Router.events.off('routeChangeComplete', handleRouteChange)
