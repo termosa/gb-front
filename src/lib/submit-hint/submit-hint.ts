@@ -1,4 +1,5 @@
 import api from '../../modules/api'
+import baseSiteUrl from '../../modules/base-site-url'
 import { Product } from '../../modules/normalize-product'
 
 export type ContactInformation = {
@@ -31,7 +32,7 @@ export function submitHint(
         // Quantity: 1,
         // ItemPrice: variant.actual_price,
         // RowTotal: variant.actual_price,
-        ProductURL: `https://www.fragrantjewels.com/products/${product.handle}`,
+        ProductURL: `${baseSiteUrl}/products/${product.handle}`,
         ImageURL: (product.image || (product.images && product.images[0]))?.src,
         // Categories: ...
       },

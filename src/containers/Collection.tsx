@@ -11,6 +11,7 @@ import CollectionBanner from '../lib/collection-banner'
 import alooma from '../lib/alooma'
 import window from '../lib/window'
 import { Product } from '../modules/normalize-product'
+import baseSiteUrl from '../modules/base-site-url'
 
 const SFiltersSection = styled(SiteSection)`
   margin-bottom: 32px;
@@ -112,7 +113,7 @@ const Collection = (): null | React.ReactElement => {
         products={filteredProducts}
         onSelectProduct={(product) => {
           alooma('filters_state', {
-            product_page_clicked: `https://www.fragrantjewels.com/products/${product.handle}`,
+            product_page_clicked: `${baseSiteUrl}/products/${product.handle}`,
             product_title: product.title,
             filters: Object.entries(filter || {}).reduce(
               (filters, [group, value]) =>
