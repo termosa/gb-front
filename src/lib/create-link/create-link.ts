@@ -15,12 +15,12 @@ const patchPathWithQueryAndHash = (path: string, query?: null | Query, hash?: st
   return `${onlyPath}${queryString}${hashString}`
 }
 
-const formatPathAndParameters = (path: string, query?: null | Query, hash?: string) => {
+const formatPathAndParameters = (path: string, query?: null | Query, hash?: string): string => {
   const normalizedPath = path.startsWith('/') ? path : `/${path}`
   const pathWithQuery = patchPathWithQueryAndHash(normalizedPath, query, hash)
   if (/^\/(\?|$)/.test(normalizedPath) || /^\/(api|collections|products)\//.test(pathWithQuery))
     return `${temporaryNextPrefix}${pathWithQuery}`
-  return
+  return pathWithQuery
 }
 
 export function createLink(path: string, query?: null | Query, hash?: string): string {
