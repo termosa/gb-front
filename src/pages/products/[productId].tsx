@@ -12,11 +12,14 @@ import RemotePage from '../../lib/remote-page'
 import navigate from '../../lib/navigate'
 import Head from 'next/head'
 import LazyLoad from '../../lib/lazy-load'
+import YotpoProductGallery from 'src/lib/yotpo-product-gallery'
 
 export default function ProductPage({ product, productId, potentialProducts }: ProductPageProps): React.ReactElement {
   if (!product) return <RemotePage url={`//www.fragrantjewels.com/products/${productId}`} />
 
   trackViewedProduct(product)
+
+  console.log(product)
 
   return (
     <>
@@ -40,6 +43,9 @@ export default function ProductPage({ product, productId, potentialProducts }: P
               />
             </SiteSection>
           )}
+          <LazyLoad threshold={1000}>
+            <YotpoProductGallery galleryId="5d12193001f0950007b69682" productId={'' + product.product_id} />
+          </LazyLoad>
           <LazyLoad threshold={1000}>
             <SiteSection>
               <YotpoReviews />
