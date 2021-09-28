@@ -567,7 +567,22 @@ export const CollectionFilters = ({
             {getListOfSelectedFilters(selectedFilters).map(({ name, filterGroup }) => (
               <SSelectedFilter>
                 <SSelectedFilterInfo>{name}</SSelectedFilterInfo>
-                <CloseButton onClick={() => handleFilterChange(filterGroup as FilterGroup, name, false)} small />
+                <svg
+                  width="10"
+                  height="10"
+                  onClick={() => handleFilterChange(filterGroup as FilterGroup, name, false)}
+                  viewBox="0 0 10 10"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M9 1L1 9M1 1L9 9"
+                    stroke="black"
+                    strokeWidth="0.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
               </SSelectedFilter>
             ))}
           </SSelectedFilters>
