@@ -15,6 +15,7 @@ export type { CollectionProductsFilter } from '../../modules/filter-collection-p
 export interface Filter {
   name: string
   amount: number
+  availableAmount: number
 }
 
 export interface Filters {
@@ -228,6 +229,7 @@ const SClearFiltersButton = styled.span<{ mobile?: boolean }>`
 const SFilterDesktopControlButtonsGroup = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
   border-bottom: 0.5px solid #000;
   padding: 16px 0;
   width: 100%;
@@ -321,6 +323,44 @@ export const CollectionFilters = ({
 }: CollectionFiltersProps): React.ReactElement => {
   const screenSize = useScreenSize()
   const [selectedSorting, setSelectedSorting] = useState<SelectedSorting>(initialSorting)
+
+  const calculateAvailableFilters = (arr: Array<Filter>, name: string) => {
+    return arr.map((el: Filter) => {
+      const productsWithFilter =
+        name === 'size'
+          ? filteredProducts.filter((product: Product) => {
+              return product.variants.some((variant) => variant.size === parseInt(el.name))
+            })
+          : filteredProducts.filter(
+              (product: Product) => product[name as 'fragrance' | 'color' | 'material'] === el.name
+            )
+      return {
+        ...el,
+        availableAmount: productsWithFilter.length,
+      }
+    })
+  }
+
+  const filtersCopy = {
+    sizes: filters.sizes
+      ? React.useMemo(() => calculateAvailableFilters(filters.sizes, 'size'), [filters.sizes, filteredProducts])
+      : [],
+    fragrances: filters.fragrances
+      ? React.useMemo(() => calculateAvailableFilters(filters.fragrances, 'fragrance'), [
+          filters.fragrances,
+          filteredProducts,
+        ])
+      : [],
+    colors: filters.colors
+      ? React.useMemo(() => calculateAvailableFilters(filters.colors, 'color'), [filters.colors, filteredProducts])
+      : [],
+    materials: filters.materials
+      ? React.useMemo(() => calculateAvailableFilters(filters.materials, 'material'), [
+          filters.materials,
+          filteredProducts,
+        ])
+      : [],
+  }
 
   const [referenceElement, setReferenceElement] = useState<HTMLButtonElement | null>(null)
   const [popperElement, setPopperElement] = useState<HTMLDivElement | null>(null)
@@ -448,7 +488,7 @@ export const CollectionFilters = ({
         <SFilters>
           {!!filters.fragrances.length && (
             <FilterPart
-              itemsArray={filters.fragrances}
+              itemsArray={filtersCopy.fragrances}
               filterGroup={'fragrances'}
               handleFilterChange={handleFilterChange}
               selectedFilters={selectedFilters}
@@ -459,7 +499,7 @@ export const CollectionFilters = ({
           )}
           {!!filters.sizes.length && (
             <FilterPart
-              itemsArray={filters.sizes}
+              itemsArray={filtersCopy.sizes}
               filterGroup={'sizes'}
               handleFilterChange={handleFilterChange}
               selectedFilters={selectedFilters}
@@ -469,7 +509,7 @@ export const CollectionFilters = ({
           )}
           {!!filters.materials.length && (
             <FilterPart
-              itemsArray={filters.materials}
+              itemsArray={filtersCopy.materials}
               filterGroup={'materials'}
               handleFilterChange={handleFilterChange}
               selectedFilters={selectedFilters}
@@ -479,7 +519,7 @@ export const CollectionFilters = ({
           )}
           {!!filters.colors.length && (
             <FilterPart
-              itemsArray={filters.colors}
+              itemsArray={filtersCopy.colors}
               filterGroup={'colors'}
               handleFilterChange={handleFilterChange}
               selectedFilters={selectedFilters}
