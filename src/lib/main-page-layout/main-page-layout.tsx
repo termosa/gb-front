@@ -79,6 +79,10 @@ export function MainPageLayout({ children, className, style }: MainPageLayoutPro
       <Head>
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+        <meta
+          name="description"
+          content="A hidden ring in each product and a chance to win a $10,000 ring! New products now available for a limited time."
+        />
         <link
           href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,700;1,700&display=swap"
           rel="stylesheet"
