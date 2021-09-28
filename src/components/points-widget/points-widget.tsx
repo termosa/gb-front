@@ -3,6 +3,7 @@ import DiamondIcon from '../../lib/diamond-icon'
 import styled from 'styled-components'
 import CustomerOrdersDetailsContext from '../../modules/customer-orders-details-context'
 import usePoints from '../../lib/use-points'
+import createLink from '../../lib/create-link'
 
 const SWrapper = styled.div``
 
@@ -40,7 +41,7 @@ export function PointsWidget(): React.ReactElement {
   const availablePoints = usePoints()
   return (
     <SWrapper>
-      <SLinkWrapper href="/pages/rewards-boutique">
+      <SLinkWrapper href={createLink.forPage('rewards-boutique')}>
         <DiamondIcon customerLevel={customerOrdersDetails.level} />
         <SValueWrapper>
           <SValue>{availablePoints}</SValue>

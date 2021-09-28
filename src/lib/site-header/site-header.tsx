@@ -14,6 +14,7 @@ import Image from '../image'
 import SiteSection from '../../components/site-section'
 import CustomerContext from '../../modules/customer-context'
 import CustomerOrdersDetailsContext from '../../modules/customer-orders-details-context'
+import createLink from '../create-link'
 
 const SWrapper = styled.div`
   text-align: center;
@@ -512,22 +513,22 @@ const AllContent = () => (
             </ExtendableBlockListAccordionLabel>
             <ExtendableBlockList className="nav-mob-accordion__content">
               <ExtendableBlockListItem>
-                <a href="/collections/bath-bombs">Bath Bombs</a>
+                <a href={createLink.forCollection('bath-bombs')}>Bath Bombs</a>
               </ExtendableBlockListItem>
               <ExtendableBlockListItem>
-                <a href="/collections/jewel-candles">Candles</a>
+                <a href={createLink.forCollection('jewel-candles')}>Candles</a>
               </ExtendableBlockListItem>
               <ExtendableBlockListItem>
-                <a href="/collections/body-scrubs">Body Scrubs</a>
+                <a href={createLink.forCollection('body-scrubs')}>Body Scrubs</a>
               </ExtendableBlockListItem>
               <ExtendableBlockListItem>
-                <a href="/collections/the-jewelry-store">Jewelry</a>
+                <a href={createLink.forCollection('the-jewelry-store')}>Jewelry</a>
               </ExtendableBlockListItem>
               <ExtendableBlockListItem>
-                <a href="/collections/gift-sets">Gift Sets</a>
+                <a href={createLink.forCollection('gift-sets')}>Gift Sets</a>
               </ExtendableBlockListItem>
               <ExtendableBlockListItem>
-                <AnimatedLink href="/collections/all-products">
+                <AnimatedLink href={createLink.forCollection('all-products')}>
                   <span>Shop all</span>
                 </AnimatedLink>
               </ExtendableBlockListItem>
@@ -544,37 +545,41 @@ const AllContent = () => (
             </ExtendableBlockListAccordionLabel>
             <ExtendableBlockList className="nav-mob-accordion__content">
               <ExtendableBlockListItem>
-                <a href="/collections/all-products#fragrance=Fragrance:%20Aquatic">Aquatic</a>
+                <a href={createLink.forCollection('all-products', null, 'fragrance=Fragrance:%20Aquatic')}>Aquatic</a>
               </ExtendableBlockListItem>
               <ExtendableBlockListItem>
-                <a href="/collections/all-products#fragrance=Fragrance:%20Citrus">Citrus</a>
+                <a href={createLink.forCollection('all-products', null, 'fragrance=Fragrance:%20Citrus')}>Citrus</a>
               </ExtendableBlockListItem>
               <ExtendableBlockListItem>
-                <a href="/collections/all-products#fragrance=Fragrance:%20Floral">Floral</a>
+                <a href={createLink.forCollection('all-products', null, 'fragrance=Fragrance:%20Floral')}>Floral</a>
               </ExtendableBlockListItem>
               <ExtendableBlockListItem>
-                <a href="/collections/all-products#fragrance=Fragrance:%20Floral%20Woods">Floral Woods</a>
+                <a href={createLink.forCollection('all-products', null, 'fragrance=Fragrance:%20Floral%20Woods')}>
+                  Floral Woods
+                </a>
               </ExtendableBlockListItem>
               <ExtendableBlockListItem>
-                <a href="/collections/all-products#fragrance=Fragrance:%20Fresh">Fresh</a>
+                <a href={createLink.forCollection('all-products', null, 'fragrance=Fragrance:%20Fresh')}>Fresh</a>
               </ExtendableBlockListItem>
               <ExtendableBlockListItem>
-                <a href="/collections/all-products#fragrance=Fragrance:%20Fruity">Fruity</a>
+                <a href={createLink.forCollection('all-products', null, 'fragrance=Fragrance:%20Fruity')}>Fruity</a>
               </ExtendableBlockListItem>
               <ExtendableBlockListItem>
-                <a href="/collections/all-products#fragrance=Fragrance:%20Gourmand">Gourmand</a>
+                <a href={createLink.forCollection('all-products', null, 'fragrance=Fragrance:%20Gourmand')}>Gourmand</a>
               </ExtendableBlockListItem>
               <ExtendableBlockListItem>
-                <a href="/collections/all-products#fragrance=Fragrance:%20Green">Green</a>
+                <a href={createLink.forCollection('all-products', null, 'fragrance=Fragrance:%20Green')}>Green</a>
               </ExtendableBlockListItem>
               <ExtendableBlockListItem>
-                <a href="/collections/all-products#fragrance=Fragrance:%20Musky">Musky</a>
+                <a href={createLink.forCollection('all-products', null, 'fragrance=Fragrance:%20Musky')}>Musky</a>
               </ExtendableBlockListItem>
               <ExtendableBlockListItem>
-                <a href="/collections/all-products#fragrance=Fragrance:%20Spicy/%20Smoky">Spicy/ Smoky</a>
+                <a href={createLink.forCollection('all-products', null, 'fragrance=Fragrance:%20Spicy/%20Smoky')}>
+                  Spicy/ Smoky
+                </a>
               </ExtendableBlockListItem>
               <ExtendableBlockListItem>
-                <AnimatedLink href="/collections/all-products">
+                <AnimatedLink href={createLink.forCollection('all-products')}>
                   <span>Shop all</span>
                 </AnimatedLink>
               </ExtendableBlockListItem>
@@ -592,18 +597,28 @@ const AllContent = () => (
               </ExtendableBlockListAccordionLabel>
               <ExtendableBlockList className="nav-mob-accordion__content">
                 <ExtendableBlockListItem>
-                  <a href="/collections/all-products#material=Material:%2018K%20Gold%20Plated">18K Gold Plated</a>
+                  <a href={createLink.forCollection('all-products', null, 'material=Material:%2018K%20Gold%20Plated')}>
+                    18K Gold Plated
+                  </a>
                 </ExtendableBlockListItem>
                 <ExtendableBlockListItem>
-                  <a href="/collections/all-products#material=Material:%20925%20Sterling%20Silver">
+                  <a
+                    href={createLink.forCollection(
+                      'all-products',
+                      null,
+                      'material=Material:%20925%20Sterling%20Silver'
+                    )}
+                  >
                     925 Sterling Silver
                   </a>
                 </ExtendableBlockListItem>
                 <ExtendableBlockListItem>
-                  <a href="/collections/all-products#material=Material:%20Rhodium%20plated">Rhodium plated</a>
+                  <a href={createLink.forCollection('all-products', null, 'material=Material:%20Rhodium%20plated')}>
+                    Rhodium plated
+                  </a>
                 </ExtendableBlockListItem>
                 <ExtendableBlockListItem>
-                  <AnimatedLink href="/collections/all-products">
+                  <AnimatedLink href={createLink.forCollection('all-products')}>
                     <span>Shop all</span>
                   </AnimatedLink>
                 </ExtendableBlockListItem>
@@ -620,19 +635,21 @@ const AllContent = () => (
               </ExtendableBlockListAccordionLabel>
               <ExtendableBlockList className="nav-mob-accordion__content">
                 <ExtendableBlockListItem>
-                  <a href="/collections/all-products#color=Metal%20Color:%20Black">Black</a>
+                  <a href={createLink.forCollection('all-products', null, 'color=Metal%20Color:%20Black')}>Black</a>
                 </ExtendableBlockListItem>
                 <ExtendableBlockListItem>
-                  <a href="/collections/all-products#color=Metal%20Color:%20Gold">Gold</a>
+                  <a href={createLink.forCollection('all-products', null, 'color=Metal%20Color:%20Gold')}>Gold</a>
                 </ExtendableBlockListItem>
                 <ExtendableBlockListItem>
-                  <a href="/collections/all-products#color=Metal%20Color:%20Rose%20Gold">Rose Gold</a>
+                  <a href={createLink.forCollection('all-products', null, 'color=Metal%20Color:%20Rose%20Gold')}>
+                    Rose Gold
+                  </a>
                 </ExtendableBlockListItem>
                 <ExtendableBlockListItem>
-                  <a href="/collections/all-products#color=Metal%20Color:%20Silver">Silver</a>
+                  <a href={createLink.forCollection('all-products', null, 'color=Metal%20Color:%20Silver')}>Silver</a>
                 </ExtendableBlockListItem>
                 <ExtendableBlockListItem>
-                  <AnimatedLink href="/collections/all-products">
+                  <AnimatedLink href={createLink.forCollection('all-products')}>
                     <span>Shop all</span>
                   </AnimatedLink>
                 </ExtendableBlockListItem>
@@ -642,7 +659,7 @@ const AllContent = () => (
         </ExtendableBlockItem>
       </ExtendableBlockItems>
       <ExtendableBlockItem className="desktop-nav-product-item">
-        <a href="/collections/fall-favs">
+        <a href={createLink.forCollection('fall-favs')}>
           <Image src="https://fragrantjewels.s3.amazonaws.com/app/app-nav/nav-all-img-23-dt.jpg" />
           <AnimatedLink as="span">
             <span>Fall Favorites</span>
@@ -658,7 +675,7 @@ const SubscriptionContent = () => (
     <ExtendableBlockContainer>
       <ExtendableBlockRowItems>
         <ExtendableBlockItem>
-          <a href="/pages/inner-circle">
+          <a href={createLink.forPage('inner-circle')}>
             <Image src="https://fragrantjewels-assets.s3.amazonaws.com/images/pick-your-poison/nav-pick-your-poison.jpg" />
             <ExtendableBlockListTitle>Exclusive Savings On New Collections Every Month</ExtendableBlockListTitle>
             <ExtendableBlockListText>A collection so intoxicating, it's to die for...</ExtendableBlockListText>
@@ -668,7 +685,7 @@ const SubscriptionContent = () => (
           </a>
         </ExtendableBlockItem>
         <ExtendableBlockItem>
-          <a href="/pages/rare-ic-page">
+          <a href={createLink.forPage('rare-ic-page')}>
             <Image src="https://fragrantjewels.s3.amazonaws.com/app/app-nav/nav-rare-raven.jpg" />
             <ExtendableBlockListTitle>Everything There Is To Know About Rare Collections</ExtendableBlockListTitle>
             <ExtendableBlockListText>
@@ -684,19 +701,19 @@ const SubscriptionContent = () => (
         <ExtendableBlockListTitle className="hidden-title">Subscription</ExtendableBlockListTitle>
         <ExtendableBlockList>
           <ExtendableBlockListItem>
-            <a href="/pages/inner-circle#how-it-works">How it works</a>
+            <a href={createLink.forPage('inner-circle', null, 'how-it-works')}>How it works</a>
           </ExtendableBlockListItem>
           <ExtendableBlockListItem>
-            <a href="/pages/inner-circle#join-now">Join now</a>
+            <a href={createLink.forPage('inner-circle', null, 'join-now')}>Join now</a>
           </ExtendableBlockListItem>
           <ExtendableBlockListItem>
-            <a href="/pages/inner-circle#current-box">Current box</a>
+            <a href={createLink.forPage('inner-circle', null, 'current-box')}>Current box</a>
           </ExtendableBlockListItem>
           <ExtendableBlockListItem>
-            <a href="/collections/esic">Members Only Store</a>
+            <a href={createLink.forCollection('esic')}>Members Only Store</a>
           </ExtendableBlockListItem>
           <ExtendableBlockListItem>
-            <a href="/pages/rare-ic-page">Rare Collections</a>
+            <a href={createLink.forPage('rare-ic-page')}>Rare Collections</a>
           </ExtendableBlockListItem>
         </ExtendableBlockList>
       </ExtendableBlockItem>
@@ -709,7 +726,7 @@ const RewardsContent = () => (
     <ExtendableBlockContainer>
       <ExtendableBlockRowItems>
         <ExtendableBlockItem>
-          <a href="/pages/rewards-boutique">
+          <a href={createLink.forPage('rewards-boutique')}>
             <Image src="https://fragrantjewels.s3.amazonaws.com/app/app-nav/nav-rewards-img-1.jpg" />
             <ExtendableBlockListTitle>New Rewards Every Week</ExtendableBlockListTitle>
             <ExtendableBlockListText>
@@ -721,7 +738,7 @@ const RewardsContent = () => (
           </a>
         </ExtendableBlockItem>
         <ExtendableBlockItem>
-          <a href="/pages/rewards-explainer">
+          <a href={createLink.forPage('rewards-explainer')}>
             <Image src="https://fragrantjewels.s3.amazonaws.com/app/app-nav/nav-rewards-img-2.jpg" />
             <ExtendableBlockListTitle>Earn Platinum Reward Status</ExtendableBlockListTitle>
             <ExtendableBlockListText>
@@ -737,10 +754,10 @@ const RewardsContent = () => (
         <ExtendableBlockListTitle className="hidden-title">Rewards</ExtendableBlockListTitle>
         <ExtendableBlockList>
           <ExtendableBlockListItem>
-            <a href="/pages/rewards-boutique">Rewards Boutique</a>
+            <a href={createLink.forPage('rewards-boutique')}>Rewards Boutique</a>
           </ExtendableBlockListItem>
           <ExtendableBlockListItem>
-            <a href="/pages/rewards-explainer">How it Works</a>
+            <a href={createLink.forPage('rewards-explainer')}>How it Works</a>
           </ExtendableBlockListItem>
         </ExtendableBlockList>
       </ExtendableBlockItem>

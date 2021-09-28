@@ -1,6 +1,7 @@
 import React, { Dispatch, SetStateAction } from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
+import createLink from '../../lib/create-link'
 
 export type NavTabsProps = {
   className?: ClassName
@@ -158,32 +159,32 @@ export function NavTabs({
       <SDesktopNav>
         {isSubscriptionLinkShown && (
           <SSubscribeButton style={{ display: 'list-item' }} onMouseEnter={() => setExtendableBlockContent('')}>
-            <a href="/pages/inner-circle">Subscribe</a>
+            <a href={createLink.forPage('inner-circle')}>Subscribe</a>
           </SSubscribeButton>
         )}
         <SNavItem onMouseEnter={() => setExtendableBlockContent('')}>
-          <a href="/collections/spooky">Halloween</a>
+          <a href={createLink.forCollection('spooky')}>Halloween</a>
         </SNavItem>
         <SNavItem onMouseEnter={() => setExtendableBlockContent('')}>
-          <a href="/collections/bath-bombs">Bath bombs</a>
+          <a href={createLink.forCollection('bath-bombs')}>Bath bombs</a>
         </SNavItem>
         <SNavItem onMouseEnter={() => setExtendableBlockContent('')}>
-          <a href="/collections/jewel-candles">Candles</a>
+          <a href={createLink.forCollection('jewel-candles')}>Candles</a>
         </SNavItem>
         <SNavItem onMouseEnter={() => setExtendableBlockContent('')}>
-          <a href="/collections/body-scrubs">Body Scrubs</a>
+          <a href={createLink.forCollection('body-scrubs')}>Body Scrubs</a>
         </SNavItem>
         <SNavItemExtendable onMouseEnter={() => setExtendableBlockContent('All')}>
-          <a href="/collections/all-products">All</a>
+          <a href={createLink.forCollection('all-products')}>All</a>
         </SNavItemExtendable>
         <SNavItemExtendable onMouseEnter={() => setExtendableBlockContent('Subscription')}>
-          <a href="/pages/inner-circle">Subscription</a>
+          <a href={createLink.forPage('inner-circle')}>Subscription</a>
         </SNavItemExtendable>
         <SNavItemExtendable onMouseEnter={() => setExtendableBlockContent('Rewards')}>
-          <a href="/pages/rewards-boutique">Rewards</a>
+          <a href={createLink.forPage('rewards-boutique')}>Rewards</a>
         </SNavItemExtendable>
         <SNavItem onMouseEnter={() => setExtendableBlockContent('')}>
-          <a href="/pages/vault-appraise">Vault</a>
+          <a href={createLink.forPage('vault-appraise')}>Vault</a>
         </SNavItem>
       </SDesktopNav>
     </SWrapper>

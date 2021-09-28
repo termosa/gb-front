@@ -7,7 +7,7 @@ import useOnClickOutside from '../../hooks/use-on-click-outside'
 import { ProductsChunk } from '../../modules/normalize-products-chunk'
 import navigate from '../../lib/navigate'
 import alooma from '../../lib/alooma'
-import baseSiteUrl from '../../modules/base-site-url'
+import createLink from '../../lib/create-link'
 
 export type SearchFieldProps = {
   className?: ClassName
@@ -148,14 +148,14 @@ export function SearchField({ className, onSearch, searchedProducts }: SearchFie
           {searchedProducts.products?.map((product) => (
             <SSearchedProductLink
               key={product.product_id}
-              href={`/products/${product.handle}`}
+              href={createLink.forProduct(product.handle)}
               onClick={(event) => {
                 event.preventDefault()
-                navigate(`/products/${product.handle}`)
+                navigate(createLink.forProduct(product.handle))
                 alooma('search_form_link', {
                   value: searchInputRef.current?.value || '',
                   title: product.title,
-                  link: `${baseSiteUrl}/products/${product.handle}`,
+                  link: createLink.forProduct(product.handle),
                 })
               }}
             >

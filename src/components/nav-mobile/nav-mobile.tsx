@@ -4,6 +4,7 @@ import PointsWidget from '../points-widget'
 import SigninSignup from '../signin-signup'
 import { ExtendableBlockContent } from '../../lib/site-header'
 import Image from '../../lib/image'
+import createLink from '../../lib/create-link'
 
 export type SearchFieldProps = {
   isBurgerMenuOpen: boolean
@@ -369,52 +370,52 @@ const TABS_LIST = [
   {
     title: 'Halloween',
     extendable: false,
-    href: '/collections/spooky',
+    href: createLink.forCollection('spooky'),
   },
   {
     title: 'Bath Bombs',
     extendable: false,
-    href: '/collections/bath-bombs',
+    href: createLink.forCollection('bath-bombs'),
   },
   {
     title: 'Candles',
     extendable: false,
-    href: '/collections/jewel-candles',
+    href: createLink.forCollection('jewel-candles'),
   },
   {
     title: 'Body Scrubs',
     extendable: false,
-    href: '/collections/body-scrubs',
+    href: createLink.forCollection('body-scrubs'),
   },
   {
     title: 'All',
     extendable: true,
-    href: '/collections/all-products',
+    href: createLink.forCollection('all-products'),
   },
   {
     title: 'Subscription',
     extendable: true,
-    href: '/pages/inner-circle',
+    href: createLink.forPage('inner-circle'),
   },
   {
     title: 'Rewards',
     extendable: true,
-    href: '/pages/rewards-boutique',
+    href: createLink.forPage('rewards-boutique'),
   },
   {
     title: 'Vault',
     extendable: false,
-    href: '/pages/vault-appraise',
+    href: createLink.forPage('vault-appraise'),
   },
 ]
 const CARDS_LIST = [
   {
-    href: '/collections/fall-favs',
+    href: createLink.forCollection('fall-favs'),
     imgLink: 'https://fragrantjewels.s3.amazonaws.com/app/app-nav/nav-all-img-23-mb.jpg',
     text: 'Fall Favorites',
   },
   {
-    href: '/products/wicked-kitty-bath-bomb',
+    href: createLink.forProduct('wicked-kitty-bath-bomb'),
     imgLink: 'https://fragrantjewels.s3.amazonaws.com/app/app-nav/nav-wickedly-p-mb.jpg',
     text: 'Restock Alert',
   },
@@ -471,7 +472,9 @@ export function NavMobile({
               </svg>
             </SCloseBtn>
           </SNavTopInner>
-          {isSubscriptionLinkShown && <SMemberButton href="/pages/inner-circle">Become a member</SMemberButton>}
+          {isSubscriptionLinkShown && (
+            <SMemberButton href={createLink.forPage('inner-circle')}>Become a member</SMemberButton>
+          )}
         </SNavTop>
         <SNavBottom>
           {!sideNavContent ? (
@@ -523,7 +526,7 @@ export function NavMobile({
             </SAccountTitle>
             <SAccountList>
               <li>
-                <a href="/pages/order-status-check">Order Status</a>
+                <a href={createLink.forPage('order-status-check')}>Order Status</a>
               </li>
               <SAccountListSubscription>
                 <a href="/account#/subscription">My Subscription</a>

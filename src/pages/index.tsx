@@ -16,7 +16,7 @@ import addCartItem from '../lib/add-cart-item'
 import trackAddedToCart from '../lib/track-added-to-cart'
 import Head from 'next/head'
 import LazyLoad from '../lib/lazy-load'
-import baseSiteUrl from '../modules/base-site-url'
+import createLink from '../lib/create-link'
 
 export default function HomePage({
   trendingProducts,
@@ -37,7 +37,7 @@ export default function HomePage({
               centerSecondText: '',
               bottomText: 'Relax your weary bones with a collection to die for...',
               buttonText: 'SHOP HALLOWEEN',
-              buttonLink: `${baseSiteUrl}/ws30/collections/spooky`,
+              buttonLink: createLink.forCollection('spooky'),
               backgroundImg: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/banners/home-banner.jpg',
               backgroundImgMobile:
                 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/banners/home-banner-mobile.jpg',
@@ -50,7 +50,7 @@ export default function HomePage({
             products={trendingProducts}
             title="Today's Top Picks"
             subTitle="Indulge in luxurious new and best selling collections."
-            onSelectProduct={(product) => navigate(`/products/${product.handle}`)}
+            onSelectProduct={(product) => navigate(createLink.forProduct(product.handle))}
           />
         )}
         {innerCircleSubscriptionProduct && innerCircleMembershipProduct && (
@@ -68,7 +68,7 @@ export default function HomePage({
             title="Get addicted to me-time"
             subTitle="Join the Inner Circle for exclusive savings on exciting new collections every month. It's happiness, delivered. "
             topButtonText="Get Started"
-            buttonLink={`${baseSiteUrl}/pages/inner-circle`}
+            buttonLink={createLink.forPage('inner-circle')}
             onReserve={(variant) => {
               addCartItem(variant.variant_id)
                 .then(() => trackAddedToCart(innerCircleSubscriptionProduct))
@@ -106,14 +106,14 @@ export default function HomePage({
             title: 'Time Travel Series',
             subTitle:
               'Transport your mind to peculiar moments in history with signature scents and unique 925 sterling silver rings.',
-            link: `${baseSiteUrl}/pages/time-travel-series`,
+            link: createLink.forPage('time-travel-series'),
           }}
           rightCard={{
             image: 'https://new-fragrantjewels.s3.us-west-2.amazonaws.com/app/img/selfless-care.png',
             title: 'Self (less) Care',
             subTitle:
               'Self care is anything but selfish! We’ve partnered with amazing charities to bring you collections that give back. ',
-            link: `${baseSiteUrl}/pages/charity-collections`,
+            link: createLink.forPage('charity-collections'),
           }}
         />
         <ReviewsSection
@@ -125,17 +125,17 @@ export default function HomePage({
           products={[
             {
               image: 'https://new-fragrantjewels.s3.us-west-2.amazonaws.com/app/img/prod-bath-bombs.png',
-              buttonLink: `${baseSiteUrl}/ws30/collections/bath-bombs`,
+              buttonLink: createLink.forCollection('bath-bombs'),
               buttonText: 'BATH BOMBS',
             },
             {
               image: 'https://new-fragrantjewels.s3.us-west-2.amazonaws.com/app/img/prod-candles.png',
-              buttonLink: `${baseSiteUrl}/ws30/collections/jewel-candles`,
+              buttonLink: createLink.forCollection('jewel-candles'),
               buttonText: 'CANDLES',
             },
             {
               image: 'https://new-fragrantjewels.s3.us-west-2.amazonaws.com/app/img/prod-bundles.png',
-              buttonLink: `${baseSiteUrl}/ws30/collections/gift-sets`,
+              buttonLink: createLink.forCollection('gift-sets'),
               buttonText: 'BUNDLES',
             },
           ]}

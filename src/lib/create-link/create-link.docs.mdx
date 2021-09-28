@@ -1,0 +1,23 @@
+export const meta = {
+  type: 'function',
+  name: 'createLink',
+  description: 'Generates the url from path and query object',
+  tags: ['function'],
+  lists: {
+    arguments: [
+      { name: 'path', type: 'string', required: true, description: 'Whatever path you want to navigate on the site' },
+      { name: 'query', type: 'Record<string, string | number | boolean | undefined>', description: 'An object that will be converted to the search query string' },
+    ],
+    returns: [
+      { name: 'url', type: 'string', description: 'The URL like string' },
+    ],
+  },
+}
+
+## Usage
+
+```js
+import createLink from './create-link'
+
+createLink('/search', { type: 'product', q: 'bat' })
+```

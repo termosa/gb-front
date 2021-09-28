@@ -1,6 +1,6 @@
 import api from '../../modules/api'
-import baseSiteUrl from '../../modules/base-site-url'
 import { Product } from '../../modules/normalize-product'
+import createLink from '../create-link'
 
 export type ContactInformation = {
   name: string
@@ -32,7 +32,7 @@ export function submitHint(
         // Quantity: 1,
         // ItemPrice: variant.actual_price,
         // RowTotal: variant.actual_price,
-        ProductURL: `${baseSiteUrl}/products/${product.handle}`,
+        ProductURL: createLink.forProduct(product.handle),
         ImageURL: (product.image || (product.images && product.images[0]))?.src,
         // Categories: ...
       },

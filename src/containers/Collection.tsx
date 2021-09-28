@@ -11,7 +11,7 @@ import CollectionBanner from '../lib/collection-banner'
 import alooma from '../lib/alooma'
 import window from '../lib/window'
 import { Product } from '../modules/normalize-product'
-import baseSiteUrl from '../modules/base-site-url'
+import createLink from '../lib/create-link'
 
 const SFiltersSection = styled(SiteSection)`
   margin-bottom: 32px;
@@ -113,7 +113,7 @@ const Collection = (): null | React.ReactElement => {
         products={filteredProducts}
         onSelectProduct={(product) => {
           alooma('filters_state', {
-            product_page_clicked: `${baseSiteUrl}/products/${product.handle}`,
+            product_page_clicked: createLink.forProduct(product.handle),
             product_title: product.title,
             filters: Object.entries(filter || {}).reduce(
               (filters, [group, value]) =>
@@ -121,7 +121,7 @@ const Collection = (): null | React.ReactElement => {
               {}
             ),
           })
-          navigate(`/products/${product.handle}`)
+          navigate(createLink.forProduct(product.handle))
         }}
       />
     </div>

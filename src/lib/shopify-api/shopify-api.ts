@@ -1,5 +1,7 @@
 import http, { Query, Method } from '../../modules/http'
-import baseSiteUrl from '../../modules/base-site-url'
+import createLink from '../create-link'
+
+const prefix = process.env.NODE_ENV === 'development' ? '/ws30/api/shopify' : ''
 
 export type ApiProps = {
   path: string
@@ -10,9 +12,7 @@ export type ApiProps = {
 
 export function shopifyApi<Response = unknown>({ path, method, query, body }: ApiProps): Promise<Response> {
   return http({
-    url: `${baseSiteUrl}${process.env.NODE_ENV === 'development' ? '/ws30/api/shopify' : ''}${
-      path.startsWith('/') ? path : `/${path}`
-    }`,
+    url: createLink(`${prefix}${path.startsWith('/') ? path : `/${path}`}`),
     query,
     method,
     headers: { 'Content-Type': 'application/json' },

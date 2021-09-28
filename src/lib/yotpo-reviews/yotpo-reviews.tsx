@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import useYotpo from '../use-yotpo'
 import ProductContext from '../../modules/product-context'
-import window from '../window'
+import createLink from '../create-link'
 
 export type YotpoReviewsProps = {
   className?: ClassName
@@ -30,7 +30,7 @@ export function YotpoReviews({
       style={style}
       data-product-id={productId || product?.product_id}
       data-name={productTitle || product?.title}
-      data-url={productUrl || `${window?.location.origin || ''}/products/${product?.handle || productId}`}
+      data-url={productUrl || createLink.forProduct(product?.handle || productId)}
       data-image-url={productImageUrl || product?.image?.src}
     />
   )

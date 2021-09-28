@@ -5,6 +5,7 @@ import { useMediaPredicate } from 'react-media-hook'
 import SocialLinks from '../../components/social-links'
 import AcceptedPayments from '../../components/accepted-payments'
 import LinksColumnGroup from '../../components/links-column-group'
+import createLink from '../create-link'
 
 const FooterContainer = styled.div`
   font: 12px/1.3 'Montserrat', sans-serif;
@@ -77,14 +78,14 @@ export function SiteFooter({ className, style }: SiteFooterProps): React.ReactEl
             <LinksColumnGroup
               title="QUICK LINKS"
               links={[
-                { name: 'Halloween', href: '/collections/spooky' },
-                { name: 'Bath Bombs', href: '/collections/bath-bombs' },
-                { name: 'Candles', href: '/collections/jewel-candles' },
-                { name: 'Body Scrubs', href: '/collections/body-scrubs' },
-                { name: 'All', href: '/collections/all-products' },
-                { name: 'Subscription', href: '/pages/inner-circle' },
-                { name: 'Rewards', href: '/pages/rewards-boutique' },
-                { name: 'Vault', href: '/pages/vault-appraise' },
+                { name: 'Halloween', href: createLink.forCollection('spooky') },
+                { name: 'Bath Bombs', href: createLink.forCollection('bath-bombs') },
+                { name: 'Candles', href: createLink.forCollection('jewel-candles') },
+                { name: 'Body Scrubs', href: createLink.forCollection('body-scrubs') },
+                { name: 'All', href: createLink.forCollection('all-products') },
+                { name: 'Subscription', href: createLink.forPage('inner-circle') },
+                { name: 'Rewards', href: createLink.forPage('rewards-boutique') },
+                { name: 'Vault', href: createLink.forPage('vault-appraise') },
               ]}
               mobile={isMobileScreen}
             />
@@ -92,17 +93,20 @@ export function SiteFooter({ className, style }: SiteFooterProps): React.ReactEl
               title="CUSTOMER CARE"
               links={[
                 { name: 'Help Center', href: 'https://helpcenter.fragrantjewels.com/hc/en-us' },
-                { name: 'Order Status', href: '/pages/order-status-check' },
+                { name: 'Order Status', href: createLink.forPage('order-status-check') },
               ]}
               mobile={isMobileScreen}
             />
             <LinksColumnGroup
               title="ABOUT"
               links={[
-                { name: 'Terms and Conditions', href: '/pages/terms-and-conditions' },
-                { name: 'Enter the Vault 2021-2022 Sweepstakes', href: '/pages/enter-the-vault-2021-2022-giveaway' },
+                { name: 'Terms and Conditions', href: createLink.forPage('terms-and-conditions') },
+                {
+                  name: 'Enter the Vault 2021-2022 Sweepstakes',
+                  href: createLink.forPage('enter-the-vault-2021-2022-giveaway'),
+                },
                 { name: 'Tell us your ideas!', href: 'https://www.surveygizmo.com/s3/5354856/Product-inspiration' },
-                { name: 'Privacy Policy', href: '/pages/privacy' },
+                { name: 'Privacy Policy', href: createLink.forPage('privacy') },
               ]}
               mobile={isMobileScreen}
             />

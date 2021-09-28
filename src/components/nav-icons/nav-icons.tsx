@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { useMediaPredicate } from 'react-media-hook'
 import SigninSignup from '../signin-signup'
 import useCart from '../../lib/use-cart'
+import createLink from '../../lib/create-link'
 
 export type NavIconsProps = {
   className?: ClassName
@@ -297,7 +298,7 @@ export function NavIcons({
             </SDropDownCloseBtn>
             <SLinkWrapper>
               <li>
-                <a href="/pages/order-status-check">Order Status</a>
+                <a href={createLink.forPage('order-status-check')}>Order Status</a>
               </li>
               {isSubscriptionLinkShown && (
                 <li>
