@@ -14,7 +14,7 @@ import LazyLoad from '../../lib/lazy-load'
 import YotpoProductGallery from '../../lib/yotpo-product-gallery'
 
 export default function ProductPage({ product, productId, potentialProducts }: ProductPageProps): React.ReactElement {
-  if (!product) return <RemotePage url={`//www.fragrantjewels.com/products/${productId}`} />
+  if (!product) return <RemotePage url={`/products/${productId}`} />
 
   trackViewedProduct(product)
 

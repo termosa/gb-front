@@ -16,6 +16,7 @@ import addCartItem from '../lib/add-cart-item'
 import trackAddedToCart from '../lib/track-added-to-cart'
 import Head from 'next/head'
 import LazyLoad from '../lib/lazy-load'
+import baseSiteUrl from '../modules/base-site-url'
 
 export default function HomePage({
   trendingProducts,
@@ -36,7 +37,7 @@ export default function HomePage({
               centerSecondText: '',
               bottomText: 'Relax your weary bones with a collection to die for...',
               buttonText: 'SHOP HALLOWEEN',
-              buttonLink: 'https://www.fragrantjewels.com/ws30/collections/spooky',
+              buttonLink: `${baseSiteUrl}/ws30/collections/spooky`,
               backgroundImg: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/banners/home-banner.jpg',
               backgroundImgMobile:
                 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/banners/home-banner-mobile.jpg',
@@ -67,7 +68,7 @@ export default function HomePage({
             title="Get addicted to me-time"
             subTitle="Join the Inner Circle for exclusive savings on exciting new collections every month. It's happiness, delivered. "
             topButtonText="Get Started"
-            buttonLink={`https://www.fragrantjewels.com/pages/inner-circle`}
+            buttonLink={`${baseSiteUrl}/pages/inner-circle`}
             onReserve={(variant) => {
               addCartItem(variant.variant_id)
                 .then(() => trackAddedToCart(innerCircleSubscriptionProduct))
@@ -105,14 +106,14 @@ export default function HomePage({
             title: 'Time Travel Series',
             subTitle:
               'Transport your mind to peculiar moments in history with signature scents and unique 925 sterling silver rings.',
-            link: 'https://www.fragrantjewels.com/pages/time-travel-series',
+            link: `${baseSiteUrl}/pages/time-travel-series`,
           }}
           rightCard={{
             image: 'https://new-fragrantjewels.s3.us-west-2.amazonaws.com/app/img/selfless-care.png',
             title: 'Self (less) Care',
             subTitle:
               'Self care is anything but selfish! We’ve partnered with amazing charities to bring you collections that give back. ',
-            link: 'https://www.fragrantjewels.com/pages/charity-collections',
+            link: `${baseSiteUrl}/pages/charity-collections`,
           }}
         />
         <ReviewsSection
@@ -124,17 +125,17 @@ export default function HomePage({
           products={[
             {
               image: 'https://new-fragrantjewels.s3.us-west-2.amazonaws.com/app/img/prod-bath-bombs.png',
-              buttonLink: 'https://www.fragrantjewels.com/ws30/collections/bath-bombs',
+              buttonLink: `${baseSiteUrl}/ws30/collections/bath-bombs`,
               buttonText: 'BATH BOMBS',
             },
             {
               image: 'https://new-fragrantjewels.s3.us-west-2.amazonaws.com/app/img/prod-candles.png',
-              buttonLink: 'https://www.fragrantjewels.com/ws30/collections/jewel-candles',
+              buttonLink: `${baseSiteUrl}/ws30/collections/jewel-candles`,
               buttonText: 'CANDLES',
             },
             {
               image: 'https://new-fragrantjewels.s3.us-west-2.amazonaws.com/app/img/prod-bundles.png',
-              buttonLink: 'https://www.fragrantjewels.com/ws30/collections/gift-sets',
+              buttonLink: `${baseSiteUrl}/ws30/collections/gift-sets`,
               buttonText: 'BUNDLES',
             },
           ]}

@@ -7,6 +7,7 @@ import useOnClickOutside from '../../hooks/use-on-click-outside'
 import { ProductsChunk } from '../../modules/normalize-products-chunk'
 import navigate from '../../lib/navigate'
 import alooma from '../../lib/alooma'
+import baseSiteUrl from '../../modules/base-site-url'
 
 export type SearchFieldProps = {
   className?: ClassName
@@ -154,7 +155,7 @@ export function SearchField({ className, onSearch, searchedProducts }: SearchFie
                 alooma('search_form_link', {
                   value: searchInputRef.current?.value || '',
                   title: product.title,
-                  link: `https://www.fragrantjewels.com/products/${product.handle}`,
+                  link: `${baseSiteUrl}/products/${product.handle}`,
                 })
               }}
             >

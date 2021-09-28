@@ -7,7 +7,7 @@ import RemotePage from '../../lib/remote-page'
 import Head from 'next/head'
 
 export default function CollectionPage({ collection, collectionId }: CollectionPageProps): React.ReactElement {
-  if (!collection) return <RemotePage url={`//www.fragrantjewels.com/collections/${collectionId}`} />
+  if (!collection) return <RemotePage url={`/collections/${collectionId}`} />
 
   return (
     <>
