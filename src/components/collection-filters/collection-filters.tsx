@@ -7,6 +7,7 @@ import { CollectionProductsFilter } from '../../modules/filter-collection-produc
 import alooma from '../../lib/alooma'
 import FilterPart from '../../lib/filter-part'
 import useScreenSize from '../../lib/use-screen-size'
+import { Product } from '../../modules/normalize-product'
 
 export { filterCollectionProducts } from '../../modules/filter-collection-products'
 export type { CollectionProductsFilter } from '../../modules/filter-collection-products'
@@ -29,16 +30,6 @@ export enum SelectedSorting {
   HIGH_TO_LOW = 'high-to-low',
 }
 
-export type CollectionFiltersProps = {
-  className?: ClassName
-  children?: React.ReactNode
-  filters: Filters
-  onChangeFilter: (selectedFilters: CollectionProductsFilter) => void
-  onChangeSorting: (sorting: SelectedSorting) => void
-  initialSorting: SelectedSorting
-  initialFilter?: CollectionProductsFilter
-}
-
 const SCollectionFiltersContainer = styled.div`
   font-family: ${({ theme }) => theme.fonts.familyMain};
   display: flex;
@@ -50,7 +41,7 @@ const SButtons = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
-  max-width: 284px;
+  max-width: 334px;
   margin-left: auto;
   margin-top: 2.5em;
 
@@ -58,28 +49,28 @@ const SButtons = styled.div`
     padding-right: 20px;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     max-width: 100%;
     padding: 0;
   }
 `
 
 const SButton = styled.button<{
-  isOpen?: boolean
+  isActive?: boolean
 }>`
   padding: 16px;
   font-size: 16px;
   text-transform: uppercase;
-  background-color: ${(props) => (props.isOpen ? '#9952bd' : '#fff')};
-  color: ${(props) => (props.isOpen ? '#fff' : '#000')};
+  background-color: ${(props) => (props.isActive ? '#9952bd' : '#fff')};
+  color: ${(props) => (props.isActive ? '#fff' : '#000')};
   border: 0.5px solid #000;
   width: 100%;
-  max-width: 138px;
+  max-width: 158px;
   display: flex;
   justify-content: center;
   cursor: pointer;
 
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     border-right: none;
     border-left: none;
     max-width: 100%;
@@ -90,7 +81,7 @@ const SButton = styled.button<{
   }
 
   path {
-    stroke: ${(props) => (props.isOpen ? '#fff' : '#000')};
+    stroke: ${(props) => (props.isActive ? '#fff' : '#000')};
   }
 `
 
@@ -101,13 +92,13 @@ const SButtonLabel = styled.div`
   justify-content: space-between;
   letter-spacing: 0.05em;
 
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     justify-content: center;
   }
 `
 
 const SButtonLabelText = styled.span`
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     margin: 0 12px;
   }
 `
@@ -121,7 +112,7 @@ const SSortDropdown = styled.div`
   background-color: #fff;
   z-index: 2;
 
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     max-width: 100%;
     border-right: none;
     border-left: none;
@@ -147,22 +138,20 @@ const SSortDropdownFilters = styled.p<{ selected?: boolean }>`
 
 const SFilters = styled.div`
   display: flex;
-  padding: 24px;
-  justify-content: space-between;
-  border: 0.5px solid #000;
   width: 100%;
   box-sizing: border-box;
-  margin: 10px 0 0;
+  flex-direction: column;
+  justify-content: space-between;
 
-  @media (max-width: 768px) {
-    flex-direction: column;
-    padding: 16px 0;
-    margin: 0;
-    border: 0;
+  @media (min-width: 768px) {
+    flex-direction: row;
+    margin: 10px 20px 0;
+    padding: 24px;
+    border: 0.5px solid #000;
   }
 
-  @media (max-width: 1033px) {
-    margin: 10px 20px 0;
+  @media (min-width: 1033px) {
+    margin: 10px 0 0;
   }
 `
 
@@ -170,7 +159,7 @@ const SFilterGroup = styled.div`
   display: flex;
   flex-direction: column;
 
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     padding-bottom: 24px;
   }
 `
@@ -186,17 +175,18 @@ const SShowResultsButton = styled.button<{
   color: #fff;
   display: none;
 
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     display: block;
   }
 `
 
 const SFilterMobileControlButtonsGroup = styled(SFilterGroup)`
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
     order: -1;
-    padding: 0 16px 16px;
+    padding: 16px;
     margin-bottom: 16px;
     border-bottom: 0.5px solid #000;
     flex: 1 1 0;
@@ -212,7 +202,7 @@ const SFilterControlButtonsGroupLabel = styled.div`
   text-transform: uppercase;
   display: none;
 
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     display: block;
   }
 `
@@ -242,13 +232,14 @@ const SFilterDesktopControlButtonsGroup = styled.div`
   padding: 16px 0;
   width: 100%;
 
+  @media (max-width: 1033px) {
+    margin: 0 20px;
+  }
+
   @media (max-width: 767px) {
     padding: 0 0 16px;
     border: 0;
-  }
-
-  @media (max-width: 1033px) {
-    margin: 0 20px;
+    margin: 0;
   }
 `
 
@@ -261,6 +252,10 @@ const SSelectedFilter = styled.div`
   display: flex;
   align-items: center;
   padding: 4px 20px;
+
+  @media (max-width: 767px) {
+    padding: 4px 0 4px 20px;
+  }
 `
 
 const SSelectedFilterInfo = styled.div`
@@ -303,6 +298,17 @@ const createEmptyFilter = () => ({
 
 const name = 'CollectionFilters'
 
+export type CollectionFiltersProps = {
+  className?: ClassName
+  children?: React.ReactNode
+  filters: Filters
+  onChangeFilter: (selectedFilters: CollectionProductsFilter) => void
+  onChangeSorting: (sorting: SelectedSorting) => void
+  initialSorting: SelectedSorting
+  initialFilter?: CollectionProductsFilter
+  filteredProducts: Array<Product>
+}
+
 export const CollectionFilters = ({
   className,
   children,
@@ -311,6 +317,7 @@ export const CollectionFilters = ({
   onChangeSorting,
   initialSorting,
   initialFilter = createEmptyFilter(),
+  filteredProducts,
 }: CollectionFiltersProps): React.ReactElement => {
   const screenSize = useScreenSize()
   const [selectedSorting, setSelectedSorting] = useState<SelectedSorting>(initialSorting)
@@ -328,7 +335,7 @@ export const CollectionFilters = ({
     ],
   })
 
-  const [isSortDropdownOpened, setIsSortDropdownOpened] = useState(false)
+  const [isSortDropdownOpened, setIsSortDropdownOpened] = useState<boolean>()
   const [isFiltersDropdownOpened, setIsFiltersDropdownOpened] = useState<boolean>()
 
   useEffect(() => {
@@ -365,7 +372,7 @@ export const CollectionFilters = ({
   ]
 
   useOnClickOutside({ current: popperElement }, ({ target }) => {
-    if (target === referenceElement || target === referenceElement?.firstElementChild) return
+    if (target === referenceElement || referenceElement?.contains(target as Node)) return
     setIsSortDropdownOpened(false)
   })
 
@@ -385,7 +392,10 @@ export const CollectionFilters = ({
     <SCollectionFiltersContainer className={cn(name, className)}>
       {children}
       <SButtons>
-        <SButton onClick={() => setIsFiltersDropdownOpened(!isFiltersDropdownOpened)} isOpen={isFiltersDropdownOpened}>
+        <SButton
+          onClick={() => setIsFiltersDropdownOpened(!isFiltersDropdownOpened)}
+          isActive={!isEmptyFilter(selectedFilters)}
+        >
           <SButtonLabel>
             <svg xmlns="http://www.w3.org/2000/svg" width={18} height={10} viewBox="0 0 18 10" fill="none">
               <path
@@ -396,13 +406,15 @@ export const CollectionFilters = ({
                 strokeLinejoin="round"
               />
             </svg>
-            <SButtonLabelText>Filter</SButtonLabelText>
+            <SButtonLabelText>
+              Filter {!isEmptyFilter(selectedFilters) && `(${filteredProducts.length})`}
+            </SButtonLabelText>
           </SButtonLabel>
         </SButton>
         <SButton
           ref={setReferenceElement}
           onClick={() => setIsSortDropdownOpened(!isSortDropdownOpened)}
-          isOpen={isSortDropdownOpened}
+          isActive={isSortDropdownOpened}
         >
           <SButtonLabel>
             <SButtonLabelText>Sort by</SButtonLabelText>
@@ -505,7 +517,7 @@ export const CollectionFilters = ({
             onClick={() => setIsFiltersDropdownOpened(false)}
             isActive={!isEmptyFilter(selectedFilters)}
           >
-            Show Results
+            Show Results {!isEmptyFilter(selectedFilters) && `(${filteredProducts.length})`}
           </SShowResultsButton>
         </SFilters>
       )}

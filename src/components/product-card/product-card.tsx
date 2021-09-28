@@ -6,7 +6,7 @@ import formatPrice from '../../modules/format-price'
 import getLabel from '../../modules/get-label'
 import Image from '../../lib/image'
 import useScreenSize from '../../lib/use-screen-size'
-import YotpoStarRating from 'src/lib/yotpo-star-rating'
+import YotpoStarRating from '../../lib/yotpo-star-rating'
 
 export type ProductCardProps = {
   className?: ClassName
@@ -193,7 +193,7 @@ const ProductCardStars = styled.div`
     height: 14px;
   }
 
-  @media (min-width: 767px) {
+  @media (min-width: 768px) {
     svg {
       width: 18px;
       height: 18px;

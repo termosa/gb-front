@@ -17,6 +17,7 @@ import initiateGtm from '../initiate-gtm'
 import CustomerContext from '../../modules/customer-context'
 import CustomerOrdersDetailsContext from '../../modules/customer-orders-details-context'
 import useCustomerOrdersDetails from '../use-customer-orders-details'
+import initiateFacebookPixel from '../initiate-facebook-pixel'
 
 const MainPageLayoutWrapper = styled.div`
   display: flex;
@@ -53,6 +54,7 @@ export function MainPageLayout({ children, className, style }: MainPageLayoutPro
     initiateKlaviyo()
     initiateAlooma()
     initiateGtm()
+    initiateFacebookPixel()
   })
 
   const searchRequest = useDefer(loadProductsChunk)

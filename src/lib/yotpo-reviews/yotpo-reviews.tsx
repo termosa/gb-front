@@ -21,22 +21,6 @@ export function YotpoReviews({
   productUrl,
   productImageUrl,
 }: YotpoReviewsProps): null | React.ReactElement {
-  // TODO: check if it still needed to hide reviews when they are empty
-  // const [visible, setVisibility] = useState(false)
-  // useEffect(() => {
-  //   let countdown = 1000
-  //   loadYotpo().then((yotpo) => {
-  //     const interval = setInterval(() => {
-  //       const reviews = document.querySelector('.yotpo-main-widget .reviews-qa-label')
-  //       if (reviews || --countdown < 1) clearInterval(interval)
-  //       if (reviews) {
-  //         setVisibility(true)
-  //         yotpo.refreshWidgets()
-  //       }
-  //     }, 100)
-  //   })
-  // }, [id, title, description, imageUrl, productUrl])
-
   const product = useContext(ProductContext)
   useYotpo([product, productId, productTitle, productUrl, productImageUrl])
   if (!productId && !product) return null

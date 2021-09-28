@@ -1,0 +1,19 @@
+export const meta = {
+  type: 'function',
+  name: 'initiateGtm',
+  description: 'Loads GTM script (only once)',
+  tags: ['function', 'analytics'],
+  lists: {
+    returns: [
+      { name: 'promise', type: 'Promise<Alooma>' },
+    ],
+  },
+}
+
+## Usage
+
+```js
+import initiateGtm from './initiate-gtm'
+
+initiateGtm().then(gtm => gtm.push({ event: 'pageview', url: window.location.href }))
+```

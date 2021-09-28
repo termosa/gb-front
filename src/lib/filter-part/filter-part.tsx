@@ -17,7 +17,7 @@ const SFilter = styled.label<{
   position: relative;
   letter-spacing: 0.05em;
 
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     margin: 0 16px;
   }
 
@@ -49,7 +49,7 @@ const SFilterGroup = styled.div<{
   flex-direction: column;
   cursor: pointer;
 
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     padding-bottom: ${(props) => (props.isCollapsed ? '0' : '24px')};
   }
 `
@@ -61,7 +61,7 @@ const SFilterGroupName = styled.div`
   padding-bottom: 16px;
   letter-spacing: 0.05em;
 
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     border-bottom: 0.5px solid #000;
     margin-bottom: 16px;
     padding: 0 16px 14px;
