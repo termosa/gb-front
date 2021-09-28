@@ -239,7 +239,12 @@ export function FilterPart({
               </SMetalColorIcon>
             )}
             {name}
-            <SProductsQuantity> ({amount})</SProductsQuantity>
+            {!selectedFilters[filterGroup]?.includes(name) && (
+              <SProductsQuantity>
+                ({selectedFilters[filterGroup]?.length ? '+' : ''}
+                {amount})
+              </SProductsQuantity>
+            )}
             <SCheckbox
               onChange={(event) => handleFilterChange && handleFilterChange(filterGroup, name, event.target.checked)}
               checked={!!selectedFilters[filterGroup]?.includes(name)}

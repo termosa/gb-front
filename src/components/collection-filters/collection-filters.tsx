@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
 import usePopper from '../../hooks/use-popper'
@@ -15,6 +15,7 @@ export type { CollectionProductsFilter } from '../../modules/filter-collection-p
 export interface Filter {
   name: string
   amount: number
+  availableAmount: number
 }
 
 export interface Filters {
@@ -321,6 +322,27 @@ export const CollectionFilters = ({
 }: CollectionFiltersProps): React.ReactElement => {
   const screenSize = useScreenSize()
   const [selectedSorting, setSelectedSorting] = useState<SelectedSorting>(initialSorting)
+  console.log(11111, filters)
+  console.log(22222, filteredProducts)
+
+  const calculateAvailableFilters = (arr: Array<Filter>) => {
+    return arr.map((el: Filter) => {
+      const productsWithFilter = filteredProducts.filter((product: Product) => product[el.name])
+
+      return {
+        ...el,
+        availableAmount: 5,
+      }
+    })
+  }
+
+  const filtersCopy = {
+    sizes: filters.sizes ? calculateAvailableFilters(filters.sizes, 'size') : [],
+    fragrances: filters.fragrances ? calculateAvailableFilters(filters.fragrances) : [],
+    colors: filters.colors ? calculateAvailableFilters(filters.colors) : [],
+    materials: filters.materials ? calculateAvailableFilters(filters.materials) : [],
+  }
+  console.log('L338', filtersCopy)
 
   const [referenceElement, setReferenceElement] = useState<HTMLButtonElement | null>(null)
   const [popperElement, setPopperElement] = useState<HTMLDivElement | null>(null)
