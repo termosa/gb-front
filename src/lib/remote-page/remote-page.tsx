@@ -8,7 +8,11 @@ export type RemotePageProps = {
 }
 
 export function RemotePage({ url }: RemotePageProps): null {
-  const pageRequest = useDefer(() => (window ? http({ url }).then((r) => r.text()) : null), [url], [])
+  const pageRequest = useDefer(
+    () => (window ? http({ url, headers: { 'X-Site-Version': '1' } }).then((r) => r.text()) : null),
+    [url],
+    []
+  )
   useEffect(() => {
     if (!pageRequest.value || !window) return
     document.open()
