@@ -79,7 +79,7 @@ const SButtonWrapper = styled.div`
   transform: translate(-50%, 50%);
 `
 
-const SLink = styled.a`
+const SLink = styled.a<{ backColor?: string; frontColor?: string; disabledColor?: string }>`
   text-decoration: none;
   color: inherit;
   display: flex;
@@ -139,7 +139,7 @@ export function CategoryShopCard({
           <STitle>{title}</STitle>
           <SSubTitle>{subTitle}</SSubTitle>
           <SButtonWrapper>
-            <SLink href={link} backColor={'#000'} frontColor={'#fff'} width={'171px'}>
+            <SLink href={link} backColor="#000" frontColor="#fff">
               SHOP NOW
             </SLink>
           </SButtonWrapper>

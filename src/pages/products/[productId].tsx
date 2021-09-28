@@ -19,8 +19,6 @@ export default function ProductPage({ product, productId, potentialProducts }: P
 
   trackViewedProduct(product)
 
-  console.log(product)
-
   return (
     <>
       <Head>
@@ -46,11 +44,13 @@ export default function ProductPage({ product, productId, potentialProducts }: P
           <LazyLoad threshold={1000}>
             <YotpoProductGallery galleryId="5d12193001f0950007b69682" productId={'' + product.product_id} />
           </LazyLoad>
-          <LazyLoad threshold={1000}>
-            <SiteSection>
-              <YotpoReviews />
-            </SiteSection>
-          </LazyLoad>
+          <div className="product-yotpo-reviews-section">
+            <LazyLoad threshold={1000}>
+              <SiteSection>
+                <YotpoReviews />
+              </SiteSection>
+            </LazyLoad>
+          </div>
         </MainPageLayout>
       </ProductContext.Provider>
     </>

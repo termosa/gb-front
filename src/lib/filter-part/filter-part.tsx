@@ -11,14 +11,14 @@ const SFilter = styled.label<{
   isCollapsed?: boolean
 }>`
   display: ${(props) => (props.isCollapsed ? 'none' : 'flex')};
-  padding: 3px 0 13px 30px;
+  padding: 3px 0 20px 30px;
   color: ${({ noProduct }) => noProduct && '#dadada'};
   cursor: pointer;
   position: relative;
   letter-spacing: 0.05em;
 
   @media (max-width: 768px) {
-    margin: 0 24px;
+    margin: 0 16px;
   }
 
   &:last-child {
@@ -64,7 +64,7 @@ const SFilterGroupName = styled.div`
   @media (max-width: 768px) {
     border-bottom: 0.5px solid #000;
     margin-bottom: 16px;
-    padding: 0 24px 16px;
+    padding: 0 16px 14px;
   }
 `
 
@@ -78,6 +78,8 @@ const SCheckbox = styled.input.attrs({ type: 'checkbox' })`
   width: 0;
   height: 0;
   user-select: none;
+  outline: none;
+  border: none;
 
   &::before {
     content: '';
