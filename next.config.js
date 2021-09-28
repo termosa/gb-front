@@ -31,6 +31,7 @@ module.exports = (phase) => {
     // ...(phase !== PHASE_DEVELOPMENT_SERVER && { basePath: basePath }),
     typescript: { ignoreBuildErrors: true },
     env: {
+      SITE_URL: process.env.SITE_URL,
       BASE_API_URL: process.env.BASE_API_URL,
       CLIENT_API_URL: process.env.CLIENT_API_URL,
     },
