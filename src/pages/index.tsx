@@ -37,9 +37,9 @@ export default function HomePage({
               bottomText: 'Relax your weary bones with a collection to die for...',
               buttonText: 'SHOP HALLOWEEN',
               buttonLink: 'https://www.fragrantjewels.com/ws30/collections/spooky',
-              backgroundImg: 'https://new-fragrantjewels.s3.us-west-2.amazonaws.com/app/img/home-banner.jpg',
+              backgroundImg: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/banners/home-banner.jpg',
               backgroundImgMobile:
-                'https://new-fragrantjewels.s3.us-west-2.amazonaws.com/app/img/home-banner-mobile.jpg',
+                'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/banners/home-banner-mobile.jpg',
               transparentPlaceholder: true,
             },
           ]}
@@ -116,8 +116,8 @@ export default function HomePage({
           }}
         />
         <ReviewsSection
-          quote="Lorem ipsum dolor sit amet, consectetur adipiscing elit. At eget iaculis eget eget neque, posuere quis placerat arcu. Ipsum est felis varius faucibus praesent.Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-          author="Samanta H."
+          quote="I finally found a new way to treat myself for all the hard work I do. As a single mother and assistant teacher, it is past time I indulge in a little me-time. Love the jewelry and love the bath bombs! My skin feels better with Fragrant Jewels in my life. Recommend to everyone!"
+          author="ATHENA F."
         />
         <ShopByProductsOverview
           title="Shop by Product"
@@ -142,7 +142,7 @@ export default function HomePage({
         <PromiseBar />
         <InlineSignupForm />
         <LazyLoad threshold={1000}>
-          <YotpoGallery galleryId="5dd5da2416fa290bf56b2085" />
+          <YotpoGallery galleryId="5d12269884f4bc0010ad3974" />
         </LazyLoad>
       </MainPageLayout>
     </>

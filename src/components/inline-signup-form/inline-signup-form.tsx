@@ -97,6 +97,7 @@ const SuccessMessage = styled.div`
   font: 700 40px/1 'Cormorant Garamond', serif;
   text-align: center;
   margin: 0;
+  padding-top: 16px;
 `
 
 const ErrorMessage = styled.div`

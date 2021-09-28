@@ -52,11 +52,12 @@ const STitleWrapper = styled.div`
 const STitle = styled.h2`
   font: 700 40px/1 'Cormorant Garamond', serif;
   text-align: center;
-  margin: 0 auto 16px;
+  margin: 0 auto 32px;
 
   @media (max-width: 767px) {
     display: flex;
     flex-direction: column;
+    margin: 0 auto 25px;
   }
 `
 
