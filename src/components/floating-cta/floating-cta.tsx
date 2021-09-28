@@ -13,9 +13,10 @@ const SFloatingCtaClosed = styled.div<{ isVisible?: boolean }>`
   display: flex;
   flex-direction: column;
   position: sticky;
-  z-index: 3;
+  z-index: 33;
   bottom: 32px;
-  margin: 0 16px;
+  margin: 0;
+  padding: 16px;
   opacity: ${(props) => (props.isVisible ? 1 : 0)};
   transition: opacity 0.5s ease-in-out;
 
@@ -23,7 +24,7 @@ const SFloatingCtaClosed = styled.div<{ isVisible?: boolean }>`
     width: 560px;
     bottom: 40px;
     margin: 0 auto 48px;
-    padding: 0 16px 16px;
+    padding: 16px;
   }
 
   & > button {
@@ -33,7 +34,7 @@ const SFloatingCtaClosed = styled.div<{ isVisible?: boolean }>`
 
 const SFloatingCtaOpened = styled.div<{ isVisible?: boolean }>`
   position: sticky;
-  z-index: 3;
+  z-index: 33;
   bottom: 0;
   width: 100%;
   margin: 0 auto;

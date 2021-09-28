@@ -44,7 +44,7 @@ const SPdpCarouselItem = styled.div<{
 
 const SVerticalImagesColumn = styled.div`
   @media (min-width: 768px) {
-    width: 81%;
+    width: 85.5%;
     margin: 0 20px;
   }
 `
@@ -58,7 +58,7 @@ const SCarouselIcons = styled.div`
 
   @media (min-width: 768px) {
     order: 0;
-    width: 19%;
+    width: 14.5%;
   }
 `
 
@@ -82,11 +82,43 @@ const SCarouselThumbnails = styled.div`
   }
 
   @media (max-width: 767px) {
-    flex-wrap: wrap;
+    // flex-wrap: wrap;
     position: static;
     width: 100%;
     gap: 2px;
     margin: 2px 0;
+  }
+`
+
+const SCarouselThumbnailsHolder = styled.div`
+  @media (max-width: 767px) {
+    overflow: auto;
+    padding: 0;
+    margin: 0;
+    display: block;
+    & > div {
+      a {
+        display: block;
+        width: auto;
+        height: auto;
+
+        figure {
+          width: 66px;
+          height: 66px;
+          display: flex;
+          align-items: center;
+        }
+      }
+    }
+  }
+  @media (max-width: 370px) {
+    margin: 0 -16px;
+
+    & > div {
+      max-width: 990px;
+      min-width: 600px;
+      padding: 0 16px 10px;
+    }
   }
 `
 
@@ -319,29 +351,31 @@ export function VerticalGallery({ className }: VerticalGalleryProps): React.Reac
                   </SPdpCarouselItemMobile>
                 ))}
               </Slider>
-              <SCarouselThumbnails>
-                {product?.images?.map((image, i) => (
-                  <SCarouselThumbnailItem
-                    key={image?.src}
-                    isActive={activeGalleryItem === i}
-                    onClick={() => {
-                      setActiveGalleryItem(i)
-                      carouselRef.current && carouselRef.current.goToSlide(i)
-                    }}
-                  >
-                    {product?.images && (
-                      <Image
-                        src={product.images && image?.src}
-                        alt={(product.images && image?.alt) || ''}
-                        shopifySize={'small'}
-                        fit={'contain'}
-                        width={'60px'}
-                        height={'60px'}
-                      />
-                    )}
-                  </SCarouselThumbnailItem>
-                ))}
-              </SCarouselThumbnails>
+              <SCarouselThumbnailsHolder>
+                <SCarouselThumbnails>
+                  {product?.images?.map((image, i) => (
+                    <SCarouselThumbnailItem
+                      key={image?.src}
+                      isActive={activeGalleryItem === i}
+                      onClick={() => {
+                        setActiveGalleryItem(i)
+                        carouselRef.current && carouselRef.current.goToSlide(i)
+                      }}
+                    >
+                      {product?.images && (
+                        <Image
+                          src={product.images && image?.src}
+                          alt={(product.images && image?.alt) || ''}
+                          shopifySize={'small'}
+                          fit={'contain'}
+                          width={'60px'}
+                          height={'60px'}
+                        />
+                      )}
+                    </SCarouselThumbnailItem>
+                  ))}
+                </SCarouselThumbnails>
+              </SCarouselThumbnailsHolder>
             </>
           )}
         </SPdpRowWrapper>

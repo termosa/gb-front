@@ -30,7 +30,11 @@ const SLayoutImage = styled(Image)`
   }
 
   img {
-    width: 284px;
+    width: 232px;
+
+    @media (min-width: 375px) {
+      width: 284px;
+    }
 
     @media (min-width: 768px) {
       width: 220px;

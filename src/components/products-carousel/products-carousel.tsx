@@ -49,6 +49,10 @@ const SectionTitle = styled.div<{
   text-align: center;
   margin: 0 0 12px;
 
+  @media (min-width: 768px) {
+    margin: 0 0 35px;
+  }
+
   & > span {
     position: relative;
 
@@ -223,9 +227,10 @@ export const ProductsCarousel = ({
             </span>
           </SectionTitle>
         ) : (
-          <SectionTitle isMobile={false}>
-            {title + ' '}
-            <span>{titleHighlighted}</span>
+          <SectionTitle>
+            <span>
+              {title} {titleHighlighted}
+            </span>
           </SectionTitle>
         )}
         <SectionText>
@@ -235,14 +240,14 @@ export const ProductsCarousel = ({
           <SPrevArrow>
             <SArrowButton
               onClick={() => {
-                carouselRef.current && carouselRef.current.previous(1)
+                carouselRef.current && carouselRef.current.previous(products.length >= 4 ? 2 : 1)
               }}
             />
           </SPrevArrow>
           <SNextArrow>
             <SArrowButton
               onClick={() => {
-                carouselRef.current && carouselRef.current.next(1)
+                carouselRef.current && carouselRef.current.next(products.length >= 4 ? 2 : 1)
               }}
             />
           </SNextArrow>
