@@ -1,5 +1,4 @@
 const { PHASE_DEVELOPMENT_SERVER, PHASE_PRODUCTION_BUILD, PHASE_PRODUCTION_SERVER } = require('next/constants')
-const basePath = require('./config/base-path')
 
 module.exports = (phase) => {
   const shouldAddBuildConfig = [PHASE_DEVELOPMENT_SERVER, PHASE_PRODUCTION_BUILD, PHASE_PRODUCTION_SERVER].includes(
@@ -27,8 +26,6 @@ module.exports = (phase) => {
 
   return {
     ...cssOptions,
-    basePath: basePath,
-    // ...(phase !== PHASE_DEVELOPMENT_SERVER && { basePath: basePath }),
     typescript: { ignoreBuildErrors: true },
     env: {
       SITE_URL: process.env.SITE_URL,

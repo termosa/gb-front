@@ -1,7 +1,7 @@
 import http, { Query, Method } from '../../modules/http'
 import createLink from '../create-link'
 
-const prefix = process.env.NODE_ENV === 'development' ? '/ws30/api/shopify' : ''
+const prefix = process.env.NODE_ENV === 'development' ? '/api/shopify' : ''
 
 export type ApiProps = {
   path: string

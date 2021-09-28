@@ -8,7 +8,7 @@ describe('<YotpoReviews>', () => {
       <YotpoReviews
         productId={68415324184}
         productTitle="Water Lilies"
-        productUrl="https://www.fragrantjewels.com/ws30/products/water-lilies-jewel-candle"
+        productUrl="https://www.fragrantjewels.com/products/water-lilies-jewel-candle"
         productImageUrl="https://cdn.shopify.com/s/files/1/0548/5721/products/1199626307319709-Gravitybrands-1200x960-ZC-1.01.png?v=1609870978"
       />
     )
@@ -18,7 +18,7 @@ describe('<YotpoReviews>', () => {
     expect(yotpoElement).toHaveAttribute('data-name', 'Water Lilies')
     expect(yotpoElement).toHaveAttribute(
       'data-url',
-      'https://www.fragrantjewels.com/ws30/products/water-lilies-jewel-candle'
+      'https://www.fragrantjewels.com/products/water-lilies-jewel-candle'
     )
     expect(yotpoElement).toHaveAttribute(
       'data-image-url',
