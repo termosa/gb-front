@@ -17,7 +17,6 @@ import initiateGtm from '../initiate-gtm'
 import CustomerContext from '../../modules/customer-context'
 import CustomerOrdersDetailsContext from '../../modules/customer-orders-details-context'
 import useCustomerOrdersDetails from '../use-customer-orders-details'
-import { getProperty } from '../alooma'
 
 const MainPageLayoutWrapper = styled.div`
   display: flex;
