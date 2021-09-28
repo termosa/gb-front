@@ -41,7 +41,7 @@ export default function ProductPage({ product, productId, potentialProducts }: P
             </SiteSection>
           )}
           <div className="product-yotpo-reviews-section">
-            <LazyLoad threshold={1000}>
+            <LazyLoad threshold={1000} placeholder={<div style={{ height: 300 }} />}>
               <SiteSection>
                 <YotpoReviews />
               </SiteSection>
