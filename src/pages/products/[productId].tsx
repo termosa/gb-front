@@ -1,7 +1,6 @@
 import React from 'react'
 import productPageProps, { ProductPageProps } from '../../resolvers/productPageProps'
 import Product from '../../containers/Product'
-import FjWild from '../../components/fj-wild'
 import ProductsCarousel from '../../components/products-carousel'
 import ProductContext from '../../modules/product-context'
 import MainPageLayout from '../../lib/main-page-layout'
