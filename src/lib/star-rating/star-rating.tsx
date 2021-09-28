@@ -41,9 +41,9 @@ const HalfStar = () => (
     />
     <defs>
       <linearGradient id="paint0_linear" x1="-0.166748" y1="7" x2="15.8333" y2="7" gradientUnits="userSpaceOnUse">
-        <stop offset="0.5" stop-color="#9059C8" />
-        <stop offset="0.5001" stop-color="#DADADA" />
-        <stop offset="1" stop-color="#DADADA" />
+        <stop offset="0.5" stopColor="#9059C8" />
+        <stop offset="0.5001" stopColor="#DADADA" />
+        <stop offset="1" stopColor="#DADADA" />
       </linearGradient>
     </defs>
   </SSvg>
