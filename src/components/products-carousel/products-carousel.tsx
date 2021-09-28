@@ -235,14 +235,14 @@ export const ProductsCarousel = ({
           <SPrevArrow>
             <SArrowButton
               onClick={() => {
-                carouselRef.current && carouselRef.current.previous(1)
+                carouselRef.current && carouselRef.current.previous(products.length >= 4 ? 2 : 1)
               }}
             />
           </SPrevArrow>
           <SNextArrow>
             <SArrowButton
               onClick={() => {
-                carouselRef.current && carouselRef.current.next(1)
+                carouselRef.current && carouselRef.current.next(products.length >= 4 ? 2 : 1)
               }}
             />
           </SNextArrow>
