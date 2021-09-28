@@ -42,7 +42,7 @@ const Container = styled.div`
 `
 
 const SectionTitle = styled.div<{
-  isMobile: boolean
+  isMobile?: boolean
 }>`
   font: ${(props) => (props.isMobile ? `600 16px/1.5 'Montserrat', serif` : `700 40px/1 'Cormorant Garamond', serif`)};
   text-transform: ${(props) => (props.isMobile ? `uppercase` : `initial`)};
