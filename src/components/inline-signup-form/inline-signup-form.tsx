@@ -7,6 +7,10 @@ import Image from '../../lib/image'
 import http from '../../modules/http'
 import klaviyo from '../../lib/klaviyo'
 
+const KLAVIYO_LIST = 'KjMzdu'
+const KLAVIYO_SOURCE = encodeURIComponent('Homepage - Footer')
+const KLAVIYO_FORM_ID = 'PXeq2D'
+
 const Container = styled.div`
   max-width: 1020px;
   text-align: center;
@@ -117,10 +121,13 @@ export function InlineSignupForm({ className }: InlineSignupFormProps): React.Re
   const signUpRequest = useDefer<unknown, string>(
     (email: string) =>
       http({
-        url: `https://www.fragrantjewels.com/klsubscribe?email=${email}&l=KjMzdu&s=Homepage%20-%20Footer`,
-      }).then(() => {
-        klaviyo('identify', { $email: email })
-      }),
+        url: 'https://www.fragrantjewels.com/klsubscribe',
+        query: { email, l: KLAVIYO_LIST, s: KLAVIYO_SOURCE },
+      })
+        .then(() => {
+          klaviyo('identify', { $email: email, form_id: KLAVIYO_FORM_ID })
+        })
+        .catch((error) => Promise.reject(error?.message || error?.toString() || 'Can not sign up you now')),
     []
   )
   const handleSubmit = (event: React.FormEvent) => {
