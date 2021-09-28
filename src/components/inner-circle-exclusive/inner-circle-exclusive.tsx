@@ -554,7 +554,7 @@ export function InnerCircleExclusive({
                   >
                     {slideImages.map((src, i) => (
                       <SLeftImageContainer isPresent={slideImages.length > 2} key={src + i}>
-                        <SImage src={src} alt={productTitle} />
+                        <SImage src={src} alt={productTitle} visibleByDefault />
                       </SLeftImageContainer>
                     ))}
                   </Slider>
@@ -568,6 +568,7 @@ export function InnerCircleExclusive({
                         key={src + i}
                         width={screenSize.greaterThanMedium ? '400px' : '236px'}
                         height={screenSize.greaterThanMedium ? '400px' : '236px'}
+                        visibleByDefault
                       />
                     ))}
                   </Slider>
