@@ -310,7 +310,7 @@ export const CollectionFilters = ({
   onChangeFilter,
   onChangeSorting,
   initialSorting,
-  initialFilter = createEmptyFilter,
+  initialFilter = createEmptyFilter(),
 }: CollectionFiltersProps): React.ReactElement => {
   const screenSize = useScreenSize()
   const [selectedSorting, setSelectedSorting] = useState<SelectedSorting>(initialSorting)
