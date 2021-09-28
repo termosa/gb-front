@@ -1,7 +1,6 @@
 import React, { MutableRefObject, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled, { css } from 'styled-components'
-import StarRating from '../../lib/star-rating'
 import formatPrice from '../../modules/format-price'
 import { ProductVariant } from '../../modules/normalize-product-variant'
 import SubscriptionHint from '../../components/subscription-hint'
@@ -19,10 +18,11 @@ import addCartItemWithSubscription from '../add-cart-item-with-subscription'
 import SizeSelectorModal from '../size-selector-modal'
 import trackAddedToCart from '../track-added-to-cart'
 import Image from '../image'
+import YotpoStarRating from '../yotpo-star-rating'
 
 const goToYotpoReviews = () => {
   const yOffset = -200
-  const element = window?.document.querySelector('.yotpo-nav-wrapper')
+  const element = window?.document.querySelector('.product-yotpo-reviews-section')
   if (element) {
     const y = element?.getBoundingClientRect().top + (window?.pageYOffset || 0) + yOffset
     window?.scrollTo({ top: y })
@@ -251,10 +251,6 @@ const SPdpProductInfoTitle = styled.h2`
   font: 700 32px/1 'Cormorant Garamond', serif;
   letter-spacing: -0.02em;
   margin: 0 0 12px;
-`
-
-const SStarRating = styled(StarRating)`
-  text-decoration: underline;
 `
 
 const SPdpProductDetails = styled.div`
@@ -586,11 +582,7 @@ export function ProductInfo({ className, style, addToCartRef }: ProductInfoProps
       )}
       <SPdpProductInfo top={infoDistanceFromTop + 'px'} ref={productInfoRef}>
         <SPdpProductInfoTitle>{product.title}</SPdpProductInfoTitle>
-        <SStarRating
-          reviewsAverage={product.reviewsAverage}
-          reviewsCount={product.reviewsCount}
-          onClick={goToYotpoReviews}
-        />
+        <YotpoStarRating onClick={goToYotpoReviews} />
         <SPdpProductDetails>
           {isDiscountApplied && isDiscountAvailable ? (
             <>
