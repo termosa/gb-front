@@ -27,11 +27,11 @@ export default function ProductPage({ product, productId, potentialProducts }: P
       <ProductContext.Provider value={product}>
         <MainPageLayout>
           <Product />
-          <FjWild
+          {/*<FjWild
             title="FJ in the wild"
             textFirstPart="See our products in action on"
             textSecondPart="customers just like you."
-          />
+          />*/}
           {potentialProducts && (
             <SiteSection>
               <ProductsCarousel

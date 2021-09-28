@@ -93,7 +93,7 @@ export default function HomePage({
             },
             {
               title: 'Feel Good Ingredients',
-              image: 'https://new-fragrantjewels.s3.us-west-2.amazonaws.com/app/img/clean-ingredients.png',
+              image: 'https://new-fragrantjewels.s3.us-west-2.amazonaws.com/app/img/bath-bombs.png',
               description:
                 "Call us crazy, but harmful chemicals and self-care don't really go hand-in-hand. We only use clean ingredients, so you (and your lady parts) can enjoy worry-free relaxation.",
             },
