@@ -38,7 +38,7 @@ const Collection = (): null | React.ReactElement => {
   const hashObject: HashObject | undefined = window?.location.hash
     .slice(1)
     .split('&')
-    .reduce((res, item) => {
+    .reduce<{ [key: string]: undefined | string }>((res, item) => {
       const parts = item.split('=')
       res[parts[0]] = parts[1]
       return res
@@ -54,15 +54,13 @@ const Collection = (): null | React.ReactElement => {
 
   const updateHash = (filter: CollectionProductsFilter, sorting: SelectedSorting) => {
     if (!window) return
-    const sortingHash = 'sortF=' + sorting
-    let filtersHash = ''
-
-    for (const filterType in filter) {
-      if (!filter[filterType].length) continue
-      filtersHash = filtersHash + filterType + '=' + filter[filterType].join(',') + '&'
-    }
-
-    window.location.hash = filtersHash + sortingHash
+    window.location.hash = Object.entries(filter)
+      .reduce<Array<string>>(
+        (all, [type, filters]) =>
+          filters?.length ? all.concat(`${encodeURIComponent(type)}=${encodeURIComponent(filters.join(','))}`) : all,
+        [`sortF=${encodeURIComponent(sorting)}`]
+      )
+      .join('&')
   }
 
   const availableFilters = useMemo(() => parseFiltersFromProducts(collection?.products), [collection?.products])
