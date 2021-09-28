@@ -53,7 +53,7 @@ export function initiateFacebookPixel(): Promise<FacebookPixel> {
     window.fbq = fbq
     if (!window._fbq) window._fbq = fbq
 
-    loadScript('https://connect.facebook.net/en_US/fbevents.js')
+    loadScript('//connect.facebook.net/en_US/fbevents.js')
       .then(() => {
         log('Facebook Pixel successfully initialized')
 
