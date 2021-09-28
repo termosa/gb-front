@@ -27,10 +27,10 @@ export function createLink(path: string, query?: null | Query, hash?: string): s
   return `${baseSiteUrl}${formatPathAndParameters(path, query, hash)}`
 }
 
-createLink.forCollection = (name: string, query?: null | Query, hash?: string) =>
-  createLink(`/collections/${name}`, query, hash)
+createLink.forCollection = (nameOrId: string | number, query?: null | Query, hash?: string) =>
+  createLink(`/collections/${nameOrId}`, query, hash)
 
-createLink.forProduct = (name: string, query?: null | Query, hash?: string) =>
-  createLink(`/products/${name}`, query, hash)
+createLink.forProduct = (nameOrId: string | number, query?: null | Query, hash?: string) =>
+  createLink(`/products/${nameOrId}`, query, hash)
 
 createLink.forPage = (name: string, query?: null | Query, hash?: string) => createLink(`/pages/${name}`, query, hash)

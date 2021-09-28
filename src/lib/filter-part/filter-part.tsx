@@ -250,7 +250,7 @@ export function FilterPart({
                 {!selectedFilters[filterGroup]?.includes(name) && (
                   <SProductsQuantity>
                     {filterGroup !== 'sizes'
-                      ? `(${selectedFilters[filterGroup]?.length ? `+` + amount : availableAmount})`
+                      ? `(${selectedFilters[filterGroup]?.length ? `+` + amount : availableAmount || 0})`
                       : ''}
                   </SProductsQuantity>
                 )}

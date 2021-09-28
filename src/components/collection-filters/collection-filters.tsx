@@ -15,7 +15,7 @@ export type { CollectionProductsFilter } from '../../modules/filter-collection-p
 export interface Filter {
   name: string
   amount: number
-  availableAmount: number
+  availableAmount?: number
 }
 
 export interface Filters {
