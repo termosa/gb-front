@@ -189,7 +189,7 @@ const ProductCardStars = styled.div`
     height: 14px;
   }
 
-  @media (min-width: 767px) {
+  @media (min-width: 768px) {
     svg {
       width: 18px;
       height: 18px;

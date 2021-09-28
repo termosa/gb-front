@@ -19,7 +19,7 @@ const SFiltersSection = styled(SiteSection)`
     margin-bottom: 20px;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     margin-bottom: 24px;
   }
 `
@@ -107,6 +107,7 @@ const Collection = (): null | React.ReactElement => {
           filters={availableFilters}
           initialSorting={sorting}
           initialFilter={filter}
+          filteredProducts={filteredProducts}
         />
       </SFiltersSection>
       <ProductsList

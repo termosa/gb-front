@@ -45,7 +45,7 @@ const SStar = styled.span`
   margin: 0 1px;
   width: 14px;
   height: 14px;
-  @media (min-width: 767px) {
+  @media (min-width: 768px) {
     width: 16px;
     height: 16px;
   }
