@@ -231,6 +231,8 @@ const getResponsive = (partiallyVisible: boolean | undefined): ResponsiveType =>
   }
 }
 
+let productsLength = 0
+
 export const Slider = ({
   children,
   arrows,
@@ -255,8 +257,12 @@ export const Slider = ({
       return null
     }
 
-    const startSlideCount = carouselRef?.current?.state?.slidesToShow * 2
-    const realProductsCount = carouselRef?.current?.state?.totalItems - startSlideCount * 2
+    if (!productsLength) {
+      productsLength = carouselRef?.current?.state?.totalItems - carouselRef?.current?.state?.currentSlide * 2
+    }
+
+    const realProductsCount = productsLength
+    const startSlideCount = (carouselRef?.current?.state?.totalItems - realProductsCount) / 2
     let currentSlide = carouselRef?.current?.state?.currentSlide - startSlideCount
     if (currentSlide < 0) {
       currentSlide = realProductsCount + currentSlide
@@ -268,12 +274,12 @@ export const Slider = ({
           type="range"
           value={Math.round((currentSlide * 100) / realProductsCount)}
           min={0}
-          max={Math.round(((realProductsCount - 1) * 100) / realProductsCount)}
+          max={Math.round(((realProductsCount - (realProductsCount >= 4 ? 2 : 1)) * 100) / realProductsCount)}
           onChange={(e) => {
             if (Math.round((currentSlide * 100) / realProductsCount) < +e.target.value) {
-              carouselRef?.current?.next(1)
+              carouselRef?.current?.next(realProductsCount >= 4 ? 2 : 1)
             } else {
-              carouselRef?.current?.previous(1)
+              carouselRef?.current?.previous(realProductsCount >= 4 ? 2 : 1)
             }
           }}
         />
