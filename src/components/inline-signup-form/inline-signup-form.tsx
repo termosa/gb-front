@@ -125,7 +125,7 @@ export function InlineSignupForm({ className }: InlineSignupFormProps): React.Re
         query: { email, l: KLAVIYO_LIST, s: KLAVIYO_SOURCE },
       })
         .then(() => {
-          klaviyo('identify', { $email: email, form_id: KLAVIYO_FORM_ID })
+          klaviyo('identify', { $email: email, form_id: KLAVIYO_FORM_ID }, { siteVersion: 'V3' })
         })
         .catch((error) => Promise.reject(error?.message || error?.toString() || 'Can not sign up you now')),
     []

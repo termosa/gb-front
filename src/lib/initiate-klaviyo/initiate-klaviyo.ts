@@ -28,6 +28,7 @@ export type KlaviyoItem = {
     CompareAtPrice?: string // Like "$1.40"
     Brand?: string
   }
+  siteVersion: 'V3'
 }
 
 export type TrackViewedItemPayload = {
@@ -39,13 +40,14 @@ export type TrackViewedItemPayload = {
   Brand?: string
   Price: string // Like: "$.140"
   CompareAtPrice?: string // Like: "$.140"
+  siteVersion: 'V3'
 }
 
 // https://apidocs.klaviyo.com/reference/javascript-client-library
 export type KlaviyoCommand =
   | []
   | ['account', string]
-  | ['identify', KlaviyoIdentity]
+  | ['identify', KlaviyoIdentity, void | Record<string, unknown>]
   | ['track', 'Viewed Product', TrackViewedItemPayload]
   | ['track', string, Record<string, unknown>]
   | ['trackViewedItem', KlaviyoItem]

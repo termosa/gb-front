@@ -8,7 +8,7 @@ export function alooma(eventName: string, eventProperties: Record<string, unknow
 
   const patchedProperties = {
     timestamp: formatDate(new Date(), 'MM/dd/yyyy hh:mm:ss aa'),
-    siteVersion: 3,
+    siteVersion: 'V3',
     ...eventProperties,
   }
 
