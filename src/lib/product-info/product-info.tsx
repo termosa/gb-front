@@ -502,10 +502,10 @@ export function ProductInfo({ className, style, addToCartRef }: ProductInfoProps
     }
   }
 
-  const onMemberClick = (e) => {
-    e.preventDefault()
+  const onMemberClick: React.MouseEventHandler<HTMLAnchorElement> = (event) => {
+    event.preventDefault()
     ga('IC PDP Upsell - Already a member Clicked')
-    location.href = e.target.href
+    location.href = (event.target as HTMLAnchorElement).href
   }
 
   const addToCartHandler = (selectedVariant: ProductVariant | null) => {
@@ -725,7 +725,7 @@ export function ProductInfo({ className, style, addToCartRef }: ProductInfoProps
               <SPdpAdditionalText>
                 Join the Inner Circle today, then automatically receive a monthly set for $32.95 plus tax. No
                 commitment, cancel anytime.{' '}
-                <a href="/account/login?return_url=/products/lemon-drop-jewel-candle" onClick={(e) => onMemberClick(e)}>
+                <a href="/account/login?return_url=/products/lemon-drop-jewel-candle" onClick={onMemberClick}>
                   Already a member?
                 </a>
               </SPdpAdditionalText>
