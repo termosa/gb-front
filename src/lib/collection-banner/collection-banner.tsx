@@ -9,7 +9,7 @@ const Wrapper = styled.div<{ backgroundImg?: string }>`
 `
 
 const CollectionBannerWrapper = styled.div`
-  max-width: 960px;
+  max-width: 990px;
   margin: 0 auto;
   position: relative;
 
@@ -24,7 +24,7 @@ const CollectionBannerWrapperInner = styled.div`
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  left: 15px;
+  left: 20px;
 
   @media (min-width: 1200px) {
     left: 0;

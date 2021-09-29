@@ -94,7 +94,7 @@ export default function HomePage({
             },
             {
               title: 'Feel Good Ingredients',
-              image: 'https://new-fragrantjewels.s3.us-west-2.amazonaws.com/app/img/bath-bombs.png',
+              image: 'https://new-fragrantjewels.s3.us-west-2.amazonaws.com/app/img/hiw-ingredients.png',
               description:
                 "Call us crazy, but harmful chemicals and self-care don't really go hand-in-hand. We only use clean ingredients, so you (and your lady parts) can enjoy worry-free relaxation.",
             },
@@ -124,7 +124,7 @@ export default function HomePage({
           title="Shop by Product"
           products={[
             {
-              image: 'https://new-fragrantjewels.s3.us-west-2.amazonaws.com/app/img/prod-bath-bombs.png',
+              image: 'https://new-fragrantjewels.s3.us-west-2.amazonaws.com/app/img/bath-bombs.png',
               buttonLink: createLink.forCollection('bath-bombs'),
               buttonText: 'BATH BOMBS',
             },

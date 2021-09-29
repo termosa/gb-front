@@ -48,6 +48,7 @@ const SFilterGroup = styled.div<{
   display: flex;
   flex-direction: column;
   cursor: pointer;
+  padding-right: 15px;
 
   @media (max-width: 767px) {
     padding-bottom: ${(props) => (props.isCollapsed ? '0' : '24px')};

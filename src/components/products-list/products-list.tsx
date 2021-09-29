@@ -20,7 +20,7 @@ const ProductsListContainer = styled.div`
     margin: 0 20px 48px;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 600px) {
     grid-gap: 32px 8px;
     margin: 0 16px 40px;
     grid-template-columns: repeat(2, 1fr);

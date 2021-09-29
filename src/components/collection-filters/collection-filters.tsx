@@ -42,9 +42,9 @@ const SButtons = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
-  max-width: 334px;
+  max-width: 324px;
   margin-left: auto;
-  margin-top: 2.5em;
+  margin-top: 20px;
 
   @media (max-width: 1033px) {
     padding-right: 20px;
@@ -145,7 +145,8 @@ const SFilters = styled.div`
   justify-content: space-between;
 
   @media (min-width: 768px) {
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 4fr 2fr 5fr 3fr 1fr;
     margin: 10px 20px 0;
     padding: 24px;
     border: 0.5px solid #000;
@@ -153,8 +154,13 @@ const SFilters = styled.div`
 
   @media (min-width: 1033px) {
     margin: 10px 0 0;
+    grid-template-columns: 4fr 2fr 4fr 4fr 1fr;
   }
 `
+
+const SFilterPart = styled(FilterPart)<{
+  minWidth?: string
+}>``
 
 const SFilterGroup = styled.div`
   display: flex;
@@ -209,9 +215,12 @@ const SFilterControlButtonsGroupLabel = styled.div`
 `
 
 const SCloseButtonWrapper = styled.div`
-  width: 73px;
   display: flex;
   justify-content: flex-end;
+
+  @media (max-width: 767px) {
+    width: 73px;
+  }
 `
 
 const SClearFiltersButton = styled.span<{ mobile?: boolean }>`
@@ -253,7 +262,11 @@ const SSelectedFilters = styled.div`
 const SSelectedFilter = styled.div`
   display: flex;
   align-items: center;
-  padding: 4px 20px;
+  padding: 4px 10px;
+
+  &:first-child {
+    padding-left: 0;
+  }
 
   @media (max-width: 767px) {
     padding: 4px 0 4px 20px;
@@ -335,7 +348,8 @@ export const CollectionFilters = ({
               (product: Product) => product[name as 'fragrance' | 'color' | 'material'] === el.name
             )
       return {
-        ...el,
+        name: el.name,
+        amount: el.amount,
         availableAmount: productsWithFilter.length,
       }
     })
@@ -487,45 +501,49 @@ export const CollectionFilters = ({
       {isFiltersDropdownOpened && (
         <SFilters>
           {!!filters.fragrances.length && (
-            <FilterPart
-              itemsArray={filtersCopy.fragrances}
+            <SFilterPart
+              itemsArray={filtersCopy.fragrances.sort((a, b) => a.name.localeCompare(b.name))}
               filterGroup={'fragrances'}
               handleFilterChange={handleFilterChange}
               selectedFilters={selectedFilters}
               visibleByDefault
+              minWidth={'200px'}
             >
               Fragrance
-            </FilterPart>
+            </SFilterPart>
           )}
           {!!filters.sizes.length && (
-            <FilterPart
+            <SFilterPart
               itemsArray={filtersCopy.sizes}
               filterGroup={'sizes'}
               handleFilterChange={handleFilterChange}
               selectedFilters={selectedFilters}
+              minWidth={'140px'}
             >
               Size
-            </FilterPart>
+            </SFilterPart>
           )}
           {!!filters.materials.length && (
-            <FilterPart
-              itemsArray={filtersCopy.materials}
+            <SFilterPart
+              itemsArray={filtersCopy.materials.sort((a, b) => a.name.localeCompare(b.name))}
               filterGroup={'materials'}
               handleFilterChange={handleFilterChange}
               selectedFilters={selectedFilters}
+              minWidth={'250px'}
             >
               Material
-            </FilterPart>
+            </SFilterPart>
           )}
           {!!filters.colors.length && (
-            <FilterPart
-              itemsArray={filtersCopy.colors}
+            <SFilterPart
+              itemsArray={filtersCopy.colors.sort((a, b) => a.name.localeCompare(b.name))}
               filterGroup={'colors'}
               handleFilterChange={handleFilterChange}
               selectedFilters={selectedFilters}
+              minWidth={'220px'}
             >
               Metal color
-            </FilterPart>
+            </SFilterPart>
           )}
           <SFilterMobileControlButtonsGroup>
             {!screenSize.greaterThanMedium && (
