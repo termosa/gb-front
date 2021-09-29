@@ -7,8 +7,6 @@ import SubscriptionHint from '../../components/subscription-hint'
 import addCartItem from '../add-cart-item'
 import navigate from '../navigate'
 import ProductModalButtons from '../../components/product-modal-button'
-import { parse } from 'node-html-parser'
-import removeNewLineCharacters from '../../modules/remove-new-line-characters'
 import getLabel from '../../modules/get-label'
 import { Product as ProductType } from '../../modules/normalize-product'
 import ProductContext from '../../modules/product-context'
@@ -20,6 +18,7 @@ import trackAddedToCart from '../track-added-to-cart'
 import Image from '../image'
 import YotpoStarRating from '../yotpo-star-rating'
 import ga from '../google-analytics'
+import parseProductDetails from '../parse-product-details'
 
 const goToYotpoReviews = () => {
   const yOffset = -200
@@ -449,7 +448,7 @@ const SPdpAItemDescription = styled.div<{
   }
 `
 
-type ProductDescription = {
+type ProductDetails = {
   title: string
   content: string
 }
@@ -474,7 +473,6 @@ export function ProductInfo({ className, style, addToCartRef }: ProductInfoProps
   const [selectedVariant, setSelectedVariant] = useState<ProductVariant | null>(null)
   const [isSelectRingError, setSelectRingError] = useState<boolean>(false)
   const [actualPrice, setActualPrice] = useState<number>(0)
-  const [productDescription, setProductDescription] = useState<Array<ProductDescription>>()
   const [isDiscountApplied, setDiscountApplied] = useState<boolean>(true)
   const [isSubscriptionHintOpened, setSubscriptionHintOpened] = useState<boolean>(false)
   const [isRingSizeModalOpened, setIsRingSizeModalOpened] = useState(false)
@@ -594,18 +592,9 @@ export function ProductInfo({ className, style, addToCartRef }: ProductInfoProps
   useEffect(() => {
     setActualPrice(product?.variants[0].actual_price || 0)
     setComparePrice(product?.variants[0].compare_at_price || null)
-    if (product && product.body_html) {
-      const trArr = Array.prototype.slice.call(parse(product.body_html).querySelectorAll('tr'))
-      setProductDescription(
-        trArr
-          .filter((el: HTMLElement) => el.querySelectorAll('td').length === 2)
-          .map((el: HTMLElement) => ({
-            title: el.querySelectorAll('td')[0].innerText.trim(),
-            content: removeNewLineCharacters(el.querySelectorAll('td')[1].innerText),
-          }))
-      )
-    }
   }, [product])
+
+  const productDetails = useMemo(() => parseProductDetails(product), [product])
 
   return (
     <SProductInfo className={cn(className, 'ProductInfo')} style={style}>
@@ -791,7 +780,7 @@ export function ProductInfo({ className, style, addToCartRef }: ProductInfoProps
           </SPdpFragranceItem>
         </SPdpFragrance>*/}
         <div>
-          {productDescription?.map((el: ProductDescription, i: number) => (
+          {productDetails.map((el: ProductDetails, i: number) => (
             <SPdpAItem key={el.title}>
               <SPdpAItemTitle
                 onClick={() => (activeAccordion === i ? setActiveAccordion(null) : setActiveAccordion(i))}

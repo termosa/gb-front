@@ -1,0 +1,27 @@
+export const meta = {
+  type: 'function',
+  name: 'parseProductDetails',
+  description: 'Extract information from HTML product description',
+  tags: ['function', 'product'],
+  lists: {
+    arguments: [
+      { name: 'product', type: 'Product' },
+    ],
+    returns: [
+      { name: 'details', type: 'Array<{ title: string, content: string }>', description: 'Grouped list of details' },
+    ],
+  },
+}
+
+## Usage
+
+```js
+import parseProductDetails from './parse-product-details'
+
+parseProductDetails(product).map(details => (
+  <div>
+    <h3>{details.title}</h3>
+    <div dangerouslySetInnerHTML={{ __html: details.content }} />
+  </div>
+))
+```

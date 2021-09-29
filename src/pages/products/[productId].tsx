@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import productPageProps, { ProductPageProps } from '../../resolvers/productPageProps'
 import Product from '../../containers/Product'
 import ProductsCarousel from '../../components/products-carousel'
@@ -14,8 +14,15 @@ import LazyLoad from '../../lib/lazy-load'
 import YotpoProductGallery from '../../lib/yotpo-product-gallery'
 import createLink from '../../lib/create-link'
 import FjWild from '../../components/fj-wild'
+import parseProductDetails from '../../lib/parse-product-details'
 
 export default function ProductPage({ product, productId, potentialProducts }: ProductPageProps): React.ReactElement {
+  const productDescription = useMemo<string>(() => {
+    if (!product) return ''
+    const details = parseProductDetails(product)
+    return (details.find((detail) => detail.title === 'Overview') || details[0])?.content || ''
+  }, [product])
+
   if (!product) return <RemotePage url={createLink.forProduct(productId)} />
 
   trackViewedProduct(product)
@@ -24,6 +31,7 @@ export default function ProductPage({ product, productId, potentialProducts }: P
     <>
       <Head>
         <title>{product.title} - Fragrant Jewels</title>
+        <meta name="description" content={productDescription.slice(0, 320) || product.title} />
       </Head>
       <ProductContext.Provider value={product}>
         <MainPageLayout>

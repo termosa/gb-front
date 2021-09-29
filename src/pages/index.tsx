@@ -1,4 +1,5 @@
 import React from 'react'
+import Head from 'next/head'
 import homePageProps, { HomePageProps } from '../resolvers/homePageProps'
 import MainPageLayout from '../lib/main-page-layout'
 import HeroGallery from '../lib/hero-gallery'
@@ -14,7 +15,6 @@ import YotpoGallery from '../lib/yotpo-gallery'
 import navigate from '../lib/navigate'
 import addCartItem from '../lib/add-cart-item'
 import trackAddedToCart from '../lib/track-added-to-cart'
-import Head from 'next/head'
 import LazyLoad from '../lib/lazy-load'
 import createLink from '../lib/create-link'
 
@@ -27,6 +27,10 @@ export default function HomePage({
     <>
       <Head>
         <title>Fragrant Jewels | Home</title>
+        <meta
+          name="description"
+          content="A hidden ring in each product and a chance to win a $10,000 ring! New products now available for a limited time."
+        />
       </Head>
       <MainPageLayout>
         <HeroGallery
