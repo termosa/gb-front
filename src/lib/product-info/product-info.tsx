@@ -335,7 +335,7 @@ const SPdpPiSelectorBtn = styled.button<{
   isActive: boolean
 }>`
   background: ${(props) => (props.isActive ? '#9059C8' : '#fff')};
-  border: ${(props) => (props.isActive ? '1px solid #9059C8' : '1px solid #000')};
+  border: ${(props) => (props.isActive ? '0.5px solid #9059C8' : '0.5px solid #000')};
   padding: 10px 5px;
   font-size: 15px;
   min-width: 35px;
@@ -481,7 +481,7 @@ export function ProductInfo({ className, style, addToCartRef }: ProductInfoProps
   const productHeadingRef = useRef<HTMLDivElement>(null)
   const productInfoRef = useRef<HTMLDivElement>(null)
 
-  const productTitle = product.title.split('-')[0].split(':')[0]
+  const productTitle = product?.title.split('-')[0].split(':')[0]
 
   if (!product) {
     return null
