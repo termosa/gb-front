@@ -13,6 +13,7 @@ import Head from 'next/head'
 import LazyLoad from '../../lib/lazy-load'
 import YotpoProductGallery from '../../lib/yotpo-product-gallery'
 import createLink from '../../lib/create-link'
+import FjWild from '../../components/fj-wild'
 
 export default function ProductPage({ product, productId, potentialProducts }: ProductPageProps): React.ReactElement {
   if (!product) return <RemotePage url={createLink.forProduct(productId)} />
@@ -27,11 +28,16 @@ export default function ProductPage({ product, productId, potentialProducts }: P
       <ProductContext.Provider value={product}>
         <MainPageLayout>
           <Product />
-          {/*<FjWild
-            title="FJ in the wild"
-            textFirstPart="See our products in action on"
-            textSecondPart="customers just like you."
-          />*/}
+          <div>
+            <FjWild
+              title="FJ in the wild"
+              textFirstPart="See our products in action on"
+              textSecondPart="customers just like you."
+            />
+            <LazyLoad threshold={1000}>
+              <YotpoProductGallery galleryId="5d12193001f0950007b69682" productId={product.product_id} />
+            </LazyLoad>
+          </div>
           {potentialProducts && (
             <SiteSection>
               <ProductsCarousel
@@ -41,9 +47,6 @@ export default function ProductPage({ product, productId, potentialProducts }: P
               />
             </SiteSection>
           )}
-          <LazyLoad threshold={1000}>
-            <YotpoProductGallery galleryId="5d12193001f0950007b69682" productId={product.product_id} />
-          </LazyLoad>
           <div className="product-yotpo-reviews-section">
             <LazyLoad threshold={1000} placeholder={<div style={{ height: 300 }} />}>
               <SiteSection>

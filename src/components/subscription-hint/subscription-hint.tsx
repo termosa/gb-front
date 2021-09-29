@@ -145,65 +145,65 @@ export function SubscriptionHint({ className }: SubscriptionHintProps): React.Re
                 <path
                   d="M16.6713 10.4725L24.0241 10.4725C24.2592 10.4725 24.4497 10.6712 24.4497 10.9162V21.0038C24.4497 21.2489 24.2592 21.4476 24.0241 21.4476H8.73952C8.50449 21.4476 8.31396 21.2489 8.31396 21.0038V18.6278"
                   stroke="black"
-                  stroke-width="0.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="0.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
                 <path
                   d="M16.3819 12.7156L17.4366 14.8523L19.7951 15.1927L18.087 16.8583L18.4913 19.2077L16.3819 18.0983L14.2726 19.2077L14.6738 16.8583L12.9688 15.1927L15.3273 14.8523L16.3819 12.7156Z"
                   stroke="black"
-                  stroke-width="0.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="0.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
                 <path
                   d="M9.54678 11.9193L14.9668 6.65044C15.133 6.4888 15.4063 6.50022 15.5771 6.67595L17.6936 8.85308C17.8644 9.02881 17.8681 9.3023 17.7018 9.46393L12.2978 14.7173L10.6596 16.3098L5.20969 21.6078C5.04342 21.7694 4.77016 21.758 4.59933 21.5822L2.4829 19.4051C2.31207 19.2294 2.30837 18.9559 2.47464 18.7943L7.85905 13.56"
                   stroke="black"
-                  stroke-width="0.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="0.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
                 <path
                   d="M7.96053 10.5935C7.96053 10.5935 7.30705 4.51483 11.1214 4.92818C11.1214 4.92818 14.1608 5.07103 13.1183 8.43864L9.51972 11.9339L8.33132 10.7182L7.96053 10.5935Z"
                   stroke="black"
-                  stroke-width="0.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="0.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
                 <path
                   d="M6.24339 11.873C6.24339 11.873 0.164673 11.2195 0.578026 15.0339C0.578026 15.0339 0.72089 18.0733 4.0885 17.0308L7.85425 13.4078L6.52909 12.0797L6.24339 11.873Z"
                   stroke="black"
-                  stroke-width="0.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="0.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
                 <path
                   d="M18.0029 2.57492V5.36201"
                   stroke="black"
-                  stroke-width="0.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="0.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
                 <path
                   d="M22.3146 4.35638L20.2839 6.36765"
                   stroke="black"
-                  stroke-width="0.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="0.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
                 <path
                   d="M24.5578 8.4202L21.5159 8.4202"
                   stroke="black"
-                  stroke-width="0.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="0.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
                 <path
                   d="M7.49901 10.7063L6.70355 11.4795C6.47005 11.7065 6.46477 12.0798 6.69176 12.3133L10.2086 15.931C10.4356 16.1645 10.8089 16.1698 11.0424 15.9428L11.8378 15.1695C12.0713 14.9425 12.0766 14.5692 11.8496 14.3357L8.33279 10.718C8.10581 10.4845 7.73251 10.4793 7.49901 10.7063Z"
                   stroke="black"
-                  stroke-width="0.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="0.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
               </svg>
             </SubscriptionHintIcon>

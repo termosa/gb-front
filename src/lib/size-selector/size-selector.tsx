@@ -14,6 +14,7 @@ const SSizeSelector = styled.div`
   border: 1px solid #000000;
   box-shadow: 0 0 24px rgba(0, 0, 0, 0.35);
   margin-bottom: 16px;
+  box-sizing: border-box;
 
   @media (min-width: 768px) {
     width: 560px;
