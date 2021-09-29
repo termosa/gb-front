@@ -336,7 +336,7 @@ const SPdpPiSelectorBtn = styled.button<{
   isActive: boolean
 }>`
   background: ${(props) => (props.isActive ? '#9059C8' : '#fff')};
-  border: ${(props) => (props.isActive ? '0.5px solid #9059C8' : '0.5px solid #000')};
+  border: ${(props) => (props.isActive ? '1px solid #9059C8' : '1px solid #000')};
   padding: 10px 5px;
   font-size: 15px;
   min-width: 35px;
@@ -362,7 +362,8 @@ const SPdpPiSelectorBtn = styled.button<{
   }
 
   &:disabled {
-    opacity: 0.2;
+    color: #dadada;
+    border: 1px solid #dadada;
     pointer-events: none;
   }
 `
@@ -482,6 +483,8 @@ export function ProductInfo({ className, style, addToCartRef }: ProductInfoProps
   const productHeadingRef = useRef<HTMLDivElement>(null)
   const productInfoRef = useRef<HTMLDivElement>(null)
 
+  const productTitle = product.title.split('-')[0].split(':')[0]
+
   if (!product) {
     return null
   }
@@ -504,10 +507,11 @@ export function ProductInfo({ className, style, addToCartRef }: ProductInfoProps
     }
   }
 
-  const onMemberClick = (e) => {
+  const onMemberClick = (e: React.MouseEvent) => {
+    const target = e.target as HTMLLinkElement
     e.preventDefault()
     ga('IC PDP Upsell - Already a member Clicked')
-    location.href = e.target.href
+    location.href = target.href
   }
 
   const addToCartHandler = (selectedVariant: ProductVariant | null) => {
@@ -617,7 +621,7 @@ export function ProductInfo({ className, style, addToCartRef }: ProductInfoProps
         />
       )}
       <SPdpProductInfo top={infoDistanceFromTop + 'px'} ref={productInfoRef}>
-        <SPdpProductInfoTitle>{product.title}</SPdpProductInfoTitle>
+        <SPdpProductInfoTitle>{productTitle}</SPdpProductInfoTitle>
         <YotpoStarRating onClick={goToYotpoReviews} />
         <SPdpProductDetails>
           {isDiscountApplied && isDiscountAvailable ? (

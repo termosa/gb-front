@@ -29,6 +29,10 @@ const SFloatingCtaClosed = styled.div<{ isVisible?: boolean }>`
 
   & > button {
     box-shadow: 0 0 24px rgba(0, 0, 0, 0.35);
+
+    @media (min-width: 768px) {
+      margin: 0 16px;
+    }
   }
 `
 
@@ -36,12 +40,13 @@ const SFloatingCtaOpened = styled.div<{ isVisible?: boolean }>`
   position: sticky;
   z-index: 33;
   bottom: 0;
-  width: auto;
+  width: 100%;
   margin: 0 auto;
   visibility: ${(props) => (props.isVisible ? 'visible' : 'hidden')};
 
   @media (min-width: 768px) {
     bottom: 40px;
+    width: auto;
     margin: 0 auto 48px;
     padding: 16px;
   }

@@ -13,12 +13,12 @@ const SSizeSelector = styled.div`
   background: #fff;
   border: 1px solid #000000;
   box-shadow: 0 0 24px rgba(0, 0, 0, 0.35);
-  margin-bottom: 16px;
+  margin-bottom: 30px;
   box-sizing: border-box;
 
   @media (min-width: 768px) {
     width: 560px;
-    margin: 0 auto 48px;
+    margin: 0 auto -16px;
   }
 `
 
