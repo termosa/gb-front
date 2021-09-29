@@ -129,6 +129,7 @@ const Slide = styled.div<{ backgroundImg: string }>`
   @media (min-width: 768px) {
     height: 450px;
     background-image: ${(props) => `url(${props.backgroundImg}) no-repeat`};
+    background-position: left center;
   }
 
   @media (max-aspect-ratio: 4/3) and (max-width: 767px) {
@@ -200,6 +201,15 @@ const SlideTitle = styled.div`
   font-style: normal;
   margin: 0 0 12px;
 
+  @media (min-width: 768px) {
+    max-width: 300px;
+    margin: 0 auto 12px;
+  }
+
+  @media (min-width: 1200px) {
+    margin: 0 0 12px;
+  }
+
   & > span {
     font-style: italic;
   }
@@ -219,7 +229,7 @@ const SlideLinkInner = styled.a`
   min-width: 250px;
   margin: 0 auto;
   text-transform: uppercase;
-  border: 1px solid #000;
+  border: 1px solid #fff;
   border-radius: 0;
   font: 700 16px/1.25 'Montserrat', sans-serif;
   letter-spacing: 0.08em;

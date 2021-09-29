@@ -36,15 +36,14 @@ export default function HomePage({
         <HeroGallery
           slides={[
             {
-              topText: 'NEW',
-              centerFirstText: 'DEEP SLEEP',
+              topText: '',
+              centerFirstText: 'Coven Light or Coven Dark?',
               centerSecondText: '',
-              bottomText: 'Relax your weary bones with a collection to die for...',
-              buttonText: 'SHOP HALLOWEEN',
+              bottomText: 'The fate of humanity lies in your hands. What will it be?',
+              buttonText: 'Decide',
               buttonLink: createLink.forCollection('spooky'),
-              backgroundImg: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/banners/home-banner.jpg',
-              backgroundImgMobile:
-                'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/banners/home-banner-mobile.jpg',
+              backgroundImg: 'https://fragrantjewels-assets.s3.amazonaws.com/images/banners-2/the-coven-banner-dt.jpg',
+              backgroundImgMobile: 'https://fragrantjewels-assets.s3.amazonaws.com/images/banners-2/the-coven-mb.jpg',
               transparentPlaceholder: true,
             },
           ]}

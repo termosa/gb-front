@@ -13,7 +13,6 @@ import Head from 'next/head'
 import LazyLoad from '../../lib/lazy-load'
 import YotpoProductGallery from '../../lib/yotpo-product-gallery'
 import createLink from '../../lib/create-link'
-import FjWild from '../../components/fj-wild'
 import parseProductDetails from '../../lib/parse-product-details'
 
 export default function ProductPage({ product, productId, potentialProducts }: ProductPageProps): React.ReactElement {
@@ -36,16 +35,9 @@ export default function ProductPage({ product, productId, potentialProducts }: P
       <ProductContext.Provider value={product}>
         <MainPageLayout>
           <Product />
-          <div>
-            <FjWild
-              title="FJ in the wild"
-              textFirstPart="See our products in action on"
-              textSecondPart="customers just like you."
-            />
-            <LazyLoad threshold={1000}>
-              <YotpoProductGallery galleryId="5d12193001f0950007b69682" productId={product.product_id} />
-            </LazyLoad>
-          </div>
+          <LazyLoad threshold={1000}>
+            <YotpoProductGallery galleryId="5d12193001f0950007b69682" productId={product.product_id} />
+          </LazyLoad>
           {potentialProducts && (
             <SiteSection>
               <ProductsCarousel
