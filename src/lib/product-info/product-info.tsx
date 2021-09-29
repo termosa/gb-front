@@ -45,6 +45,16 @@ const SPdpProductInfo = styled.div<{
   height: fit-content;
   max-width: 350px;
   margin: 0 auto;
+
+  .text-m {
+    font-family: 'Montserrat', sans-serif;
+    color: #000;
+
+    &:hover {
+      text-decoration: none;
+      color: #000;
+    }
+  }
 `
 
 const SPdpChooserItemPartTopContent = styled.div`
@@ -143,11 +153,12 @@ const SPdpBtn = styled.button<{ disabled?: boolean }>`
 const SPdpAdditionalText = styled.div`
   font: 12px/1.4 'Montserrat', sans-serif;
   max-width: 370px;
-  margin: 16px 0;
-  text-align: center;
+  margin: 5px 0 16px;
+  // text-align: center;
 
   @media (min-width: 768px) {
     text-align: initial;
+    text-align: left;
   }
 
   a {
@@ -699,15 +710,6 @@ export function ProductInfo({ className, style, addToCartRef }: ProductInfoProps
                 </SPdpChooser>
               )}
             </SPdpChooserContainer>
-            <SPdpBtn
-              type="button"
-              ref={addToCartRef}
-              onClick={() =>
-                addToCartHandler(isOneVariantProduct && !isDiscountApplied ? product.variants[0] : selectedVariant)
-              }
-            >
-              Add to Cart
-            </SPdpBtn>
             {isDiscountAvailable && isDiscountApplied && (
               <SPdpAdditionalText>
                 Join the Inner Circle today, then automatically receive a monthly set for $32.95 plus tax. No
@@ -717,6 +719,15 @@ export function ProductInfo({ className, style, addToCartRef }: ProductInfoProps
                 </a>
               </SPdpAdditionalText>
             )}
+            <SPdpBtn
+              type="button"
+              ref={addToCartRef}
+              onClick={() =>
+                addToCartHandler(isOneVariantProduct && !isDiscountApplied ? product.variants[0] : selectedVariant)
+              }
+            >
+              Add to Cart
+            </SPdpBtn>
           </React.Fragment>
         ) : (
           <SPdpPiSelectorWrapper>

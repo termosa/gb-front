@@ -36,7 +36,7 @@ const SFloatingCtaOpened = styled.div<{ isVisible?: boolean }>`
   position: sticky;
   z-index: 33;
   bottom: 0;
-  width: 100%;
+  width: auto;
   margin: 0 auto;
   visibility: ${(props) => (props.isVisible ? 'visible' : 'hidden')};
 
