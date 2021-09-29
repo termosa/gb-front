@@ -1,0 +1,19 @@
+export const meta = {
+  type: 'function',
+  name: 'initiateGoogleAnalytics',
+  description: 'Loads Google Analutics script (only once)',
+  tags: ['function', 'analytics'],
+  lists: {
+    returns: [
+      { name: 'promise', type: 'Promise<Alooma>' },
+    ],
+  },
+}
+
+## Usage
+
+```js
+import initiateGoogleAnalytics from './initiate-google-analytics'
+
+initiateGoogleAnalytics().then(ga => ga({ event: 'pageview', url: window.location.href }))
+```

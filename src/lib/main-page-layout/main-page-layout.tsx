@@ -13,7 +13,7 @@ import loadProductsChunk from '../../modules/load-products-chunk'
 import loadCustomer from '../../modules/load-customer'
 import initiateKlaviyo from '../initiate-klaviyo'
 import initiateAlooma from '../initiate-alooma'
-import initiateGtm from '../initiate-gtm'
+import initiateGoogleAnalytics from '../initiate-google-analytics'
 import CustomerContext from '../../modules/customer-context'
 import CustomerOrdersDetailsContext from '../../modules/customer-orders-details-context'
 import useCustomerOrdersDetails from '../use-customer-orders-details'
@@ -56,7 +56,7 @@ export function MainPageLayout({ children, className, style }: MainPageLayoutPro
   useEffect(() => {
     initiateKlaviyo()
     initiateAlooma()
-    initiateGtm()
+    initiateGoogleAnalytics()
     initiateFacebookPixel()
     initiatePinterestPixel()
     initiateLuckyOrange()
