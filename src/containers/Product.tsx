@@ -25,7 +25,11 @@ import ProductInfo from '../lib/product-info'
 
 const SProductContainer = styled.div`
   max-width: 1020px;
-  margin: 0 auto;
+  margin: 0 auto 50px;
+
+  @media (min-width: 768px) {
+    margin: 0 auto 88px;
+  }
 `
 
 const SPdpRowWrapper = styled.div`

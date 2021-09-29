@@ -9,11 +9,11 @@ const SFjWildSectionTitle = styled.div<{
   font: ${(props) => (props.isMobile ? `600 16px/1.5 'Montserrat', serif` : `700 40px/1 'Cormorant Garamond', serif`)};
   text-transform: ${(props) => (props.isMobile ? `uppercase` : `initial`)};
   text-align: center;
-  margin: 0 0 12px 0;
+  margin: 0;
 
-  @media (min-width: 768px) {
-    margin: 0 0 12px 0;
-  }
+  // @media (min-width: 768px) {
+  //   margin: 0 0 12px 0;
+  // }
 
   & > span {
     position: relative;
@@ -35,10 +35,10 @@ const SFjWildTitle = styled.h2`
   text-transform: none;
   letter-spacing: -0.02em;
   text-align: center;
-  margin: 48px auto 16px;
+  margin: 0 auto 8px;
 
   @media (min-width: 768px) {
-    margin: 88px auto 20px;
+    margin: 0 auto 20px;
   }
 `
 

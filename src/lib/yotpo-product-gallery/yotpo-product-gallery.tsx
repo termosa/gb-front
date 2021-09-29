@@ -5,13 +5,13 @@ import useYotpo from '../use-yotpo'
 import SiteSection from '../../components/site-section'
 
 const Container = styled(SiteSection)`
-  max-width: 960px;
+  max-width: 990px;
   text-align: center;
   margin: 0 auto;
-  padding: 0 15px;
 
   .yotpo-slider-wrapper {
     margin-bottom: 36px !important;
+    max-width: 100% !important;
 
     @media (min-width: 992px) {
       margin-bottom: 60px !important;
