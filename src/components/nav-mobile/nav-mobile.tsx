@@ -411,9 +411,9 @@ const TABS_LIST = [
 ]
 const CARDS_LIST = [
   {
-    href: createLink.forCollection('fall-favs'),
-    imgLink: 'https://fragrantjewels.s3.amazonaws.com/app/app-nav/nav-all-img-23-mb.jpg',
-    text: 'Fall Favorites',
+    href: createLink.forCollection('spooky'),
+    imgLink: 'https://fragrantjewels.s3.amazonaws.com/app/app-nav/nav-all-img-24-mb.jpg',
+    text: 'New! Sterling Silver Collection',
   },
   {
     href: createLink.forProduct('wicked-kitty-bath-bomb'),

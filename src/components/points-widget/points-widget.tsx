@@ -1,9 +1,10 @@
-import React, { useContext } from 'react'
+import React, { useContext, useMemo } from 'react'
 import DiamondIcon from '../../lib/diamond-icon'
 import styled from 'styled-components'
-import CustomerOrdersDetailsContext from '../../modules/customer-orders-details-context'
+import CustomerOrdersDetailsContext, { CustomerLevel } from '../../modules/customer-orders-details-context'
 import usePoints from '../../lib/use-points'
 import createLink from '../../lib/create-link'
+import CustomerContext from '../../modules/customer-context'
 
 const SWrapper = styled.div``
 
@@ -37,12 +38,20 @@ const SValue = styled.div`
 `
 
 export function PointsWidget(): React.ReactElement {
+  const customer = useContext(CustomerContext)
   const customerOrdersDetails = useContext(CustomerOrdersDetailsContext)
   const availablePoints = usePoints()
+  const level = useMemo(() => {
+    if (customer) return customerOrdersDetails.level
+
+    if (availablePoints > 200) return CustomerLevel.PLATINUM
+    if (availablePoints > 0) return CustomerLevel.GOLD
+    return CustomerLevel.NOIR
+  }, [availablePoints, customer, customerOrdersDetails])
   return (
     <SWrapper>
       <SLinkWrapper href={createLink.forPage('rewards-boutique')}>
-        <DiamondIcon customerLevel={customerOrdersDetails.level} />
+        <DiamondIcon customerLevel={level} />
         <SValueWrapper>
           <SValue>{availablePoints}</SValue>
           Points

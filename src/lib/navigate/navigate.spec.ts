@@ -12,13 +12,4 @@ describe('navigate()', () => {
     navigate('/cart')
     expect(window.location.href).toBe('/cart')
   })
-
-  it('should add "/ws30" to the url', () => {
-    navigate('/')
-    expect(window.location.href).toBe('/ws30')
-    navigate('/collections/123456789')
-    expect(window.location.href).toBe('/ws30/collections/123456789')
-    navigate('/products/987654321')
-    expect(window.location.href).toBe('/ws30/products/987654321')
-  })
 })

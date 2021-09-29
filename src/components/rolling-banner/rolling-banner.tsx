@@ -104,6 +104,19 @@ const SPromoSlide = styled.div`
   color: #ee67a0;
 `*/
 
+const SSeparatedLine = styled.span`
+  padding: 0 1em;
+  & + & {
+    position: relative;
+    :before {
+      position: absolute;
+      left: -2px;
+      color: #fff;
+      content: '|';
+    }
+  }
+`
+
 const PurpleSpan = styled.span`
   color: #9059c8;
 `
@@ -128,7 +141,9 @@ export function RollingBanner(): React.ReactElement {
           >
             <span>
               <SPromoSlide>
-                PARABEN FREE&nbsp;&nbsp;|&nbsp;&nbsp;HANDMADE IN USA&nbsp;&nbsp;|&nbsp;&nbsp;100% VEGAN
+                <SSeparatedLine>PARABEN FREE</SSeparatedLine>
+                <SSeparatedLine>HANDMADE IN USA</SSeparatedLine>
+                <SSeparatedLine>100% VEGAN</SSeparatedLine>
               </SPromoSlide>
             </span>
             <SPromoSlide>

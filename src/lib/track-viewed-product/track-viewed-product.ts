@@ -21,19 +21,6 @@ export function trackViewedProduct(product: Product): void {
     siteVersion: 'V3',
   })
 
-  klaviyo('trackViewedItem', {
-    Title: product.title,
-    ItemId: product.product_id,
-    Url: createLink.forProduct(product.handle),
-    Metadata: {
-      Brand: product.vendor,
-      ...(price && { Price: price }),
-      ...(compareAtPrice && { CompareAtPrice: compareAtPrice }),
-    },
-    ...(product.image && { ImageUrl: product.image.src }),
-    siteVersion: 'V3',
-  })
-
   alooma('viewed product', {
     product_id: product.product_id,
     product_name: product.title,

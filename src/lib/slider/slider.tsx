@@ -294,6 +294,8 @@ export const Slider = ({
   return (
     <SImageContainer>
       <Carousel
+        ssr
+        deviceType="desktop"
         ref={carouselRef}
         arrows={arrows}
         customLeftArrow={

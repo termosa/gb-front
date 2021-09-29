@@ -2,7 +2,7 @@ import log from '../log'
 import window from '../window'
 import initiateGoogleAnalytics from '../initiate-google-analytics'
 
-export function googleAnalytics(event: string, ...properties: Array<unknown>): Promise<void> {
+export function googleAnalytics(event: string | Record<string, unknown>, ...properties: Array<unknown>): Promise<void> {
   if (!window) return Promise.resolve()
 
   return initiateGoogleAnalytics()
@@ -10,7 +10,7 @@ export function googleAnalytics(event: string, ...properties: Array<unknown>): P
       ga('send', event, ...properties)
     })
     .catch((error) => {
-      log(`Google Analytics failed to track "${event}"`, properties)
+      log(`Google Analytics failed to track ${JSON.stringify(event)}`, properties)
       if (error) log('Google Analytics failed due to', error)
     })
 }

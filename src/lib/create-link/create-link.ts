@@ -1,8 +1,6 @@
 import baseSiteUrl from '../../modules/base-site-url'
 import stringifyQuery, { Query } from '../../modules/stringify-query'
 
-const temporaryNextPrefix = '/ws30'
-
 const patchPathWithQueryAndHash = (path: string, query?: null | Query, hash?: string) => {
   const [pathWithQuery, ...onlyHashes] = path.split('#')
   const [onlyPath, ...onlyQueries] = pathWithQuery.split('?')
@@ -17,10 +15,7 @@ const patchPathWithQueryAndHash = (path: string, query?: null | Query, hash?: st
 
 const formatPathAndParameters = (path: string, query?: null | Query, hash?: string): string => {
   const normalizedPath = path.startsWith('/') ? path : `/${path}`
-  const pathWithQuery = patchPathWithQueryAndHash(normalizedPath, query, hash)
-  if (/^\/(\?|$)/.test(normalizedPath) || /^\/(api|collections|products)\//.test(pathWithQuery))
-    return `${temporaryNextPrefix}${pathWithQuery}`
-  return pathWithQuery
+  return patchPathWithQueryAndHash(normalizedPath, query, hash)
 }
 
 export function createLink(path: string, query?: null | Query, hash?: string): string {

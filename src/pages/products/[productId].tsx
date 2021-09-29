@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import productPageProps, { ProductPageProps } from '../../resolvers/productPageProps'
 import Product from '../../containers/Product'
 import ProductsCarousel from '../../components/products-carousel'
@@ -13,10 +13,15 @@ import Head from 'next/head'
 import LazyLoad from '../../lib/lazy-load'
 import YotpoProductGallery from '../../lib/yotpo-product-gallery'
 import createLink from '../../lib/create-link'
-import FjWild from '../../components/fj-wild'
+import { parse } from 'node-html-parser'
 
 export default function ProductPage({ product, productId, potentialProducts }: ProductPageProps): React.ReactElement {
-  if (!product) return <RemotePage url={createLink.forProduct(productId)} />
+  const productDescription = useMemo(() => {
+    if (!product) return ''
+    return (product.body_html && parse(product.body_html).innerText.trim().replace(/\s+/g, ' ')) || ''
+  }, [product])
+
+  if (!product) return <RemotePage url={`/products/${productId}`} />
 
   trackViewedProduct(product)
 
@@ -24,20 +29,14 @@ export default function ProductPage({ product, productId, potentialProducts }: P
     <>
       <Head>
         <title>{product.title} - Fragrant Jewels</title>
+        <meta name="description" content={productDescription.slice(0, 320) || product.title} />
       </Head>
       <ProductContext.Provider value={product}>
         <MainPageLayout>
           <Product />
-          <div>
-            <FjWild
-              title="FJ in the wild"
-              textFirstPart="See our products in action on"
-              textSecondPart="customers just like you."
-            />
-            <LazyLoad threshold={1000}>
-              <YotpoProductGallery galleryId="5d12193001f0950007b69682" productId={product.product_id} />
-            </LazyLoad>
-          </div>
+          <LazyLoad threshold={1000}>
+            <YotpoProductGallery galleryId="5d12193001f0950007b69682" productId={product.product_id} />
+          </LazyLoad>
           {potentialProducts && (
             <SiteSection>
               <ProductsCarousel

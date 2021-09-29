@@ -17,20 +17,6 @@ export type KlaviyoIdentity = {
   $last_name?: string
 } & Record<string, string | number | boolean>
 
-export type KlaviyoItem = {
-  ItemId: number
-  Title: string
-  ImageUrl?: string
-  Categories?: Array<string> // collection names
-  Url: string
-  Metadata: {
-    Price?: string // Like "$1.40"
-    CompareAtPrice?: string // Like "$1.40"
-    Brand?: string
-  }
-  siteVersion: 'V3'
-}
-
 export type TrackViewedItemPayload = {
   ProductID: string
   Name: string
@@ -47,18 +33,18 @@ export type TrackViewedItemPayload = {
 export type KlaviyoCommand =
   | []
   | ['account', string]
-  | ['identify', KlaviyoIdentity, void | Record<string, unknown>]
+  | ['identify', KlaviyoIdentity, void | Record<string, unknown>, void | Record<string, unknown>, void | (() => void)]
   | ['track', 'Viewed Product', TrackViewedItemPayload]
   | ['track', string, Record<string, unknown>]
-  | ['trackViewedItem', KlaviyoItem]
+  | Array<unknown>
 
 export type Klaviyo = {
   push(command: KlaviyoCommand): unknown
   identify(
     identity: KlaviyoIdentity,
-    doNotKnowWhatIsIt: undefined,
-    doNotKnowWhatIsIt2: undefined,
-    callback: () => void
+    doNotKnowWhatIsIt?: Record<string, unknown>,
+    doNotKnowWhatIsIt2?: Record<string, unknown>,
+    callback?: () => void
   ): unknown
 }
 
@@ -112,7 +98,7 @@ export function initiateKlaviyo(): Promise<Klaviyo> {
             }
             if (!klaviyo.identify) return
             log(`klaviyo.identify({ $email: ${JSON.stringify(customer.email)} })`)
-            klaviyo.identify({ $email: customer.email }, undefined, undefined, () => {
+            klaviyo.identify({ $email: customer.email }, { siteVersion: '1_V3' }, { siteVersion: '2_V3' }, () => {
               log('Klaviyo successfully initialized')
               resolve(klaviyo)
             }) // TODO: handle reject
