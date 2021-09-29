@@ -7,6 +7,7 @@ export type NavTabsProps = {
   className?: ClassName
   setExtendableBlockContent: Dispatch<SetStateAction<string>>
   isSubscriptionLinkShown: boolean
+  addGAEvent: any
 }
 
 const SWrapper = styled.div`
@@ -143,7 +144,6 @@ const SSubscribeButton = styled.li`
         background-color: #4dbeba;
         color: #fff;
         border-color: #4dbeba;
-        //#7a3cb9
       }
     }
   }
@@ -153,13 +153,27 @@ export function NavTabs({
   className,
   setExtendableBlockContent,
   isSubscriptionLinkShown,
+  addGAEvent,
 }: NavTabsProps): React.ReactElement | null {
+  const onSubscribeBtnClick = (e: any) => {
+    e.preventDefault()
+    addGAEvent({
+      hitType: 'event',
+      eventCategory: 'nav subscribe',
+      eventAction: 'click',
+      eventLabel: 'navigation',
+    })
+    location.href = e.target.href
+  }
+
   return (
     <SWrapper className={cn('NavTabs', className)}>
       <SDesktopNav>
         {isSubscriptionLinkShown && (
           <SSubscribeButton style={{ display: 'list-item' }} onMouseEnter={() => setExtendableBlockContent('')}>
-            <a href={createLink.forPage('inner-circle')}>Subscribe</a>
+            <a href={createLink.forPage('inner-circle')} onClick={(e) => onSubscribeBtnClick(e)}>
+              Subscribe
+            </a>
           </SSubscribeButton>
         )}
         <SNavItem onMouseEnter={() => setExtendableBlockContent('')}>

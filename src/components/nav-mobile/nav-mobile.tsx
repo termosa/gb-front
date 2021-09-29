@@ -11,6 +11,7 @@ export type SearchFieldProps = {
   setBurgerMenuOpen: (isBurgerMenuOpen: boolean) => void
   userName?: string
   isSubscriptionLinkShown: boolean
+  addGAEvent: any
 }
 
 const SWrapper = styled.div`
@@ -426,6 +427,7 @@ export function NavMobile({
   setBurgerMenuOpen,
   userName,
   isSubscriptionLinkShown,
+  addGAEvent,
 }: SearchFieldProps): React.ReactElement | null {
   useEffect(() => {
     document.body.style.overflow = isBurgerMenuOpen ? 'hidden' : 'auto'
@@ -433,6 +435,17 @@ export function NavMobile({
 
   const [extendableBlock, setExtendableBlock] = useState('')
   const [sideNavContent, setSideNavContent] = useState('')
+
+  const onMemberBtnClick = (e: any) => {
+    e.preventDefault()
+    addGAEvent({
+      hitType: 'event',
+      eventCategory: 'nav become member',
+      eventAction: 'click',
+      eventLabel: 'navigation',
+    })
+    location.href = e.target.href
+  }
 
   return isBurgerMenuOpen ? (
     <SWrapper id="app-nav-secondary-mobile">
@@ -473,7 +486,9 @@ export function NavMobile({
             </SCloseBtn>
           </SNavTopInner>
           {isSubscriptionLinkShown && (
-            <SMemberButton href={createLink.forPage('inner-circle')}>Become a member</SMemberButton>
+            <SMemberButton href={createLink.forPage('inner-circle')} onClick={(e) => onMemberBtnClick(e)}>
+              Become a member
+            </SMemberButton>
           )}
         </SNavTop>
         <SNavBottom>

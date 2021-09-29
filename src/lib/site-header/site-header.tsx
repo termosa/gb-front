@@ -15,6 +15,7 @@ import SiteSection from '../../components/site-section'
 import CustomerContext from '../../modules/customer-context'
 import CustomerOrdersDetailsContext from '../../modules/customer-orders-details-context'
 import createLink from '../create-link'
+import ga from '../google-analytics'
 
 const SWrapper = styled.div`
   text-align: center;
@@ -785,6 +786,13 @@ export type SiteHeaderProps = {
   searchedProducts?: ProductsChunk
 }
 
+type GAProps = {
+  hitType: string
+  eventCategory: string
+  eventAction: string
+  eventLabel: string
+}
+
 export function SiteHeader({
   className,
   style,
@@ -797,6 +805,10 @@ export function SiteHeader({
   const [isBurgerMenuOpen, setBurgerMenuOpen] = useState(false)
   const customer = useContext(CustomerContext)
   const customerOrdersDetails = useContext(CustomerOrdersDetailsContext)
+
+  const onAddGAEvent = (eventObj: GAProps) => {
+    ga(eventObj)
+  }
 
   return (
     <SWrapper className={cn(className)} style={style} onMouseLeave={() => setExtendableBlockContent('')}>
@@ -867,6 +879,7 @@ export function SiteHeader({
                   isSubscriptionLinkShown={
                     !(customerOrdersDetails.isICMember && customerOrdersDetails.isICMembershipActive)
                   }
+                  addGAEvent={onAddGAEvent}
                 />
                 <NavIcons
                   onSearchClick={() => setIsSearchDropdownVisible(!isSearchDropdownVisible)}
@@ -884,6 +897,7 @@ export function SiteHeader({
           <NavTabs
             setExtendableBlockContent={setExtendableBlockContent}
             isSubscriptionLinkShown={!(customerOrdersDetails.isICMember && customerOrdersDetails.isICMembershipActive)}
+            addGAEvent={onAddGAEvent}
           />
         </SiteSection>
       </SInnerWrapper>

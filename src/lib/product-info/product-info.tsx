@@ -19,6 +19,7 @@ import SizeSelectorModal from '../size-selector-modal'
 import trackAddedToCart from '../track-added-to-cart'
 import Image from '../image'
 import YotpoStarRating from '../yotpo-star-rating'
+import ga from '../google-analytics'
 
 const goToYotpoReviews = () => {
   const yOffset = -200
@@ -485,6 +486,30 @@ export function ProductInfo({ className, style, addToCartRef }: ProductInfoProps
     return null
   }
 
+  const switchSPdpChooser = () => {
+    setSubscriptionHintOpened(!isSubscriptionHintOpened)
+    if (!isSubscriptionHintOpened) {
+      ga('IC PDP Upsell - Question Mark Clicked')
+    }
+  }
+
+  const changeSPdpRadioState = (flag: boolean) => {
+    setDiscountApplied(flag)
+    if (flag !== isDiscountApplied) {
+      if (flag) {
+        ga('IC PDP Upsell - IC Price Clicked')
+      } else {
+        ga('IC PDP Upsell - Regular Price Clicked')
+      }
+    }
+  }
+
+  const onMemberClick = (e) => {
+    e.preventDefault()
+    ga('IC PDP Upsell - Already a member Clicked')
+    location.href = e.target.href
+  }
+
   const addToCartHandler = (selectedVariant: ProductVariant | null) => {
     if (!selectedVariant) {
       if (isOneVariantProduct && isDiscountApplied) {
@@ -656,7 +681,7 @@ export function ProductInfo({ className, style, addToCartRef }: ProductInfoProps
             <SPdpChooserContainer>
               {isDiscountAvailable && (
                 <SPdpChooser>
-                  <SPdpChooserItem htmlFor="pdp-ic-radio-1" onClick={() => setDiscountApplied(false)}>
+                  <SPdpChooserItem htmlFor="pdp-ic-radio-1" onClick={() => changeSPdpRadioState(false)}>
                     <SPdpChooserItemPart>
                       <div>
                         <SPdpRadioGroup type="radio" name="pdp-radio-group" checked={!isDiscountApplied} readOnly />
@@ -672,7 +697,7 @@ export function ProductInfo({ className, style, addToCartRef }: ProductInfoProps
                       </SPdpChooserItemPartTopContent>
                     </SPdpChooserItemPart>
                   </SPdpChooserItem>
-                  <SPdpChooserItem htmlFor="pdp-ic-radio-2" onClick={() => setDiscountApplied(true)}>
+                  <SPdpChooserItem htmlFor="pdp-ic-radio-2" onClick={() => changeSPdpRadioState(true)}>
                     <SPdpChooserItemPart>
                       <div>
                         <SPdpRadioGroup type="radio" name="pdp-radio-group" checked={isDiscountApplied} readOnly />
@@ -683,10 +708,7 @@ export function ProductInfo({ className, style, addToCartRef }: ProductInfoProps
                           <SPdpChooserItemContentText isHighlighted={isDiscountApplied}>
                             Join &amp; Save 20%
                           </SPdpChooserItemContentText>
-                          <SPdpChooserBtn
-                            type="button"
-                            onClick={() => setSubscriptionHintOpened(!isSubscriptionHintOpened)}
-                          >
+                          <SPdpChooserBtn type="button" onClick={() => switchSPdpChooser()}>
                             {isSubscriptionHintOpened ? (
                               <Image
                                 src="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/pdp/pdp-close-icon.png"
@@ -714,7 +736,7 @@ export function ProductInfo({ className, style, addToCartRef }: ProductInfoProps
               <SPdpAdditionalText>
                 Join the Inner Circle today, then automatically receive a monthly set for $32.95 plus tax. No
                 commitment, cancel anytime.{' '}
-                <a href="/account/login?return_url=/products/lemon-drop-jewel-candle" id="pdp__already-a-member-link">
+                <a href="/account/login?return_url=/products/lemon-drop-jewel-candle" onClick={(e) => onMemberClick(e)}>
                   Already a member?
                 </a>
               </SPdpAdditionalText>
