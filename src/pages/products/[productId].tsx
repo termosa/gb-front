@@ -13,13 +13,12 @@ import Head from 'next/head'
 import LazyLoad from '../../lib/lazy-load'
 import YotpoProductGallery from '../../lib/yotpo-product-gallery'
 import createLink from '../../lib/create-link'
-import parseProductDetails from '../../lib/parse-product-details'
+import { parse } from 'node-html-parser'
 
 export default function ProductPage({ product, productId, potentialProducts }: ProductPageProps): React.ReactElement {
-  const productDescription = useMemo<string>(() => {
+  const productDescription = useMemo(() => {
     if (!product) return ''
-    const details = parseProductDetails(product)
-    return (details.find((detail) => detail.title === 'Overview') || details[0])?.content || ''
+    return (product.body_html && parse(product.body_html).innerText.trim().replace(/\s+/g, ' ')) || ''
   }, [product])
 
   if (!product) return <RemotePage url={`/products/${productId}`} />

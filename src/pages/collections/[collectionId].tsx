@@ -10,7 +10,7 @@ import { parse } from 'node-html-parser'
 export default function CollectionPage({ collection, collectionId }: CollectionPageProps): React.ReactElement {
   const collectionDescription = useMemo(() => {
     if (!collection) return ''
-    return (collection.htmlDescription && parse(collection.htmlDescription).innerText) || ''
+    return (collection.htmlDescription && parse(collection.htmlDescription).innerText.trim().replace(/\s+/g, ' ')) || ''
   }, [collection])
   if (!collection) return <RemotePage url={`/collections/${collectionId}`} />
 
