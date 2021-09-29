@@ -342,7 +342,7 @@ export const CollectionFilters = ({
       const productsWithFilter =
         name === 'size'
           ? filteredProducts.filter((product: Product) => {
-              return product.variants.some((variant) => variant.size === parseInt(el.name))
+              return product.variants.some((variant) => variant.size === parseInt(el.name) && variant.available)
             })
           : filteredProducts.filter(
               (product: Product) => product[name as 'fragrance' | 'color' | 'material'] === el.name
