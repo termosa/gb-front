@@ -614,7 +614,7 @@ export function ProductInfo({ className, style, addToCartRef }: ProductInfoProps
               <SPdpProductDetailsDiscountPrice>
                 {actualPrice ? (comparePrice ? formatPrice(comparePrice) : formatPrice(actualPrice)) : null}
               </SPdpProductDetailsDiscountPrice>
-              <span>&nbsp;${(actualPrice - actualPrice * 0.2).toFixed(2)}</span>
+              <span> ${(actualPrice - actualPrice * 0.2).toFixed(2)}</span>
             </>
           ) : (
             <>
@@ -622,8 +622,7 @@ export function ProductInfo({ className, style, addToCartRef }: ProductInfoProps
                 <>
                   <SPdpProductDetailsDiscountPrice>
                     {actualPrice ? (comparePrice ? formatPrice(comparePrice) : formatPrice(actualPrice)) : null}
-                  </SPdpProductDetailsDiscountPrice>
-                  &nbsp;
+                  </SPdpProductDetailsDiscountPrice>{' '}
                 </>
               ) : null}
               <span>{formatPrice(actualPrice)}</span>
