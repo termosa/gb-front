@@ -23,7 +23,7 @@ export default function ProductPage({ product, productId, potentialProducts }: P
     return (details.find((detail) => detail.title === 'Overview') || details[0])?.content || ''
   }, [product])
 
-  if (!product) return <RemotePage url={createLink.forProduct(productId)} />
+  if (!product) return <RemotePage url={`/products/${productId}`} />
 
   trackViewedProduct(product)
 

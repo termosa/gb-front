@@ -5,10 +5,9 @@ import CollectionContext from '../../modules/collection-context'
 import collectionPageProps, { CollectionPageProps } from '../../resolvers/collectionPageProps'
 import RemotePage from '../../lib/remote-page'
 import Head from 'next/head'
-import createLink from '../../lib/create-link'
 
 export default function CollectionPage({ collection, collectionId }: CollectionPageProps): React.ReactElement {
-  if (!collection) return <RemotePage url={createLink.forCollection(collectionId)} />
+  if (!collection) return <RemotePage url={`/collections/${collectionId}`} />
 
   return (
     <>
