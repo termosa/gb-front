@@ -18,6 +18,7 @@ export function trackViewedProduct(product: Product): void {
     ...(product.image && { ImageURL: product.image.src }),
     ...(price && { Price: price }),
     ...(compareAtPrice && { CompareAtPrice: compareAtPrice }),
+    siteVersion: 'V3',
   })
 
   klaviyo('trackViewedItem', {
@@ -30,6 +31,7 @@ export function trackViewedProduct(product: Product): void {
       ...(compareAtPrice && { CompareAtPrice: compareAtPrice }),
     },
     ...(product.image && { ImageUrl: product.image.src }),
+    siteVersion: 'V3',
   })
 
   alooma('viewed product', {

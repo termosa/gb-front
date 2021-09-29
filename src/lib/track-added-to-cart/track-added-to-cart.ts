@@ -18,6 +18,7 @@ export function trackAddedToCart(product: Product): void {
     ...(product.image && { ImageURL: product.image.src }),
     ...(price && { Price: price }),
     ...(compareAtPrice && { CompareAtPrice: compareAtPrice }),
+    siteVersion: 'V3',
   })
 
   alooma('add to cart', {

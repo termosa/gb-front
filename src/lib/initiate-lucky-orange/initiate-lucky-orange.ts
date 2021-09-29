@@ -7,6 +7,7 @@ const LUCKY_ORANGE_SITE_ID = 132073
 declare global {
   interface Window {
     __lo_site_id?: number
+    _loq?: Array<unknown>
   }
 }
 
@@ -27,6 +28,9 @@ export function initiateLuckyOrange(): Promise<void> {
     }
 
     window.__lo_site_id = LUCKY_ORANGE_SITE_ID
+    window._loq = window._loq || []
+    log("lo('tag', 'V3', true, false)")
+    window._loq.push(['tag', 'V3', true, false])
 
     loadScript('//d10lpsik1i8c69.cloudfront.net/w.js')
       .then(() => {
