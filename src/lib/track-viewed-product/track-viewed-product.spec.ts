@@ -26,16 +26,5 @@ describe('trackViewedProduct()', () => {
       CompareAtPrice: '$13.00',
       Brand: vendor,
     })
-
-    expect(klaviyo).toBeCalledWith('trackViewedItem', {
-      Title: title,
-      ItemId: product_id,
-      Url: `http://localhost/products/${handle}`,
-      Metadata: {
-        Price: '$14.99',
-        CompareAtPrice: '$13.00',
-        Brand: vendor,
-      },
-    })
   })
 })

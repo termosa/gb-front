@@ -17,20 +17,6 @@ export type KlaviyoIdentity = {
   $last_name?: string
 } & Record<string, string | number | boolean>
 
-export type KlaviyoItem = {
-  ItemId: number
-  Title: string
-  ImageUrl?: string
-  Categories?: Array<string> // collection names
-  Url: string
-  Metadata: {
-    Price?: string // Like "$1.40"
-    CompareAtPrice?: string // Like "$1.40"
-    Brand?: string
-  }
-  siteVersion: 'V3'
-}
-
 export type TrackViewedItemPayload = {
   ProductID: string
   Name: string
@@ -50,7 +36,6 @@ export type KlaviyoCommand =
   | ['identify', KlaviyoIdentity, void | Record<string, unknown>, void | Record<string, unknown>, void | (() => void)]
   | ['track', 'Viewed Product', TrackViewedItemPayload]
   | ['track', string, Record<string, unknown>]
-  | ['trackViewedItem', KlaviyoItem]
   | Array<unknown>
 
 export type Klaviyo = {

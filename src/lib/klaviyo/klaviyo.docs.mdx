@@ -5,7 +5,7 @@ export const meta = {
   tags: ['function', 'analytics'],
   lists: {
     arguments: [
-      { name: 'command', type: '"account" | "identify" | "track" | "trackViewedItem"', description: 'One of Klaviyo commands' },
+      { name: 'command', type: '"account" | "identify" | "track"', description: 'One of Klaviyo commands' },
       { name: '...parameters', type: 'any', description: 'Command parameters' },
     ],
     returns: [
@@ -19,7 +19,7 @@ export const meta = {
 ```js
 import klaviyo from './klaviyo'
 
-klaviyo('trackViewedItem', {
+klaviyo('track', 'Viewed Product', {
   ItemId: 123,
   Title: 'Cool Bath Bomb',
   Url: 'https://www.fragrantjewels.com/products/123',
