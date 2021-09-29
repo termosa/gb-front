@@ -78,7 +78,7 @@ export const SocialLinks = ({ className }: SocialLinksProps): React.ReactElement
       <div>
         <SocialLinksList>
           <li>
-            <a href="https://www.facebook.com/fragrantjewels/?ref=pages_you_manage">
+            <a href="https://www.facebook.com/fragrantjewels/">
               <svg width="9" height="20" viewBox="0 0 9 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
                   d="M2.01215 19.2705H5.83959V9.68919H8.51107L8.79364 6.47828H5.83959V4.65447C5.83959 3.90098 5.99371 3.60131 6.69583 3.60131H8.76793V0.270508H6.12211C3.27082 0.270508 1.98649 1.52064 1.98649 3.92669V6.49542H0V9.74908H1.98649L2.01215 19.2705Z"
