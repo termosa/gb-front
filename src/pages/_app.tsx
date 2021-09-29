@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { AppProps } from 'next/app'
 import Router from 'next/router'
 import baseApiUrl from '../modules/base-api-url'
-import gtm from '../lib/gtm'
+import ga from '../lib/google-analytics'
 import facebookPixel from '../lib/facebook-pixel'
 import pinterestPixel from '../lib/pinterest-pixel'
 import Head from 'next/head'
@@ -12,12 +12,12 @@ baseApiUrl(typeof window === 'undefined' ? process.env.BASE_API_URL : process.en
 
 const Application = ({ Component, pageProps }: AppProps): React.ReactElement => {
   useEffect(() => {
-    const handleRouteChange = (url: string) => {
-      gtm('pageview', { url })
+    const handleRouteChange = () => {
+      ga('pageview')
       facebookPixel('PageView')
       pinterestPixel('page')
     }
-    if (window) handleRouteChange(window.location.href)
+    handleRouteChange()
     Router.events.on('routeChangeComplete', handleRouteChange)
     return () => {
       Router.events.off('routeChangeComplete', handleRouteChange)
