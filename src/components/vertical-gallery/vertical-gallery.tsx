@@ -239,7 +239,6 @@ export function VerticalGallery({ className }: VerticalGalleryProps): React.Reac
     const scrollHandler = () => {
       if (!product?.images) return
       if (!screenSize.greaterThanMedium) return
-      if (!window || window.outerWidth < 768) return
       handleGalleryScrolling(galleryRef, product.images, setActiveGalleryItem)
     }
     window?.addEventListener('scroll', scrollHandler)
