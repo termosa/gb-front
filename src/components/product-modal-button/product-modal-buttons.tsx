@@ -12,7 +12,9 @@ const SModalButtonsWrapper = styled.div`
   border-bottom: 1px solid #e4e4e4;
 
   svg {
-    margin-right: 4px;
+    margin-right: 6px;
+    width: 25px;
+    height: auto;
 
     @media (min-width: 768px) {
       width: 27px;
@@ -24,7 +26,7 @@ const SModalButtonsWrapper = styled.div`
 const modalButtonStyle = () => css`
   font-family: Montserrat, sans-serif;
   font-weight: 400;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 15px;
   letter-spacing: 0.01em;
   margin: 0 2px;
@@ -35,6 +37,7 @@ const modalButtonStyle = () => css`
   background: transparent;
   padding: 0;
   cursor: pointer;
+  color: #000;
 
   &:focus {
     outline: 0;

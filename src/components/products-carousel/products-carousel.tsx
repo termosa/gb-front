@@ -1,12 +1,11 @@
 import React, { useRef } from 'react'
+import { useRouter } from 'next/router'
 import styled from 'styled-components'
 import cn, { Argument as ClassName } from 'classnames'
+import Carousel from 'react-multi-carousel'
 import { Product } from '../../modules/normalize-product'
-import useScreenSize from '../../lib/use-screen-size'
-import window from '../../lib/window'
 import Slider from '../../lib/slider'
 import ProductCard from '../product-card'
-import Carousel from 'react-multi-carousel'
 
 const Section = styled.section`
   margin: 0 0 43px;
@@ -40,17 +39,16 @@ const Container = styled.div`
     padding: 0 15px;
   }
 `
-
-const SectionTitle = styled.div<{
-  isMobile?: boolean
-}>`
-  font: ${(props) => (props.isMobile ? `600 16px/1.5 'Montserrat', serif` : `700 40px/1 'Cormorant Garamond', serif`)};
-  text-transform: ${(props) => (props.isMobile ? `uppercase` : `initial`)};
+const SectionTitleProduct = styled.h2`
+  font: 600 16px/1.5 'Montserrat', serif;
+  text-transform: uppercase;
   text-align: center;
   margin: 0 0 12px;
 
   @media (min-width: 768px) {
-    margin: 0 0 35px;
+    font: 700 40px/1 'Cormorant Garamond', serif;
+    text-transform: initial;
+    margin: 0 0 28px;
   }
 
   & > span {
@@ -59,13 +57,25 @@ const SectionTitle = styled.div<{
     &:after {
       content: '';
       width: 100%;
-      height: ${(props) => (props.isMobile ? `9px` : `10px`)};
+      height: 9px;
       background: rgba(77, 190, 186, 0.3);
       position: absolute;
-      bottom: ${(props) => (props.isMobile ? `0` : `6px`)};
+      bottom: 0;
       left: 0;
+      z-index: -1;
+
+      @media (min-width: 768px) {
+        height: 10px;
+        bottom: 6px;
+      }
     }
   }
+`
+
+const SectionTitle = styled.h2`
+  font: 700 40px/1 'Cormorant Garamond', serif;
+  text-align: center;
+  margin: 0 0 12px;
 `
 
 const SectionText = styled.div`
@@ -195,10 +205,9 @@ export const ProductsCarousel = ({
   className,
   onSelectProduct,
   title,
-  titleHighlighted,
   subTitle,
 }: ProductsCarouselProps): React.ReactElement => {
-  const screenSize = useScreenSize()
+  const router = useRouter()
   const carouselRef = useRef<Carousel>(null)
   const sliderSettings = {
     desktop: {
@@ -218,19 +227,13 @@ export const ProductsCarousel = ({
   return (
     <Section className={cn('ProductsCarousel', className)}>
       <Container>
-        {!screenSize.greaterThanMedium &&
-        window?.location.pathname &&
-        window?.location.pathname.search('products') !== -1 ? (
-          <SectionTitle isMobile={true}>
-            <span>
-              {title} {titleHighlighted}
-            </span>
-          </SectionTitle>
+        {router.pathname.startsWith('/products/') ? (
+          <SectionTitleProduct>
+            <span>{title}</span>
+          </SectionTitleProduct>
         ) : (
           <SectionTitle>
-            <span>
-              {title} {titleHighlighted}
-            </span>
+            <span>{title}</span>
           </SectionTitle>
         )}
         <SectionText>
@@ -255,6 +258,7 @@ export const ProductsCarousel = ({
             responsive={sliderSettings}
             scrollbarPresent={true}
             arrows={false}
+            slidesToSlide={2}
             customLeftArrow={
               <SPrevArrow>
                 <SArrowButton />
@@ -285,11 +289,6 @@ export const ProductsCarousel = ({
           </Slider>
         </SliderHolder>
       </Container>
-      {/* <ProgressWrapper>
-        <Progress progress={progress}>
-          <ProgressLabel>{`${progress}% completed`}</ProgressLabel>
-        </Progress>
-      </ProgressWrapper>*/}
     </Section>
   )
 }
