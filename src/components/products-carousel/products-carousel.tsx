@@ -280,6 +280,7 @@ export const ProductsCarousel = ({
                   <ProductCard
                     key={product.product_id}
                     product={product}
+                    imagesVisibleByDefault
                     onClick={() => {
                       onSelectProduct(product)
                     }}
