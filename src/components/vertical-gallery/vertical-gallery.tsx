@@ -44,8 +44,9 @@ const SPdpCarouselItem = styled.div<{
 
 const SVerticalImagesColumn = styled.div`
   @media (min-width: 768px) {
-    width: 85.5%;
-    margin: 0 20px;
+    //width: 85.5%;
+    //margin: 0 20px;
+    margin: 0 auto;
   }
 `
 
@@ -58,7 +59,8 @@ const SCarouselIcons = styled.div`
 
   @media (min-width: 768px) {
     order: 0;
-    width: 14.5%;
+    //width: 14.5%;
+    width: 92.5px;
   }
 `
 
@@ -234,17 +236,21 @@ export function VerticalGallery({ className }: VerticalGalleryProps): React.Reac
 
   useEffect(() => {
     window?.addEventListener('scroll', () => {
-      product &&
-        product.images &&
-        screenSize.greaterThanMedium &&
-        handleGalleryScrolling(galleryRef, product.images, setActiveGalleryItem)
-    })
-    return () => {
-      window?.removeEventListener('scroll', () => {
+      if (window?.outerWidth && window?.outerWidth >= 768) {
         product &&
           product.images &&
           screenSize.greaterThanMedium &&
           handleGalleryScrolling(galleryRef, product.images, setActiveGalleryItem)
+      }
+    })
+    return () => {
+      window?.removeEventListener('scroll', () => {
+        if (window?.outerWidth && window?.outerWidth >= 768) {
+          product &&
+            product.images &&
+            screenSize.greaterThanMedium &&
+            handleGalleryScrolling(galleryRef, product.images, setActiveGalleryItem)
+        }
       })
     }
   }, [product, screenSize])

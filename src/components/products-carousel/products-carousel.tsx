@@ -41,16 +41,15 @@ const Container = styled.div`
   }
 `
 
-const SectionTitle = styled.div<{
-  isMobile?: boolean
-}>`
-  font: ${(props) => (props.isMobile ? `600 16px/1.5 'Montserrat', serif` : `700 40px/1 'Cormorant Garamond', serif`)};
-  text-transform: ${(props) => (props.isMobile ? `uppercase` : `initial`)};
+const SectionTitle = styled.div`
+  font: 600 16px/1.5 'Montserrat', serif;
+  text-transform: uppercase;
   text-align: center;
   margin: 0 0 12px;
 
   @media (min-width: 768px) {
-    margin: 0 0 35px;
+    font: 700 40px/1 'Cormorant Garamond', serif;
+    text-transform: initial;
   }
 
   & > span {
@@ -59,11 +58,16 @@ const SectionTitle = styled.div<{
     &:after {
       content: '';
       width: 100%;
-      height: ${(props) => (props.isMobile ? `9px` : `10px`)};
+      height: 9px;
       background: rgba(77, 190, 186, 0.3);
       position: absolute;
-      bottom: ${(props) => (props.isMobile ? `0` : `6px`)};
+      bottom: 0;
       left: 0;
+
+      @media (min-width: 768px) {
+        height: 10px;
+        bottom: 6px;
+      }
     }
   }
 `
@@ -218,21 +222,11 @@ export const ProductsCarousel = ({
   return (
     <Section className={cn('ProductsCarousel', className)}>
       <Container>
-        {!screenSize.greaterThanMedium &&
-        window?.location.pathname &&
-        window?.location.pathname.search('products') !== -1 ? (
-          <SectionTitle isMobile={true}>
-            <span>
-              {title} {titleHighlighted}
-            </span>
-          </SectionTitle>
-        ) : (
-          <SectionTitle>
-            <span>
-              {title} {titleHighlighted}
-            </span>
-          </SectionTitle>
-        )}
+        <SectionTitle>
+          <span>
+            {title} {titleHighlighted}
+          </span>
+        </SectionTitle>
         <SectionText>
           <p>{subTitle}</p>
         </SectionText>

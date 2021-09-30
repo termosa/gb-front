@@ -55,7 +55,7 @@ const SRingSizeBtn = styled.button<{ isActive: boolean }>`
   font: 400 16px/1 'Montserrat', sans-serif;
   letter-spacing: 0.05em;
   background: ${(props) => (props.isActive ? '#9059C8' : '#fff')};
-  border: ${(props) => (props.isActive ? '0.5px solid #9059C8' : '0.5px solid #000')};
+  border: ${(props) => (props.isActive ? '1px solid #9059C8' : '1px solid #000')};
   padding: 10px 5px;
   font-size: 15px;
   margin: 0;
@@ -70,6 +70,8 @@ const SRingSizeBtn = styled.button<{ isActive: boolean }>`
   height: 43px;
   border-radius: 50%;
   cursor: pointer;
+  appearance: none;
+  box-shadow: none;
 
   &:disabled {
     opacity: 0.4;
