@@ -55,6 +55,10 @@ const SPdpProductInfo = styled.div<{
       color: #000;
     }
   }
+
+  .yotpo .yotpo-display-wrapper .yotpo-bottomline {
+    padding: 0;
+  }
 `
 
 const SPdpChooserItemPartTopContent = styled.div`
