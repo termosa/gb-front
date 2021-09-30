@@ -115,6 +115,15 @@ const SliderWrapper = styled.div`
   @media (min-width: 992px) {
     margin-bottom: 76px;
   }
+  .react-multi-carousel-dot button {
+    background: #fff;
+  }
+  .react-multi-carousel-dot-list {
+    bottom: 15px;
+  }
+  .react-multi-carousel-list {
+    position: relative;
+  }
 `
 
 const Slide = styled.div<{ backgroundImg: string }>`
@@ -129,7 +138,6 @@ const Slide = styled.div<{ backgroundImg: string }>`
   @media (min-width: 768px) {
     height: 450px;
     background-image: ${(props) => `url(${props.backgroundImg}) no-repeat`};
-    background-position: left center;
   }
 
   @media (max-aspect-ratio: 4/3) and (max-width: 767px) {
@@ -274,7 +282,13 @@ export function HeroGallery({ className, style, slides }: HeroGalleryProps): Rea
   const screenSize = useScreenSize()
   return (
     <SliderWrapper className={cn(className)} style={style}>
-      <Slider partiallyVisible={false} dotsPresent arrows={false} itemClass={'slider-full-width-item'}>
+      <Slider
+        partiallyVisible={false}
+        showDots={true}
+        infinite={true}
+        arrows={false}
+        itemClass={'slider-full-width-item'}
+      >
         {slides.map((slide: GalleryItem) => (
           <Slide
             key={`${slide.buttonLink}${slide.backgroundImg}${slide.buttonText}`}
