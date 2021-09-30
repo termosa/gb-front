@@ -77,10 +77,15 @@ export function initiateKlaviyo(): Promise<Klaviyo> {
 
         const klaviyo = window._learnq
 
-        log(`klaviyo.push(['account', "${KLAVIYO_ACCOUNT}"])`)
+        log(`klaviyo.push(["account", "${KLAVIYO_ACCOUNT}"])`)
         klaviyo.push(['account', KLAVIYO_ACCOUNT])
 
-        if (customer) klaviyo.push(['identify', { $email: customer.email, siteVersion: 'V3' }])
+        if (customer) {
+          log(`klaviyo.push(["identify", { $email: "${customer.email}" }])`)
+          klaviyo.push(['identify', { $email: customer.email }])
+          log(`klaviyo.push(["identify", { siteVersion: "V3" }])`)
+          klaviyo.push(['identify', { siteVersion: 'V3' }])
+        }
 
         log('Klaviyo successfully initialized')
         return resolve(klaviyo)
