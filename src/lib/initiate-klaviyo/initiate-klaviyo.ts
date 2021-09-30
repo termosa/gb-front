@@ -1,15 +1,10 @@
 import log from '../log'
 import window from '../window'
-import repeat from '../repeat'
 import loadScript from '../load-script'
 import loadCustomer from '../../modules/load-customer'
 
 export const KLAVIYO_ACCOUNT = 'HsK4TE'
 export const KLAVIYO_SHOP = 'fragrantjewels.myshopify.com'
-
-const KLAVIYO_CHECK_TIMEOUT = 100
-const KLAVIYO_CHECK_LOG_INDEX = 100
-const KLAVIYO_MAX_TRIES = KLAVIYO_CHECK_LOG_INDEX * 10
 
 export type KlaviyoIdentity = {
   $email?: string
@@ -85,28 +80,10 @@ export function initiateKlaviyo(): Promise<Klaviyo> {
         log(`klaviyo.push(['account', "${KLAVIYO_ACCOUNT}"])`)
         klaviyo.push(['account', KLAVIYO_ACCOUNT])
 
-        if (!customer) return resolve(klaviyo)
+        if (customer) klaviyo.push(['identify', { $email: customer.email, siteVersion: 'V3' }])
 
-        repeat(
-          (index) => {
-            if (index && !(index % KLAVIYO_CHECK_LOG_INDEX)) {
-              log(
-                `Klaviyo can not initialize during ${
-                  ((index / KLAVIYO_CHECK_LOG_INDEX) * KLAVIYO_CHECK_TIMEOUT * index) / 1e3
-                }s`
-              )
-            }
-            if (!klaviyo.identify) return
-            log(`klaviyo.identify({ $email: ${JSON.stringify(customer.email)} })`)
-            klaviyo.identify({ $email: customer.email }, { siteVersion: '1_V3' }, { siteVersion: '2_V3' }, () => {
-              log('Klaviyo successfully initialized')
-              resolve(klaviyo)
-            }) // TODO: handle reject
-            return true
-          },
-          KLAVIYO_CHECK_TIMEOUT,
-          KLAVIYO_MAX_TRIES
-        )
+        log('Klaviyo successfully initialized')
+        return resolve(klaviyo)
       })
       .catch((error) => {
         log('Klaviyo failed to initialize', error)

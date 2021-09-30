@@ -55,6 +55,10 @@ const SPdpProductInfo = styled.div<{
       color: #000;
     }
   }
+
+  .yotpo .yotpo-display-wrapper .yotpo-bottomline {
+    padding: 0;
+  }
 `
 
 const SPdpChooserItemPartTopContent = styled.div`
@@ -481,8 +485,6 @@ export function ProductInfo({ className, style, addToCartRef }: ProductInfoProps
   const productHeadingRef = useRef<HTMLDivElement>(null)
   const productInfoRef = useRef<HTMLDivElement>(null)
 
-  const productTitle = product?.title.split('-')[0].split(':')[0]
-
   if (!product) {
     return null
   }
@@ -609,7 +611,7 @@ export function ProductInfo({ className, style, addToCartRef }: ProductInfoProps
         />
       )}
       <SPdpProductInfo top={infoDistanceFromTop + 'px'} ref={productInfoRef}>
-        <SPdpProductInfoTitle>{productTitle}</SPdpProductInfoTitle>
+        <SPdpProductInfoTitle>{product?.title}</SPdpProductInfoTitle>
         <YotpoStarRating onClick={goToYotpoReviews} />
         <SPdpProductDetails>
           {isDiscountApplied && isDiscountAvailable ? (

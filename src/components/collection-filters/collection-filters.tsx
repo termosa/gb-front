@@ -75,6 +75,7 @@ const SButton = styled.button<{
     border-right: none;
     border-left: none;
     max-width: 100%;
+    padding: 16px 6px;
 
     &:not(:last-of-type) {
       border-right: 0.5px solid #000;
@@ -98,9 +99,15 @@ const SButtonLabel = styled.div`
   }
 `
 
-const SButtonLabelText = styled.span`
+const SFilterLabelText = styled.span`
   @media (max-width: 767px) {
-    margin: 0 12px;
+    margin-left: 12px;
+  }
+`
+
+const SSortLabelText = styled.span`
+  @media (max-width: 767px) {
+    margin-right: 12px;
   }
 `
 
@@ -460,9 +467,9 @@ export const CollectionFilters = ({
                 strokeLinejoin="round"
               />
             </svg>
-            <SButtonLabelText>
+            <SFilterLabelText>
               Filter {!isEmptyFilter(selectedFilters) && `(${filteredProducts.length})`}
-            </SButtonLabelText>
+            </SFilterLabelText>
           </SButtonLabel>
         </SButton>
         <SButton
@@ -471,7 +478,7 @@ export const CollectionFilters = ({
           isActive={isSortDropdownOpened}
         >
           <SButtonLabel>
-            <SButtonLabelText>Sort by</SButtonLabelText>
+            <SSortLabelText>Sort by</SSortLabelText>
             <svg xmlns="http://www.w3.org/2000/svg" width={18} height={10} viewBox="0 0 18 10" fill="none">
               <path
                 d="M17 1L9 9 1 1"
