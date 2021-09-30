@@ -22,6 +22,7 @@ export function submitHint(
       email: sender.email,
       r_name: receiver.name,
       r_email: receiver.email,
+      site_version: 'V3',
       items: {
         ProductID: product.product_id,
         // SKU: variant.sku,
