@@ -1,12 +1,11 @@
 import React, { useRef } from 'react'
+import { useRouter } from 'next/router'
 import styled from 'styled-components'
 import cn, { Argument as ClassName } from 'classnames'
+import Carousel from 'react-multi-carousel'
 import { Product } from '../../modules/normalize-product'
-import useScreenSize from '../../lib/use-screen-size'
-import window from '../../lib/window'
 import Slider from '../../lib/slider'
 import ProductCard from '../product-card'
-import Carousel from 'react-multi-carousel'
 
 const Section = styled.section`
   margin: 0 0 43px;
@@ -208,7 +207,7 @@ export const ProductsCarousel = ({
   title,
   subTitle,
 }: ProductsCarouselProps): React.ReactElement => {
-  const screenSize = useScreenSize()
+  const router = useRouter()
   const carouselRef = useRef<Carousel>(null)
   const sliderSettings = {
     desktop: {
@@ -228,7 +227,7 @@ export const ProductsCarousel = ({
   return (
     <Section className={cn('ProductsCarousel', className)}>
       <Container>
-        {window?.location.pathname && window?.location.pathname.search('products') !== -1 ? (
+        {router.pathname.startsWith('/products/') ? (
           <SectionTitleProduct>
             <span>{title}</span>
           </SectionTitleProduct>

@@ -236,24 +236,14 @@ export function VerticalGallery({ className }: VerticalGalleryProps): React.Reac
   const product = useContext<ProductType | undefined>(ProductContext)
 
   useEffect(() => {
-    window?.addEventListener('scroll', () => {
-      if (window?.outerWidth && window?.outerWidth >= 768) {
-        product &&
-          product.images &&
-          screenSize.greaterThanMedium &&
-          handleGalleryScrolling(galleryRef, product.images, setActiveGalleryItem)
-      }
-    })
-    return () => {
-      window?.removeEventListener('scroll', () => {
-        if (window?.outerWidth && window?.outerWidth >= 768) {
-          product &&
-            product.images &&
-            screenSize.greaterThanMedium &&
-            handleGalleryScrolling(galleryRef, product.images, setActiveGalleryItem)
-        }
-      })
+    const scrollHandler = () => {
+      if (!product?.images) return
+      if (!screenSize.greaterThanMedium) return
+      if (!window || window.outerWidth < 768) return
+      handleGalleryScrolling(galleryRef, product.images, setActiveGalleryItem)
     }
+    window?.addEventListener('scroll', scrollHandler)
+    return () => window?.removeEventListener('scroll', scrollHandler)
   }, [product, screenSize])
 
   useEffect(() => {
