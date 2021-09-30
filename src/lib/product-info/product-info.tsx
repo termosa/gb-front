@@ -18,7 +18,7 @@ import trackAddedToCart from '../track-added-to-cart'
 import Image from '../image'
 import YotpoStarRating from '../yotpo-star-rating'
 import ga from '../google-analytics'
-import parseProductDetails from '../parse-product-details'
+import parseProductDetails, { ProductDetail } from '../parse-product-details'
 
 const goToYotpoReviews = () => {
   const yOffset = -200
@@ -449,11 +449,6 @@ const SPdpAItemDescription = styled.div<{
   }
 `
 
-type ProductDetails = {
-  title: string
-  content: string
-}
-
 export type ProductInfoProps = {
   className?: ClassName
   style?: React.CSSProperties
@@ -780,7 +775,7 @@ export function ProductInfo({ className, style, addToCartRef }: ProductInfoProps
           </SPdpFragranceItem>
         </SPdpFragrance>*/}
         <div>
-          {productDetails.map((el: ProductDetails, i: number) => (
+          {productDetails.map((el: ProductDetail, i: number) => (
             <SPdpAItem key={el.title}>
               <SPdpAItemTitle
                 onClick={() => (activeAccordion === i ? setActiveAccordion(null) : setActiveAccordion(i))}
@@ -823,9 +818,7 @@ export function ProductInfo({ className, style, addToCartRef }: ProductInfoProps
                   <br />
                 </p>
               </SPdpAItemTitle>
-              <SPdpAItemDescription isActive={activeAccordion === i}>
-                <span>{el.content}</span>
-              </SPdpAItemDescription>
+              <SPdpAItemDescription isActive={activeAccordion === i} dangerouslySetInnerHTML={{ __html: el.content }} />
             </SPdpAItem>
           ))}
         </div>

@@ -2,13 +2,16 @@ import { Product } from '../../modules/normalize-product'
 import { parse } from 'node-html-parser'
 import removeNewLineCharacters from '../../modules/remove-new-line-characters'
 
-export type ProductDetail = { title: string; content: string }
+export type ProductDetail = {
+  title: string
+  content: string
+}
 
 export function parseProductDetails(product: Product): Array<ProductDetail> {
   if (!product.body_html) return []
 
   const setParagraphs = (prev: string, curr: HTMLElement, i: number) => {
-    return prev + (i !== 0 ? '\n\n' : '') + removeNewLineCharacters(curr.innerText.trim())
+    return prev + (i !== 0 ? '\n\n' : '') + removeNewLineCharacters(curr.innerHTML.trim())
   }
 
   const trArr = Array.prototype.slice.call(parse(product.body_html).querySelectorAll('tr'))

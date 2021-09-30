@@ -222,6 +222,13 @@ const SPdpCarouselItemMobile = styled.div`
   }
 `
 
+const SliderHolder = styled.div`
+  .react-multi-carousel-item {
+    display: flex;
+    align-items: center;
+  }
+`
+
 export type VerticalGalleryProps = {
   className?: ClassName
 }
@@ -329,24 +336,26 @@ export function VerticalGallery({ className }: VerticalGalleryProps): React.Reac
             </SPdpRow>
           ) : (
             <>
-              <Slider
-                partiallyVisible={false}
-                arrows={false}
-                carouselRef={carouselRef}
-                setActiveGalleryItem={setActiveGalleryItem}
-              >
-                {product?.images?.map((image) => (
-                  <SPdpCarouselItemMobile key={image?.src}>
-                    {product?.images && (
-                      <Image
-                        src={product.images && image?.src}
-                        alt={(product.images && image?.alt) || ''}
-                        shopifySize={'grande'}
-                      />
-                    )}
-                  </SPdpCarouselItemMobile>
-                ))}
-              </Slider>
+              <SliderHolder>
+                <Slider
+                  partiallyVisible={false}
+                  arrows={false}
+                  carouselRef={carouselRef}
+                  setActiveGalleryItem={setActiveGalleryItem}
+                >
+                  {product?.images?.map((image) => (
+                    <SPdpCarouselItemMobile key={image?.src}>
+                      {product?.images && (
+                        <Image
+                          src={product.images && image?.src}
+                          alt={(product.images && image?.alt) || ''}
+                          shopifySize={'grande'}
+                        />
+                      )}
+                    </SPdpCarouselItemMobile>
+                  ))}
+                </Slider>
+              </SliderHolder>
               <SCarouselThumbnailsHolder>
                 <SCarouselThumbnails>
                   {product?.images?.map((image, i) => (

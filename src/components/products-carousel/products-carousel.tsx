@@ -1,11 +1,12 @@
-import React, { useRef } from 'react'
+import React, { useContext, useRef } from 'react'
 import { useRouter } from 'next/router'
 import styled from 'styled-components'
 import cn, { Argument as ClassName } from 'classnames'
 import Carousel from 'react-multi-carousel'
-import { Product } from '../../modules/normalize-product'
+import { Product as ProductType, Product } from '../../modules/normalize-product'
 import Slider from '../../lib/slider'
 import ProductCard from '../product-card'
+import ProductContext from '../../modules/product-context'
 
 const Section = styled.section`
   margin: 0 0 43px;
@@ -209,6 +210,7 @@ export const ProductsCarousel = ({
 }: ProductsCarouselProps): React.ReactElement => {
   const router = useRouter()
   const carouselRef = useRef<Carousel>(null)
+  const currentProduct = useContext<ProductType | undefined>(ProductContext)
   const sliderSettings = {
     desktop: {
       breakpoint: { max: 3000, min: 992 },
@@ -274,7 +276,7 @@ export const ProductsCarousel = ({
             infinite={true}
           >
             {products
-              .filter((product) => product.image)
+              .filter((product) => product.image && product.product_id !== currentProduct?.product_id)
               .map((product) => {
                 return (
                   <ProductCard
