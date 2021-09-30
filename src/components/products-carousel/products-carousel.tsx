@@ -40,8 +40,7 @@ const Container = styled.div`
     padding: 0 15px;
   }
 `
-
-const SectionTitle = styled.div`
+const SectionTitleProduct = styled.h2`
   font: 600 16px/1.5 'Montserrat', serif;
   text-transform: uppercase;
   text-align: center;
@@ -50,6 +49,7 @@ const SectionTitle = styled.div`
   @media (min-width: 768px) {
     font: 700 40px/1 'Cormorant Garamond', serif;
     text-transform: initial;
+    margin: 0 0 28px;
   }
 
   & > span {
@@ -63,6 +63,7 @@ const SectionTitle = styled.div`
       position: absolute;
       bottom: 0;
       left: 0;
+      z-index: -1;
 
       @media (min-width: 768px) {
         height: 10px;
@@ -70,6 +71,12 @@ const SectionTitle = styled.div`
       }
     }
   }
+`
+
+const SectionTitle = styled.h2`
+  font: 700 40px/1 'Cormorant Garamond', serif;
+  text-align: center;
+  margin: 0 0 12px;
 `
 
 const SectionText = styled.div`
@@ -199,7 +206,6 @@ export const ProductsCarousel = ({
   className,
   onSelectProduct,
   title,
-  titleHighlighted,
   subTitle,
 }: ProductsCarouselProps): React.ReactElement => {
   const screenSize = useScreenSize()
@@ -222,11 +228,15 @@ export const ProductsCarousel = ({
   return (
     <Section className={cn('ProductsCarousel', className)}>
       <Container>
-        <SectionTitle>
-          <span>
-            {title} {titleHighlighted}
-          </span>
-        </SectionTitle>
+        {window?.location.pathname && window?.location.pathname.search('products') !== -1 ? (
+          <SectionTitleProduct>
+            <span>{title}</span>
+          </SectionTitleProduct>
+        ) : (
+          <SectionTitle>
+            <span>{title}</span>
+          </SectionTitle>
+        )}
         <SectionText>
           <p>{subTitle}</p>
         </SectionText>
@@ -249,6 +259,7 @@ export const ProductsCarousel = ({
             responsive={sliderSettings}
             scrollbarPresent={true}
             arrows={false}
+            slidesToSlide={2}
             customLeftArrow={
               <SPrevArrow>
                 <SArrowButton />
@@ -279,11 +290,6 @@ export const ProductsCarousel = ({
           </Slider>
         </SliderHolder>
       </Container>
-      {/* <ProgressWrapper>
-        <Progress progress={progress}>
-          <ProgressLabel>{`${progress}% completed`}</ProgressLabel>
-        </Progress>
-      </ProgressWrapper>*/}
     </Section>
   )
 }

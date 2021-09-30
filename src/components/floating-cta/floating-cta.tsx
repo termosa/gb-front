@@ -25,13 +25,18 @@ const SFloatingCtaClosed = styled.div<{ isVisible?: boolean }>`
     bottom: 40px;
     margin: 0 auto 48px;
     padding: 16px;
+    max-width: 100%;
   }
 
   & > button {
     box-shadow: 0 0 24px rgba(0, 0, 0, 0.35);
+    max-width: 380px;
+    width: 100%;
+    margin: 0 auto;
 
     @media (min-width: 768px) {
       margin: 0 16px;
+      max-width: 100%;
     }
   }
 `
@@ -42,9 +47,11 @@ const SFloatingCtaOpened = styled.div<{ isVisible?: boolean }>`
   bottom: 0;
   width: 100%;
   margin: 0 auto;
+  max-width: 380px;
   visibility: ${(props) => (props.isVisible ? 'visible' : 'hidden')};
 
   @media (min-width: 768px) {
+    max-width: 100%;
     bottom: 40px;
     width: auto;
     margin: 0 auto 48px;

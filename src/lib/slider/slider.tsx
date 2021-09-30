@@ -206,6 +206,7 @@ type SliderProps = {
   autoPlay?: boolean
   centerMode?: boolean
   showDots?: boolean
+  slidesToSlide?: number
   carouselRef?: React.RefObject<Carousel>
   setActiveGalleryItem?: Dispatch<number>
 }
@@ -320,6 +321,7 @@ export const Slider = ({
         swipeable={swipeable}
         autoPlay={!!autoPlay}
         centerMode={!!centerMode}
+        slidesToSlide={1}
         showDots={!!showDots}
         responsive={responsive || getResponsive(partiallyVisible)}
         containerClass={scrollbarPresent ? 'carousel-container-with-scrollbar' : 'container-with-dots'}

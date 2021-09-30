@@ -32,17 +32,27 @@ const SSizeSelectorTitle = styled.h3`
 const SRingSizeContainer = styled.div`
   font: 400 16px/1 'Montserrat', sans-serif;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   margin-bottom: 16px;
 
   @media (min-width: 768px) {
     margin-bottom: 20px;
+    max-width: 340px;
+    margin: 0 auto 16px;
   }
 `
 
 const SBtnHolder = styled.div`
-  margin: 0 4px;
-  width: 43px;
+  margin: 0 2px;
+  &:first-child {
+    margin-left: 0;
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  width: 50px;
 
   &:after {
     content: '';
@@ -66,8 +76,8 @@ const SRingSizeBtn = styled.button<{ isActive: boolean }>`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 43px;
-  height: 43px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   cursor: pointer;
   appearance: none;
@@ -76,12 +86,18 @@ const SRingSizeBtn = styled.button<{ isActive: boolean }>`
   &:disabled {
     opacity: 0.4;
   }
+
+  @media (min-width: 850px) {
+    width: 48px;
+    height: 48px;
+  }
 `
 
 const SRingSizeError = styled.div`
   text-align: center;
   color: #9059c8;
   margin-bottom: 12px;
+  font: 400 14px/1.3 'Montserrat', sans-serif;
 `
 
 const SSizeSelectorAddBtn = styled.button`

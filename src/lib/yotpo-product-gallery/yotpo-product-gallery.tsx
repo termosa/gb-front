@@ -15,7 +15,7 @@ const Container = styled(SiteSection)`
   margin: 0 auto;
 
   .yotpo-slider-wrapper {
-    margin-bottom: 36px !important;
+    margin-bottom: 50px !important;
     max-width: 100% !important;
 
     @media (min-width: 992px) {

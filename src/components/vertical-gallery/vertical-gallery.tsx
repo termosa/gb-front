@@ -174,6 +174,7 @@ const SCarouselIconsItem = styled.li<{
   display: flex;
   align-items: center;
   min-width: 75px;
+  box-sizing: border-box;
   @media (max-width: 767px) {
     margin: 0 0.5% 0 0;
     width: 23%;
