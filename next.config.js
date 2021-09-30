@@ -28,6 +28,7 @@ module.exports = (phase) => {
     ...cssOptions,
     typescript: { ignoreBuildErrors: true },
     env: {
+      APP_ENV: process.env.APP_ENV,
       SITE_URL: process.env.SITE_URL,
       BASE_API_URL: process.env.BASE_API_URL,
       CLIENT_API_URL: process.env.CLIENT_API_URL,
