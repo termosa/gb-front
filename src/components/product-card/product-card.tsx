@@ -12,6 +12,7 @@ export type ProductCardProps = {
   className?: ClassName
   style?: React.CSSProperties
   product: Product
+  imagesVisibleByDefault: boolean
   onClick: () => void
 }
 
@@ -233,7 +234,13 @@ const ProductCardPrice = styled.div`
   display: inline-block;
 `
 
-export function ProductCard({ className, style, product, onClick }: ProductCardProps): React.ReactElement {
+export function ProductCard({
+  className,
+  style,
+  product,
+  imagesVisibleByDefault,
+  onClick,
+}: ProductCardProps): React.ReactElement {
   const screenSize = useScreenSize()
   const [isMouseMoved, setMouseMoved] = useState<boolean>(false)
   const [clientXClick, setClientXClick] = useState<number>()
@@ -288,6 +295,7 @@ export function ProductCard({ className, style, product, onClick }: ProductCardP
               <Image
                 src={product.image.src}
                 alt={product.image?.alt}
+                visibleByDefault={imagesVisibleByDefault}
                 draggable={false}
                 shopifySize={screenSize.greaterThanSmall ? 'large' : 'medium'}
               />
