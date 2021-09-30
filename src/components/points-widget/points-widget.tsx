@@ -53,7 +53,7 @@ export function PointsWidget(): React.ReactElement {
       <SLinkWrapper href={createLink.forPage('rewards-boutique')}>
         <DiamondIcon customerLevel={level} />
         <SValueWrapper>
-          <SValue>{availablePoints}</SValue>
+          <SValue>{Math.ceil(availablePoints)}</SValue>
           Points
         </SValueWrapper>
       </SLinkWrapper>

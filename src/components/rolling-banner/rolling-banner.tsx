@@ -17,7 +17,11 @@ const PromoWrapper = styled.div`
 const Container = styled.div`
   max-width: 990px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 8px;
+
+  @media (min-width: 375px) {
+    padding: 0 18px;
+  }
 
   @media (min-width: 1033px) {
     padding: 0;
@@ -50,7 +54,6 @@ const PromoSlider = styled.div`
   a:hover {
     @media (min-width: 1200px) {
       color: #4dbeba;
-      //#7a3cb9
     }
   }
 `
@@ -105,7 +108,12 @@ const SPromoSlide = styled.div`
 `*/
 
 const SSeparatedLine = styled.span`
-  padding: 0 1em;
+  padding: 0 8px;
+
+  @media (min-width: 768px) {
+    padding: 0 1em;
+  }
+
   & + & {
     position: relative;
     :before {

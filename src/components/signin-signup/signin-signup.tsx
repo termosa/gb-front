@@ -36,7 +36,7 @@ export function SigninSignup({ className, userName }: SearchFieldProps): React.R
         <>
           <div>Hi, {userName}</div>
           <div>
-            <SLabel href="/">Log out</SLabel>
+            <SLabel href="/account/logout">Log out</SLabel>
           </div>
         </>
       ) : (
