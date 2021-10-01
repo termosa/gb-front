@@ -190,18 +190,19 @@ const SliderHolder = styled.div`
   }
 `
 
-const SSwipeableViews = styled(SwipeableViews)``
+/*const SSwipeableViews = styled(SwipeableViews)``*/
 
 const VirtualizeSwipeableViews = virtualize(SwipeableViews)
 
-const SwiperCarousel = (onSelectProduct: () => void) => {
+const SwiperCarousel = (products: Array<Product>, onSelectProduct: (product: Product) => void) => {
+  const currentProduct = useContext<ProductType | undefined>(ProductContext)
   const filteredArr = products.filter((product) => product.image && product.product_id !== currentProduct?.product_id)
 
   const slideRenderer = ({ key, index }) => {
     const dataIndex = Math.abs(index - filteredArr.length * Math.floor(index / filteredArr.length))
     return (
       <ProductCard
-        key={filteredArr[dataIndex].product_id}
+        key={key}
         product={filteredArr[dataIndex]}
         imagesVisibleByDefault={false}
         style={{ padding: 10, minHeight: 100 }}
@@ -316,7 +317,7 @@ export const ProductsCarousel = ({
                 })}
             </Slider>
           ) : (
-            <SwiperCarousel onSelectProduct={onSelectProduct} />
+            <SwiperCarousel products={products} onSelectProduct={onSelectProduct} />
             /*<SSwipeableViews enableMouseEvents slideStyle={{ padding: '0 5px', width: '200px' }}>
               {products
                 .filter((product) => product.image && product.product_id !== currentProduct?.product_id)
