@@ -71,11 +71,14 @@ const selectValueFromTags = (tags: Array<string>, prefix: string) =>
     ?.slice(prefix.length)
     .trim()
 
+const hasSterlingSilver = (tags: Array<string>) =>
+  tags.some((tag) => tag.toLowerCase().includes('material: 925 sterling silver'))
+
 export const normalizeProduct = (product: ServerProduct): Product => {
   const tags = product.tags.length ? product.tags.split(',').map((tag) => tag.trim()) : []
   const tagsProperties = {
     fragrance: selectValueFromTags(tags, 'fragrance:'),
-    material: selectValueFromTags(tags, 'material:'),
+    material: hasSterlingSilver(tags) ? '925 Sterling Silver' : selectValueFromTags(tags, 'material:'),
     color: selectValueFromTags(tags, 'metal color:'),
     template: selectValueFromTags(tags, 'template:'),
   }
