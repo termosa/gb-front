@@ -39,6 +39,11 @@ const SWrapper = styled.div`
   }
 `
 
+const SGlobalBanner = styled.div`
+  max-width: 990px;
+  margin: 0 auto;
+`
+
 const SInnerWrapper = styled.div`
   box-sizing: border-box;
   padding: 0;
@@ -831,7 +836,7 @@ export function SiteHeader({
     >
       <RollingBanner />
       {(router.pathname !== '/' || !router.pathname.startsWith(GLOBAL_BANNER_LINK)) && (
-        <div onClick={() => navigate(createLink.forCollection(GLOBAL_BANNER_LINK))}>
+        <SGlobalBanner onClick={() => navigate(createLink.forCollection(GLOBAL_BANNER_LINK))}>
           <Image
             src={
               screenSize.greaterThanMedium
@@ -839,7 +844,7 @@ export function SiteHeader({
                 : 'https://fragrantjewels-assets.s3.amazonaws.com/images/banners/wicked-week-2/m-banner-ww-mb.jpg'
             }
           />
-        </div>
+        </SGlobalBanner>
       )}
       <SInnerWrapper>
         <SiteSection>
