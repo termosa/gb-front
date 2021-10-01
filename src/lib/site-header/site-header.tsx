@@ -26,6 +26,7 @@ const SWrapper = styled.div`
   font: 400 14px 'Montserrat', sans-serif;
   line-height: 1.3;
   letter-spacing: 0.7px;
+  background-color: #ffffff;
 
   & > svg {
     width: 100%;
@@ -47,7 +48,6 @@ const SGlobalBanner = styled.div`
 const SInnerWrapper = styled.div`
   box-sizing: border-box;
   padding: 0;
-  box-shadow: 0 4px 9px rgba(0, 0, 0, 0.1);
   position: relative;
   z-index: 10;
   background: #fff;
@@ -835,7 +835,7 @@ export function SiteHeader({
       ref={headerRef}
     >
       <RollingBanner />
-      {(router.pathname !== '/' || !router.pathname.startsWith(GLOBAL_BANNER_LINK)) && (
+      {router.pathname !== '/' && !router.pathname.startsWith(GLOBAL_BANNER_LINK) && (
         <SGlobalBanner onClick={() => navigate(createLink.forCollection(GLOBAL_BANNER_LINK))}>
           <Image
             src={
