@@ -43,11 +43,15 @@ const SWrapper = styled.div`
 const SGlobalBanner = styled.div`
   max-width: 990px;
   margin: 0 auto;
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
 `
 
 const SInnerWrapper = styled.div`
   box-sizing: border-box;
   padding: 0;
+  box-shadow: 0 6px 9px -2px rgba(0, 0, 0, 0.1);
   position: relative;
   z-index: 10;
   background: #fff;
