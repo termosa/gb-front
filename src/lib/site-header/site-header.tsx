@@ -660,10 +660,10 @@ const AllContent = () => (
         </ExtendableBlockItem>
       </ExtendableBlockItems>
       <ExtendableBlockItem className="desktop-nav-product-item">
-        <a href={createLink.forCollection('spooky')}>
-          <Image src="https://fragrantjewels.s3.amazonaws.com/app/app-nav/nav-all-img-24-dt.jpg" />
+        <a href={createLink.forProduct('black-dahlia-satin-collection-candle-and-bath-bomb-set')}>
+          <Image src="https://fragrantjewels.s3.amazonaws.com/app/app-nav/nav-all-img-25-dt.jpg" />
           <AnimatedLink as="span">
-            <span>New! Sterling Silver Collection</span>
+            <span>New! Free Bonus Perfume </span>
           </AnimatedLink>
         </a>
       </ExtendableBlockItem>
