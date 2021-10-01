@@ -663,7 +663,7 @@ const AllContent = () => (
         <a href={createLink.forProduct('black-dahlia-satin-collection-candle-and-bath-bomb-set')}>
           <Image src="https://fragrantjewels.s3.amazonaws.com/app/app-nav/nav-all-img-25-dt.jpg" />
           <AnimatedLink as="span">
-            <span>New! Free Bonus Perfume </span>
+            <span>New! Free Bonus Perfume</span>
           </AnimatedLink>
         </a>
       </ExtendableBlockItem>
