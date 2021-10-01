@@ -36,7 +36,7 @@ export default function HomePage({
         <HeroGallery
           slides={[
             {
-              topText: '',
+              topText: 'SATIN COLLECTION',
               centerFirstText: 'Coven Light or Coven Dark?',
               centerSecondText: '',
               bottomText: 'The fate of humanity lies in your hands. What will it be?',
