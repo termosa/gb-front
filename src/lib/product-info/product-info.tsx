@@ -556,7 +556,7 @@ export function ProductInfo({ className, style, addToCartRef }: ProductInfoProps
       if (!element) {
         return
       }
-      const initialTopOffset = 183
+      const initialTopOffset = JSON.parse(localStorage.getItem('headerHeight') || '{}') + 50
       const productPosition = element?.getBoundingClientRect()
 
       const maxTop = productPosition.top + window.scrollY - element?.offsetTop + initialTopOffset

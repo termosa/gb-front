@@ -50,10 +50,12 @@ const SVerticalImagesColumn = styled.div`
   }
 `
 
-const SCarouselIcons = styled.div`
+const SCarouselIcons = styled.div<{
+  top?: number
+}>`
   width: 100%;
   position: sticky;
-  top: 183px;
+  top: ${(props) => props.top + 'px' || '0'};
   height: fit-content;
   order: 1;
 
@@ -266,7 +268,7 @@ export function VerticalGallery({ className }: VerticalGalleryProps): React.Reac
     images: Array<ProductImage>,
     setActiveGalleryItem: Dispatch<SetStateAction<number | null>>
   ): void => {
-    const initialDistance = 160
+    const initialDistance = JSON.parse(localStorage.getItem('headerHeight') || '{}') + 50
     let distanceFromTop = 0
 
     const listOfCheckpoints = images
@@ -286,7 +288,7 @@ export function VerticalGallery({ className }: VerticalGalleryProps): React.Reac
         <SPdpRowWrapper>
           {screenSize.greaterThanMedium ? (
             <SPdpRow>
-              <SCarouselIcons>
+              <SCarouselIcons top={JSON.parse(localStorage.getItem('headerHeight') || '{}') + 50}>
                 <SCarouselIconsList>
                   {product?.images?.map((image: ProductImage, i: number) => (
                     <SCarouselIconsItem

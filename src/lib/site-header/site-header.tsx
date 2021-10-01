@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
 import RollingBanner from '../../components/rolling-banner'
@@ -16,6 +16,9 @@ import CustomerContext from '../../modules/customer-context'
 import CustomerOrdersDetailsContext from '../../modules/customer-orders-details-context'
 import createLink from '../create-link'
 import ga from '../google-analytics'
+import { useRouter } from 'next/router'
+import navigate from '../navigate'
+import { GLOBAL_BANNER_LINK } from '../../settings/ids'
 
 const SWrapper = styled.div`
   text-align: center;
@@ -799,7 +802,10 @@ export function SiteHeader({
   onSearch,
   searchedProducts,
 }: SiteHeaderProps): React.ReactElement | null {
-  const useScreen = useScreenSize()
+  const screenSize = useScreenSize()
+  const router = useRouter()
+  const headerRef = useRef<HTMLDivElement>(null)
+
   const [isSearchDropdownVisible, setIsSearchDropdownVisible] = useState(false)
   const [extendableBlockContent, setExtendableBlockContent] = useState('')
   const [isBurgerMenuOpen, setBurgerMenuOpen] = useState(false)
@@ -810,9 +816,31 @@ export function SiteHeader({
     ga(eventObj)
   }
 
+  useEffect(() => {
+    if (headerRef.current?.clientHeight) {
+      localStorage.setItem('headerHeight', JSON.stringify(headerRef.current?.clientHeight))
+    }
+  }, [headerRef, headerRef.current?.clientHeight])
+
   return (
-    <SWrapper className={cn(className)} style={style} onMouseLeave={() => setExtendableBlockContent('')}>
+    <SWrapper
+      className={cn(className)}
+      style={style}
+      onMouseLeave={() => setExtendableBlockContent('')}
+      ref={headerRef}
+    >
       <RollingBanner />
+      {(router.pathname !== '/' || !router.pathname.startsWith(GLOBAL_BANNER_LINK)) && (
+        <div onClick={() => navigate(createLink.forCollection(GLOBAL_BANNER_LINK))}>
+          <Image
+            src={
+              screenSize.greaterThanMedium
+                ? 'https://fragrantjewels-assets.s3.amazonaws.com/images/banners/wicked-week-2/m-banner-ww-dt.jpg'
+                : 'https://fragrantjewels-assets.s3.amazonaws.com/images/banners/wicked-week-2/m-banner-ww-mb.jpg'
+            }
+          />
+        </div>
+      )}
       <SInnerWrapper>
         <SiteSection>
           <SSearchWrapper onMouseEnter={() => setExtendableBlockContent('')}>
@@ -890,7 +918,7 @@ export function SiteHeader({
                 />
               </SIconsWrapper>
             </SSearchContent>
-            {isSearchDropdownVisible && !useScreen.greaterThanExtraLarge && (
+            {isSearchDropdownVisible && !screenSize.greaterThanExtraLarge && (
               <SearchField onSearch={onSearch} searchedProducts={searchedProducts} />
             )}
           </SSearchWrapper>

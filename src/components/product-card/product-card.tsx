@@ -12,7 +12,7 @@ export type ProductCardProps = {
   className?: ClassName
   style?: React.CSSProperties
   product: Product
-  imagesVisibleByDefault: boolean
+  imagesVisibleByDefault?: boolean
   onClick: () => void
 }
 
