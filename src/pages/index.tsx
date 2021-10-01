@@ -36,7 +36,21 @@ export default function HomePage({
         <HeroGallery
           slides={[
             {
-              topText: '',
+              topText: 'NEW',
+              centerFirstText: 'Time Travel Series',
+              centerSecondText: '',
+              bottomText:
+                'Transport yourself back to 1947 Los Angels, where the price of fame can mean giving up everything...including your life.',
+              buttonText: 'Reveal Collection',
+              buttonLink: createLink.forPage('time-travel-series'),
+              backgroundImg:
+                'https://fragrantjewels-assets.s3.amazonaws.com/images/banners/time-travel/home-tts-dt-1.jpg',
+              backgroundImgMobile:
+                'https://fragrantjewels-assets.s3.amazonaws.com/images/banners/time-travel/home-tts-mb-1.jpg',
+              transparentPlaceholder: true,
+            },
+            {
+              topText: 'SATIN COLLECTION',
               centerFirstText: 'Coven Light or Coven Dark?',
               centerSecondText: '',
               bottomText: 'The fate of humanity lies in your hands. What will it be?',
