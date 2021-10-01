@@ -58,6 +58,19 @@ export default function HomePage({
                 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/banners/home-banner-mobile.jpg',
               transparentPlaceholder: true,
             },
+            {
+              topText: '',
+              centerFirstText: '',
+              centerSecondText: '',
+              bottomText: '',
+              buttonText: '',
+              buttonLink: '',
+              backgroundImg:
+                'https://fragrantjewels-assets.s3.amazonaws.com/images/banners/wicked-week-2/ww-banner-mon-dt.jpg',
+              backgroundImgMobile:
+                'https://fragrantjewels-assets.s3.amazonaws.com/images/banners/wicked-week-2/ww-banner-mon-ipad.jpg',
+              transparentPlaceholder: true,
+            },
           ]}
         />
         {trendingProducts && (

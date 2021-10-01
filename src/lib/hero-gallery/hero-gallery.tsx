@@ -310,7 +310,7 @@ export function HeroGallery({ className, style, slides }: HeroGalleryProps): Rea
                   <SlideText>
                     <p>{slide.bottomText}</p>
                   </SlideText>
-                  <SlideLinkInner href={slide.buttonLink}>{slide.buttonText}</SlideLinkInner>
+                  {slide.buttonLink && <SlideLinkInner href={slide.buttonLink}>{slide.buttonText}</SlideLinkInner>}
                 </SliderTransparentWrapper>
               </SlideTransparentContent>
             ) : (
