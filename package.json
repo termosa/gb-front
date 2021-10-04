@@ -104,10 +104,10 @@
   },
   "lint-staged": {
     "*.{ts,tsx}": [
-        "eslint --fix"
+      "eslint --fix"
     ],
     "*.scss": [
-        "stylelint --fix"
+      "stylelint --fix"
     ]
   },
   "author": "Gravity Brands",
