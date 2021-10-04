@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from 'react'
+import React, { useContext, useRef, useState } from 'react'
 import { useRouter } from 'next/router'
 import styled from 'styled-components'
 import cn, { Argument as ClassName } from 'classnames'
@@ -8,7 +8,6 @@ import Slider from '../../lib/slider'
 import ProductCard from '../product-card'
 import ProductContext from '../../modules/product-context'
 import SwipeableViews from 'react-swipeable-views'
-import { virtualize } from 'react-swipeable-views-utils'
 import { useScreenSize } from '../../lib/use-screen-size'
 
 const Section = styled.section`
@@ -143,7 +142,6 @@ const SArrowButton = styled.button`
   background-color: transparent;
   font-size: 0;
   margin: 0;
-  padding: 0;
   cursor: pointer;
   padding: 25px;
 
@@ -167,7 +165,6 @@ const SArrowButton = styled.button`
 `
 
 const SliderHolder = styled.div`
-  padding: 0 0 37px 20px;
   margin: 0 auto;
   position: relative;
   overflow: hidden;
@@ -191,37 +188,8 @@ const SliderHolder = styled.div`
 `
 
 const SSwipeableViews = styled(SwipeableViews)`
-  padding: 0 50px;
+  padding: 0 20px;
 `
-
-const VirtualizeSwipeableViews = virtualize(SSwipeableViews)
-
-type SwiperCarouselProps = {
-  products: Array<Product>
-  onSelectProduct: (product: Product) => void
-}
-
-const SwiperCarousel = ({ products, onSelectProduct }: SwiperCarouselProps) => {
-  const currentProduct = useContext<ProductType | undefined>(ProductContext)
-  const filteredArr = products.filter((product) => product.image && product.product_id !== currentProduct?.product_id)
-
-  const slideRenderer = ({ key, index }) => {
-    const dataIndex = Math.abs(index - filteredArr.length * Math.floor(index / filteredArr.length))
-    return (
-      <ProductCard
-        key={key}
-        product={filteredArr[dataIndex]}
-        imagesVisibleByDefault={false}
-        style={{ padding: 10, minHeight: 100 }}
-        onClick={() => {
-          onSelectProduct(filteredArr[dataIndex])
-        }}
-      />
-    )
-  }
-
-  return <VirtualizeSwipeableViews slideRenderer={slideRenderer} enableMouseEvents slideStyle={{ padding: '0 5px' }} />
-}
 
 export type ProductsCarouselProps = {
   products: Array<Product>
@@ -242,6 +210,7 @@ export const ProductsCarousel = ({
   const router = useRouter()
   const carouselRef = useRef<Carousel>(null)
   const screenSize = useScreenSize()
+  const [currentSlide, setCurrentSlide] = useState(0)
   const currentProduct = useContext<ProductType | undefined>(ProductContext)
   const sliderSettings = {
     desktop: {
@@ -324,24 +293,36 @@ export const ProductsCarousel = ({
                 })}
             </Slider>
           ) : (
-            <SwiperCarousel products={products} onSelectProduct={onSelectProduct} />
-            /*<SSwipeableViews enableMouseEvents slideStyle={{ padding: '0 5px', width: '200px' }}>
-              {products
-                .filter((product) => product.image && product.product_id !== currentProduct?.product_id)
-                .map((product) => {
-                  return (
-                    <ProductCard
-                      key={product.product_id}
-                      product={product}
-                      imagesVisibleByDefault={false}
-                      style={{ padding: 10, minHeight: 100 }}
-                      onClick={() => {
-                        onSelectProduct(product)
-                      }}
-                    />
-                  )
-                })}
-            </SSwipeableViews>*/
+            <>
+              <SSwipeableViews
+                enableMouseEvents
+                resistance
+                index={currentSlide}
+                slideStyle={screenSize.greaterThanSmall ? { width: '38%' } : { width: '50%' }}
+                onChangeIndex={(slideNumber) => {
+                  if (products.length / 2 > slideNumber) {
+                    setCurrentSlide(slideNumber)
+                  } else {
+                    setCurrentSlide(0)
+                  }
+                }}
+              >
+                {products
+                  .filter((product) => product.image && product.product_id !== currentProduct?.product_id)
+                  .map((product) => {
+                    return (
+                      <ProductCard
+                        key={product.product_id}
+                        product={product}
+                        imagesVisibleByDefault
+                        onClick={() => {
+                          onSelectProduct(product)
+                        }}
+                      />
+                    )
+                  })}
+              </SSwipeableViews>
+            </>
           )}
         </SliderHolder>
       </Container>
