@@ -79,6 +79,21 @@ const SectionTitle = styled.h2`
   margin: 0 0 12px;
 `
 
+const STitleUnderline = styled.span`
+  position: relative;
+
+  &:after {
+    content: '';
+    width: 100%;
+    height: 8px;
+    background: rgba(77, 190, 186, 0.3);
+    position: absolute;
+    bottom: 6px;
+    left: 0;
+    z-index: -1;
+  }
+`
+
 const SectionText = styled.div`
   font: 400 16px/1.5 'Montserrat', sans-serif;
   text-align: center;
@@ -210,6 +225,7 @@ export const ProductsCarousel = ({
   const screenSize = useScreenSize()
   const [currentSlide, setCurrentSlide] = useState(0)
   const currentProduct = useContext<ProductType | undefined>(ProductContext)
+  const titleParts = title.split(' ')
   const sliderSettings = {
     desktop: {
       breakpoint: { max: 3000, min: 992 },
@@ -234,7 +250,11 @@ export const ProductsCarousel = ({
           </SectionTitleProduct>
         ) : (
           <SectionTitle>
-            <span>{title}</span>
+            {/* <span>{title}</span> */}
+            <span>{` ${titleParts.slice(0, 1).join(' ')}`}&nbsp;</span>
+            <span>
+              <STitleUnderline>{titleParts.slice(1, 3).join(' ')}</STitleUnderline>
+            </span>
           </SectionTitle>
         )}
         <SectionText>

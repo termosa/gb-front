@@ -2,6 +2,7 @@ import React, { useContext, useRef } from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import ProductContext from '../../modules/product-context'
 import useYotpo from '../use-yotpo'
+import styled from 'styled-components'
 
 export type YotpoStarRatingProps = {
   className?: ClassName
@@ -9,6 +10,13 @@ export type YotpoStarRatingProps = {
   productId?: number
   onClick?: React.MouseEventHandler<HTMLDivElement>
 }
+
+const YotpoWrapper = styled.div`
+  &.pdp-yotpo-star-rating .yotpo-display-wrapper {
+    padding: 5px 0;
+    margin-bottom: 3px;
+  }
+`
 
 export function YotpoStarRating({
   className,
@@ -25,7 +33,7 @@ export function YotpoStarRating({
   }
   if (!productId && !product) return null
   return (
-    <div
+    <YotpoWrapper
       ref={blockRef}
       className={cn(className, 'yotpo', 'bottomLine', 'yotpo-small')}
       style={style}
