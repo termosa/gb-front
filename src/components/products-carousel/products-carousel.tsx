@@ -190,11 +190,18 @@ const SliderHolder = styled.div`
   }
 `
 
-/*const SSwipeableViews = styled(SwipeableViews)``*/
+const SSwipeableViews = styled(SwipeableViews)`
+  padding: 0 50px;
+`
 
-const VirtualizeSwipeableViews = virtualize(SwipeableViews)
+const VirtualizeSwipeableViews = virtualize(SSwipeableViews)
 
-const SwiperCarousel = (products: Array<Product>, onSelectProduct: (product: Product) => void) => {
+type SwiperCarouselProps = {
+  products: Array<Product>
+  onSelectProduct: (product: Product) => void
+}
+
+const SwiperCarousel = ({ products, onSelectProduct }: SwiperCarouselProps) => {
   const currentProduct = useContext<ProductType | undefined>(ProductContext)
   const filteredArr = products.filter((product) => product.image && product.product_id !== currentProduct?.product_id)
 
@@ -213,7 +220,7 @@ const SwiperCarousel = (products: Array<Product>, onSelectProduct: (product: Pro
     )
   }
 
-  return <VirtualizeSwipeableViews slideRenderer={slideRenderer} enableMouseEvents />
+  return <VirtualizeSwipeableViews slideRenderer={slideRenderer} enableMouseEvents slideStyle={{ padding: '0 5px' }} />
 }
 
 export type ProductsCarouselProps = {
