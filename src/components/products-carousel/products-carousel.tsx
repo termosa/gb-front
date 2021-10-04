@@ -27,10 +27,8 @@ const Section = styled.section`
 
 const Container = styled.div`
   position: relative;
-  max-width: 970px;
-  // padding: 0 15px 0 15px;
+  max-width: 990px;
   margin: 0 auto;
-  // overflow: hidden;
 
   @media (min-width: 768px) {
     padding: 0 30px;

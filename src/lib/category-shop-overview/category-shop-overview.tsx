@@ -17,7 +17,7 @@ const SWrapper = styled.section`
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  max-width: 960px;
+  max-width: 990px;
   padding: 0;
   margin: 0 auto 19px;
 

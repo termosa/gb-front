@@ -39,6 +39,20 @@ export default function HomePage({
           <HeroGallery
             slides={[
               {
+                topText: 'NEW',
+                centerFirstText: 'Time Travel Series',
+                centerSecondText: '',
+                bottomText:
+                  'Transport yourself back to 1947 Los Angels, where the price of fame can mean giving up everything...including your life.',
+                buttonText: 'Reveal Collection',
+                buttonLink: createLink.forPage('time-travel-series'),
+                backgroundImg:
+                  'https://fragrantjewels-assets.s3.amazonaws.com/images/banners/time-travel/home-tts-dt-1.jpg',
+                backgroundImgMobile:
+                  'https://fragrantjewels-assets.s3.amazonaws.com/images/banners/time-travel/home-tts-mb-1.jpg',
+                transparentPlaceholder: true,
+              },
+              {
                 topText: 'SATIN COLLECTION',
                 centerFirstText: 'Coven Light or Coven Dark?',
                 centerSecondText: '',
@@ -62,28 +76,17 @@ export default function HomePage({
                   'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/banners/home-banner-mobile.jpg',
                 transparentPlaceholder: true,
               },
-              {
-                topText: '',
-                centerFirstText: '',
-                centerSecondText: '',
-                bottomText: '',
-                buttonText: '',
-                buttonLink: '',
-                backgroundImg:
-                  'https://fragrantjewels-assets.s3.amazonaws.com/images/banners/wicked-week-2/ww-banner-mon-dt.jpg',
-                backgroundImgMobile:
-                  'https://fragrantjewels-assets.s3.amazonaws.com/images/banners/wicked-week-2/ww-banner-mon-ipad.jpg',
-                transparentPlaceholder: true,
-              },
             ]}
           />
         ) : (
           <HeroBanner
             properties={{
               desktop:
-                'https://fragrantjewels-assets.s3.amazonaws.com/images/banners/wicked-week-2/home-ww-banner-mon-dt.jpg',
+                'https://fragrantjewels-assets.s3.amazonaws.com/images/banners/wicked-week-2/ww-banner-mon-dt.jpg',
+              iPad:
+                'https://fragrantjewels-assets.s3.amazonaws.com/images/banners/wicked-week-2/ww-banner-mon-ipad2.jpg',
               mobile:
-                'https://fragrantjewels-assets.s3.amazonaws.com/images/banners/wicked-week-2/home-ww-banner-mon-mb.jpg',
+                'https://fragrantjewels-assets.s3.amazonaws.com/images/banners/wicked-week-2/ww-banner-mon-mb.jpg',
               link: '/collections/jewel-candles/?d=scary',
             }}
           />
