@@ -4,7 +4,7 @@ import HeroBanner from '.'
 
 describe('<HeroBanner>', () => {
   it('should render with the correct text', () => {
-    const { getByText } = render(
+    const { container } = render(
       <HeroBanner
         properties={{
           desktop:
@@ -15,7 +15,6 @@ describe('<HeroBanner>', () => {
         }}
       />
     )
-    const rendered = getByText('Component content')
-    expect(rendered).toBeTruthy()
+    expect(container.querySelector('a')?.getAttribute('href')).toContain('/collections/jewel-candles/?d=scary')
   })
 })
