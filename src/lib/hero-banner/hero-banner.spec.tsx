@@ -9,6 +9,7 @@ describe('<HeroBanner>', () => {
         properties={{
           desktop:
             'https://fragrantjewels-assets.s3.amazonaws.com/images/banners/wicked-week-2/home-ww-banner-mon-dt.jpg',
+          iPad: 'https://fragrantjewels-assets.s3.amazonaws.com/images/banners/wicked-week-2/ww-banner-mon-ipad2.jpg',
           mobile:
             'https://fragrantjewels-assets.s3.amazonaws.com/images/banners/wicked-week-2/home-ww-banner-mon-mb.jpg',
           link: '/collections/jewel-candles/?d=scary',

@@ -65,11 +65,11 @@ const SliderWrapper = styled.div`
   @media (min-width: 768px) {
     display: flex;
     justify-content: center;
-    gap: 16px;
+    // gap: 16px;
   }
 
   @media (min-width: 992px) {
-    gap: 32px;
+    // gap: 32px;
   }
 `
 

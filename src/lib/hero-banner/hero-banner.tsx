@@ -2,11 +2,14 @@ import React from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
 import { useScreenSize } from '../use-screen-size'
-
-const BannerWrapper = styled.a`
-  max-width: 990px;
+const BannerWrapper = styled.div`
   margin: 0 auto 48px;
+  background-color: #170014;
+`
+const BannerLink = styled.a`
   display: block;
+  max-width: 1440px;
+  margin: 0 auto;
   text-decoration: none;
 
   @media (min-width: 768px) {
@@ -23,6 +26,7 @@ const BannerWrapper = styled.a`
   }
 
   img {
+    max-width: 100%;
     width: 100%;
     height: auto;
     display: block;
@@ -39,14 +43,26 @@ export type HeroBannerProps = {
 type HeroProps = {
   desktop: string
   mobile: string
+  iPad: string
   link: string
 }
 
 export function HeroBanner({ className, style, properties }: HeroBannerProps): React.ReactElement {
   const screenSize = useScreenSize()
   return (
-    <BannerWrapper href={properties.link} className={cn(className)} style={style}>
-      <img src={screenSize.greaterThanMedium ? properties.desktop : properties.mobile} alt="" />
+    <BannerWrapper style={style} className={cn(className)}>
+      <BannerLink href={properties.link}>
+        <img
+          src={
+            screenSize.greaterThanExtraLarge
+              ? properties.desktop
+              : screenSize.sizeS
+              ? properties.iPad
+              : properties.mobile
+          }
+          alt=""
+        />
+      </BannerLink>
     </BannerWrapper>
   )
 }

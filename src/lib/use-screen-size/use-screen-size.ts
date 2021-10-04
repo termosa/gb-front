@@ -6,6 +6,7 @@ export type ScreenSize = {
   width: number | null
   height: number | null
   lessThanSmall: boolean | null
+  sizeS: boolean | null
   greaterThanSmall: boolean | null
   greaterThanMedium: boolean | null
   greaterThanLarge: boolean | null
@@ -41,6 +42,7 @@ export function useScreenSize(): ScreenSize {
     width: windowSize?.width ? windowSize?.width : null,
     height: windowSize?.height ? windowSize?.height : null,
     lessThanSmall: windowSize?.width ? windowSize?.width < 576 : null,
+    sizeS: windowSize?.width ? windowSize?.width >= 375 : null,
     greaterThanSmall: windowSize?.width ? windowSize?.width >= 576 : null,
     greaterThanMedium: windowSize?.width ? windowSize?.width >= 768 : null,
     greaterThanLarge: windowSize?.width ? windowSize?.width >= 992 : null,

@@ -5,7 +5,7 @@ import useYotpo from '../use-yotpo'
 import SiteSection from '../../components/site-section'
 
 const Container = styled(SiteSection)`
-  max-width: 960px;
+  max-width: 990px;
   text-align: center;
   margin: 0 auto 36px;
   padding: 0 15px;

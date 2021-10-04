@@ -19,7 +19,7 @@ const FooterContainer = styled.div`
 `
 
 const FooterOuter = styled.div`
-  max-width: 980px;
+  max-width: 1010px;
   padding: 0 15px;
   margin: 0 auto;
 `
@@ -62,9 +62,16 @@ const FooterCopyright = styled.div`
 `
 
 const PreFooterPromoMessage = styled.div`
-  max-width: 960px;
-  margin: 0 auto 20px;
-  padding: 0 15px;
+  max-width: 990px;
+  margin: -15px auto 30px;
+  padding: 0 15px 0;
+  text-align: center;
+  line-height: 1.5;
+
+  @media (min-width: 992px) {
+    margin: 0 auto 30px;
+    padding: 15px 25px 0;
+  }
 `
 
 export type SiteFooterProps = {
@@ -77,12 +84,12 @@ export function SiteFooter({ className, style }: SiteFooterProps): React.ReactEl
 
   return (
     <div>
-      <PreFooterPromoMessage>
-        Buy any 2 candles for as low as $38! Simply add your favorite candles to your cart and see your savings at
-        checkout. Discount based on $26.95 candle value. Only valid on full-priced candles. Offer only valid on October
-        4, 2021.
-      </PreFooterPromoMessage>
       <FooterContainer className={cn(className)} style={style}>
+        <PreFooterPromoMessage>
+          Buy any 2 candles for as low as $38! Simply add your favorite candles to your cart and see your savings at
+          checkout. Discount based on $26.95 candle value. Only valid on full-priced candles. Offer only valid on
+          October 4, 2021.
+        </PreFooterPromoMessage>
         <FooterOuter>
           <FooterInner>
             <FooterAccordion>
