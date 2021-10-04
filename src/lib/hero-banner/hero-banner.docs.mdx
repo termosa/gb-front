@@ -5,10 +5,18 @@ export const meta = {
   name: 'HeroBanner',
   description: 'Styled block with custom content',
   tags: ['component'],
-  preview: <HeroBanner>Component content here</HeroBanner>,
+  preview: (
+    <HeroBanner 
+      properties={{
+        desktop: 'https://fragrantjewels-assets.s3.amazonaws.com/images/banners/wicked-week-2/home-ww-banner-mon-dt.jpg',
+        mobile: 'https://fragrantjewels-assets.s3.amazonaws.com/images/banners/wicked-week-2/home-ww-banner-mon-mb.jpg',
+        link: '/collections/jewel-candles/?d=scary',
+      }}
+    />
+  ),
   lists: {
     attributes: [
-      { name: 'children', required: true, type: 'React.ReactNode', description: 'Content that will be rendered inside of the block' },
+      { name: 'properties', required: true, type: 'HeroProps', description: 'List of component properties' },
       { name: 'className', type: 'classnames.Argument', description: 'One or multiple class names that will be added to the main container' },
       { name: 'style', type: 'React.CSSProperties', description: 'Inline styles for the main container' },
     ],
@@ -16,14 +24,14 @@ export const meta = {
   scope: { HeroBanner },
 }
 
-## Usage
-
-```jsx
-<HeroBanner className="class" style={{ color: 'red' }}>Put content here</HeroBanner>
-```
-
 ## Playground
 
 ```jsx live
-<HeroBanner style={{ color: 'red' }}>Content text</HeroBanner>
+<HeroBanner 
+  properties={{
+    desktop: 'https://fragrantjewels-assets.s3.amazonaws.com/images/banners/wicked-week-2/home-ww-banner-mon-dt.jpg',
+    mobile: 'https://fragrantjewels-assets.s3.amazonaws.com/images/banners/wicked-week-2/home-ww-banner-mon-mb.jpg',
+    link: '/collections/jewel-candles/?d=scary',
+  }}
+/>
 ```

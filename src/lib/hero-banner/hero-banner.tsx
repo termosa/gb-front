@@ -1,4 +1,5 @@
 import React from 'react'
+import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
 import { useScreenSize } from '../use-screen-size'
 
@@ -30,6 +31,8 @@ const BannerWrapper = styled.a`
 `
 
 export type HeroBannerProps = {
+  className?: ClassName
+  style?: React.CSSProperties
   properties: HeroProps
 }
 
@@ -39,10 +42,10 @@ type HeroProps = {
   link: string
 }
 
-export function HeroBanner({ properties }: HeroBannerProps): React.ReactElement {
+export function HeroBanner({ className, style, properties }: HeroBannerProps): React.ReactElement {
   const screenSize = useScreenSize()
   return (
-    <BannerWrapper href={properties.link}>
+    <BannerWrapper href={properties.link} className={cn(className)} style={style}>
       <img src={screenSize.greaterThanMedium ? properties.desktop : properties.mobile} alt="" />
     </BannerWrapper>
   )
