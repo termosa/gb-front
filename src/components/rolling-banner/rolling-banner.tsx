@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import Link from 'next/link'
 import Slider from '../../lib/slider'
 
 const PromoWrapper = styled.div`
@@ -164,12 +163,12 @@ export function RollingBanner(): React.ReactElement {
             <SPromoSlide>
               <span>
                 COVID-19 SHIPPING UPDATE{' '}
-                <Link
-                  passHref
+                <a
                   href="https://helpcenter.fragrantjewels.com/hc/en-us/sections/360008222572-COVID-19-Crisis-FAQ?mobile_site=true"
+                  target="_blank"
                 >
-                  <a target="_blank">LEARN MORE</a>
-                </Link>
+                  LEARN MORE
+                </a>
               </span>
             </SPromoSlide>
           </Slider>

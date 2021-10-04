@@ -1,7 +1,6 @@
 import React from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
-import Link from 'next/link'
 
 export type SearchFieldProps = {
   className?: ClassName
@@ -37,20 +36,14 @@ export function SigninSignup({ className, userName }: SearchFieldProps): React.R
         <>
           <div>Hi, {userName}</div>
           <div>
-            <Link passHref href="/account/logout">
-              <SLabel>Log out</SLabel>
-            </Link>
+            <SLabel href="/account/logout">Log out</SLabel>
           </div>
         </>
       ) : (
         <span>
-          <Link passHref href="/account/login?return_url=/">
-            <SLabel>Sign in</SLabel>
-          </Link>
+          <SLabel href="/account/login?return_url=/">Sign in</SLabel>
           {' / '}
-          <Link passHref href="/account/register">
-            <SLabel>Sign up</SLabel>
-          </Link>
+          <SLabel href="/account/register">Sign up</SLabel>
         </span>
       )}
     </SWrapper>

@@ -1,12 +1,11 @@
 import React, { useRef, useState, FormEvent, useMemo } from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
-import { useRouter } from 'next/router'
-import Link from 'next/link'
 import debounce from 'lodash/debounce'
 import usePopper from '../../hooks/use-popper'
 import useOnClickOutside from '../../hooks/use-on-click-outside'
 import { ProductsChunk } from '../../modules/normalize-products-chunk'
+import navigate from '../../lib/navigate'
 import alooma from '../../lib/alooma'
 import createLink from '../../lib/create-link'
 
@@ -93,7 +92,6 @@ const SSearchedProductLink = styled.a<{ underline?: boolean }>`
 `
 
 export function SearchField({ className, onSearch, searchedProducts }: SearchFieldProps): React.ReactElement | null {
-  const router = useRouter()
   const searchInputRef = useRef<HTMLInputElement>(null)
   const [dropdownVisibility, setDropdownVisibility] = useState(true)
 
@@ -101,7 +99,7 @@ export function SearchField({ className, onSearch, searchedProducts }: SearchFie
     event.preventDefault()
     const value = searchInputRef.current?.value || ''
     alooma('search_form_submitted', { value })
-    router.push(`/search?type=product&q=${value}`)
+    navigate(`/search?type=product&q=${value}`)
   }
 
   const handleChange = useMemo(
@@ -148,31 +146,30 @@ export function SearchField({ className, onSearch, searchedProducts }: SearchFie
         >
           {!searchedProducts.products?.length ? 'Sorry, no matches were found for your query.' : null}
           {searchedProducts.products?.map((product) => (
-            <Link passHref href={createLink.forProduct(product.handle)} key={product.product_id}>
-              <SSearchedProductLink
-                onClick={(event) => {
-                  event.preventDefault()
-                  alooma('search_form_link', {
-                    value: searchInputRef.current?.value || '',
-                    title: product.title,
-                    link: createLink.forProduct(product.handle),
-                  })
-                  router.push(createLink.forProduct(product.handle))
-                }}
-              >
-                {product.title}
-              </SSearchedProductLink>
-            </Link>
+            <SSearchedProductLink
+              key={product.product_id}
+              href={createLink.forProduct(product.handle)}
+              onClick={(event) => {
+                event.preventDefault()
+                navigate(createLink.forProduct(product.handle))
+                alooma('search_form_link', {
+                  value: searchInputRef.current?.value || '',
+                  title: product.title,
+                  link: createLink.forProduct(product.handle),
+                })
+              }}
+            >
+              {product.title}
+            </SSearchedProductLink>
           ))}
           {searchedProducts.products && searchedProducts.totalAmount > searchedProducts.products.length ? ( // TODO: Maybe no need to check presence searchedProducts.products
-            <Link passHref href={`/search?type=product&q=${searchInputRef.current?.value || ''}`}>
-              <SSearchedProductLink
-                underline
-                onClick={() => alooma('search_form_submitted', { value: searchInputRef.current?.value || '' })}
-              >
-                See all results ({searchedProducts.totalAmount})
-              </SSearchedProductLink>
-            </Link>
+            <SSearchedProductLink
+              href={`/search?type=product&q=${searchInputRef.current?.value || ''}`}
+              underline
+              onClick={() => alooma('search_form_submitted', { value: searchInputRef.current?.value || '' })}
+            >
+              See all results ({searchedProducts.totalAmount})
+            </SSearchedProductLink>
           ) : null}
         </SSearchedProducts>
       )}

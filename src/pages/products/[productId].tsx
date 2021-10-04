@@ -1,7 +1,4 @@
 import React, { useMemo } from 'react'
-import Head from 'next/head'
-import { parse } from 'node-html-parser'
-import { useRouter } from 'next/router'
 import productPageProps, { ProductPageProps } from '../../resolvers/productPageProps'
 import Product from '../../containers/Product'
 import ProductsCarousel from '../../components/products-carousel'
@@ -11,12 +8,14 @@ import YotpoReviews from '../../lib/yotpo-reviews'
 import SiteSection from '../../components/site-section'
 import trackViewedProduct from '../../lib/track-viewed-product'
 import RemotePage from '../../lib/remote-page'
+import navigate from '../../lib/navigate'
+import Head from 'next/head'
 import LazyLoad from '../../lib/lazy-load'
 import YotpoProductGallery from '../../lib/yotpo-product-gallery'
 import createLink from '../../lib/create-link'
+import { parse } from 'node-html-parser'
 
 export default function ProductPage({ product, productId, potentialProducts }: ProductPageProps): React.ReactElement {
-  const router = useRouter()
   const productDescription = useMemo(() => {
     if (!product) return ''
     return (product.body_html && parse(product.body_html).innerText.trim().replace(/\s+/g, ' ')) || ''
@@ -43,7 +42,7 @@ export default function ProductPage({ product, productId, potentialProducts }: P
               <ProductsCarousel
                 title="More you might like"
                 products={potentialProducts}
-                onSelectProduct={(product) => router.push(createLink.forProduct(product.handle))}
+                onSelectProduct={(product) => navigate(createLink.forProduct(product.handle))}
               />
             </SiteSection>
           )}

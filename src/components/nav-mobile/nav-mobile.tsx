@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import { useRouter } from 'next/router'
-import Link from 'next/link'
 import PointsWidget from '../points-widget'
 import SigninSignup from '../signin-signup'
 import { ExtendableBlockContent } from '../../lib/site-header'
@@ -431,8 +429,6 @@ export function NavMobile({
   isSubscriptionLinkShown,
   addGAEvent,
 }: SearchFieldProps): React.ReactElement | null {
-  const router = useRouter()
-
   useEffect(() => {
     document.body.style.overflow = isBurgerMenuOpen ? 'hidden' : 'auto'
   }, [isBurgerMenuOpen])
@@ -448,7 +444,7 @@ export function NavMobile({
       eventAction: 'click',
       eventLabel: 'navigation',
     })
-    router.push(e.target.href)
+    location.href = e.target.href
   }
 
   return isBurgerMenuOpen ? (
@@ -490,9 +486,9 @@ export function NavMobile({
             </SCloseBtn>
           </SNavTopInner>
           {isSubscriptionLinkShown && (
-            <Link passHref href={createLink.forPage('inner-circle')}>
-              <SMemberButton onClick={onMemberBtnClick}>Become a member</SMemberButton>
-            </Link>
+            <SMemberButton href={createLink.forPage('inner-circle')} onClick={(e) => onMemberBtnClick(e)}>
+              Become a member
+            </SMemberButton>
           )}
         </SNavTop>
         <SNavBottom>
@@ -515,25 +511,21 @@ export function NavMobile({
                     </SNavItemExtendable>
                   ) : (
                     <SNavItem key={item.title}>
-                      <Link passHref href={item.href}>
-                        <SNavLink>{item.title}</SNavLink>
-                      </Link>
+                      <SNavLink href={item.href}>{item.title}</SNavLink>
                     </SNavItem>
                   )
                 )}
               </SNavList>
               <div>
                 {CARDS_LIST.map((item) => (
-                  <Link passHref href={item.href} key={item.imgLink}>
-                    <SCard className="app-col app-add-product-col">
-                      <Image src={item.imgLink} alt="" />
-                      <div>
-                        <SCardLink className="app-animated-link app-nav__mobile-content__link">
-                          <span>{item.text}</span>
-                        </SCardLink>
-                      </div>
-                    </SCard>
-                  </Link>
+                  <SCard key={item.imgLink} href={item.href} className="app-col app-add-product-col">
+                    <Image src={item.imgLink} alt="" />
+                    <div>
+                      <SCardLink className="app-animated-link app-nav__mobile-content__link">
+                        <span>{item.text}</span>
+                      </SCardLink>
+                    </div>
+                  </SCard>
                 ))}
               </div>
             </div>
@@ -545,35 +537,23 @@ export function NavMobile({
           )}
           <SAccountWrapper>
             <SAccountTitle>
-              <Link passHref href="/account">
-                <a>Account</a>
-              </Link>
+              <a href="/account">Account</a>
             </SAccountTitle>
             <SAccountList>
               <li>
-                <Link passHref href={createLink.forPage('order-status-check')}>
-                  <a>Order Status</a>
-                </Link>
+                <a href={createLink.forPage('order-status-check')}>Order Status</a>
               </li>
               <SAccountListSubscription>
-                <Link passHref href="/account#/subscription">
-                  <a>My Subscription</a>
-                </Link>
+                <a href="/account#/subscription">My Subscription</a>
               </SAccountListSubscription>
               <li>
-                <Link passHref href="/account#/orders">
-                  <a>My Orders</a>
-                </Link>
+                <a href="/account#/orders">My Orders</a>
               </li>
               <li>
-                <Link passHref href="/account#/rewards">
-                  <a>My FJ Rewards</a>
-                </Link>
+                <a href="/account#/rewards">My FJ Rewards</a>
               </li>
               <li>
-                <Link passHref href="/account#/birthday">
-                  <a>My Birthday Gift</a>
-                </Link>
+                <a href="/account#/birthday">My Birthday Gift</a>
               </li>
             </SAccountList>
           </SAccountWrapper>

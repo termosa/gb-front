@@ -1,7 +1,6 @@
 import React, { useRef, useState } from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
-import Link from 'next/link'
 import Button from '../../lib/button'
 import RingSize from '../ring-size'
 import formatPrice from '../../modules/format-price'
@@ -563,9 +562,7 @@ export function InnerCircleExclusive({
         </STitle>
         <SSubTitle>{subTitle}</SSubTitle>
         <SButtonWrapper>
-          <Link passHref href={buttonLink}>
-            <LinkInner>{topButtonText}</LinkInner>
-          </Link>
+          <LinkInner href={buttonLink}>{topButtonText}</LinkInner>
         </SButtonWrapper>
       </STitleWrapper>
       <SContentWrapper>

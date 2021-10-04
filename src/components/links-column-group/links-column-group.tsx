@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled, { css } from 'styled-components'
-import Link from 'next/link'
 import { LinksColumnGroupArrow } from './links-column-group-arrow'
 
 export type LinkType =
@@ -72,7 +71,7 @@ const LinksList = styled.div`
   list-style: none;
 `
 
-const SLink = styled.a`
+const Link = styled.a`
   display: block;
   color: #fff;
   text-decoration: none;
@@ -107,8 +106,8 @@ export function LinksColumnGroup({ className, title, links, mobile }: LinksColum
       {!mobile || opened ? (
         <LinksList className={cn(`${name}-Body`)}>
           {links.map((link) => (
-            <Link passHref href={link.href || ''} key={link.name}>
-              <SLink onClick={link.onClick}>{link.name}</SLink>
+            <Link key={link.name} href={link.href || ''} onClick={link.onClick}>
+              {link.name}
             </Link>
           ))}
         </LinksList>

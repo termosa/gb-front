@@ -1,12 +1,12 @@
 import React, { useContext, useEffect, useMemo, useState } from 'react'
 import styled from 'styled-components'
-import { useRouter } from 'next/router'
 import CollectionFilters, { CollectionProductsFilter, SelectedSorting } from '../components/collection-filters'
 import ProductsList from '../components/products-list'
 import SiteSection from '../components/site-section'
 import parseFiltersFromProducts from '../modules/parse-filters-from-products'
 import filterCollectionProducts from '../modules/filter-collection-products'
 import CollectionContext from '../modules/collection-context'
+import navigate from '../lib/navigate'
 import CollectionBanner from '../lib/collection-banner'
 import alooma from '../lib/alooma'
 import window from '../lib/window'
@@ -34,7 +34,6 @@ interface HashObject {
 }
 
 const Collection = (): null | React.ReactElement => {
-  const router = useRouter()
   const collection = useContext(CollectionContext)
 
   const hashObject: HashObject | undefined = window?.location.hash
@@ -122,7 +121,7 @@ const Collection = (): null | React.ReactElement => {
               {}
             ),
           })
-          router.push(createLink.forProduct(product.handle))
+          navigate(createLink.forProduct(product.handle))
         }}
       />
     </div>
