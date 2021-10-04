@@ -3,6 +3,7 @@ import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
 import InformationCard from '../../components/information-card'
 import CategoryShopCard, { CategoryShopCardProps } from '../category-shop-card'
+import createLink from '../create-link'
 
 export type { InformationCard }
 
@@ -35,6 +36,10 @@ const SWrapper = styled.section`
   }
 `
 
+const SBlockLink = styled.a`
+  color: #000;
+`
+
 export function CategoryShopCardsOverview({
   className,
   leftCard,
@@ -42,8 +47,12 @@ export function CategoryShopCardsOverview({
 }: CategoryShopCardsOverviewProps): React.ReactElement {
   return (
     <SWrapper className={cn(className)}>
-      <CategoryShopCard {...leftCard} />
-      <CategoryShopCard {...rightCard} />
+      <SBlockLink href={createLink.forPage('time-travel-series')}>
+        <CategoryShopCard {...leftCard} />
+      </SBlockLink>
+      <SBlockLink href={createLink.forPage('charity-collections')}>
+        <CategoryShopCard {...rightCard} />
+      </SBlockLink>
     </SWrapper>
   )
 }

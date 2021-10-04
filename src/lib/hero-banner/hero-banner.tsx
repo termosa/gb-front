@@ -1,16 +1,17 @@
 import React from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
-import { useScreenSize } from '../use-screen-size'
+import Link from 'next/link'
+
 const BannerWrapper = styled.div`
   margin: 0 auto 48px;
   background-color: #170014;
 `
-const BannerLink = styled.a`
+
+const BannerHolder = styled.div`
   display: block;
   max-width: 1440px;
   margin: 0 auto;
-  text-decoration: none;
 
   @media (min-width: 768px) {
     margin: 0 auto 34px;
@@ -19,18 +20,28 @@ const BannerLink = styled.a`
   @media (min-width: 992px) {
     margin: 0 auto 70px;
   }
+`
 
-  &:focus {
-    outline: 0;
-    box-shadow: none;
+const BannerLink = styled.a`
+  cursor: pointer;
+  color: #000;
+  text-decoration: none;
+`
+
+const BannerImage = styled.img<{ imageSize?: string }>`
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+  display: none;
+  margin: 0 auto;
+  display: ${(props) => (props.imageSize === 'mobile' ? `block` : 'none')};
+
+  @media (min-width: 375px) {
+    display: ${(props) => (props.imageSize === 'medium' ? `block` : 'none')};
   }
 
-  img {
-    max-width: 100%;
-    width: 100%;
-    height: auto;
-    display: block;
-    margin: 0 auto;
+  @media (min-width: 1200px) {
+    display: ${(props) => (props.imageSize === 'desktop' ? `block` : 'none')};
   }
 `
 
@@ -43,26 +54,29 @@ export type HeroBannerProps = {
 type HeroProps = {
   desktop: string
   mobile: string
-  iPad: string
-  link: string
+  medium: string
+  link?: string
 }
 
 export function HeroBanner({ className, style, properties }: HeroBannerProps): React.ReactElement {
-  const screenSize = useScreenSize()
+  const imagesElement = (
+    <div>
+      <BannerImage src={properties.mobile} imageSize={'mobile'} alt="" />
+      <BannerImage src={properties.medium} imageSize={'medium'} alt="" />
+      <BannerImage src={properties.desktop} imageSize={'desktop'} alt="" />
+    </div>
+  )
   return (
     <BannerWrapper style={style} className={cn(className)}>
-      <BannerLink href={properties.link}>
-        <img
-          src={
-            screenSize.greaterThanExtraLarge
-              ? properties.desktop
-              : screenSize.sizeS
-              ? properties.iPad
-              : properties.mobile
-          }
-          alt=""
-        />
-      </BannerLink>
+      <BannerHolder>
+        {properties.link ? (
+          <Link passHref href={properties.link}>
+            <BannerLink>{imagesElement}</BannerLink>
+          </Link>
+        ) : (
+          { imagesElement }
+        )}
+      </BannerHolder>
     </BannerWrapper>
   )
 }

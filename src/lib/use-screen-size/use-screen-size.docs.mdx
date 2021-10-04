@@ -11,7 +11,6 @@ export const meta = {
       { name: 'width', type: 'number', description: 'Width of viewport' },
       { name: 'height', type: 'number', description: 'Height of viewport' },
       { name: 'lessThanSmall', type: 'boolean', description: 'Is width less than 576px' },
-      { name: 'sizeS', type: 'boolean', description: 'Is width more than 375px' },
       { name: 'greaterThanSmall', type: 'boolean', description: 'Is width more than 576px' },
       { name: 'greaterThanMedium', type: 'boolean', description: 'Is width more than 768px' },
       { name: 'greaterThanLarge', type: 'boolean', description: 'Is width more than 992px' },
@@ -34,7 +33,6 @@ const ScreenSize = () => {
     <p>Current height - {screenSize.height}px</p>
     <br/>
     <p style={getStyle(screenSize.lessThanSmall)}><b>lessThanSmall</b> - width less than 576px</p>
-    <p style={getStyle(screenSize.sizeS)}><b>SizeS</b> - width more than 375px</p>
     <p style={getStyle(screenSize.greaterThanSmall)}><b>greaterThanSmall</b> - width more than 576px</p>
     <p style={getStyle(screenSize.greaterThanMedium)}><b>greaterThanMedium</b> - width more than 768px</p>
     <p style={getStyle(screenSize.greaterThanLarge)}><b>greaterThanLarge</b> - width more than 992px</p>

@@ -1,6 +1,7 @@
 import React from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
+import Link from 'next/link'
 import Image from '../../lib/image'
 
 export interface ShopByProductCardProps extends Omit<React.HTMLProps<HTMLDivElement>, 'className'> {
@@ -10,13 +11,25 @@ export interface ShopByProductCardProps extends Omit<React.HTMLProps<HTMLDivElem
   buttonLink: string
 }
 
-const SLayout = styled.div`
+const SLayout = styled.a`
   position: relative;
   display: flex;
   justify-content: center;
   outline: none;
   margin: 0 auto;
   height: 100%;
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+
+  @media (min-width: 1200px) {
+    &:hover button {
+      font-weight: 700;
+      background-color: #fff;
+      color: #000;
+      border-color: #000;
+    }
+  }
 `
 
 const SLayoutImage = styled(Image)`
@@ -57,7 +70,7 @@ const SButtonWrapper = styled.div`
   }
 `
 
-const SButtonLink = styled.a`
+const SButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -81,12 +94,6 @@ const SButtonLink = styled.a`
   @media (min-width: 992px) {
     min-width: 200px;
   }
-
-  &:hover {
-    font-weight: 700;
-    background-color: #fff;
-    color: #000;
-  }
 `
 
 export function ShopByProductCard({
@@ -96,11 +103,13 @@ export function ShopByProductCard({
   buttonLink,
 }: ShopByProductCardProps): React.ReactElement {
   return (
-    <SLayout className={cn('ShopByProductCard', className)}>
-      <SLayoutImage src={image} />
-      <SButtonWrapper>
-        <SButtonLink href={buttonLink}>{buttonText}</SButtonLink>
-      </SButtonWrapper>
-    </SLayout>
+    <Link passHref href={buttonLink}>
+      <SLayout className={cn('ShopByProductCard', className)}>
+        <SLayoutImage src={image} />
+        <SButtonWrapper>
+          <SButton>{buttonText}</SButton>
+        </SButtonWrapper>
+      </SLayout>
+    </Link>
   )
 }

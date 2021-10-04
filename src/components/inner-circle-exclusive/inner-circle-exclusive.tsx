@@ -459,7 +459,6 @@ const LinkInner = styled.a`
       color: #fff;
     }
   }
-}
 `
 
 const SImage = styled(Image)`

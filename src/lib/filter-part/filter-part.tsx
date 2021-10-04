@@ -51,7 +51,7 @@ const SFilterGroup = styled.div<{
   padding-right: 15px;
 
   @media (max-width: 767px) {
-    padding-bottom: ${(props) => (props.isCollapsed ? '0' : '24px')};
+    padding: ${(props) => (props.isCollapsed ? '0 0 0' : '0 0 24px')};
   }
 `
 
