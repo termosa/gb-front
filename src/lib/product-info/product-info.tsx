@@ -1,11 +1,12 @@
 import React, { MutableRefObject, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled, { css } from 'styled-components'
+import { useRouter } from 'next/router'
+import Link from 'next/link'
 import formatPrice from '../../modules/format-price'
 import { ProductVariant } from '../../modules/normalize-product-variant'
 import SubscriptionHint from '../../components/subscription-hint'
 import addCartItem from '../add-cart-item'
-import navigate from '../navigate'
 import ProductModalButtons from '../../components/product-modal-button'
 import getLabel from '../../modules/get-label'
 import { Product as ProductType } from '../../modules/normalize-product'
@@ -456,6 +457,7 @@ export type ProductInfoProps = {
 }
 
 export function ProductInfo({ className, style, addToCartRef }: ProductInfoProps): React.ReactElement | null {
+  const router = useRouter()
   const cart = useCart(true)
   const isDiscountAvailable = !cart.hasSubscriptionProduct && cart.status === Status.SUCCESS
   const product = useContext<ProductType | undefined>(ProductContext)
@@ -501,7 +503,7 @@ export function ProductInfo({ className, style, addToCartRef }: ProductInfoProps
   const onMemberClick: React.MouseEventHandler<HTMLAnchorElement> = (event) => {
     event.preventDefault()
     ga('IC PDP Upsell - Already a member Clicked')
-    location.href = (event.target as HTMLAnchorElement).href
+    router.push((event.target as HTMLAnchorElement).href)
   }
 
   const addToCartHandler = (selectedVariant: ProductVariant | null) => {
@@ -524,7 +526,7 @@ export function ProductInfo({ className, style, addToCartRef }: ProductInfoProps
 
     addingRequest
       .then(() => trackAddedToCart(product))
-      .then(() => navigate('/cart'))
+      .then(() => router.push('/cart'))
       .catch((err: unknown) => alert(err))
   }
 
@@ -720,9 +722,9 @@ export function ProductInfo({ className, style, addToCartRef }: ProductInfoProps
               <SPdpAdditionalText>
                 Join the Inner Circle today, then automatically receive a monthly set for $32.95 plus tax. No
                 commitment, cancel anytime.{' '}
-                <a href="/account/login?return_url=/products/lemon-drop-jewel-candle" onClick={onMemberClick}>
-                  Already a member?
-                </a>
+                <Link passHref href="/account/login?return_url=/products/lemon-drop-jewel-candle">
+                  <a onClick={onMemberClick}>Already a member?</a>
+                </Link>
               </SPdpAdditionalText>
             )}
             <SPdpBtn

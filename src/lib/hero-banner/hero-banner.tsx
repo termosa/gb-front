@@ -1,6 +1,7 @@
 import React from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
+import Link from 'next/link'
 import { useScreenSize } from '../use-screen-size'
 const BannerWrapper = styled.div`
   margin: 0 auto 48px;
@@ -51,18 +52,20 @@ export function HeroBanner({ className, style, properties }: HeroBannerProps): R
   const screenSize = useScreenSize()
   return (
     <BannerWrapper style={style} className={cn(className)}>
-      <BannerLink href={properties.link}>
-        <img
-          src={
-            screenSize.greaterThanExtraLarge
-              ? properties.desktop
-              : screenSize.sizeS
-              ? properties.iPad
-              : properties.mobile
-          }
-          alt=""
-        />
-      </BannerLink>
+      <Link passHref href={properties.link}>
+        <BannerLink>
+          <img
+            src={
+              screenSize.greaterThanExtraLarge
+                ? properties.desktop
+                : screenSize.sizeS
+                ? properties.iPad
+                : properties.mobile
+            }
+            alt=""
+          />
+        </BannerLink>
+      </Link>
     </BannerWrapper>
   )
 }

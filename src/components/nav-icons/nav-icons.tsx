@@ -2,9 +2,11 @@ import React, { useState } from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
 import { useMediaPredicate } from 'react-media-hook'
+import Link from 'next/link'
 import SigninSignup from '../signin-signup'
 import useCart from '../../lib/use-cart'
 import createLink from '../../lib/create-link'
+import window from '../../lib/window'
 
 export type NavIconsProps = {
   className?: ClassName
@@ -121,9 +123,6 @@ const SDropDownTitle = styled.h3`
   padding: 20px 0;
   @media (min-width: 1200px) {
     text-align: center;
-  }
-  a {
-    cursor: auto;
   }
 `
 
@@ -254,36 +253,39 @@ export function NavIcons({
           ></path>
         </svg>
       </SSearchButton>
-      <SProfileButton
-        onMouseEnter={handleDropdownVisibilityChange}
-        onMouseLeave={handleDropdownVisibilityChange}
-        onClick={handleDropdownVisibilityChange}
-        href={isMobileScreen ? undefined : '/account'}
-      >
-        <svg width="100%" height="100%" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path
-            d="M11.8833 10.78C14.8988 10.78 17.3433 8.47874 17.3433 5.64C17.3433 2.80126 14.8988 0.5 11.8833 0.5C8.86781 0.5 6.42328 2.80126 6.42328 5.64C6.42328 8.47874 8.86781 10.78 11.8833 10.78Z"
-            stroke="black"
-            strokeWidth="0.5"
-            strokeMiterlimit="10"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          ></path>
-          <path
-            d="M9.19328 14.9H14.5733C19.0333 14.9 22.6533 18.3 22.6533 22.5H1.11328C1.11328 18.3 4.73328 14.9 9.19328 14.9Z"
-            stroke="black"
-            strokeWidth="0.5"
-            strokeMiterlimit="10"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          ></path>
-        </svg>
-      </SProfileButton>
+      <Link passHref href={isMobileScreen ? window?.location.pathname || '' : '/account'}>
+        <SProfileButton
+          onMouseEnter={handleDropdownVisibilityChange}
+          onMouseLeave={handleDropdownVisibilityChange}
+          onClick={handleDropdownVisibilityChange}
+        >
+          <svg width="100%" height="100%" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M11.8833 10.78C14.8988 10.78 17.3433 8.47874 17.3433 5.64C17.3433 2.80126 14.8988 0.5 11.8833 0.5C8.86781 0.5 6.42328 2.80126 6.42328 5.64C6.42328 8.47874 8.86781 10.78 11.8833 10.78Z"
+              stroke="black"
+              strokeWidth="0.5"
+              strokeMiterlimit="10"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            ></path>
+            <path
+              d="M9.19328 14.9H14.5733C19.0333 14.9 22.6533 18.3 22.6533 22.5H1.11328C1.11328 18.3 4.73328 14.9 9.19328 14.9Z"
+              stroke="black"
+              strokeWidth="0.5"
+              strokeMiterlimit="10"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            ></path>
+          </svg>
+        </SProfileButton>
+      </Link>
       <SDropDownWrapper>
         {dropdownVisibility && (
           <SDropDown onMouseEnter={handleDropdownVisibilityChange} onMouseLeave={handleDropdownVisibilityChange}>
             <SDropDownTitle>
-              <SDropDownTitleLink href="/account">My Account</SDropDownTitleLink>
+              <Link passHref href="/account">
+                <SDropDownTitleLink>My Account</SDropDownTitleLink>
+              </Link>
             </SDropDownTitle>
             <SDropDownCloseBtn onClick={handleDropdownVisibilityChange}>
               <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -298,48 +300,66 @@ export function NavIcons({
             </SDropDownCloseBtn>
             <SLinkWrapper>
               <li>
-                <a href={createLink.forPage('order-status-check')}>Order Status</a>
+                <Link passHref href={createLink.forPage('order-status-check')}>
+                  <a>Order Status</a>
+                </Link>
               </li>
               {isSubscriptionLinkShown && (
                 <li>
-                  <a href="/account#/subscription">My subscription</a>
+                  <Link passHref href="/account#/subscription">
+                    <a>My subscription</a>
+                  </Link>
                 </li>
               )}
               <li>
-                <a href="/account#/orders">My Orders</a>
+                <Link passHref href="/account#/orders">
+                  <a>My Orders</a>
+                </Link>
               </li>
               <li>
-                <a href="/account#/rewards">My FJ Rewards</a>
+                <Link passHref href="/account#/rewards">
+                  <a>My FJ Rewards</a>
+                </Link>
               </li>
               <li>
-                <a href="/account#/birthday">My Birthday Gift</a>
+                <Link passHref href="/account#/birthday">
+                  <a>My Birthday Gift</a>
+                </Link>
               </li>
               <li className="user-dropdown-links">
                 <div style={{ margin: '0 auto', maxWidth: 'fit-content' }}>
-                  {userName ? <SSignOutLink href="/account/logout">Sign Out</SSignOutLink> : <SigninSignup />}
+                  {userName ? (
+                    <Link passHref href="/account/logout">
+                      <SSignOutLink>Sign Out</SSignOutLink>
+                    </Link>
+                  ) : (
+                    <SigninSignup />
+                  )}
                 </div>
               </li>
             </SLinkWrapper>
           </SDropDown>
         )}
       </SDropDownWrapper>
-      <SCartButton href="/cart">
-        <svg width="100%" height="100%" viewBox="0 0 18 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path
-            d="M4.78156 8.03V5.17C4.78156 2.85 6.66154 0.970001 8.98154 0.970001C11.3015 0.970001 13.1815 2.85 13.1815 5.17V8.03M14.8615 22.97H3.51154C1.80154 22.97 0.48154 21.49 0.67154 19.79L2.18155 6.16H16.1916L17.7015 19.79C17.8915 21.49 16.5615 22.97 14.8615 22.97Z"
-            stroke="black"
-            strokeWidth="0.5"
-            strokeMiterlimit="10"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          ></path>
-        </svg>
-        {!!cart.itemCount && (
-          <SCartBadge>
-            <span>{cart.itemCount}</span>
-          </SCartBadge>
-        )}
-      </SCartButton>
+      <Link passHref href="/cart">
+        <SCartButton>
+          <svg width="100%" height="100%" viewBox="0 0 18 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M4.78156 8.03V5.17C4.78156 2.85 6.66154 0.970001 8.98154 0.970001C11.3015 0.970001 13.1815 2.85 13.1815 5.17V8.03M14.8615 22.97H3.51154C1.80154 22.97 0.48154 21.49 0.67154 19.79L2.18155 6.16H16.1916L17.7015 19.79C17.8915 21.49 16.5615 22.97 14.8615 22.97Z"
+              stroke="black"
+              strokeWidth="0.5"
+              strokeMiterlimit="10"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            ></path>
+          </svg>
+          {!!cart.itemCount && (
+            <SCartBadge>
+              <span>{cart.itemCount}</span>
+            </SCartBadge>
+          )}
+        </SCartButton>
+      </Link>
     </SWrapper>
   )
 }

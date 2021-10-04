@@ -1,6 +1,7 @@
 import React from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
+import Link from 'next/link'
 import Image from '../../lib/image'
 
 const SCol = styled.div`
@@ -139,9 +140,11 @@ export function CategoryShopCard({
           <STitle>{title}</STitle>
           <SSubTitle>{subTitle}</SSubTitle>
           <SButtonWrapper>
-            <SLink href={link} backColor="#000" frontColor="#fff">
-              SHOP NOW
-            </SLink>
+            <Link passHref href={link}>
+              <SLink backColor="#000" frontColor="#fff">
+                SHOP NOW
+              </SLink>
+            </Link>
           </SButtonWrapper>
         </SContent>
       </SLayout>
