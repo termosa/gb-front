@@ -17,12 +17,14 @@ import addCartItem from '../lib/add-cart-item'
 import trackAddedToCart from '../lib/track-added-to-cart'
 import LazyLoad from '../lib/lazy-load'
 import createLink from '../lib/create-link'
+import HeroBanner from '../lib/hero-banner'
 
 export default function HomePage({
   trendingProducts,
   innerCircleSubscriptionProduct,
   innerCircleMembershipProduct,
 }: HomePageProps): React.ReactElement {
+  const isHeroGallery = false
   return (
     <>
       <Head>
@@ -33,47 +35,59 @@ export default function HomePage({
         />
       </Head>
       <MainPageLayout>
-        <HeroGallery
-          slides={[
-            {
-              topText: 'NEW',
-              centerFirstText: 'Time Travel Series',
-              centerSecondText: '',
-              bottomText:
-                'Transport yourself back to 1947 Los Angels, where the price of fame can mean giving up everything...including your life.',
-              buttonText: 'Reveal Collection',
-              buttonLink: createLink.forPage('time-travel-series'),
-              backgroundImg:
-                'https://fragrantjewels-assets.s3.amazonaws.com/images/banners/time-travel/home-tts-dt-1.jpg',
-              backgroundImgMobile:
-                'https://fragrantjewels-assets.s3.amazonaws.com/images/banners/time-travel/home-tts-mb-1.jpg',
-              transparentPlaceholder: true,
-            },
-            {
-              topText: 'SATIN COLLECTION',
-              centerFirstText: 'Coven Light or Coven Dark?',
-              centerSecondText: '',
-              bottomText: 'The fate of humanity lies in your hands. What will it be?',
-              buttonText: 'Decide',
-              buttonLink: createLink.forCollection('spooky'),
-              backgroundImg: 'https://fragrantjewels-assets.s3.amazonaws.com/images/banners-2/the-coven-banner-dt.jpg',
-              backgroundImgMobile: 'https://fragrantjewels-assets.s3.amazonaws.com/images/banners-2/the-coven-mb.jpg',
-              transparentPlaceholder: true,
-            },
-            {
-              topText: 'NEW',
-              centerFirstText: 'DEEP SLEEP',
-              centerSecondText: '',
-              bottomText: 'Relax your weary bones with a collection to die for...',
-              buttonText: 'SHOP HALLOWEEN',
-              buttonLink: createLink.forCollection('spooky'),
-              backgroundImg: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/banners/home-banner.jpg',
-              backgroundImgMobile:
-                'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/banners/home-banner-mobile.jpg',
-              transparentPlaceholder: true,
-            },
-          ]}
-        />
+        {isHeroGallery ? (
+          <HeroGallery
+            slides={[
+              {
+                topText: 'SATIN COLLECTION',
+                centerFirstText: 'Coven Light or Coven Dark?',
+                centerSecondText: '',
+                bottomText: 'The fate of humanity lies in your hands. What will it be?',
+                buttonText: 'Decide',
+                buttonLink: createLink.forCollection('spooky'),
+                backgroundImg:
+                  'https://fragrantjewels-assets.s3.amazonaws.com/images/banners-2/the-coven-banner-dt.jpg',
+                backgroundImgMobile: 'https://fragrantjewels-assets.s3.amazonaws.com/images/banners-2/the-coven-mb.jpg',
+                transparentPlaceholder: true,
+              },
+              {
+                topText: 'NEW',
+                centerFirstText: 'DEEP SLEEP',
+                centerSecondText: '',
+                bottomText: 'Relax your weary bones with a collection to die for...',
+                buttonText: 'SHOP HALLOWEEN',
+                buttonLink: createLink.forCollection('spooky'),
+                backgroundImg: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/banners/home-banner.jpg',
+                backgroundImgMobile:
+                  'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/banners/home-banner-mobile.jpg',
+                transparentPlaceholder: true,
+              },
+              {
+                topText: '',
+                centerFirstText: '',
+                centerSecondText: '',
+                bottomText: '',
+                buttonText: '',
+                buttonLink: '',
+                backgroundImg:
+                  'https://fragrantjewels-assets.s3.amazonaws.com/images/banners/wicked-week-2/ww-banner-mon-dt.jpg',
+                backgroundImgMobile:
+                  'https://fragrantjewels-assets.s3.amazonaws.com/images/banners/wicked-week-2/ww-banner-mon-ipad.jpg',
+                transparentPlaceholder: true,
+              },
+            ]}
+          />
+        ) : (
+          <HeroBanner
+            properties={{
+              desktop:
+                'https://fragrantjewels-assets.s3.amazonaws.com/images/banners/wicked-week-2/home-ww-banner-mon-dt.jpg',
+              mobile:
+                'https://fragrantjewels-assets.s3.amazonaws.com/images/banners/wicked-week-2/home-ww-banner-mon-mb.jpg',
+              link: '/collections/jewel-candles/?d=scary',
+            }}
+          />
+        )}
         {trendingProducts && (
           <ProductsCarousel
             products={trendingProducts}

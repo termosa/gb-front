@@ -61,6 +61,12 @@ const FooterCopyright = styled.div`
   }
 `
 
+const PreFooterPromoMessage = styled.div`
+  max-width: 960px;
+  margin: 0 auto 20px;
+  padding: 0 15px;
+`
+
 export type SiteFooterProps = {
   className?: ClassName
   style?: React.CSSProperties
@@ -70,54 +76,61 @@ export function SiteFooter({ className, style }: SiteFooterProps): React.ReactEl
   const isMobileScreen = useMediaPredicate('(max-width: 991px)')
 
   return (
-    <FooterContainer className={cn(className)} style={style}>
-      <FooterOuter>
-        <FooterInner>
-          <FooterAccordion>
-            {isMobileScreen && <SocialLinks />}
-            <LinksColumnGroup
-              title="QUICK LINKS"
-              links={[
-                { name: 'Halloween', href: createLink.forCollection('spooky') },
-                { name: 'Bath Bombs', href: createLink.forCollection('bath-bombs') },
-                { name: 'Candles', href: createLink.forCollection('jewel-candles') },
-                { name: 'Body Scrubs', href: createLink.forCollection('body-scrubs') },
-                { name: 'All', href: createLink.forCollection('all-products') },
-                { name: 'Subscription', href: createLink.forPage('inner-circle') },
-                { name: 'Rewards', href: createLink.forPage('rewards-boutique') },
-                { name: 'Vault', href: createLink.forPage('vault-appraise') },
-              ]}
-              mobile={isMobileScreen}
-            />
-            <LinksColumnGroup
-              title="CUSTOMER CARE"
-              links={[
-                { name: 'Help Center', href: 'https://helpcenter.fragrantjewels.com/hc/en-us' },
-                { name: 'Order Status', href: createLink.forPage('order-status-check') },
-              ]}
-              mobile={isMobileScreen}
-            />
-            <LinksColumnGroup
-              title="ABOUT"
-              links={[
-                { name: 'Terms and Conditions', href: createLink.forPage('terms-and-conditions') },
-                {
-                  name: 'Enter the Vault 2021-2022 Sweepstakes',
-                  href: createLink.forPage('enter-the-vault-2021-2022-giveaway'),
-                },
-                { name: 'Tell us your ideas!', href: 'https://www.surveygizmo.com/s3/5354856/Product-inspiration' },
-                { name: 'Privacy Policy', href: createLink.forPage('privacy') },
-              ]}
-              mobile={isMobileScreen}
-            />
-            <div>
-              {!isMobileScreen && <SocialLinks />}
-              <AcceptedPayments />
-            </div>
-          </FooterAccordion>
-        </FooterInner>
-        <FooterCopyright>© 2021 Fragrant Jewels LLC. All Rights Reserved.</FooterCopyright>
-      </FooterOuter>
-    </FooterContainer>
+    <div>
+      <PreFooterPromoMessage>
+        Buy any 2 candles for as low as $38! Simply add your favorite candles to your cart and see your savings at
+        checkout. Discount based on $26.95 candle value. Only valid on full-priced candles. Offer only valid on October
+        4, 2021.
+      </PreFooterPromoMessage>
+      <FooterContainer className={cn(className)} style={style}>
+        <FooterOuter>
+          <FooterInner>
+            <FooterAccordion>
+              {isMobileScreen && <SocialLinks />}
+              <LinksColumnGroup
+                title="QUICK LINKS"
+                links={[
+                  { name: 'Halloween', href: createLink.forCollection('spooky') },
+                  { name: 'Bath Bombs', href: createLink.forCollection('bath-bombs') },
+                  { name: 'Candles', href: createLink.forCollection('jewel-candles') },
+                  { name: 'Body Scrubs', href: createLink.forCollection('body-scrubs') },
+                  { name: 'All', href: createLink.forCollection('all-products') },
+                  { name: 'Subscription', href: createLink.forPage('inner-circle') },
+                  { name: 'Rewards', href: createLink.forPage('rewards-boutique') },
+                  { name: 'Vault', href: createLink.forPage('vault-appraise') },
+                ]}
+                mobile={isMobileScreen}
+              />
+              <LinksColumnGroup
+                title="CUSTOMER CARE"
+                links={[
+                  { name: 'Help Center', href: 'https://helpcenter.fragrantjewels.com/hc/en-us' },
+                  { name: 'Order Status', href: createLink.forPage('order-status-check') },
+                ]}
+                mobile={isMobileScreen}
+              />
+              <LinksColumnGroup
+                title="ABOUT"
+                links={[
+                  { name: 'Terms and Conditions', href: createLink.forPage('terms-and-conditions') },
+                  {
+                    name: 'Enter the Vault 2021-2022 Sweepstakes',
+                    href: createLink.forPage('enter-the-vault-2021-2022-giveaway'),
+                  },
+                  { name: 'Tell us your ideas!', href: 'https://www.surveygizmo.com/s3/5354856/Product-inspiration' },
+                  { name: 'Privacy Policy', href: createLink.forPage('privacy') },
+                ]}
+                mobile={isMobileScreen}
+              />
+              <div>
+                {!isMobileScreen && <SocialLinks />}
+                <AcceptedPayments />
+              </div>
+            </FooterAccordion>
+          </FooterInner>
+          <FooterCopyright>© 2021 Fragrant Jewels LLC. All Rights Reserved.</FooterCopyright>
+        </FooterOuter>
+      </FooterContainer>
+    </div>
   )
 }

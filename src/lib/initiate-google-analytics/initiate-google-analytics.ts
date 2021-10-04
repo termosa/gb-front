@@ -2,7 +2,7 @@ import log from '../log'
 import window from '../window'
 import loadScript from '../load-script'
 import loadCustomer from '../../modules/load-customer'
-import api from 'src/modules/api'
+import api from './../../modules/api'
 
 const GOOGLE_ANALYTICS_ID = 'UA-52545853-1'
 

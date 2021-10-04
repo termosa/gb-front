@@ -27,7 +27,7 @@ const MainPageLayoutWrapper = styled.div`
   flex-direction: column;
   min-height: 100vh;
   transition: opacity linear 0.5s;
-  padding-top: 141px;
+  /*  padding-top: 141px;
 
   @media (min-width: 768px) {
     padding-top: 152px;
@@ -35,11 +35,11 @@ const MainPageLayoutWrapper = styled.div`
 
   @media (min-width: 1200px) {
     padding-top: 142px;
-  }
+  }*/
 `
 
 const Header = styled(SiteHeader)`
-  position: fixed;
+  position: sticky;
   z-index: 100;
   top: 0;
   right: 0;

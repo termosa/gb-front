@@ -49,7 +49,7 @@ const SDesktopNav = styled.ul`
     }
   }
 
-  @media (max-width: 1059px) {
+  @media (max-width: 1033px) {
     padding: 10px 22.5px;
   }
 `
