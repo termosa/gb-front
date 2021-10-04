@@ -107,7 +107,7 @@ const SContentWrapper = styled.div`
 `
 
 const SContentContainer = styled.div`
-  max-width: 990px;
+  max-width: 1020px;
   padding: 0 15px;
   box-sizing: border-box;
   margin: 0 auto;
