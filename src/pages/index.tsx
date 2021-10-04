@@ -1,5 +1,6 @@
 import React from 'react'
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 import homePageProps, { HomePageProps } from '../resolvers/homePageProps'
 import MainPageLayout from '../lib/main-page-layout'
 import HeroGallery from '../lib/hero-gallery'
@@ -12,7 +13,6 @@ import CategoryShopCardsOverview from '../lib/category-shop-overview'
 import PromiseBar from '../components/promise-bar'
 import InlineSignupForm from '../components/inline-signup-form'
 import YotpoGallery from '../lib/yotpo-gallery'
-import navigate from '../lib/navigate'
 import addCartItem from '../lib/add-cart-item'
 import trackAddedToCart from '../lib/track-added-to-cart'
 import LazyLoad from '../lib/lazy-load'
@@ -24,7 +24,9 @@ export default function HomePage({
   innerCircleSubscriptionProduct,
   innerCircleMembershipProduct,
 }: HomePageProps): React.ReactElement {
+  const router = useRouter()
   const isHeroGallery = false
+
   return (
     <>
       <Head>
@@ -96,7 +98,7 @@ export default function HomePage({
             products={trendingProducts}
             title="Today's Top Picks"
             subTitle="Indulge in luxurious new and best selling collections."
-            onSelectProduct={(product) => navigate(createLink.forProduct(product.handle))}
+            onSelectProduct={(product) => router.push(createLink.forProduct(product.handle))}
           />
         )}
         {innerCircleSubscriptionProduct && innerCircleMembershipProduct && (
@@ -118,7 +120,7 @@ export default function HomePage({
             onReserve={(variant) => {
               addCartItem(variant.variant_id)
                 .then(() => trackAddedToCart(innerCircleSubscriptionProduct))
-                .then(() => navigate('/cart'))
+                .then(() => router.push('/cart'))
             }}
           />
         )}

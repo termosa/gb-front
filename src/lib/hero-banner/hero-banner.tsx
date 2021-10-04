@@ -1,28 +1,11 @@
 import React from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
+import Link from 'next/link'
+
 const BannerWrapper = styled.div`
   margin: 0 auto 48px;
   background-color: #170014;
-`
-const BannerLink = styled.a`
-  display: block;
-  max-width: 1440px;
-  margin: 0 auto;
-  text-decoration: none;
-
-  @media (min-width: 768px) {
-    margin: 0 auto 34px;
-  }
-
-  @media (min-width: 992px) {
-    margin: 0 auto 70px;
-  }
-
-  &:focus {
-    outline: 0;
-    box-shadow: none;
-  }
 `
 
 const BannerHolder = styled.div`
@@ -70,7 +53,7 @@ type HeroProps = {
 }
 
 export function HeroBanner({ className, style, properties }: HeroBannerProps): React.ReactElement {
-  const element = (
+  const imagesElement = (
     <div>
       <BannerImage src={properties.mobile} imageSize={'mobile'} alt="" />
       <BannerImage src={properties.medium} imageSize={'medium'} alt="" />
@@ -79,11 +62,15 @@ export function HeroBanner({ className, style, properties }: HeroBannerProps): R
   )
   return (
     <BannerWrapper style={style} className={cn(className)}>
-      {properties.link ? (
-        <BannerLink href={properties.link}>{element}</BannerLink>
-      ) : (
-        <BannerHolder>{element}</BannerHolder>
-      )}
+      <BannerHolder>
+        {properties.link ? (
+          <Link passHref href={properties.link}>
+            <div style={{ cursor: 'pointer' }}>{imagesElement}</div>
+          </Link>
+        ) : (
+          { imagesElement }
+        )}
+      </BannerHolder>
     </BannerWrapper>
   )
 }

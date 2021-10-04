@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react'
 import addCartItem from '../../lib/add-cart-item'
 import styled from 'styled-components'
+import { useRouter } from 'next/router'
 import { Product as ProductType } from '../../modules/normalize-product'
 import ProductContext from '../../modules/product-context'
 import window from '../../lib/window'
-import navigate from '../../lib/navigate'
 import SizeSelector from '../../lib/size-selector'
 import { VariantSize } from '../../modules/normalize-product-variant'
 import trackAddedToCart from '../../lib/track-added-to-cart'
@@ -86,6 +86,7 @@ const SFloatingAddToCardBtn = styled.button`
 `
 
 export const FloatingCta = (): React.ReactElement | null => {
+  const router = useRouter()
   const product = useContext<ProductType | undefined>(ProductContext)
   const isProductPage = typeof window !== 'undefined' && window.location.pathname.includes('/products/')
 
@@ -127,7 +128,7 @@ export const FloatingCta = (): React.ReactElement | null => {
           sizeId &&
             addCartItem(sizeId)
               .then(() => trackAddedToCart(product))
-              .then(() => navigate('/cart'))
+              .then(() => router.push('/cart'))
         }}
         onClose={() => setFloatingCtaClosed(true)}
         title="Select a ring size to reserve this box"

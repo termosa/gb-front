@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from 'react'
+import React, { useContext, useRef, useState } from 'react'
 import { useRouter } from 'next/router'
 import styled from 'styled-components'
 import cn, { Argument as ClassName } from 'classnames'
@@ -7,6 +7,8 @@ import { Product as ProductType, Product } from '../../modules/normalize-product
 import Slider from '../../lib/slider'
 import ProductCard from '../product-card'
 import ProductContext from '../../modules/product-context'
+import SwipeableViews from 'react-swipeable-views'
+import { useScreenSize } from '../../lib/use-screen-size'
 
 const Section = styled.section`
   margin: 0 0 43px;
@@ -153,7 +155,6 @@ const SArrowButton = styled.button`
   background-color: transparent;
   font-size: 0;
   margin: 0;
-  padding: 0;
   cursor: pointer;
   padding: 25px;
 
@@ -177,15 +178,9 @@ const SArrowButton = styled.button`
 `
 
 const SliderHolder = styled.div`
-  margin: 0 -15px;
-  padding: 0 12px 37px;
   margin: 0 auto;
   position: relative;
   overflow: hidden;
-
-  @media (min-width: 450px) {
-    max-width: 440px;
-  }
 
   @media (min-width: 768px) {
     max-width: 100%;
@@ -203,6 +198,10 @@ const SliderHolder = styled.div`
   .react-multi-carousel-list {
     position: relative;
   }
+`
+
+const SSwipeableViews = styled(SwipeableViews)`
+  padding: 0 20px;
 `
 
 export type ProductsCarouselProps = {
@@ -223,6 +222,8 @@ export const ProductsCarousel = ({
 }: ProductsCarouselProps): React.ReactElement => {
   const router = useRouter()
   const carouselRef = useRef<Carousel>(null)
+  const screenSize = useScreenSize()
+  const [currentSlide, setCurrentSlide] = useState(0)
   const currentProduct = useContext<ProductType | undefined>(ProductContext)
   const titleParts = title.split(' ')
   const sliderSettings = {
@@ -274,40 +275,73 @@ export const ProductsCarousel = ({
               }}
             />
           </SNextArrow>
-          <Slider
-            responsive={sliderSettings}
-            scrollbarPresent={true}
-            arrows={false}
-            slidesToSlide={2}
-            customLeftArrow={
-              <SPrevArrow>
-                <SArrowButton />
-              </SPrevArrow>
-            }
-            customRightArrow={
-              <SNextArrow>
-                <SArrowButton />
-              </SNextArrow>
-            }
-            carouselRef={carouselRef}
-            partiallyVisible={true}
-            infinite={true}
-          >
-            {products
-              .filter((product) => product.image && product.product_id !== currentProduct?.product_id)
-              .map((product) => {
-                return (
-                  <ProductCard
-                    key={product.product_id}
-                    product={product}
-                    imagesVisibleByDefault
-                    onClick={() => {
-                      onSelectProduct(product)
-                    }}
-                  />
-                )
-              })}
-          </Slider>
+          {screenSize.greaterThanMedium ? (
+            <Slider
+              responsive={sliderSettings}
+              scrollbarPresent={true}
+              arrows={false}
+              slidesToSlide={2}
+              customLeftArrow={
+                <SPrevArrow>
+                  <SArrowButton />
+                </SPrevArrow>
+              }
+              customRightArrow={
+                <SNextArrow>
+                  <SArrowButton />
+                </SNextArrow>
+              }
+              carouselRef={carouselRef}
+              partiallyVisible={true}
+              infinite={true}
+            >
+              {products
+                .filter((product) => product.image && product.product_id !== currentProduct?.product_id)
+                .map((product) => {
+                  return (
+                    <ProductCard
+                      key={product.product_id}
+                      product={product}
+                      imagesVisibleByDefault
+                      onClick={() => {
+                        onSelectProduct(product)
+                      }}
+                    />
+                  )
+                })}
+            </Slider>
+          ) : (
+            <>
+              <SSwipeableViews
+                enableMouseEvents
+                resistance
+                index={currentSlide}
+                slideStyle={screenSize.greaterThanSmall ? { width: '38%' } : { width: '50%' }}
+                onChangeIndex={(slideNumber) => {
+                  if (products.length / 2 > slideNumber) {
+                    setCurrentSlide(slideNumber)
+                  } else {
+                    setCurrentSlide(0)
+                  }
+                }}
+              >
+                {products
+                  .filter((product) => product.image && product.product_id !== currentProduct?.product_id)
+                  .map((product) => {
+                    return (
+                      <ProductCard
+                        key={product.product_id}
+                        product={product}
+                        imagesVisibleByDefault
+                        onClick={() => {
+                          onSelectProduct(product)
+                        }}
+                      />
+                    )
+                  })}
+              </SSwipeableViews>
+            </>
+          )}
         </SliderHolder>
       </Container>
     </Section>

@@ -1,6 +1,7 @@
 import React from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
+import Link from 'next/link'
 import Image from '../../lib/image'
 
 const SCol = styled.div`
@@ -9,13 +10,14 @@ const SCol = styled.div`
   }
 `
 
-const SLayout = styled.a`
+const SLayout = styled.div`
   position: relative;
   display: block;
   max-width: 463px;
   margin: 0 auto 30px;
   color: #000;
   text-decoration: none;
+  cursor: pointer;
 
   @media (min-width: 768px) {
     padding: 0;
@@ -144,18 +146,20 @@ export function CategoryShopCard({
 }: CategoryShopCardProps): React.ReactElement {
   return (
     <SCol>
-      <SLayout className={cn(className)} style={style} href={link}>
-        <SLayoutImage src={image} />
-        <SContent>
-          <STitle>{title}</STitle>
-          <SSubTitle>{subTitle}</SSubTitle>
-          <SButtonWrapper>
-            <SButton backColor="#000" frontColor="#fff">
-              SHOP NOW
-            </SButton>
-          </SButtonWrapper>
-        </SContent>
-      </SLayout>
+      <Link passHref href={link}>
+        <SLayout className={cn(className)} style={style}>
+          <SLayoutImage src={image} />
+          <SContent>
+            <STitle>{title}</STitle>
+            <SSubTitle>{subTitle}</SSubTitle>
+            <SButtonWrapper>
+              <SButton backColor="#000" frontColor="#fff">
+                SHOP NOW
+              </SButton>
+            </SButtonWrapper>
+          </SContent>
+        </SLayout>
+      </Link>
     </SCol>
   )
 }

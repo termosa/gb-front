@@ -1,6 +1,7 @@
 import React from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
+import Link from 'next/link'
 import Image from '../../lib/image'
 
 export interface ShopByProductCardProps extends Omit<React.HTMLProps<HTMLDivElement>, 'className'> {
@@ -99,7 +100,9 @@ export function ShopByProductCard({
     <SLayout className={cn('ShopByProductCard', className)}>
       <SLayoutImage src={image} />
       <SButtonWrapper>
-        <SButtonLink href={buttonLink}>{buttonText}</SButtonLink>
+        <Link passHref href={buttonLink}>
+          <SButtonLink>{buttonText}</SButtonLink>
+        </Link>
       </SButtonWrapper>
     </SLayout>
   )
