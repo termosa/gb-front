@@ -11,7 +11,7 @@ export interface ShopByProductCardProps extends Omit<React.HTMLProps<HTMLDivElem
   buttonLink: string
 }
 
-const SLayout = styled.div`
+const SLayout = styled.a`
   position: relative;
   display: flex;
   justify-content: center;

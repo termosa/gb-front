@@ -10,7 +10,7 @@ const SCol = styled.div`
   }
 `
 
-const SLayout = styled.div`
+const SLayout = styled.a`
   position: relative;
   display: block;
   max-width: 463px;

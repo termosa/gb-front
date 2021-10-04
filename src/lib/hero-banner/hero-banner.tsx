@@ -22,6 +22,12 @@ const BannerHolder = styled.div`
   }
 `
 
+const BannerLink = styled.a`
+  cursor: pointer;
+  color: #000;
+  text-decoration: none;
+`
+
 const BannerImage = styled.img<{ imageSize?: string }>`
   max-width: 100%;
   width: 100%;
@@ -65,7 +71,7 @@ export function HeroBanner({ className, style, properties }: HeroBannerProps): R
       <BannerHolder>
         {properties.link ? (
           <Link passHref href={properties.link}>
-            <div style={{ cursor: 'pointer' }}>{imagesElement}</div>
+            <BannerLink>{imagesElement}</BannerLink>
           </Link>
         ) : (
           { imagesElement }
