@@ -603,7 +603,7 @@ export function ProductInfo({ className, style, addToCartRef }: ProductInfoProps
       )}
       <SPdpProductInfo top={infoDistanceFromTop + 'px'} ref={productInfoRef}>
         <SPdpProductInfoTitle>{product?.title}</SPdpProductInfoTitle>
-        <YotpoStarRating onClick={goToYotpoReviews} />
+        <YotpoStarRating onClick={goToYotpoReviews} className={'pdp-yotpo-star-rating'} />
         <SPdpProductDetails>
           {isDiscountApplied && isDiscountAvailable ? (
             <>

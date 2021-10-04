@@ -146,6 +146,7 @@ export function RollingBanner(): React.ReactElement {
               </SNextArrow>
             }
             infinite
+            autoPlay
           >
             <span>
               <SPromoSlide>

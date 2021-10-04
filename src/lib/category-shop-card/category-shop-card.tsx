@@ -9,14 +9,31 @@ const SCol = styled.div`
   }
 `
 
-const SLayout = styled.div`
+const SLayout = styled.a`
   position: relative;
+  display: block;
   max-width: 463px;
   margin: 0 auto 30px;
+  color: #000;
+  text-decoration: none;
+
   @media (min-width: 768px) {
     padding: 0;
     margin-bottom: 0;
     max-width: 100%;
+  }
+
+  &:focus {
+    outline: 0;
+    box-shadow: none;
+  }
+  @media (min-width: 1200px) {
+    &:hover button {
+      font-weight: 700;
+      background-color: #fff;
+      color: #000;
+      border-color: #000;
+    }
   }
 `
 
@@ -79,7 +96,7 @@ const SButtonWrapper = styled.div`
   transform: translate(-50%, 50%);
 `
 
-const SLink = styled.a<{ backColor?: string; frontColor?: string; disabledColor?: string }>`
+const SButton = styled.button<{ backColor?: string; frontColor?: string; disabledColor?: string }>`
   text-decoration: none;
   color: inherit;
   display: flex;
@@ -97,15 +114,9 @@ const SLink = styled.a<{ backColor?: string; frontColor?: string; disabledColor?
   background-color: ${(props) => props.backColor || '#fff'};
   color: ${(props) => props.frontColor || '#000'};
   cursor: pointer;
-  min-width: 142px;
+  min-width: 172px;
+  width: 100%;
   padding: 0 14px;
-
-  &:hover {
-    font-weight: 700;
-    background-color: ${(props) => props.frontColor || '#000'};
-    color: ${(props) => props.backColor || '#fff'};
-    border-color: #000;
-  }
 
   &[disabled] {
     cursor: auto;
@@ -133,15 +144,15 @@ export function CategoryShopCard({
 }: CategoryShopCardProps): React.ReactElement {
   return (
     <SCol>
-      <SLayout className={cn(className)} style={style}>
+      <SLayout className={cn(className)} style={style} href={link}>
         <SLayoutImage src={image} />
         <SContent>
           <STitle>{title}</STitle>
           <SSubTitle>{subTitle}</SSubTitle>
           <SButtonWrapper>
-            <SLink href={link} backColor="#000" frontColor="#fff">
+            <SButton backColor="#000" frontColor="#fff">
               SHOP NOW
-            </SLink>
+            </SButton>
           </SButtonWrapper>
         </SContent>
       </SLayout>

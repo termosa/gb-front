@@ -83,7 +83,7 @@ export default function HomePage({
             properties={{
               desktop:
                 'https://fragrantjewels-assets.s3.amazonaws.com/images/banners/wicked-week-2/ww-banner-mon-dt.jpg',
-              iPad:
+              medium:
                 'https://fragrantjewels-assets.s3.amazonaws.com/images/banners/wicked-week-2/ww-banner-mon-ipad2.jpg',
               mobile:
                 'https://fragrantjewels-assets.s3.amazonaws.com/images/banners/wicked-week-2/ww-banner-mon-mb.jpg',
