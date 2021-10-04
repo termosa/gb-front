@@ -25,10 +25,6 @@ const SLayout = styled.div`
     max-width: 100%;
   }
 
-  &:focus {
-    outline: 0;
-    box-shadow: none;
-  }
   @media (min-width: 1200px) {
     &:hover button {
       font-weight: 700;

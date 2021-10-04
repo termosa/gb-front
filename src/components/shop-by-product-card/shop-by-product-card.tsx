@@ -18,6 +18,18 @@ const SLayout = styled.div`
   outline: none;
   margin: 0 auto;
   height: 100%;
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+
+  @media (min-width: 1200px) {
+    &:hover button {
+      font-weight: 700;
+      background-color: #fff;
+      color: #000;
+      border-color: #000;
+    }
+  }
 `
 
 const SLayoutImage = styled(Image)`
@@ -58,7 +70,7 @@ const SButtonWrapper = styled.div`
   }
 `
 
-const SButtonLink = styled.a`
+const SButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -82,12 +94,6 @@ const SButtonLink = styled.a`
   @media (min-width: 992px) {
     min-width: 200px;
   }
-
-  &:hover {
-    font-weight: 700;
-    background-color: #fff;
-    color: #000;
-  }
 `
 
 export function ShopByProductCard({
@@ -97,13 +103,13 @@ export function ShopByProductCard({
   buttonLink,
 }: ShopByProductCardProps): React.ReactElement {
   return (
-    <SLayout className={cn('ShopByProductCard', className)}>
-      <SLayoutImage src={image} />
-      <SButtonWrapper>
-        <Link passHref href={buttonLink}>
-          <SButtonLink>{buttonText}</SButtonLink>
-        </Link>
-      </SButtonWrapper>
-    </SLayout>
+    <Link passHref href={buttonLink}>
+      <SLayout className={cn('ShopByProductCard', className)}>
+        <SLayoutImage src={image} />
+        <SButtonWrapper>
+          <SButton>{buttonText}</SButton>
+        </SButtonWrapper>
+      </SLayout>
+    </Link>
   )
 }
