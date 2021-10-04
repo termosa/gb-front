@@ -122,7 +122,7 @@ export function InlineSignupForm({ className }: InlineSignupFormProps): React.Re
     (email: string) =>
       http({
         url: 'https://www.fragrantjewels.com/klsubscribe',
-        query: { email, l: KLAVIYO_LIST, s: KLAVIYO_SOURCE },
+        query: { email, l: KLAVIYO_LIST, s: KLAVIYO_SOURCE, $consent: 'email' },
       })
         .then(() => {
           klaviyo('identify', { $email: email, form_id: KLAVIYO_FORM_ID, siteVersion: 'V3' })
