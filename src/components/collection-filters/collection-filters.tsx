@@ -43,16 +43,17 @@ const SButtons = styled.div`
   justify-content: space-between;
   width: 100%;
   max-width: 324px;
-  margin-left: auto;
-  margin-top: 20px;
+  margin: 24px 0 24px auto;
 
   @media (max-width: 1033px) {
     padding-right: 20px;
+    margin: 20px 0 20px auto;
   }
 
   @media (max-width: 767px) {
     max-width: 100%;
     padding: 0;
+    margin: 24px 0 0 auto;
   }
 `
 
@@ -153,14 +154,14 @@ const SFilters = styled.div`
 
   @media (min-width: 768px) {
     display: grid;
-    grid-template-columns: 4fr 2fr 5fr 3fr 1fr;
-    margin: 10px 20px 0;
+    grid-template-columns: 5fr 2fr 6fr 4fr 1fr;
+    margin: 0 20px;
     padding: 24px;
     border: 0.5px solid #000;
   }
 
   @media (min-width: 1033px) {
-    margin: 10px 0 0;
+    margin: 0;
     grid-template-columns: 4fr 2fr 4fr 4fr 1fr;
   }
 `
