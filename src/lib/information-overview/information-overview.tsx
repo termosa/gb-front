@@ -24,7 +24,7 @@ const SWrapper = styled.section`
 `
 
 const SInformationOverviewContainer = styled.div`
-  max-width: 960px;
+  max-width: 990px;
   padding: 0 15px;
   margin: 0 auto;
 `
@@ -75,7 +75,7 @@ const SCardsWrapper = styled.div`
   }
 
   @media (min-width: 992px) {
-    gap: 32px;
+    gap: 27px;
     padding-bottom: 36px;
   }
 `
