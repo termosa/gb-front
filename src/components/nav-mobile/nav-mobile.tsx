@@ -411,14 +411,14 @@ const TABS_LIST = [
 ]
 const CARDS_LIST = [
   {
+    href: createLink.forProduct('black-dahlia-satin-collection-candle-and-bath-bomb-set'),
+    imgLink: 'https://fragrantjewels.s3.amazonaws.com/app/app-nav/nav-all-img-25-mb.jpg',
+    text: 'New! Free Bonus Perfume',
+  },
+  {
     href: createLink.forCollection('spooky'),
     imgLink: 'https://fragrantjewels.s3.amazonaws.com/app/app-nav/nav-all-img-24-mb.jpg',
     text: 'New! Sterling Silver Collection',
-  },
-  {
-    href: createLink.forProduct('wicked-kitty-bath-bomb'),
-    imgLink: 'https://fragrantjewels.s3.amazonaws.com/app/app-nav/nav-wickedly-p-mb.jpg',
-    text: 'Restock Alert',
   },
 ]
 
