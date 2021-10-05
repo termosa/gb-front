@@ -86,9 +86,8 @@ export function SiteFooter({ className, style }: SiteFooterProps): React.ReactEl
     <div>
       <FooterContainer className={cn(className)} style={style}>
         <PreFooterPromoMessage>
-          Buy any 2 candles for as low as $38! Simply add your favorite candles to your cart and see your savings at
-          checkout. Discount based on $26.95 candle value. Only valid on full-priced candles. Offer only valid on
-          October 4, 2021.
+          Enjoy $25 off today's order of $75 or more. Use code 25OFF at checkout. Enjoy $10 off today's order of $40 or
+          more. Use code 10OFF at checkout. Offer valid on October 5, 2021.
         </PreFooterPromoMessage>
         <FooterOuter>
           <FooterInner>
