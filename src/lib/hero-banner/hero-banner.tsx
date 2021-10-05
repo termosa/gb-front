@@ -47,10 +47,22 @@ const BannerImage = styled.img<{ imageSize?: string }>`
 const BannerInnerLinks = styled.div`
   padding: 5px;
   background: #ff7300;
-  background: linear-gradient(90deg, rgba(150,63,10,1) 0%, rgba(255,115,0,1) 25%, rgba(255,115,0,1) 75%, rgba(150,63,10,1) 100%);
+  background: linear-gradient(
+    90deg,
+    rgba(150, 63, 10, 1) 0%,
+    rgba(255, 115, 0, 1) 25%,
+    rgba(255, 115, 0, 1) 75%,
+    rgba(150, 63, 10, 1) 100%
+  );
 
   @media (min-width: 1200px) {
-    background: linear-gradient(90deg, rgba(24,0,20,1) 0%, rgba(252,116,0,1) 40%, rgba(252,116,0,1) 60%, rgba(24,0,20,1) 100%);
+    background: linear-gradient(
+      90deg,
+      rgba(24, 0, 20, 1) 0%,
+      rgba(252, 116, 0, 1) 40%,
+      rgba(252, 116, 0, 1) 60%,
+      rgba(24, 0, 20, 1) 100%
+    );
   }
 `
 const BannerInnerLink = styled.a`
@@ -107,11 +119,15 @@ export function HeroBanner({ className, style, properties }: HeroBannerProps): R
       <BannerInnerLinks>
         <Link passHref href={'/collections/all-products/?d=10off'}>
           <BannerInnerLink>
-            <span style={{textDecoration: 'underline'}}>SHOP All</span> >> Use code <span>10OFF for $10 off</span> any $40 purchase
+            <span style={{ textDecoration: 'underline' }}>SHOP All</span> &gt;&gt; Use code{' '}
+            <span>10OFF for $10 off</span> any $40 purchase
           </BannerInnerLink>
         </Link>
         <Link passHref href={'/collections/all-products/?d=25off'}>
-          <BannerInnerLink><span style={{textDecoration: 'underline'}}>SHOP All</span> >> Use code <span>25OFF for $25 off</span> any $75 purchase</BannerInnerLink>
+          <BannerInnerLink>
+            <span style={{ textDecoration: 'underline' }}>SHOP All</span> &gt;&gt; Use code{' '}
+            <span>25OFF for $25 off</span> any $75 purchase
+          </BannerInnerLink>
         </Link>
       </BannerInnerLinks>
     </div>
