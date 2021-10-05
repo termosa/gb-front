@@ -160,6 +160,7 @@ const SCustomDot = styled.div<{
   height: 10px;
   margin: 0 7px;
   border-radius: 50%;
+  cursor: pointer;
 `
 
 const SCustomDotWrapper = styled.div`
@@ -237,7 +238,7 @@ export function InformationOverview({
               </SwipeableViews>
               <SCustomDotWrapper>
                 {cards.map((_, i) => (
-                  <SCustomDot isActive={currentSlide === i} />
+                  <SCustomDot isActive={currentSlide - 1 === i} onClick={() => setCurrentSlide(i + 1)} />
                 ))}
               </SCustomDotWrapper>
             </SliderHolder>
