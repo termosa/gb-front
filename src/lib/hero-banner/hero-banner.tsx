@@ -105,12 +105,12 @@ export function HeroBanner({ className, style, properties }: HeroBannerProps): R
       <BannerImage src={properties.medium} imageSize={'medium'} alt="" />
       <BannerImage src={properties.desktop} imageSize={'desktop'} alt="" />
       <BannerInnerLinks>
-        <Link passHref href={'https://www.fragrantjewels.com/collections/all-products/?d=10off'}>
+        <Link passHref href={'/collections/all-products/?d=10off'}>
           <BannerInnerLink>
             <span style={{textDecoration: 'underline'}}>SHOP All</span> >> Use code <span>10OFF for $10 off</span> any $40 purchase
           </BannerInnerLink>
         </Link>
-        <Link passHref href={'https://www.fragrantjewels.com/collections/all-products/?d=25off'}>
+        <Link passHref href={'/collections/all-products/?d=25off'}>
           <BannerInnerLink><span style={{textDecoration: 'underline'}}>SHOP All</span> >> Use code <span>25OFF for $25 off</span> any $75 purchase</BannerInnerLink>
         </Link>
       </BannerInnerLinks>
