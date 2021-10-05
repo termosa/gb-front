@@ -92,7 +92,7 @@ const SCardDescription = styled.div`
   font-family: 'Montserrat', sans-serif;
   font-size: 16px;
   line-height: 1.5;
-  margin: 0 0 10px;
+  margin: 0 0 24px;
   word-wrap: break-word;
 `
 
