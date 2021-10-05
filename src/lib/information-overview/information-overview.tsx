@@ -10,8 +10,8 @@ export type { InformationCard }
 const SWrapper = styled.section`
   text-align: center;
   background: linear-gradient(0deg, #fdfbf9 0%, #fdfbf9 50%, white 50%, white 100%);
-  margin: 0 auto 32px;
-  padding: 50px 0 36px;
+  margin: 0 auto;
+  padding: 50px 0 56px;
 
   @media (min-width: 768px) {
     padding: 46px 0 0;
@@ -151,6 +151,22 @@ const SArrowButton = styled.button`
   cursor: pointer;
 `
 
+const SCustomDot = styled.div<{
+  isActive: boolean
+}>`
+  background: #4dbeba;
+  opacity: ${(props) => (props.isActive ? 0.95 : 0.6)};
+  width: 10px;
+  height: 10px;
+  margin: 0 7px;
+  border-radius: 50%;
+`
+
+const SCustomDotWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+`
+
 export type InformationOverviewProps = {
   className?: ClassName
   style?: React.CSSProperties
@@ -219,6 +235,11 @@ export function InformationOverview({
                 ))}
                 <div />
               </SwipeableViews>
+              <SCustomDotWrapper>
+                {cards.map((_, i) => (
+                  <SCustomDot isActive={currentSlide === i} />
+                ))}
+              </SCustomDotWrapper>
             </SliderHolder>
           )}
         </SCardsWrapper>
