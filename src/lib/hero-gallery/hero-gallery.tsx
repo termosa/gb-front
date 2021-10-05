@@ -1,6 +1,7 @@
 import React from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
+import Link from 'next/link'
 import Slider from '../slider'
 import { useScreenSize } from '../use-screen-size'
 
@@ -320,7 +321,11 @@ export function HeroGallery({ className, style, slides }: HeroGalleryProps): Rea
                   <SlideText>
                     <p>{slide.bottomText}</p>
                   </SlideText>
-                  {slide.buttonLink && <SlideLinkInner href={slide.buttonLink}>{slide.buttonText}</SlideLinkInner>}
+                  {slide.buttonLink && (
+                    <Link passHref href={slide.buttonLink}>
+                      <SlideLinkInner>{slide.buttonText}</SlideLinkInner>
+                    </Link>
+                  )}
                 </SliderTransparentWrapper>
               </SlideTransparentContent>
             ) : (
@@ -334,7 +339,9 @@ export function HeroGallery({ className, style, slides }: HeroGalleryProps): Rea
                 <SlideText>
                   <p>{slide.bottomText}</p>
                 </SlideText>
-                <SlideLinkInner href={slide.buttonLink}>{slide.buttonText}</SlideLinkInner>
+                <Link passHref href={slide.buttonLink}>
+                  <SlideLinkInner>{slide.buttonText}</SlideLinkInner>
+                </Link>
               </SlideContent>
             )}
           </Slide>
