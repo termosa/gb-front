@@ -1,9 +1,8 @@
-import React, { useRef } from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import ShopByProductCard, { ShopByProductCardProps } from '../shop-by-product-card'
-import Slider from '../../lib/slider'
+import SwipeableViews from 'react-swipeable-views'
 import useScreenSize from '../../lib/use-screen-size'
-import Carousel from 'react-multi-carousel'
 
 export type ProductDetails = ShopByProductCardProps
 export type ShopByProductsOverviewProps = {
@@ -50,7 +49,7 @@ const SCardsBlockTitle = styled.h2`
   font: 700 40px/1.2 'Cormorant Garamond', serif;
   letter-spacing: -0.02em;
   text-align: center;
-  margin: 0 auto 15px;
+  margin: 0 auto 19px;
 
   @media (min-width: 992px) {
     margin: 0 auto 25px;
@@ -75,13 +74,13 @@ const SliderWrapper = styled.div`
 
 const SliderHolder = styled.div`
   position: relative;
-  padding: 0 29px;
+  padding: 0 0 24px;
   max-width: 414px;
-  margin: -24px auto 0;
+  margin: 0 auto;
   overflow: hidden;
-
   @media (min-width: 768px) {
     max-width: 100%;
+    padding: 0 29px 24px;
   }
 `
 
@@ -122,7 +121,6 @@ const SArrowButton = styled.button`
   background-color: transparent;
   font-size: 0;
   margin: 0;
-  padding: 0;
   cursor: pointer;
   padding: 25px;
 
@@ -147,7 +145,8 @@ const SArrowButton = styled.button`
 
 export function ShopByProductsOverview({ products, title }: ShopByProductsOverviewProps): React.ReactElement {
   const screenSize = useScreenSize()
-  const productSliderRef = useRef<Carousel | null>(null)
+  const [currentSlide, setCurrentSlide] = useState(1)
+
   return (
     <SSection>
       <SContainer>
@@ -169,32 +168,32 @@ export function ShopByProductsOverview({ products, title }: ShopByProductsOvervi
               <SPrevArrow>
                 <SArrowButton
                   onClick={() => {
-                    productSliderRef.current && productSliderRef.current.previous(1)
+                    currentSlide > 1 ? setCurrentSlide(currentSlide - 1) : setCurrentSlide(products.length)
                   }}
                 />
               </SPrevArrow>
               <SNextArrow>
                 <SArrowButton
                   onClick={() => {
-                    productSliderRef.current && productSliderRef.current.next(1)
+                    products.length > currentSlide ? setCurrentSlide(currentSlide + 1) : setCurrentSlide(1)
                   }}
                 />
               </SNextArrow>
-              <Slider
-                arrows={false}
-                carouselRef={productSliderRef}
-                infinite
-                customLeftArrow={
-                  <SPrevArrow>
-                    <SArrowButton />
-                  </SPrevArrow>
-                }
-                customRightArrow={
-                  <SNextArrow>
-                    <SArrowButton />
-                  </SNextArrow>
-                }
+              <SwipeableViews
+                enableMouseEvents
+                resistance
+                index={currentSlide}
+                onChangeIndex={(slideNumber: number) => {
+                  if (slideNumber < 1) {
+                    setCurrentSlide(products.length)
+                    return
+                  }
+                  products.length >= slideNumber ? setCurrentSlide(slideNumber) : setCurrentSlide(1)
+                }}
+                style={{ overflow: 'visible' }}
+                slideStyle={{ overflow: 'visible' }}
               >
+                <div />
                 {products &&
                   products.map((product) => (
                     <ShopByProductCard
@@ -205,7 +204,8 @@ export function ShopByProductsOverview({ products, title }: ShopByProductsOvervi
                       title={product.title}
                     />
                   ))}
-              </Slider>
+                <div />
+              </SwipeableViews>
             </SliderHolder>
           )}
         </SliderWrapper>

@@ -105,7 +105,7 @@ export function ShopByProductCard({
   return (
     <Link passHref href={buttonLink}>
       <SLayout className={cn('ShopByProductCard', className)}>
-        <SLayoutImage src={image} />
+        <SLayoutImage src={image} visibleByDefault />
         <SButtonWrapper>
           <SButton>{buttonText}</SButton>
         </SButtonWrapper>
