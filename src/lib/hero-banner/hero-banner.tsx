@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
 import Link from 'next/link'
@@ -44,56 +44,105 @@ const BannerImage = styled.img<{ imageSize?: string }>`
     display: ${(props) => (props.imageSize === 'desktop' ? `block` : 'none')};
   }
 `
-const BannerInnerLinks = styled.div`
-  padding: 5px;
-  background: #ff7300;
-  background: linear-gradient(
-    90deg,
-    rgba(150, 63, 10, 1) 0%,
-    rgba(255, 115, 0, 1) 25%,
-    rgba(255, 115, 0, 1) 75%,
-    rgba(150, 63, 10, 1) 100%
-  );
+const DDWrapper = styled.div`
+  position: relative;
+  cursor: pointer;
+  box-sizing: border-box;
+`
 
-  @media (min-width: 1200px) {
-    background: linear-gradient(
-      90deg,
-      rgba(24, 0, 20, 1) 0%,
-      rgba(252, 116, 0, 1) 40%,
-      rgba(252, 116, 0, 1) 60%,
-      rgba(24, 0, 20, 1) 100%
-    );
+const DDHolder = styled.div`
+  font-family: Montserrat, sans-serif;
+  background: #fff;
+  padding: 5px;
+  box-shadow: 0 0 7px 3px rgba(0, 0, 0, 0.2);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 75%;
+  max-width: 320px;
+  margin: 0 auto;
+
+  @media (min-width: 992px) {
+    max-width: 370px;
+  }
+
+  &:after {
+    content: '×';
+    font-size: 20px;
+    position: absolute;
+    right: 8px;
+    top: 5px;
+    line-height: 1;
+
+    @media (min-width: 375px) {
+      font-size: 26px;
+    }
+
+    @media (min-width: 768px) {
+      font-size: 27px;
+      right: 11px;
+    }
   }
 `
-const BannerInnerLink = styled.a`
-  cursor: pointer;
-  color: #000;
-  text-decoration: none;
-  display: block;
-  font: 500 9px/1.7 Montserrat, sans-serif;
-  color: #fff;
-  width: 100%;
-  text-transform: uppercase;
+
+const DDHolderInner = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+
+const DDTitle = styled.h4`
+  font-size: 12px;
   text-align: center;
+  margin: 0 auto;
+  padding: 5px 0 0;
+  max-width: 83%;
 
   @media (min-width: 375px) {
-    font-size: 10px;
+    font-size: 14px;
+  }
+`
+
+const DDLink = styled.a`
+  margin: 5px;
+  text-decoration: none;
+  display: block;
+  width: 50%;
+
+  img {
+    border: 1px solid #fff;
+    border-bottom: 0;
+    height: auto;
+    width: 100%;
+    display: block;
+    box-sizing: border-box;
   }
 
-  @media (min-width: 768px) {
-    font-size: 12px;
+  &:hover img {
+    border-color: #000;
   }
 
-  @media (min-width: 1200px) {
-    font-size: 13px;
-  }
-
-  span {
-    font-weight: 600;
-  }
-
-  &:hover span {
+  &:active,
+  &:focus {
+    outline: 0;
+    box-shadow: none;
     text-decoration: none;
+  }
+`
+
+const DDButton = styled.div`
+  padding: 8px 0;
+  background: #000;
+  color: #fff;
+  text-align: center;
+  font-size: 10px;
+  text-transform: uppercase;
+
+  @media (min-width: 375px) {
+    font-size: 14px;
   }
 `
 
@@ -111,26 +160,44 @@ type HeroProps = {
 }
 
 export function HeroBanner({ className, style, properties }: HeroBannerProps): React.ReactElement {
+  const [isDropdownOpened, toggleDropdown] = useState(false)
   const imagesElement = (
-    <div>
+    <DDWrapper
+      onClick={() => {
+        toggleDropdown(!isDropdownOpened)
+      }}
+    >
       <BannerImage src={properties.mobile} imageSize={'mobile'} alt="" />
       <BannerImage src={properties.medium} imageSize={'medium'} alt="" />
       <BannerImage src={properties.desktop} imageSize={'desktop'} alt="" />
-      <BannerInnerLinks>
-        <Link passHref href={'/collections/all-products/?d=10off'}>
-          <BannerInnerLink>
-            <span style={{ textDecoration: 'underline' }}>SHOP All</span> &gt;&gt; Use code{' '}
-            <span>10OFF for $10 off</span> any $40 purchase
-          </BannerInnerLink>
-        </Link>
-        <Link passHref href={'/collections/all-products/?d=25off'}>
-          <BannerInnerLink>
-            <span style={{ textDecoration: 'underline' }}>SHOP All</span> &gt;&gt; Use code{' '}
-            <span>25OFF for $25 off</span> any $75 purchase
-          </BannerInnerLink>
-        </Link>
-      </BannerInnerLinks>
-    </div>
+      {isDropdownOpened ? (
+        <DDHolder>
+          <DDTitle>Which will you choose, Coven Light or Coven Dark?</DDTitle>
+          <DDHolderInner>
+            <Link passHref href={'/collections/all-products/?promo=covenlight65'}>
+              <DDLink>
+                <img
+                  src="https://fragrantjewels-assets.s3.amazonaws.com/images/banners/wicked-week-2/wed-ring-1.jpg"
+                  alt=""
+                />
+                <DDButton>Coven Light</DDButton>
+              </DDLink>
+            </Link>
+            <Link passHref href={'/collections/all-products/?promo=covendark65'}>
+              <DDLink>
+                <img
+                  src="https://fragrantjewels-assets.s3.amazonaws.com/images/banners/wicked-week-2/wed-ring-2.jpg"
+                  alt=""
+                />
+                <DDButton>Coven Dark</DDButton>
+              </DDLink>
+            </Link>
+          </DDHolderInner>
+        </DDHolder>
+      ) : (
+        <div></div>
+      )}
+    </DDWrapper>
   )
   return (
     <BannerWrapper style={style} className={cn(className)}>
