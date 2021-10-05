@@ -1,6 +1,7 @@
 import React from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
+import Link from 'next/link'
 import InformationCard from '../../components/information-card'
 import CategoryShopCard, { CategoryShopCardProps } from '../category-shop-card'
 import createLink from '../create-link'
@@ -47,12 +48,16 @@ export function CategoryShopCardsOverview({
 }: CategoryShopCardsOverviewProps): React.ReactElement {
   return (
     <SWrapper className={cn(className)}>
-      <SBlockLink href={createLink.forPage('time-travel-series')}>
-        <CategoryShopCard {...leftCard} />
-      </SBlockLink>
-      <SBlockLink href={createLink.forPage('charity-collections')}>
-        <CategoryShopCard {...rightCard} />
-      </SBlockLink>
+      <Link passHref href={createLink.forPage('time-travel-series')}>
+        <SBlockLink>
+          <CategoryShopCard {...leftCard} />
+        </SBlockLink>
+      </Link>
+      <Link passHref href={createLink.forPage('charity-collections')}>
+        <SBlockLink>
+          <CategoryShopCard {...rightCard} />
+        </SBlockLink>
+      </Link>
     </SWrapper>
   )
 }

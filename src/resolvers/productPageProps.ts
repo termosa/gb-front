@@ -3,6 +3,12 @@ import resolvePageProps from '../modules/resolve-page-props'
 import loadProduct from '../lib/load-product'
 import loadCollection from '../lib/load-collection'
 import { Product, ProductType } from '../modules/normalize-product'
+import {
+  RECOMMENDED_BATH_BOMBS_COLLECTION_ID,
+  RECOMMENDED_JEWEL_CANDLES_COLLECTION_ID,
+  RECOMMENDED_SUGAR_SCRUBS_COLLECTION_ID,
+  RECOMMENDED_BUNDLES_COLLECTION_ID,
+} from '../settings/ids'
 
 export type ProductDescription = {
   title: string
@@ -22,10 +28,10 @@ const loadCollectionProducts = (collectionId: number): Promise<Product[] | null>
   )
 
 const loadPotentialProducts = (productType: ProductType): Promise<Product[] | null> => {
-  if (productType === 'Bath Bomb') return loadCollectionProducts(262384648270)
-  if (productType === 'Jewel Candle') return loadCollectionProducts(262384681038)
-  if (productType === 'Sugar Scrub') return loadCollectionProducts(262384746574)
-  if (productType.startsWith('Bundle')) return loadCollectionProducts(262384713806)
+  if (productType === 'Bath Bomb') return loadCollectionProducts(RECOMMENDED_BATH_BOMBS_COLLECTION_ID)
+  if (productType === 'Jewel Candle') return loadCollectionProducts(RECOMMENDED_JEWEL_CANDLES_COLLECTION_ID)
+  if (productType === 'Sugar Scrub') return loadCollectionProducts(RECOMMENDED_SUGAR_SCRUBS_COLLECTION_ID)
+  if (productType.startsWith('Bundle')) return loadCollectionProducts(RECOMMENDED_BUNDLES_COLLECTION_ID)
   return Promise.resolve(null)
 }
 
