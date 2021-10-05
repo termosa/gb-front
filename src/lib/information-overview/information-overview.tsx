@@ -1,10 +1,9 @@
-import React, { useRef } from 'react'
+import React, { useState } from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
 import InformationCard from '../../components/information-card'
-import Slider from '../slider'
+import SwipeableViews from 'react-swipeable-views'
 import useScreenSize from '../use-screen-size'
-import Carousel from 'react-multi-carousel'
 
 export type { InformationCard }
 
@@ -167,9 +166,9 @@ export function InformationOverview({
   titleUnderline,
   cards,
 }: InformationOverviewProps): React.ReactElement {
-  const useScreen = useScreenSize()
+  const screenSize = useScreenSize()
+  const [currentSlide, setCurrentSlide] = useState(1)
   const titleArr = title.split(titleUnderline)
-  const infoSliderRef = useRef<Carousel | null>(null)
 
   return (
     <SWrapper className={cn(className)} style={style}>
@@ -184,29 +183,42 @@ export function InformationOverview({
           </STitle>
         </STitleContainer>
         <SCardsWrapper>
-          {useScreen.greaterThanMedium ? (
+          {screenSize.greaterThanMedium ? (
             cards.map((card) => <InformationCard key={card.image + card.title} card={card} />)
           ) : (
             <SliderHolder>
               <SPrevArrow>
                 <SArrowButton
                   onClick={() => {
-                    infoSliderRef.current && infoSliderRef.current.previous(1)
+                    currentSlide > 1 ? setCurrentSlide(currentSlide - 1) : setCurrentSlide(cards.length)
                   }}
                 />
               </SPrevArrow>
               <SNextArrow>
                 <SArrowButton
                   onClick={() => {
-                    infoSliderRef.current && infoSliderRef.current.next(1)
+                    cards.length > currentSlide ? setCurrentSlide(currentSlide + 1) : setCurrentSlide(1)
                   }}
                 />
               </SNextArrow>
-              <Slider infinite showDots={true} arrows={false} carouselRef={infoSliderRef}>
+              <SwipeableViews
+                enableMouseEvents
+                resistance
+                index={currentSlide}
+                onChangeIndex={(slideNumber: number) => {
+                  if (slideNumber < 1) {
+                    setCurrentSlide(cards.length)
+                    return
+                  }
+                  cards.length >= slideNumber ? setCurrentSlide(slideNumber) : setCurrentSlide(1)
+                }}
+              >
+                <div />
                 {cards.map((card) => (
                   <InformationCard key={card.image + card.title} card={card} />
                 ))}
-              </Slider>
+                <div />
+              </SwipeableViews>
             </SliderHolder>
           )}
         </SCardsWrapper>

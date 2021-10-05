@@ -1,11 +1,11 @@
-import React, { useRef } from 'react'
+import React, { useState } from 'react'
 
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
-import Slider from '../../lib/slider'
+import SwipeableViews from 'react-swipeable-views'
+import { autoPlay } from 'react-swipeable-views-utils'
 import useScreenSize from '../../lib/use-screen-size'
 import Image from '../../lib/image'
-import Carousel from 'react-multi-carousel'
 
 export interface ReviewsSectionProps extends Omit<React.HTMLProps<HTMLDivElement>, 'className'> {
   className?: ClassName
@@ -263,20 +263,11 @@ const TEST_IMAGES = [
   'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/beautyinsiderlogo-1.png',
 ]
 
-export function ReviewsSection({ quote, author, className }: ReviewsSectionProps): React.ReactElement {
-  const useScreen = useScreenSize()
-  const reviewsSliderRef = useRef<Carousel | null>(null)
+const AutoPlaySwipeableViews = autoPlay(SwipeableViews)
 
-  const sliderSettings = {
-    desktop: {
-      breakpoint: { max: 3000, min: 768 },
-      items: 3,
-    },
-    mobile: {
-      breakpoint: { max: 767, min: 0 },
-      items: 3,
-    },
-  }
+export function ReviewsSection({ quote, author, className }: ReviewsSectionProps): React.ReactElement {
+  const screenSize = useScreenSize()
+  const [currentSlide, setCurrentSlide] = useState(0)
 
   return (
     <SReviewSection className={cn('ReviewsSection', className)}>
@@ -305,52 +296,43 @@ export function ReviewsSection({ quote, author, className }: ReviewsSectionProps
           <SFigcaption>{`- ${author}`}</SFigcaption>
         </SQuote>
         <SliderWrapper>
-          {useScreen.greaterThanMedium ? (
+          {screenSize.greaterThanMedium ? (
             TEST_IMAGES.map((media, index) => <Image src={media} alt="company" key={`revImage${index}`} />)
           ) : (
             <SliderHolder>
               <SPrevArrow>
                 <SArrowButton
                   onClick={() => {
-                    reviewsSliderRef.current && reviewsSliderRef.current.previous(1)
+                    currentSlide > 0 ? setCurrentSlide(currentSlide - 1) : setCurrentSlide(TEST_IMAGES.length / 3 - 1)
                   }}
                 />
               </SPrevArrow>
               <SNextArrow>
                 <SArrowButton
                   onClick={() => {
-                    reviewsSliderRef.current && reviewsSliderRef.current.next(1)
+                    TEST_IMAGES.length / 3 - 1 > currentSlide ? setCurrentSlide(currentSlide + 1) : setCurrentSlide(0)
                   }}
                 />
               </SNextArrow>
-              <Slider
-                partiallyVisible={false}
-                arrows={false}
-                carouselRef={reviewsSliderRef}
-                infinite
-                autoPlay={true}
-                responsive={sliderSettings}
-                customLeftArrow={
-                  <SPrevArrow>
-                    <SArrowButton />
-                  </SPrevArrow>
-                }
-                customRightArrow={
-                  <SNextArrow>
-                    <SArrowButton />
-                  </SNextArrow>
-                }
+              <AutoPlaySwipeableViews
+                enableMouseEvents
+                resistance
+                index={currentSlide}
+                onChangeIndex={(slideNumber: number) => {
+                  if (TEST_IMAGES.length / 3 > slideNumber) {
+                    setCurrentSlide(slideNumber)
+                  } else {
+                    setCurrentSlide(0)
+                  }
+                }}
+                slideStyle={{ width: '33.3%' }}
               >
-                {/*{images*/}
-                {/*  ? images.map((media, index) => <img src={media} alt="company" key={`revImage${index}`} />)*/}
-                {/*  : TEST_IMAGES.map((media, index) => <img src={media} alt="company" key={`revImage${index}`} />)}*/}
-
                 {TEST_IMAGES.map((media, index) => (
                   <SCompanyImageContainer key={`${media}${index}`}>
                     <img src={media} alt="company" />
                   </SCompanyImageContainer>
                 ))}
-              </Slider>
+              </AutoPlaySwipeableViews>
             </SliderHolder>
           )}
         </SliderWrapper>
