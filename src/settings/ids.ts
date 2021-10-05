@@ -34,4 +34,4 @@ export const RECOMMENDED_BUNDLES_COLLECTION_ID =
     ? STAGING_RECOMMENDED_BUNDLES_COLLECTION_ID
     : PRODUCTION_RECOMMENDED_BUNDLES_COLLECTION_ID
 
-export const GLOBAL_BANNER_LINK = 'jewel-candles/?d=scary'
+export const GLOBAL_BANNER_LINK = '/collections/all-products/?d=25off'

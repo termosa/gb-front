@@ -82,12 +82,11 @@ export default function HomePage({
           <HeroBanner
             properties={{
               desktop:
-                'https://fragrantjewels-assets.s3.amazonaws.com/images/banners/wicked-week-2/ww-banner-mon-dt.jpg',
+                'https://fragrantjewels-assets.s3.amazonaws.com/images/banners/wicked-week-2/ww-banner-tue-dt.jpg',
               medium:
-                'https://fragrantjewels-assets.s3.amazonaws.com/images/banners/wicked-week-2/ww-banner-mon-ipad2.jpg',
+                'https://fragrantjewels-assets.s3.amazonaws.com/images/banners/wicked-week-2/ww-banner-tue-ipad.jpg',
               mobile:
-                'https://fragrantjewels-assets.s3.amazonaws.com/images/banners/wicked-week-2/ww-banner-mon-mb.jpg',
-              link: '/collections/jewel-candles/?d=scary',
+                'https://fragrantjewels-assets.s3.amazonaws.com/images/banners/wicked-week-2/ww-banner-tue-mb.jpg',
             }}
           />
         )}
