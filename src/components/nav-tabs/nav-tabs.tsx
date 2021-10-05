@@ -12,6 +12,10 @@ export type NavTabsProps = {
   addGAEvent: any
 }
 
+const SWrapperOuter = styled.div`
+  overflow: hidden;
+`
+
 const SWrapper = styled.div`
   padding-bottom: 11px;
 
@@ -171,56 +175,58 @@ export function NavTabs({
   }
 
   return (
-    <SWrapper className={cn('NavTabs', className)}>
-      <SDesktopNav>
-        {isSubscriptionLinkShown && (
-          <SSubscribeButton style={{ display: 'list-item' }} onMouseEnter={() => setExtendableBlockContent('')}>
-            <Link passHref href={createLink.forPage('inner-circle')}>
-              <a onClick={onSubscribeBtnClick}>Subscribe</a>
+    <SWrapperOuter>
+      <SWrapper className={cn('NavTabs', className)}>
+        <SDesktopNav>
+          {isSubscriptionLinkShown && (
+            <SSubscribeButton style={{ display: 'list-item' }} onMouseEnter={() => setExtendableBlockContent('')}>
+              <Link passHref href={createLink.forPage('inner-circle')}>
+                <a onClick={onSubscribeBtnClick}>Subscribe</a>
+              </Link>
+            </SSubscribeButton>
+          )}
+          <SNavItem onMouseEnter={() => setExtendableBlockContent('')}>
+            <Link passHref href={createLink.forCollection('spooky')}>
+              <a>Halloween</a>
             </Link>
-          </SSubscribeButton>
-        )}
-        <SNavItem onMouseEnter={() => setExtendableBlockContent('')}>
-          <Link passHref href={createLink.forCollection('spooky')}>
-            <a>Halloween</a>
-          </Link>
-        </SNavItem>
-        <SNavItem onMouseEnter={() => setExtendableBlockContent('')}>
-          <Link passHref href={createLink.forCollection('bath-bombs')}>
-            <a>Bath bombs</a>
-          </Link>
-        </SNavItem>
-        <SNavItem onMouseEnter={() => setExtendableBlockContent('')}>
-          <Link passHref href={createLink.forCollection('jewel-candles')}>
-            <a>Candles</a>
-          </Link>
-        </SNavItem>
-        <SNavItem onMouseEnter={() => setExtendableBlockContent('')}>
-          <Link passHref href={createLink.forCollection('body-scrubs')}>
-            <a>Body Scrubs</a>
-          </Link>
-        </SNavItem>
-        <SNavItemExtendable onMouseEnter={() => setExtendableBlockContent('All')}>
-          <Link passHref href={createLink.forCollection('all-products')}>
-            <a>All</a>
-          </Link>
-        </SNavItemExtendable>
-        <SNavItemExtendable onMouseEnter={() => setExtendableBlockContent('Subscription')}>
-          <Link passHref href={createLink.forPage('inner-circle')}>
-            <a>Subscription</a>
-          </Link>
-        </SNavItemExtendable>
-        <SNavItemExtendable onMouseEnter={() => setExtendableBlockContent('Rewards')}>
-          <Link passHref href={createLink.forPage('rewards-boutique')}>
-            <a>Rewards</a>
-          </Link>
-        </SNavItemExtendable>
-        <SNavItem onMouseEnter={() => setExtendableBlockContent('')}>
-          <Link passHref href={createLink.forPage('vault-appraise')}>
-            <a>Vault</a>
-          </Link>
-        </SNavItem>
-      </SDesktopNav>
-    </SWrapper>
+          </SNavItem>
+          <SNavItem onMouseEnter={() => setExtendableBlockContent('')}>
+            <Link passHref href={createLink.forCollection('bath-bombs')}>
+              <a>Bath bombs</a>
+            </Link>
+          </SNavItem>
+          <SNavItem onMouseEnter={() => setExtendableBlockContent('')}>
+            <Link passHref href={createLink.forCollection('jewel-candles')}>
+              <a>Candles</a>
+            </Link>
+          </SNavItem>
+          <SNavItem onMouseEnter={() => setExtendableBlockContent('')}>
+            <Link passHref href={createLink.forCollection('body-scrubs')}>
+              <a>Body Scrubs</a>
+            </Link>
+          </SNavItem>
+          <SNavItemExtendable onMouseEnter={() => setExtendableBlockContent('All')}>
+            <Link passHref href={createLink.forCollection('all-products')}>
+              <a>All</a>
+            </Link>
+          </SNavItemExtendable>
+          <SNavItemExtendable onMouseEnter={() => setExtendableBlockContent('Subscription')}>
+            <Link passHref href={createLink.forPage('inner-circle')}>
+              <a>Subscription</a>
+            </Link>
+          </SNavItemExtendable>
+          <SNavItemExtendable onMouseEnter={() => setExtendableBlockContent('Rewards')}>
+            <Link passHref href={createLink.forPage('rewards-boutique')}>
+              <a>Rewards</a>
+            </Link>
+          </SNavItemExtendable>
+          <SNavItem onMouseEnter={() => setExtendableBlockContent('')}>
+            <Link passHref href={createLink.forPage('vault-appraise')}>
+              <a>Vault</a>
+            </Link>
+          </SNavItem>
+        </SDesktopNav>
+      </SWrapper>
+    </SWrapperOuter>
   )
 }
