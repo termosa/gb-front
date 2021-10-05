@@ -33,6 +33,18 @@ interface HashObject {
   sortF?: string
 }
 
+const formatToHashFilters = (filters: string[], type: string) =>
+  filters.map((filter) => {
+    if (type === 'sizes') {
+      return filter
+    }
+
+    const slicedType = type.slice(0, -1)
+    const uppercasedType = slicedType.charAt(0).toUpperCase() + slicedType.slice(1)
+
+    return (type === 'colors' ? 'Metal%20' : '') + uppercasedType + ':%20' + filter
+  })
+
 const Collection = (): null | React.ReactElement => {
   const router = useRouter()
   const collection = useContext(CollectionContext)
@@ -42,27 +54,33 @@ const Collection = (): null | React.ReactElement => {
     .split('&')
     .reduce<{ [key: string]: undefined | string }>((res, item) => {
       const parts = item.split('=')
-      res[parts[0]] = parts[1]
+      res[parts[0] + (parts[0] === 'sortF' ? '' : 's')] = parts[1]
       return res
     }, {})
 
   const [filter, setFilter] = useState<CollectionProductsFilter>({
-    fragrances: hashObject?.fragrances?.replaceAll('%20', ' ').split(',') || [],
-    colors: hashObject?.colors?.replaceAll('%20', ' ').split(',') || [],
-    materials: hashObject?.materials?.replaceAll('%20', ' ').split(',') || [],
+    fragrances: hashObject?.fragrances?.replaceAll('Fragrance:%20', '').replaceAll('%20', ' ').split(',') || [],
+    colors: hashObject?.colors?.replaceAll('Metal%20Color:%20', '').replaceAll('%20', ' ').split(',') || [],
+    materials: hashObject?.materials?.replaceAll('Material:%20', '').replaceAll('%20', ' ').split(',') || [],
     sizes: hashObject?.sizes?.replaceAll('%20', ' ').split(',') || [],
   })
   const [sorting, setSorting] = useState<SelectedSorting>((hashObject?.sortF as SelectedSorting) || SelectedSorting.NEW)
 
   const updateHash = (filter: CollectionProductsFilter, sorting: SelectedSorting) => {
     if (!window) return
-    window.location.hash = Object.entries(filter)
+    const formattedHash = Object.entries(filter)
       .reduce<Array<string>>(
-        (all, [type, filters]) =>
-          filters?.length ? all.concat(`${encodeURIComponent(type)}=${encodeURIComponent(filters.join(','))}`) : all,
-        [`sortF=${encodeURIComponent(sorting)}`]
+        (all, [type, filters]) => {
+          return filters?.length
+            ? all.concat(`${encodeURIComponent(type.slice(0, -1))}=${formatToHashFilters(filters, type).join(',')}`)
+            : all
+        },
+        ['']
       )
-      .join('&')
+      .filter(Boolean)
+    formattedHash.push(`sortF=${encodeURIComponent(sorting)}`)
+
+    window.location.hash = formattedHash.join('&')
   }
 
   const availableFilters = useMemo(() => parseFiltersFromProducts(collection?.products), [collection?.products])
