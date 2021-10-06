@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
 import Link from 'next/link'
+import createLink from '../create-link'
 
 const BannerWrapper = styled.div`
   margin: 0 auto 48px;
@@ -174,7 +175,7 @@ export function HeroBanner({ className, style, properties }: HeroBannerProps): R
         <DDHolder>
           <DDTitle>Which will you choose, Coven Light or Coven Dark?</DDTitle>
           <DDHolderInner>
-            <Link passHref href={'/collections/all-products/?promo=covenlight65'}>
+            <Link passHref href={createLink.forCollection('all-products', { promo: 'covenlight65' })}>
               <DDLink>
                 <img
                   src="https://fragrantjewels-assets.s3.amazonaws.com/images/banners/wicked-week-2/wed-ring-1.jpg"
@@ -183,7 +184,7 @@ export function HeroBanner({ className, style, properties }: HeroBannerProps): R
                 <DDButton>Coven Light</DDButton>
               </DDLink>
             </Link>
-            <Link passHref href={'/collections/all-products/?promo=covendark65'}>
+            <Link passHref href={createLink.forCollection('all-products', { promo: 'covendark65' })}>
               <DDLink>
                 <img
                   src="https://fragrantjewels-assets.s3.amazonaws.com/images/banners/wicked-week-2/wed-ring-2.jpg"
