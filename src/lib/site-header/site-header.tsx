@@ -161,7 +161,6 @@ const SFieldWrapper = styled.div`
 `
 
 const SIconsWrapper = styled.div`
-  margin: 0 0 0 15px;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -169,6 +168,7 @@ const SIconsWrapper = styled.div`
   min-width: fit-content;
 
   @media (min-width: 1200px) {
+    margin: 0 0 0 15px;
     flex-wrap: nowrap;
     min-width: 405px;
     min-height: 43px;
