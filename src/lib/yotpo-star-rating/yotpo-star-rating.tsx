@@ -11,12 +11,7 @@ export type YotpoStarRatingProps = {
   onClick?: React.MouseEventHandler<HTMLDivElement>
 }
 
-const YotpoWrapper = styled.div`
-  &.pdp-yotpo-star-rating .yotpo-display-wrapper {
-    padding: 5px 0;
-    margin-bottom: 3px;
-  }
-`
+const YotpoWrapper = styled.div``
 
 export function YotpoStarRating({
   className,
