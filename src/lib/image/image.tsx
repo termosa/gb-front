@@ -58,6 +58,7 @@ export function Image({
       return src
     }
   }, [src, shopifySize])
+
   return (
     <SImageContainer className={cn(className)} style={style} fit={fit}>
       <LazyLoadImage
