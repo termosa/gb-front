@@ -137,8 +137,10 @@ const SNextArrow = styled(SArrow)`
   }
 `
 
-const SArrowButton = styled.button`
-  display: block;
+const SArrowButton = styled.button<{
+  isVisible: boolean
+}>`
+  display: ${(props) => (props.isVisible ? 'block' : 'none')};
   width: 17px;
   height: 17px;
   border: none;
@@ -184,7 +186,7 @@ export function InformationOverview({
   cards,
 }: InformationOverviewProps): React.ReactElement {
   const screenSize = useScreenSize()
-  const [currentSlide, setCurrentSlide] = useState(1)
+  const [currentSlide, setCurrentSlide] = useState(0)
   const titleArr = title.split(titleUnderline)
 
   return (
@@ -207,15 +209,17 @@ export function InformationOverview({
               <SPrevArrow>
                 <SArrowButton
                   onClick={() => {
-                    currentSlide > 1 ? setCurrentSlide(currentSlide - 1) : setCurrentSlide(cards.length)
+                    currentSlide > 0 ? setCurrentSlide(currentSlide - 1) : null
                   }}
+                  isVisible={currentSlide > 0}
                 />
               </SPrevArrow>
               <SNextArrow>
                 <SArrowButton
                   onClick={() => {
-                    cards.length > currentSlide ? setCurrentSlide(currentSlide + 1) : setCurrentSlide(1)
+                    cards.length - 1 > currentSlide ? setCurrentSlide(currentSlide + 1) : null
                   }}
+                  isVisible={cards.length - 1 > currentSlide}
                 />
               </SNextArrow>
               <SwipeableViews
@@ -223,22 +227,16 @@ export function InformationOverview({
                 resistance
                 index={currentSlide}
                 onChangeIndex={(slideNumber: number) => {
-                  if (slideNumber < 1) {
-                    setCurrentSlide(cards.length)
-                    return
-                  }
-                  cards.length >= slideNumber ? setCurrentSlide(slideNumber) : setCurrentSlide(1)
+                  cards.length >= slideNumber ? setCurrentSlide(slideNumber) : null
                 }}
               >
-                <div />
                 {cards.map((card) => (
                   <InformationCard key={card.image + card.title} card={card} />
                 ))}
-                <div />
               </SwipeableViews>
               <SCustomDotWrapper>
                 {cards.map((_, i) => (
-                  <SCustomDot isActive={currentSlide - 1 === i} onClick={() => setCurrentSlide(i + 1)} />
+                  <SCustomDot isActive={currentSlide === i} onClick={() => setCurrentSlide(i)} />
                 ))}
               </SCustomDotWrapper>
             </SliderHolder>
