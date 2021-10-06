@@ -2,7 +2,6 @@ import React, { useRef, useState } from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
 import Link from 'next/link'
-import Button from '../../lib/button'
 import RingSize from '../ring-size'
 import formatPrice from '../../modules/format-price'
 import { Product, ProductVariant } from '../../modules/normalize-product'
@@ -451,6 +450,15 @@ const LinkInner = styled.a`
   cursor: pointer;
   padding: 16.5px;
   text-align: center;
+  appearance: none;
+
+  &:active,
+  &:focus {
+    transition: none;
+    font-weight: 700;
+    background: #000;
+    color: #fff;
+  }
 
   @media (min-width: 1200px) {
     margin: 0;
@@ -459,6 +467,35 @@ const LinkInner = styled.a`
       background: #000;
       color: #fff;
     }
+  }
+`
+
+const ICButton = styled.button<{
+  isActive?: boolean
+}>`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 55px;
+  margin: 0 auto 18px;
+  text-transform: uppercase;
+  border: 1px solid #000;
+  border-radius: 0;
+  font: 700 16px/1.25 'Montserrat', sans-serif;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  transition: all linear 0.2s;
+  background-color: ${(props) => (props.isActive ? '#fff' : '#000')};
+  color: ${(props) => (props.isActive ? '#000' : '#fff')};
+  cursor: pointer;
+  min-width: 142px;
+  font-weight: ${(props) => (props.isActive ? '500' : '700')};
+
+  &:active,
+  &:focus {
+    outline: 0;
+    box-shadow: none;
   }
 `
 
@@ -636,11 +673,8 @@ export function InnerCircleExclusive({
                       <span>Please select ring size</span>
                     </SErrorLabel>
                   )}
-                  <Button
-                    compact={false}
-                    frontColor={'#fff'}
-                    backColor={'#000'}
-                    style={{ width: '100%', marginBottom: 18 }}
+                  <ICButton
+                    isActive={!!(selectedVariant && selectedVariant.size)}
                     onClick={() => {
                       const membershipVariant =
                         selectedVariant &&
@@ -653,7 +687,7 @@ export function InnerCircleExclusive({
                     }}
                   >
                     RESERVE NOW
-                  </Button>
+                  </ICButton>
                 </div>
                 <STaxInfo>
                   *Join the Inner Circle today, then automatically receive a monthly set for $32.95 plus tax. No
