@@ -86,8 +86,8 @@ export function SiteFooter({ className, style }: SiteFooterProps): React.ReactEl
     <div>
       <FooterContainer className={cn(className)} style={style}>
         <PreFooterPromoMessage>
-          Enjoy $25 off today's order of $75 or more. Use code 25OFF at checkout. Enjoy $10 off today's order of $40 or
-          more. Use code 10OFF at checkout. Offer valid on October 5, 2021.
+          Your sterling silver ring will be added to your order at checkout with any $65 purchase. Limited quantities.
+          While supplies last.
         </PreFooterPromoMessage>
         <FooterOuter>
           <FooterInner>
