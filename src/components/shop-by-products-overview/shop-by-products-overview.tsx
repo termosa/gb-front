@@ -95,7 +95,7 @@ const SArrow = styled.div`
   position: absolute;
   cursor: pointer;
   z-index: 5;
-  top: 50%;
+  top: calc(50% - 12px);
   transform: translateY(-50%);
 `
 
@@ -115,8 +115,10 @@ const SNextArrow = styled(SArrow)`
   }
 `
 
-const SArrowButton = styled.button`
-  display: block;
+const SArrowButton = styled.button<{
+  isVisible: boolean
+}>`
+  display: ${(props) => (props.isVisible ? 'block' : 'none')};
   border: none;
   background-color: transparent;
   font-size: 0;
@@ -168,15 +170,17 @@ export function ShopByProductsOverview({ products, title }: ShopByProductsOvervi
               <SPrevArrow>
                 <SArrowButton
                   onClick={() => {
-                    currentSlide > 1 ? setCurrentSlide(currentSlide - 1) : setCurrentSlide(products.length)
+                    currentSlide > 0 ? setCurrentSlide(currentSlide - 1) : null
                   }}
+                  isVisible={currentSlide > 0}
                 />
               </SPrevArrow>
               <SNextArrow>
                 <SArrowButton
                   onClick={() => {
-                    products.length > currentSlide ? setCurrentSlide(currentSlide + 1) : setCurrentSlide(1)
+                    products.length - 1 > currentSlide ? setCurrentSlide(currentSlide + 1) : null
                   }}
+                  isVisible={products.length - 1 > currentSlide}
                 />
               </SNextArrow>
               <SwipeableViews
@@ -184,16 +188,11 @@ export function ShopByProductsOverview({ products, title }: ShopByProductsOvervi
                 resistance
                 index={currentSlide}
                 onChangeIndex={(slideNumber: number) => {
-                  if (slideNumber < 1) {
-                    setCurrentSlide(products.length)
-                    return
-                  }
-                  products.length >= slideNumber ? setCurrentSlide(slideNumber) : setCurrentSlide(1)
+                  products.length >= slideNumber ? setCurrentSlide(slideNumber) : null
                 }}
                 style={{ overflow: 'visible' }}
                 slideStyle={{ overflow: 'visible' }}
               >
-                <div />
                 {products &&
                   products.map((product) => (
                     <ShopByProductCard
@@ -204,7 +203,6 @@ export function ShopByProductsOverview({ products, title }: ShopByProductsOvervi
                       title={product.title}
                     />
                   ))}
-                <div />
               </SwipeableViews>
             </SliderHolder>
           )}

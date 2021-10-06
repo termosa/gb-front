@@ -208,8 +208,10 @@ const SNextArrow = styled(SArrow)`
   }
 `
 
-const SArrowButton = styled.button`
-  display: block;
+const SArrowButton = styled.button<{
+  isVisible: boolean
+}>`
+  display: ${(props) => (props.isVisible ? 'block' : 'none')};
   border: none;
   font-size: 0;
   margin: 0;
@@ -303,15 +305,17 @@ export function ReviewsSection({ quote, author, className }: ReviewsSectionProps
               <SPrevArrow>
                 <SArrowButton
                   onClick={() => {
-                    currentSlide > 0 ? setCurrentSlide(currentSlide - 1) : setCurrentSlide(TEST_IMAGES.length / 3 - 1)
+                    currentSlide > 0 ? setCurrentSlide(currentSlide - 1) : null
                   }}
+                  isVisible={currentSlide > 0}
                 />
               </SPrevArrow>
               <SNextArrow>
                 <SArrowButton
                   onClick={() => {
-                    TEST_IMAGES.length / 3 - 1 > currentSlide ? setCurrentSlide(currentSlide + 1) : setCurrentSlide(0)
+                    TEST_IMAGES.length / 3 - 1 > currentSlide ? setCurrentSlide(currentSlide + 1) : null
                   }}
+                  isVisible={TEST_IMAGES.length / 3 - 1 > currentSlide}
                 />
               </SNextArrow>
               <AutoPlaySwipeableViews
