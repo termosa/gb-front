@@ -45,7 +45,8 @@ const SGlobalBanner = styled.div`
   margin: 0 auto;
   cursor: pointer;
   position: relative;
-  z-index: 2;
+  z-index: 12;
+  cursor: pointer;
 `
 
 const SInnerWrapper = styled.div`
@@ -512,6 +513,102 @@ const ExtendableBlockRowItems = styled.div`
   }
 `
 
+const DDHolder = styled.div`
+  font-family: Montserrat, sans-serif;
+  background: #fff;
+  padding: 5px;
+  box-shadow: 0 0 7px 3px rgba(0, 0, 0, 0.2);
+  position: absolute;
+  top: 0;
+  left: 50%;
+  -webkit-transform: translate(-50%, 0);
+  -ms-transform: translate(-50%, 0);
+  transform: translate(-50%, 0);
+  width: 75%;
+  max-width: 320px;
+  margin: 0 auto;
+
+  @media (min-width: 992px) {
+    max-width: 370px;
+  }
+
+  &:after {
+    content: '×';
+    font-size: 20px;
+    position: absolute;
+    right: 8px;
+    top: 5px;
+    line-height: 1;
+
+    @media (min-width: 375px) {
+      font-size: 26px;
+    }
+
+    @media (min-width: 768px) {
+      font-size: 27px;
+      right: 11px;
+    }
+  }
+`
+
+const DDHolderInner = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+
+const DDTitle = styled.h4`
+  font-size: 12px;
+  text-align: center;
+  margin: 0 auto;
+  padding: 5px 0 0;
+  max-width: 83%;
+
+  @media (min-width: 375px) {
+    font-size: 14px;
+  }
+`
+
+const DDLink = styled.a`
+  margin: 5px;
+  text-decoration: none;
+  display: block;
+  width: 50%;
+
+  img {
+    border: 1px solid #fff;
+    border-bottom: 0;
+    height: auto;
+    width: 100%;
+    display: block;
+    box-sizing: border-box;
+  }
+
+  &:hover img {
+    border-color: #000;
+  }
+
+  &:active,
+  &:focus {
+    outline: 0;
+    box-shadow: none;
+    text-decoration: none;
+  }
+`
+
+const DDButton = styled.div`
+  padding: 8px 0;
+  background: #000;
+  color: #fff;
+  text-align: center;
+  font-size: 10px;
+  text-transform: uppercase;
+
+  @media (min-width: 375px) {
+    font-size: 14px;
+  }
+`
+
 const ExtendableBlockListAccordionLabel = styled.label``
 
 const AllContent = () => (
@@ -911,6 +1008,8 @@ export function SiteHeader({
     }
   }, [headerRef, headerRef.current?.clientHeight])
 
+  const [isDropdownOpened, toggleDropdown] = useState(false)
+
   return (
     <SWrapper
       className={cn(className)}
@@ -920,7 +1019,20 @@ export function SiteHeader({
     >
       <RollingBanner />
       {router.pathname !== '/' && !router.pathname.startsWith(GLOBAL_BANNER_LINK) && (
-        <SGlobalBanner onClick={() => router.push(createLink.forCollection(GLOBAL_BANNER_LINK))}>
+        // <SGlobalBanner onClick={() => router.push(createLink.forCollection(GLOBAL_BANNER_LINK))}>
+        //   <Image
+        //     src={
+        //       screenSize.greaterThanMedium
+        //         ? 'https://fragrantjewels-assets.s3.amazonaws.com/images/banners/wicked-week-2/m-banner-ww-dt.jpg'
+        //         : 'https://fragrantjewels-assets.s3.amazonaws.com/images/banners/wicked-week-2/m-banner-ww-mb.jpg'
+        //     }
+        //   />
+        // </SGlobalBanner>
+        <SGlobalBanner
+          onClick={() => {
+            toggleDropdown(!isDropdownOpened)
+          }}
+        >
           <Image
             src={
               screenSize.greaterThanMedium
@@ -928,6 +1040,33 @@ export function SiteHeader({
                 : 'https://fragrantjewels-assets.s3.amazonaws.com/images/banners/wicked-week-2/m-banner-ww-mb.jpg'
             }
           />
+          {isDropdownOpened ? (
+            <DDHolder>
+              <DDTitle>Which will you choose, Coven Light or Coven Dark?</DDTitle>
+              <DDHolderInner>
+                <Link passHref href={createLink.forCollection('all-products?promo=covenlight65')}>
+                  <DDLink>
+                    <img
+                      src="https://fragrantjewels-assets.s3.amazonaws.com/images/banners/wicked-week-2/wed-ring-1.jpg"
+                      alt=""
+                    />
+                    <DDButton>Coven Light</DDButton>
+                  </DDLink>
+                </Link>
+                <Link passHref href={createLink.forCollection('all-products?promo=covendark65')}>
+                  <DDLink>
+                    <img
+                      src="https://fragrantjewels-assets.s3.amazonaws.com/images/banners/wicked-week-2/wed-ring-2.jpg"
+                      alt=""
+                    />
+                    <DDButton>Coven Dark</DDButton>
+                  </DDLink>
+                </Link>
+              </DDHolderInner>
+            </DDHolder>
+          ) : (
+            <div></div>
+          )}
         </SGlobalBanner>
       )}
       <SInnerWrapper>
