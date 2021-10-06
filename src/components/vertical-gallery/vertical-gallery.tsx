@@ -119,8 +119,7 @@ const SCarouselThumbnailsHolder = styled.div`
     margin: 0 -16px;
 
     & > div {
-      max-width: 990px;
-      min-width: 600px;
+      width: fit-content;
       padding: 0 16px 10px;
     }
   }
@@ -212,6 +211,9 @@ const SPdpCarouselItemMobile = styled.div`
   outline: none;
   display: flex !important;
   justify-content: center;
+  height: 288px;
+  margin: 0 auto;
+
   img {
     width: 100%;
     max-width: 414px;
