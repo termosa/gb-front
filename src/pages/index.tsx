@@ -84,11 +84,12 @@ export default function HomePage({
           <HeroBanner
             properties={{
               desktop:
-                'https://fragrantjewels-assets.s3.amazonaws.com/images/banners/wicked-week-2/ww-banner-wed-23412-dt.jpg',
+                'https://fragrantjewels-assets.s3.amazonaws.com/images/banners/wicked-week-2/ww-banner-thu-23920-dt.jpg',
               medium:
-                'https://fragrantjewels-assets.s3.amazonaws.com/images/banners/wicked-week-2/ww-banner-wed-23412-ipad.jpg',
+                'https://fragrantjewels-assets.s3.amazonaws.com/images/banners/wicked-week-2/ww-banner-thu-23920-ipad.jpg',
               mobile:
-                'https://fragrantjewels-assets.s3.amazonaws.com/images/banners/wicked-week-2/ww-banner-wed-23412-mb.jpg',
+                'https://fragrantjewels-assets.s3.amazonaws.com/images/banners/wicked-week-2/ww-banner-thu-23920-mb.jpg',
+              link: '/collections/bath-bombs/?d=2free',
             }}
           />
         )}

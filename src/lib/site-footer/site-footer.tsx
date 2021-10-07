@@ -86,8 +86,9 @@ export function SiteFooter({ className, style }: SiteFooterProps): React.ReactEl
     <div>
       <FooterContainer className={cn(className)} style={style}>
         <PreFooterPromoMessage>
-          Your sterling silver ring will be added to your order at checkout with any $65 purchase. Limited quantities.
-          While supplies last.
+          Add 5 full-priced bath bombs ($16.95 price or greater) to your cart and the price of 2 bath bombs will be
+          discounted at checkout. Discount based on $16.95 bath bombs. Cannot be combined with any other gifts or
+          promotions. Offer only valid on October 7, 2021.
         </PreFooterPromoMessage>
         <FooterOuter>
           <FooterInner>

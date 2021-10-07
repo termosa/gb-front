@@ -2,6 +2,7 @@ import React from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled, { css } from 'styled-components'
 import useScreenSize from '../use-screen-size'
+import Link from 'next/link'
 
 const Wrapper = styled.div<{ backgroundImg?: string }>`
   background: ${(props) => (props.backgroundImg ? `url(${props.backgroundImg}) center center no-repeat` : '')};
@@ -100,6 +101,29 @@ const CollectionMobileDescription = styled.p<{ desktop?: boolean }>`
       max-width: 600px;
       margin: 10px auto 30px;
     `}
+`
+
+const BannerImage = styled.img<{ imageSize?: string }>`
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+  display: none;
+  margin: 0 auto;
+  display: ${(props) => (props.imageSize === 'mobile' ? `block` : 'none')};
+
+  @media (min-width: 375px) {
+    display: ${(props) => (props.imageSize === 'medium' ? `block` : 'none')};
+  }
+
+  @media (min-width: 1200px) {
+    display: ${(props) => (props.imageSize === 'desktop' ? `block` : 'none')};
+  }
+`
+
+const BannerLink = styled.a`
+  cursor: pointer;
+  color: #000;
+  text-decoration: none;
 `
 
 const collectionsBanner: CollectionBanner[] = [
@@ -243,7 +267,26 @@ export function CollectionBanner({ handle, className, style }: CollectionBannerP
   if (!bannerCollection) {
     return null
   }
-  return useScreen.greaterThanMedium ? (
+  const imagesElement = (
+    <div>
+      <BannerImage
+        src={'https://fragrantjewels-assets.s3.amazonaws.com/images/banners/wicked-week-2/ww-banner-thu-23920-mb.jpg'}
+        imageSize={'mobile'}
+        alt=""
+      />
+      <BannerImage
+        src={'https://fragrantjewels-assets.s3.amazonaws.com/images/banners/wicked-week-2/ww-banner-thu-23920-ipad.jpg'}
+        imageSize={'medium'}
+        alt=""
+      />
+      <BannerImage
+        src={'https://fragrantjewels-assets.s3.amazonaws.com/images/banners/wicked-week-2/ww-banner-thu-23920-dt.jpg'}
+        imageSize={'desktop'}
+        alt=""
+      />
+    </div>
+  )
+  let bannerNode = useScreen.greaterThanMedium ? (
     bannerCollection.onlyDesktop ? (
       <>
         <CollectionMobileImg desktop={bannerCollection.onlyDesktop} src={bannerCollection.backgroundImage} />
@@ -279,4 +322,14 @@ export function CollectionBanner({ handle, className, style }: CollectionBannerP
       <CollectionMobileDescription>{bannerCollection.description}</CollectionMobileDescription>
     </Wrapper>
   )
+
+  if (handle === 'bath-bombs') {
+    bannerNode = (
+      <Link passHref href={'/collections/bath-bombs?d=2free'}>
+        <BannerLink>{imagesElement}</BannerLink>
+      </Link>
+    )
+  }
+
+  return bannerNode
 }
