@@ -11,14 +11,16 @@ const SFilter = styled.label<{
   isCollapsed?: boolean
 }>`
   display: ${(props) => (props.isCollapsed ? 'none' : 'flex')};
-  padding: 3px 0 20px 30px;
+  padding: 3px 0 19px 30px;
   color: ${({ noProduct }) => noProduct && '#dadada'};
   cursor: pointer;
   position: relative;
   letter-spacing: 0.05em;
+  margin: 0 16px;
 
-  @media (max-width: 767px) {
-    margin: 0 16px;
+  @media (min-width: 768px) {
+    margin: 0;
+    padding: 3px 0 15px 30px;
   }
 
   &:last-child {
@@ -79,6 +81,11 @@ const SFilterItemName = styled.span<{
   isDisable?: boolean
 }>`
   color: ${(props) => (props.isDisable ? '#cccccc' : '#000000')};
+  white-space: nowrap;
+
+  & > span {
+    margin-right: 3px;
+  }
 `
 
 const SCheckbox = styled.input.attrs({ type: 'checkbox' })`
@@ -95,8 +102,9 @@ const SCheckbox = styled.input.attrs({ type: 'checkbox' })`
     position: absolute;
     width: 20px;
     height: 20px;
-    border: 0.5px solid #000;
+    border: 1px solid #000;
     cursor: pointer;
+    box-sizing: border-box;
   }
 
   &:disabled::before {
@@ -247,7 +255,7 @@ export function FilterPart({
                 </SMetalColorIcon>
               )}
               <SFilterItemName isDisable={!availableAmount && !selectedFilters[filterGroup]?.length}>
-                {name}
+                <span>{name}</span>
                 {!selectedFilters[filterGroup]?.includes(name) && (
                   <SProductsQuantity>
                     {filterGroup !== 'sizes'

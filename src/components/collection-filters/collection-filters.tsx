@@ -43,7 +43,7 @@ const SButtons = styled.div`
   justify-content: space-between;
   width: 100%;
   max-width: 324px;
-  margin: 24px 0 24px auto;
+  margin: 16px 0 16px auto;
 
   @media (max-width: 1033px) {
     padding-right: 20px;
@@ -256,7 +256,7 @@ const SFilterDesktopControlButtonsGroup = styled.div`
   }
 
   @media (max-width: 767px) {
-    padding: 0 0 16px;
+    padding: 0 16px 16px;
     border: 0;
     margin: 0;
   }
@@ -270,14 +270,14 @@ const SSelectedFilters = styled.div`
 const SSelectedFilter = styled.div`
   display: flex;
   align-items: center;
-  padding: 4px 10px;
+  padding: 4px 10px 4px 0;
 
-  &:first-child {
-    padding-left: 0;
+  &:last-child {
+    padding-right: 0;
   }
 
   @media (max-width: 767px) {
-    padding: 4px 0 4px 20px;
+    padding: 4px 20px 4px 0;
   }
 `
 
@@ -462,7 +462,7 @@ export const CollectionFilters = ({
             <svg xmlns="http://www.w3.org/2000/svg" width={18} height={10} viewBox="0 0 18 10" fill="none">
               <path
                 d="M1 1h16M1 5h12M1 9h8"
-                stroke="#000"
+                stroke={isEmptyFilter(selectedFilters) ? '#000' : '#fff'}
                 strokeWidth={0.5}
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -587,7 +587,7 @@ export const CollectionFilters = ({
           </SShowResultsButton>
         </SFilters>
       )}
-      {!isEmptyFilter(selectedFilters) && screenSize.greaterThanMedium && (
+      {!isEmptyFilter(selectedFilters) && isFiltersDropdownOpened && screenSize.greaterThanMedium && (
         <SFilterDesktopControlButtonsGroup>
           <SSelectedFilters>
             {getListOfSelectedFilters(selectedFilters).map(({ name, filterGroup }) => (
