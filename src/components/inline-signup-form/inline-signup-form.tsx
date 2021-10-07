@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import useDefer, { Status } from 'use-defer'
 import Button from '../../lib/button'
 import Image from '../../lib/image'
-import http from '../../modules/http'
+import api from '../../modules/api'
 import klaviyo from '../../lib/klaviyo'
 
 const KLAVIYO_LIST = 'KjMzdu'
@@ -120,9 +120,15 @@ export function InlineSignupForm({ className }: InlineSignupFormProps): React.Re
   const [email, setEmail] = useState('')
   const signUpRequest = useDefer<unknown, string>(
     (email: string) =>
-      http({
-        url: 'https://www.fragrantjewels.com/klsubscribe',
-        query: { email, l: KLAVIYO_LIST, s: KLAVIYO_SOURCE, $consent: 'email' },
+      api({
+        method: 'POST',
+        path: '/klaviyo/add_customer_to_list/',
+        body: {
+          customer_email: email,
+          list: KLAVIYO_LIST,
+          source: KLAVIYO_SOURCE,
+          form_id: KLAVIYO_FORM_ID,
+        },
       })
         .then(() => {
           klaviyo('identify', { $email: email, form_id: KLAVIYO_FORM_ID, siteVersion: 'V3' })
