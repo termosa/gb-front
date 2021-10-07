@@ -45,7 +45,7 @@ const SGlobalBanner = styled.div`
   margin: 0 auto;
   cursor: pointer;
   position: relative;
-  z-index: 12;
+  z-index: 9;
   cursor: pointer;
 `
 
