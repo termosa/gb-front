@@ -52,6 +52,10 @@ const SFilterGroup = styled.div<{
   cursor: pointer;
   padding-right: 15px;
 
+  @media (max-width: 991px) {
+    padding-right: 5px;
+  }
+
   @media (max-width: 767px) {
     padding: ${(props) => (props.isCollapsed ? '0 0 0' : '0 0 24px')};
   }
@@ -82,6 +86,14 @@ const SFilterItemName = styled.span<{
 }>`
   color: ${(props) => (props.isDisable ? '#cccccc' : '#000000')};
   white-space: nowrap;
+
+  @media (min-width: 768px) {
+    letter-spacing: 0;
+  }
+
+  @media (min-width: 992px) {
+    letter-spacing: 0.05em;
+  }
 
   & > span {
     margin-right: 3px;
