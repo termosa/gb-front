@@ -8,7 +8,7 @@ import api from '../../modules/api'
 import klaviyo from '../../lib/klaviyo'
 
 const KLAVIYO_LIST = 'KjMzdu'
-const KLAVIYO_SOURCE = encodeURIComponent('Homepage - Footer')
+const KLAVIYO_SOURCE = 'Homepage - Footer'
 const KLAVIYO_FORM_ID = 'PXeq2D'
 
 const Container = styled.div`
