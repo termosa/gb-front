@@ -101,7 +101,7 @@ export function SearchField({ className, onSearch, searchedProducts }: SearchFie
     event.preventDefault()
     const value = searchInputRef.current?.value || ''
     alooma('search_form_submitted', { value })
-    router.push(`/search?type=product&q=${value}`)
+    router.push(`/search?type=product&options%5Bprefix%5D=last&q=${value}`)
   }
 
   const handleChange = useMemo(
@@ -165,7 +165,10 @@ export function SearchField({ className, onSearch, searchedProducts }: SearchFie
             </Link>
           ))}
           {searchedProducts.products && searchedProducts.totalAmount > searchedProducts.products.length ? ( // TODO: Maybe no need to check presence searchedProducts.products
-            <Link passHref href={`/search?type=product&q=${searchInputRef.current?.value || ''}`}>
+            <Link
+              passHref
+              href={`/search?type=product&options%5Bprefix%5D=last&q=${searchInputRef.current?.value || ''}`}
+            >
               <SSearchedProductLink
                 underline
                 onClick={() => alooma('search_form_submitted', { value: searchInputRef.current?.value || '' })}
