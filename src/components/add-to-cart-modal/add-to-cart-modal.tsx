@@ -22,7 +22,7 @@ const Modal = styled.div<{
 `
 
 const ModalContent = styled.div<{ isVisible?: boolean }>`
-  padding: 25px;
+  padding: 30px 15px;
   background: white;
   border-radius: 0;
   min-width: 250px;
@@ -31,6 +31,33 @@ const ModalContent = styled.div<{ isVisible?: boolean }>`
   transform: scale(${(props) => (props.isVisible ? '1' : '0.9')});
   opacity: ${(props) => (props.isVisible ? '1' : '0')};
   margin: 15px;
+  width: 100%;
+  max-width: 400px;
+  position: relative;
+`
+
+const ModalCloseButton = styled.button`
+  position: absolute;
+  right: 3px;
+  top: 3px;
+  line-height: 1;
+  font-size: 28px;
+  box-sizing: border-box;
+  border-radius: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: opacity linear 0.2s;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &:focus {
+    outline: 0;
+    box-shadow: none;
+  }
 `
 
 export type AddToCartModalProps = {
@@ -45,6 +72,7 @@ export function AddToCartModal({ children, isModalShow, setModal }: AddToCartMod
   return (
     <Modal onClick={() => setModal(false)} isVisible={isModalShow}>
       <ModalContent onClick={(e) => e.stopPropagation()} isVisible={isModalShow}>
+        <ModalCloseButton type="button">&times;</ModalCloseButton>
         {children}
       </ModalContent>
     </Modal>

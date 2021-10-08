@@ -1,6 +1,6 @@
 import React, { useContext, useRef, useState } from 'react'
 import { useRouter } from 'next/router'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import cn, { Argument as ClassName } from 'classnames'
 import Carousel from 'react-multi-carousel'
 import { Product as ProductType, Product } from '../../modules/normalize-product'
@@ -10,6 +10,9 @@ import ProductContext from '../../modules/product-context'
 import SwipeableViews from 'react-swipeable-views'
 import { useScreenSize } from '../../lib/use-screen-size'
 import AddToCartModal from '../add-to-cart-modal'
+import { ProductVariant } from '../../modules/normalize-product-variant'
+import trackAddedToCart from 'src/lib/track-added-to-cart'
+import addCartItem from 'src/lib/add-cart-item'
 
 const Section = styled.section`
   margin: 0 0 43px;
@@ -205,6 +208,129 @@ const SSwipeableViews = styled(SwipeableViews)`
   padding: 0 20px;
 `
 
+const ProductModalHeading = styled.h3`
+  font-size: 18px;
+  text-align: center;
+  margin: 0 0 10px;
+`
+
+const SPdpPiSelector = styled.div`
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  margin: 0 0 12px;
+`
+
+const SPdpPiRsSelector = styled.div`
+  text-align: center;
+  color: #9059c8;
+  margin: 0 0 12px;
+`
+
+const SPdpPiSelectorBtnHolder = styled.div`
+  margin: 0 2px;
+  position: relative;
+  width: 100%;
+  max-width: 50px;
+
+  @media (min-width: 768px) {
+    width: 45px;
+    margin: 0 5px;
+  }
+
+  @media (min-width: 850px) {
+    width: 48px;
+  }
+
+  &:first-child {
+    margin-left: 0;
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  &:after {
+    content: '';
+    display: block;
+    padding-top: 100%;
+  }
+`
+
+const SPdpPiSelectorBtn = styled.button<{
+  isActive: boolean
+}>`
+  background: ${(props) => (props.isActive ? '#9059C8' : '#fff')};
+  border: ${(props) => (props.isActive ? '0.5px solid #9059C8' : '0.5px solid #000')};
+  padding: 10px 5px;
+  font-size: 15px;
+  min-width: 35px;
+  margin: 0;
+  color: ${(props) => (props.isActive ? '#fff' : '#000')};
+  transition: all linear 0.3s;
+  outline: 0;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  cursor: pointer;
+
+  &:hover {
+    @media (min-width: 1200px) {
+      color: #fff;
+      background: #9059c8;
+      border-color: #9059c8;
+    }
+  }
+
+  &:disabled {
+    color: #dadada;
+    border: 1px solid #dadada;
+    pointer-events: none;
+  }
+`
+
+const SPdpBtn = styled.button<{ disabled?: boolean }>`
+  display: block;
+  padding: 19px 15px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border: 0.5px solid #000;
+  border-radius: 0;
+  font: 600 16px/1 'Montserrat', sans-serif;
+  text-decoration: none;
+  transition: all linear 0.2s;
+  background-color: #000;
+  color: #fff;
+  cursor: pointer;
+  width: 100%;
+  margin: 0;
+  height: 55px;
+
+  ${(p) =>
+    p.disabled
+      ? css`
+          background-color: #333;
+          color: #ffffff;
+          cursor: default;
+        `
+      : css`
+          &:not(.pdp-btn_disabled):hover {
+            @media (min-width: 1200px) {
+              color: #000;
+              background: #fff;
+            }
+          }
+
+          &:focus {
+            outline: 0;
+          }
+        `}
+`
+
 export type ProductsCarouselProps = {
   products: Array<Product>
   className?: ClassName
@@ -226,7 +352,7 @@ export const ProductsCarousel = ({
   const screenSize = useScreenSize()
   const [currentSlide, setCurrentSlide] = useState(0)
   const currentProduct = useContext<ProductType | undefined>(ProductContext)
-  const [choosedProduct, setChoosedProduct] = useState(useContext<ProductType | undefined>(ProductContext))
+  const [choosedProduct, setChoosedProduct] = useState(useContext<ProductType>)
   const titleParts = title.split(' ')
   const sliderSettings = {
     desktop: {
@@ -243,10 +369,31 @@ export const ProductsCarousel = ({
     },
   }
   const [isModalVisible, setModalVisible] = useState(false)
+  const [selectedVariant, setSelectedVariant] = useState<ProductVariant | null>(null)
+  const [isSelectRingError, setSelectRingError] = useState<boolean>(false)
 
   const onChooseProduct = (product: Product) => {
     setChoosedProduct(product)
     setModalVisible(true)
+  }
+
+  const addToCartHandler = (selectedVariant: ProductVariant | null, isContinueFlag?: boolean) => {
+    if (!selectedVariant) {
+      localStorage.setItem('selectRingError', JSON.stringify(true))
+      setSelectRingError(true)
+      return
+    }
+
+    const addingRequest: Promise<unknown> = addCartItem(selectedVariant.variant_id)
+
+    addingRequest
+      .then(() => trackAddedToCart(choosedProduct))
+      .then(() => {
+        if (!isContinueFlag) {
+          router.push('/cart')
+        }
+      })
+      .catch((err: unknown) => alert(err))
   }
 
   return (
@@ -361,8 +508,43 @@ export const ProductsCarousel = ({
       <AddToCartModal isModalShow={isModalVisible} setModal={setModalVisible}>
         {choosedProduct && choosedProduct.product_id && (
           <div>
-            <h1>Title {choosedProduct.product_id}</h1>
-            <div>Text</div>
+            <ProductModalHeading>
+              Select {choosedProduct.type} a{' '}
+              {choosedProduct.type && choosedProduct.type.toLowerCase() === 'ring' ? 'ring size' : 'jewelry type'} to
+              add this item to your cart:
+            </ProductModalHeading>
+            <React.Fragment>
+              <SPdpPiSelector>
+                {choosedProduct.variants.map(
+                  (variant: ProductVariant) =>
+                    variant.size && (
+                      <SPdpPiSelectorBtnHolder key={variant.size}>
+                        <SPdpPiSelectorBtn
+                          isActive={variant.variant_id === selectedVariant?.variant_id}
+                          type="button"
+                          value={variant.size}
+                          onClick={() => {
+                            setSelectRingError(false)
+                            localStorage.setItem('selectRingError', JSON.stringify(false))
+                            localStorage.setItem('currentRingSize', JSON.stringify(variant.variant_id))
+                            setSelectedVariant(variant)
+                          }}
+                          disabled={!variant.available}
+                        >
+                          {variant.title}
+                        </SPdpPiSelectorBtn>
+                      </SPdpPiSelectorBtnHolder>
+                    )
+                )}
+              </SPdpPiSelector>
+              {isSelectRingError ? <SPdpPiRsSelector>Please select ring size</SPdpPiRsSelector> : null}
+              <SPdpBtn type="button" onClick={() => addToCartHandler(selectedVariant)}>
+                Add to Cart
+              </SPdpBtn>
+              <SPdpBtn type="button" onClick={() => addToCartHandler(selectedVariant, true)}>
+                Add to Cart and continue
+              </SPdpBtn>
+            </React.Fragment>
           </div>
         )}
       </AddToCartModal>
