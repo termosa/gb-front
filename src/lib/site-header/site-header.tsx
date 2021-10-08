@@ -920,7 +920,7 @@ export function SiteHeader({
       ref={headerRef}
     >
       <RollingBanner />
-      {router.pathname !== '/' && !router.pathname.startsWith(GLOBAL_BANNER_LINK) && (
+      {router.pathname !== '/' && (
         <SGlobalBanner onClick={() => router.push(createLink.forCollection(GLOBAL_BANNER_LINK))}>
           <Image
             src={
