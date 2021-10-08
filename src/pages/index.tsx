@@ -25,7 +25,7 @@ export default function HomePage({
   innerCircleMembershipProduct,
 }: HomePageProps): React.ReactElement {
   const router = useRouter()
-  const isHeroGallery = false
+  const isHeroGallery = true
 
   return (
     <>
@@ -40,6 +40,20 @@ export default function HomePage({
         {isHeroGallery ? (
           <HeroGallery
             slides={[
+              {
+                topText: 'NEW',
+                centerFirstText: 'The October Box',
+                centerSecondText: '',
+                bottomText:
+                  'Join Inner Circle today for an exclusive discount on this new collection which reminds you to bloom in the darkness.',
+                buttonText: 'Reserve Now',
+                buttonLink: createLink.forPage('inner-circle'),
+                backgroundImg:
+                  'https://fragrantjewels-assets.s3.amazonaws.com/images/moonflowers/moonflowers-banner-dt.jpg',
+                backgroundImgMobile:
+                  'https://fragrantjewels-assets.s3.amazonaws.com/images/moonflowers/moonflowers-banner-mb.jpg',
+                transparentPlaceholder: true,
+              },
               {
                 topText: 'NEW',
                 centerFirstText: 'Time Travel Series',
