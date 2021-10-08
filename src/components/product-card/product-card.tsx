@@ -6,7 +6,7 @@ import formatPrice from '../../modules/format-price'
 import getLabel from '../../modules/get-label'
 import Image from '../../lib/image'
 import useScreenSize from '../../lib/use-screen-size'
-import YotpoStarRating from '../../lib/yotpo-star-rating'
+// import YotpoStarRating from '../../lib/yotpo-star-rating'
 
 export type ProductCardProps = {
   className?: ClassName
@@ -140,21 +140,21 @@ const ProductCardType = styled.div`
   }
 `
 
-const ProductCardStars = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 0 10px;
-  height: 17px;
+// const ProductCardStars = styled.div`
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   margin: 0 0 10px;
+//   height: 17px;
 
-  @media (min-width: 768px) {
-    margin: 0 0 8px;
-  }
+//   @media (min-width: 768px) {
+//     margin: 0 0 8px;
+//   }
 
-  .text-m {
-    display: none;
-  }
-`
+//   .text-m {
+//     display: none;
+//   }
+// `
 
 /*const ProductCardStar = styled.div`
   margin: 0 1px;
