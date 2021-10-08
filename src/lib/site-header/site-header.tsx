@@ -731,7 +731,7 @@ const AllContent = () => (
       <ExtendableBlockItem className="desktop-nav-product-item">
         <Link passHref href={createLink.forProduct('black-dahlia-satin-collection-candle-and-bath-bomb-set')}>
           <a>
-            <Image src="https://fragrantjewels.s3.amazonaws.com/app/app-nav/nav-all-img-25-dt.jpg" width={290} />
+            <Image src="https://fragrantjewels.s3.amazonaws.com/app/app-nav/nav-all-img-dahlia-dt.png" width={290} />
             <AnimatedLink as="span">
               <span>New! Free Bonus Perfume</span>
             </AnimatedLink>
