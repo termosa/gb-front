@@ -81,15 +81,12 @@ export type SiteFooterProps = {
 
 export function SiteFooter({ className, style }: SiteFooterProps): React.ReactElement {
   const isMobileScreen = useMediaPredicate('(max-width: 991px)')
+  const isPreFooterPromoMessage = false
 
   return (
     <div>
       <FooterContainer className={cn(className)} style={style}>
-        <PreFooterPromoMessage>
-          Add 5 full-priced bath bombs ($16.95 price or greater) to your cart and the price of 2 bath bombs will be
-          discounted at checkout. Discount based on $16.95 bath bombs. Cannot be combined with any other gifts or
-          promotions. Offer only valid on October 7, 2021.
-        </PreFooterPromoMessage>
+        {isPreFooterPromoMessage && <PreFooterPromoMessage />}
         <FooterOuter>
           <FooterInner>
             <FooterAccordion>
