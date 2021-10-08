@@ -37,6 +37,7 @@ const SLayoutImage = styled(Image)`
   margin-bottom: 0;
   border-style: none;
   object-fit: cover;
+  min-height: 200px;
 
   @media (min-width: 768px) {
     max-width: 100%;
@@ -105,7 +106,7 @@ export function ShopByProductCard({
   return (
     <Link passHref href={buttonLink}>
       <SLayout className={cn('ShopByProductCard', className)}>
-        <SLayoutImage src={image} visibleByDefault />
+        <SLayoutImage src={image} visibleByDefault width={284} />
         <SButtonWrapper>
           <SButton>{buttonText}</SButton>
         </SButtonWrapper>

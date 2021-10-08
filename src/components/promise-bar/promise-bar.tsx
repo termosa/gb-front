@@ -115,10 +115,19 @@ const SPromiseItemLabel = styled.span`
 `
 
 const PROMISE_ITEMS = [
-  { title: 'Cruelty free', img: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/cruelty-free-icon-1.png' },
-  { title: 'Handmade in USA', img: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/made-in-usa-icon-1.png' },
-  { title: 'Paraben free', img: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/paraben-free-icon.png' },
-  { title: 'Phthalate free', img: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/phthalate-free-icon.png' },
+  {
+    title: 'Cruelty free',
+    imageSrc: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/cruelty-free-icon-1.png',
+  },
+  {
+    title: 'Handmade in USA',
+    imageSrc: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/made-in-usa-icon-1.png',
+  },
+  { title: 'Paraben free', imageSrc: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/paraben-free-icon.png' },
+  {
+    title: 'Phthalate free',
+    imageSrc: 'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/phthalate-free-icon.png',
+  },
 ]
 
 export function PromiseBar({ className }: PromiseBarProps): React.ReactElement | null {
@@ -131,7 +140,7 @@ export function PromiseBar({ className }: PromiseBarProps): React.ReactElement |
             <SRow24>
               {PROMISE_ITEMS.map((promise) => (
                 <SPromiseItem key={promise.title}>
-                  <SPromiseItemImg src={promise.img} />
+                  <SPromiseItemImg src={promise.imageSrc} width={110} />
                   <SPromiseItemLabel>{promise.title}</SPromiseItemLabel>
                 </SPromiseItem>
               ))}

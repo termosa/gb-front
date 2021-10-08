@@ -6,7 +6,6 @@ export type ScreenSize = {
   width: number | null
   height: number | null
   lessThanSmall: boolean | null
-  sizeS: boolean | null
   greaterThanSmall: boolean | null
   greaterThanMedium: boolean | null
   greaterThanLarge: boolean | null
@@ -33,8 +32,8 @@ export function useScreenSize(): ScreenSize {
 
   useEffect(() => {
     const throttledResize = throttle(handleResize, 500)
-    window?.addEventListener('resize', throttledResize)
     handleResize()
+    window?.addEventListener('resize', throttledResize)
     return () => window?.removeEventListener('resize', throttledResize)
   }, [])
 

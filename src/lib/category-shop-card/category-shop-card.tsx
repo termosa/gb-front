@@ -36,8 +36,8 @@ const SLayout = styled.a`
 `
 
 const SLayoutImage = styled(Image)`
-  width: 100%;
-  height: 100%;
+  min-width: 360px;
+  min-height: 360px;
   display: block;
   max-width: 463px;
   margin: 0 auto;
@@ -144,7 +144,7 @@ export function CategoryShopCard({
     <SCol>
       <Link passHref href={link}>
         <SLayout className={cn(className)} style={style}>
-          <SLayoutImage src={image} />
+          <SLayoutImage src={image} width={480} height={480} />
           <SContent>
             <STitle>{title}</STitle>
             <SSubTitle>{subTitle}</SSubTitle>

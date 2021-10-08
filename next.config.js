@@ -27,16 +27,20 @@ module.exports = (phase) => {
   return {
     ...cssOptions,
     typescript: { ignoreBuildErrors: true },
+    experimental: {
+      scrollRestoration: true,
+    },
     env: {
       APP_ENV: process.env.APP_ENV,
       SITE_URL: process.env.SITE_URL,
       BASE_API_URL: process.env.BASE_API_URL,
       CLIENT_API_URL: process.env.CLIENT_API_URL,
     },
-    redirects: () => Promise.resolve([
-      { source: '/collections', destination: '/', permanent: false },
-      { source: '/products', destination: '/', permanent: false },
-    ]),
+    redirects: () =>
+      Promise.resolve([
+        { source: '/collections', destination: '/', permanent: false },
+        { source: '/products', destination: '/', permanent: false },
+      ]),
     webpack(config) {
       config.module.rules.push({
         test: /\.svg$/,
