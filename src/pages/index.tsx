@@ -25,7 +25,7 @@ export default function HomePage({
   innerCircleMembershipProduct,
 }: HomePageProps): React.ReactElement {
   const router = useRouter()
-  const isHeroGallery = true
+  const isHeroGallery = false
 
   return (
     <>
