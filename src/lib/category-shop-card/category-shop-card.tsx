@@ -36,8 +36,8 @@ const SLayout = styled.a`
 `
 
 const SLayoutImage = styled(Image)`
-  min-width: 360px;
-  min-height: 360px;
+  min-width: 320px;
+  min-height: 320px;
   display: block;
   max-width: 463px;
   margin: 0 auto;
