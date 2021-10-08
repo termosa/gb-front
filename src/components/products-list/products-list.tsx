@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import styled from 'styled-components'
 import ProductCard from '../product-card'
 import SiteSection from '../site-section'
-import { Product } from '../../modules/normalize-product'
+import { Product as ProductType, Product } from '../../modules/normalize-product'
+import AddToCartModal from '../add-to-cart-modal'
+import ProductContext from '../../modules/product-context'
 
 export type ProductsListProps = {
   products: Array<Product>
@@ -33,16 +35,37 @@ const SProductCard = styled(ProductCard)`
   min-width: 100px;
 `
 
-export const ProductsList = ({ products, onSelectProduct }: ProductsListProps): React.ReactElement => (
-  <SiteSection>
-    <ProductsListContainer>
-      {products.map((product) => (
-        <SProductCard
-          key={product.product_id}
-          product={product}
-          onClick={() => onSelectProduct && onSelectProduct(product)}
-        />
-      ))}
-    </ProductsListContainer>
-  </SiteSection>
-)
+export const ProductsList = ({ products, onSelectProduct }: ProductsListProps): React.ReactElement => {
+  const [isModalVisible, setModalVisible] = useState(false)
+  const [choosedProduct, setChoosedProduct] = useState(useContext<ProductType | undefined>(ProductContext))
+  const onChooseProduct = (product: Product) => {
+    setChoosedProduct(product)
+    setModalVisible(true)
+  }
+  return (
+    <div>
+      <SiteSection>
+        <ProductsListContainer>
+          {products.map((product) => (
+            <SProductCard
+              key={product.product_id}
+              product={product}
+              onClick={() => onSelectProduct && onSelectProduct(product)}
+              onProductButtonClick={() => {
+                onChooseProduct(product)
+              }}
+            />
+          ))}
+        </ProductsListContainer>
+      </SiteSection>
+      <AddToCartModal isModalShow={isModalVisible} setModal={setModalVisible}>
+        {choosedProduct && choosedProduct.product_id && (
+          <div>
+            <h1>Title {choosedProduct.product_id}</h1>
+            <div>Text</div>
+          </div>
+        )}
+      </AddToCartModal>
+    </div>
+  )
+}

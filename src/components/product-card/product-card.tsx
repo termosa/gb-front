@@ -14,6 +14,7 @@ export type ProductCardProps = {
   product: Product
   imagesVisibleByDefault?: boolean
   onClick: () => void
+  onProductButtonClick: () => void
 }
 
 const ProductCardWrapper = styled.div`
@@ -234,12 +235,44 @@ const ProductCardPrice = styled.div`
   display: inline-block;
 `
 
+const ProductCardButton = styled.button`
+  background: #000;
+  color: #fff;
+  padding: 12px 15px;
+  width: 100%;
+  border: 1px solid #000;
+  margin: 0;
+  text-transform: uppercase;
+  appearance: none;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: all linear 0.2s;
+
+  @media (min-width: 768px) {
+    margin: 0 0 10px;
+  }
+
+  &:not([disabled]):hover {
+    background-color: #fff;
+    color: #000;
+    font-weight: 500;
+  }
+
+  &[disabled] {
+    cursor: auto;
+    border-color: #ddd;
+    background: #ddd;
+  }
+`
+
 export function ProductCard({
   className,
   style,
   product,
   imagesVisibleByDefault,
   onClick,
+  onProductButtonClick,
 }: ProductCardProps): React.ReactElement {
   const screenSize = useScreenSize()
   const [isMouseMoved, setMouseMoved] = useState<boolean>(false)
@@ -268,6 +301,11 @@ export function ProductCard({
 
   const actualPrice = product.variants[0].actual_price
   const comparePrice = product.variants[0].compare_at_price
+
+  const openModal = (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
+    event.stopPropagation()
+    onProductButtonClick()
+  }
 
   return (
     <ProductCardWrapper
@@ -322,6 +360,9 @@ export function ProductCard({
             </ProductCardPrice>
           </ProductCardPrices>
         </div>
+        <ProductCardButton type="button" onClick={(e) => openModal(e)}>
+          Add to Cart
+        </ProductCardButton>
       </SProductCard>
     </ProductCardWrapper>
   )

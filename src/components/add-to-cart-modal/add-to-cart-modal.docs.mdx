@@ -1,0 +1,29 @@
+import AddToCartModal from '.'
+
+export const meta = {
+  type: 'component',
+  name: 'AddToCartModal',
+  description: 'Styled block with custom content',
+  tags: ['component'],
+  preview: <AddToCartModal>Component content here</AddToCartModal>,
+  lists: {
+    attributes: [
+      { name: 'children', required: true, type: 'React.ReactNode', description: 'Content that will be rendered inside of the block' },
+      { name: 'className', type: 'classnames.Argument', description: 'One or multiple class names that will be added to the main container' },
+      { name: 'style', type: 'React.CSSProperties', description: 'Inline styles for the main container' },
+    ],
+  },
+  scope: { AddToCartModal },
+}
+
+## Usage
+
+```jsx
+<AddToCartModal className="class" style={{ color: 'red' }}>Put content here</AddToCartModal>
+```
+
+## Playground
+
+```jsx live
+<AddToCartModal style={{ color: 'red' }}>Content text</AddToCartModal>
+```

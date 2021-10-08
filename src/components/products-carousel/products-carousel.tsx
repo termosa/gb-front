@@ -9,6 +9,7 @@ import ProductCard from '../product-card'
 import ProductContext from '../../modules/product-context'
 import SwipeableViews from 'react-swipeable-views'
 import { useScreenSize } from '../../lib/use-screen-size'
+import AddToCartModal from '../add-to-cart-modal'
 
 const Section = styled.section`
   margin: 0 0 43px;
@@ -225,6 +226,7 @@ export const ProductsCarousel = ({
   const screenSize = useScreenSize()
   const [currentSlide, setCurrentSlide] = useState(0)
   const currentProduct = useContext<ProductType | undefined>(ProductContext)
+  const [choosedProduct, setChoosedProduct] = useState(useContext<ProductType | undefined>(ProductContext))
   const titleParts = title.split(' ')
   const sliderSettings = {
     desktop: {
@@ -239,6 +241,12 @@ export const ProductsCarousel = ({
       breakpoint: { max: 767, min: 0 },
       items: 2,
     },
+  }
+  const [isModalVisible, setModalVisible] = useState(false)
+
+  const onChooseProduct = (product: Product) => {
+    setChoosedProduct(product)
+    setModalVisible(true)
   }
 
   return (
@@ -306,6 +314,9 @@ export const ProductsCarousel = ({
                       onClick={() => {
                         onSelectProduct(product)
                       }}
+                      onProductButtonClick={() => {
+                        onChooseProduct(product)
+                      }}
                     />
                   )
                 })}
@@ -336,6 +347,9 @@ export const ProductsCarousel = ({
                         onClick={() => {
                           onSelectProduct(product)
                         }}
+                        onProductButtonClick={() => {
+                          onChooseProduct(product)
+                        }}
                       />
                     )
                   })}
@@ -344,6 +358,14 @@ export const ProductsCarousel = ({
           )}
         </SliderHolder>
       </Container>
+      <AddToCartModal isModalShow={isModalVisible} setModal={setModalVisible}>
+        {choosedProduct && choosedProduct.product_id && (
+          <div>
+            <h1>Title {choosedProduct.product_id}</h1>
+            <div>Text</div>
+          </div>
+        )}
+      </AddToCartModal>
     </Section>
   )
 }
