@@ -319,6 +319,7 @@ export function VerticalGallery({ className }: VerticalGalleryProps): React.Reac
                         src={image.src}
                         alt={image.alt}
                         shopifySize={screenSize.greaterThanMedium ? 'medium' : 'compact'}
+                        quality={100}
                       />
                     </SCarouselIconsItem>
                   ))}
@@ -337,6 +338,7 @@ export function VerticalGallery({ className }: VerticalGalleryProps): React.Reac
                       width={galleryImageWidth}
                       height={getImageHeight(image)}
                       shopifySize="grande"
+                      quality={100}
                     />
                   </SPdpCarouselItem>
                 ))}
@@ -358,6 +360,7 @@ export function VerticalGallery({ className }: VerticalGalleryProps): React.Reac
                           src={product.images && image?.src}
                           alt={(product.images && image?.alt) || ''}
                           shopifySize="grande"
+                          quality={100}
                         />
                       )}
                     </SPdpCarouselItemMobile>
@@ -383,6 +386,7 @@ export function VerticalGallery({ className }: VerticalGalleryProps): React.Reac
                           fit="contain"
                           width={60}
                           height={60}
+                          quality={100}
                         />
                       )}
                     </SCarouselThumbnailItem>
