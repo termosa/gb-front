@@ -276,9 +276,9 @@ export function ProductCard({
         </ProductCardImgWrapper>
         <div>
           {checkForLabel()}
-          <ProductCardStars>
+          {/* <ProductCardStars>
             <YotpoStarRating productId={product.product_id} />
-          </ProductCardStars>
+          </ProductCardStars> */}
           <ProductCardTitle title={productTitle}>{productTitle}</ProductCardTitle>
           <ProductCardType>{productType}</ProductCardType>
           <ProductCardPrices>
