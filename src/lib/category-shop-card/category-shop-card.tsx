@@ -144,7 +144,7 @@ export function CategoryShopCard({
     <SCol>
       <Link passHref href={link}>
         <SLayout className={cn(className)} style={style}>
-          <SLayoutImage src={image} />
+          <SLayoutImage src={image} width={480} height={480} />
           <SContent>
             <STitle>{title}</STitle>
             <SSubTitle>{subTitle}</SSubTitle>

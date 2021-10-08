@@ -368,42 +368,6 @@ const SPdpPiSelectorBtn = styled.button<{
   }
 `
 
-/*const SPdpFragrance = styled.div`
-  padding: 16px 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid #e4e4e4;
-  overflow-x: auto;
-  width: 100%;
-`
-
-const SPdpFragranceItem = styled.div`
-  font-family: Montserrat, sans-serif;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 15px;
-  text-align: center;
-  max-width: 62px;
-
-  &:last-child {
-    margin-right: 0;
-  }
-`
-
-const SPdpFragranceImg = styled.img`
-  width: 54px;
-  height: 39px;
-  object-fit: contain;
-  display: block;
-  margin: 0 auto 5px;
-
-  @media (min-width: 768px) {
-    width: 62px;
-    height: 45px;
-  }
-`*/
-
 const SPdpAItem = styled.div`
   border-bottom: 1px solid #e5e5e5;
 `
@@ -539,10 +503,6 @@ export function ProductInfo({ className, style, addToCartRef }: ProductInfoProps
   const label = getLabel(product)
 
   const checkForLabel = (): React.ReactElement | null => {
-    /*if (label.members) {
-      return <span className="pdp-product-details__members-tag"> | Members Only</span>
-    }*/
-
     if (label.silver) {
       return <SPdpProductDetailsSilverTag> | 925 Sterling Silver</SPdpProductDetailsSilverTag>
     } else {
@@ -698,12 +658,14 @@ export function ProductInfo({ className, style, addToCartRef }: ProductInfoProps
                             {isSubscriptionHintOpened ? (
                               <Image
                                 src="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/pdp/pdp-close-icon.png"
-                                alt="close-icon"
+                                width={22}
+                                alt="Close"
                               />
                             ) : (
                               <Image
                                 src="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/pdp/pdp-info-icon.png"
-                                alt="info-icon"
+                                width={22}
+                                alt="Open information"
                               />
                             )}
                           </SPdpChooserBtn>
@@ -746,36 +708,6 @@ export function ProductInfo({ className, style, addToCartRef }: ProductInfoProps
           </SPdpPiSelectorWrapper>
         )}
         <ProductModalButtons product={product} />
-        {/*<SPdpFragrance>
-          <SPdpFragranceItem>
-            <SPdpFragranceImg
-              src={'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/pdp/fragrances/black-currant.png'}
-              alt=""
-            />
-            <span>Black Currant</span>
-          </SPdpFragranceItem>
-          <SPdpFragranceItem>
-            <SPdpFragranceImg
-              src={'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/pdp/fragrances/tart-rhubarb.png'}
-              alt=""
-            />
-            <span>Tart Rhubarb</span>
-          </SPdpFragranceItem>
-          <SPdpFragranceItem>
-            <SPdpFragranceImg
-              src={'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/pdp/fragrances/refreshing-mint.png'}
-              alt=""
-            />
-            <span>Refreshing Mint</span>
-          </SPdpFragranceItem>
-          <SPdpFragranceItem>
-            <SPdpFragranceImg
-              src={'https://fragrantjewels.s3.amazonaws.com/app/app-home/img/pdp/fragrances/spice-anise.png'}
-              alt=""
-            />
-            <span>Spicy Anise</span>
-          </SPdpFragranceItem>
-        </SPdpFragrance>*/}
         <div>
           {productDetails.map((el: ProductDetail, i: number) => (
             <SPdpAItem key={el.title}>

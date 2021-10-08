@@ -100,7 +100,11 @@ export function InformationCard({ className, card }: InformationCardProps): Reac
   const screenSize = useScreenSize()
   return (
     <SCardWrapper className={cn('InformationCard', className)}>
-      <SCardImage src={card.image} visibleByDefault={!screenSize.greaterThanMedium} />
+      <SCardImage
+        src={card.image}
+        width={screenSize.greaterThanMedium ? 312 : 232}
+        height={screenSize.greaterThanMedium ? 312 : 232}
+      />
       <SCardTitle>{card.title}</SCardTitle>
       <SCardDescription>{card.description}</SCardDescription>
     </SCardWrapper>

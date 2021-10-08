@@ -319,7 +319,13 @@ export function DropAHintModal({ className, style, product, onClose }: DropAHint
             <ModalCloseBtn type="button" onClick={onClose} />
             <ModalDahContent onSubmit={handleSubmit}>
               <ModalDahContentCol>
-                <Image src={product.image?.src} alt={product.image?.alt} draggable={false} shopifySize={'large'} />
+                <Image
+                  src={product.image?.src}
+                  alt={product.image?.alt}
+                  draggable={false}
+                  shopifySize="large"
+                  width={300}
+                />
                 <ModalDahPreview>
                   <p>
                     Hey{' '}
