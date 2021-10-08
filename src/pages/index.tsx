@@ -106,12 +106,15 @@ export default function HomePage({
             product={innerCircleSubscriptionProduct}
             membershipProductVariants={innerCircleMembershipProduct.variants}
             slideImages={[
-              'https://new-fragrantjewels.s3.us-west-2.amazonaws.com/app/img/skull-ring.jpg',
-              'https://new-fragrantjewels.s3.us-west-2.amazonaws.com/app/img/monthly-subscription.jpg',
-              'https://new-fragrantjewels.s3.us-west-2.amazonaws.com/app/img/bones-ring.jpg',
-              'https://new-fragrantjewels.s3.us-west-2.amazonaws.com/app/img/bone-band.jpg',
-              'https://new-fragrantjewels.s3.us-west-2.amazonaws.com/app/img/jewel-candle.jpg',
-              'https://new-fragrantjewels.s3.us-west-2.amazonaws.com/app/img/epsom-salt.jpg',
+              'https://new-fragrantjewels.s3.us-west-2.amazonaws.com/app/img/inner-1.png',
+              'https://new-fragrantjewels.s3.us-west-2.amazonaws.com/app/img/inner-2.jpg',
+              'https://new-fragrantjewels.s3.us-west-2.amazonaws.com/app/img/inner-3.jpg',
+              'https://new-fragrantjewels.s3.us-west-2.amazonaws.com/app/img/inner-4.jpg',
+              'https://new-fragrantjewels.s3.us-west-2.amazonaws.com/app/img/inner-5.jpg',
+              'https://new-fragrantjewels.s3.us-west-2.amazonaws.com/app/img/inner-6.jpg',
+              'https://new-fragrantjewels.s3.us-west-2.amazonaws.com/app/img/inner-7.jpg',
+              'https://new-fragrantjewels.s3.us-west-2.amazonaws.com/app/img/inner-8.jpg',
+              'https://new-fragrantjewels.s3.us-west-2.amazonaws.com/app/img/inner-9.jpg',
             ]}
             title="Get addicted to me-time"
             subTitle="Join the Inner Circle for exclusive savings on exciting new collections every month. It's happiness, delivered. "
