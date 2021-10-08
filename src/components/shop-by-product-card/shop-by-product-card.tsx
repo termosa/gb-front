@@ -37,6 +37,7 @@ const SLayoutImage = styled(Image)`
   margin-bottom: 0;
   border-style: none;
   object-fit: cover;
+  min-height: 200px;
 
   @media (min-width: 768px) {
     max-width: 100%;
