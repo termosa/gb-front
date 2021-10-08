@@ -225,7 +225,7 @@ export const ProductsCarousel = ({
   const screenSize = useScreenSize()
   const [currentSlide, setCurrentSlide] = useState(0)
   const currentProduct = useContext<ProductType | undefined>(ProductContext)
-  const titleParts = title.split(' ')
+  const titleParts = title?.split(' ') || []
   const sliderSettings = {
     desktop: {
       breakpoint: { max: 3000, min: 992 },

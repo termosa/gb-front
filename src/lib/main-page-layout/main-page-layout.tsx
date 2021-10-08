@@ -101,9 +101,7 @@ export function MainPageLayout({ children, className, style }: MainPageLayoutPro
             </div>
             <div className="app-re-wrapper" id="app-wrapper">
               <div className="app-re-content" id="app-content">
-                <main className="app-h-main" style={{ overflow: 'hidden' }}>
-                  {children}
-                </main>
+                <main className="app-h-main">{children}</main>
               </div>
             </div>
             <FloatingCta />
