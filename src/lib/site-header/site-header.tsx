@@ -750,11 +750,13 @@ const SubscriptionContent = () => (
           <Link passHref href={createLink.forPage('inner-circle')}>
             <a>
               <Image
-                src="https://fragrantjewels-assets.s3.amazonaws.com/images/pick-your-poison/nav-pick-your-poison.jpg"
+                src="https://fragrantjewels-assets.s3.amazonaws.com/images/moonflowers/moonflowers-nav.jpg"
                 width={370}
               />
               <ExtendableBlockListTitle>Exclusive Savings On New Collections Every Month</ExtendableBlockListTitle>
-              <ExtendableBlockListText>A collection so intoxicating, it's to die for...</ExtendableBlockListText>
+              <ExtendableBlockListText>
+                Join your fellow Moonflowers in soaking up all the energy that twilight brings.
+              </ExtendableBlockListText>
               <AnimatedLink as="span">
                 <span>Learn more</span>
               </AnimatedLink>
