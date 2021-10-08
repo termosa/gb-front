@@ -526,7 +526,7 @@ export function NavMobile({
                 {CARDS_LIST.map((item) => (
                   <Link passHref href={item.href} key={item.imgLink}>
                     <SCard className="app-col app-add-product-col">
-                      <Image src={item.imgLink} alt="" />
+                      <Image src={item.imgLink} width={320} />
                       <div>
                         <SCardLink className="app-animated-link app-nav__mobile-content__link">
                           <span>{item.text}</span>

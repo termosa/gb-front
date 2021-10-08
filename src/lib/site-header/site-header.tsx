@@ -731,7 +731,7 @@ const AllContent = () => (
       <ExtendableBlockItem className="desktop-nav-product-item">
         <Link passHref href={createLink.forProduct('black-dahlia-satin-collection-candle-and-bath-bomb-set')}>
           <a>
-            <Image src="https://fragrantjewels.s3.amazonaws.com/app/app-nav/nav-all-img-25-dt.jpg" />
+            <Image src="https://fragrantjewels.s3.amazonaws.com/app/app-nav/nav-all-img-25-dt.jpg" width={290} />
             <AnimatedLink as="span">
               <span>New! Free Bonus Perfume</span>
             </AnimatedLink>
@@ -749,9 +749,14 @@ const SubscriptionContent = () => (
         <ExtendableBlockItem>
           <Link passHref href={createLink.forPage('inner-circle')}>
             <a>
-              <Image src="https://fragrantjewels-assets.s3.amazonaws.com/images/pick-your-poison/nav-pick-your-poison.jpg" />
+              <Image
+                src="https://fragrantjewels-assets.s3.amazonaws.com/images/moonflowers/moonflowers-nav.jpg"
+                width={370}
+              />
               <ExtendableBlockListTitle>Exclusive Savings On New Collections Every Month</ExtendableBlockListTitle>
-              <ExtendableBlockListText>A collection so intoxicating, it's to die for...</ExtendableBlockListText>
+              <ExtendableBlockListText>
+                Join your fellow Moonflowers in soaking up all the energy that twilight brings.
+              </ExtendableBlockListText>
               <AnimatedLink as="span">
                 <span>Learn more</span>
               </AnimatedLink>
@@ -761,7 +766,7 @@ const SubscriptionContent = () => (
         <ExtendableBlockItem>
           <Link passHref href={createLink.forPage('rare-ic-page')}>
             <a>
-              <Image src="https://fragrantjewels.s3.amazonaws.com/app/app-nav/nav-rare-raven.jpg" />
+              <Image src="https://fragrantjewels.s3.amazonaws.com/app/app-nav/nav-rare-raven.jpg" width={370} />
               <ExtendableBlockListTitle>Everything There Is To Know About Rare Collections</ExtendableBlockListTitle>
               <ExtendableBlockListText>
                 Start collecting unique limited edition sets not available for sale! Find out how you can qualify.
@@ -814,7 +819,7 @@ const RewardsContent = () => (
         <ExtendableBlockItem>
           <Link passHref href={createLink.forPage('rewards-boutique')}>
             <a>
-              <Image src="https://fragrantjewels.s3.amazonaws.com/app/app-nav/nav-rewards-img-1.jpg" />
+              <Image src="https://fragrantjewels.s3.amazonaws.com/app/app-nav/nav-rewards-img-1.jpg" width={370} />
               <ExtendableBlockListTitle>New Rewards Every Week</ExtendableBlockListTitle>
               <ExtendableBlockListText>
                 Every dollar you spend earns you reward points you can use to redeem free jewelry, products and more!
@@ -828,7 +833,7 @@ const RewardsContent = () => (
         <ExtendableBlockItem>
           <Link passHref href={createLink.forPage('rewards-explainer')}>
             <a>
-              <Image src="https://fragrantjewels.s3.amazonaws.com/app/app-nav/nav-rewards-img-2.jpg" />
+              <Image src="https://fragrantjewels.s3.amazonaws.com/app/app-nav/nav-rewards-img-2.jpg" width={370} />
               <ExtendableBlockListTitle>Earn Platinum Reward Status</ExtendableBlockListTitle>
               <ExtendableBlockListText>
                 Get exclusive access to VIP offers, 3x points and more when you earn Platinum status!
@@ -928,6 +933,7 @@ export function SiteHeader({
                 ? 'https://fragrantjewels-assets.s3.amazonaws.com/images/banners/wicked-week-2/m-banner-ww-dt.jpg'
                 : 'https://fragrantjewels-assets.s3.amazonaws.com/images/banners/wicked-week-2/m-banner-ww-mb.jpg'
             }
+            width={screenSize.greaterThanMedium ? 990 : 768}
           />
         </SGlobalBanner>
       )}

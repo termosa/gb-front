@@ -2,6 +2,7 @@ import React from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled, { css } from 'styled-components'
 import useScreenSize from '../use-screen-size'
+import Image from '../image'
 
 const Wrapper = styled.div<{ backgroundImg?: string }>`
   background: ${(props) => (props.backgroundImg ? `url(${props.backgroundImg}) center center no-repeat` : '')};
@@ -55,7 +56,7 @@ const CollectionDescription = styled.p`
   max-width: 372px;
 `
 
-const CollectionMobileImg = styled.img<{ desktop?: boolean }>`
+const CollectionMobileImg = styled(Image)<{ desktop?: boolean }>`
   width: 100%;
   height: 186px;
   object-fit: cover;
@@ -247,7 +248,12 @@ export function CollectionBanner({ handle, className, style }: CollectionBannerP
   return useScreen.greaterThanMedium ? (
     bannerCollection.onlyDesktop ? (
       <>
-        <CollectionMobileImg desktop={bannerCollection.onlyDesktop} src={bannerCollection.backgroundImage} />
+        <CollectionMobileImg
+          desktop={bannerCollection.onlyDesktop}
+          src={bannerCollection.backgroundImage}
+          height={186}
+          quality={100}
+        />
         <CollectionMobileTitle style={bannerCollection.onlyDesktop ? bannerCollection.styleTitleDesktop : {}}>
           {bannerCollection.title}
         </CollectionMobileTitle>
@@ -272,6 +278,8 @@ export function CollectionBanner({ handle, className, style }: CollectionBannerP
       <CollectionMobileImg
         desktop={bannerCollection.onlyDesktop}
         src={bannerCollection.compactBackgroundImage}
+        height={186}
+        quality={100}
         style={bannerCollection.compactBackgroundStyle}
       />
       <CollectionMobileTitle style={bannerCollection.onlyDesktop ? bannerCollection.styleTitleDesktop : {}}>

@@ -6,7 +6,7 @@ import formatPrice from '../../modules/format-price'
 import getLabel from '../../modules/get-label'
 import Image from '../../lib/image'
 import useScreenSize from '../../lib/use-screen-size'
-import YotpoStarRating from '../../lib/yotpo-star-rating'
+// import YotpoStarRating from '../../lib/yotpo-star-rating'
 
 export type ProductCardProps = {
   className?: ClassName
@@ -54,36 +54,6 @@ const SProductCard = styled.div`
     object-fit: contain;
   }
 `
-
-/*const SCircle = styled.div<{
-  backgroundColor?: string
-}>`
-  font: 600 12px/1.25 'Montserrat', sans-serif;
-  letter-spacing: 0.08em;
-  background-color: ${(props) => props.backgroundColor || '#9059c8'};
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  z-index: 1;
-  border-radius: 50%;
-  top: 4px;
-  left: 4px;
-  width: 42px;
-  height: 42px;
-  @media (min-width: 768px) {
-    font: 600 14px/17px 'Montserrat', sans-serif;
-    top: 10px;
-    left: 10px;
-    width: 55px;
-    height: 55px;
-  }
-
-  & > span {
-    color: #ffffff;
-    text-transform: uppercase;
-  }
-`*/
 
 const ProductCardImgWrapper = styled.div`
   position: relative;
@@ -170,21 +140,21 @@ const ProductCardType = styled.div`
   }
 `
 
-const ProductCardStars = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 0 10px;
-  height: 17px;
+// const ProductCardStars = styled.div`
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   margin: 0 0 10px;
+//   height: 17px;
 
-  @media (min-width: 768px) {
-    margin: 0 0 8px;
-  }
+//   @media (min-width: 768px) {
+//     margin: 0 0 8px;
+//   }
 
-  .text-m {
-    display: none;
-  }
-`
+//   .text-m {
+//     display: none;
+//   }
+// `
 
 /*const ProductCardStar = styled.div`
   margin: 0 1px;
@@ -232,6 +202,10 @@ const ProductCardPrice = styled.div`
   margin: 0 1px;
   vertical-align: middle;
   display: inline-block;
+`
+
+const SImage = styled(Image)`
+  min-height: 110px;
 `
 
 export function ProductCard({
@@ -286,17 +260,15 @@ export function ProductCard({
       onClick={(e) => (!isMouseMoved && e.type === 'click' ? onClick() : null)}
     >
       <SProductCard>
-        {/*<SCircle backgroundColor={'#9059c8'}>
-          <span>New</span>
-        </SCircle>*/}
         <ProductCardImgWrapper>
           <ProductCardImgWrapperInner>
             {product.image && (
-              <Image
+              <SImage
                 src={product.image.src}
                 alt={product.image?.alt}
                 visibleByDefault={imagesVisibleByDefault}
                 draggable={false}
+                width={280}
                 shopifySize={screenSize.greaterThanSmall ? 'large' : 'medium'}
               />
             )}
@@ -304,9 +276,9 @@ export function ProductCard({
         </ProductCardImgWrapper>
         <div>
           {checkForLabel()}
-          <ProductCardStars>
+          {/* <ProductCardStars>
             <YotpoStarRating productId={product.product_id} />
-          </ProductCardStars>
+          </ProductCardStars> */}
           <ProductCardTitle title={productTitle}>{productTitle}</ProductCardTitle>
           <ProductCardType>{productType}</ProductCardType>
           <ProductCardPrices>

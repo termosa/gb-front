@@ -2,6 +2,7 @@ import React from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
 import Link from 'next/link'
+import Image from '../image'
 
 const BannerWrapper = styled.div`
   margin: 0 auto 48px;
@@ -28,8 +29,9 @@ const BannerLink = styled.a`
   text-decoration: none;
 `
 
-const BannerImage = styled.img<{ imageSize?: string }>`
+const BannerImage = styled(Image)<{ imageSize?: string }>`
   max-width: 100%;
+  min-height: 300px;
   width: 100%;
   height: auto;
   display: none;
@@ -61,9 +63,9 @@ type HeroProps = {
 export function HeroBanner({ className, style, properties }: HeroBannerProps): React.ReactElement {
   const imagesElement = (
     <div>
-      <BannerImage src={properties.mobile} imageSize={'mobile'} alt="" />
-      <BannerImage src={properties.medium} imageSize={'medium'} alt="" />
-      <BannerImage src={properties.desktop} imageSize={'desktop'} alt="" />
+      <BannerImage src={properties.mobile} imageSize="mobile" quality={100} />
+      <BannerImage src={properties.medium} imageSize="medium" quality={100} />
+      <BannerImage src={properties.desktop} imageSize="desktop" height={315} />
     </div>
   )
   return (

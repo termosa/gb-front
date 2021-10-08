@@ -42,6 +42,20 @@ export default function HomePage({
             slides={[
               {
                 topText: 'NEW',
+                centerFirstText: 'The October Box',
+                centerSecondText: '',
+                bottomText:
+                  'Join Inner Circle today for an exclusive discount on this new collection which reminds you to bloom in the darkness.',
+                buttonText: 'Reserve Now',
+                buttonLink: createLink.forPage('inner-circle'),
+                backgroundImg:
+                  'https://fragrantjewels-assets.s3.amazonaws.com/images/moonflowers/moonflowers-banner-dt.jpg',
+                backgroundImgMobile:
+                  'https://fragrantjewels-assets.s3.amazonaws.com/images/moonflowers/moonflowers-banner-mb.jpg',
+                transparentPlaceholder: true,
+              },
+              {
+                topText: 'NEW',
                 centerFirstText: 'Time Travel Series',
                 centerSecondText: '',
                 bottomText:
