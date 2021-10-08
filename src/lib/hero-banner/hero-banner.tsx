@@ -31,6 +31,7 @@ const BannerLink = styled.a`
 
 const BannerImage = styled(Image)<{ imageSize?: string }>`
   max-width: 100%;
+  min-height: 300px;
   width: 100%;
   height: auto;
   display: none;

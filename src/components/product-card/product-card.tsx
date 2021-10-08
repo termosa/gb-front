@@ -204,6 +204,10 @@ const ProductCardPrice = styled.div`
   display: inline-block;
 `
 
+const SImage = styled(Image)`
+  min-height: 110px;
+`
+
 export function ProductCard({
   className,
   style,
@@ -259,7 +263,7 @@ export function ProductCard({
         <ProductCardImgWrapper>
           <ProductCardImgWrapperInner>
             {product.image && (
-              <Image
+              <SImage
                 src={product.image.src}
                 alt={product.image?.alt}
                 visibleByDefault={imagesVisibleByDefault}
