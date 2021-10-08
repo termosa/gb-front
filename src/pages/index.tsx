@@ -120,15 +120,12 @@ export default function HomePage({
             product={innerCircleSubscriptionProduct}
             membershipProductVariants={innerCircleMembershipProduct.variants}
             slideImages={[
-              'https://new-fragrantjewels.s3.us-west-2.amazonaws.com/app/img/inner-1.png',
-              'https://new-fragrantjewels.s3.us-west-2.amazonaws.com/app/img/inner-2.jpg',
-              'https://new-fragrantjewels.s3.us-west-2.amazonaws.com/app/img/inner-3.jpg',
-              'https://new-fragrantjewels.s3.us-west-2.amazonaws.com/app/img/inner-4.jpg',
-              'https://new-fragrantjewels.s3.us-west-2.amazonaws.com/app/img/inner-5.jpg',
-              'https://new-fragrantjewels.s3.us-west-2.amazonaws.com/app/img/inner-6.jpg',
-              'https://new-fragrantjewels.s3.us-west-2.amazonaws.com/app/img/inner-7.jpg',
-              'https://new-fragrantjewels.s3.us-west-2.amazonaws.com/app/img/inner-8.jpg',
-              'https://new-fragrantjewels.s3.us-west-2.amazonaws.com/app/img/inner-9.jpg',
+              'https://fragrantjewels-assets.s3.amazonaws.com/images/moonflowers/jewelry.jpg',
+              'https://fragrantjewels-assets.s3.amazonaws.com/images/moonflowers/product.jpg',
+              'https://fragrantjewels-assets.s3.amazonaws.com/images/moonflowers/story.jpg',
+              'https://fragrantjewels-assets.s3.amazonaws.com/images/moonflowers/jewelry-2.jpg',
+              'https://fragrantjewels-assets.s3.amazonaws.com/images/moonflowers/jewelry-3.jpg',
+              'https://fragrantjewels-assets.s3.amazonaws.com/images/moonflowers/jewelry-4.jpg',
             ]}
             title="Get addicted to me-time"
             subTitle="Join the Inner Circle for exclusive savings on exciting new collections every month. It's happiness, delivered. "
