@@ -212,7 +212,10 @@ export function MostFunOverview({ className }: MostFunOverviewProps): React.Reac
         <StyledSlider>
           <Slider arrows={true}>
             <div>
-              <Image src="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/most-fun-img-1.jpg" alt="" />
+              <Image
+                src="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/most-fun-img-1.jpg"
+                alt="Guilt Free Ingredients"
+              />
               <SSlideTitle>Guilt Free Ingredients</SSlideTitle>
               <SSlideText>
                 <p>
@@ -223,7 +226,10 @@ export function MostFunOverview({ className }: MostFunOverviewProps): React.Reac
             </div>
 
             <div>
-              <Image src="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/most-fun-img-2.jpg" alt="" />
+              <Image
+                src="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/most-fun-img-2.jpg"
+                alt="Win $10,000 Ring"
+              />
               <SSlideTitle>Win $10,000 Ring</SSlideTitle>
               <SSlideText>
                 <p>
@@ -234,7 +240,10 @@ export function MostFunOverview({ className }: MostFunOverviewProps): React.Reac
             </div>
 
             <div>
-              <Image src="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/most-fun-img-3.jpg" alt="" />
+              <Image
+                src="https://fragrantjewels.s3.amazonaws.com/app/app-home/img/most-fun-img-3.jpg"
+                alt="Collectible Jewelry"
+              />
               <SSlideTitle>Collectible Jewelry</SSlideTitle>
               <SSlideText>
                 <p>

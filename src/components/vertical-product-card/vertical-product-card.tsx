@@ -89,8 +89,6 @@ const SImageWrapperInner = styled.div`
   transform: translate(-50%, -50%);
 `
 
-const SProductImage = styled(Image)``
-
 const SProductMaterialType = styled.div`
   text-transform: uppercase;
   padding: 6px 0;
@@ -207,7 +205,7 @@ export function VerticalProductCard({ className, ...props }: VerticalProductCard
         {props.isNew && <SNewLabel>New</SNewLabel>}
         <SImageWrapper>
           <SImageWrapperInner>
-            <SProductImage src={props.productImg} />
+            <Image src={props.productImg} />
           </SImageWrapperInner>
         </SImageWrapper>
         <SProductMaterialType>{props.materialType}</SProductMaterialType>

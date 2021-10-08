@@ -6,7 +6,6 @@ export type ScreenSize = {
   width: number | null
   height: number | null
   lessThanSmall: boolean | null
-  sizeS: boolean | null
   greaterThanSmall: boolean | null
   greaterThanMedium: boolean | null
   greaterThanLarge: boolean | null

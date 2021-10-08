@@ -333,7 +333,7 @@ export function ReviewsSection({ quote, author, className }: ReviewsSectionProps
               >
                 {TEST_IMAGES.map((media, index) => (
                   <SCompanyImageContainer key={`${media}${index}`}>
-                    <img src={media} alt="company" />
+                    <Image src={media} alt="company" />
                   </SCompanyImageContainer>
                 ))}
               </AutoPlaySwipeableViews>

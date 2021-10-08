@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import React, { useMemo } from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import { LazyLoadImage, ScrollPosition, trackWindowScroll } from 'react-lazy-load-image-component'
+import window from '../window'
 
 type ImageProps = {
   className?: ClassName
@@ -9,8 +10,9 @@ type ImageProps = {
   src?: string
   alt?: string
   fit?: 'contain'
-  width?: string
-  height?: string
+  width?: number
+  height?: number
+  quality?: number
   shopifySize?: 'pico' | 'icon' | 'thumb' | 'small' | 'compact' | 'medium' | 'large' | 'grande'
   draggable?: boolean
   visibleByDefault?: boolean
@@ -30,6 +32,11 @@ const SImageContainer = styled.figure<{ fit?: string }>`
   }
 `
 
+const SLazyLoadImage = styled(LazyLoadImage)`
+  width: 100%;
+  height: 100%;
+`
+
 export function Image({
   className,
   style,
@@ -38,6 +45,7 @@ export function Image({
   fit,
   width,
   height,
+  quality = 80,
   shopifySize,
   draggable,
   visibleByDefault,
@@ -45,7 +53,9 @@ export function Image({
 }: ImageProps): React.ReactElement {
   const imagePatchedSrc = useMemo<string>(() => {
     if (!src) return ''
-    const optimizerUrl = 'https://www.fragrantjewels.com/cdn-cgi/image/w=auto,q=97/'
+    const optimizerUrl = `https://www.fragrantjewels.com/cdn-cgi/image/w=${width || 'auto'},h=${
+      height || 'auto'
+    },q=${quality}/`
     if (!shopifySize) return optimizerUrl + src
     try {
       const url = new URL(src)
@@ -61,8 +71,8 @@ export function Image({
 
   return (
     <SImageContainer className={cn(className)} style={style} fit={fit}>
-      <LazyLoadImage
-        src={imagePatchedSrc}
+      <SLazyLoadImage
+        src={window && imagePatchedSrc}
         alt={alt}
         scrollPosition={scrollPosition}
         threshold={500}

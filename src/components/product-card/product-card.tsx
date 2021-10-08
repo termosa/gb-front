@@ -55,36 +55,6 @@ const SProductCard = styled.div`
   }
 `
 
-/*const SCircle = styled.div<{
-  backgroundColor?: string
-}>`
-  font: 600 12px/1.25 'Montserrat', sans-serif;
-  letter-spacing: 0.08em;
-  background-color: ${(props) => props.backgroundColor || '#9059c8'};
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  z-index: 1;
-  border-radius: 50%;
-  top: 4px;
-  left: 4px;
-  width: 42px;
-  height: 42px;
-  @media (min-width: 768px) {
-    font: 600 14px/17px 'Montserrat', sans-serif;
-    top: 10px;
-    left: 10px;
-    width: 55px;
-    height: 55px;
-  }
-
-  & > span {
-    color: #ffffff;
-    text-transform: uppercase;
-  }
-`*/
-
 const ProductCardImgWrapper = styled.div`
   position: relative;
 
@@ -286,9 +256,6 @@ export function ProductCard({
       onClick={(e) => (!isMouseMoved && e.type === 'click' ? onClick() : null)}
     >
       <SProductCard>
-        {/*<SCircle backgroundColor={'#9059c8'}>
-          <span>New</span>
-        </SCircle>*/}
         <ProductCardImgWrapper>
           <ProductCardImgWrapperInner>
             {product.image && (
@@ -297,6 +264,7 @@ export function ProductCard({
                 alt={product.image?.alt}
                 visibleByDefault={imagesVisibleByDefault}
                 draggable={false}
+                width={280}
                 shopifySize={screenSize.greaterThanSmall ? 'large' : 'medium'}
               />
             )}
