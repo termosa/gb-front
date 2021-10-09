@@ -2,7 +2,6 @@ import styled from 'styled-components'
 import React, { useMemo } from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import { LazyLoadImage, ScrollPosition, trackWindowScroll } from 'react-lazy-load-image-component'
-import window from '../window'
 
 type ImageProps = {
   className?: ClassName
@@ -72,7 +71,7 @@ export function Image({
   return (
     <SImageContainer className={cn(className)} style={style} fit={fit}>
       <SLazyLoadImage
-        src={window && imagePatchedSrc}
+        src={imagePatchedSrc}
         alt={alt}
         scrollPosition={scrollPosition}
         threshold={500}
