@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import ShopByProductCard, { ShopByProductCardProps } from '../shop-by-product-card'
-import SwipeableViews from 'react-swipeable-views'
 import useScreenSize from '../../lib/use-screen-size'
+import Slider from '../../lib/slider'
 
 export type ProductDetails = ShopByProductCardProps
 export type ShopByProductsOverviewProps = {
@@ -84,70 +84,8 @@ const SliderHolder = styled.div`
   }
 `
 
-const SArrow = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 45px;
-  height: 45px;
-  font-size: 0;
-  line-height: 1;
-  position: absolute;
-  cursor: pointer;
-  z-index: 5;
-  top: calc(50% - 12px);
-  transform: translateY(-50%);
-`
-
-const SPrevArrow = styled(SArrow)`
-  left: -14px;
-
-  button {
-    transform: translateX(5px) rotate(45deg);
-  }
-`
-
-const SNextArrow = styled(SArrow)`
-  right: -14px;
-
-  button {
-    transform: translateX(-5px) rotate(-135deg);
-  }
-`
-
-const SArrowButton = styled.button<{
-  isVisible: boolean
-}>`
-  display: ${(props) => (props.isVisible ? 'block' : 'none')};
-  border: none;
-  background-color: transparent;
-  font-size: 0;
-  margin: 0;
-  cursor: pointer;
-  padding: 25px;
-
-  &:focus {
-    outline: 0;
-    box-shadow: none;
-  }
-
-  &:after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 17px;
-    height: 17px;
-    border-bottom: 1px solid #9059c8;
-    border-left: 1px solid #9059c8;
-    background-color: transparent;
-  }
-`
-
 export function ShopByProductsOverview({ products, title }: ShopByProductsOverviewProps): React.ReactElement {
   const screenSize = useScreenSize()
-  const [currentSlide, setCurrentSlide] = useState(1)
 
   return (
     <SSection>
@@ -167,32 +105,7 @@ export function ShopByProductsOverview({ products, title }: ShopByProductsOvervi
             ))
           ) : (
             <SliderHolder>
-              <SPrevArrow>
-                <SArrowButton
-                  onClick={() => {
-                    currentSlide > 0 ? setCurrentSlide(currentSlide - 1) : null
-                  }}
-                  isVisible={currentSlide > 0}
-                />
-              </SPrevArrow>
-              <SNextArrow>
-                <SArrowButton
-                  onClick={() => {
-                    products.length - 1 > currentSlide ? setCurrentSlide(currentSlide + 1) : null
-                  }}
-                  isVisible={products.length - 1 > currentSlide}
-                />
-              </SNextArrow>
-              <SwipeableViews
-                enableMouseEvents
-                resistance
-                index={currentSlide}
-                onChangeIndex={(slideNumber: number) => {
-                  products.length >= slideNumber ? setCurrentSlide(slideNumber) : null
-                }}
-                style={{ overflow: 'visible' }}
-                slideStyle={{ overflow: 'visible' }}
-              >
+              <Slider infinite>
                 {products &&
                   products.map((product) => (
                     <ShopByProductCard
@@ -203,7 +116,7 @@ export function ShopByProductsOverview({ products, title }: ShopByProductsOvervi
                       title={product.title}
                     />
                   ))}
-              </SwipeableViews>
+              </Slider>
             </SliderHolder>
           )}
         </SliderWrapper>
