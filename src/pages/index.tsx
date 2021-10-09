@@ -25,7 +25,7 @@ export default function HomePage({
   innerCircleMembershipProduct,
 }: HomePageProps): React.ReactElement {
   const router = useRouter()
-  const isHeroGallery = false
+  const isHeroGallery = true
 
   return (
     <>
@@ -52,20 +52,6 @@ export default function HomePage({
                   'https://fragrantjewels-assets.s3.amazonaws.com/images/moonflowers/moonflowers-banner-dt.jpg',
                 backgroundImgMobile:
                   'https://fragrantjewels-assets.s3.amazonaws.com/images/moonflowers/moonflowers-banner-mb.jpg',
-                transparentPlaceholder: true,
-              },
-              {
-                topText: 'NEW',
-                centerFirstText: 'Time Travel Series',
-                centerSecondText: '',
-                bottomText:
-                  'Transport yourself back to 1947 Los Angels, where the price of fame can mean giving up everything...including your life.',
-                buttonText: 'Reveal Collection',
-                buttonLink: createLink.forPage('time-travel-series'),
-                backgroundImg:
-                  'https://fragrantjewels-assets.s3.amazonaws.com/images/banners/time-travel/home-tts-dt-1.jpg',
-                backgroundImgMobile:
-                  'https://fragrantjewels-assets.s3.amazonaws.com/images/banners/time-travel/home-tts-mb-1.jpg',
                 transparentPlaceholder: true,
               },
               {
