@@ -901,6 +901,7 @@ export function SiteHeader({
   const [isBurgerMenuOpen, setBurgerMenuOpen] = useState(false)
   const customer = useContext(CustomerContext)
   const customerOrdersDetails = useContext(CustomerOrdersDetailsContext)
+  const isGlobalBannerShow = false
 
   const onAddGAEvent = (eventObj: GAProps) => {
     ga(eventObj)
@@ -920,7 +921,7 @@ export function SiteHeader({
       ref={headerRef}
     >
       <RollingBanner />
-      {router.pathname !== '/' && (
+      {router.pathname !== '/' && isGlobalBannerShow && (
         <SGlobalBanner onClick={() => router.push(createLink.forCollection(GLOBAL_BANNER_LINK))}>
           <Image
             src={
