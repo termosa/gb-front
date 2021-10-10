@@ -211,12 +211,16 @@ const SPdpCarouselItemMobile = styled.div`
   outline: none;
   display: flex !important;
   justify-content: center;
-  height: 288px;
+  width: 344px;
+  height: 344px;
   margin: 0 auto;
+
+  @media (max-width: 382px) {
+    height: calc(100vw - 32px);
+  }
 
   img {
     width: 100%;
-    max-width: 414px;
     height: auto;
     object-fit: contain;
     @media (min-width: 768px) {

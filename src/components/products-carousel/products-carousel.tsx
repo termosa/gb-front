@@ -251,9 +251,9 @@ export const ProductsCarousel = ({
         ) : (
           <SectionTitle>
             {/* <span>{title}</span> */}
-            <span>{` ${titleParts.slice(0, 1).join(' ')}`}&nbsp;</span>
+            <span>{` ${titleParts?.slice(0, 1).join(' ')}`}&nbsp;</span>
             <span>
-              <STitleUnderline>{titleParts.slice(1, 3).join(' ')}</STitleUnderline>
+              <STitleUnderline>{titleParts?.slice(1, 3).join(' ')}</STitleUnderline>
             </span>
           </SectionTitle>
         )}

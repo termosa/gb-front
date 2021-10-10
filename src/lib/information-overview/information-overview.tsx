@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React, { useRef } from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
 import InformationCard from '../../components/information-card'
-import SwipeableViews from 'react-swipeable-views'
 import useScreenSize from '../use-screen-size'
+import Slider from '../slider'
+import Carousel from 'react-multi-carousel'
 
 export type { InformationCard }
 
@@ -99,7 +100,7 @@ const SArrow = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 45px;
+  width: 50px;
   height: 45px;
   font-size: 0;
   line-height: 1;
@@ -123,24 +124,24 @@ const SArrow = styled.div`
 
 const SPrevArrow = styled(SArrow)`
   left: -15px;
+  padding-left: 5px;
 
   button {
-    transform: translateX(5px) rotate(45deg);
+    transform: translateX(10px) rotate(45deg);
   }
 `
 
 const SNextArrow = styled(SArrow)`
   right: -15px;
+  padding-right: 5px;
 
   button {
-    transform: translateX(-5px) rotate(-135deg);
+    transform: translateX(-10px) rotate(-135deg);
   }
 `
 
-const SArrowButton = styled.button<{
-  isVisible: boolean
-}>`
-  display: ${(props) => (props.isVisible ? 'block' : 'none')};
+const SArrowButton = styled.button`
+  display: block;
   width: 17px;
   height: 17px;
   border: none;
@@ -151,23 +152,6 @@ const SArrowButton = styled.button<{
   margin: 0;
   padding: 0;
   cursor: pointer;
-`
-
-const SCustomDot = styled.div<{
-  isActive: boolean
-}>`
-  background: #4dbeba;
-  opacity: ${(props) => (props.isActive ? 0.95 : 0.6)};
-  width: 10px;
-  height: 10px;
-  margin: 0 7px;
-  border-radius: 50%;
-  cursor: pointer;
-`
-
-const SCustomDotWrapper = styled.div`
-  display: flex;
-  justify-content: center;
 `
 
 export type InformationOverviewProps = {
@@ -186,8 +170,8 @@ export function InformationOverview({
   cards,
 }: InformationOverviewProps): React.ReactElement {
   const screenSize = useScreenSize()
-  const [currentSlide, setCurrentSlide] = useState(0)
   const titleArr = title.split(titleUnderline)
+  const infoSliderRef = useRef<Carousel | null>(null)
 
   return (
     <SWrapper className={cn(className)} style={style}>
@@ -206,39 +190,25 @@ export function InformationOverview({
             cards.map((card) => <InformationCard key={card.image + card.title} card={card} />)
           ) : (
             <SliderHolder>
-              <SPrevArrow>
-                <SArrowButton
-                  onClick={() => {
-                    currentSlide > 0 ? setCurrentSlide(currentSlide - 1) : null
-                  }}
-                  isVisible={currentSlide > 0}
-                />
-              </SPrevArrow>
-              <SNextArrow>
-                <SArrowButton
-                  onClick={() => {
-                    cards.length - 1 > currentSlide ? setCurrentSlide(currentSlide + 1) : null
-                  }}
-                  isVisible={cards.length - 1 > currentSlide}
-                />
-              </SNextArrow>
-              <SwipeableViews
-                enableMouseEvents
-                resistance
-                index={currentSlide}
-                onChangeIndex={(slideNumber: number) => {
-                  cards.length >= slideNumber ? setCurrentSlide(slideNumber) : null
+              <SPrevArrow
+                onClick={() => {
+                  infoSliderRef.current && infoSliderRef.current.previous(1)
                 }}
               >
+                <SArrowButton />
+              </SPrevArrow>
+              <SNextArrow
+                onClick={() => {
+                  infoSliderRef.current && infoSliderRef.current.next(1)
+                }}
+              >
+                <SArrowButton />
+              </SNextArrow>
+              <Slider infinite showDots={true} arrows={false} carouselRef={infoSliderRef}>
                 {cards.map((card) => (
                   <InformationCard key={card.image + card.title} card={card} />
                 ))}
-              </SwipeableViews>
-              <SCustomDotWrapper>
-                {cards.map((_, i) => (
-                  <SCustomDot isActive={currentSlide === i} onClick={() => setCurrentSlide(i)} />
-                ))}
-              </SCustomDotWrapper>
+              </Slider>
             </SliderHolder>
           )}
         </SCardsWrapper>
