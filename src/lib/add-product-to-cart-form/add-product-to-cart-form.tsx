@@ -53,6 +53,7 @@ const ModalContent = styled.div<{ isVisible?: boolean }>`
   box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.15);
 
   @media (min-width: 1200px) {
+    transform: scale(${(props) => (props.isVisible ? '1' : '0.85')});
     max-width: 332px;
     box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
   }
@@ -102,21 +103,21 @@ const ProductModalHeading = styled.h3`
   line-height: 1.3;
 `
 
-const SPdpPiSelector = styled.div`
+const ProductSelector = styled.div`
   display: flex;
   justify-content: space-between;
   flex-wrap: nowrap;
   margin: 0 0 12px;
 `
 
-const SPdpPiRsSelector = styled.div`
+const ProductRsSelector = styled.div`
   text-align: center;
   color: #9059c8;
   margin: 0 0 12px;
   letter-spacing: 0;
 `
 
-const SPdpPiSelectorBtnHolder = styled.div`
+const ProductSelectorBtnHolder = styled.div`
   margin: 0 2px;
   position: relative;
   width: 100%;
@@ -146,7 +147,7 @@ const SPdpPiSelectorBtnHolder = styled.div`
   }
 `
 
-const SPdpPiSelectorBtn = styled.button<{
+const ProductSelectorBtn = styled.button<{
   isActive: boolean
 }>`
   background: ${(props) => (props.isActive ? '#9059C8' : '#fff')};
@@ -182,7 +183,7 @@ const SPdpPiSelectorBtn = styled.button<{
   }
 `
 
-const SPdpBtn = styled.button<{ disabled?: boolean }>`
+const ProductBtn = styled.button<{ disabled?: boolean }>`
   background: #fff;
   color: #000;
   padding: 17px 15px;
@@ -217,6 +218,8 @@ const SPdpBtn = styled.button<{ disabled?: boolean }>`
   }
 `
 
+const ModalForm = styled.form``
+
 export type AddProductToCartFormProps = {
   className?: ClassName
   style?: React.CSSProperties
@@ -232,10 +235,24 @@ export function AddProductToCartForm({
 }: AddProductToCartFormProps): React.ReactElement {
   const [selectedVariant, setSelectedVariant] = useState<ProductVariant | null>(null)
   const [isSelectRingError, setSelectRingError] = useState<boolean>(false)
+  const [addToCartButtonState, setAddToCartButtonState] = useState<string>('Add to Cart')
 
   const onCloseModal = (event: any) => {
     event.stopPropagation()
     setModal(false)
+  }
+
+  const successRequest = (product: Product) => {
+    setAddToCartButtonState('Added!')
+    setTimeout(() => {
+      setAddToCartButtonState('Add to Cart')
+    }, 1000)
+    trackAddedToCart(product)
+  }
+
+  const failRequest = (err: unknown) => {
+    setAddToCartButtonState('Add to Cart')
+    alert(err)
   }
 
   const addToCartHandler = (selectedVariant: ProductVariant | null, product: Product) => {
@@ -246,7 +263,13 @@ export function AddProductToCartForm({
     }
 
     const addingRequest: Promise<unknown> = addCartItem(selectedVariant.variant_id)
-    addingRequest.then(() => trackAddedToCart(product)).catch((err: unknown) => alert(err))
+    setAddToCartButtonState('Adding...')
+    addingRequest.then(() => successRequest(product)).catch((err) => failRequest(err))
+  }
+
+  const handleSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
+    e.preventDefault()
+    addToCartHandler(selectedVariant, product)
   }
 
   return (
@@ -264,17 +287,17 @@ export function AddProductToCartForm({
               />
             </svg>
           </ModalCloseButton>
-          <React.Fragment>
+          <ModalForm onSubmit={handleSubmit}>
             <ProductModalHeading>
               Select a {product.variants && product.variants.length > 1 ? 'ring size' : 'jewelry type'} to add this item
               to your cart:
             </ProductModalHeading>
-            <SPdpPiSelector>
+            <ProductSelector>
               {product.variants.map(
                 (variant: ProductVariant) =>
                   variant.size && (
-                    <SPdpPiSelectorBtnHolder key={variant.size}>
-                      <SPdpPiSelectorBtn
+                    <ProductSelectorBtnHolder key={variant.size}>
+                      <ProductSelectorBtn
                         isActive={variant.variant_id === selectedVariant?.variant_id}
                         type="button"
                         value={variant.size}
@@ -287,16 +310,14 @@ export function AddProductToCartForm({
                         disabled={!variant.available}
                       >
                         {variant.title}
-                      </SPdpPiSelectorBtn>
-                    </SPdpPiSelectorBtnHolder>
+                      </ProductSelectorBtn>
+                    </ProductSelectorBtnHolder>
                   )
               )}
-            </SPdpPiSelector>
-            {isSelectRingError ? <SPdpPiRsSelector>Please select ring size</SPdpPiRsSelector> : null}
-            <SPdpBtn type="button" onClick={() => addToCartHandler(selectedVariant, product)}>
-              Add to Cart
-            </SPdpBtn>
-          </React.Fragment>
+            </ProductSelector>
+            {isSelectRingError ? <ProductRsSelector>Please select ring size</ProductRsSelector> : null}
+            <ProductBtn type="submit">{addToCartButtonState}</ProductBtn>
+          </ModalForm>
         </ModalContentBody>
       </ModalContent>
     </Modal>
