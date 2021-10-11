@@ -27,9 +27,6 @@ module.exports = (phase) => {
   return {
     ...cssOptions,
     typescript: { ignoreBuildErrors: true },
-    experimental: {
-      scrollRestoration: true,
-    },
     env: {
       APP_ENV: process.env.APP_ENV,
       SITE_URL: process.env.SITE_URL,
