@@ -7,7 +7,6 @@ import Link from 'next/link'
 import SigninSignup from '../signin-signup'
 import useCart from '../../lib/use-cart'
 import createLink from '../../lib/create-link'
-import window from '../../lib/window'
 
 export type NavIconsProps = {
   className?: ClassName
