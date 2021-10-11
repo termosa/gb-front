@@ -622,8 +622,8 @@ export function InnerCircleExclusive({
                       <SLeftImageContainer isPresent={slideImages.length > 2} key={src + i}>
                         <SImage
                           src={src}
-                          width={screenSize.greaterThanMedium ? 240 : 80}
-                          height={screenSize.greaterThanMedium ? 240 : 80}
+                          width={screenSize.greaterThanMedium ? 240 : 160}
+                          height={screenSize.greaterThanMedium ? 240 : 160}
                           alt={productTitle}
                           visibleByDefault
                         />
@@ -638,8 +638,8 @@ export function InnerCircleExclusive({
                         src={src}
                         alt={productTitle}
                         key={src + i}
-                        width={screenSize.greaterThanMedium ? 400 : 236}
-                        height={screenSize.greaterThanMedium ? 400 : 236}
+                        width={screenSize.greaterThanMedium ? 400 : 258}
+                        height={screenSize.greaterThanMedium ? 400 : 258}
                         visibleByDefault
                       />
                     ))}
