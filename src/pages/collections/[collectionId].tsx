@@ -20,11 +20,11 @@ export default function CollectionPage({ collection, collectionId }: CollectionP
         <title>{collection.title} - Fragrant Jewels</title>
         <meta name="description" content={collectionDescription.slice(0, 320) || collection.title} />
       </Head>
-      <CollectionContext.Provider value={collection}>
-        <MainPageLayout>
+      <MainPageLayout>
+        <CollectionContext.Provider value={collection}>
           <Collection />
-        </MainPageLayout>
-      </CollectionContext.Provider>
+        </CollectionContext.Provider>
+      </MainPageLayout>
     </>
   )
 }
