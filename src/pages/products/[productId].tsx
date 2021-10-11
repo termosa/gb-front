@@ -7,13 +7,14 @@ import Product from '../../containers/Product'
 import ProductsCarousel from '../../components/products-carousel'
 import ProductContext from '../../modules/product-context'
 import MainPageLayout from '../../lib/main-page-layout'
-import YotpoReviews from '../../lib/yotpo-reviews'
+// import YotpoReviews from '../../lib/yotpo-reviews'
 import SiteSection from '../../components/site-section'
 import trackViewedProduct from '../../lib/track-viewed-product'
 import RemotePage from '../../lib/remote-page'
 import LazyLoad from '../../lib/lazy-load'
 import YotpoProductGallery from '../../lib/yotpo-product-gallery'
 import createLink from '../../lib/create-link'
+import StampedReviews from '../../lib/stamped-reviews'
 
 export default function ProductPage({ product, productId, potentialProducts }: ProductPageProps): React.ReactElement {
   const router = useRouter()
@@ -50,7 +51,8 @@ export default function ProductPage({ product, productId, potentialProducts }: P
           <div className="product-yotpo-reviews-section">
             <LazyLoad threshold={1000} placeholder={<div style={{ height: 300 }} />}>
               <SiteSection>
-                <YotpoReviews />
+                {/* <YotpoReviews /> */}
+                <StampedReviews />
               </SiteSection>
             </LazyLoad>
           </div>

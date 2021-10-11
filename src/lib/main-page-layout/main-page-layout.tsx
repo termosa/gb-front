@@ -87,6 +87,8 @@ export function MainPageLayout({ children, className, style }: MainPageLayoutPro
           href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;500;600;700&display=swap"
           rel="stylesheet"
         />
+        {/* TODO: Same style is imported by initiate-stamped module */}
+        <link href="http://cdn1.stamped.io/files/widget.min.css" rel="stylesheet" />
       </Head>
       <Normalize />
       <CustomerContext.Provider value={customer || undefined}>

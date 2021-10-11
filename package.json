@@ -8,7 +8,7 @@
     "test:dev": "NODE_ENV=test jest --watchAll",
     "start": "PORT=$PORT next start",
     "build": "rm -rf .next && next build",
-    "build:image": "docker build --tag fj-website --build-arg SITE_URL=https://www.fragrantjewels.com --build-arg CLIENT_API_URL=https://backend.fragrantjewels.com --build-arg BASE_API_URL=https://backend.fragrantjewels.com .",
+    "build:image": "docker build --tag fj-website --build-arg SITE_URL=https://www.fragrantjewels.com --build-arg CLIENT_API_URL=https://stagebackend.fragrantjewels.com --build-arg BASE_API_URL=https://stagebackend.fragrantjewels.com --build-arg APP_ENV=staging .",
     "dev": "next dev",
     "export": "npm run build && next export",
     "prettier": "prettier  --write **/*.{ts,tsx,js}",
