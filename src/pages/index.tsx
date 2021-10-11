@@ -25,7 +25,7 @@ export default function HomePage({
   innerCircleMembershipProduct,
 }: HomePageProps): React.ReactElement {
   const router = useRouter()
-  const isHeroGallery = false
+  const isHeroGallery = true
 
   return (
     <>
@@ -42,16 +42,16 @@ export default function HomePage({
             slides={[
               {
                 topText: 'NEW',
-                centerFirstText: 'Time Travel Series',
+                centerFirstText: 'The October Box',
                 centerSecondText: '',
                 bottomText:
-                  'Transport yourself back to 1947 Los Angels, where the price of fame can mean giving up everything...including your life.',
-                buttonText: 'Reveal Collection',
-                buttonLink: createLink.forPage('time-travel-series'),
+                  'Join Inner Circle today for an exclusive discount on this new collection which reminds you to bloom in the darkness.',
+                buttonText: 'Reserve Now',
+                buttonLink: createLink.forPage('inner-circle'),
                 backgroundImg:
-                  'https://fragrantjewels-assets.s3.amazonaws.com/images/banners/time-travel/home-tts-dt-1.jpg',
+                  'https://fragrantjewels-assets.s3.amazonaws.com/images/moonflowers/moonflowers-banner-dt.jpg',
                 backgroundImgMobile:
-                  'https://fragrantjewels-assets.s3.amazonaws.com/images/banners/time-travel/home-tts-mb-1.jpg',
+                  'https://fragrantjewels-assets.s3.amazonaws.com/images/moonflowers/moonflowers-banner-mb.jpg',
                 transparentPlaceholder: true,
               },
               {
@@ -106,12 +106,12 @@ export default function HomePage({
             product={innerCircleSubscriptionProduct}
             membershipProductVariants={innerCircleMembershipProduct.variants}
             slideImages={[
-              'https://new-fragrantjewels.s3.us-west-2.amazonaws.com/app/img/skull-ring.jpg',
-              'https://new-fragrantjewels.s3.us-west-2.amazonaws.com/app/img/monthly-subscription.jpg',
-              'https://new-fragrantjewels.s3.us-west-2.amazonaws.com/app/img/bones-ring.jpg',
-              'https://new-fragrantjewels.s3.us-west-2.amazonaws.com/app/img/bone-band.jpg',
-              'https://new-fragrantjewels.s3.us-west-2.amazonaws.com/app/img/jewel-candle.jpg',
-              'https://new-fragrantjewels.s3.us-west-2.amazonaws.com/app/img/epsom-salt.jpg',
+              'https://fragrantjewels-assets.s3.amazonaws.com/images/moonflowers/jewelry.jpg',
+              'https://fragrantjewels-assets.s3.amazonaws.com/images/moonflowers/product.jpg',
+              'https://fragrantjewels-assets.s3.amazonaws.com/images/moonflowers/story.jpg',
+              'https://fragrantjewels-assets.s3.amazonaws.com/images/moonflowers/jewelry-2.jpg',
+              'https://fragrantjewels-assets.s3.amazonaws.com/images/moonflowers/jewelry-3.jpg',
+              'https://fragrantjewels-assets.s3.amazonaws.com/images/moonflowers/jewelry-4.jpg',
             ]}
             title="Get addicted to me-time"
             subTitle="Join the Inner Circle for exclusive savings on exciting new collections every month. It's happiness, delivered. "

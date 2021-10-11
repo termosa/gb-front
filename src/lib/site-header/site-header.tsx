@@ -731,7 +731,7 @@ const AllContent = () => (
       <ExtendableBlockItem className="desktop-nav-product-item">
         <Link passHref href={createLink.forProduct('black-dahlia-satin-collection-candle-and-bath-bomb-set')}>
           <a>
-            <Image src="https://fragrantjewels.s3.amazonaws.com/app/app-nav/nav-all-img-25-dt.jpg" width={290} />
+            <Image src="https://fragrantjewels.s3.amazonaws.com/app/app-nav/nav-all-img-dahlia-dt.png" width={290} />
             <AnimatedLink as="span">
               <span>New! Free Bonus Perfume</span>
             </AnimatedLink>
@@ -750,11 +750,13 @@ const SubscriptionContent = () => (
           <Link passHref href={createLink.forPage('inner-circle')}>
             <a>
               <Image
-                src="https://fragrantjewels-assets.s3.amazonaws.com/images/pick-your-poison/nav-pick-your-poison.jpg"
+                src="https://fragrantjewels-assets.s3.amazonaws.com/images/moonflowers/moonflowers-nav.jpg"
                 width={370}
               />
               <ExtendableBlockListTitle>Exclusive Savings On New Collections Every Month</ExtendableBlockListTitle>
-              <ExtendableBlockListText>A collection so intoxicating, it's to die for...</ExtendableBlockListText>
+              <ExtendableBlockListText>
+                Join your fellow Moonflowers in soaking up all the energy that twilight brings.
+              </ExtendableBlockListText>
               <AnimatedLink as="span">
                 <span>Learn more</span>
               </AnimatedLink>
@@ -904,6 +906,7 @@ export function SiteHeader({
   const [isBurgerMenuOpen, setBurgerMenuOpen] = useState(false)
   const customer = useContext(CustomerContext)
   const customerOrdersDetails = useContext(CustomerOrdersDetailsContext)
+  const isGlobalBannerShow = false
 
   const onAddGAEvent = (eventObj: GAProps) => {
     ga(eventObj)
@@ -923,7 +926,7 @@ export function SiteHeader({
       ref={headerRef}
     >
       <RollingBanner />
-      {router.pathname !== '/' && (
+      {router.pathname !== '/' && isGlobalBannerShow && (
         <SGlobalBanner onClick={() => router.push(createLink.forCollection(GLOBAL_BANNER_LINK))}>
           <Image
             src={

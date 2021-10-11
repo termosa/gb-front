@@ -211,12 +211,16 @@ const SPdpCarouselItemMobile = styled.div`
   outline: none;
   display: flex !important;
   justify-content: center;
-  height: 288px;
+  width: 344px;
+  height: 344px;
   margin: 0 auto;
+
+  @media (max-width: 382px) {
+    height: calc(100vw - 32px);
+  }
 
   img {
     width: 100%;
-    max-width: 414px;
     height: auto;
     object-fit: contain;
     @media (min-width: 768px) {
@@ -319,6 +323,7 @@ export function VerticalGallery({ className }: VerticalGalleryProps): React.Reac
                         src={image.src}
                         alt={image.alt}
                         shopifySize={screenSize.greaterThanMedium ? 'medium' : 'compact'}
+                        quality={100}
                       />
                     </SCarouselIconsItem>
                   ))}
@@ -337,6 +342,7 @@ export function VerticalGallery({ className }: VerticalGalleryProps): React.Reac
                       width={galleryImageWidth}
                       height={getImageHeight(image)}
                       shopifySize="grande"
+                      quality={100}
                     />
                   </SPdpCarouselItem>
                 ))}
@@ -358,6 +364,7 @@ export function VerticalGallery({ className }: VerticalGalleryProps): React.Reac
                           src={product.images && image?.src}
                           alt={(product.images && image?.alt) || ''}
                           shopifySize="grande"
+                          quality={100}
                         />
                       )}
                     </SPdpCarouselItemMobile>
@@ -383,6 +390,7 @@ export function VerticalGallery({ className }: VerticalGalleryProps): React.Reac
                           fit="contain"
                           width={60}
                           height={60}
+                          quality={100}
                         />
                       )}
                     </SCarouselThumbnailItem>

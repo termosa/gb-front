@@ -11,7 +11,6 @@ const SliderWrapper = styled.div`
   * {
     box-sizing: border-box;
   }
-
   .slick-slider {
     position: relative;
     display: block;
@@ -20,7 +19,6 @@ const SliderWrapper = styled.div`
     touch-action: pan-y;
     -webkit-tap-highlight-color: transparent;
   }
-
   .slick-list {
     position: relative;
     display: block;
@@ -28,20 +26,16 @@ const SliderWrapper = styled.div`
     margin: 0;
     padding: 0;
   }
-
   .slick-list:focus {
     outline: none;
   }
-
   .slick-list.dragging {
     cursor: hand;
   }
-
   .slick-slider .slick-track,
   .slick-slider .slick-list {
     transform: translate3d(0, 0, 0);
   }
-
   .slick-track {
     position: relative;
     top: 0;
@@ -50,62 +44,49 @@ const SliderWrapper = styled.div`
     margin-left: auto;
     margin-right: auto;
   }
-
   .slick-track:before,
   .slick-track:after {
     display: table;
     content: '';
   }
-
   .slick-track:after {
     clear: both;
   }
-
   .slick-loading .slick-track {
     visibility: hidden;
   }
-
   .slick-slide {
     display: none;
     float: left;
     height: 100%;
     min-height: 1px;
   }
-
   [dir='rtl'] .slick-slide {
     float: right;
   }
-
   .slick-slide img {
     display: block;
   }
-
   .slick-slide.slick-loading img {
     display: none;
   }
-
   .slick-slide.dragging img {
     pointer-events: none;
   }
-
   .slick-initialized .slick-slide {
     display: block;
   }
-
   .slick-loading .slick-slide {
     visibility: hidden;
   }
-
   .slick-vertical .slick-slide {
     display: block;
     height: auto;
     border: 1px solid transparent;
   }
-
   .slick-arrow.slick-hidden {
     display: none;
   }
-
   .slick-dots {
     bottom: 18px;
   }
@@ -135,12 +116,10 @@ const Slide = styled.div<{ backgroundImg: string }>`
   background-position: center center;
   background-size: cover;
   font: 12px/1.3 'Montserrat', sans-serif;
-
   @media (min-width: 768px) {
     height: 450px;
     background-image: ${(props) => `url(${props.backgroundImg}) no-repeat`};
   }
-
   @media (max-aspect-ratio: 4/3) and (max-width: 767px) {
     height: 490px;
   }
@@ -154,16 +133,13 @@ const SlideTransparentContent = styled.div`
 
 const SliderTransparentWrapper = styled.div`
   position: absolute;
-
   @media (min-width: 1200px) {
     top: 50%;
     transform: translateY(-50%);
-
     button {
       margin: 0;
     }
   }
-
   @media (max-width: 1199px) {
     width: 90%;
     bottom: 46px;
@@ -184,11 +160,9 @@ const SlideContent = styled.div`
   margin: 0;
   padding: 15px;
   text-align: center;
-
   @media (min-width: 375px) {
     padding: 25px;
   }
-
   @media (min-width: 768px) {
     bottom: -102px;
     padding: 32px;
@@ -209,16 +183,13 @@ const SlideTitle = styled.div`
   letter-spacing: -0.02em;
   font-style: normal;
   margin: 0 0 12px;
-
   @media (min-width: 768px) {
     max-width: 300px;
     margin: 0 auto 12px;
   }
-
   @media (min-width: 1200px) {
     margin: 0 0 12px;
   }
-
   & > span {
     font-style: italic;
   }
@@ -228,12 +199,10 @@ const SlideText = styled.div`
   p {
     font: 400 16px/1.5 'Montserrat', serif;
     margin: 0 0 20px;
-
     @media (min-width: 768px) {
       margin: 0 auto 20px;
       max-width: 500px;
     }
-
     @media (min-width: 1200px) {
       margin: 0 auto 20px;
       max-width: 410px;
@@ -243,7 +212,6 @@ const SlideText = styled.div`
 
 const SlideLinkInner = styled.a`
   text-decoration: none;
-  color: inherit;
   display: inline-block;
   min-width: 250px;
   margin: 0 auto;
@@ -252,14 +220,12 @@ const SlideLinkInner = styled.a`
   border-radius: 0;
   font: 700 16px/1.25 'Montserrat', sans-serif;
   letter-spacing: 0.08em;
-  text-decoration: none;
   transition: all linear 0.2s;
   background-color: #000;
   color: #fff;
   cursor: pointer;
   padding: 16.5px;
   text-align: center;
-
   @media (min-width: 1200px) {
     margin: 0;
     &:hover {
@@ -268,7 +234,6 @@ const SlideLinkInner = styled.a`
       color: #000;
     }
   }
-}
 `
 
 export type GalleryItem = {

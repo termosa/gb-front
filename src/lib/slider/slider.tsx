@@ -164,6 +164,11 @@ const SArrow = styled.div`
 
 const SPrevArrow = styled(SArrow)`
   left: 8px;
+
+  @media (min-width: 436px) {
+    left: 20px;
+  }
+
   button {
     transform: translateX(5px) rotate(45deg);
   }
@@ -171,6 +176,11 @@ const SPrevArrow = styled(SArrow)`
 
 const SNextArrow = styled(SArrow)`
   right: 8px;
+
+  @media (min-width: 436px) {
+    right: 20px;
+  }
+
   button {
     transform: translateX(-5px) rotate(-135deg);
   }
