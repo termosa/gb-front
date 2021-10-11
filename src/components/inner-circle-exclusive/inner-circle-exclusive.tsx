@@ -150,7 +150,6 @@ const SImagesContainer = styled.div`
   max-width: 385px;
 
   @media (min-width: 768px) {
-    max-width: 612px;
     margin: 0 0 25px auto;
     max-width: 430px;
   }
