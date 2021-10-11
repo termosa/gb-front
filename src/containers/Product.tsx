@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useRef } from 'react'
+import { useRouter } from 'next/router'
 import { Product as ProductType } from '../modules/normalize-product'
 import ProductContext from '../modules/product-context'
 import window from '../lib/window'
@@ -44,6 +45,7 @@ const SPdpRow = styled.div`
 `
 
 const Product = (): null | React.ReactElement => {
+  const router = useRouter()
   const product = useContext<ProductType | undefined>(ProductContext)
 
   const addToCartRef = useRef<HTMLButtonElement>(null)
@@ -55,7 +57,7 @@ const Product = (): null | React.ReactElement => {
     }
     localStorage.setItem(
       'isFloatingCtaVisible',
-      JSON.stringify(position.top <= 150 && window?.location.pathname.includes('/products/'))
+      JSON.stringify(position.top <= 150 && router.pathname.includes('/products/'))
     )
   }
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import cn, { Argument as ClassName } from 'classnames'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import Link from 'next/link'
 import Image from '../image'
 
@@ -34,13 +34,28 @@ const BannerImage = styled(Image)<{ imageSize?: string }>`
   height: auto;
   display: none;
   margin: 0 auto;
-  display: ${(props) => (props.imageSize === 'mobile' ? `block` : 'none')};
-  @media (min-width: 375px) {
-    display: ${(props) => (props.imageSize === 'medium' ? `block` : 'none')};
-  }
-  @media (min-width: 1200px) {
-    display: ${(props) => (props.imageSize === 'desktop' ? `block` : 'none')};
-  }
+  display: none;
+  ${(p) =>
+    p.imageSize === 'mobile' &&
+    css`
+      @media (max-width: 374px) {
+        display: block;
+      }
+    `}
+  ${(p) =>
+    p.imageSize === 'medium' &&
+    css`
+      @media (min-width: 375px) and (max-width: 1199px) {
+        display: block;
+      }
+    `}
+  ${(p) =>
+    p.imageSize === 'desktop' &&
+    css`
+      @media (min-width: 1200px) {
+        display: block;
+      }
+    `}
 `
 
 export type HeroBannerProps = {

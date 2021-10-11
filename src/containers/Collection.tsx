@@ -26,32 +26,19 @@ const SFiltersSection = styled(SiteSection)`
   }
 `
 
-interface HashObject {
-  sizes?: string
-  fragrances?: string
-  materials?: string
-  colors?: string
-  sortF?: string
-}
-
 const formatToHashFilters = (filters: string[], type: string) =>
   filters.map((filter) => {
     if (type === 'sizes') {
       return filter
     }
 
-    const slicedType = type.slice(0, -1)
-    const uppercasedType = slicedType.charAt(0).toUpperCase() + slicedType.slice(1)
+    const formattedType = type.charAt(0).toUpperCase() + type.slice(1, -1)
 
-    return (type === 'colors' ? 'Metal%20' : '') + uppercasedType + ':%20' + filter
+    return (type === 'colors' ? 'Metal%20' : '') + formattedType + ':%20' + filter
   })
 
-const Collection = (): null | React.ReactElement => {
-  const router = useRouter()
-  const collection = useContext(CollectionContext)
-  const { updateScroll } = useRouterScroll()
-
-  const hashObject: HashObject | undefined = window?.location.hash
+const parseHash = (): { filter: CollectionProductsFilter; sorting: undefined | SelectedSorting } => {
+  const hashObject = window?.location.hash
     .slice(1)
     .split('&')
     .reduce<{ [key: string]: undefined | string }>((res, item) => {
@@ -60,16 +47,33 @@ const Collection = (): null | React.ReactElement => {
       return res
     }, {})
 
-  const [filter, setFilter] = useState<CollectionProductsFilter>({
-    fragrances: hashObject?.fragrances?.replaceAll('Fragrance:%20', '').replaceAll('%20', ' ').split(',') || [],
-    colors: hashObject?.colors?.replaceAll('Metal%20Color:%20', '').replaceAll('%20', ' ').split(',') || [],
-    materials: hashObject?.materials?.replaceAll('Material:%20', '').replaceAll('%20', ' ').split(',') || [],
-    sizes: hashObject?.sizes?.replaceAll('%20', ' ').split(',') || [],
-  })
-  const [sorting, setSorting] = useState<SelectedSorting>((hashObject?.sortF as SelectedSorting) || SelectedSorting.NEW)
+  return {
+    filter: {
+      fragrances: hashObject?.fragrances?.replaceAll('Fragrance:%20', '').replaceAll('%20', ' ').split(',') || [],
+      colors: hashObject?.colors?.replaceAll('Metal%20Color:%20', '').replaceAll('%20', ' ').split(',') || [],
+      materials: hashObject?.materials?.replaceAll('Material:%20', '').replaceAll('%20', ' ').split(',') || [],
+      sizes: hashObject?.sizes?.replaceAll('%20', ' ').split(',') || [],
+    },
+    sorting: hashObject?.sortF as SelectedSorting | undefined,
+  }
+}
+
+const Collection = (): null | React.ReactElement => {
+  const router = useRouter()
+  const collection = useContext(CollectionContext)
+  const { updateScroll } = useRouterScroll()
+
+  const [filter, setFilter] = useState(() => parseHash().filter)
+  const [sorting, setSorting] = useState(parseHash().sorting || SelectedSorting.NEW)
+
+  useEffect(() => {
+    const { filter, sorting } = parseHash()
+    setFilter(filter)
+    setSorting(sorting || SelectedSorting.NEW)
+  }, [router.asPath])
 
   const updateHash = (filter: CollectionProductsFilter, sorting: SelectedSorting) => {
-    if (!window) return
+    if (!window || !collection) return
     const formattedHash = Object.entries(filter)
       .reduce<Array<string>>(
         (all, [type, filters]) => {
@@ -82,7 +86,7 @@ const Collection = (): null | React.ReactElement => {
       .filter(Boolean)
     formattedHash.push(`sortF=${encodeURIComponent(sorting)}`)
 
-    window.location.hash = formattedHash.join('&')
+    router.push(createLink.forCollection(collection.handle, null, formattedHash.join('&')))
   }
 
   const availableFilters = useMemo(() => parseFiltersFromProducts(collection?.products), [collection?.products])
@@ -120,14 +124,8 @@ const Collection = (): null | React.ReactElement => {
       <CollectionBanner handle={collection.handle} />
       <SFiltersSection>
         <CollectionFilters
-          onChangeFilter={(newFilter) => {
-            updateHash(newFilter, sorting)
-            setFilter(newFilter)
-          }}
-          onChangeSorting={(newSorting) => {
-            updateHash(filter, newSorting)
-            setSorting(newSorting)
-          }}
+          onChangeFilter={(newFilter) => updateHash(newFilter, sorting)}
+          onChangeSorting={(newSorting) => updateHash(filter, newSorting)}
           filters={availableFilters}
           initialSorting={sorting}
           initialFilter={filter}
