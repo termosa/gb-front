@@ -21,6 +21,7 @@ import initiateFacebookPixel from '../initiate-facebook-pixel'
 import initiatePinterestPixel from '../initiate-pinterest-pixel'
 import initiateLuckyOrange from '../initiate-lucky-orange'
 import initiateExitIntelligence from '../initiate-exit-intelligence'
+import StampedStyles from '../stamped-styles'
 
 const MainPageLayoutWrapper = styled.div`
   display: flex;
@@ -87,10 +88,9 @@ export function MainPageLayout({ children, className, style }: MainPageLayoutPro
           href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;500;600;700&display=swap"
           rel="stylesheet"
         />
-        {/* TODO: Same style is imported by initiate-stamped module */}
-        <link href="http://cdn1.stamped.io/files/widget.min.css" rel="stylesheet" />
       </Head>
       <Normalize />
+      <StampedStyles />
       <CustomerContext.Provider value={customer || undefined}>
         <CustomerOrdersDetailsContext.Provider value={customerOrdersDetails}>
           <MainPageLayoutWrapper className={cn(className)} style={style}>
