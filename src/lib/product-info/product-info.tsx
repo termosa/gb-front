@@ -17,18 +17,9 @@ import addCartItemWithSubscription from '../add-cart-item-with-subscription'
 import SizeSelectorModal from '../size-selector-modal'
 import trackAddedToCart from '../track-added-to-cart'
 import Image from '../image'
-import YotpoStarRating from '../yotpo-star-rating'
+import StampedStarRating from '../stamped-star-rating'
 import ga from '../google-analytics'
 import parseProductDetails, { ProductDetail } from '../parse-product-details'
-
-const goToYotpoReviews = () => {
-  const yOffset = -200
-  const element = window?.document.querySelector('.product-yotpo-reviews-section')
-  if (element) {
-    const y = element?.getBoundingClientRect().top + (window?.pageYOffset || 0) + yOffset
-    window?.scrollTo({ top: y })
-  }
-}
 
 const SProductInfo = styled.div`
   width: 100%;
@@ -565,7 +556,7 @@ export function ProductInfo({ className, style, addToCartRef }: ProductInfoProps
       )}
       <SPdpProductInfo top={infoDistanceFromTop + 'px'} ref={productInfoRef}>
         <SPdpProductInfoTitle>{product?.title}</SPdpProductInfoTitle>
-        <YotpoStarRating onClick={goToYotpoReviews} />
+        <StampedStarRating productId={product.product_id} />
         <SPdpProductDetails>
           {isDiscountApplied && isDiscountAvailable ? (
             <>
