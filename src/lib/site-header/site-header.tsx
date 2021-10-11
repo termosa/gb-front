@@ -427,6 +427,39 @@ const AnimatedLink = styled.a`
   }
 `
 
+const DecoratedLink = styled.div`
+  font: 600 14px/1.5 'Montserrat', sans-serif !important;
+  display: inline-block;
+  padding-bottom: 5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  color: black;
+  text-decoration: none;
+
+  text-transform: uppercase;
+  position: relative;
+
+  & > span {
+    position: relative;
+    padding: 0 0 5px;
+
+    @media (min-width: 1200px) {
+      display: inline-block;
+      padding: 6px 0;
+      text-decoration: underline;
+      text-underline-offset: 8px;
+      line-height: 2.2;
+    }
+
+    @media (max-width: 1199px) {
+      padding: 0;
+      text-decoration: underline;
+      text-underline-offset: 7px;
+      line-height: 2;
+    }
+  }
+`
+
 const ExtendableBlockItems = styled.div`
   @media (min-width: 1200px) {
     width: 70%;
@@ -482,6 +515,7 @@ const ExtendableBlockItem = styled.div`
         display: block;
         width: 100%;
         height: auto;
+        margin-bottom: 10px;
       }
     }
   }
@@ -729,12 +763,12 @@ const AllContent = () => (
         </ExtendableBlockItem>
       </ExtendableBlockItems>
       <ExtendableBlockItem className="desktop-nav-product-item">
-        <Link passHref href={createLink.forProduct('black-dahlia-satin-collection-candle-and-bath-bomb-set')}>
+        <Link passHref href={createLink.forCollection('fantasy')}>
           <a>
-            <Image src="https://fragrantjewels.s3.amazonaws.com/app/app-nav/nav-all-img-dahlia-dt.png" width={290} />
-            <AnimatedLink as="span">
-              <span>New! Free Bonus Perfume</span>
-            </AnimatedLink>
+            <Image src="https://fragrantjewels.s3.amazonaws.com/app/app-nav/nav-all-img-26-dt.jpg" width={290} />
+            <DecoratedLink as="span">
+              <span>Will these mischievous rings lure you in?</span>
+            </DecoratedLink>
           </a>
         </Link>
       </ExtendableBlockItem>

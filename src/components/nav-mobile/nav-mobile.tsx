@@ -413,6 +413,11 @@ const TABS_LIST = [
 ]
 const CARDS_LIST = [
   {
+    href: createLink.forCollection('fantasy'),
+    imgLink: 'https://fragrantjewels.s3.amazonaws.com/app/app-nav/nav-all-img-26-mb.jpg',
+    text: 'Will these mischievous rings lure you in?',
+  },
+  {
     href: createLink.forProduct('black-dahlia-satin-collection-candle-and-bath-bomb-set'),
     imgLink: 'https://fragrantjewels.s3.amazonaws.com/app/app-nav/nav-all-img-dahlia-mb.png',
     text: 'New! Free Bonus Perfume',
