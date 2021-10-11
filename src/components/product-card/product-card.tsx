@@ -345,18 +345,14 @@ export function ProductCard({
         {window && screenSize.width && (screenSize.lessThanLarge || screenSize.greaterThanExtraLarge) ? (
           ReactDOM.createPortal(
             <AddProductToCartForm
-              isModalShow={isModalVisible}
+              visible={isModalVisible}
               onClose={() => changeModalVisible(false)}
               product={product}
             />,
             document.body
           )
         ) : (
-          <AddProductToCartForm
-            isModalShow={isModalVisible}
-            onClose={() => changeModalVisible(false)}
-            product={product}
-          />
+          <AddProductToCartForm visible={isModalVisible} onClose={() => changeModalVisible(false)} product={product} />
         )}
       </SProductCard>
     </ProductCardWrapper>

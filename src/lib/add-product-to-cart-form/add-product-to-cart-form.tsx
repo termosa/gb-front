@@ -224,12 +224,12 @@ const ModalForm = styled.form``
 export type AddProductToCartFormProps = {
   className?: ClassName
   style?: React.CSSProperties
-  isModalShow: boolean
-  onClose: (arg: boolean) => void
+  visible: boolean
+  onClose: () => void
   product: Product
 }
 
-export function AddProductToCartForm({ isModalShow, onClose, product }: AddProductToCartFormProps): React.ReactElement {
+export function AddProductToCartForm({ visible, onClose, product }: AddProductToCartFormProps): React.ReactElement {
   const addCartItemRequest = useDefer(addCartItem, [])
   const [selectedVariant, setSelectedVariant] = useState<ProductVariant | null>(null)
   // const [isSelectRingError, setSelectRingError] = useState<boolean>(false)
@@ -276,8 +276,8 @@ export function AddProductToCartForm({ isModalShow, onClose, product }: AddProdu
   }
 
   return (
-    <Modal onClick={(e) => onCloseModal(e)} visible={isModalShow}>
-      <ModalContent onClick={(e) => e.stopPropagation()} visible={isModalShow}>
+    <Modal onClick={(e) => onCloseModal(e)} visible={visible}>
+      <ModalContent onClick={(e) => e.stopPropagation()} visible={visible}>
         <ModalContentBody>
           <ModalCloseButton onClick={() => onClose(false)} type="button">
             <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
