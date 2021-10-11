@@ -6,6 +6,10 @@ import formatPrice from '../../modules/format-price'
 import getLabel from '../../modules/get-label'
 import Image from '../../lib/image'
 import useScreenSize from '../../lib/use-screen-size'
+// import YotpoStarRating from '../../lib/yotpo-star-rating'
+import AddProductToCartForm from '../../lib/add-product-to-cart-form'
+import ReactDOM from 'react-dom'
+import window from '../../lib/window'
 import StampedStarRating from '../../lib/stamped-star-rating'
 
 export type ProductCardProps = {
@@ -32,7 +36,7 @@ const SProductCard = styled.div`
   height: 100%;
   box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.1);
   background: white;
-  padding: 4px;
+  padding: 0;
   text-align: center;
   font: 400 12px/1.3 'Montserrat', sans-serif;
   letter-spacing: 0.08em;
@@ -43,7 +47,7 @@ const SProductCard = styled.div`
 
   @media (min-width: 768px) {
     box-shadow: 0 0 6px rgba(0, 0, 0, 0.25);
-    padding: 12px 10px 0;
+    padding: 12px;
     height: 100%;
   }
 
@@ -190,7 +194,7 @@ const ProductCardPrices = styled.div`
   margin: 0 0 8px;
 
   @media (min-width: 768px) {
-    margin: 0 0 16px;
+    margin: 0 0 10px;
   }
 `
 
@@ -202,6 +206,44 @@ const ProductCardPrice = styled.div`
 
 const SImage = styled(Image)`
   min-height: 110px;
+`
+
+const ProductCardButton = styled.button`
+  background: #fff;
+  color: #000;
+  padding: 17px 15px;
+  width: 100%;
+  border: 0;
+  border-top: 1px solid #000;
+  margin: 0;
+  text-transform: uppercase;
+  appearance: none;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: all linear 0.2s;
+  font: 400 13px/1 'Montserrat', sans-serif;
+
+  @media (min-width: 375px) {
+    font-size: 14px;
+  }
+
+  @media (min-width: 768px) {
+    border: 1px solid #000;
+  }
+
+  @media (min-width: 1200px) {
+    &:not([disabled]):hover {
+      background-color: #000;
+      color: #fff;
+    }
+  }
+
+  [disabled] {
+    cursor: auto;
+    border-color: #ddd;
+    background: #ddd;
+  }
 `
 
 export function ProductCard({
@@ -238,6 +280,13 @@ export function ProductCard({
 
   const actualPrice = product.variants[0].actual_price
   const comparePrice = product.variants[0].compare_at_price
+
+  const [isModalVisible, changeModalVisible] = useState(false)
+
+  const openModal = (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
+    event.stopPropagation()
+    changeModalVisible(true)
+  }
 
   return (
     <ProductCardWrapper
@@ -290,6 +339,21 @@ export function ProductCard({
             </ProductCardPrice>
           </ProductCardPrices>
         </div>
+        <ProductCardButton type="button" onClick={(e) => openModal(e)}>
+          Add to Cart
+        </ProductCardButton>
+        {window && screenSize.width && (screenSize.lessThanLarge || screenSize.greaterThanExtraLarge) ? (
+          ReactDOM.createPortal(
+            <AddProductToCartForm
+              visible={isModalVisible}
+              onClose={() => changeModalVisible(false)}
+              product={product}
+            />,
+            document.body
+          )
+        ) : (
+          <AddProductToCartForm visible={isModalVisible} onClose={() => changeModalVisible(false)} product={product} />
+        )}
       </SProductCard>
     </ProductCardWrapper>
   )

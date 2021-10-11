@@ -33,16 +33,20 @@ const SProductCard = styled(ProductCard)`
   min-width: 100px;
 `
 
-export const ProductsList = ({ products, onSelectProduct }: ProductsListProps): React.ReactElement => (
-  <SiteSection>
-    <ProductsListContainer>
-      {products.map((product) => (
-        <SProductCard
-          key={product.product_id}
-          product={product}
-          onClick={() => onSelectProduct && onSelectProduct(product)}
-        />
-      ))}
-    </ProductsListContainer>
-  </SiteSection>
-)
+export const ProductsList = ({ products, onSelectProduct }: ProductsListProps): React.ReactElement => {
+  return (
+    <div>
+      <SiteSection>
+        <ProductsListContainer>
+          {products.map((product) => (
+            <SProductCard
+              key={product.product_id}
+              product={product}
+              onClick={() => onSelectProduct && onSelectProduct(product)}
+            />
+          ))}
+        </ProductsListContainer>
+      </SiteSection>
+    </div>
+  )
+}
