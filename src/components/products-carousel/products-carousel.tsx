@@ -224,7 +224,8 @@ export const ProductsCarousel = ({
   const carouselRef = useRef<Carousel>(null)
   const screenSize = useScreenSize()
   const [currentSlide, setCurrentSlide] = useState(0)
-  const titleParts = title.split(' ')
+  const currentProduct = useContext<ProductType | undefined>(ProductContext)
+  const titleParts = title?.split(' ') || []
   const sliderSettings = {
     desktop: {
       breakpoint: { max: 3000, min: 992 },
@@ -240,8 +241,6 @@ export const ProductsCarousel = ({
     },
   }
 
-  const currentProduct = useContext<ProductType | undefined>(ProductContext)
-
   return (
     <Section className={cn('ProductsCarousel', className)}>
       <Container>
@@ -252,9 +251,9 @@ export const ProductsCarousel = ({
         ) : (
           <SectionTitle>
             {/* <span>{title}</span> */}
-            <span>{` ${titleParts.slice(0, 1).join(' ')}`}&nbsp;</span>
+            <span>{` ${titleParts?.slice(0, 1).join(' ')}`}&nbsp;</span>
             <span>
-              <STitleUnderline>{titleParts.slice(1, 3).join(' ')}</STitleUnderline>
+              <STitleUnderline>{titleParts?.slice(1, 3).join(' ')}</STitleUnderline>
             </span>
           </SectionTitle>
         )}
