@@ -1,10 +1,8 @@
-import React, { useContext, useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import ProductCard from '../product-card'
 import SiteSection from '../site-section'
-import { Product as ProductType, Product } from '../../modules/normalize-product'
-import AddToCartModal from '../add-to-cart-modal'
-import ProductContext from '../../modules/product-context'
+import { Product } from '../../modules/normalize-product'
 
 export type ProductsListProps = {
   products: Array<Product>
@@ -36,12 +34,6 @@ const SProductCard = styled(ProductCard)`
 `
 
 export const ProductsList = ({ products, onSelectProduct }: ProductsListProps): React.ReactElement => {
-  const [isModalVisible, setModalVisible] = useState(false)
-  const [choosedProduct, setChoosedProduct] = useState(useContext<ProductType | undefined>(ProductContext))
-  const onChooseProduct = (product: Product) => {
-    setChoosedProduct(product)
-    setModalVisible(true)
-  }
   return (
     <div>
       <SiteSection>
@@ -51,21 +43,10 @@ export const ProductsList = ({ products, onSelectProduct }: ProductsListProps): 
               key={product.product_id}
               product={product}
               onClick={() => onSelectProduct && onSelectProduct(product)}
-              onProductButtonClick={() => {
-                onChooseProduct(product)
-              }}
             />
           ))}
         </ProductsListContainer>
       </SiteSection>
-      <AddToCartModal isModalShow={isModalVisible} setModal={setModalVisible}>
-        {choosedProduct && choosedProduct.product_id && (
-          <div>
-            <h1>Title {choosedProduct.product_id}</h1>
-            <div>Text</div>
-          </div>
-        )}
-      </AddToCartModal>
     </div>
   )
 }

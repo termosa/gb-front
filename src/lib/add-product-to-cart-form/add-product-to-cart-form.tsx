@@ -1,0 +1,304 @@
+import React, { useState } from 'react'
+import { Argument as ClassName } from 'classnames'
+import styled from 'styled-components'
+import addCartItem from 'src/lib/add-cart-item'
+import trackAddedToCart from 'src/lib/track-added-to-cart'
+import { Product, ProductVariant } from '../../modules/normalize-product'
+
+const Modal = styled.div<{
+  isVisible?: boolean
+}>`
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0.5);
+  // z-index: 100;
+  z-index: 7;
+  display: flex;
+  visibility: ${(props) => (props.isVisible ? 'visible' : 'hidden')};
+  align-items: flex-end;
+  justify-content: center;
+  transition: opacity linear 0.2s;
+  opacity: ${(props) => (props.isVisible ? '1' : '0')};
+  pointer-events: ${(props) => (props.isVisible ? 'all' : 'none')};
+  font: 400 16px/1.2 'Montserrat', sans-serif;
+  // overflow: hidden;
+
+  @media (min-width: 992px) {
+    position: absolute;
+    top: auto;
+  }
+
+  @media (min-width: 1200px) {
+    top: 0;
+    position: fixed;
+    align-items: center;
+  }
+`
+
+const ModalContent = styled.div<{ isVisible?: boolean }>`
+  padding: 40px 12px 12px;
+  background: white;
+  border-radius: 0;
+  // min-width: 250px;
+  visibility: ${(props) => (props.isVisible ? 'visible' : 'hidden')};
+  transition: all ease-out 0.3s;
+  transform: translateY(${(props) => (props.isVisible ? '0' : '100%')});
+  margin: 0;
+  width: 100%;
+  position: relative;
+  cursor: auto;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.15);
+
+  @media (min-width: 1200px) {
+    max-width: 332px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+  }
+`
+
+const ModalContentBody = styled.div`
+  margin: 0 auto;
+  max-width: 400px;
+
+  @media (min-width: 1200px) {
+    max-width: 100%;
+  }
+`
+
+const ModalCloseButton = styled.button`
+  position: absolute;
+  line-height: 1;
+  font-size: 28px;
+  box-sizing: border-box;
+  border-radius: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  opacity: 1;
+  transition: opacity linear 0.2s;
+  right: 10px;
+  top: 10px;
+  padding: 0;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:focus {
+    outline: 0;
+    box-shadow: none;
+  }
+`
+
+const ProductModalHeading = styled.h3`
+  font-size: 16px;
+  text-align: center;
+  margin: 0 auto 10px;
+  font-weight: 400;
+  letter-spacing: 0;
+  max-width: 230px;
+  line-height: 1.3;
+`
+
+const SPdpPiSelector = styled.div`
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  margin: 0 0 12px;
+`
+
+const SPdpPiRsSelector = styled.div`
+  text-align: center;
+  color: #9059c8;
+  margin: 0 0 12px;
+  letter-spacing: 0;
+`
+
+const SPdpPiSelectorBtnHolder = styled.div`
+  margin: 0 2px;
+  position: relative;
+  width: 100%;
+  max-width: 50px;
+
+  // @media (min-width: 768px) {
+  //   width: 45px;
+  //   margin: 0 5px;
+  // }
+
+  // @media (min-width: 850px) {
+  //   width: 48px;
+  // }
+
+  &:first-child {
+    margin-left: 0;
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  &:after {
+    content: '';
+    display: block;
+    padding-top: 100%;
+  }
+`
+
+const SPdpPiSelectorBtn = styled.button<{
+  isActive: boolean
+}>`
+  background: ${(props) => (props.isActive ? '#9059C8' : '#fff')};
+  border: ${(props) => (props.isActive ? '1px solid #9059C8' : '1px solid #000')};
+  padding: 10px 5px;
+  font-size: 15px;
+  // min-width: 35px;
+  margin: 0;
+  color: ${(props) => (props.isActive ? '#fff' : '#000')};
+  transition: all linear 0.3s;
+  outline: 0;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  cursor: pointer;
+
+  &:hover {
+    @media (min-width: 1200px) {
+      color: #fff;
+      background: #9059c8;
+      border-color: #9059c8;
+    }
+  }
+
+  &:disabled {
+    color: #dadada;
+    border: 1px solid #dadada;
+    pointer-events: none;
+  }
+`
+
+const SPdpBtn = styled.button<{ disabled?: boolean }>`
+  background: #fff;
+  color: #000;
+  padding: 17px 15px;
+  width: 100%;
+  border: 1px solid #000;
+  margin: 0 0 30px;
+  text-transform: uppercase;
+  appearance: none;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: all linear 0.2s;
+  font: 400 14px/1 'Montserrat', sans-serif;
+
+  @media (min-width: 992px) {
+    margin: 0;
+  }
+
+  @media (min-width: 1200px) {
+    margin: 0;
+
+    &:not([disabled]):hover {
+      background-color: #000;
+      color: #fff;
+    }
+  }
+
+  &[disabled] {
+    cursor: auto;
+    border-color: #ddd;
+    background: #ddd;
+  }
+`
+
+export type AddProductToCartFormProps = {
+  className?: ClassName
+  style?: React.CSSProperties
+  isModalShow: boolean
+  setModal: (arg: boolean) => void
+  product: Product
+}
+
+export function AddProductToCartForm({
+  isModalShow,
+  setModal,
+  product,
+}: AddProductToCartFormProps): React.ReactElement {
+  const [selectedVariant, setSelectedVariant] = useState<ProductVariant | null>(null)
+  const [isSelectRingError, setSelectRingError] = useState<boolean>(false)
+
+  const onCloseModal = (event: any) => {
+    event.stopPropagation()
+    setModal(false)
+  }
+
+  const addToCartHandler = (selectedVariant: ProductVariant | null, product: Product) => {
+    if (!selectedVariant) {
+      localStorage.setItem('selectRingError', JSON.stringify(true))
+      setSelectRingError(true)
+      return
+    }
+
+    const addingRequest: Promise<unknown> = addCartItem(selectedVariant.variant_id)
+    addingRequest.then(() => trackAddedToCart(product)).catch((err: unknown) => alert(err))
+  }
+
+  return (
+    <Modal onClick={(e) => onCloseModal(e)} isVisible={isModalShow}>
+      <ModalContent onClick={(e) => e.stopPropagation()} isVisible={isModalShow}>
+        <ModalContentBody>
+          <ModalCloseButton onClick={() => setModal(false)} type="button">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M21 1.09381L1 21.0938M1 1.09381L21 21.0938"
+                stroke="black"
+                stroke-width="0.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </ModalCloseButton>
+          <React.Fragment>
+            <ProductModalHeading>
+              Select a {product.variants && product.variants.length > 1 ? 'ring size' : 'jewelry type'} to add this item
+              to your cart:
+            </ProductModalHeading>
+            <SPdpPiSelector>
+              {product.variants.map(
+                (variant: ProductVariant) =>
+                  variant.size && (
+                    <SPdpPiSelectorBtnHolder key={variant.size}>
+                      <SPdpPiSelectorBtn
+                        isActive={variant.variant_id === selectedVariant?.variant_id}
+                        type="button"
+                        value={variant.size}
+                        onClick={() => {
+                          setSelectRingError(false)
+                          localStorage.setItem('selectRingError', JSON.stringify(false))
+                          localStorage.setItem('currentRingSize', JSON.stringify(variant.variant_id))
+                          setSelectedVariant(variant)
+                        }}
+                        disabled={!variant.available}
+                      >
+                        {variant.title}
+                      </SPdpPiSelectorBtn>
+                    </SPdpPiSelectorBtnHolder>
+                  )
+              )}
+            </SPdpPiSelector>
+            {isSelectRingError ? <SPdpPiRsSelector>Please select ring size</SPdpPiRsSelector> : null}
+            <SPdpBtn type="button" onClick={() => addToCartHandler(selectedVariant, product)}>
+              Add to Cart
+            </SPdpBtn>
+          </React.Fragment>
+        </ModalContentBody>
+      </ModalContent>
+    </Modal>
+  )
+}

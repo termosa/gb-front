@@ -1,11 +1,11 @@
-import AddToCartModal from '.'
+import AddProductToCartForm from '.'
 
 export const meta = {
   type: 'component',
-  name: 'AddToCartModal',
+  name: 'AddProductToCartForm',
   description: 'Styled block with custom content',
   tags: ['component'],
-  preview: <AddToCartModal>Component content here</AddToCartModal>,
+  preview: <AddProductToCartForm>Component content here</AddProductToCartForm>,
   lists: {
     attributes: [
       { name: 'children', required: true, type: 'React.ReactNode', description: 'Content that will be rendered inside of the block' },
@@ -13,17 +13,17 @@ export const meta = {
       { name: 'style', type: 'React.CSSProperties', description: 'Inline styles for the main container' },
     ],
   },
-  scope: { AddToCartModal },
+  scope: { AddProductToCartForm },
 }
 
 ## Usage
 
 ```jsx
-<AddToCartModal className="class" style={{ color: 'red' }}>Put content here</AddToCartModal>
+<AddProductToCartForm className="class" style={{ color: 'red' }}>Put content here</AddProductToCartForm>
 ```
 
 ## Playground
 
 ```jsx live
-<AddToCartModal style={{ color: 'red' }}>Content text</AddToCartModal>
+<AddProductToCartForm style={{ color: 'red' }}>Content text</AddProductToCartForm>
 ```

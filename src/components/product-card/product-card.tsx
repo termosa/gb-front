@@ -1,15 +1,14 @@
 import React, { useState } from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
-import { Product, ProductVariant } from '../../modules/normalize-product'
+import { Product } from '../../modules/normalize-product'
 import formatPrice from '../../modules/format-price'
 import getLabel from '../../modules/get-label'
 import Image from '../../lib/image'
 import useScreenSize from '../../lib/use-screen-size'
 import YotpoStarRating from '../../lib/yotpo-star-rating'
-import AddToCartModal from '../add-to-cart-modal'
-import addCartItem from 'src/lib/add-cart-item'
-import trackAddedToCart from 'src/lib/track-added-to-cart'
+import AddProductToCartForm from 'src/lib/add-product-to-cart-form'
+import ReactDOM from 'react-dom'
 
 export type ProductCardProps = {
   className?: ClassName
@@ -35,7 +34,7 @@ const SProductCard = styled.div`
   height: 100%;
   box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.1);
   background: white;
-  padding: 4px;
+  padding: 0;
   text-align: center;
   font: 400 12px/1.3 'Montserrat', sans-serif;
   letter-spacing: 0.08em;
@@ -216,7 +215,8 @@ const ProductCardButton = styled.button`
   color: #000;
   padding: 17px 15px;
   width: 100%;
-  border: 1px solid #000;
+  border: 0;
+  border-top: 1px solid #000;
   margin: 0;
   text-transform: uppercase;
   appearance: none;
@@ -224,128 +224,21 @@ const ProductCardButton = styled.button`
   letter-spacing: 0.05em;
   cursor: pointer;
   transition: all linear 0.2s;
-  font: 400 14px/1 'Montserrat', sans-serif;
+  font: 400 13px/1 'Montserrat', sans-serif;
 
-  &:not([disabled]):hover {
-    background-color: #000;
-    color: #fff;
+  @media (min-width: 375px) {
+    font-size: 14px;
   }
-
-  &[disabled] {
-    cursor: auto;
-    border-color: #ddd;
-    background: #ddd;
-  }
-`
-
-const ProductModalHeading = styled.h3`
-  font-size: 16px;
-  text-align: center;
-  margin: 0 auto 10px;
-  font-weight: 400;
-  letter-spacing: 0;
-  max-width: 230px;
-  line-height: 1.3;
-`
-
-const SPdpPiSelector = styled.div`
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: nowrap;
-  margin: 0 0 12px;
-`
-
-const SPdpPiRsSelector = styled.div`
-  text-align: center;
-  color: #9059c8;
-  margin: 0 0 12px;
-  letter-spacing: 0;
-`
-
-const SPdpPiSelectorBtnHolder = styled.div`
-  margin: 0 2px;
-  position: relative;
-  width: 100%;
-  max-width: 50px;
 
   @media (min-width: 768px) {
-    width: 45px;
-    margin: 0 5px;
+    border: 1px solid #000;
   }
 
-  @media (min-width: 850px) {
-    width: 48px;
-  }
-
-  &:first-child {
-    margin-left: 0;
-  }
-
-  &:last-child {
-    margin-right: 0;
-  }
-
-  &:after {
-    content: '';
-    display: block;
-    padding-top: 100%;
-  }
-`
-
-const SPdpPiSelectorBtn = styled.button<{
-  isActive: boolean
-}>`
-  background: ${(props) => (props.isActive ? '#9059C8' : '#fff')};
-  border: ${(props) => (props.isActive ? '1px solid #9059C8' : '1px solid #878787')};
-  padding: 10px 5px;
-  font-size: 15px;
-  min-width: 35px;
-  margin: 0;
-  color: ${(props) => (props.isActive ? '#fff' : '#000')};
-  transition: all linear 0.3s;
-  outline: 0;
-  position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  cursor: pointer;
-
-  &:hover {
-    @media (min-width: 1200px) {
+  @media (min-width: 1200px) {
+    &:not([disabled]):hover {
+      background-color: #000;
       color: #fff;
-      background: #9059c8;
-      border-color: #9059c8;
     }
-  }
-
-  &:disabled {
-    color: #dadada;
-    border: 1px solid #dadada;
-    pointer-events: none;
-  }
-`
-
-const SPdpBtn = styled.button<{ disabled?: boolean }>`
-  background: #fff;
-  color: #000;
-  padding: 17px 15px;
-  width: 100%;
-  border: 1px solid #000;
-  margin: 0;
-  text-transform: uppercase;
-  appearance: none;
-  font-weight: 400;
-  letter-spacing: 0.05em;
-  cursor: pointer;
-  transition: all linear 0.2s;
-  font: 400 14px/1 'Montserrat', sans-serif;
-
-  &:not([disabled]):hover {
-    background-color: #000;
-    color: #fff;
   }
 
   &[disabled] {
@@ -395,20 +288,7 @@ export function ProductCard({
     setModalVisible(true)
   }
 
-  const addToCartHandler = (selectedVariant: ProductVariant | null) => {
-    if (!selectedVariant) {
-      localStorage.setItem('selectRingError', JSON.stringify(true))
-      setSelectRingError(true)
-      return
-    }
-
-    const addingRequest: Promise<unknown> = addCartItem(selectedVariant.variant_id)
-    addingRequest.then(() => trackAddedToCart(product)).catch((err: unknown) => alert(err))
-  }
-
   const [isModalVisible, setModalVisible] = useState(false)
-  const [selectedVariant, setSelectedVariant] = useState<ProductVariant | null>(null)
-  const [isSelectRingError, setSelectRingError] = useState<boolean>(false)
 
   return (
     <ProductCardWrapper
@@ -464,43 +344,14 @@ export function ProductCard({
         <ProductCardButton type="button" onClick={(e) => openModal(e)}>
           Add to Cart
         </ProductCardButton>
-        <AddToCartModal isModalShow={isModalVisible} setModal={setModalVisible}>
-          <div>
-            <ProductModalHeading>
-              Select a {product.variants && product.variants.length > 1 ? 'ring size' : 'jewelry type'} to add this item
-              to your cart:
-            </ProductModalHeading>
-            <React.Fragment>
-              <SPdpPiSelector>
-                {product.variants.map(
-                  (variant: ProductVariant) =>
-                    variant.size && (
-                      <SPdpPiSelectorBtnHolder key={variant.size}>
-                        <SPdpPiSelectorBtn
-                          isActive={variant.variant_id === selectedVariant?.variant_id}
-                          type="button"
-                          value={variant.size}
-                          onClick={() => {
-                            setSelectRingError(false)
-                            localStorage.setItem('selectRingError', JSON.stringify(false))
-                            localStorage.setItem('currentRingSize', JSON.stringify(variant.variant_id))
-                            setSelectedVariant(variant)
-                          }}
-                          disabled={!variant.available}
-                        >
-                          {variant.title}
-                        </SPdpPiSelectorBtn>
-                      </SPdpPiSelectorBtnHolder>
-                    )
-                )}
-              </SPdpPiSelector>
-              {isSelectRingError ? <SPdpPiRsSelector>Please select ring size</SPdpPiRsSelector> : null}
-              <SPdpBtn type="button" onClick={() => addToCartHandler(selectedVariant)}>
-                Add to Cart
-              </SPdpBtn>
-            </React.Fragment>
-          </div>
-        </AddToCartModal>
+        {typeof document !== 'undefined' && screenSize.width && (screenSize.width < 992 || screenSize.width >= 1200) ? (
+          ReactDOM.createPortal(
+            <AddProductToCartForm isModalShow={isModalVisible} setModal={setModalVisible} product={product} />,
+            document.body
+          )
+        ) : (
+          <AddProductToCartForm isModalShow={isModalVisible} setModal={setModalVisible} product={product} />
+        )}
       </SProductCard>
     </ProductCardWrapper>
   )
