@@ -587,7 +587,7 @@ export const CollectionFilters = ({
           </SShowResultsButton>
         </SFilters>
       )}
-      {!isEmptyFilter(selectedFilters) && isFiltersDropdownOpened && screenSize.greaterThanMedium && (
+      {!isEmptyFilter(selectedFilters) && screenSize.greaterThanMedium && (
         <SFilterDesktopControlButtonsGroup>
           <SSelectedFilters>
             {getListOfSelectedFilters(selectedFilters).map(({ name, filterGroup }) => (

@@ -21,6 +21,7 @@ import initiateFacebookPixel from '../initiate-facebook-pixel'
 import initiatePinterestPixel from '../initiate-pinterest-pixel'
 import initiateLuckyOrange from '../initiate-lucky-orange'
 import initiateExitIntelligence from '../initiate-exit-intelligence'
+import StampedStyles from '../stamped-styles'
 
 const MainPageLayoutWrapper = styled.div`
   display: flex;
@@ -89,6 +90,7 @@ export function MainPageLayout({ children, className, style }: MainPageLayoutPro
         />
       </Head>
       <Normalize />
+      <StampedStyles />
       <CustomerContext.Provider value={customer || undefined}>
         <CustomerOrdersDetailsContext.Provider value={customerOrdersDetails}>
           <MainPageLayoutWrapper className={cn(className)} style={style}>

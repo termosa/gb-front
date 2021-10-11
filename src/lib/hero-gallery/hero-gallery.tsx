@@ -269,9 +269,8 @@ export function HeroGallery({ className, style, slides }: HeroGalleryProps): Rea
           <Slide
             key={`${slide.buttonLink}${slide.backgroundImg}${slide.buttonText}`}
             backgroundImg={
-              screenSize.greaterThanExtraLarge
-                ? slide.backgroundImg
-                : slide.backgroundImgMobile || DEFAULT_BACKGROUND_IMAGE
+              (screenSize.greaterThanExtraLarge ? slide.backgroundImg : slide.backgroundImgMobile) ||
+              DEFAULT_BACKGROUND_IMAGE
             }
           >
             {slide.transparentPlaceholder ? (

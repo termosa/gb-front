@@ -10,6 +10,7 @@ import useScreenSize from '../../lib/use-screen-size'
 import AddProductToCartForm from '../../lib/add-product-to-cart-form'
 import ReactDOM from 'react-dom'
 import window from '../../lib/window'
+import StampedStarRating from '../../lib/stamped-star-rating'
 
 export type ProductCardProps = {
   className?: ClassName
@@ -143,21 +144,17 @@ const ProductCardType = styled.div`
   }
 `
 
-// const ProductCardStars = styled.div`
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   margin: 0 0 10px;
-//   height: 17px;
+const ProductCardStars = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 0 10px;
+  height: 17px;
 
-//   @media (min-width: 768px) {
-//     margin: 0 0 8px;
-//   }
-
-//   .text-m {
-//     display: none;
-//   }
-// `
+  @media (min-width: 768px) {
+    margin: 0 0 8px;
+  }
+`
 
 /*const ProductCardStar = styled.div`
   margin: 0 1px;
@@ -324,9 +321,9 @@ export function ProductCard({
         </ProductCardImgWrapper>
         <div>
           {checkForLabel()}
-          {/* <ProductCardStars>
-            <YotpoStarRating productId={product.product_id} />
-          </ProductCardStars> */}
+          <ProductCardStars>
+            <StampedStarRating productId={product.product_id} />
+          </ProductCardStars>
           <ProductCardTitle title={productTitle}>{productTitle}</ProductCardTitle>
           <ProductCardType>{productType}</ProductCardType>
           <ProductCardPrices>

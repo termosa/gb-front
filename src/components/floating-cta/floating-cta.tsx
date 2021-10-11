@@ -88,7 +88,7 @@ const SFloatingAddToCardBtn = styled.button`
 export const FloatingCta = (): React.ReactElement | null => {
   const router = useRouter()
   const product = useContext<ProductType | undefined>(ProductContext)
-  const isProductPage = typeof window !== 'undefined' && window.location.pathname.includes('/products/')
+  const isProductPage = router.pathname.includes('/products/')
 
   const [isFloatingCtaClosed, setFloatingCtaClosed] = useState<boolean>(true)
   const [isFloatingCtaVisible, setFloatingCtaVisible] = useState<boolean>(false)

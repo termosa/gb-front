@@ -1,0 +1,30 @@
+import StampedReviews from '.'
+
+export const meta = {
+  type: 'component',
+  name: 'StampedReviews',
+  description: 'Styled block with custom content',
+  tags: ['component'],
+  lists: {
+    attributes: [
+      { name: 'className', type: 'classnames.Argument', description: 'One or multiple class names that will be added to the main container' },
+      { name: 'style', type: 'React.CSSProperties', description: 'Inline styles for the main container' },
+      { name: 'productId', type: 'number' },
+      { name: 'productTitle', type: 'string' },
+      { name: 'productUrl', type: 'string' },
+      { name: 'productImageUrl', type: 'string' },
+    ],
+  },
+  scope: { StampedReviews },
+}
+
+## Playground
+
+```jsx live
+<StampedReviews
+  productId={6592418545742}
+  productTitle="Pandora's Box - Bath Bomb"
+  productUrl="https://www.fragrantjewels.com/products/pandoras-box-bath-bomb"
+  productImageUrl="https://cdn.shopify.com/s/files/1/0548/5721/products/pandoras_box_bb_1_comp.png?v=1628521681"
+/>
+```
