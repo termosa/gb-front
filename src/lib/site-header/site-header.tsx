@@ -750,7 +750,7 @@ const SubscriptionContent = () => (
           <Link passHref href={createLink.forPage('inner-circle')}>
             <a>
               <Image
-                src="https://fragrantjewels-assets.s3.amazonaws.com/images/moonflowers/moonflowers-nav.jpg"
+                src="https://fragrantjewels-assets.s3.amazonaws.com/images/moonflowers/moonflowers-nav-2.jpg"
                 width={370}
               />
               <ExtendableBlockListTitle>Exclusive Savings On New Collections Every Month</ExtendableBlockListTitle>
