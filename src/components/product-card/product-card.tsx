@@ -7,8 +7,9 @@ import getLabel from '../../modules/get-label'
 import Image from '../../lib/image'
 import useScreenSize from '../../lib/use-screen-size'
 // import YotpoStarRating from '../../lib/yotpo-star-rating'
-import AddProductToCartForm from 'src/lib/add-product-to-cart-form'
+import AddProductToCartForm from '../../lib/add-product-to-cart-form'
 import ReactDOM from 'react-dom'
+import window from '../../lib/window'
 
 export type ProductCardProps = {
   className?: ClassName
@@ -241,7 +242,7 @@ const ProductCardButton = styled.button`
     }
   }
 
-  &[disabled] {
+  [disabled] {
     cursor: auto;
     border-color: #ddd;
     background: #ddd;
@@ -283,12 +284,12 @@ export function ProductCard({
   const actualPrice = product.variants[0].actual_price
   const comparePrice = product.variants[0].compare_at_price
 
+  const [isModalVisible, changeModalVisible] = useState(false)
+
   const openModal = (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
     event.stopPropagation()
-    setModalVisible(true)
+    changeModalVisible(true)
   }
-
-  const [isModalVisible, setModalVisible] = useState(false)
 
   return (
     <ProductCardWrapper
@@ -344,13 +345,21 @@ export function ProductCard({
         <ProductCardButton type="button" onClick={(e) => openModal(e)}>
           Add to Cart
         </ProductCardButton>
-        {typeof document !== 'undefined' && screenSize.width && (screenSize.width < 992 || screenSize.width >= 1200) ? (
+        {window && screenSize.width && (screenSize.lessThanLarge || screenSize.greaterThanExtraLarge) ? (
           ReactDOM.createPortal(
-            <AddProductToCartForm isModalShow={isModalVisible} setModal={setModalVisible} product={product} />,
+            <AddProductToCartForm
+              isModalShow={isModalVisible}
+              onClose={() => changeModalVisible(false)}
+              product={product}
+            />,
             document.body
           )
         ) : (
-          <AddProductToCartForm isModalShow={isModalVisible} setModal={setModalVisible} product={product} />
+          <AddProductToCartForm
+            isModalShow={isModalVisible}
+            onClose={() => changeModalVisible(false)}
+            product={product}
+          />
         )}
       </SProductCard>
     </ProductCardWrapper>

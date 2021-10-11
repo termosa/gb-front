@@ -4,9 +4,10 @@ import styled from 'styled-components'
 import addCartItem from 'src/lib/add-cart-item'
 import trackAddedToCart from 'src/lib/track-added-to-cart'
 import { Product, ProductVariant } from '../../modules/normalize-product'
+import useDefer, { Status } from 'use-defer'
 
 const Modal = styled.div<{
-  isVisible?: boolean
+  visible?: boolean
 }>`
   position: fixed;
   top: 0;
@@ -17,12 +18,12 @@ const Modal = styled.div<{
   // z-index: 100;
   z-index: 7;
   display: flex;
-  visibility: ${(props) => (props.isVisible ? 'visible' : 'hidden')};
+  visibility: ${(props) => (props.visible ? 'visible' : 'hidden')};
   align-items: flex-end;
   justify-content: center;
   transition: opacity linear 0.2s;
-  opacity: ${(props) => (props.isVisible ? '1' : '0')};
-  pointer-events: ${(props) => (props.isVisible ? 'all' : 'none')};
+  opacity: ${(props) => (props.visible ? '1' : '0')};
+  pointer-events: ${(props) => (props.visible ? 'all' : 'none')};
   font: 400 16px/1.2 'Montserrat', sans-serif;
   // overflow: hidden;
 
@@ -38,14 +39,14 @@ const Modal = styled.div<{
   }
 `
 
-const ModalContent = styled.div<{ isVisible?: boolean }>`
+const ModalContent = styled.div<{ visible?: boolean }>`
   padding: 40px 12px 12px;
   background: white;
   border-radius: 0;
   // min-width: 250px;
-  visibility: ${(props) => (props.isVisible ? 'visible' : 'hidden')};
+  visibility: ${(props) => (props.visible ? 'visible' : 'hidden')};
   transition: all ease-out 0.3s;
-  transform: translateY(${(props) => (props.isVisible ? '0' : '100%')});
+  transform: translateY(${(props) => (props.visible ? '0' : '100%')});
   margin: 0;
   width: 100%;
   position: relative;
@@ -53,7 +54,7 @@ const ModalContent = styled.div<{ isVisible?: boolean }>`
   box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.15);
 
   @media (min-width: 1200px) {
-    transform: scale(${(props) => (props.isVisible ? '1' : '0.85')});
+    transform: scale(${(props) => (props.visible ? '1' : '0.85')});
     max-width: 332px;
     box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
   }
@@ -224,47 +225,49 @@ export type AddProductToCartFormProps = {
   className?: ClassName
   style?: React.CSSProperties
   isModalShow: boolean
-  setModal: (arg: boolean) => void
+  onClose: (arg: boolean) => void
   product: Product
 }
 
-export function AddProductToCartForm({
-  isModalShow,
-  setModal,
-  product,
-}: AddProductToCartFormProps): React.ReactElement {
+export function AddProductToCartForm({ isModalShow, onClose, product }: AddProductToCartFormProps): React.ReactElement {
+  const addCartItemRequest = useDefer(addCartItem, [])
   const [selectedVariant, setSelectedVariant] = useState<ProductVariant | null>(null)
-  const [isSelectRingError, setSelectRingError] = useState<boolean>(false)
-  const [addToCartButtonState, setAddToCartButtonState] = useState<string>('Add to Cart')
+  // const [isSelectRingError, setSelectRingError] = useState<boolean>(false)
+  const [error, setError] = useState<string | null>(null)
+  // const [addToCartButtonState, setAddToCartButtonState] = useState<string>('Add to Cart')
 
   const onCloseModal = (event: any) => {
     event.stopPropagation()
-    setModal(false)
+    onClose(false)
   }
 
   const successRequest = (product: Product) => {
-    setAddToCartButtonState('Added!')
+    // setAddToCartButtonState('Added!')
     setTimeout(() => {
-      setAddToCartButtonState('Add to Cart')
+      addCartItemRequest.reset()
     }, 1000)
     trackAddedToCart(product)
   }
 
-  const failRequest = (err: unknown) => {
-    setAddToCartButtonState('Add to Cart')
-    alert(err)
+  const failRequest = (err: string) => {
+    // setAddToCartButtonState('Add to Cart')
+    setError(err.toString())
   }
 
   const addToCartHandler = (selectedVariant: ProductVariant | null, product: Product) => {
     if (!selectedVariant) {
-      localStorage.setItem('selectRingError', JSON.stringify(true))
-      setSelectRingError(true)
+      setError('Please select ring size')
       return
     }
 
-    const addingRequest: Promise<unknown> = addCartItem(selectedVariant.variant_id)
-    setAddToCartButtonState('Adding...')
-    addingRequest.then(() => successRequest(product)).catch((err) => failRequest(err))
+    addCartItemRequest
+      .execute(selectedVariant.variant_id)
+      .then(() => successRequest(product))
+      .catch((err) => failRequest(err))
+
+    // const addingRequest: Promise<unknown> = addCartItem(selectedVariant.variant_id)
+    // setAddToCartButtonState('Adding...')
+    // addingRequest.then(() => successRequest(product)).catch((err) => failRequest(err))
   }
 
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
@@ -273,10 +276,10 @@ export function AddProductToCartForm({
   }
 
   return (
-    <Modal onClick={(e) => onCloseModal(e)} isVisible={isModalShow}>
-      <ModalContent onClick={(e) => e.stopPropagation()} isVisible={isModalShow}>
+    <Modal onClick={(e) => onCloseModal(e)} visible={isModalShow}>
+      <ModalContent onClick={(e) => e.stopPropagation()} visible={isModalShow}>
         <ModalContentBody>
-          <ModalCloseButton onClick={() => setModal(false)} type="button">
+          <ModalCloseButton onClick={() => onClose(false)} type="button">
             <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
                 d="M21 1.09381L1 21.0938M1 1.09381L21 21.0938"
@@ -302,9 +305,7 @@ export function AddProductToCartForm({
                         type="button"
                         value={variant.size}
                         onClick={() => {
-                          setSelectRingError(false)
-                          localStorage.setItem('selectRingError', JSON.stringify(false))
-                          localStorage.setItem('currentRingSize', JSON.stringify(variant.variant_id))
+                          setError(null)
                           setSelectedVariant(variant)
                         }}
                         disabled={!variant.available}
@@ -315,8 +316,12 @@ export function AddProductToCartForm({
                   )
               )}
             </ProductSelector>
-            {isSelectRingError ? <ProductRsSelector>Please select ring size</ProductRsSelector> : null}
-            <ProductBtn type="submit">{addToCartButtonState}</ProductBtn>
+            {error && <ProductRsSelector>{error}</ProductRsSelector>}
+            <ProductBtn type="submit">
+              {[Status.IDLE, Status.ERROR].includes(addCartItemRequest.status) && 'Add to cart'}
+              {addCartItemRequest.status === Status.PENDING && 'Adding...'}
+              {addCartItemRequest.status === Status.SUCCESS && 'Added'}
+            </ProductBtn>
           </ModalForm>
         </ModalContentBody>
       </ModalContent>
