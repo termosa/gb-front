@@ -238,7 +238,7 @@ export function AddProductToCartForm({ visible, onClose, product }: AddProductTo
 
   const onCloseModal = (event: any) => {
     event.stopPropagation()
-    onClose(false)
+    onClose()
   }
 
   const successRequest = (product: Product) => {
@@ -279,7 +279,7 @@ export function AddProductToCartForm({ visible, onClose, product }: AddProductTo
     <Modal onClick={(e) => onCloseModal(e)} visible={visible}>
       <ModalContent onClick={(e) => e.stopPropagation()} visible={visible}>
         <ModalContentBody>
-          <ModalCloseButton onClick={() => onClose(false)} type="button">
+          <ModalCloseButton onClick={() => onClose()} type="button">
             <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
                 d="M21 1.09381L1 21.0938M1 1.09381L21 21.0938"
