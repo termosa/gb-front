@@ -41,6 +41,21 @@ export default function HomePage({
           <HeroGallery
             slides={[
               {
+                topText: '925 STERLING SILVER',
+                centerFirstText: 'Wicked Fairy',
+                centerSecondText: '',
+                bottomText:
+                  'Get lost in the fairy’s spell and become hypnotized by these wicked-fairy inspired sterling silver rings! ',
+                buttonText: 'Reveal the Collection',
+                buttonLink: createLink.forCollection('fantasy'),
+                backgroundImg:
+                  'https://fragrantjewels-assets.s3.amazonaws.com/images/banners/wickedfairy-banner-dt.jpg',
+                backgroundImgMobile:
+                  'https://fragrantjewels-assets.s3.amazonaws.com/images/banners/wickedfairy-banner-mb-2.jpg',
+                transparentPlaceholder: true,
+                desktopPosition: 'right',
+              },
+              {
                 topText: 'NEW',
                 centerFirstText: 'The October Box',
                 centerSecondText: '',
