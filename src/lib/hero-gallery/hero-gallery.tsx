@@ -129,13 +129,17 @@ const SlideTransparentContent = styled.div`
   max-width: 960px;
   margin: 0 auto;
   color: #fff;
+  position: relative;
+  height: 100%;
 `
 
-const SliderTransparentWrapper = styled.div`
+const SliderTransparentWrapper = styled.div<{ position: string }>`
   position: absolute;
   @media (min-width: 1200px) {
     top: 50%;
     transform: translateY(-50%);
+    right: ${(props) => (props.position === 'right' ? '0' : 'auto')};
+    left: ${(props) => (props.position === 'left' ? '0' : 'auto')};
     button {
       margin: 0;
     }
@@ -248,6 +252,7 @@ export type GalleryItem = {
   backgroundImg: string
   backgroundImgMobile: string
   transparentPlaceholder: boolean
+  desktopPosition?: string
 }
 
 export type HeroGalleryProps = {
@@ -277,7 +282,7 @@ export function HeroGallery({ className, style, slides }: HeroGalleryProps): Rea
           >
             {slide.transparentPlaceholder ? (
               <SlideTransparentContent>
-                <SliderTransparentWrapper>
+                <SliderTransparentWrapper position={slide.desktopPosition || ''}>
                   <SlidePreTitle>{slide.topText}</SlidePreTitle>
                   <SlideTitle>
                     {slide.centerFirstText}
