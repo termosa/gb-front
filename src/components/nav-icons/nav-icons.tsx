@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useRouter } from 'next/router'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
 import { useMediaPredicate } from 'react-media-hook'
@@ -227,6 +228,7 @@ export function NavIcons({
   userName,
   isSubscriptionLinkShown,
 }: NavIconsProps): React.ReactElement | null {
+  const router = useRouter()
   const cart = useCart(true)
   const isMobileScreen = useMediaPredicate('(max-width: 1200px)')
   const [dropdownVisibility, setDropdownVisibility] = useState(false)
@@ -253,7 +255,7 @@ export function NavIcons({
           ></path>
         </svg>
       </SSearchButton>
-      <Link passHref href={isMobileScreen ? window?.location.pathname || '' : '/account'}>
+      <Link passHref href={isMobileScreen ? router.asPath || '' : '/account'}>
         <SProfileButton
           onMouseEnter={handleDropdownVisibilityChange}
           onMouseLeave={handleDropdownVisibilityChange}
