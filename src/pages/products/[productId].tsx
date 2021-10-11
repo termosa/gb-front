@@ -32,8 +32,8 @@ export default function ProductPage({ product, productId, potentialProducts }: P
         <title>{product.title} - Fragrant Jewels</title>
         <meta name="description" content={productDescription.slice(0, 320) || product.title} />
       </Head>
-      <ProductContext.Provider value={product}>
-        <MainPageLayout>
+      <MainPageLayout>
+        <ProductContext.Provider value={product}>
           <Product />
           <LazyLoad threshold={1000}>
             <YotpoProductGallery galleryId="5d12193001f0950007b69682" productId={product.product_id} />
@@ -54,8 +54,8 @@ export default function ProductPage({ product, productId, potentialProducts }: P
               </SiteSection>
             </LazyLoad>
           </div>
-        </MainPageLayout>
-      </ProductContext.Provider>
+        </ProductContext.Provider>
+      </MainPageLayout>
     </>
   )
 }
