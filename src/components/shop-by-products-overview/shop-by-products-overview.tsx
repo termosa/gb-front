@@ -70,6 +70,11 @@ const SliderWrapper = styled.div`
   @media (min-width: 992px) {
     // gap: 32px;
   }
+
+  .carousel .slider-wrapper,
+  .carousel.carousel-slider {
+    overflow: visible;
+  }
 `
 
 const SliderHolder = styled.div`
