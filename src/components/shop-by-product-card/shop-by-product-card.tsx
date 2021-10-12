@@ -44,18 +44,19 @@ const SLayoutImage = styled(Image)`
   }
 
   img {
-    width: 232px;
+    width: 100%;
+    max-width: 232px;
 
     @media (min-width: 375px) {
-      width: 284px;
+      max-width: 356px;
     }
 
     @media (min-width: 768px) {
-      width: 220px;
+      max-width: 220px;
     }
 
-    @media (min-width: 1050px) {
-      width: 284px;
+    @media (min-width: 992px) {
+      max-width: 284px;
     }
   }
 `

@@ -649,7 +649,7 @@ export function InnerCircleExclusive({
             </SImagesWrapper>
             <SDetailsWrapper>
               <SDetailsContainer>
-                <SInnerCircleLabel>INNER CIRCLE EXCLUSIVE</SInnerCircleLabel>
+                <SInnerCircleLabel>Become a Member</SInnerCircleLabel>
                 <SProductTitle>{productTitle}</SProductTitle>
                 <div>
                   <SPriceShippingInfo>

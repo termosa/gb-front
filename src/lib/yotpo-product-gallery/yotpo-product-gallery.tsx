@@ -19,7 +19,7 @@ const Container = styled(SiteSection)`
     max-width: 100% !important;
 
     @media (min-width: 992px) {
-      margin-bottom: 60px !important;
+      margin-bottom: 76px !important;
     }
   }
 

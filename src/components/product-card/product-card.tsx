@@ -123,9 +123,6 @@ const ProductCardTitle = styled.h4`
   font: 400 16px/1.3 'Montserrat', sans-serif;
   margin: 0 0 10px;
   padding: 0 5px;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
 `
 
 const ProductCardType = styled.div`

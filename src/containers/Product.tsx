@@ -25,7 +25,7 @@ import ProductInfo from '../lib/product-info'
 `*/
 
 const SProductContainer = styled.div`
-  max-width: 1020px;
+  max-width: 990px;
   margin: 0 auto 58px;
 
   @media (min-width: 768px) {
