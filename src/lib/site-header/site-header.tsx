@@ -942,6 +942,8 @@ export function SiteHeader({
   const customerOrdersDetails = useContext(CustomerOrdersDetailsContext)
   const isGlobalBannerShow = false
 
+  useEffect(() => setExtendableBlockContent(''), [router.asPath])
+
   const onAddGAEvent = (eventObj: GAProps) => {
     ga(eventObj)
   }
