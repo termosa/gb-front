@@ -127,8 +127,8 @@ const Collection = (): null | React.ReactElement => {
           onChangeFilter={(newFilter) => updateHash(newFilter, sorting)}
           onChangeSorting={(newSorting) => updateHash(filter, newSorting)}
           filters={availableFilters}
-          initialSorting={sorting}
-          initialFilter={filter}
+          sorting={sorting}
+          filter={filter}
           filteredProducts={filteredProducts}
         />
       </SFiltersSection>
