@@ -396,9 +396,13 @@ const SPdpAItemDescription = styled.div<{
   isActive: boolean
 }>`
   font: 400 16px/1.5 'Montserrat', sans-serif;
-  white-space: pre-line;
+  // white-space: pre-line;
   display: ${(props) => (props.isActive ? 'block' : 'none')};
-  padding: 0 0 15px 0;
+  padding: 15px 0;
+
+  p {
+    margin: 0 0 10px;
+  }
 
   & > span {
     margin: 0 0 10px;

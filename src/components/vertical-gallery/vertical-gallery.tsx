@@ -21,7 +21,7 @@ const Wrapper = styled.div`
 const SPdpCarouselContainer = styled.div`
   @media (max-width: 767px) {
     max-width: 350px;
-    margin: 0 auto 16px;
+    margin: 0 auto 14px;
   }
 `
 
