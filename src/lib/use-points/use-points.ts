@@ -2,6 +2,7 @@ import { useContext, useMemo } from 'react'
 import useDefer from 'use-defer'
 import api from '../../modules/api'
 import CustomerOrdersDetailsContext from '../../modules/customer-orders-details-context'
+import oldApiBase from '../old-api-base'
 import useCart from '../use-cart'
 
 type ServerCartDetails = {
@@ -20,20 +21,20 @@ type ServerCartDetails = {
 
 const loadCartDetails = (token: string) =>
   api<ServerCartDetails>({
-    base: 'https://fjrecurly.herokuapp.com',
+    base: oldApiBase,
     path: '/api/v1/cart/',
     query: { cart_token: token },
   })
 
 const loadRewards = () =>
   api<Array<{ points: number; shopify_product_id: string }>>({
-    base: 'https://fjrecurly.herokuapp.com',
+    base: oldApiBase,
     path: '/api/v1/loyalty/rewards/',
   })
 
 const loadPromotions = () =>
   api<{ levels: Array<{ name: 'Inner Circle' | 'Gold' | 'Platinum'; multiplier: number }> }>({
-    base: 'https://fjrecurly.herokuapp.com',
+    base: oldApiBase,
     path: '/api/v1/loyalty/modifiers/',
   })
 
