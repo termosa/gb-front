@@ -327,8 +327,8 @@ export type CollectionFiltersProps = {
   filters: Filters
   onChangeFilter: (selectedFilters: CollectionProductsFilter) => void
   onChangeSorting: (sorting: SelectedSorting) => void
-  initialSorting: SelectedSorting
-  initialFilter?: CollectionProductsFilter
+  sorting: SelectedSorting
+  filter?: CollectionProductsFilter
   filteredProducts: Array<Product>
 }
 
@@ -338,12 +338,11 @@ export const CollectionFilters = ({
   filters,
   onChangeFilter,
   onChangeSorting,
-  initialSorting,
-  initialFilter = createEmptyFilter(),
+  sorting,
+  filter = createEmptyFilter(),
   filteredProducts,
 }: CollectionFiltersProps): React.ReactElement => {
   const screenSize = useScreenSize()
-  const [selectedSorting, setSelectedSorting] = useState<SelectedSorting>(initialSorting)
 
   const calculateAvailableFilters = (arr: Array<Filter>, name: string) => {
     return arr.map((el: Filter) => {
@@ -405,24 +404,16 @@ export const CollectionFilters = ({
       alooma(isFiltersDropdownOpened ? 'dropdown opened' : 'dropdown closed')
   }, [isFiltersDropdownOpened])
 
-  const [selectedFilters, setSelectedFilters] = useState<CollectionProductsFilter>(initialFilter)
-
   const handleFilterChange = (filterGroup: FilterGroup, filterName: string, enabled: boolean) => {
     const selectedFilterName = filters[filterGroup].find((filter) => filter.name === filterName)?.name
     if (!selectedFilterName) return
 
     alooma(`${filterGroup.slice(0, -1)} ${enabled ? 'selected' : 'unselected'}`, { details: `choice: ${filterName}` }) // TODO: Stop slicing
     onChangeFilter({
-      ...selectedFilters,
+      ...filter,
       [filterGroup]: enabled
-        ? (selectedFilters[filterGroup] || []).concat(selectedFilterName)
-        : selectedFilters[filterGroup]?.filter((name) => name !== filterName) || [],
-    })
-    setSelectedFilters({
-      ...selectedFilters,
-      [filterGroup]: enabled
-        ? (selectedFilters[filterGroup] || []).concat(selectedFilterName)
-        : selectedFilters[filterGroup]?.filter((name) => name !== filterName) || [],
+        ? (filter[filterGroup] || []).concat(selectedFilterName)
+        : filter[filterGroup]?.filter((name) => name !== filterName) || [],
     })
   }
 
@@ -439,7 +430,6 @@ export const CollectionFilters = ({
   })
 
   const changeSorting = (sorting: SelectedSorting) => {
-    setSelectedSorting(sorting)
     onChangeSorting(sorting)
     setIsSortDropdownOpened(false)
   }
@@ -447,30 +437,24 @@ export const CollectionFilters = ({
   const handleClearing = () => {
     alooma('clear filters')
     onChangeFilter(createEmptyFilter())
-    setSelectedFilters(createEmptyFilter())
   }
 
   return (
     <SCollectionFiltersContainer className={cn(name, className)}>
       {children}
       <SButtons>
-        <SButton
-          onClick={() => setIsFiltersDropdownOpened(!isFiltersDropdownOpened)}
-          isActive={!isEmptyFilter(selectedFilters)}
-        >
+        <SButton onClick={() => setIsFiltersDropdownOpened(!isFiltersDropdownOpened)} isActive={!isEmptyFilter(filter)}>
           <SButtonLabel>
             <svg xmlns="http://www.w3.org/2000/svg" width={18} height={10} viewBox="0 0 18 10" fill="none">
               <path
                 d="M1 1h16M1 5h12M1 9h8"
-                stroke={isEmptyFilter(selectedFilters) ? '#000' : '#fff'}
+                stroke={isEmptyFilter(filter) ? '#000' : '#fff'}
                 strokeWidth={0.5}
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
             </svg>
-            <SFilterLabelText>
-              Filter {!isEmptyFilter(selectedFilters) && `(${filteredProducts.length})`}
-            </SFilterLabelText>
+            <SFilterLabelText>Filter {!isEmptyFilter(filter) && `(${filteredProducts.length})`}</SFilterLabelText>
           </SButtonLabel>
         </SButton>
         <SButton
@@ -494,13 +478,13 @@ export const CollectionFilters = ({
         </SButton>
         {isSortDropdownOpened && (
           <SSortDropdown ref={setPopperElement} style={styles.popper} {...attributes.popper}>
-            {sorts.map((sorting) => (
+            {sorts.map((sortingOption) => (
               <SSortDropdownFilters
-                key={sorting.code}
-                onClick={() => changeSorting(sorting.code)}
-                selected={sorting.code === selectedSorting}
+                key={sortingOption.code}
+                onClick={() => changeSorting(sortingOption.code)}
+                selected={sortingOption.code === sorting}
               >
-                {sorting.label}
+                {sortingOption.label}
               </SSortDropdownFilters>
             ))}
           </SSortDropdown>
@@ -513,7 +497,7 @@ export const CollectionFilters = ({
               itemsArray={filtersCopy.fragrances.sort((a, b) => a.name.localeCompare(b.name))}
               filterGroup={'fragrances'}
               handleFilterChange={handleFilterChange}
-              selectedFilters={selectedFilters}
+              selectedFilters={filter}
               visibleByDefault
               minWidth={'200px'}
             >
@@ -525,7 +509,7 @@ export const CollectionFilters = ({
               itemsArray={filtersCopy.sizes}
               filterGroup={'sizes'}
               handleFilterChange={handleFilterChange}
-              selectedFilters={selectedFilters}
+              selectedFilters={filter}
               minWidth={'140px'}
             >
               Size
@@ -536,7 +520,7 @@ export const CollectionFilters = ({
               itemsArray={filtersCopy.materials.sort((a, b) => a.name.localeCompare(b.name))}
               filterGroup={'materials'}
               handleFilterChange={handleFilterChange}
-              selectedFilters={selectedFilters}
+              selectedFilters={filter}
               minWidth={'250px'}
             >
               Material
@@ -547,7 +531,7 @@ export const CollectionFilters = ({
               itemsArray={filtersCopy.colors.sort((a, b) => a.name.localeCompare(b.name))}
               filterGroup={'colors'}
               handleFilterChange={handleFilterChange}
-              selectedFilters={selectedFilters}
+              selectedFilters={filter}
               minWidth={'220px'}
             >
               Metal color
@@ -564,10 +548,10 @@ export const CollectionFilters = ({
               <CloseButton onClick={() => setIsFiltersDropdownOpened(false)} />
             </SCloseButtonWrapper>
           </SFilterMobileControlButtonsGroup>
-          {!isEmptyFilter(selectedFilters) && !screenSize.greaterThanMedium && (
+          {!isEmptyFilter(filter) && !screenSize.greaterThanMedium && (
             <SFilterDesktopControlButtonsGroup>
               <SSelectedFilters>
-                {getListOfSelectedFilters(selectedFilters).map(({ name, filterGroup }) => (
+                {getListOfSelectedFilters(filter).map(({ name, filterGroup }) => (
                   <SSelectedFilter>
                     <SSelectedFilterInfo>{name}</SSelectedFilterInfo>
                     <CloseButton onClick={() => handleFilterChange(filterGroup as FilterGroup, name, false)} small />
@@ -579,18 +563,15 @@ export const CollectionFilters = ({
               )}
             </SFilterDesktopControlButtonsGroup>
           )}
-          <SShowResultsButton
-            onClick={() => setIsFiltersDropdownOpened(false)}
-            isActive={!isEmptyFilter(selectedFilters)}
-          >
-            Show Results {!isEmptyFilter(selectedFilters) && `(${filteredProducts.length})`}
+          <SShowResultsButton onClick={() => setIsFiltersDropdownOpened(false)} isActive={!isEmptyFilter(filter)}>
+            Show Results {!isEmptyFilter(filter) && `(${filteredProducts.length})`}
           </SShowResultsButton>
         </SFilters>
       )}
-      {!isEmptyFilter(selectedFilters) && screenSize.greaterThanMedium && (
+      {!isEmptyFilter(filter) && screenSize.greaterThanMedium && (
         <SFilterDesktopControlButtonsGroup>
           <SSelectedFilters>
-            {getListOfSelectedFilters(selectedFilters).map(({ name, filterGroup }) => (
+            {getListOfSelectedFilters(filter).map(({ name, filterGroup }) => (
               <SSelectedFilter>
                 <SSelectedFilterInfo>{name}</SSelectedFilterInfo>
                 <svg
