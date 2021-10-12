@@ -354,7 +354,7 @@ export function VerticalGallery({ className }: VerticalGalleryProps): React.Reac
                 <Slider
                   partiallyVisible={false}
                   arrows={false}
-                  carouselRef={carouselRef}
+                  /*carouselRef={carouselRef}*/
                   setActiveGalleryItem={setActiveGalleryItem}
                 >
                   {product?.images?.map((image) => (

@@ -4,12 +4,13 @@ import styled from 'styled-components'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 import createLink from '../../lib/create-link'
+import { GAProps } from '../../lib/site-header'
 
 export type NavTabsProps = {
   className?: ClassName
   setExtendableBlockContent: Dispatch<SetStateAction<string>>
   isSubscriptionLinkShown: boolean
-  addGAEvent: any
+  addGAEvent: (eventObj: GAProps) => void
 }
 
 const SWrapperOuter = styled.div`
@@ -163,7 +164,8 @@ export function NavTabs({
 }: NavTabsProps): React.ReactElement | null {
   const router = useRouter()
 
-  const onSubscribeBtnClick = (e: any) => {
+  const onSubscribeBtnClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    const target = e.target as HTMLAnchorElement
     e.preventDefault()
     addGAEvent({
       hitType: 'event',
@@ -171,7 +173,7 @@ export function NavTabs({
       eventAction: 'click',
       eventLabel: 'navigation',
     })
-    router.push(e.target.href)
+    router.push(target.href)
   }
 
   return (
@@ -181,7 +183,7 @@ export function NavTabs({
           {isSubscriptionLinkShown && (
             <SSubscribeButton style={{ display: 'list-item' }} onMouseEnter={() => setExtendableBlockContent('')}>
               <Link passHref href={createLink.forPage('inner-circle')}>
-                <a onClick={onSubscribeBtnClick}>Subscribe</a>
+                <a onClick={(e) => onSubscribeBtnClick(e)}>Subscribe</a>
               </Link>
             </SSubscribeButton>
           )}

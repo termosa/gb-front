@@ -613,7 +613,7 @@ export function InnerCircleExclusive({
                   <Slider
                     infinite
                     arrows={false}
-                    carouselRef={smallSliderRef}
+                    /*carouselRef={smallSliderRef}*/
                     customButtonGroup={<CustomButtons />}
                     swipeable={false}
                     autoPlay={false}
@@ -632,7 +632,7 @@ export function InnerCircleExclusive({
                   </Slider>
                 </SLeftSliderPart>
                 <SRightSliderPart>
-                  <Slider infinite arrows={false} carouselRef={bigSliderRef} swipeable={false} autoPlay={false}>
+                  <Slider infinite arrows={false} swipeable={false} autoPlay={false}>
                     {shiftedProductsArray.map((src, i) => (
                       <SImage
                         src={src}

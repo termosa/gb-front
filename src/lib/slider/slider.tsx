@@ -203,7 +203,7 @@ const SArrowButton = styled.button`
 */
 
 type SliderProps = {
-  children: React.ReactChild[]
+  children: React.ReactElement[] | undefined
   arrows?: boolean
   customLeftArrow?: React.ReactElement
   customRightArrow?: React.ReactElement
@@ -220,7 +220,7 @@ type SliderProps = {
   showDots?: boolean
   slidesToSlide?: number
   setActiveGalleryItem?: Dispatch<number>
-  carouselRef?: React.RefObject<Carousel>
+  /*carouselRef?: React.RefObject<Carousel>*/
 }
 
 /*type CustomDotProps = {

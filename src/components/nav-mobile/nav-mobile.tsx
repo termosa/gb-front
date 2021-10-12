@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import Link from 'next/link'
 import PointsWidget from '../points-widget'
 import SigninSignup from '../signin-signup'
-import { ExtendableBlockContent } from '../../lib/site-header'
+import { ExtendableBlockContent, GAProps } from '../../lib/site-header'
 import Image from '../../lib/image'
 import createLink from '../../lib/create-link'
 
@@ -13,7 +13,7 @@ export type SearchFieldProps = {
   setBurgerMenuOpen: (isBurgerMenuOpen: boolean) => void
   userName?: string
   isSubscriptionLinkShown: boolean
-  addGAEvent: any
+  addGAEvent: (eventObj: GAProps) => void
 }
 
 const SWrapper = styled.div`
@@ -237,8 +237,8 @@ const SCardLink = styled.span`
   font-weight: 600;
   display: inline-block;
   text-align: left;
-  padding: 7px 15px 7px 0;
   position: relative;
+  padding: 0 0 5px;
   transition: color linear 0.2s;
   color: #000;
   text-decoration: none;
@@ -255,9 +255,6 @@ const SCardLink = styled.span`
     text-underline-offset: 7px;
     line-height: 2;
   }
-
-  position: relative;
-  padding: 0 0 5px;
 
   &:after {
     content: '';
@@ -440,7 +437,8 @@ export function NavMobile({
   const [extendableBlock, setExtendableBlock] = useState('')
   const [sideNavContent, setSideNavContent] = useState('')
 
-  const onMemberBtnClick = (e: any) => {
+  const onMemberBtnClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    const target = e.target as HTMLAnchorElement
     e.preventDefault()
     addGAEvent({
       hitType: 'event',
@@ -448,7 +446,7 @@ export function NavMobile({
       eventAction: 'click',
       eventLabel: 'navigation',
     })
-    router.push(e.target.href)
+    router.push(target.href)
   }
 
   return isBurgerMenuOpen ? (
@@ -491,7 +489,7 @@ export function NavMobile({
           </SNavTopInner>
           {isSubscriptionLinkShown && (
             <Link passHref href={createLink.forPage('inner-circle')}>
-              <SMemberButton onClick={onMemberBtnClick}>Become a member</SMemberButton>
+              <SMemberButton onClick={(e) => onMemberBtnClick(e)}>Become a member</SMemberButton>
             </Link>
           )}
         </SNavTop>
