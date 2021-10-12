@@ -9,7 +9,7 @@ const SSizeSelector = styled.div`
   position: relative;
   width: auto;
   height: auto;
-  padding: 16px;
+  padding: 15px;
   background: #fff;
   border: 1px solid #000000;
   box-shadow: 0 0 24px rgba(0, 0, 0, 0.35);
@@ -37,13 +37,17 @@ const SRingSizeContainer = styled.div`
 
   @media (min-width: 768px) {
     margin-bottom: 20px;
-    max-width: 340px;
+    width: 320px;
     margin: 0 auto 16px;
+  }
+  @media (min-width: 850px) {
+    width: 338px;
   }
 `
 
 const SBtnHolder = styled.div`
   margin: 0 2px;
+  position: relative;
   &:first-child {
     margin-left: 0;
   }
@@ -52,12 +56,21 @@ const SBtnHolder = styled.div`
     margin-right: 0;
   }
 
-  width: 50px;
+  width: 100%;
+  max-width: 50px;
 
   &:after {
     content: '';
     display: block;
     padding-top: 100%;
+  }
+
+  @media (min-width: 768px) {
+    width: 45px;
+  }
+
+  @media (min-width: 992px) {
+    width: 48px;
   }
 `
 
@@ -76,8 +89,8 @@ const SRingSizeBtn = styled.button<{ isActive: boolean }>`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 50px;
-  height: 50px;
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
   cursor: pointer;
   appearance: none;
@@ -96,7 +109,7 @@ const SRingSizeBtn = styled.button<{ isActive: boolean }>`
 const SRingSizeError = styled.div`
   text-align: center;
   color: #9059c8;
-  margin-bottom: 12px;
+  margin-bottom: 20px;
   font: 400 14px/1.3 'Montserrat', sans-serif;
 `
 
