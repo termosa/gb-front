@@ -12,7 +12,6 @@ import alooma from '../lib/alooma'
 import window from '../lib/window'
 import { Product } from '../modules/normalize-product'
 import createLink from '../lib/create-link'
-import { useRouterScroll } from '@moxy/next-router-scroll'
 
 const SFiltersSection = styled(SiteSection)`
   margin-bottom: 32px;
@@ -61,7 +60,6 @@ const parseHash = (): { filter: CollectionProductsFilter; sorting: undefined | S
 const Collection = (): null | React.ReactElement => {
   const router = useRouter()
   const collection = useContext(CollectionContext)
-  const { updateScroll } = useRouterScroll()
 
   const [filter, setFilter] = useState(() => parseHash().filter)
   const [sorting, setSorting] = useState(parseHash().sorting || SelectedSorting.NEW)
@@ -112,10 +110,6 @@ const Collection = (): null | React.ReactElement => {
 
     setFilteredProducts(filterCollectionProducts(sortedProducts, filter))
   }, [collection, filter, sorting])
-
-  useEffect(() => {
-    updateScroll()
-  }, [])
 
   if (!collection) return null
 
