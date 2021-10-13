@@ -16,7 +16,7 @@ const Modal = styled.div<{
   left: 0;
   background: rgba(255, 255, 255, 0.5);
   // z-index: 100;
-  z-index: 7;
+  z-index: 34;
   display: flex;
   visibility: ${(props) => (props.visible ? 'visible' : 'hidden')};
   align-items: flex-end;
@@ -25,17 +25,16 @@ const Modal = styled.div<{
   opacity: ${(props) => (props.visible ? '1' : '0')};
   pointer-events: ${(props) => (props.visible ? 'all' : 'none')};
   font: 400 16px/1.2 'Montserrat', sans-serif;
-  // overflow: hidden;
 
   @media (min-width: 992px) {
-    position: absolute;
-    top: auto;
+    // top: 0;
+    // position: fixed;
+    align-items: center;
   }
 
   @media (min-width: 1200px) {
-    top: 0;
-    position: fixed;
-    align-items: center;
+    position: absolute;
+    top: auto;
   }
 `
 
@@ -53,10 +52,16 @@ const ModalContent = styled.div<{ visible?: boolean }>`
   cursor: auto;
   box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.15);
 
-  @media (min-width: 1200px) {
+  @media (min-width: 992px) {
     transform: scale(${(props) => (props.visible ? '1' : '0.85')});
     max-width: 332px;
     box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+  }
+
+  @media (min-width: 1200px) {
+    transform: translateY(${(props) => (props.visible ? '0' : '100%')});
+    max-width: 100%;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.15);
   }
 `
 
@@ -108,13 +113,13 @@ const ProductSelector = styled.div`
   display: flex;
   justify-content: space-between;
   flex-wrap: nowrap;
-  margin: 0 0 12px;
+  margin: 0 0 14px;
 `
 
 const ProductRsSelector = styled.div`
   text-align: center;
   color: #9059c8;
-  margin: 0 0 12px;
+  margin: 0 0 16px;
   letter-spacing: 0;
 `
 
@@ -123,15 +128,6 @@ const ProductSelectorBtnHolder = styled.div`
   position: relative;
   width: 100%;
   max-width: 50px;
-
-  // @media (min-width: 768px) {
-  //   width: 45px;
-  //   margin: 0 5px;
-  // }
-
-  // @media (min-width: 850px) {
-  //   width: 48px;
-  // }
 
   &:first-child {
     margin-left: 0;
@@ -320,7 +316,7 @@ export function AddProductToCartForm({ visible, onClose, product }: AddProductTo
             <ProductBtn type="submit">
               {[Status.IDLE, Status.ERROR].includes(addCartItemRequest.status) && 'Add to cart'}
               {addCartItemRequest.status === Status.PENDING && 'Adding...'}
-              {addCartItemRequest.status === Status.SUCCESS && 'Added'}
+              {addCartItemRequest.status === Status.SUCCESS && 'Added!'}
             </ProductBtn>
           </ModalForm>
         </ModalContentBody>
