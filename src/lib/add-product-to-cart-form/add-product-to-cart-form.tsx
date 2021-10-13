@@ -280,9 +280,9 @@ export function AddProductToCartForm({ visible, onClose, product }: AddProductTo
               <path
                 d="M21 1.09381L1 21.0938M1 1.09381L21 21.0938"
                 stroke="black"
-                stroke-width="0.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="0.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               />
             </svg>
           </ModalCloseButton>
