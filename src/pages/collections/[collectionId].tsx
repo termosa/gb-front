@@ -6,6 +6,11 @@ import collectionPageProps, { CollectionPageProps } from '../../resolvers/collec
 import RemotePage from '../../lib/remote-page'
 import Head from 'next/head'
 import { parse } from 'node-html-parser'
+import styled from 'styled-components'
+
+const SCollectionWrapper = styled.div`
+  overflow: hidden;
+`
 
 export default function CollectionPage({ collection, collectionId }: CollectionPageProps): React.ReactElement {
   const collectionDescription = useMemo(() => {
@@ -15,7 +20,7 @@ export default function CollectionPage({ collection, collectionId }: CollectionP
   if (!collection) return <RemotePage url={`/collections/${collectionId}`} />
 
   return (
-    <>
+    <SCollectionWrapper>
       <Head>
         <title>{collection.title} - Fragrant Jewels</title>
         <meta name="description" content={collectionDescription.slice(0, 320) || collection.title} />
@@ -25,7 +30,7 @@ export default function CollectionPage({ collection, collectionId }: CollectionP
           <Collection />
         </CollectionContext.Provider>
       </MainPageLayout>
-    </>
+    </SCollectionWrapper>
   )
 }
 
