@@ -214,6 +214,8 @@ type SliderProps = {
   partiallyVisible?: boolean
   infinite?: boolean
   swipeable?: boolean
+  selectedItem?: number
+  onChange?: (i: number) => void
   itemClass?: string
   autoPlay?: boolean
   centerMode?: boolean
@@ -249,6 +251,9 @@ let productsLength = 0*/
 export const Slider = ({
   children,
   arrows,
+  swipeable,
+  selectedItem,
+  onChange,
   /*customLeftArrow,
   customRightArrow,
   scrollbarPresent,
@@ -257,7 +262,6 @@ export const Slider = ({
   partiallyVisible,
   responsive,
   infinite,
-  swipeable,
   itemClass,
   carouselRef,
   autoPlay,
@@ -345,7 +349,9 @@ export const Slider = ({
         showThumbs={false}
         showStatus={false}
         infiniteLoop
-        emulateTouch
+        emulateTouch={swipeable !== undefined ? swipeable : true}
+        onChange={onChange}
+        selectedItem={selectedItem}
         showIndicators={!!showDots}
         showArrows={arrows}
       >

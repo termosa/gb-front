@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import Link from 'next/link'
 import Slider from '../../lib/slider'
@@ -64,7 +64,6 @@ const SArrow = styled.div`
   align-items: center;
   justify-content: center;
   width: 30px;
-  height: 30px;
   font-size: 0;
   line-height: 1;
   position: absolute;
@@ -131,23 +130,25 @@ const PurpleSpan = styled.span`
 `
 
 export function RollingBanner(): React.ReactElement {
+  const [selectedItem, setSelectedItem] = useState(0)
+
   return (
     <PromoWrapper>
       <Container>
         <PromoSlider>
+          <SPrevArrow onClick={() => setSelectedItem(selectedItem - 1)}>
+            <SArrowButton />
+          </SPrevArrow>
+          <SNextArrow onClick={() => setSelectedItem(selectedItem + 1)}>
+            <SArrowButton />
+          </SNextArrow>
           <Slider
-            customLeftArrow={
-              <SPrevArrow>
-                <SArrowButton />
-              </SPrevArrow>
-            }
-            customRightArrow={
-              <SNextArrow>
-                <SArrowButton />
-              </SNextArrow>
-            }
             infinite
             autoPlay
+            selectedItem={selectedItem}
+            onChange={(i) => {
+              selectedItem !== i && setSelectedItem(i)
+            }}
           >
             <span>
               <SPromoSlide>
