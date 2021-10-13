@@ -219,7 +219,7 @@ const SImage = styled(Image)`
 const ProductCardButton = styled.button`
   background: #fff;
   color: #000;
-  padding: 17px 15px;
+  padding: 17px 5px;
   width: 100%;
   border: 0;
   border-top: 1px solid #000;
