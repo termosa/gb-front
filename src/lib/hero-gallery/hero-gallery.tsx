@@ -140,6 +140,7 @@ const SliderTransparentWrapper = styled.div<{ position: string }>`
     transform: translateY(-50%);
     right: ${(props) => (props.position === 'right' ? '0' : 'auto')};
     left: ${(props) => (props.position === 'left' ? '0' : 'auto')};
+    text-align: left;
     button {
       margin: 0;
     }
@@ -188,7 +189,7 @@ const SlideTitle = styled.div`
   font-style: normal;
   margin: 0 0 12px;
   @media (min-width: 768px) {
-    max-width: 300px;
+    max-width: 320px;
     margin: 0 auto 12px;
   }
   @media (min-width: 1200px) {
