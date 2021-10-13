@@ -9,7 +9,6 @@ import useScreenSize from '../../lib/use-screen-size'
 // import YotpoStarRating from '../../lib/yotpo-star-rating'
 import AddProductToCartForm from '../../lib/add-product-to-cart-form'
 import ReactDOM from 'react-dom'
-import window from '../../lib/window'
 import StampedStarRating from '../../lib/stamped-star-rating'
 
 export type ProductCardProps = {
@@ -133,7 +132,12 @@ const ProductCardTag = styled.div<{
 const ProductCardTitle = styled.h4`
   font: 400 16px/1.3 'Montserrat', sans-serif;
   margin: 0 0 10px;
-  padding: 0 5px;
+  padding: 0 2px;
+  letter-spacing: 0;
+
+  @media (min-width: 768px) {
+    padding: 0 5px;
+  }
 `
 
 const ProductCardType = styled.div`
