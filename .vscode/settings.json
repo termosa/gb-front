@@ -22,8 +22,7 @@
     "stylelint",
     "swipeable",
     "teambit",
-    "Upsell",
-    "yotpo"
+    "Upsell"
   ],
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true

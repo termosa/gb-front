@@ -12,10 +12,8 @@ import ShopByProductsOverview from '../components/shop-by-products-overview'
 import CategoryShopCardsOverview from '../lib/category-shop-overview'
 import PromiseBar from '../components/promise-bar'
 import InlineSignupForm from '../components/inline-signup-form'
-import YotpoGallery from '../lib/yotpo-gallery'
 import addCartItem from '../lib/add-cart-item'
 import trackAddedToCart from '../lib/track-added-to-cart'
-import LazyLoad from '../lib/lazy-load'
 import createLink from '../lib/create-link'
 import HeroBanner from '../lib/hero-banner'
 
@@ -205,9 +203,6 @@ export default function HomePage({
         />
         <PromiseBar />
         <InlineSignupForm />
-        <LazyLoad threshold={1000}>
-          <YotpoGallery galleryId="5d12269884f4bc0010ad3974" />
-        </LazyLoad>
       </MainPageLayout>
     </>
   )
