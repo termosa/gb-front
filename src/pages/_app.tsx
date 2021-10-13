@@ -7,7 +7,6 @@ import facebookPixel from '../lib/facebook-pixel'
 import pinterestPixel from '../lib/pinterest-pixel'
 import Head from 'next/head'
 import '../_require-env'
-import { RouterScrollProvider } from '@moxy/next-router-scroll'
 
 baseApiUrl(typeof window === 'undefined' ? process.env.BASE_API_URL : process.env.CLIENT_API_URL)
 
@@ -30,9 +29,7 @@ const Application = ({ Component, pageProps }: AppProps): React.ReactElement => 
         <title>Fragrant Jewels</title>
         <link rel="shortcut icon" href="https://new-fragrantjewels.s3.us-west-2.amazonaws.com/app/img/favicon.ico" />
       </Head>
-      <RouterScrollProvider>
-        <Component {...pageProps} />
-      </RouterScrollProvider>
+      <Component {...pageProps} />
     </>
   )
 }
