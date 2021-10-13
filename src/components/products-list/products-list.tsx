@@ -21,8 +21,8 @@ const ProductsListContainer = styled.div`
   }
 
   @media (max-width: 600px) {
-    grid-gap: 32px 8px;
-    margin: 0 16px 40px;
+    grid-gap: 12px 12px;
+    margin: 0 22px 40px;
     grid-template-columns: repeat(2, 1fr);
   }
 `

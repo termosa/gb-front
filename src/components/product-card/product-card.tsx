@@ -68,6 +68,13 @@ const ProductCardImgWrapper = styled.div`
   }
 `
 
+const ProductCardInfoWrapper = styled.div`
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`
+
 const ProductCardImgWrapperInner = styled.div`
   width: 100%;
   position: relative;
@@ -102,7 +109,7 @@ const ProductCardTag = styled.div<{
   background: linear-gradient(269.97deg, white 0.02%, #efefef 13.98%, #efefef 45.51%, #efefef 76.52%, white 99.26%);
 
   @media (min-width: 768px) {
-    margin: 0 0 17px;
+    margin: 0 0 12px;
   }
 `
 
@@ -316,30 +323,34 @@ export function ProductCard({
             )}
           </ProductCardImgWrapperInner>
         </ProductCardImgWrapper>
-        <div>
-          {checkForLabel()}
-          <ProductCardStars>
-            <StampedStarRating productId={product.product_id} />
-          </ProductCardStars>
-          <ProductCardTitle title={productTitle}>{productTitle}</ProductCardTitle>
-          <ProductCardType>{productType}</ProductCardType>
-          <ProductCardPrices>
-            <ProductCardPrice>
-              {comparePrice ? (
-                <>
-                  <SDiscountPriceLabel>{formatPrice(comparePrice)}</SDiscountPriceLabel>{' '}
+        <ProductCardInfoWrapper>
+          <div>
+            {checkForLabel()}
+            <ProductCardStars>
+              <StampedStarRating productId={product.product_id} />
+            </ProductCardStars>
+            <ProductCardTitle title={productTitle}>{productTitle}</ProductCardTitle>
+            <ProductCardType>{productType}</ProductCardType>
+          </div>
+          <div>
+            <ProductCardPrices>
+              <ProductCardPrice>
+                {comparePrice ? (
+                  <>
+                    <SDiscountPriceLabel>{formatPrice(comparePrice)}</SDiscountPriceLabel>{' '}
+                    <SPriceLabel>{formatPrice(actualPrice)}</SPriceLabel>
+                  </>
+                ) : (
                   <SPriceLabel>{formatPrice(actualPrice)}</SPriceLabel>
-                </>
-              ) : (
-                <SPriceLabel>{formatPrice(actualPrice)}</SPriceLabel>
-              )}
-            </ProductCardPrice>
-          </ProductCardPrices>
-        </div>
+                )}
+              </ProductCardPrice>
+            </ProductCardPrices>
+          </div>
+        </ProductCardInfoWrapper>
         <ProductCardButton type="button" onClick={(e) => openModal(e)}>
           Add to Cart
         </ProductCardButton>
-        {window && screenSize.width && (screenSize.lessThanLarge || screenSize.greaterThanExtraLarge) ? (
+        {screenSize.width && screenSize.lessThanExtraLarge ? (
           ReactDOM.createPortal(
             <AddProductToCartForm
               visible={isModalVisible}
