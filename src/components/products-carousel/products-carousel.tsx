@@ -2,9 +2,9 @@ import React, { useContext, useRef, useState } from 'react'
 import { useRouter } from 'next/router'
 import styled from 'styled-components'
 import cn, { Argument as ClassName } from 'classnames'
-import Carousel from 'react-multi-carousel'
 import { Product as ProductType, Product } from '../../modules/normalize-product'
-import Slider from '../../lib/slider'
+import Carousel from 'react-multi-carousel'
+import 'react-multi-carousel/lib/styles.css'
 import ProductCard from '../product-card'
 import ProductContext from '../../modules/product-context'
 import SwipeableViews from 'react-swipeable-views'
@@ -226,7 +226,7 @@ export const ProductsCarousel = ({
   const [currentSlide, setCurrentSlide] = useState(0)
   const currentProduct = useContext<ProductType | undefined>(ProductContext)
   const titleParts = title?.split(' ') || []
-  /*  const sliderSettings = {
+  const sliderSettings = {
     desktop: {
       breakpoint: { max: 3000, min: 992 },
       items: 3,
@@ -239,7 +239,7 @@ export const ProductsCarousel = ({
       breakpoint: { max: 767, min: 0 },
       items: 2,
     },
-  }*/
+  }
 
   return (
     <Section className={cn('ProductsCarousel', className)}>
@@ -276,8 +276,9 @@ export const ProductsCarousel = ({
             />
           </SNextArrow>
           {screenSize.greaterThanMedium ? (
-            <Slider
-              scrollbarPresent={true}
+            <Carousel
+              ref={carouselRef}
+              responsive={sliderSettings}
               arrows={false}
               slidesToSlide={2}
               customLeftArrow={
@@ -290,7 +291,6 @@ export const ProductsCarousel = ({
                   <SArrowButton />
                 </SNextArrow>
               }
-              partiallyVisible={true}
               infinite={true}
             >
               {products
@@ -307,7 +307,7 @@ export const ProductsCarousel = ({
                     />
                   )
                 })}
-            </Slider>
+            </Carousel>
           ) : (
             <>
               <SSwipeableViews
