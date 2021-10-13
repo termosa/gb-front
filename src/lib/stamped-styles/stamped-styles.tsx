@@ -6442,6 +6442,10 @@ const Styles = createGlobalStyle`
     padding: 15px;
     display: none;
   }
+
+  .stamped-main-badge .stamped-badge[data-rating="0.0"] {
+    display: none;
+}
 `
 
 export function StampedStyles(): React.ReactElement {
