@@ -5,7 +5,6 @@ import cn, { Argument as ClassName } from 'classnames'
 import { Product } from '../../modules/normalize-product'
 import Slider from '../../lib/slider'
 import Image from '../../lib/image'
-import useScreenSize from '../../lib/use-screen-size'
 
 export type { Product } from '../../modules/normalize-product'
 
@@ -347,7 +346,6 @@ const ProductCardWrapper = styled.div`
 `
 
 const ProductCard = ({ product, onClick }: { product: Product; onClick: () => void }) => {
-  const screenSize = useScreenSize()
   if (!product.image) return null
   return (
     <ProductCardWrapper onClick={onClick}>
