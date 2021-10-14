@@ -114,8 +114,8 @@ const SPdpBtn = styled.button<{ disabled?: boolean; preorder?: boolean }>`
   font: 600 16px/1 'Montserrat', sans-serif;
   text-decoration: none;
   transition: all linear 0.2s;
-  background-color: ${(props) => (props.preorder ? '#fff' : '#000')};
-  color: ${(props) => (props.preorder ? '#9059c8' : '#fff')};
+  background-color: ${(props) => (props.preorder ? '#9059c8' : '#000')};
+  color: #fff;
   cursor: pointer;
   width: 100%;
   margin: 0;
@@ -131,8 +131,8 @@ const SPdpBtn = styled.button<{ disabled?: boolean; preorder?: boolean }>`
       : css`
           &:not(.pdp-btn_disabled):hover {
             @media (min-width: 1200px) {
-              color: ${p.preorder ? '#fff' : '#000'};
-              background: ${p.preorder ? '#9059c8' : '#fff'};
+              color: ${p.preorder ? '#9059c8' : '#000'};
+              background: #fff;
             }
           }
 

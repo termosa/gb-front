@@ -124,16 +124,16 @@ const SSizeSelectorAddBtn = styled.button<{ preorder?: boolean }>`
   font: 600 16px/1 'Montserrat', sans-serif;
   text-decoration: none;
   transition: all linear 0.2s;
-  background-color: ${(props) => (props.preorder ? '#fff' : '#000')};
-  color: ${(props) => (props.preorder ? '#9059c8' : '#fff')};
+  background-color: ${(props) => (props.preorder ? '#9059c8' : '#000')};
+  color: #fff;
   cursor: pointer;
   width: auto;
   min-height: 55px;
 
   &:not(.pdp-btn_disabled):hover {
     @media (min-width: 1200px) {
-      color: ${(props) => (props.preorder ? '#fff' : '#000')};
-      background: ${(props) => (props.preorder ? '#9059c8' : '#fff')};
+      color: ${(props) => (props.preorder ? '#9059c8' : '#000')};
+      background: #fff;
     }
   }
 `
