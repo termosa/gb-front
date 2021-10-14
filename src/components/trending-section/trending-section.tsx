@@ -356,13 +356,7 @@ const ProductCard = ({ product, onClick }: { product: Product; onClick: () => vo
           <ProductCardImgWrapper>
             <ProductCardImgWrapperInner>
               {product.image && (
-                <Image
-                  src={product.image.src}
-                  alt={product.image.alt}
-                  fit="contain"
-                  draggable={false}
-                  shopifySize={screenSize.greaterThanMedium ? 'medium' : 'compact'}
-                />
+                <Image src={product.image.src} alt={product.image.alt} fit="contain" draggable={false} />
               )}
             </ProductCardImgWrapperInner>
           </ProductCardImgWrapper>

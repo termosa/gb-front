@@ -262,7 +262,6 @@ export function ProductCard({
                 visibleByDefault={imagesVisibleByDefault}
                 draggable={false}
                 width={280}
-                shopifySize={screenSize.greaterThanSmall ? 'large' : 'medium'}
               />
             )}
           </ProductCardImgWrapperInner>
