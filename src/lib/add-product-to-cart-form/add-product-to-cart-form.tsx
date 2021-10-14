@@ -57,6 +57,7 @@ const ModalContent = styled.div<{ visible?: boolean }>`
   }
 
   @media (min-width: 1200px) {
+    padding: 40px 12px 12px;
     transform: translateY(${(props) => (props.visible ? '0' : '100%')});
     max-width: 100%;
     box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.15);
