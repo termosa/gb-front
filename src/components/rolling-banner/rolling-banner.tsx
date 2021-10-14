@@ -35,6 +35,8 @@ const PromoSlider = styled.div`
   color: #fff;
   text-align: center;
   padding: 9px 0;
+  display: flex;
+  align-items: center;
   position: relative;
 
   @media (min-width: 375px) {
@@ -64,15 +66,18 @@ const SArrow = styled.div`
   align-items: center;
   justify-content: center;
   width: 30px;
+  height: auto;
   font-size: 0;
   line-height: 1;
   position: absolute;
+  z-index: 5;
   cursor: pointer;
 `
 
 const SPrevArrow = styled(SArrow)`
   left: -7px;
   button {
+    cursor: pointer;
     transform: rotate(45deg);
   }
 `
@@ -80,8 +85,13 @@ const SPrevArrow = styled(SArrow)`
 const SNextArrow = styled(SArrow)`
   right: -7px;
   button {
+    cursor: pointer;
     transform: rotate(-135deg);
   }
+`
+
+const SSlider = styled(Slider)`
+  width: 100%;
 `
 
 const SArrowButton = styled.button`
@@ -142,10 +152,11 @@ export function RollingBanner(): React.ReactElement {
           <SNextArrow onClick={() => setSelectedItem(selectedItem + 1)}>
             <SArrowButton />
           </SNextArrow>
-          <Slider
+          <SSlider
             infinite
             autoPlay
             selectedItem={selectedItem}
+            arrows={false}
             onChange={(i) => {
               selectedItem !== i && setSelectedItem(i)
             }}
@@ -173,7 +184,7 @@ export function RollingBanner(): React.ReactElement {
                 </Link>
               </span>
             </SPromoSlide>
-          </Slider>
+          </SSlider>
         </PromoSlider>
       </Container>
     </PromoWrapper>
