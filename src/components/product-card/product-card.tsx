@@ -5,7 +5,6 @@ import { Product } from '../../modules/normalize-product'
 import formatPrice from '../../modules/format-price'
 import getLabel from '../../modules/get-label'
 import Image from '../../lib/image'
-import useScreenSize from '../../lib/use-screen-size'
 import StampedStarRating from '../../lib/stamped-star-rating'
 
 export type ProductCardProps = {
@@ -208,7 +207,6 @@ export function ProductCard({
   imagesVisibleByDefault,
   onClick,
 }: ProductCardProps): React.ReactElement {
-  const screenSize = useScreenSize()
   const [isMouseMoved, setMouseMoved] = useState<boolean>(false)
   const [clientXClick, setClientXClick] = useState<number>()
 
