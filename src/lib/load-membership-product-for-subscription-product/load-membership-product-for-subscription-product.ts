@@ -1,9 +1,10 @@
 import api from '../../modules/api'
 import loadProduct, { Product } from '../load-product'
+import oldApiBase from '../old-api-base'
 
 export function loadMembershipProductForSubscriptionProduct(subscriptionProductId: number): Promise<Product> {
   return api<Array<{ membership_product?: { id?: string } }>>({
-    base: 'https://fjrecurly.herokuapp.com',
+    base: oldApiBase,
     path: '/shopify_endpoint/list_products',
     query: { products: subscriptionProductId },
   }).then((response) => {

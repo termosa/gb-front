@@ -5,6 +5,9 @@ import { Product } from '../../modules/normalize-product'
 import formatPrice from '../../modules/format-price'
 import getLabel from '../../modules/get-label'
 import Image from '../../lib/image'
+import useScreenSize from '../../lib/use-screen-size'
+import AddProductToCartForm from '../../lib/add-product-to-cart-form'
+import ReactDOM from 'react-dom'
 // import StampedStarRating from '../../lib/stamped-star-rating'
 
 export type ProductCardProps = {
@@ -31,7 +34,7 @@ const SProductCard = styled.div`
   height: 100%;
   box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.1);
   background: white;
-  padding: 4px;
+  padding: 0;
   text-align: center;
   font: 400 12px/1.3 'Montserrat', sans-serif;
   letter-spacing: 0.08em;
@@ -42,8 +45,12 @@ const SProductCard = styled.div`
 
   @media (min-width: 768px) {
     box-shadow: 0 0 6px rgba(0, 0, 0, 0.25);
-    padding: 12px 10px 0;
+    padding: 12px;
     height: 100%;
+  }
+
+  @media (min-width: 1200px) {
+    overflow: hidden;
   }
 
   img {
@@ -61,6 +68,13 @@ const ProductCardImgWrapper = styled.div`
     content: '';
     display: block;
   }
+`
+
+const ProductCardInfoWrapper = styled.div`
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 `
 
 const ProductCardImgWrapperInner = styled.div`
@@ -97,7 +111,7 @@ const ProductCardTag = styled.div<{
   background: linear-gradient(269.97deg, white 0.02%, #efefef 13.98%, #efefef 45.51%, #efefef 76.52%, white 99.26%);
 
   @media (min-width: 768px) {
-    margin: 0 0 17px;
+    margin: 0 0 12px;
   }
 `
 
@@ -121,7 +135,12 @@ const ProductCardTag = styled.div<{
 const ProductCardTitle = styled.h4`
   font: 400 16px/1.3 'Montserrat', sans-serif;
   margin: 0 0 10px;
-  padding: 0 5px;
+  padding: 0 2px;
+  letter-spacing: 0;
+
+  @media (min-width: 768px) {
+    padding: 0 5px;
+  }
 `
 
 const ProductCardType = styled.div`
@@ -186,7 +205,7 @@ const ProductCardPrices = styled.div`
   margin: 0 0 8px;
 
   @media (min-width: 768px) {
-    margin: 0 0 16px;
+    margin: 0 0 10px;
   }
 `
 
@@ -200,6 +219,48 @@ const SImage = styled(Image)`
   min-height: 110px;
 `
 
+const ProductCardButton = styled.button<{
+  preorder?: boolean
+}>`
+  background: #fff;
+  color: ${(props) => (props.preorder ? '#9059c8' : '#000')};
+  padding: 17px 5px;
+  width: 100%;
+  border: 0;
+  border-top: 1px solid #000;
+  border-color: ${(props) => (props.preorder ? '#9059c8' : '#000')};
+  margin: 0;
+  text-transform: uppercase;
+  appearance: none;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: all linear 0.2s;
+  font: 400 13px/1 'Montserrat', sans-serif;
+
+  @media (min-width: 375px) {
+    font-size: 14px;
+  }
+
+  @media (min-width: 768px) {
+    border: 1px solid #000;
+    border-color: ${(props) => (props.preorder ? '#9059c8' : '#000')};
+  }
+
+  @media (min-width: 1200px) {
+    &:not([disabled]):hover {
+      background-color: ${(props) => (props.preorder ? '#9059c8' : '#000')};
+      color: #fff;
+    }
+  }
+
+  [disabled] {
+    cursor: auto;
+    border-color: #ddd;
+    background: #ddd;
+  }
+`
+
 export function ProductCard({
   className,
   style,
@@ -207,6 +268,7 @@ export function ProductCard({
   imagesVisibleByDefault,
   onClick,
 }: ProductCardProps): React.ReactElement {
+  const screenSize = useScreenSize()
   const [isMouseMoved, setMouseMoved] = useState<boolean>(false)
   const [clientXClick, setClientXClick] = useState<number>()
 
@@ -233,6 +295,13 @@ export function ProductCard({
 
   const actualPrice = product.variants[0].actual_price
   const comparePrice = product.variants[0].compare_at_price
+
+  const [isModalVisible, changeModalVisible] = useState(false)
+
+  const openModal = (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
+    event.stopPropagation()
+    changeModalVisible(true)
+  }
 
   return (
     <ProductCardWrapper
@@ -264,26 +333,45 @@ export function ProductCard({
             )}
           </ProductCardImgWrapperInner>
         </ProductCardImgWrapper>
-        <div>
-          {checkForLabel()}
-          {/* <ProductCardStars>
-            <StampedStarRating productId={product.product_id} />
-          </ProductCardStars> */}
-          <ProductCardTitle title={productTitle}>{productTitle}</ProductCardTitle>
-          <ProductCardType>{productType}</ProductCardType>
-          <ProductCardPrices>
-            <ProductCardPrice>
-              {comparePrice ? (
-                <>
-                  <SDiscountPriceLabel>{formatPrice(comparePrice)}</SDiscountPriceLabel>{' '}
+        <ProductCardInfoWrapper>
+          <div>
+            {checkForLabel()}
+            {/* <ProductCardStars>
+              <StampedStarRating productId={product.product_id} />
+            </ProductCardStars> */}
+            <ProductCardTitle title={productTitle}>{productTitle}</ProductCardTitle>
+            <ProductCardType>{productType}</ProductCardType>
+          </div>
+          <div>
+            <ProductCardPrices>
+              <ProductCardPrice>
+                {comparePrice ? (
+                  <>
+                    <SDiscountPriceLabel>{formatPrice(comparePrice)}</SDiscountPriceLabel>{' '}
+                    <SPriceLabel>{formatPrice(actualPrice)}</SPriceLabel>
+                  </>
+                ) : (
                   <SPriceLabel>{formatPrice(actualPrice)}</SPriceLabel>
-                </>
-              ) : (
-                <SPriceLabel>{formatPrice(actualPrice)}</SPriceLabel>
-              )}
-            </ProductCardPrice>
-          </ProductCardPrices>
-        </div>
+                )}
+              </ProductCardPrice>
+            </ProductCardPrices>
+          </div>
+        </ProductCardInfoWrapper>
+        <ProductCardButton preorder={product.preOrder} type="button" onClick={openModal}>
+          {product.preOrder ? 'Pre-Order' : 'Add to Cart'}
+        </ProductCardButton>
+        {screenSize.width && screenSize.lessThanExtraLarge ? (
+          ReactDOM.createPortal(
+            <AddProductToCartForm
+              visible={isModalVisible}
+              onClose={() => changeModalVisible(false)}
+              product={product}
+            />,
+            document.body
+          )
+        ) : (
+          <AddProductToCartForm visible={isModalVisible} onClose={() => changeModalVisible(false)} product={product} />
+        )}
       </SProductCard>
     </ProductCardWrapper>
   )

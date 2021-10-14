@@ -1,5 +1,6 @@
 import setCookie from '../set-cookie'
 import api from '../../modules/api'
+import oldApiBase from '../old-api-base'
 
 export interface ServerPromoExpiration {
   seconds: number
@@ -55,7 +56,7 @@ export const normalizeExpiration = (expiration: ServerPromoExpiration): PromoExp
 
 export function loadPromoDetails(promo: string): Promise<ServerPromoDetails> {
   return api<ServerPromo>({
-    base: `https://fjrecurly.herokuapp.com`,
+    base: oldApiBase,
     path: '/get_promo_product',
     query: { promo },
   })
@@ -63,12 +64,12 @@ export function loadPromoDetails(promo: string): Promise<ServerPromoDetails> {
       Promise.all([
         promoProduct,
         api<Array<ServerDetailsVariant>>({
-          base: `https://fjrecurly.herokuapp.com`,
+          base: oldApiBase,
           path: '/shopify_endpoint/get_variants',
           query: { product_id: promoProduct.id },
         }),
         api<{ expiration?: ServerPromoExpiration }>({
-          base: `https://fjrecurly.herokuapp.com`,
+          base: oldApiBase,
           path: '/get_promo',
           query: { product_id: promoProduct.id, promo },
         }),

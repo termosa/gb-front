@@ -217,7 +217,6 @@ const SlideText = styled.div`
 
 const SlideLinkInner = styled.a`
   text-decoration: none;
-  color: inherit;
   display: inline-block;
   min-width: 250px;
   margin: 0 auto;
@@ -226,7 +225,6 @@ const SlideLinkInner = styled.a`
   border-radius: 0;
   font: 700 16px/1.25 'Montserrat', sans-serif;
   letter-spacing: 0.08em;
-  text-decoration: none;
   transition: all linear 0.2s;
   background-color: #000;
   color: #fff;

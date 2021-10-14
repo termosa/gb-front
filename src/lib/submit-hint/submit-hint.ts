@@ -1,6 +1,7 @@
 import api from '../../modules/api'
 import { Product } from '../../modules/normalize-product'
 import createLink from '../create-link'
+import oldApiBase from '../old-api-base'
 
 export type ContactInformation = {
   name: string
@@ -14,7 +15,7 @@ export function submitHint(
   size: string
 ): Promise<void> {
   return api({
-    base: 'https://fjrecurly.herokuapp.com',
+    base: oldApiBase,
     path: '/checkout/hint_product/',
     method: 'POST',
     body: {

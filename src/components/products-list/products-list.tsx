@@ -21,8 +21,8 @@ const ProductsListContainer = styled.div`
   }
 
   @media (max-width: 600px) {
-    grid-gap: 32px 8px;
-    margin: 0 16px 40px;
+    grid-gap: 12px 12px;
+    margin: 0 22px 40px;
     grid-template-columns: repeat(2, 1fr);
   }
 `
@@ -33,16 +33,20 @@ const SProductCard = styled(ProductCard)`
   min-width: 100px;
 `
 
-export const ProductsList = ({ products, onSelectProduct }: ProductsListProps): React.ReactElement => (
-  <SiteSection>
-    <ProductsListContainer>
-      {products.map((product) => (
-        <SProductCard
-          key={product.product_id}
-          product={product}
-          onClick={() => onSelectProduct && onSelectProduct(product)}
-        />
-      ))}
-    </ProductsListContainer>
-  </SiteSection>
-)
+export const ProductsList = ({ products, onSelectProduct }: ProductsListProps): React.ReactElement => {
+  return (
+    <div>
+      <SiteSection>
+        <ProductsListContainer>
+          {products.map((product) => (
+            <SProductCard
+              key={product.product_id}
+              product={product}
+              onClick={() => onSelectProduct && onSelectProduct(product)}
+            />
+          ))}
+        </ProductsListContainer>
+      </SiteSection>
+    </div>
+  )
+}

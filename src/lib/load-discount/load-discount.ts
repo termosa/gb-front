@@ -1,3 +1,5 @@
+import oldApiBase from '../old-api-base'
+
 export interface ServerDiscountImg {
   desktop: string
   mobile: string
@@ -41,7 +43,7 @@ export const normalizeDiscount = ({ discount }: ServerDiscount): null | Discount
 export function loadDiscount(discount: string): Promise<null | Discount> {
   const formData = new FormData()
   formData.append('discount_code', discount)
-  return fetch('https://fjrecurly.herokuapp.com/discount_status/', {
+  return fetch(`${oldApiBase}/discount_status/`, {
     method: 'POST',
     body: formData,
   })
