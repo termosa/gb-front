@@ -319,12 +319,7 @@ export function VerticalGallery({ className }: VerticalGalleryProps): React.Reac
                           })
                       }}
                     >
-                      <SImage
-                        src={image.src}
-                        alt={image.alt}
-                        shopifySize={screenSize.greaterThanMedium ? 'medium' : 'compact'}
-                        quality={100}
-                      />
+                      <SImage src={image.src} alt={image.alt} width={90} height={90} quality={100} />
                     </SCarouselIconsItem>
                   ))}
                 </SCarouselIconsList>
@@ -336,14 +331,7 @@ export function VerticalGallery({ className }: VerticalGalleryProps): React.Reac
                     height={`${getImageHeight(image)}px`}
                     key={image.src}
                   >
-                    <SImage
-                      src={image.src}
-                      alt={image.alt}
-                      width={galleryImageWidth}
-                      height={getImageHeight(image)}
-                      shopifySize="grande"
-                      quality={100}
-                    />
+                    <SImage src={image.src} alt={image.alt} width={600} quality={100} />
                   </SPdpCarouselItem>
                 ))}
               </SVerticalImagesColumn>
@@ -363,7 +351,8 @@ export function VerticalGallery({ className }: VerticalGalleryProps): React.Reac
                         <SImage
                           src={product.images && image?.src}
                           alt={(product.images && image?.alt) || ''}
-                          shopifySize="grande"
+                          width={500}
+                          height={500}
                           quality={100}
                         />
                       )}
@@ -386,10 +375,9 @@ export function VerticalGallery({ className }: VerticalGalleryProps): React.Reac
                         <SImage
                           src={product.images && image?.src}
                           alt={(product.images && image?.alt) || ''}
-                          shopifySize="small"
                           fit="contain"
-                          width={60}
-                          height={60}
+                          width={100}
+                          height={100}
                           quality={100}
                         />
                       )}
