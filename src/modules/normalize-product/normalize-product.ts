@@ -63,6 +63,7 @@ export type Product = {
   template: string
   reviewsAverage: number
   reviewsCount: number
+  preOrder?: boolean
 }
 
 const selectValueFromTags = (tags: Array<string>, prefix: string) =>
@@ -74,6 +75,8 @@ const selectValueFromTags = (tags: Array<string>, prefix: string) =>
 const hasSterlingSilver = (tags: Array<string>) =>
   tags.some((tag) => tag.toLowerCase().includes('material: 925 sterling silver'))
 
+const hasPreOrder = (tags: Array<string>) => tags.some((tag) => tag.toLowerCase().includes('web: pre-order'))
+
 export const normalizeProduct = (product: ServerProduct): Product => {
   const tags = product.tags.length ? product.tags.split(',').map((tag) => tag.trim()) : []
   const tagsProperties = {
@@ -81,6 +84,7 @@ export const normalizeProduct = (product: ServerProduct): Product => {
     material: hasSterlingSilver(tags) ? '925 Sterling Silver' : selectValueFromTags(tags, 'material:'),
     color: selectValueFromTags(tags, 'metal color:'),
     template: selectValueFromTags(tags, 'template:'),
+    preOrder: hasPreOrder(tags),
   }
 
   return {
@@ -105,6 +109,7 @@ export const normalizeProduct = (product: ServerProduct): Product => {
     ...(tagsProperties.fragrance && { fragrance: tagsProperties.fragrance }),
     ...(tagsProperties.material && { material: tagsProperties.material }),
     ...(tagsProperties.color && { color: tagsProperties.color }),
+    ...(tagsProperties.preOrder && { preOrder: tagsProperties.preOrder }),
     vendor: product.vendor,
     template: tagsProperties.template || 'Default',
   }

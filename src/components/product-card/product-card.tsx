@@ -219,13 +219,16 @@ const SImage = styled(Image)`
   min-height: 110px;
 `
 
-const ProductCardButton = styled.button`
+const ProductCardButton = styled.button<{
+  preorder?: boolean
+}>`
   background: #fff;
-  color: #000;
+  color: ${(props) => (props.preorder ? '#9059c8' : '#000')};
   padding: 17px 5px;
   width: 100%;
   border: 0;
   border-top: 1px solid #000;
+  border-color: ${(props) => (props.preorder ? '#9059c8' : '#000')};
   margin: 0;
   text-transform: uppercase;
   appearance: none;
@@ -241,11 +244,12 @@ const ProductCardButton = styled.button`
 
   @media (min-width: 768px) {
     border: 1px solid #000;
+    border-color: ${(props) => (props.preorder ? '#9059c8' : '#000')};
   }
 
   @media (min-width: 1200px) {
     &:not([disabled]):hover {
-      background-color: #000;
+      background-color: ${(props) => (props.preorder ? '#9059c8' : '#000')};
       color: #fff;
     }
   }
@@ -353,8 +357,8 @@ export function ProductCard({
             </ProductCardPrices>
           </div>
         </ProductCardInfoWrapper>
-        <ProductCardButton type="button" onClick={(e) => openModal(e)}>
-          Add to Cart
+        <ProductCardButton preorder={product.preOrder} type="button" onClick={(e) => openModal(e)}>
+          {product.preOrder ? 'Pre-Order' : 'Add to Cart'}
         </ProductCardButton>
         {screenSize.width && screenSize.lessThanExtraLarge ? (
           ReactDOM.createPortal(
