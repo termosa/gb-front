@@ -35,8 +35,6 @@ const PromoSlider = styled.div`
   color: #fff;
   text-align: center;
   padding: 9px 0;
-  display: flex;
-  align-items: center;
   position: relative;
 
   @media (min-width: 375px) {
@@ -46,6 +44,8 @@ const PromoSlider = styled.div`
 
   @media (min-width: 768px) {
     font-size: 14px;
+    display: flex;
+    align-items: center;
   }
 
   a {
@@ -66,12 +66,15 @@ const SArrow = styled.div`
   align-items: center;
   justify-content: center;
   width: 30px;
-  height: auto;
   font-size: 0;
   line-height: 1;
   position: absolute;
   z-index: 5;
   cursor: pointer;
+
+  @media (max-width: 767px) {
+    height: 10px;
+  }
 `
 
 const SPrevArrow = styled(SArrow)`
