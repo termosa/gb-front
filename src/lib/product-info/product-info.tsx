@@ -104,18 +104,18 @@ const SPdpChooserContainer = styled.div`
   }
 `
 
-const SPdpBtn = styled.button<{ disabled?: boolean }>`
+const SPdpBtn = styled.button<{ disabled?: boolean; preorder?: boolean }>`
   display: block;
   padding: 19px 15px;
   letter-spacing: 1px;
   text-transform: uppercase;
-  border: 0.5px solid #000;
+  border: 0.5px solid ${(props) => (props.preorder ? '#9059c8' : '#000')};
   border-radius: 0;
   font: 600 16px/1 'Montserrat', sans-serif;
   text-decoration: none;
   transition: all linear 0.2s;
-  background-color: #000;
-  color: #fff;
+  background-color: ${(props) => (props.preorder ? '#fff' : '#000')};
+  color: ${(props) => (props.preorder ? '#9059c8' : '#fff')};
   cursor: pointer;
   width: 100%;
   margin: 0;
@@ -131,8 +131,8 @@ const SPdpBtn = styled.button<{ disabled?: boolean }>`
       : css`
           &:not(.pdp-btn_disabled):hover {
             @media (min-width: 1200px) {
-              color: #000;
-              background: #fff;
+              color: ${p.preorder ? '#fff' : '#000'};
+              background: ${p.preorder ? '#9059c8' : '#fff'};
             }
           }
 
@@ -687,11 +687,12 @@ export function ProductInfo({ className, style, addToCartRef }: ProductInfoProps
             <SPdpBtn
               type="button"
               ref={addToCartRef}
+              preorder={product.preOrder}
               onClick={() =>
                 addToCartHandler(isOneVariantProduct && !isDiscountApplied ? product.variants[0] : selectedVariant)
               }
             >
-              Add to Cart
+              {product.preOrder ? 'Pre-order' : 'Add to Cart'}
             </SPdpBtn>
           </React.Fragment>
         ) : (

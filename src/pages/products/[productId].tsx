@@ -26,31 +26,29 @@ export default function ProductPage({ product, productId, potentialProducts }: P
   trackViewedProduct(product)
 
   return (
-    <>
+    <ProductContext.Provider value={product}>
       <Head>
         <title>{product.title} - Fragrant Jewels</title>
         <meta name="description" content={productDescription.slice(0, 320) || product.title} />
       </Head>
       <MainPageLayout>
-        <ProductContext.Provider value={product}>
-          <Product />
-          {potentialProducts && (
-            <SiteSection>
-              <ProductsCarousel
-                title="More you might like"
-                products={potentialProducts}
-                onSelectProduct={(product) => router.push(createLink.forProduct(product.handle))}
-              />
-            </SiteSection>
-          )}
-          <LazyLoad threshold={1000} placeholder={<div style={{ height: 300 }} />}>
-            <SiteSection>
-              <StampedReviews />
-            </SiteSection>
-          </LazyLoad>
-        </ProductContext.Provider>
+        <Product />
+        {potentialProducts && (
+          <SiteSection>
+            <ProductsCarousel
+              title="More you might like"
+              products={potentialProducts}
+              onSelectProduct={(product) => router.push(createLink.forProduct(product.handle))}
+            />
+          </SiteSection>
+        )}
+        <LazyLoad threshold={1000} placeholder={<div style={{ height: 300 }} />}>
+          <SiteSection>
+            <StampedReviews />
+          </SiteSection>
+        </LazyLoad>
       </MainPageLayout>
-    </>
+    </ProductContext.Provider>
   )
 }
 

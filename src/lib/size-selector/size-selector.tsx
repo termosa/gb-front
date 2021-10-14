@@ -113,27 +113,27 @@ const SRingSizeError = styled.div`
   font: 400 14px/1.3 'Montserrat', sans-serif;
 `
 
-const SSizeSelectorAddBtn = styled.button`
+const SSizeSelectorAddBtn = styled.button<{ preorder?: boolean }>`
   display: flex;
   justify-content: center;
   padding: 19px 15px;
   letter-spacing: 1px;
   text-transform: uppercase;
-  border: 0.5px solid #000;
+  border: 0.5px solid ${(props) => (props.preorder ? '#9059c8' : '#000')};
   border-radius: 0;
   font: 600 16px/1 'Montserrat', sans-serif;
   text-decoration: none;
   transition: all linear 0.2s;
-  background-color: #000;
-  color: #fff;
+  background-color: ${(props) => (props.preorder ? '#fff' : '#000')};
+  color: ${(props) => (props.preorder ? '#9059c8' : '#fff')};
   cursor: pointer;
   width: auto;
   min-height: 55px;
 
   &:not(.pdp-btn_disabled):hover {
     @media (min-width: 1200px) {
-      color: #000;
-      background: #fff;
+      color: ${(props) => (props.preorder ? '#fff' : '#000')};
+      background: ${(props) => (props.preorder ? '#9059c8' : '#fff')};
     }
   }
 `
@@ -151,6 +151,7 @@ export type SiteSelectorProps = {
   onSelect: (currentRingSize: VariantSize) => void
   onClose: () => void
   title?: string
+  preorder?: boolean
   buttonLabel?: string
   unavailable?: Array<VariantSize>
   errorMessage?: string
@@ -160,6 +161,7 @@ export function SizeSelector({
   onSelect,
   onClose,
   title = 'Select ring size',
+  preorder = false,
   buttonLabel = 'Select',
   errorMessage = 'Please select ring size',
   unavailable,
@@ -192,6 +194,7 @@ export function SizeSelector({
       </SRingSizeContainer>
       {isSelectRingError && <SRingSizeError>{errorMessage}</SRingSizeError>}
       <SSizeSelectorAddBtn
+        preorder={preorder}
         onClick={() => {
           if (!currentRingSize) {
             setSelectRingError(true)

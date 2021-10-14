@@ -132,7 +132,8 @@ export const FloatingCta = (): React.ReactElement | null => {
         }}
         onClose={() => setFloatingCtaClosed(true)}
         title="Select a ring size to reserve this box"
-        buttonLabel="Add to Cart"
+        preorder={product?.preOrder}
+        buttonLabel={product?.preOrder ? 'Pre-order' : 'Add to Cart'}
         unavailable={product?.variants
           .filter((variant) => !variant.available && typeof variant.size === 'number')
           .map((variant) => variant.size as VariantSize)}

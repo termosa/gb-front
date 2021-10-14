@@ -20,17 +20,17 @@ export default function CollectionPage({ collection, collectionId }: CollectionP
   if (!collection) return <RemotePage url={`/collections/${collectionId}`} />
 
   return (
-    <SCollectionWrapper>
-      <Head>
-        <title>{collection.title} - Fragrant Jewels</title>
-        <meta name="description" content={collectionDescription.slice(0, 320) || collection.title} />
-      </Head>
-      <MainPageLayout>
-        <CollectionContext.Provider value={collection}>
+    <CollectionContext.Provider value={collection}>
+      <SCollectionWrapper>
+        <Head>
+          <title>{collection.title} - Fragrant Jewels</title>
+          <meta name="description" content={collectionDescription.slice(0, 320) || collection.title} />
+        </Head>
+        <MainPageLayout>
           <Collection />
-        </CollectionContext.Provider>
-      </MainPageLayout>
-    </SCollectionWrapper>
+        </MainPageLayout>
+      </SCollectionWrapper>
+    </CollectionContext.Provider>
   )
 }
 
