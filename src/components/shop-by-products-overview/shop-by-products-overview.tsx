@@ -107,17 +107,21 @@ const SArrow = styled.div`
   }
 
   @media (min-width: 414px) {
-    top: 141px;
+    top: 120px;
   }
 
   @media (min-width: 450px) {
-    top: 155px;
+    top: 120px;
   }
 `
 
 const SPrevArrow = styled(SArrow)`
   left: -15px;
   padding-left: 5px;
+
+  @media (min-width: 375px) {
+    left: -22px;
+  }
 
   button {
     transform: translateX(10px) rotate(45deg);
@@ -127,6 +131,10 @@ const SPrevArrow = styled(SArrow)`
 const SNextArrow = styled(SArrow)`
   right: -15px;
   padding-right: 5px;
+
+  @media (min-width: 375px) {
+    right: -23px;
+  }
 
   button {
     transform: translateX(-10px) rotate(-135deg);
