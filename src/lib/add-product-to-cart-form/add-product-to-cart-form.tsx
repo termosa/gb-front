@@ -26,15 +26,13 @@ const Modal = styled.div<{
   pointer-events: ${(props) => (props.visible ? 'all' : 'none')};
   font: 400 16px/1.2 'Montserrat', sans-serif;
 
-  @media (min-width: 992px) {
-    // top: 0;
-    // position: fixed;
+  @media (min-width: 768px) {
     align-items: center;
   }
 
   @media (min-width: 1200px) {
     position: absolute;
-    top: auto;
+    align-items: flex-end;
   }
 `
 
@@ -52,7 +50,7 @@ const ModalContent = styled.div<{ visible?: boolean }>`
   cursor: auto;
   box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.15);
 
-  @media (min-width: 992px) {
+  @media (min-width: 768px) {
     transform: scale(${(props) => (props.visible ? '1' : '0.85')});
     max-width: 332px;
     box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
@@ -67,7 +65,7 @@ const ModalContent = styled.div<{ visible?: boolean }>`
 
 const ModalContentBody = styled.div`
   margin: 0 auto;
-  max-width: 400px;
+  max-width: 350px;
 
   @media (min-width: 1200px) {
     max-width: 100%;
@@ -195,7 +193,7 @@ const ProductBtn = styled.button<{ disabled?: boolean }>`
   transition: all linear 0.2s;
   font: 400 14px/1 'Montserrat', sans-serif;
 
-  @media (min-width: 992px) {
+  @media (min-width: 768px) {
     margin: 0;
   }
 

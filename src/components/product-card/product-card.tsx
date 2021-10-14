@@ -49,6 +49,10 @@ const SProductCard = styled.div`
     height: 100%;
   }
 
+  @media (min-width: 1200px) {
+    overflow: hidden;
+  }
+
   img {
     width: 100%;
     height: auto;
