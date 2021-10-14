@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
 import Link from 'next/link'
@@ -6,7 +6,6 @@ import RingSize from '../ring-size'
 import formatPrice from '../../modules/format-price'
 import { Product, ProductVariant } from '../../modules/normalize-product'
 import Slider from '../../lib/slider'
-import Carousel from 'react-multi-carousel'
 import Image from '../../lib/image'
 import useScreenSize from '../../lib/use-screen-size'
 
@@ -177,7 +176,7 @@ const SLeftSliderPart = styled.div<{
     height: 100%;
   }
 
-  @media (min-width: 375px) {
+  @media (min-width: 365px) {
     // margin: ${(props) => (props.isPresent ? '0 0 50px' : '0 0 15px')};
     width: 135px;
     height: 135px;
@@ -216,7 +215,7 @@ const SLeftImageContainer = styled.div<{
   height: 115px;
   margin: 0;
 
-  @media (min-width: 375px) {
+  @media (min-width: 365px) {
     // margin: ${(props) => (props.isPresent ? '0 0 15px' : '0 0 41px')};
     width: 135px;
     height: 135px;
@@ -260,7 +259,17 @@ const SRightSliderPart = styled.div`
     height: 189px;
   }
 
-  @media (min-width: 375px) {
+  @media (min-width: 335px) {
+    width: 210px;
+    height: 210px;
+
+    img {
+      width: 210px;
+      height: 210px;
+    }
+  }
+
+  @media (min-width: 365px) {
     width: 225px;
     height: 225px;
 
@@ -528,9 +537,7 @@ export function InnerCircleExclusive({
   const screenSize = useScreenSize()
   const [selectedVariant, setVariant] = useState<ProductVariant | undefined>()
   const [error, setError] = useState<boolean>(false)
-
-  const smallSliderRef = useRef<Carousel | null>(null)
-  const bigSliderRef = useRef<Carousel | null>(null)
+  const [selectedItem, setSelectedItem] = useState(0)
 
   const productTitle = product.title.split('-')[0].split(':')[0]
   const actualPrice = (selectedVariant || product.variants[0]).actual_price
@@ -538,22 +545,13 @@ export function InnerCircleExclusive({
   const titleParts = title.split(' ')
   const shiftedProductsArray: Array<string> = [...slideImages.slice(1), slideImages[0]]
 
-  const handleToggle = (ref: React.RefObject<Carousel>, isPrevious: boolean) => {
-    if (isPrevious) {
-      ref.current && ref.current.previous(1)
-    } else {
-      ref.current && ref.current.next(1)
-    }
-  }
-
   const CustomButtons = () => {
     return (
       <SButtonContainer>
         <SSliderButton
           transform={'rotate(180deg)'}
           onClick={() => {
-            handleToggle(smallSliderRef, true)
-            handleToggle(bigSliderRef, true)
+            setSelectedItem(selectedItem - 1)
           }}
         >
           <svg viewBox="0 0 15 27" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -569,8 +567,7 @@ export function InnerCircleExclusive({
         </SSliderButton>
         <SSliderButton
           onClick={() => {
-            handleToggle(smallSliderRef, false)
-            handleToggle(bigSliderRef, false)
+            setSelectedItem(selectedItem + 1)
           }}
         >
           <svg viewBox="0 0 15 27" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -613,8 +610,10 @@ export function InnerCircleExclusive({
                   <Slider
                     infinite
                     arrows={false}
-                    carouselRef={smallSliderRef}
-                    customButtonGroup={<CustomButtons />}
+                    selectedItem={selectedItem}
+                    onChange={(i) => {
+                      selectedItem !== i && setSelectedItem(i)
+                    }}
                     swipeable={false}
                     autoPlay={false}
                   >
@@ -630,9 +629,10 @@ export function InnerCircleExclusive({
                       </SLeftImageContainer>
                     ))}
                   </Slider>
+                  <CustomButtons />
                 </SLeftSliderPart>
                 <SRightSliderPart>
-                  <Slider infinite arrows={false} carouselRef={bigSliderRef} swipeable={false} autoPlay={false}>
+                  <Slider infinite arrows={false} swipeable={false} autoPlay={false} selectedItem={selectedItem}>
                     {shiftedProductsArray.map((src, i) => (
                       <SImage
                         src={src}

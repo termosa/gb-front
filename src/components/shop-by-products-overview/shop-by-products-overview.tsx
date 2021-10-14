@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import ShopByProductCard, { ShopByProductCardProps } from '../shop-by-product-card'
 import useScreenSize from '../../lib/use-screen-size'
@@ -70,6 +70,11 @@ const SliderWrapper = styled.div`
   @media (min-width: 992px) {
     // gap: 32px;
   }
+
+  .carousel .slider-wrapper,
+  .carousel.carousel-slider {
+    overflow: visible;
+  }
 `
 
 const SliderHolder = styled.div`
@@ -84,8 +89,67 @@ const SliderHolder = styled.div`
   }
 `
 
+const SArrow = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 45px;
+  font-size: 0;
+  line-height: 1;
+  position: absolute;
+  cursor: pointer;
+  z-index: 5;
+  top: 94px;
+
+  @media (min-width: 375px) {
+    top: 121px;
+  }
+
+  @media (min-width: 414px) {
+    top: 141px;
+  }
+
+  @media (min-width: 450px) {
+    top: 155px;
+  }
+`
+
+const SPrevArrow = styled(SArrow)`
+  left: -15px;
+  padding-left: 5px;
+
+  button {
+    transform: translateX(10px) rotate(45deg);
+  }
+`
+
+const SNextArrow = styled(SArrow)`
+  right: -15px;
+  padding-right: 5px;
+
+  button {
+    transform: translateX(-10px) rotate(-135deg);
+  }
+`
+
+const SArrowButton = styled.button`
+  display: block;
+  width: 17px;
+  height: 17px;
+  border: none;
+  border-bottom: 1px solid #9059c8;
+  border-left: 1px solid #9059c8;
+  background-color: transparent;
+  font-size: 0;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+`
+
 export function ShopByProductsOverview({ products, title }: ShopByProductsOverviewProps): React.ReactElement {
   const screenSize = useScreenSize()
+  const [selectedItem, setSelectedItem] = useState(0)
 
   return (
     <SSection>
@@ -105,7 +169,19 @@ export function ShopByProductsOverview({ products, title }: ShopByProductsOvervi
             ))
           ) : (
             <SliderHolder>
-              <Slider infinite>
+              <SPrevArrow onClick={() => setSelectedItem(selectedItem - 1)}>
+                <SArrowButton />
+              </SPrevArrow>
+              <SNextArrow onClick={() => setSelectedItem(selectedItem + 1)}>
+                <SArrowButton />
+              </SNextArrow>
+              <Slider
+                infinite
+                selectedItem={selectedItem}
+                onChange={(i) => {
+                  selectedItem !== i && setSelectedItem(i)
+                }}
+              >
                 {products &&
                   products.map((product) => (
                     <ShopByProductCard

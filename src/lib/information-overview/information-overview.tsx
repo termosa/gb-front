@@ -1,10 +1,9 @@
-import React, { useRef } from 'react'
+import React, { useState } from 'react'
 import cn, { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
 import InformationCard from '../../components/information-card'
 import useScreenSize from '../use-screen-size'
 import Slider from '../slider'
-import Carousel from 'react-multi-carousel'
 
 export type { InformationCard }
 
@@ -154,6 +153,22 @@ const SArrowButton = styled.button`
   cursor: pointer;
 `
 
+const SCustomDot = styled.div<{
+  isActive: boolean
+}>`
+  background: #4dbeba;
+  opacity: ${(props) => (props.isActive ? 0.95 : 0.6)};
+  width: 10px;
+  height: 10px;
+  margin: 0 7px;
+  border-radius: 50%;
+`
+
+const SCustomDotWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+`
+
 export type InformationOverviewProps = {
   className?: ClassName
   style?: React.CSSProperties
@@ -170,8 +185,8 @@ export function InformationOverview({
   cards,
 }: InformationOverviewProps): React.ReactElement {
   const screenSize = useScreenSize()
+  const [selectedItem, setSelectedItem] = useState(0)
   const titleArr = title.split(titleUnderline)
-  const infoSliderRef = useRef<Carousel | null>(null)
 
   return (
     <SWrapper className={cn(className)} style={style}>
@@ -189,27 +204,33 @@ export function InformationOverview({
           {screenSize.greaterThanMedium ? (
             cards.map((card) => <InformationCard key={card.image + card.title} card={card} />)
           ) : (
-            <SliderHolder>
-              <SPrevArrow
-                onClick={() => {
-                  infoSliderRef.current && infoSliderRef.current.previous(1)
-                }}
-              >
-                <SArrowButton />
-              </SPrevArrow>
-              <SNextArrow
-                onClick={() => {
-                  infoSliderRef.current && infoSliderRef.current.next(1)
-                }}
-              >
-                <SArrowButton />
-              </SNextArrow>
-              <Slider infinite showDots={true} arrows={false} carouselRef={infoSliderRef}>
-                {cards.map((card) => (
-                  <InformationCard key={card.image + card.title} card={card} />
+            <>
+              <SliderHolder>
+                <SPrevArrow onClick={() => setSelectedItem(selectedItem - 1)}>
+                  <SArrowButton />
+                </SPrevArrow>
+                <SNextArrow onClick={() => setSelectedItem(selectedItem + 1)}>
+                  <SArrowButton />
+                </SNextArrow>
+                <Slider
+                  infinite
+                  arrows={false}
+                  selectedItem={selectedItem}
+                  onChange={(i) => {
+                    selectedItem !== i && setSelectedItem(i)
+                  }}
+                >
+                  {cards.map((card) => (
+                    <InformationCard key={card.image + card.title} card={card} />
+                  ))}
+                </Slider>
+              </SliderHolder>
+              <SCustomDotWrapper>
+                {cards.map((_, i) => (
+                  <SCustomDot isActive={selectedItem === i} />
                 ))}
-              </Slider>
-            </SliderHolder>
+              </SCustomDotWrapper>
+            </>
           )}
         </SCardsWrapper>
       </SInformationOverviewContainer>

@@ -1,9 +1,9 @@
 import React, { Dispatch } from 'react'
-import Carousel, { ResponsiveType } from 'react-multi-carousel'
-import 'react-multi-carousel/lib/styles.css'
+import 'react-responsive-carousel/lib/styles/carousel.min.css'
+import { Carousel } from 'react-responsive-carousel'
 import styled from 'styled-components'
 
-const MAX_VISIBLE_ITEMS = 3
+/*const MAX_VISIBLE_ITEMS = 3*/
 
 const SImageContainer = styled.div`
   touch-action: pan-y;
@@ -89,6 +89,7 @@ const SImageContainer = styled.div`
   }
 `
 
+/*
 const SCustomSlider = styled.div`
   position: absolute;
   bottom: 0;
@@ -199,29 +200,32 @@ const SArrowButton = styled.button`
   padding: 0;
   cursor: pointer;
 `
+*/
 
 type SliderProps = {
-  children: React.ReactNode
+  children: React.ReactElement[] | undefined
   arrows?: boolean
   customLeftArrow?: React.ReactElement
   customRightArrow?: React.ReactElement
-  responsive?: ResponsiveType
+  /*responsive?: ResponsiveType*/
   scrollbarPresent?: boolean
   customButtonGroup?: React.ReactElement
   dotsPresent?: boolean
   partiallyVisible?: boolean
   infinite?: boolean
   swipeable?: boolean
+  selectedItem?: number
+  onChange?: (i: number) => void
   itemClass?: string
   autoPlay?: boolean
   centerMode?: boolean
   showDots?: boolean
   slidesToSlide?: number
-  carouselRef?: React.RefObject<Carousel>
   setActiveGalleryItem?: Dispatch<number>
+  /*carouselRef?: React.RefObject<Carousel>*/
 }
 
-type CustomDotProps = {
+/*type CustomDotProps = {
   active?: boolean
 }
 
@@ -242,12 +246,15 @@ const getResponsive = (partiallyVisible: boolean | undefined): ResponsiveType =>
   }
 }
 
-let productsLength = 0
+let productsLength = 0*/
 
 export const Slider = ({
   children,
   arrows,
-  customLeftArrow,
+  swipeable,
+  selectedItem,
+  onChange,
+  /*customLeftArrow,
   customRightArrow,
   scrollbarPresent,
   customButtonGroup,
@@ -255,15 +262,14 @@ export const Slider = ({
   partiallyVisible,
   responsive,
   infinite,
-  swipeable,
   itemClass,
   carouselRef,
   autoPlay,
   centerMode,
+  setActiveGalleryItem,*/
   showDots,
-  setActiveGalleryItem,
 }: SliderProps): React.ReactElement => {
-  const CustomSlider = () => {
+  /*const CustomSlider = () => {
     if (!carouselRef || !carouselRef.current) {
       return null
     }
@@ -300,11 +306,11 @@ export const Slider = ({
 
   const CustomDot = ({ active }: CustomDotProps) => {
     return <SCustomDot isActive={active ? active : false} />
-  }
+  }*/
 
   return (
     <SImageContainer>
-      <Carousel
+      {/*<Carousel
         ssr
         deviceType="desktop"
         ref={carouselRef}
@@ -336,6 +342,18 @@ export const Slider = ({
         responsive={responsive || getResponsive(partiallyVisible)}
         containerClass={scrollbarPresent ? 'carousel-container-with-scrollbar' : 'container-with-dots'}
         afterChange={(_, { currentSlide }) => (setActiveGalleryItem ? setActiveGalleryItem(currentSlide) : null)}
+      >
+        {children}
+      </Carousel>*/}
+      <Carousel
+        showThumbs={false}
+        showStatus={false}
+        infiniteLoop
+        emulateTouch={swipeable !== undefined ? swipeable : true}
+        onChange={onChange}
+        selectedItem={selectedItem}
+        showIndicators={!!showDots}
+        showArrows={arrows}
       >
         {children}
       </Carousel>

@@ -2,9 +2,9 @@ import React, { useContext, useRef, useState } from 'react'
 import { useRouter } from 'next/router'
 import styled from 'styled-components'
 import cn, { Argument as ClassName } from 'classnames'
-import Carousel from 'react-multi-carousel'
 import { Product as ProductType, Product } from '../../modules/normalize-product'
-import Slider from '../../lib/slider'
+import Carousel from 'react-multi-carousel'
+import 'react-multi-carousel/lib/styles.css'
 import ProductCard from '../product-card'
 import ProductContext from '../../modules/product-context'
 import SwipeableViews from 'react-swipeable-views'
@@ -276,9 +276,9 @@ export const ProductsCarousel = ({
             />
           </SNextArrow>
           {screenSize.greaterThanMedium ? (
-            <Slider
+            <Carousel
+              ref={carouselRef}
               responsive={sliderSettings}
-              scrollbarPresent={true}
               arrows={false}
               slidesToSlide={2}
               customLeftArrow={
@@ -291,8 +291,6 @@ export const ProductsCarousel = ({
                   <SArrowButton />
                 </SNextArrow>
               }
-              carouselRef={carouselRef}
-              partiallyVisible={true}
               infinite={true}
             >
               {products
@@ -309,7 +307,7 @@ export const ProductsCarousel = ({
                     />
                   )
                 })}
-            </Slider>
+            </Carousel>
           ) : (
             <>
               <SSwipeableViews

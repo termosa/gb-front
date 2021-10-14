@@ -79,6 +79,7 @@ export function Image({
         height={height || '100%'}
         draggable={draggable}
         visibleByDefault={!!visibleByDefault}
+        /*visibleByDefault*/
       />
     </SImageContainer>
   )

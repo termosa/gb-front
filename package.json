@@ -46,6 +46,7 @@
     "react-media-hook": "^0.4.9",
     "react-multi-carousel": "^2.6.5",
     "react-popper": "^2.2.5",
+    "react-responsive-carousel": "^3.2.21",
     "react-swipeable-views": "^0.14.0",
     "src": "^1.1.2",
     "styled-components": "^5.2.3",
