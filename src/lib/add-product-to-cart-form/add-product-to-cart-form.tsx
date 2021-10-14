@@ -14,7 +14,7 @@ const Modal = styled.div<{
   bottom: 0;
   right: 0;
   left: 0;
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(0, 0, 0, 0.3);
   // z-index: 100;
   z-index: 34;
   display: flex;
@@ -37,7 +37,7 @@ const Modal = styled.div<{
 `
 
 const ModalContent = styled.div<{ visible?: boolean }>`
-  padding: 40px 12px 12px;
+  padding: 40px 16px 12px;
   background: white;
   border-radius: 0;
   // min-width: 250px;
@@ -178,12 +178,13 @@ const ProductSelectorBtn = styled.button<{
   }
 `
 
-const ProductBtn = styled.button<{ disabled?: boolean }>`
+const ProductBtn = styled.button<{ disabled?: boolean; preorder?: boolean }>`
   background: #fff;
-  color: #000;
+  color: ${(props) => (props.preorder ? '#9059c8' : '#000')};
   padding: 17px 15px;
   width: 100%;
   border: 1px solid #000;
+  border-color: ${(props) => (props.preorder ? '#9059c8' : '#000')};
   margin: 0 0 30px;
   text-transform: uppercase;
   appearance: none;
@@ -201,7 +202,7 @@ const ProductBtn = styled.button<{ disabled?: boolean }>`
     margin: 0;
 
     &:not([disabled]):hover {
-      background-color: #000;
+      background-color: ${(props) => (props.preorder ? '#9059c8' : '#000')};
       color: #fff;
     }
   }
@@ -311,8 +312,9 @@ export function AddProductToCartForm({ visible, onClose, product }: AddProductTo
               )}
             </ProductSelector>
             {error && <ProductRsSelector>{error}</ProductRsSelector>}
-            <ProductBtn type="submit">
-              {[Status.IDLE, Status.ERROR].includes(addCartItemRequest.status) && 'Add to cart'}
+            <ProductBtn type="submit" preorder={product.preOrder}>
+              {[Status.IDLE, Status.ERROR].includes(addCartItemRequest.status) &&
+                (product.preOrder ? 'Pre-order' : 'Add to cart')}
               {addCartItemRequest.status === Status.PENDING && 'Adding...'}
               {addCartItemRequest.status === Status.SUCCESS && 'Added!'}
             </ProductBtn>
