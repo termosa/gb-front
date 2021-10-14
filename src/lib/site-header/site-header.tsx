@@ -918,7 +918,7 @@ export type SiteHeaderProps = {
   searchedProducts?: ProductsChunk
 }
 
-type GAProps = {
+export type GAProps = {
   hitType: string
   eventCategory: string
   eventAction: string

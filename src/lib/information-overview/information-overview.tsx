@@ -204,7 +204,7 @@ export function InformationOverview({
               >
                 <SArrowButton />
               </SNextArrow>
-              <Slider infinite showDots={true} arrows={false} carouselRef={infoSliderRef}>
+              <Slider infinite showDots={true} arrows={false}>
                 {cards.map((card) => (
                   <InformationCard key={card.image + card.title} card={card} />
                 ))}

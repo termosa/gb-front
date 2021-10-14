@@ -226,7 +226,7 @@ export const ProductsCarousel = ({
   const [currentSlide, setCurrentSlide] = useState(0)
   const currentProduct = useContext<ProductType | undefined>(ProductContext)
   const titleParts = title?.split(' ') || []
-  const sliderSettings = {
+  /*  const sliderSettings = {
     desktop: {
       breakpoint: { max: 3000, min: 992 },
       items: 3,
@@ -239,7 +239,7 @@ export const ProductsCarousel = ({
       breakpoint: { max: 767, min: 0 },
       items: 2,
     },
-  }
+  }*/
 
   return (
     <Section className={cn('ProductsCarousel', className)}>
@@ -277,7 +277,6 @@ export const ProductsCarousel = ({
           </SNextArrow>
           {screenSize.greaterThanMedium ? (
             <Slider
-              responsive={sliderSettings}
               scrollbarPresent={true}
               arrows={false}
               slidesToSlide={2}
@@ -291,7 +290,6 @@ export const ProductsCarousel = ({
                   <SArrowButton />
                 </SNextArrow>
               }
-              carouselRef={carouselRef}
               partiallyVisible={true}
               infinite={true}
             >
