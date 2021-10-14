@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { Argument as ClassName } from 'classnames'
 import styled from 'styled-components'
-import addCartItem from 'src/lib/add-cart-item'
 import trackAddedToCart from 'src/lib/track-added-to-cart'
 import { Product, ProductVariant } from '../../modules/normalize-product'
 import useDefer, { Status } from 'use-defer'
+import useCart from '../use-cart'
 
 const Modal = styled.div<{
   visible?: boolean
@@ -226,7 +226,8 @@ export type AddProductToCartFormProps = {
 }
 
 export function AddProductToCartForm({ visible, onClose, product }: AddProductToCartFormProps): React.ReactElement {
-  const addCartItemRequest = useDefer(addCartItem, [])
+  const cart = useCart(true)
+  const addCartItemRequest = useDefer(cart.addItem, [cart.addItem])
   const [selectedVariant, setSelectedVariant] = useState<ProductVariant | null>(null)
   // const [isSelectRingError, setSelectRingError] = useState<boolean>(false)
   const [error, setError] = useState<string | null>(null)

@@ -25,7 +25,7 @@ export const meta = {
 
 ```jsx
 const Component = () => {
-  const { items } = useCart()
+  const { items } = useCart(true)
   return (
     <div>
       {items.map(item => (
