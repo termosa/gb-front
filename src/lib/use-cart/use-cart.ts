@@ -1,6 +1,6 @@
 import { useEffect, useMemo } from 'react'
 import useDefer, { Status } from 'use-defer'
-import loadCart, { CartItem } from '../load-cart'
+import loadCart, { Cart, CartItem } from '../load-cart'
 import createGlobalStateHook from '../create-global-state-hook'
 import addCartItem from '../add-cart-item'
 import addCartItemWithSubscription, { VariantSize } from '../add-cart-item-with-subscription'
@@ -8,23 +8,7 @@ import addCartItemWithSubscription, { VariantSize } from '../add-cart-item-with-
 export { Status } from 'use-defer'
 export type { Cart, CartItem } from '../load-cart'
 
-type CartState = {
-  status: Status
-  token: undefined | string
-  items: Array<CartItem>
-  itemCount: number
-  totalPrice: number
-  error: undefined | string
-}
-
-const useGlobalState = createGlobalStateHook<CartState>({
-  status: Status.IDLE,
-  token: undefined,
-  items: [],
-  itemCount: 0,
-  totalPrice: 0,
-  error: undefined,
-})
+const useLoadPromise = createGlobalStateHook<Promise<Cart> | null>(null)
 
 export type CartHookResult = {
   status: Status
@@ -34,7 +18,7 @@ export type CartHookResult = {
   totalPrice: number
   error: undefined | string
   hasSubscriptionProduct: boolean
-  reload: () => Promise<void>
+  reload: () => Promise<Cart>
   addItem: (variantId: number, quantity?: number) => Promise<void>
   addItemWithSubscription: (
     variantId: number,
@@ -43,59 +27,50 @@ export type CartHookResult = {
   ) => Promise<void>
 }
 
-export function useCart(useData = false): CartHookResult {
-  const [state, setState] = useGlobalState()
+export function useCart(requireData = false): CartHookResult {
+  const [loadPromise, setLoadPromise] = useLoadPromise()
 
-  const cartRequest = useDefer(() => (useData ? loadCart() : undefined), [useData], [])
+  const reload = () => {
+    const request = loadCart()
+    setLoadPromise(request)
+    return request
+  }
+
+  const cartRequest = useDefer(() => loadPromise, [loadPromise], [])
 
   useEffect(() => {
-    if (!useData) return
-    if (cartRequest.status === Status.SUCCESS) {
-      setState((prevState) => ({
-        ...prevState,
-        status: Status.SUCCESS,
-        token: cartRequest.value?.token,
-        items: cartRequest.value?.items || [],
-        itemCount: cartRequest.value?.itemCount || 0,
-        totalPrice: cartRequest.value?.totalPrice || 0,
-        error: undefined,
-      }))
-    } else if (cartRequest.status === Status.ERROR) {
-      setState({
-        status: Status.ERROR,
-        token: undefined,
-        items: [],
-        itemCount: 0,
-        totalPrice: 0,
-        error: cartRequest.error?.toString(),
-      })
-    } else {
-      setState(({ token }) => ({
-        status: cartRequest.status, // Pending
-        token,
-        items: [],
-        itemCount: 0,
-        totalPrice: 0,
-        error: undefined,
-      }))
-    }
-  }, [cartRequest.status, cartRequest.value, cartRequest.error])
+    if (!requireData) return
+    if (loadPromise) cartRequest.execute()
+    else reload()
+  }, [requireData])
 
   return useMemo(() => {
-    const reload = () => cartRequest.execute().then(() => /*mute response*/ undefined)
-    const addItem = (variantId: number, quantity = 1) => addCartItem(variantId, quantity).then(reload)
+    const addItem = (variantId: number, quantity = 1) =>
+      addCartItem(variantId, quantity)
+        .then(reload)
+        .then(() => undefined)
+
     const addItemWithSubscription = (
       variantId: number,
       subscriptionProductSize: VariantSize | undefined,
       quantity = 1
-    ) => addCartItemWithSubscription(variantId, subscriptionProductSize, quantity).then(reload)
-    const hasSubscriptionProduct = !!state.items.some((item) => item.properties.subscription_product_id)
+    ) =>
+      addCartItemWithSubscription(variantId, subscriptionProductSize, quantity)
+        .then(reload)
+        .then(() => undefined)
+
+    const hasSubscriptionProduct = !!cartRequest.value?.items.some((item) => item.properties.subscription_product_id)
     return {
-      ...state,
+      status: cartRequest.status,
+      token: cartRequest.value?.token,
+      items: cartRequest.value?.items || [],
+      itemCount: cartRequest.value?.itemCount || 0,
+      totalPrice: cartRequest.value?.totalPrice || 0,
+      error: cartRequest.error?.toString(),
       hasSubscriptionProduct,
       reload,
       addItem,
       addItemWithSubscription,
     }
-  }, [state, cartRequest.execute])
+  }, [cartRequest])
 }

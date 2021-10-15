@@ -226,7 +226,7 @@ export type AddProductToCartFormProps = {
 }
 
 export function AddProductToCartForm({ visible, onClose, product }: AddProductToCartFormProps): React.ReactElement {
-  const cart = useCart(true)
+  const cart = useCart()
   const addCartItemRequest = useDefer(cart.addItem, [cart.addItem])
   const [selectedVariant, setSelectedVariant] = useState<ProductVariant | null>(null)
   // const [isSelectRingError, setSelectRingError] = useState<boolean>(false)
