@@ -40,6 +40,21 @@ export default function HomePage({
             slides={[
               {
                 topText: '925 STERLING SILVER',
+                centerFirstText: 'Wicked Unicorn',
+                centerSecondText: '',
+                bottomText:
+                  'Indulge in your deepest desires with a brand new, tantalizing 925 sterling silver collection.',
+                buttonText: 'Reveal the Collection',
+                buttonLink: createLink.forCollection('fantasy'),
+                backgroundImg:
+                  'https://fragrantjewels-assets.s3.amazonaws.com/images/banners/hero-wicked-unicorn-dt.jpg',
+                backgroundImgMobile:
+                  'https://fragrantjewels-assets.s3.amazonaws.com/images/banners/hero-wicked-unicorn-mb.jpg',
+                transparentPlaceholder: true,
+                desktopPosition: 'right',
+              },
+              {
+                topText: '925 STERLING SILVER',
                 centerFirstText: 'Wicked Fairy',
                 centerSecondText: '',
                 bottomText:
