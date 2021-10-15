@@ -108,7 +108,7 @@ const SliderWrapper = styled.div`
   }
 `
 
-const Slide = styled.div<{ backgroundImg: string }>`
+const Slide = styled.div<{ backgroundImg: string; position: string }>`
   display: block !important;
   position: relative;
   overflow-y: hidden;
@@ -122,6 +122,9 @@ const Slide = styled.div<{ backgroundImg: string }>`
   }
   @media (max-aspect-ratio: 4/3) and (max-width: 767px) {
     height: 490px;
+  }
+  @media (min-width: 1200px) {
+    background-position: ${(props) => (props.position === 'right' ? 'left center' : 'center center')};
   }
 `
 
@@ -140,7 +143,7 @@ const SliderTransparentWrapper = styled.div<{ position: string }>`
     transform: translateY(-50%);
     right: ${(props) => (props.position === 'right' ? '0' : 'auto')};
     left: ${(props) => (props.position === 'left' ? '0' : 'auto')};
-    text-align: left;
+    text-align: ${(props) => (props.position === 'right' ? 'right' : 'left')};
     button {
       margin: 0;
     }
@@ -183,7 +186,7 @@ const SlidePreTitle = styled.div`
   margin: 0 0 8px;
 `
 
-const SlideTitle = styled.div`
+const SlideTitle = styled.div<{ position: string }>`
   font: 700 48px/1 'Cormorant Garamond', serif;
   letter-spacing: -0.02em;
   font-style: normal;
@@ -193,7 +196,7 @@ const SlideTitle = styled.div`
     margin: 0 auto 12px;
   }
   @media (min-width: 1200px) {
-    margin: 0 0 12px;
+    margin: ${(props) => (props.position === 'right' ? '0 0 12px auto' : '0 0 12px')};
   }
   & > span {
     font-style: italic;
@@ -278,12 +281,13 @@ export function HeroGallery({ className, style, slides }: HeroGalleryProps): Rea
               (screenSize.greaterThanExtraLarge ? slide.backgroundImg : slide.backgroundImgMobile) ||
               DEFAULT_BACKGROUND_IMAGE
             }
+            position={slide.desktopPosition}
           >
             {slide.transparentPlaceholder ? (
               <SlideTransparentContent>
-                <SliderTransparentWrapper position={slide.desktopPosition || ''}>
+                <SliderTransparentWrapper position={slide.desktopPosition}>
                   <SlidePreTitle>{slide.topText}</SlidePreTitle>
-                  <SlideTitle>
+                  <SlideTitle position={slide.desktopPosition}>
                     {slide.centerFirstText}
                     <br />
                     {slide.centerSecondText}
