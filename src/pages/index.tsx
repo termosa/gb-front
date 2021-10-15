@@ -62,9 +62,9 @@ export default function HomePage({
                 buttonText: 'Reveal the Collection',
                 buttonLink: createLink.forCollection('fantasy'),
                 backgroundImg:
-                  'https://fragrantjewels-assets.s3.amazonaws.com/images/banners/wickedfairy-banner-dt.jpg',
+                  'https://fragrantjewels-assets.s3.amazonaws.com/images/banners/hero-wicked-fairy-2-dt.jpg',
                 backgroundImgMobile:
-                  'https://fragrantjewels-assets.s3.amazonaws.com/images/banners/wickedfairy-banner-mb-2.jpg',
+                  'https://fragrantjewels-assets.s3.amazonaws.com/images/banners/hero-wicked-fairy-2-mb.jpg',
                 transparentPlaceholder: true,
                 desktopPosition: 'right',
               },
