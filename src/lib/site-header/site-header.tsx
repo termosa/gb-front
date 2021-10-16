@@ -800,7 +800,7 @@ const SubscriptionContent = () => (
         <ExtendableBlockItem>
           <Link passHref href={createLink.forPage('rare-ic-page')}>
             <a>
-              <Image src="https://fragrantjewels.s3.amazonaws.com/app/app-nav/nav-rare-raven.jpg" width={370} />
+              <Image src="https://fragrantjewels.s3.amazonaws.com/app/app-nav/nav-loch-ness.jpg" width={370} />
               <ExtendableBlockListTitle>Everything There Is To Know About Rare Collections</ExtendableBlockListTitle>
               <ExtendableBlockListText>
                 Start collecting unique limited edition sets not available for sale! Find out how you can qualify.
